@@ -19,6 +19,7 @@ namespace Deimos
 		private MouseState CurrentMouseState;
 		private MouseState PreviousMouseState;
 		private float MouseSpeed = 0.1f;
+		private Boolean MouseInverted = true;
 
 
         // Properties
@@ -179,9 +180,10 @@ namespace Deimos
 				if(MouseRotationBuffer.Y > MathHelper.ToRadians(75.0f))
 					MouseRotationBuffer.Y = MouseRotationBuffer.Y - (MouseRotationBuffer.Y - MathHelper.ToRadians(75.0f));
 
+				float mouseInverted = (MouseInverted == true) ? 1 : -1;
 
 				Rotation = new Vector3(
-					- MathHelper.Clamp( // This minus is to inverse the camera, WE CAN INCLUDE IT IN THE SETTINGS OF THE GAME
+					mouseInverted * MathHelper.Clamp( 
 						MouseRotationBuffer.Y, 
 						MathHelper.ToRadians(-75.0f),
 						MathHelper.ToRadians(75.0f)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
@@ -10,7 +11,7 @@ namespace Deimos
     class Camera : GameComponent
     {
         // Atributes
-        private Vector3 CameraPosition;
+        public Vector3 CameraPosition;
         private Vector3 CameraRotation;
         private float   CameraSpeed;
         private Vector3 CameraLookAt;
@@ -19,7 +20,16 @@ namespace Deimos
 		private MouseState CurrentMouseState;
 		private MouseState PreviousMouseState;
 		private float MouseSpeed = 0.1f;
-		private Boolean MouseInverted = true;
+		private Boolean MouseInverted = false;
+
+		private Collision Collision;
+
+
+		// For testing purpose
+		private Keys ForwardKey = Keys.W;
+		private Keys BackKey = Keys.S;
+		private Keys LeftKey = Keys.A;
+		private Keys RightKey = Keys.D;
 
 
         // Properties
@@ -71,6 +81,8 @@ namespace Deimos
 		{
 			CameraSpeed = speed;
 
+			Collision = new Collision();
+
 			// Setup projection matrix
 			Projection = Matrix.CreatePerspectiveFieldOfView(
 				MathHelper.PiOver4,
@@ -119,7 +131,15 @@ namespace Deimos
 			Vector3 movement = new Vector3(amount.X, amount.Y, amount.Z);
 			movement = Vector3.Transform(movement, rotate);
 			// Return the value of camera position + movement vector
-			return CameraPosition + movement;
+
+			if (Collision.CheckCollision(CameraPosition))
+			{
+				return CameraPosition;
+			}
+			else
+			{
+				return CameraPosition + movement;
+			}
 		}
 
 		// Method that actually move the camera
@@ -140,14 +160,18 @@ namespace Deimos
 
 			// Handle basic key movement
 			Vector3 moveVector = Vector3.Zero;
-			if (ks.IsKeyDown(Keys.Z))
+			if (ks.IsKeyDown(ForwardKey))
 				moveVector.Z = 1;
-			if (ks.IsKeyDown(Keys.S))
+			if (ks.IsKeyDown(BackKey))
 				moveVector.Z = -1;
-			if (ks.IsKeyDown(Keys.Q))
+			if (ks.IsKeyDown(LeftKey))
 				moveVector.X = 1;
-			if (ks.IsKeyDown(Keys.D))
+			if (ks.IsKeyDown(RightKey))
 				moveVector.X = -1;
+			if (ks.IsKeyDown(Keys.Up))
+				moveVector.Y = 1;
+			if (ks.IsKeyDown(Keys.Down))
+				moveVector.Y = -1;
 
 			if (moveVector != Vector3.Zero) // If we are actually moving (if the vector changed depending on the ifs)
 			{

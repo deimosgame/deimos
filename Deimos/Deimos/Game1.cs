@@ -22,6 +22,9 @@ namespace Deimos
 		Floor Floor;
 		BasicEffect Effect;
 
+		DebugScreen DebugScreen;
+
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -38,8 +41,11 @@ namespace Deimos
         {
             Camera = new Camera(this, new Vector3(10f, 1f, 5f), Vector3.Zero, 5f); // f means it's a float
 			Components.Add(Camera);
+
 			Floor = new Floor(GraphicsDevice, 20, 20);
 			Effect = new BasicEffect(GraphicsDevice);
+			DebugScreen = new DebugScreen(Camera);
+
 
 			IsMouseVisible = false;
 
@@ -55,6 +61,8 @@ namespace Deimos
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+			DebugScreen.LoadFont(spriteBatch, Content.Load<SpriteFont>("Fonts/debug"));
+
             // TODO: use this.Content to load your game content here
         }
 
@@ -63,7 +71,7 @@ namespace Deimos
         /// all content.
         /// </summary>
         protected override void UnloadContent()
-        {
+        { 
             // TODO: Unload any non ContentManager content here
         }
 
@@ -75,10 +83,12 @@ namespace Deimos
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            if (Keyboard.GetState().IsKeyDown(Keys.Back))
                 this.Exit();
 
             // TODO: Add your update logic here
+
+			DebugScreen.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -92,6 +102,8 @@ namespace Deimos
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
 			Floor.Draw(Camera, Effect);
+
+			DebugScreen.Draw(gameTime);
 
             base.Draw(gameTime);
         }

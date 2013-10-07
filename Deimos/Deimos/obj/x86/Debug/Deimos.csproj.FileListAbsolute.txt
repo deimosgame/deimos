@@ -4,3 +4,10 @@ c:\users\manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86
 c:\users\manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 c:\users\manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Deimos.exe
 c:\users\manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Deimos.pdb
+C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Deimos.exe
+C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Deimos.pdb
+C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Deimos.csprojResolveAssemblyReference.cache
+C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Deimos.exe
+C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Deimos.pdb
+C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Fonts\debug.xnb

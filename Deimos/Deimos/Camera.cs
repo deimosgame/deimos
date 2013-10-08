@@ -19,7 +19,7 @@ namespace Deimos
 		private Vector3 MouseRotationBuffer;
 		private MouseState CurrentMouseState;
 		private MouseState PreviousMouseState;
-		private float MouseSpeed = 0.1f;
+		private float MouseSpeed = 1.1f;
 		private Boolean MouseInverted = false;
 
 		private Collision Collision;
@@ -81,7 +81,11 @@ namespace Deimos
 		{
 			CameraSpeed = speed;
 
-			Collision = new Collision();
+			Collision = new Collision(1f, 1f, 1f);
+
+			Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(20, -1, 20)); // Adding  the collision box
+			Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(-1, 20, 20));
+			Collision.FinishedAddingCollisions(); // Converting the list in the code to an array.
 
 			// Setup projection matrix
 			Projection = Matrix.CreatePerspectiveFieldOfView(
@@ -132,7 +136,7 @@ namespace Deimos
 			movement = Vector3.Transform(movement, rotate);
 			// Return the value of camera position + movement vector
 
-			if (Collision.CheckCollision(CameraPosition))
+			if (Collision.CheckCollision(CameraPosition + movement)) // Testing for the UPCOMING position
 			{
 				return CameraPosition;
 			}
@@ -161,17 +165,31 @@ namespace Deimos
 			// Handle basic key movement
 			Vector3 moveVector = Vector3.Zero;
 			if (ks.IsKeyDown(ForwardKey))
+			{
 				moveVector.Z = 1;
+			}
 			if (ks.IsKeyDown(BackKey))
+			{
 				moveVector.Z = -1;
+			}
+
 			if (ks.IsKeyDown(LeftKey))
+			{
 				moveVector.X = 1;
+			}
 			if (ks.IsKeyDown(RightKey))
+			{
 				moveVector.X = -1;
+			}
+
 			if (ks.IsKeyDown(Keys.Up))
+			{
 				moveVector.Y = 1;
+			}
 			if (ks.IsKeyDown(Keys.Down))
+			{
 				moveVector.Y = -1;
+			}
 
 			if (moveVector != Vector3.Zero) // If we are actually moving (if the vector changed depending on the ifs)
 			{

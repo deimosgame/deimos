@@ -11,15 +11,20 @@ namespace Deimos
 	class Collision
 	{
 		// Attributes
-		private BoundingSphere CameraSphere;
+		private Vector3 PlayerDimention;
 
-		private BoundingBox[] CollisionBoxes;
-		private BoundingSphere[] CollisionSpheres;
+
+		private List<BoundingBox> CollisionBoxes = new List<BoundingBox>();
+		private BoundingBox[] CollisionBoxesArray;
+		private List<BoundingSphere> CollisionSpheres = new List<BoundingSphere>();
+		private BoundingSphere[] CollisionSpheresArray;
 
 		// Constructor
-		public Collision()
+		public Collision(float height, float width, float depth)
 		{
-			//
+			PlayerDimention.X = width;
+			PlayerDimention.Y = height;
+			PlayerDimention.Z = depth;
 		}
 
 
@@ -30,35 +35,52 @@ namespace Deimos
 			Vector3[] boxPoints = new Vector3[2];
             boxPoints[0] = coords1;
             boxPoints[1] = coords2;
-			CollisionBoxes[CollisionBoxes.Count() + 1] = BoundingBox.CreateFromPoints(boxPoints);
+			CollisionBoxes.Add(BoundingBox.CreateFromPoints(boxPoints));
 		}
 
 		public void AddCollisionSphere(Vector3 coords, float diameter)
 		{
-			CollisionSpheres[CollisionSpheres.Count() + 1] = new BoundingSphere(coords, diameter);
+			CollisionSpheres.Add(new BoundingSphere(coords, diameter));
+		}
+
+		public void FinishedAddingCollisions()
+		{
+			CollisionBoxesArray = CollisionBoxes.ToArray();
+			CollisionSpheresArray = CollisionSpheres.ToArray();
 		}
 
 
 		public Boolean CheckCollision(Vector3 cameraPosition)
 		{
 			// Creating the sphere of the camera for later collisions checks
-			BoundingSphere cameraSphere = new BoundingSphere(cameraPosition, 0.04f);
+			BoundingBox cameraBox = new BoundingBox(
+				new Vector3(
+					cameraPosition.X - (PlayerDimention.X / 2),
+					cameraPosition.Y - (PlayerDimention.Y),
+					cameraPosition.Z - (PlayerDimention.Z / 2)
+				),
+				new Vector3(
+					cameraPosition.X + (PlayerDimention.X / 2),
+					cameraPosition.Y,
+					cameraPosition.Z + (PlayerDimention.Z / 2)
+				)
+			);
 
-			// Let s check for collision with our boxes
-			if (CollisionBoxes != null)
+			// Let's check for collision with our boxes
+			if (CollisionBoxesArray != null)
 			{
-				for (int i = 0; i < CollisionBoxes.Length; i++)
+				for (int i = 0; i < CollisionBoxesArray.Length; i++)
 				{
-					if (CollisionBoxes[i].Contains(cameraSphere) != ContainmentType.Disjoint)
+					if (CollisionBoxesArray[i].Contains(cameraBox) != ContainmentType.Disjoint) // If our player is inside the collision region
 						return true;
 				}
 			}
-			if (CollisionSpheres != null)
+			if (CollisionSpheresArray != null)
 			{
 				// And with our spheres
-				for (int i = 0; i < CollisionBoxes.Length; i++)
+				for (int i = 0; i < CollisionSpheresArray.Length; i++)
 				{
-					if (CollisionBoxes[i].Contains(cameraSphere) != ContainmentType.Disjoint)
+					if (CollisionSpheresArray[i].Contains(cameraBox) != ContainmentType.Disjoint)
 						return true;
 				}
 			}

@@ -12,3 +12,6 @@ C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\obj\x8
 C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Deimos.pdb
 C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Fonts\debug.xnb
 C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Fonts\debug.xnb
+C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Fonts\menuTitle.xnb
+C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Fonts\menuElement.xnb
+C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\map.xnb

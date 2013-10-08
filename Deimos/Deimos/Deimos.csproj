@@ -111,6 +111,8 @@
     <Compile Include="Collision.cs" />
     <Compile Include="DebugScreen.cs" />
     <Compile Include="Floor.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="MenuItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />

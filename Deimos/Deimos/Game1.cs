@@ -24,6 +24,23 @@ namespace Deimos
 
 		DebugScreen DebugScreen;
 
+		Menu MainMenu;
+
+		Model MapModel;
+		float AspectRatio;
+		Vector3 modelPosition = Vector3.Zero;
+		float modelRotation = 0.0f;
+
+
+		enum GameStates
+		{
+			StartMenu,
+			Pause,
+			GraphicOptions,
+			Playing
+		}
+		GameStates CurrentGameState = GameStates.StartMenu;
+
 
         public Game1()
         {
@@ -39,7 +56,7 @@ namespace Deimos
         /// </summary>
         protected override void Initialize()
         {
-            Camera = new Camera(this, new Vector3(10f, 1f, 5f), Vector3.Zero, 5f); // f means it's a float
+            Camera = new Camera(this, new Vector3(10f, 3f, 5f), Vector3.Zero, 5f); // f means it's a float
 			Components.Add(Camera);
 
 			Floor = new Floor(GraphicsDevice, 20, 20);
@@ -49,7 +66,22 @@ namespace Deimos
 
 			IsMouseVisible = false;
 
-            base.Initialize();
+			// Game settings
+			//graphics.PreferredBackBufferHeight = 340;
+			//graphics.PreferredBackBufferWidth = 480;
+			graphics.IsFullScreen = true;
+			graphics.PreferMultiSampling = true; // Anti aliasing
+			graphics.SynchronizeWithVerticalRetrace = false; // Anti FPS blocking
+			IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec
+			graphics.ApplyChanges();
+
+
+			MainMenu = new Menu("Menu Title");
+			MainMenu.AddMenuItem("Start Game", k => { if (k == Keys.Enter) { CurrentGameState = GameStates.Playing; } });
+			MainMenu.AddMenuItem("Options", k => { if (k == Keys.Enter) { CurrentGameState = GameStates.GraphicOptions; } });
+			MainMenu.AddMenuItem("Exit", k => { if (k == Keys.Enter) { Exit(); } });
+
+			base.Initialize(); 
         }
 
         /// <summary>
@@ -60,6 +92,9 @@ namespace Deimos
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+			MapModel = Content.Load<Model>("Models/Map/map");
+			AspectRatio = graphics.GraphicsDevice.Viewport.AspectRatio;
 
 			DebugScreen.LoadFont(spriteBatch, Content.Load<SpriteFont>("Fonts/debug"));
 
@@ -86,11 +121,30 @@ namespace Deimos
             if (Keyboard.GetState().IsKeyDown(Keys.Back))
                 this.Exit();
 
-            // TODO: Add your update logic here
+
+			switch (CurrentGameState)
+			{
+				case GameStates.StartMenu:
+					//MainMenu.DrawMenu(800);
+					//MainMenu.Navigate(Keyboard.GetState(), gameTime);
+					break;
+
+				case GameStates.Pause:
+
+					break;
+
+				case GameStates.GraphicOptions:
+					MainMenu.Navigate(Keyboard.GetState(), gameTime);
+					break;
+
+				case GameStates.Playing:
+					
+
+					break;
+			}
 
 			DebugScreen.Update(gameTime);
-
-            base.Update(gameTime);
+			base.Update(gameTime);
         }
 
         /// <summary>
@@ -104,6 +158,7 @@ namespace Deimos
 			Floor.Draw(Camera, Effect);
 
 			DebugScreen.Draw(gameTime);
+
 
             base.Draw(gameTime);
         }

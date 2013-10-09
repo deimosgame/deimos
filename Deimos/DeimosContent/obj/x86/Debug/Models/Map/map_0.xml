@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>Plane_001</Name>
     <Identity>
-      <SourceFilename>C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\DeimosContent\Models\Map\map.fbx</SourceFilename>
+      <SourceFilename>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\DeimosContent\Models\Map\map.fbx</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>0.00025 0 0 0 0 0.00025 0 0 0 0 1 0 -2.52760148 -0.876102865 0 1</Transform>

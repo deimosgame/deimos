@@ -8,31 +8,38 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Deimos
 {
-	class DebugScreen
+	static class DebugScreen
 	{
 		// Properties
-		SpriteBatch SpriteBatch;
-		SpriteFont SpriteFont;
+		static SpriteBatch SpriteBatch;
+		static SpriteFont SpriteFont;
 
-		Camera Camera;
+		static Camera Camera;
 
-		int FrameRate = 0;
-		int FrameCounter = 0;
-		TimeSpan ElapsedTime = TimeSpan.Zero;
+		static private List<String> LogStrings = new List<String>();
 
-		// Constructors
-		public DebugScreen(Camera camera)
-        {
+		static int FrameRate = 0;
+		static int FrameCounter = 0;
+		static TimeSpan ElapsedTime = TimeSpan.Zero;
+
+		// Methods
+		static public void SetCamera(Camera camera)
+		{
 			Camera = camera;
-        }
+		}
 
-		public void LoadFont(SpriteBatch batch, SpriteFont font)
+		static public void LoadFont(SpriteBatch batch, SpriteFont font)
         {
 			SpriteBatch = batch;
 			SpriteFont = font;
         }
 
-		public void Update(GameTime gameTime)
+		static public void Log(String logText)
+		{
+			LogStrings.Add(logText);
+		}
+
+		static public void Update(GameTime gameTime)
 		{
 			ElapsedTime += gameTime.ElapsedGameTime;
 
@@ -44,7 +51,7 @@ namespace Deimos
 			}
 		}
 
-		public void Draw(GameTime gameTime)
+		static public void Draw(GameTime gameTime)
 		{
 			SpriteBatch.Begin();
 
@@ -57,6 +64,23 @@ namespace Deimos
 
 			SpriteBatch.DrawString(SpriteFont, "FPS:", new Vector2(10, 50), Color.Black);
 			SpriteBatch.DrawString(SpriteFont, FrameRate.ToString(), new Vector2(5, 60), Color.Black);
+
+
+			// Console logs
+			SpriteBatch.DrawString(SpriteFont, "Console logs:", new Vector2(10, 70), Color.Black);
+
+			String[] logStrings = LogStrings.ToArray();
+			int iLimit = 0;
+			int position = 0;
+			if (logStrings.Length > 10)
+			{
+				iLimit = logStrings.Length - 10;
+			}
+			for (int i = logStrings.Length; i > iLimit; i--)
+			{
+				SpriteBatch.DrawString(SpriteFont, logStrings[i - 1], new Vector2(5, 70 + ((position + 1) * 10)), Color.Black);
+				position++;
+			}
 
 			SpriteBatch.End();
 		}

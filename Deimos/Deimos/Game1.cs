@@ -22,8 +22,6 @@ namespace Deimos
 		Floor Floor;
 		BasicEffect Effect;
 
-		DebugScreen DebugScreen;
-
 		Menu MainMenu;
 
 		Model MapModel;
@@ -61,7 +59,7 @@ namespace Deimos
 
 			Floor = new Floor(GraphicsDevice, 20, 20);
 			Effect = new BasicEffect(GraphicsDevice);
-			DebugScreen = new DebugScreen(Camera);
+			DebugScreen.SetCamera(Camera);
 
 
 			IsMouseVisible = false;
@@ -69,10 +67,10 @@ namespace Deimos
 			// Game settings
 			//graphics.PreferredBackBufferHeight = 340;
 			//graphics.PreferredBackBufferWidth = 480;
-			graphics.IsFullScreen = true;
+			// graphics.IsFullScreen = true;
 			graphics.PreferMultiSampling = true; // Anti aliasing
-			graphics.SynchronizeWithVerticalRetrace = false; // Anti FPS blocking
-			IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec
+			//graphics.SynchronizeWithVerticalRetrace = false; // Anti FPS blocking
+			//IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec
 			graphics.ApplyChanges();
 
 
@@ -105,10 +103,10 @@ namespace Deimos
         /// UnloadContent will be called once per game and is the place to unload
         /// all content.
         /// </summary>
-        protected override void UnloadContent()
-        { 
-            // TODO: Unload any non ContentManager content here
-        }
+		protected override void UnloadContent()
+		{
+			// TODO: Unload any non ContentManager content here
+		}
 
         /// <summary>
         /// Allows the game to run logic such as updating the world,

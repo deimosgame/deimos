@@ -11,6 +11,7 @@ namespace Deimos
     class Camera : GameComponent
     {
         // Atributes
+
         public Vector3 CameraPosition;
         private Vector3 CameraRotation;
         private float   CameraSpeed;
@@ -26,9 +27,9 @@ namespace Deimos
 
 
 		// For testing purpose
-		private Keys ForwardKey = Keys.W;
+		private Keys ForwardKey = Keys.Z;
 		private Keys BackKey = Keys.S;
-		private Keys LeftKey = Keys.A;
+		private Keys LeftKey = Keys.Q;
 		private Keys RightKey = Keys.D;
 
 
@@ -198,6 +199,8 @@ namespace Deimos
 
 				// Now we add in move factor and speed
 				moveVector *= dt * CameraSpeed;
+
+				DebugScreen.Log(moveVector.ToString());
 
 				// Move camera!
 				move(moveVector);

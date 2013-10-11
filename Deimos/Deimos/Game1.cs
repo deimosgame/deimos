@@ -39,6 +39,7 @@ namespace Deimos
 		public Game1()
 		{
 			graphics = new GraphicsDeviceManager(this);
+
 			Content.RootDirectory = "Content";
 		}
 
@@ -63,11 +64,19 @@ namespace Deimos
 			// Game settings
 			//graphics.PreferredBackBufferHeight = 340;
 			//graphics.PreferredBackBufferWidth = 480;
-			graphics.IsFullScreen = true;
+			//graphics.IsFullScreen = true;
 			graphics.PreferMultiSampling = true; // Anti aliasing
 			//graphics.SynchronizeWithVerticalRetrace = false; // Anti FPS blocking
 			//IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec
 			graphics.ApplyChanges();
+
+			// Fixes 2D bugs
+			GraphicsDevice.BlendState = BlendState.AlphaBlend;
+			GraphicsDevice.DepthStencilState = DepthStencilState.None;
+			GraphicsDevice.RasterizerState = RasterizerState.CullCounterClockwise;
+			GraphicsDevice.SamplerStates[0] = SamplerState.LinearClamp;
+			GraphicsDevice.BlendState = BlendState.Opaque;
+			GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 
 
 			MainMenu = new Menu("Menu Title");

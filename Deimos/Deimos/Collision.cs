@@ -79,7 +79,7 @@ namespace Deimos
 				
 		}
 
-		public Vector3 GetCollisionVector(Vector3 cameraPosition)
+		public Vector2 GetCollisionVector(Vector3 cameraPosition)
 		{
 			// Creating the sphere of the camera for later collisions checks
 			BoundingBox cameraBox = new BoundingBox(
@@ -101,13 +101,17 @@ namespace Deimos
 				for (int i = 0; i < CollisionBoxesArray.Length; i++)
 				{
 					if (CollisionBoxesArray[i].Contains(cameraBox) != ContainmentType.Disjoint) // If our player is inside the collision region
-					{ 
-						
+					{
+						Vector2 newMovementVector = new Vector2(
+							CollisionBoxesVectorsArray[i]["Vector2"].X - CollisionBoxesVectorsArray[i]["Vector1"].X,
+							CollisionBoxesVectorsArray[i]["Vector2"].Z - CollisionBoxesVectorsArray[i]["Vector1"].Z);
+
+						return newMovementVector;
 					}
 				}
 			}
 
-			return Vector3.Zero;
+			return Vector2.Zero;
 		}
 
 	}

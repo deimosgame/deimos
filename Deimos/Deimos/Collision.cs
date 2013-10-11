@@ -13,6 +13,8 @@ namespace Deimos
 		// Attributes
 		private Vector3 PlayerDimention;
 
+		private List<Dictionary<string, Vector3>> CollisionBoxesVectors = new List<Dictionary<string, Vector3>>();
+		private Dictionary<string, Vector3>[] CollisionBoxesVectorsArray;
 
 		private List<BoundingBox> CollisionBoxes = new List<BoundingBox>();
 		private BoundingBox[] CollisionBoxesArray;
@@ -34,6 +36,10 @@ namespace Deimos
 			Vector3[] boxPoints = new Vector3[2];
 			boxPoints[0] = coords1;
 			boxPoints[1] = coords2;
+			Dictionary<string, Vector3> newCoords = new Dictionary<string, Vector3>();
+			newCoords.Add("Vector1", coords1);
+			newCoords.Add("Vector2", coords2);
+			CollisionBoxesVectors.Add(newCoords);
 			CollisionBoxes.Add(BoundingBox.CreateFromPoints(boxPoints));
 		}
 
@@ -71,6 +77,37 @@ namespace Deimos
 
 			return false;
 				
+		}
+
+		public Vector3 GetCollisionVector(Vector3 cameraPosition)
+		{
+			// Creating the sphere of the camera for later collisions checks
+			BoundingBox cameraBox = new BoundingBox(
+				new Vector3(
+					cameraPosition.X - (PlayerDimention.X / 2),
+					cameraPosition.Y - (PlayerDimention.Y),
+					cameraPosition.Z - (PlayerDimention.Z / 2)
+				),
+				new Vector3(
+					cameraPosition.X + (PlayerDimention.X / 2),
+					cameraPosition.Y,
+					cameraPosition.Z + (PlayerDimention.Z / 2)
+				)
+			);
+
+			// Let's check for collision with our boxes
+			if (CollisionBoxesArray != null)
+			{
+				for (int i = 0; i < CollisionBoxesArray.Length; i++)
+				{
+					if (CollisionBoxesArray[i].Contains(cameraBox) != ContainmentType.Disjoint) // If our player is inside the collision region
+					{ 
+						
+					}
+				}
+			}
+
+			return Vector3.Zero;
 		}
 
 	}

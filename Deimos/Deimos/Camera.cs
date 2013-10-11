@@ -11,7 +11,6 @@ namespace Deimos
 	class Camera : GameComponent
 	{
 		// Atributes
-
 		public Vector3 CameraPosition;
 		private Vector3 CameraRotation;
 		private float   CameraSpeed;

@@ -88,8 +88,6 @@ namespace Deimos
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 
 			DebugScreen.LoadFont(spriteBatch, Content.Load<SpriteFont>("Fonts/debug"));
-
-			// TODO: use this.Content to load your game content here
 		}
 
 		/// <summary>

@@ -17,6 +17,7 @@ namespace Deimos
 		private List<BoundingBox> CollisionBoxes = new List<BoundingBox>();
 		private BoundingBox[] CollisionBoxesArray;
 
+
 		// Constructor
 		public Collision(float height, float width, float depth)
 		{
@@ -31,8 +32,8 @@ namespace Deimos
 		public void AddCollisionBox(Vector3 coords1, Vector3 coords2)
 		{
 			Vector3[] boxPoints = new Vector3[2];
-            boxPoints[0] = coords1;
-            boxPoints[1] = coords2;
+			boxPoints[0] = coords1;
+			boxPoints[1] = coords2;
 			CollisionBoxes.Add(BoundingBox.CreateFromPoints(boxPoints));
 		}
 

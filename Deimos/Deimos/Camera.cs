@@ -8,16 +8,16 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Deimos
 {
-    class Camera : GameComponent
-    {
-        // Atributes
+	class Camera : GameComponent
+	{
+		// Atributes
 
-        public Vector3 CameraPosition;
-        private Vector3 CameraRotation;
-        private float   CameraSpeed;
-        private Vector3 CameraLookAt;
+		public Vector3 CameraPosition;
+		private Vector3 CameraRotation;
+		private float   CameraSpeed;
+		private Vector3 CameraLookAt;
 
-		private Vector3 CameraOldPosition;
+		public Vector3 CameraOldPosition;
 		private Vector3 CameraMovement = new Vector3(0, 0, 0);
 
 		private Vector3 MouseRotationBuffer;
@@ -36,7 +36,7 @@ namespace Deimos
 		private Keys RightKey = Keys.D;
 
 
-        // Properties
+		// Properties
 		public Vector3 Position
 		{
 			get 
@@ -115,6 +115,8 @@ namespace Deimos
 		{
 			// Thanks to the properties set at the beginning, setting up these values will execute 
 			// the code inside the property (i.e update our vectors)
+			CameraOldPosition = Position;
+
 			Position = position;
 			Rotation = rotation;
 		}
@@ -255,5 +257,5 @@ namespace Deimos
 			base.Update(gameTime);
 
 		}
-    }
+	}
 }

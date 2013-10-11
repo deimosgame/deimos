@@ -29,10 +29,10 @@ namespace Deimos
 		}
 
 		static public void LoadFont(SpriteBatch batch, SpriteFont font)
-        {
+		{
 			SpriteBatch = batch;
 			SpriteFont = font;
-        }
+		}
 
 		static public void Log(String logText)
 		{

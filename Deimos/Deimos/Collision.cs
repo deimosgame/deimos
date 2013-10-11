@@ -80,7 +80,7 @@ namespace Deimos
 				
 		}
 
-		public Vector2 GetCollisionVector(Vector3 cameraPosition)
+		public Vector2 GetCollisionVector(Vector3 cameraPosition, Vector3 cameraRotation)
 		{
 			// Creating the sphere of the camera for later collisions checks
 			BoundingBox cameraBox = new BoundingBox(
@@ -103,9 +103,27 @@ namespace Deimos
 				{
 					if (CollisionBoxesArray[i].Contains(cameraBox) != ContainmentType.Disjoint) // If our player is inside the collision region
 					{
-						Vector2 newMovementVector = new Vector2(
-							CollisionBoxesVectorsArray[i]["Vector2"].X - CollisionBoxesVectorsArray[i]["Vector1"].X,
-							CollisionBoxesVectorsArray[i]["Vector2"].Z - CollisionBoxesVectorsArray[i]["Vector1"].Z);
+						Vector2 newMovementVector;
+
+						if (cameraPosition.X > CollisionBoxesVectorsArray[i]["Vector1"].X 
+							&& cameraPosition.X > CollisionBoxesVectorsArray[i]["Vector2"].X) // Then the player is above the collision
+						{
+							newMovementVector = new Vector2(0, 1);
+						}
+						else if(cameraPosition.X < CollisionBoxesVectorsArray[i]["Vector1"].X 
+							&& cameraPosition.X < CollisionBoxesVectorsArray[i]["Vector2"].X) // Then he is below
+						{
+							newMovementVector = new Vector2(0, 1);
+						}
+						else if (cameraPosition.Y > CollisionBoxesVectorsArray[i]["Vector1"].Y
+							&& cameraPosition.Y > CollisionBoxesVectorsArray[i]["Vector2"].Y) // Then at the right
+						{
+							newMovementVector = new Vector2(1, 0);
+						}
+						else // He's obviously at the right
+						{
+							newMovementVector = new Vector2(1, 0);
+						}
 
 						return newMovementVector;
 					}

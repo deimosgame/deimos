@@ -132,7 +132,7 @@ namespace Deimos
 		}
 
 		// Methods that simulate movement
-		private Vector3 previewMove(Vector3 amount)
+		private Vector3 previewMove(Vector3 amount, float dt)
 		{
 			// Create a rotate matrix
 			Matrix rotate = Matrix.CreateRotationY(CameraRotation.Y);
@@ -143,19 +143,26 @@ namespace Deimos
 
 			if (Collision.CheckCollision(CameraPosition + movement)) // Testing for the UPCOMING position
 			{
-				DebugScreen.Log(Collision.GetCollisionVector(CameraPosition + movement).ToString());
-				return CameraPosition;
+				Vector2 newMovement = Collision.GetCollisionVector(CameraPosition + movement, CameraRotation);
+				newMovement.Normalize();
+				newMovement *= dt * CameraSpeed;
+				movement = new Vector3(newMovement.X, 0, newMovement.Y);
+				movement = Vector3.Transform(movement, Matrix.CreateRotationY(0));
+
+				DebugScreen.Log(newMovement.ToString());
+				return CameraPosition + movement;
 			}
 			else
 			{
+				//DebugScreen.Log(CameraRotation.ToString());
 				return CameraPosition + movement;
 			}
 		}
 
 		// Method that actually moves the camera
-		private void move(Vector3 scale)
+		private void move(Vector3 scale, float dt)
 		{
-			moveTo(previewMove(scale), Rotation);
+			moveTo(previewMove(scale, dt), Rotation);
 		}
 
 		// Update method, overriding the original one
@@ -215,9 +222,12 @@ namespace Deimos
 				// Now we add in move factor and speed
 				moveVector *= dt * CameraSpeed;
 
+
 				// Move camera!
-				move(moveVector);
+				move(moveVector, dt);
 			}
+
+
 
 
 			// Handle mouse movement

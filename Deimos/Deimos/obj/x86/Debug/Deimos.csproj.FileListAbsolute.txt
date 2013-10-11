@@ -1,6 +1,5 @@
 c:\users\manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Deimos.exe
 c:\users\manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Deimos.pdb
-c:\users\manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Deimos.csprojResolveAssemblyReference.cache
 c:\users\manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 c:\users\manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Deimos.exe
 c:\users\manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Deimos.pdb

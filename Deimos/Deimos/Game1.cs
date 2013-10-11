@@ -67,7 +67,7 @@ namespace Deimos
 			// Game settings
 			//graphics.PreferredBackBufferHeight = 340;
 			//graphics.PreferredBackBufferWidth = 480;
-			// graphics.IsFullScreen = true;
+			graphics.IsFullScreen = true;
 			graphics.PreferMultiSampling = true; // Anti aliasing
 			//graphics.SynchronizeWithVerticalRetrace = false; // Anti FPS blocking
 			//IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec

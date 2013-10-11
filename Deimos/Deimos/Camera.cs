@@ -17,6 +17,9 @@ namespace Deimos
         private float   CameraSpeed;
         private Vector3 CameraLookAt;
 
+		private Vector3 CameraOldPosition;
+		private Vector3 CameraMovement = new Vector3(0, 0, 0);
+
 		private Vector3 MouseRotationBuffer;
 		private MouseState CurrentMouseState;
 		private MouseState PreviousMouseState;
@@ -147,7 +150,7 @@ namespace Deimos
 			}
 		}
 
-		// Method that actually move the camera
+		// Method that actually moves the camera
 		private void move(Vector3 scale)
 		{
 			moveTo(previewMove(scale), Rotation);
@@ -228,13 +231,13 @@ namespace Deimos
 				float mouseInverted = (MouseInverted == true) ? 1 : -1;
 
 				Rotation = new Vector3(
-					mouseInverted * MathHelper.Clamp( 
-						MouseRotationBuffer.Y, 
+					mouseInverted * MathHelper.Clamp(
+						MouseRotationBuffer.Y,
 						MathHelper.ToRadians(-75.0f),
 						MathHelper.ToRadians(75.0f)
-					), 
+					),
 					MathHelper.WrapAngle(MouseRotationBuffer.X), // This is so the camera isn't going fucking fast after some time 
-																// (as we are increasing the speed with time)
+					// (as we are increasing the speed with time)
 					0
 				);
 

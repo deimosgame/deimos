@@ -16,8 +16,6 @@ namespace Deimos
 
 		private List<BoundingBox> CollisionBoxes = new List<BoundingBox>();
 		private BoundingBox[] CollisionBoxesArray;
-		private List<BoundingSphere> CollisionSpheres = new List<BoundingSphere>();
-		private BoundingSphere[] CollisionSpheresArray;
 
 		// Constructor
 		public Collision(float height, float width, float depth)
@@ -38,15 +36,9 @@ namespace Deimos
 			CollisionBoxes.Add(BoundingBox.CreateFromPoints(boxPoints));
 		}
 
-		public void AddCollisionSphere(Vector3 coords, float diameter)
-		{
-			CollisionSpheres.Add(new BoundingSphere(coords, diameter));
-		}
-
 		public void FinishedAddingCollisions()
 		{
 			CollisionBoxesArray = CollisionBoxes.ToArray();
-			CollisionSpheresArray = CollisionSpheres.ToArray();
 		}
 
 
@@ -72,15 +64,6 @@ namespace Deimos
 				for (int i = 0; i < CollisionBoxesArray.Length; i++)
 				{
 					if (CollisionBoxesArray[i].Contains(cameraBox) != ContainmentType.Disjoint) // If our player is inside the collision region
-						return true;
-				}
-			}
-			if (CollisionSpheresArray != null)
-			{
-				// And with our spheres
-				for (int i = 0; i < CollisionSpheresArray.Length; i++)
-				{
-					if (CollisionSpheresArray[i].Contains(cameraBox) != ContainmentType.Disjoint)
 						return true;
 				}
 			}

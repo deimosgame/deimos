@@ -46,6 +46,7 @@ namespace Deimos
 		public void FinishedAddingCollisions()
 		{
 			CollisionBoxesArray = CollisionBoxes.ToArray();
+			CollisionBoxesVectorsArray = CollisionBoxesVectors.ToArray();
 		}
 
 

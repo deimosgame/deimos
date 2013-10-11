@@ -143,6 +143,7 @@ namespace Deimos
 
 			if (Collision.CheckCollision(CameraPosition + movement)) // Testing for the UPCOMING position
 			{
+				DebugScreen.Log(Collision.GetCollisionVector(CameraPosition + movement).ToString());
 				return CameraPosition;
 			}
 			else
@@ -195,6 +196,16 @@ namespace Deimos
 			{
 				moveVector.Y = -1;
 			}
+			// Checking if there is a collision with the floor
+			// Create a rotate matrix
+			Matrix rotate = Matrix.CreateRotationY(CameraRotation.Y);
+			// Create a movement vector
+			Vector3 movement = new Vector3(0, moveVector.Y, 0); // Cancelling the X and Z scale to test for the collision
+			movement = Vector3.Transform(movement, rotate);
+			if (Collision.CheckCollision(CameraPosition + movement))
+			{
+				moveVector.Y = 0;
+			}
 
 			if (moveVector != Vector3.Zero) // If we are actually moving (if the vector changed depending on the ifs)
 			{
@@ -203,8 +214,6 @@ namespace Deimos
 
 				// Now we add in move factor and speed
 				moveVector *= dt * CameraSpeed;
-
-				DebugScreen.Log(moveVector.ToString());
 
 				// Move camera!
 				move(moveVector);

@@ -27,6 +27,5 @@ C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\obj\x8
 C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Deimos.application
 C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\MISC\Ana_Model.xnb
 C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\MISC\Alexandra\Ana_dif.xnb
-C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\MISC\Alexandra\Ana_dif_0.xnb
 C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\MISC\Alexandra\Ana_cspec.xnb
 C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\MISC\Alexandra\Ana_norm.xnb

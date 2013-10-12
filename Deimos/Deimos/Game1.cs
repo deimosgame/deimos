@@ -24,9 +24,6 @@ namespace Deimos
 
 		ModelManager ModelManager;
 
-		Model Ana;
-		float aspectRatio;
-
 
 
 		enum GameStates
@@ -54,14 +51,14 @@ namespace Deimos
 		/// </summary>
 		protected override void Initialize()
 		{
-			Camera = new Camera(this, new Vector3(10f, 3f, 5f), Vector3.Zero, 100f); // f means it's a float
+			Camera = new Camera(this, new Vector3(10f, 3f, 5f), Vector3.Zero, 10f); // f means it's a float
 			Components.Add(Camera);
 
 			Floor = new Floor(GraphicsDevice, 20, 20);
 			Effect = new BasicEffect(GraphicsDevice);
 			DebugScreen.SetCamera(Camera);
 
-			ModelManager = new ModelManager();
+			ModelManager = new ModelManager(Camera.Collision);
 
 			IsMouseVisible = false;
 
@@ -74,13 +71,6 @@ namespace Deimos
 			//IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec
 			graphics.ApplyChanges();
 
-			// Fixes 2D bugs
-			GraphicsDevice.BlendState = BlendState.AlphaBlend;
-			GraphicsDevice.DepthStencilState = DepthStencilState.None;
-			GraphicsDevice.RasterizerState = RasterizerState.CullCounterClockwise;
-			GraphicsDevice.SamplerStates[0] = SamplerState.LinearClamp;
-			GraphicsDevice.BlendState = BlendState.Opaque;
-			GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 
 			base.Initialize(); 
 		}
@@ -96,14 +86,12 @@ namespace Deimos
 
 			DebugScreen.LoadFont(spriteBatch, Content.Load<SpriteFont>("Fonts/debug"));
 
-			//ModelManager.LoadModel(Content.Load<Model>("Models/MISC/Ana_Model"), new Vector3(0, 0, 0));
-			//ModelManager.DoneAddingModels();
-
-			Ana = Content.Load<Model>("Models/MISC/Ana_Model");
-
-			aspectRatio = graphics.GraphicsDevice.Viewport.AspectRatio;
-
-
+			ModelManager.LoadModel(
+				Content.Load<Model>("Models/MISC/Ana_Model"), // Model
+				Content.Load<Texture2D>("Models/MISC/Alexandra/Ana_dif"), // Texture
+				new Vector3(0, 0, 0) // Location
+			);
+			ModelManager.DoneAddingModels();
 		}
 
 		/// <summary>
@@ -157,32 +145,8 @@ namespace Deimos
 			GraphicsDevice.Clear(Color.CornflowerBlue);
 
 			Floor.Draw(Camera, Effect);
-
-			//DebugScreen.Draw(gameTime);
-
-
-
-			// Copy any parent transforms.
-			Matrix[] transforms = new Matrix[Ana.Bones.Count];
-			Ana.CopyAbsoluteBoneTransformsTo(transforms);
-
-			// Draw the model. A model can have multiple meshes, so loop.
-			foreach (ModelMesh mesh in Ana.Meshes)
-			{
-				// This is where the mesh orientation is set, as well 
-				// as our camera and projection.
-				foreach (BasicEffect effect in mesh.Effects)
-				{
-					DebugScreen.Log("test");
-					effect.EnableDefaultLighting();
-					effect.World = Matrix.Identity;
-					effect.View = Camera.View;
-					effect.Projection = Camera.Projection;
-				}
-				// Draw the mesh, using the effects set above.
-				mesh.Draw();
-			}
-
+			DebugScreen.Draw(gameTime);
+			ModelManager.DrawModels(Camera);
 
 			base.Draw(gameTime);
 		}

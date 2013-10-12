@@ -93,14 +93,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Deimos.exe" size="20992">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Deimos.exe" size="21504">
       <assemblyIdentity name="Deimos" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>6HS9zI+8M8dP5GbYJC3FlbglgYk=</dsig:DigestValue>
+        <dsig:DigestValue>dkPVqK/i6bD+cqhxPcSD3xZyJMI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -158,15 +158,6 @@
       <dsig:DigestValue>kbTPLuT8y+p5i3EC+l+c8FWYHYo=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\Models\MISC\Alexandra\Ana_dif_0.xnb" size="5592663">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>kDPN0IS3iEYW2qcNm0LUz1HnwKk=</dsig:DigestValue>
-    </hash>
-  </file>
   <file name="Content\Models\MISC\Alexandra\Ana_norm.xnb" size="16777403">
     <hash>
       <dsig:Transforms>
@@ -176,13 +167,13 @@
       <dsig:DigestValue>0hQJghk3LTxero1pFDrVWfi8Vvg=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\Models\MISC\Ana_Model.xnb" size="193657">
+  <file name="Content\Models\MISC\Ana_Model.xnb" size="193638">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>A5GPNiCyDh4vO5y1W++iRgZOfQg=</dsig:DigestValue>
+      <dsig:DigestValue>CO2s+Cw2wUF/pvq77qhE/VqW7/4=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Game.ico" size="4286">

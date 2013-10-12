@@ -27,7 +27,7 @@ namespace Deimos
 		private float MouseSpeed = 0.1f;
 		private Boolean MouseInverted = false;
 
-		private Collision Collision;
+		public Collision Collision;
 
 
 		// For testing purpose

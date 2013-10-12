@@ -147,7 +147,6 @@ namespace Deimos
 			if (Collision.CheckCollision(CameraPosition + movement)) // Testing for the UPCOMING position
 			{
 				Vector2 newMovement = Collision.GetCollisionVector(CameraPosition + movement, CameraRotation);
-				newMovement.Normalize();
 				newMovement *= dt * CameraSpeed;
 				movement = new Vector3(newMovement.X, 0, newMovement.Y);
 				movement = Vector3.Transform(movement, Matrix.CreateRotationY(0));

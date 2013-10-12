@@ -16,7 +16,7 @@ namespace Deimos
 		public Vector3 CameraPosition;
 		private Vector3 CameraRotation;
 		private float   CameraSpeed;
-		private Vector3 CameraLookAt;
+		public Vector3 CameraLookAt;
 
 		public Vector3 CameraOldPosition;
 		private Vector3 CameraMovement = new Vector3(0, 0, 0);
@@ -24,16 +24,16 @@ namespace Deimos
 		private Vector3 MouseRotationBuffer;
 		private MouseState CurrentMouseState;
 		private MouseState PreviousMouseState;
-		private float MouseSpeed = 1.1f;
+		private float MouseSpeed = 0.1f;
 		private Boolean MouseInverted = false;
 
 		private Collision Collision;
 
 
 		// For testing purpose
-		private Keys ForwardKey = Keys.Z;
+		private Keys ForwardKey = Keys.W;
 		private Keys BackKey = Keys.S;
-		private Keys LeftKey = Keys.Q;
+		private Keys LeftKey = Keys.A;
 		private Keys RightKey = Keys.D;
 
 
@@ -88,19 +88,19 @@ namespace Deimos
 
 			Collision = new Collision(1f, 1f, 1f);
 
-			Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(20, -1, 20)); // Adding the floor
-			Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(-1, 20, 20)); // Adding the collision at the right
-			Collision.AddCollisionBox(new Vector3(20, 0, 0), new Vector3(21, 20, 20)); // Adding the collision at the left
-			Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(20, 20, -1)); // behind
-			Collision.AddCollisionBox(new Vector3(0, 0, 20), new Vector3(20, 20, 21)); // In the front
+			//Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(20, -1, 20)); // Adding the floor
+			//Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(-1, 20, 20)); // Adding the collision at the right
+			//Collision.AddCollisionBox(new Vector3(20, 0, 0), new Vector3(21, 20, 20)); // Adding the collision at the left
+			//Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(20, 20, -1)); // behind
+			//Collision.AddCollisionBox(new Vector3(0, 0, 20), new Vector3(20, 20, 21)); // In the front
 			Collision.FinishedAddingCollisions(); // Converting the list in the code to an array.
 
 			// Setup projection matrix
 			Projection = Matrix.CreatePerspectiveFieldOfView(
 				MathHelper.PiOver4,
 				Game.GraphicsDevice.Viewport.AspectRatio,
-				0.05f,
-				1000.0f // Draw distance
+				1.0f,
+				10000.0f // Draw distance
 			);
 
 			// Set the camera position and rotation

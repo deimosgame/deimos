@@ -13,39 +13,48 @@ namespace Deimos
 	{
 		private List<Model> LoadedModels = new List<Model>();
 		private Model[] LoadedModelsArray;
-
+		private List<Vector3> LoadedModelsLocation = new List<Vector3>();
+		private Vector3[] LoadedModelsLocationArray;
 
 		public ModelManager()
 		{
 			//
 		}
 
-		public void LoadModel(Model model)
+		public void LoadModel(Model model, Vector3 location)
 		{
 			LoadedModels.Add(model);
+			LoadedModelsLocation.Add(location);
 		}
 
 		public void DoneAddingModels()
 		{
 			LoadedModelsArray = LoadedModels.ToArray();
+			LoadedModelsLocationArray = LoadedModelsLocation.ToArray();
 		}
 
 		public void DrawModels(Camera camera)
 		{
-			foreach (Model model in LoadedModelsArray)
+			if (LoadedModelsArray != null)
 			{
-				Matrix[] transforms = new Matrix[model.Bones.Count];
-				model.CopyAbsoluteBoneTransformsTo(transforms);
-				foreach (ModelMesh mesh in model.Meshes)
+				for (int i = 0; i < LoadedModelsArray.Length; i++)
 				{
-					foreach (BasicEffect effect in mesh.Effects)
+					Model model = LoadedModelsArray[i];
+					Vector3 modelPosition = LoadedModelsLocationArray[i];
+
+					Matrix[] transforms = new Matrix[model.Bones.Count];
+					model.CopyAbsoluteBoneTransformsTo(transforms);
+					foreach (ModelMesh mesh in model.Meshes)
 					{
-						effect.EnableDefaultLighting();
-						effect.View = camera.View;
-						effect.Projection = camera.Projection;
-						effect.World = Matrix.Identity;
+						foreach (BasicEffect effect in mesh.Effects)
+						{
+							effect.EnableDefaultLighting();
+							effect.View = camera.View;
+							effect.Projection = camera.Projection;
+							effect.World = Matrix.CreateWorld(modelPosition, Vector3.Zero, Vector3.Zero);
+						}
+						mesh.Draw();
 					}
-					mesh.Draw();
 				}
 			}
 		}

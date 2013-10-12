@@ -15,16 +15,16 @@
       </applicationRequestMinimum>
       <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
         <!--
-          UAC Manifest Options
-          If you want to change the Windows User Account Control level replace the 
-          requestedExecutionLevel node with one of the following.
+          Options du manifeste de contrôle de compte d'utilisateur
+          Si vous souhaitez modifier le niveau du contrôle de compte d'utilisateur Windows, remplacez le 
+          nœud requestedExecutionLevel par l'une des propositions suivantes :
 
         <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
         <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
         <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
 
-         If you want to utilize File and Registry Virtualization for backward 
-         compatibility then delete the requestedExecutionLevel node.
+         Si vous souhaitez utiliser la virtualisation de fichiers et du Registre pour la 
+         compatibilité descendante, supprimez le nœud requestedExecutionLevel.
     -->
         <requestedExecutionLevel level="asInvoker" uiAccess="false" />
       </requestedPrivileges>
@@ -93,14 +93,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Deimos.exe" size="20480">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Deimos.exe" size="20992">
       <assemblyIdentity name="Deimos" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>yL6CLj8R8jBkPBf6kwySx26zzO0=</dsig:DigestValue>
+        <dsig:DigestValue>6HS9zI+8M8dP5GbYJC3FlbglgYk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -113,22 +113,22 @@
       <dsig:DigestValue>zlQ5P6+JWLhfqGQsNp23A30JnNA=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\Fonts\menuElement.xnb" size="23214">
+  <file name="Content\Fonts\menuElement.xnb" size="20654">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>c2A/wJ8PRLSYLnR5QC7mf/I8wCE=</dsig:DigestValue>
+      <dsig:DigestValue>i6wEy5aaSSZl7AUtkgvxVsNot0I=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\Fonts\menuTitle.xnb" size="24750">
+  <file name="Content\Fonts\menuTitle.xnb" size="22190">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>UYuRitQt0KB6Ak4/SLs9SgfX1wE=</dsig:DigestValue>
+      <dsig:DigestValue>qqz5gyPym8Z8TCVyRbDyT8yMsbo=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\Models\Map\map.xnb" size="3948">
@@ -138,6 +138,51 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>+DclDBWa/utylJv61cs8okqVJW0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\MISC\Alexandra\Ana_cspec.xnb" size="16777403">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>TFCLRrR2lZATGHfkuNf5drUo7aQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\MISC\Alexandra\Ana_dif.xnb" size="16777403">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>kbTPLuT8y+p5i3EC+l+c8FWYHYo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\MISC\Alexandra\Ana_dif_0.xnb" size="5592663">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>kDPN0IS3iEYW2qcNm0LUz1HnwKk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\MISC\Alexandra\Ana_norm.xnb" size="16777403">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>0hQJghk3LTxero1pFDrVWfi8Vvg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\MISC\Ana_Model.xnb" size="193657">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>A5GPNiCyDh4vO5y1W++iRgZOfQg=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Game.ico" size="4286">

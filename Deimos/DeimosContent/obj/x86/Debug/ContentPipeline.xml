@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline" xmlns:Framework="Microsoft.Xna.Framework" xmlns:Processors="Microsoft.Xna.Framework.Content.Pipeline.Processors">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
       <Source>Fonts\debug.spritefont</Source>
@@ -7,8 +7,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Fonts\debug.xnb</Output>
-      <Time>2013-10-08T02:27:13.4133097+02:00</Time>
+      <Output>C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Fonts\debug.xnb</Output>
+      <Time>2013-10-08T19:33:06.6331932+02:00</Time>
     </Item>
     <Item>
       <Source>Fonts\menuTitle.spritefont</Source>
@@ -16,8 +16,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Fonts\menuTitle.xnb</Output>
-      <Time>2013-10-09T10:35:38.7832649+02:00</Time>
+      <Output>C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Fonts\menuTitle.xnb</Output>
+      <Time>2013-10-08T20:40:56.1699574+02:00</Time>
     </Item>
     <Item>
       <Source>Fonts\menuElement.spritefont</Source>
@@ -25,8 +25,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Fonts\menuElement.xnb</Output>
-      <Time>2013-10-09T10:35:38.7676634+02:00</Time>
+      <Output>C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Fonts\menuElement.xnb</Output>
+      <Time>2013-10-08T20:41:16.4301162+02:00</Time>
     </Item>
     <Item>
       <Source>Models\Map\map.fbx</Source>
@@ -34,19 +34,83 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\map.xnb</Output>
-      <Time>2013-10-12T17:21:29.0829006+02:00</Time>
+      <Output>C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\map.xnb</Output>
+      <Time>2013-10-12T20:48:13.4838301+02:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\Map\map_0.xml</Key>
-        <Value>2013-10-12T17:31:09.3056603+02:00</Value>
+        <Value>2013-10-12T23:19:48.3420262+02:00</Value>
       </Dependency>
+    </Item>
+    <Item>
+      <Source>Models\MISC\Ana_Model.fbx</Source>
+      <Name>Models\MISC\Ana_Model</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\MISC\Ana_Model.xnb</Output>
+      <Time>2013-10-12T22:39:20.3981558+02:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\MISC\Ana_Model_0.xml</Key>
+        <Value>2013-10-12T23:19:48.8480552+02:00</Value>
+      </Dependency>
+      <Request>C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\MISC\Alexandra\Ana_dif_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\MISC\Alexandra\Ana_dif.png</Source>
+      <Name>Models\MISC\Alexandra\Ana_dif</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\MISC\Alexandra\Ana_dif.xnb</Output>
+      <Time>2013-10-12T22:40:10.6280288+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\MISC\Alexandra\Ana_cspec.png</Source>
+      <Name>Models\MISC\Alexandra\Ana_cspec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\MISC\Alexandra\Ana_cspec.xnb</Output>
+      <Time>2013-10-12T22:42:26.5028004+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\MISC\Alexandra\Ana_norm.png</Source>
+      <Name>Models\MISC\Alexandra\Ana_norm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\MISC\Alexandra\Ana_norm.xnb</Output>
+      <Time>2013-10-12T22:42:31.5230875+02:00</Time>
     </Item>
     <Item>
       <Source>Models\Map\map.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\Map\map_0.xml</Output>
-      <Time>2013-10-12T17:21:29.0829006+02:00</Time>
+      <Time>2013-10-12T20:48:13.4838301+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\MISC\Ana_Model.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\MISC\Ana_Model_0.xml</Output>
+      <Time>2013-10-12T22:39:20.3981558+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\MISC\Alexandra\Ana_dif.png</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\MISC\Alexandra\Ana_dif_0.xnb</Output>
+      <Time>2013-10-12T22:40:10.6280288+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -54,10 +118,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\DeimosContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\DeimosContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\DeimosContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\DeimosContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -86,7 +150,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2013-10-05T18:17:58.7889143+02:00</Value>
+        <Value>2011-08-03T17:33:58.6222029+02:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

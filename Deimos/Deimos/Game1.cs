@@ -24,6 +24,9 @@ namespace Deimos
 
 		ModelManager ModelManager;
 
+		Model Ana;
+		float aspectRatio;
+
 
 
 		enum GameStates
@@ -51,7 +54,7 @@ namespace Deimos
 		/// </summary>
 		protected override void Initialize()
 		{
-			Camera = new Camera(this, new Vector3(10f, 3f, 5f), Vector3.Zero, 5f); // f means it's a float
+			Camera = new Camera(this, new Vector3(10f, 3f, 5f), Vector3.Zero, 100f); // f means it's a float
 			Components.Add(Camera);
 
 			Floor = new Floor(GraphicsDevice, 20, 20);
@@ -93,8 +96,14 @@ namespace Deimos
 
 			DebugScreen.LoadFont(spriteBatch, Content.Load<SpriteFont>("Fonts/debug"));
 
-			ModelManager.LoadModel(Content.Load<Model>("Models/Map/map"));
-			ModelManager.DoneAddingModels();
+			//ModelManager.LoadModel(Content.Load<Model>("Models/MISC/Ana_Model"), new Vector3(0, 0, 0));
+			//ModelManager.DoneAddingModels();
+
+			Ana = Content.Load<Model>("Models/MISC/Ana_Model");
+
+			aspectRatio = graphics.GraphicsDevice.Viewport.AspectRatio;
+
+
 		}
 
 		/// <summary>
@@ -149,9 +158,30 @@ namespace Deimos
 
 			Floor.Draw(Camera, Effect);
 
-			ModelManager.DrawModels(Camera);
+			//DebugScreen.Draw(gameTime);
 
-			DebugScreen.Draw(gameTime);
+
+
+			// Copy any parent transforms.
+			Matrix[] transforms = new Matrix[Ana.Bones.Count];
+			Ana.CopyAbsoluteBoneTransformsTo(transforms);
+
+			// Draw the model. A model can have multiple meshes, so loop.
+			foreach (ModelMesh mesh in Ana.Meshes)
+			{
+				// This is where the mesh orientation is set, as well 
+				// as our camera and projection.
+				foreach (BasicEffect effect in mesh.Effects)
+				{
+					DebugScreen.Log("test");
+					effect.EnableDefaultLighting();
+					effect.World = Matrix.Identity;
+					effect.View = Camera.View;
+					effect.Projection = Camera.Projection;
+				}
+				// Draw the mesh, using the effects set above.
+				mesh.Draw();
+			}
 
 
 			base.Draw(gameTime);

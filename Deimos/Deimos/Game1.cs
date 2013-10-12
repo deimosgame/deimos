@@ -149,7 +149,7 @@ namespace Deimos
 
 			Floor.Draw(Camera, Effect);
 
-			ModelManager.DrawModels(Camera.View, Camera.Projection);
+			ModelManager.DrawModels(Camera);
 
 			DebugScreen.Draw(gameTime);
 

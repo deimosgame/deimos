@@ -30,18 +30,20 @@ namespace Deimos
 			LoadedModelsArray = LoadedModels.ToArray();
 		}
 
-		public void DrawModels(Matrix view, Matrix projection)
+		public void DrawModels(Camera camera)
 		{
 			foreach (Model model in LoadedModelsArray)
 			{
+				Matrix[] transforms = new Matrix[model.Bones.Count];
+				model.CopyAbsoluteBoneTransformsTo(transforms);
 				foreach (ModelMesh mesh in model.Meshes)
 				{
 					foreach (BasicEffect effect in mesh.Effects)
 					{
-						effect.View = view;
-						effect.World = Matrix.Identity;
-						effect.Projection = projection;
 						effect.EnableDefaultLighting();
+						effect.View = camera.View;
+						effect.Projection = camera.Projection;
+						effect.World = Matrix.Identity;
 					}
 					mesh.Draw();
 				}

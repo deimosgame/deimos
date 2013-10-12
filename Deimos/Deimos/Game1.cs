@@ -22,7 +22,7 @@ namespace Deimos
 		Floor Floor;
 		BasicEffect Effect;
 
-		Menu MainMenu;
+		ModelManager ModelManager;
 
 
 
@@ -33,7 +33,7 @@ namespace Deimos
 			GraphicOptions,
 			Playing
 		}
-		GameStates CurrentGameState = GameStates.StartMenu;
+		GameStates CurrentGameState = GameStates.Playing;
 
 
 		public Game1()
@@ -58,6 +58,7 @@ namespace Deimos
 			Effect = new BasicEffect(GraphicsDevice);
 			DebugScreen.SetCamera(Camera);
 
+			ModelManager = new ModelManager();
 
 			IsMouseVisible = false;
 
@@ -78,12 +79,6 @@ namespace Deimos
 			GraphicsDevice.BlendState = BlendState.Opaque;
 			GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 
-
-			MainMenu = new Menu("Menu Title");
-			MainMenu.AddMenuItem("Start Game", k => { if (k == Keys.Enter) { CurrentGameState = GameStates.Playing; } });
-			MainMenu.AddMenuItem("Options", k => { if (k == Keys.Enter) { CurrentGameState = GameStates.GraphicOptions; } });
-			MainMenu.AddMenuItem("Exit", k => { if (k == Keys.Enter) { Exit(); } });
-
 			base.Initialize(); 
 		}
 
@@ -97,6 +92,9 @@ namespace Deimos
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 
 			DebugScreen.LoadFont(spriteBatch, Content.Load<SpriteFont>("Fonts/debug"));
+
+			ModelManager.LoadModel(Content.Load<Model>("Models/Map/map"));
+			ModelManager.DoneAddingModels();
 		}
 
 		/// <summary>
@@ -123,8 +121,7 @@ namespace Deimos
 			switch (CurrentGameState)
 			{
 				case GameStates.StartMenu:
-					//MainMenu.DrawMenu(800);
-					//MainMenu.Navigate(Keyboard.GetState(), gameTime);
+
 					break;
 
 				case GameStates.Pause:
@@ -132,17 +129,14 @@ namespace Deimos
 					break;
 
 				case GameStates.GraphicOptions:
-					MainMenu.Navigate(Keyboard.GetState(), gameTime);
+					
 					break;
 
 				case GameStates.Playing:
-					
-
+					DebugScreen.Update(gameTime);
+					base.Update(gameTime);
 					break;
 			}
-
-			DebugScreen.Update(gameTime);
-			base.Update(gameTime);
 		}
 
 		/// <summary>
@@ -154,6 +148,8 @@ namespace Deimos
 			GraphicsDevice.Clear(Color.CornflowerBlue);
 
 			Floor.Draw(Camera, Effect);
+
+			ModelManager.DrawModels(Camera.View, Camera.Projection);
 
 			DebugScreen.Draw(gameTime);
 

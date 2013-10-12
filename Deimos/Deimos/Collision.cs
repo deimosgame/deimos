@@ -105,23 +105,48 @@ namespace Deimos
 					{
 						Vector2 newMovementVector;
 
+						// CameraRotation:
+						// 0 : Forward
+						// -1.5 : Right
+						// 1.5 : Left
+						// 3 / -3 : Back
+
 						if (cameraPosition.X > CollisionBoxesVectorsArray[i]["Vector1"].X 
-							&& cameraPosition.X > CollisionBoxesVectorsArray[i]["Vector2"].X) // Then the player is above the collision
+							&& cameraPosition.X > CollisionBoxesVectorsArray[i]["Vector2"].X) // Then the player is at the right the collision
 						{
-							newMovementVector = new Vector2(0, 1);
+							//DebugScreen.Log("Right");
+							DebugScreen.Log(cameraRotation.Y.ToString());
+							if (cameraRotation.Y > -1.5 && cameraRotation.Y < 1.5)
+							{
+								newMovementVector = new Vector2(0, 1);
+							}
+							else
+							{
+								newMovementVector = new Vector2(0, -1);
+							}
 						}
 						else if(cameraPosition.X < CollisionBoxesVectorsArray[i]["Vector1"].X 
-							&& cameraPosition.X < CollisionBoxesVectorsArray[i]["Vector2"].X) // Then he is below
+							&& cameraPosition.X < CollisionBoxesVectorsArray[i]["Vector2"].X) // Then he is at the left
 						{
-							newMovementVector = new Vector2(0, 1);
+							DebugScreen.Log("Left");
+							if (cameraRotation.Y > -1.5 && cameraRotation.Y < 1.5)
+							{
+								newMovementVector = new Vector2(0, 1);
+							}
+							else
+							{
+								newMovementVector = new Vector2(0, -1);
+							}
 						}
 						else if (cameraPosition.Y > CollisionBoxesVectorsArray[i]["Vector1"].Y
-							&& cameraPosition.Y > CollisionBoxesVectorsArray[i]["Vector2"].Y) // Then at the right
+							&& cameraPosition.Y > CollisionBoxesVectorsArray[i]["Vector2"].Y) // Then above
 						{
+							DebugScreen.Log("Above");
 							newMovementVector = new Vector2(1, 0);
 						}
-						else // He's obviously at the right
+						else // He's obviously below
 						{
+							DebugScreen.Log("Below");
 							newMovementVector = new Vector2(1, 0);
 						}
 

@@ -86,8 +86,11 @@ namespace Deimos
 
 			Collision = new Collision(1f, 1f, 1f);
 
-			Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(20, -1, 20)); // Adding  the collision box
-			Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(-1, 20, 20));
+			Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(20, -1, 20)); // Adding the floor
+			Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(-1, 20, 20)); // Adding the collision at the right
+			Collision.AddCollisionBox(new Vector3(20, 0, 0), new Vector3(21, 20, 20)); // Adding the collision at the left
+			Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(20, 20, -1)); // behind
+			Collision.AddCollisionBox(new Vector3(0, 0, 20), new Vector3(20, 20, 21)); // In the front
 			Collision.FinishedAddingCollisions(); // Converting the list in the code to an array.
 
 			// Setup projection matrix
@@ -149,7 +152,7 @@ namespace Deimos
 				movement = new Vector3(newMovement.X, 0, newMovement.Y);
 				movement = Vector3.Transform(movement, Matrix.CreateRotationY(0));
 
-				DebugScreen.Log(newMovement.ToString());
+				//DebugScreen.Log(CameraRotation.ToString());
 				return CameraPosition + movement;
 			}
 			else

@@ -146,15 +146,16 @@ namespace Deimos
 
 			if (Collision.CheckCollision(CameraPosition + movement)) // Testing for the UPCOMING position
 			{
-				//DebugScreen.Log(CameraRotation.ToString());
-				return CameraPosition + new Vector3(
+				// Creating the new movement vector, which will make use able to have a smooth collision: being able to "slide" on the wall while colliding
+				movement = new Vector3(
 					Collision.CheckCollision(CameraPosition + new Vector3(movement.X, 0, 0)) ? 0 : movement.X,
 					Collision.CheckCollision(CameraPosition + new Vector3(0, movement.Y, 0)) ? 0 : movement.Y,
 					Collision.CheckCollision(CameraPosition + new Vector3(0, 0, movement.Z)) ? 0 : movement.Z);
+				return CameraPosition + movement;
 			}
 			else
 			{
-				//DebugScreen.Log(CameraRotation.ToString());
+				// There isn't any collision, so we just move the user with the movement he wanted to do
 				return CameraPosition + movement;
 			}
 		}
@@ -170,12 +171,14 @@ namespace Deimos
 		{
 			float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
+			// Getting Mouse state
 			CurrentMouseState = Mouse.GetState();
 
 			// Let's get user inputs
 			KeyboardState ks = Keyboard.GetState();
 
 			// Handle basic key movement
+			// moveVector will be used to generate the movement vector used to move the player in the world.
 			Vector3 moveVector = Vector3.Zero;
 			if (ks.IsKeyDown(ForwardKey))
 			{
@@ -204,6 +207,7 @@ namespace Deimos
 				moveVector.Y = -1;
 			}
 			// Checking if there is a collision with the floor
+			// This is to prevent some bugs with being slowed down when touching the floor
 			// Create a rotate matrix
 			Matrix rotate = Matrix.CreateRotationY(CameraRotation.Y);
 			// Create a movement vector
@@ -256,7 +260,7 @@ namespace Deimos
 						MathHelper.ToRadians(-75.0f),
 						MathHelper.ToRadians(75.0f)
 					),
-					MathHelper.WrapAngle(MouseRotationBuffer.X), // This is so the camera isn't going fucking fast after some time 
+					MathHelper.WrapAngle(MouseRotationBuffer.X), // This is so the camera isn't going really fast after some time 
 					// (as we are increasing the speed with time)
 					0
 				);

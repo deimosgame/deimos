@@ -152,7 +152,14 @@ namespace Deimos
 				movement = Vector3.Transform(movement, Matrix.CreateRotationY(0));
 
 				//DebugScreen.Log(CameraRotation.ToString());
-				return CameraPosition + movement;
+				if (Collision.CheckCollision(CameraPosition + movement)) // Checking one last time to be sure, otherwise there could be some glitches.
+				{
+					return CameraPosition;
+				}
+				else
+				{
+					return CameraPosition + movement;
+				}
 			}
 			else
 			{

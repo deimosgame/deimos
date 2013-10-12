@@ -133,12 +133,12 @@ namespace Deimos
 							if (cameraRotation.Y > 0 && cameraRotation.Y < 3)
 							{
 								cameraRotation.Y = (float) (cameraRotation.Y - 1.5);
-								newMovementVector = new Vector2((float)(Math.Abs(1 - Math.Abs(cameraRotation.Y / 1.5))), 0);
+								newMovementVector = new Vector2((float) (Math.Abs(1 - Math.Abs(cameraRotation.Y / 1.5))), 0);
 							}
 							else
 							{
-								cameraRotation.Y = (float)Math.Abs(cameraRotation.Y - 1.5);
-								newMovementVector = new Vector2(-(float)(Math.Abs(1 - Math.Abs(cameraRotation.Y / 1.5))), 0);
+								cameraRotation.Y = (float) (cameraRotation.Y - 1.5);
+								newMovementVector = new Vector2((float) - (Math.Abs(1 - Math.Abs(cameraRotation.Y / 1.5))), 0);
 							}
 						}
 

@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>Fonts\debug.spritefont</Source>
+      <Name>Fonts\debug</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Fonts\debug.xnb</Output>
+      <Time>2013-10-08T02:27:13.4133097+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\menuTitle.spritefont</Source>
+      <Name>Fonts\menuTitle</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Fonts\menuTitle.xnb</Output>
+      <Time>2013-10-09T10:35:38.7832649+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\menuElement.spritefont</Source>
+      <Name>Fonts\menuElement</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Fonts\menuElement.xnb</Output>
+      <Time>2013-10-09T10:35:38.7676634+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\map.fbx</Source>
+      <Name>Models\Map\map</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\map.xnb</Output>
+      <Time>2013-10-12T17:21:29.0829006+02:00</Time>
+      <Dependency>
+        <Key>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Models\Map\map_0.xml</Key>
+        <Value>2013-10-13T16:11:38.6807503+02:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Models\MISC\Ana_Model.fbx</Source>
+      <Name>Models\MISC\Ana_Model</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\MISC\Ana_Model.xnb</Output>
+      <Time>2013-10-13T12:08:02.2124504+02:00</Time>
+      <Dependency>
+        <Key>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Models\MISC\Ana_Model_0.xml</Key>
+        <Value>2013-10-13T16:11:39.053587+02:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Models\MISC\Alexandra\Ana_dif.png</Source>
+      <Name>Models\MISC\Alexandra\Ana_dif</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\MISC\Alexandra\Ana_dif.xnb</Output>
+      <Time>2013-10-13T12:08:02.0855889+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\MISC\Alexandra\Ana_cspec.png</Source>
+      <Name>Models\MISC\Alexandra\Ana_cspec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\MISC\Alexandra\Ana_cspec.xnb</Output>
+      <Time>2013-10-13T12:08:01.8981949+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\MISC\Alexandra\Ana_norm.png</Source>
+      <Name>Models\MISC\Alexandra\Ana_norm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\MISC\Alexandra\Ana_norm.xnb</Output>
+      <Time>2013-10-13T12:08:02.1704835+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\map.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Models\Map\map_0.xml</Output>
+      <Time>2013-10-12T17:21:29.0829006+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\MISC\Ana_Model.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Models\MISC\Ana_Model_0.xml</Output>
+      <Time>2013-10-13T12:08:02.2124504+02:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <ContentProjectGUID>{47188BA9-EC21-4CEE-8711-95671005687C}</ContentProjectGUID>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>HiDef</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\DeimosContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2011-09-01T16:22:30+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2011-09-01T16:22:30+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2011-09-01T16:22:30+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2011-09-01T16:22:30+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2011-09-01T16:22:30+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2011-09-01T16:22:30+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2013-10-13T15:39:08.1535588+02:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>

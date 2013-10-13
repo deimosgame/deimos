@@ -31,21 +31,10 @@ namespace Deimos
 			LoadedModelsTexture.Add(texture);
 			LoadedModelsLocation.Add(position);
 
-			Dictionary<string, BoundingBox> sceneBoundingBoxes =
-				(Dictionary<string, BoundingBox>)model.Tag;   
-
-			Matrix transforms = Matrix.CreateTranslation(position);
-
-			Matrix[] bones = new Matrix[model.Bones.Count];
-			model.CopyAbsoluteBoneTransformsTo(bones);
 			foreach (ModelMesh mesh in model.Meshes)
 			{
-				BoundingBox currentBoundingBox = sceneBoundingBoxes[mesh.Name];
-				currentBoundingBox.Max =
-					Vector3.Transform(currentBoundingBox.Max, bones[mesh.ParentBone.Index] * transforms);
-				currentBoundingBox.Min =
-					Vector3.Transform(currentBoundingBox.Min, bones[mesh.ParentBone.Index] * transforms);
-				Collision.AddCollisionBoxDirectly(currentBoundingBox);
+				DebugScreen.Log("Mesh!");
+				//Collision.AddCollisionBoxDirectly(currentBoundingBox);
 			}
 		}
 

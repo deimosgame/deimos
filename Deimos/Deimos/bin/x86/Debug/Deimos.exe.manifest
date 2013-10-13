@@ -54,6 +54,11 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Xna.Framework.Content.Pipeline" version="4.0.0.0" publicKeyToken="842CF8BE1DE50553" language="neutral" processorArchitecture="x86" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
       <assemblyIdentity name="Microsoft.Xna.Framework.Game" version="4.0.0.0" publicKeyToken="842CF8BE1DE50553" language="neutral" processorArchitecture="x86" />
     </dependentAssembly>
   </dependency>
@@ -93,14 +98,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Deimos.exe" size="21504">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Deimos.exe" size="24064">
       <assemblyIdentity name="Deimos" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>4FHHV5cTd/b6uWGj0kWIA5Sqolk=</dsig:DigestValue>
+        <dsig:DigestValue>tyiOknM0QPHducIznFrZnj65+s4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

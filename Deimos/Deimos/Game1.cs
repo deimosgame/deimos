@@ -72,6 +72,14 @@ namespace Deimos
 			graphics.ApplyChanges();
 
 
+			GraphicsDevice.BlendState = BlendState.AlphaBlend;
+			GraphicsDevice.DepthStencilState = DepthStencilState.None;
+			GraphicsDevice.RasterizerState = RasterizerState.CullCounterClockwise;
+			GraphicsDevice.SamplerStates[0] = SamplerState.LinearClamp;
+			GraphicsDevice.BlendState = BlendState.Opaque;
+			GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+
+
 			base.Initialize(); 
 		}
 
@@ -115,6 +123,14 @@ namespace Deimos
 				this.Exit();
 
 
+			GraphicsDevice.BlendState = BlendState.AlphaBlend;
+			GraphicsDevice.DepthStencilState = DepthStencilState.None;
+			GraphicsDevice.RasterizerState = RasterizerState.CullCounterClockwise;
+			GraphicsDevice.SamplerStates[0] = SamplerState.LinearClamp;
+			GraphicsDevice.BlendState = BlendState.Opaque;
+			GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+
+
 			switch (CurrentGameState)
 			{
 				case GameStates.StartMenu:
@@ -144,9 +160,18 @@ namespace Deimos
 		{
 			GraphicsDevice.Clear(Color.CornflowerBlue);
 
-			Floor.Draw(Camera, Effect);
 			DebugScreen.Draw(gameTime);
+			Floor.Draw(Camera, Effect);
 			ModelManager.DrawModels(Camera);
+
+
+			// Fixed bugs when mixing 2D and 3D (with the Sprites used in DebugScreen to draw text for instance)
+			GraphicsDevice.BlendState = BlendState.AlphaBlend;
+			GraphicsDevice.DepthStencilState = DepthStencilState.None;
+			GraphicsDevice.RasterizerState = RasterizerState.CullCounterClockwise;
+			GraphicsDevice.SamplerStates[0] = SamplerState.LinearClamp;
+			GraphicsDevice.BlendState = BlendState.Opaque;
+			GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 
 			base.Draw(gameTime);
 		}

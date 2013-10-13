@@ -38,23 +38,31 @@ namespace Deimos
 			boxPoints[0] = coords1;
 			boxPoints[1] = coords2;
 			CollisionBoxes.Add(BoundingBox.CreateFromPoints(boxPoints));
+
+			FinishedAddingCollisions();
 		}
 
 		public void AddCollisionBoxDirectly(BoundingBox box)
 		{
 			CollisionBoxes.Add(box);
+			DebugScreen.Log(box.ToString());
+
+			FinishedAddingCollisions();
 		}
 		public void AddCollisionSphere(Vector3 coords, float radius)
 		{
 			CollisionSpheres.Add(new BoundingSphere(coords, radius));
+
+			FinishedAddingCollisions();
 		}
 		public void AddCollisionSphereDirectly(BoundingSphere sphere)
 		{
-			DebugScreen.Log(sphere.ToString());
 			CollisionSpheres.Add(sphere);
+
+			FinishedAddingCollisions();
 		}
 
-		public void FinishedAddingCollisions()
+		private void FinishedAddingCollisions()
 		{
 			CollisionBoxesArray = CollisionBoxes.ToArray();
 			CollisionSpheresArray = CollisionSpheres.ToArray();

@@ -17,6 +17,7 @@ namespace Deimos
 		private Vector3 CameraRotation;
 		private float   CameraSpeed;
 		public Vector3 CameraLookAt;
+		public float AspectRatio;
 
 		public Vector3 CameraOldPosition;
 		private Vector3 CameraMovement = new Vector3(0, 0, 0);
@@ -31,9 +32,9 @@ namespace Deimos
 
 
 		// For testing purpose
-		private Keys ForwardKey = Keys.W;
+		private Keys ForwardKey = Keys.Z;
 		private Keys BackKey = Keys.S;
-		private Keys LeftKey = Keys.A;
+		private Keys LeftKey = Keys.Q;
 		private Keys RightKey = Keys.D;
 
 
@@ -93,12 +94,13 @@ namespace Deimos
 			//Collision.AddCollisionBox(new Vector3(20, 0, 0), new Vector3(21, 20, 20)); // Adding the collision at the left
 			//Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(20, 20, -1)); // behind
 			//Collision.AddCollisionBox(new Vector3(0, 0, 20), new Vector3(20, 20, 21)); // In the front
-			Collision.FinishedAddingCollisions(); // Converting the list in the code to an array.
+
+			AspectRatio = game.GraphicsDevice.Viewport.AspectRatio;
 
 			// Setup projection matrix
 			Projection = Matrix.CreatePerspectiveFieldOfView(
 				MathHelper.PiOver4,
-				Game.GraphicsDevice.Viewport.AspectRatio,
+				AspectRatio,
 				1.0f,
 				10000.0f // Draw distance
 			);

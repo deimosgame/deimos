@@ -15,16 +15,16 @@
       </applicationRequestMinimum>
       <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
         <!--
-          Options du manifeste de contrôle de compte d'utilisateur
-          Si vous souhaitez modifier le niveau du contrôle de compte d'utilisateur Windows, remplacez le 
-          nœud requestedExecutionLevel par l'une des propositions suivantes :
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
 
         <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
         <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
         <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
 
-         Si vous souhaitez utiliser la virtualisation de fichiers et du Registre pour la 
-         compatibilité descendante, supprimez le nœud requestedExecutionLevel.
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
     -->
         <requestedExecutionLevel level="asInvoker" uiAccess="false" />
       </requestedPrivileges>
@@ -100,7 +100,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>dkPVqK/i6bD+cqhxPcSD3xZyJMI=</dsig:DigestValue>
+        <dsig:DigestValue>4FHHV5cTd/b6uWGj0kWIA5Sqolk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -113,22 +113,22 @@
       <dsig:DigestValue>zlQ5P6+JWLhfqGQsNp23A30JnNA=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\Fonts\menuElement.xnb" size="20654">
+  <file name="Content\Fonts\menuElement.xnb" size="23214">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>i6wEy5aaSSZl7AUtkgvxVsNot0I=</dsig:DigestValue>
+      <dsig:DigestValue>c2A/wJ8PRLSYLnR5QC7mf/I8wCE=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\Fonts\menuTitle.xnb" size="22190">
+  <file name="Content\Fonts\menuTitle.xnb" size="24750">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>qqz5gyPym8Z8TCVyRbDyT8yMsbo=</dsig:DigestValue>
+      <dsig:DigestValue>UYuRitQt0KB6Ak4/SLs9SgfX1wE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\Models\Map\map.xnb" size="3948">

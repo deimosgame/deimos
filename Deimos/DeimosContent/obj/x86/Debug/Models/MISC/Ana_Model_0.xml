@@ -3,7 +3,7 @@
   <Asset Type="Graphics:NodeContent">
     <Name>blend_root</Name>
     <Identity>
-      <SourceFilename>C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\DeimosContent\Models\MISC\Ana_Model.fbx</SourceFilename>
+      <SourceFilename>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\DeimosContent\Models\MISC\Ana_Model.fbx</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>100 0 0 0 0 100 0 0 0 0 100 0 0 0 0 1</Transform>
@@ -452,7 +452,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>Ana_mat__Ana_dif.png</Name>
       <Identity>
-        <SourceFilename>C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\DeimosContent\Models\MISC\Ana_Model.fbx</SourceFilename>
+        <SourceFilename>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\DeimosContent\Models\MISC\Ana_Model.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>

@@ -121,7 +121,8 @@ namespace Deimos
 
 							// Ambient light
 							effect.Parameters["AmbientColor"].SetValue(Color.Beige.ToVector4());
-							effect.Parameters["AmbientIntensity"].SetValue(0.1f);
+							effect.Parameters["AmbientIntensity"].SetValue(0.01f);
+							effect.Parameters["DiffuseLightDirection"].SetValue(camera.ViewVector); // Make the light follow the camera
 
 							// Difuse light
 							Matrix worldInverseTransposeMatrix = Matrix.Transpose(Matrix.Invert(mesh.ParentBone.Transform * world));
@@ -129,6 +130,7 @@ namespace Deimos
 
 							// Specular light
 							effect.Parameters["ViewVector"].SetValue(camera.ViewVector);
+							//DebugScreen.Log(camera.ViewVector.ToString());
 
 							// Texturing
 							effect.Parameters["ModelTexture"].SetValue(modelTexture);

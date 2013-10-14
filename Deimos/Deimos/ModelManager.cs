@@ -115,12 +115,10 @@ namespace Deimos
 						{
 							part.Effect = effect;
 							effect.Parameters["World"].SetValue(Matrix.CreateTranslation(modelPosition));
-							if (effect.Parameters["View"] != null)
-							{
-								effect.Parameters["View"].SetValue(camera.View);
-
-							}
+							effect.Parameters["View"].SetValue(camera.View);
 							effect.Parameters["Projection"].SetValue(camera.Projection);
+							effect.Parameters["AmbientColor"].SetValue(Color.Beige.ToVector4());
+							effect.Parameters["AmbientIntensity"].SetValue(0.1f);
 						}
 						mesh.Draw();
 					}

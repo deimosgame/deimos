@@ -20,7 +20,7 @@ float DiffuseIntensity = 1.0;
 // Used for specular lighting
 float Shininess = 200;
 float4 SpecularColor = float4(1, 1, 1, 1);    
-float SpecularIntensity = 0;
+float SpecularIntensity = 1;
 float3 ViewVector = float3(1, 0, 0);
 
 // Used for texturing

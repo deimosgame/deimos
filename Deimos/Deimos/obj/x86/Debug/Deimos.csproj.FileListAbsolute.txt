@@ -33,3 +33,5 @@ C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86
 C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\MISC\Alexandra\Ana_cspec.xnb
 C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\MISC\Alexandra\Ana_norm.xnb
 C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Shaders\Lights\ambient.xnb
+C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Deimos.csprojResolveAssemblyReference.cache
+C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\galery.xnb

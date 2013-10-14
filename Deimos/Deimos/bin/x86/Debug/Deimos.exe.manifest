@@ -105,7 +105,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>YbB5tUVySdm+OByHE7qSkrDQSxQ=</dsig:DigestValue>
+        <dsig:DigestValue>DWt4GO+Hv61L86F7A0ECpynv6t0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -134,6 +134,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>UYuRitQt0KB6Ak4/SLs9SgfX1wE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\galery.xnb" size="862250">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>uI7+P4ZxMnR8tA7J1IDYoUOW6V0=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\Models\Map\map.xnb" size="3948">
@@ -181,13 +190,13 @@
       <dsig:DigestValue>CO2s+Cw2wUF/pvq77qhE/VqW7/4=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\Shaders\Lights\ambient.xnb" size="7104">
+  <file name="Content\Shaders\Lights\ambient.xnb" size="7088">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>gW+qHAq6YBT+BBBidv84xHuCANk=</dsig:DigestValue>
+      <dsig:DigestValue>omYOV5ooKE2fIBtqMcnXL3W3PCM=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Game.ico" size="4286">

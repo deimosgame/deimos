@@ -167,7 +167,7 @@ namespace Deimos
 			//Floor.Draw(Camera, Effect);
 
 
-			// Loading our effect in the ModelManager
+			// Loading our effect in the ModelManager for our light
 			ModelManager.DrawModels(Camera, ShaderEffect);
 
 

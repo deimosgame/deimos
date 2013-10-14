@@ -20,7 +20,6 @@ C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86
 C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Deimos.application
 C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Deimos.exe.manifest
 C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Deimos.application
-C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Deimos.csprojResolveAssemblyReference.cache
 C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Deimos.exe.manifest
 C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Deimos.application
 C:\Users\epita\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Deimos.exe.manifest

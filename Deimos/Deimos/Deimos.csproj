@@ -10,7 +10,8 @@
     <RootNamespace>Deimos</RootNamespace>
     <AssemblyName>Deimos</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile></TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
     <XnaProfile>HiDef</XnaProfile>
@@ -127,7 +128,6 @@
   <ItemGroup>
     <Compile Include="Camera.cs" />
     <Compile Include="Collision.cs" />
-    <Compile Include="PerMeshBoundingBox.cs" />
     <Compile Include="DebugScreen.cs" />
     <Compile Include="Floor.cs" />
     <Compile Include="ModelManager.cs" />

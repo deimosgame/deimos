@@ -160,7 +160,6 @@ namespace Deimos
 		{
 			GraphicsDevice.Clear(Color.CornflowerBlue);
 
-			DebugScreen.Draw(gameTime);
 			Floor.Draw(Camera, Effect);
 			ModelManager.DrawModels(Camera);
 
@@ -172,6 +171,8 @@ namespace Deimos
 			GraphicsDevice.SamplerStates[0] = SamplerState.LinearClamp;
 			GraphicsDevice.BlendState = BlendState.Opaque;
 			GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+
+			DebugScreen.Draw(gameTime);
 
 			base.Draw(gameTime);
 		}

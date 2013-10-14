@@ -34,7 +34,7 @@ namespace Deimos
 			foreach (ModelMesh mesh in model.Meshes)
 			{
 				DebugScreen.Log("Mesh!");
-				//Collision.AddCollisionBoxDirectly(currentBoundingBox);
+				Collision.AddCollisionBoxDirectly(BuildBoundingBox(mesh, Matrix.Identity));
 			}
 		}
 

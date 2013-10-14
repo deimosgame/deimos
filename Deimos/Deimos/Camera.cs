@@ -87,7 +87,7 @@ namespace Deimos
 		{
 			CameraSpeed = speed;
 
-			Collision = new Collision(1f, 1f, 1f);
+			Collision = new Collision(1.2f, 2f, 2f);
 
 			//Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(20, -1, 20)); // Adding the floor
 			//Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(-1, 20, 20)); // Adding the collision at the right

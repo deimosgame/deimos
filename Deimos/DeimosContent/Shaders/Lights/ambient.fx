@@ -23,6 +23,16 @@ float4 SpecularColor = float4(1, 1, 1, 1);
 float SpecularIntensity = 1;
 float3 ViewVector = float3(1, 0, 0);
 
+// Used for texturing
+texture ModelTexture;
+sampler2D textureSampler = sampler_state {
+	Texture = (ModelTexture);
+	MagFilter = Linear;
+	MinFilter = Linear;
+	AddressU = Clamp;
+	AddressV = Clamp;
+};
+
 
 
 ///////////////////////
@@ -32,6 +42,7 @@ struct VertexShaderInput
 {
 	float4 Position : POSITION0;
 	float4 Normal : NORMAL0;
+	float2 TextureCoordinate : TEXCOORD0; // this is new
 };
 
 struct VertexShaderOutput
@@ -39,6 +50,7 @@ struct VertexShaderOutput
 	float4 Position : POSITION0;
 	float4 Color : COLOR0;
 	float3 Normal : TEXCOORD0;
+	float2 TextureCoordinate : TEXCOORD1; // this is new
 };
 
 ////////////////////////
@@ -56,7 +68,8 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 	float lightIntensity = dot(normal, DiffuseLightDirection);
 	output.Color = saturate(DiffuseColor * DiffuseIntensity * lightIntensity);
 
-	output.Normal = normal;
+	output.Normal = normal; // For Specular lighting
+	output.TextureCoordinate = input.TextureCoordinate; // For texturing
 
 	return output;
 }
@@ -69,9 +82,12 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	float3 v = normalize(mul(normalize(ViewVector), World));
 
 	float dotProduct = dot(r, v);
-	float4 specular = SpecularIntensity * SpecularColor * max(pow(dotProduct, Shininess), 0) * length(input.Color);
+	float4 specular = SpecularIntensity * SpecularColor * max(pow(abs(dotProduct), Shininess), 0) * length(input.Color);
 
-	return saturate(input.Color + AmbientColor * AmbientIntensity + specular);
+	float4 textureColor = tex2D(textureSampler, input.TextureCoordinate);
+	textureColor.a = 1;
+
+	return saturate(textureColor * (input.Color) + AmbientColor * AmbientIntensity + specular);
 }
 
 technique Specular

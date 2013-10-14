@@ -129,6 +129,9 @@ namespace Deimos
 
 							// Specular light
 							effect.Parameters["ViewVector"].SetValue(camera.ViewVector);
+
+							// Texturing
+							effect.Parameters["ModelTexture"].SetValue(modelTexture);
 						}
 						mesh.Draw();
 					}

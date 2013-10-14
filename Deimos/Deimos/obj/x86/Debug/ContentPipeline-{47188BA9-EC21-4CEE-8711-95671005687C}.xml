@@ -95,6 +95,15 @@
       <Output>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Models\MISC\Ana_Model_0.xml</Output>
       <Time>2013-10-13T12:08:02.2124504+02:00</Time>
     </Item>
+    <Item>
+      <Source>Shaders\Lights\ambient.fx</Source>
+      <Name>Shaders\Lights\ambient</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Shaders\Lights\ambient.xnb</Output>
+      <Time>2013-10-14T20:54:01.4516542+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{47188BA9-EC21-4CEE-8711-95671005687C}</ContentProjectGUID>

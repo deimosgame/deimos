@@ -6,3 +6,4 @@ Content\Models\MISC\Ana_Model.xnb
 Content\Models\MISC\Alexandra\Ana_dif.xnb
 Content\Models\MISC\Alexandra\Ana_cspec.xnb
 Content\Models\MISC\Alexandra\Ana_norm.xnb
+Content\Shaders\Lights\ambient.xnb

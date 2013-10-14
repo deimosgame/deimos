@@ -62,17 +62,17 @@ namespace Deimos
 			FrameCounter++;
 
 			// Drawing basic infos, such as coordinates and FPS
-			SpriteBatch.DrawString(SpriteFont, "Coords:", new Vector2(10, 10), Color.Black);
-			SpriteBatch.DrawString(SpriteFont, "X: " + Camera.CameraPosition.X.ToString(), new Vector2(5, 20), Color.Black);
-			SpriteBatch.DrawString(SpriteFont, "Y: " + Camera.CameraPosition.Y.ToString(), new Vector2(5, 30), Color.Black);
-			SpriteBatch.DrawString(SpriteFont, "Z: " + Camera.CameraPosition.Z.ToString(), new Vector2(5, 40), Color.Black);
+			SpriteBatch.DrawString(SpriteFont, "Coords:", new Vector2(10, 10), Color.White);
+			SpriteBatch.DrawString(SpriteFont, "X: " + Camera.CameraPosition.X.ToString(), new Vector2(5, 20), Color.White);
+			SpriteBatch.DrawString(SpriteFont, "Y: " + Camera.CameraPosition.Y.ToString(), new Vector2(5, 30), Color.White);
+			SpriteBatch.DrawString(SpriteFont, "Z: " + Camera.CameraPosition.Z.ToString(), new Vector2(5, 40), Color.White);
 
-			SpriteBatch.DrawString(SpriteFont, "FPS:", new Vector2(10, 50), Color.Black);
-			SpriteBatch.DrawString(SpriteFont, FrameRate.ToString(), new Vector2(5, 60), Color.Black);
+			SpriteBatch.DrawString(SpriteFont, "FPS:", new Vector2(10, 50), Color.White);
+			SpriteBatch.DrawString(SpriteFont, FrameRate.ToString(), new Vector2(5, 60), Color.White);
 
 
 			// Console logs
-			SpriteBatch.DrawString(SpriteFont, "Console logs:", new Vector2(10, 70), Color.Black);
+			SpriteBatch.DrawString(SpriteFont, "Console logs:", new Vector2(10, 70), Color.White);
 
 			String[] logStrings = LogStrings.ToArray();
 			int iLimit = 0;
@@ -83,7 +83,7 @@ namespace Deimos
 			}
 			for (int i = logStrings.Length; i > iLimit; i--)
 			{
-				SpriteBatch.DrawString(SpriteFont, logStrings[i - 1], new Vector2(5, 70 + ((position + 1) * 10)), Color.Black);
+				SpriteBatch.DrawString(SpriteFont, logStrings[i - 1], new Vector2(5, 70 + ((position + 1) * 10)), Color.White);
 				position++;
 			}
 

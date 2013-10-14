@@ -32,3 +32,4 @@ C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86
 C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\MISC\Alexandra\Ana_dif.xnb
 C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\MISC\Alexandra\Ana_cspec.xnb
 C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\MISC\Alexandra\Ana_norm.xnb
+C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Shaders\Lights\ambient.xnb

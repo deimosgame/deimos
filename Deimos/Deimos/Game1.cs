@@ -22,6 +22,8 @@ namespace Deimos
 		Floor Floor;
 		BasicEffect Effect;
 
+		Effect ShaderEffect;
+
 		ModelManager ModelManager;
 
 
@@ -100,6 +102,8 @@ namespace Deimos
 				new Vector3(0, 0, 0) // Location
 			);
 			ModelManager.DoneAddingModels();
+
+			ShaderEffect = Content.Load<Effect>("Shaders/Lights/ambient");
 		}
 
 		/// <summary>
@@ -158,10 +162,10 @@ namespace Deimos
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Draw(GameTime gameTime)
 		{
-			GraphicsDevice.Clear(Color.CornflowerBlue);
+			GraphicsDevice.Clear(Color.Black);
 
-			Floor.Draw(Camera, Effect);
-			ModelManager.DrawModels(Camera);
+			//Floor.Draw(Camera, Effect);
+			ModelManager.DrawModels(Camera, ShaderEffect);
 
 
 			// Fixed bugs when mixing 2D and 3D (with the Sprites used in DebugScreen to draw text for instance)

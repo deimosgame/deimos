@@ -165,6 +165,9 @@ namespace Deimos
 			GraphicsDevice.Clear(Color.Black);
 
 			//Floor.Draw(Camera, Effect);
+
+
+			// Loading our effect in the ModelManager
 			ModelManager.DrawModels(Camera, ShaderEffect);
 
 

@@ -81,6 +81,16 @@ namespace Deimos
 			}
 		}
 
+		public Vector3 ViewVector
+		{
+			get
+			{
+				Vector3 viewVector = Vector3.Transform(CameraPosition - CameraLookAt, Matrix.CreateRotationY(0));
+				viewVector.Normalize();
+				return viewVector;
+			}
+		}
+
 		// Constructor
 		public Camera(Game game, Vector3 position, Vector3 rotation, float speed)
 			: base(game)

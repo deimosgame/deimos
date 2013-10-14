@@ -38,7 +38,7 @@
       <Time>2013-10-12T17:21:29.0829006+02:00</Time>
       <Dependency>
         <Key>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Models\Map\map_0.xml</Key>
-        <Value>2013-10-14T20:13:15.1643005+02:00</Value>
+        <Value>2013-10-14T21:38:31.1916575+02:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -51,7 +51,7 @@
       <Time>2013-10-13T12:08:02.2124504+02:00</Time>
       <Dependency>
         <Key>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Models\MISC\Ana_Model_0.xml</Key>
-        <Value>2013-10-14T20:13:15.7947949+02:00</Value>
+        <Value>2013-10-14T21:38:31.8875436+02:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -82,6 +82,15 @@
       <Time>2013-10-13T12:08:02.1704835+02:00</Time>
     </Item>
     <Item>
+      <Source>Shaders\Lights\ambient.fx</Source>
+      <Name>Shaders\Lights\ambient</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Shaders\Lights\ambient.xnb</Output>
+      <Time>2013-10-14T21:47:53.5454274+02:00</Time>
+    </Item>
+    <Item>
       <Source>Models\Map\map.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
@@ -94,15 +103,6 @@
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Models\MISC\Ana_Model_0.xml</Output>
       <Time>2013-10-13T12:08:02.2124504+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Shaders\Lights\ambient.fx</Source>
-      <Name>Shaders\Lights\ambient</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Manu\documents\visual studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Shaders\Lights\ambient.xnb</Output>
-      <Time>2013-10-14T21:35:03.4476942+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

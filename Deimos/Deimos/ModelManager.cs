@@ -126,6 +126,9 @@ namespace Deimos
 							// Difuse light
 							Matrix worldInverseTransposeMatrix = Matrix.Transpose(Matrix.Invert(mesh.ParentBone.Transform * world));
 							effect.Parameters["WorldInverseTranspose"].SetValue(worldInverseTransposeMatrix);
+
+							// Specular light
+							effect.Parameters["ViewVector"].SetValue(camera.ViewVector);
 						}
 						mesh.Draw();
 					}

@@ -91,6 +91,7 @@ namespace Deimos
 					Model model = LoadedModelsArray[i];
 					Vector3 modelPosition = LoadedModelsLocationArray[i];
 					Texture2D modelTexture = LoadedModelsTextureArray[i];
+					Matrix world = Matrix.CreateTranslation(modelPosition);
 
 					Matrix[] transforms = new Matrix[model.Bones.Count];
 					model.CopyAbsoluteBoneTransformsTo(transforms);
@@ -114,11 +115,17 @@ namespace Deimos
 						foreach (ModelMeshPart part in mesh.MeshParts)
 						{
 							part.Effect = effect;
-							effect.Parameters["World"].SetValue(Matrix.CreateTranslation(modelPosition));
+							effect.Parameters["World"].SetValue(world);
 							effect.Parameters["View"].SetValue(camera.View);
 							effect.Parameters["Projection"].SetValue(camera.Projection);
+
+							// Ambient light
 							effect.Parameters["AmbientColor"].SetValue(Color.Beige.ToVector4());
 							effect.Parameters["AmbientIntensity"].SetValue(0.1f);
+
+							// Difuse light
+							Matrix worldInverseTransposeMatrix = Matrix.Transpose(Matrix.Invert(mesh.ParentBone.Transform * world));
+							effect.Parameters["WorldInverseTranspose"].SetValue(worldInverseTransposeMatrix);
 						}
 						mesh.Draw();
 					}

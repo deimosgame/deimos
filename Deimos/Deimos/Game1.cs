@@ -14,13 +14,12 @@ namespace Deimos
 	/// <summary>
 	/// This is the main type for your game
 	/// </summary>
-	public class Game1 : Microsoft.Xna.Framework.Game
+	public partial class Game1 : Microsoft.Xna.Framework.Game
 	{
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
 		Camera Camera;
 		Floor Floor;
-		BasicEffect Effect;
 
 		Effect ShaderEffect;
 
@@ -57,7 +56,6 @@ namespace Deimos
 			Components.Add(Camera);
 
 			Floor = new Floor(GraphicsDevice, 20, 20);
-			Effect = new BasicEffect(GraphicsDevice);
 			DebugScreen.SetCamera(Camera);
 
 			ModelManager = new ModelManager(Camera.Collision);
@@ -101,9 +99,28 @@ namespace Deimos
 				Content.Load<Texture2D>("Models/MISC/Alexandra/Ana_dif"), // Texture
 				new Vector3(0, 0, 0) // Location
 			);
+
+
+			ModelManager.LoadModel(
+				Content.Load<Model>("Models/Map/coucou"), // Model
+				Content.Load<Texture2D>("Models/Map/Grid"), // Texture
+				new Vector3(0, 0, 0) // Location
+			);
 			ModelManager.DoneAddingModels();
 
 			ShaderEffect = Content.Load<Effect>("Shaders/Lights/ambient");
+			ShaderEffect.Parameters["lightColor"].SetValue(Color.White.ToVector3());
+			ShaderEffect.Parameters["globalAmbient"].SetValue(Color.White.ToVector3());
+			ShaderEffect.Parameters["Ke"].SetValue(0.0f);
+			ShaderEffect.Parameters["Ka"].SetValue(0.2f);
+			ShaderEffect.Parameters["Kd"].SetValue(1.0f);
+			ShaderEffect.Parameters["Ks"].SetValue(0.3f);
+			ShaderEffect.Parameters["specularPower"].SetValue(100);
+			ShaderEffect.Parameters["spotPower"].SetValue(5);
+
+
+			CreateVertexBuffer();
+			CreateIndexBuffer();
 		}
 
 		/// <summary>

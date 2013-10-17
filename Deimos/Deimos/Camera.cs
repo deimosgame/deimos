@@ -85,7 +85,10 @@ namespace Deimos
 		{
 			get
 			{
-				Vector3 viewVector = Vector3.Transform(CameraPosition - CameraLookAt, Matrix.CreateRotationY(0));
+				Vector3 viewVector = Vector3.Transform(
+					CameraPosition - CameraLookAt, 
+					Matrix.CreateRotationY(0)
+				);
 				viewVector.Normalize();
 				return viewVector;
 			}
@@ -112,7 +115,7 @@ namespace Deimos
 				MathHelper.PiOver4,
 				AspectRatio,
 				1.0f,
-				10000.0f // Draw distance
+				1000.0f // Draw distance
 			);
 
 			// Set the camera position and rotation
@@ -128,8 +131,9 @@ namespace Deimos
 		// Set camera position and rotation
 		private void moveTo(Vector3 position, Vector3 rotation)
 		{
-			// Thanks to the properties set at the beginning, setting up these values will execute 
-			// the code inside the property (i.e update our vectors)
+			// Thanks to the properties set at the beginning, setting up these 
+			// values will execute the code inside the property (i.e update our
+			// vectors)
 			CameraOldPosition = Position;
 
 			Position = position;
@@ -140,7 +144,8 @@ namespace Deimos
 		private void updateLookAt()
 		{
 			// Build a rotation matrix
-			Matrix rotationMatrix = Matrix.CreateRotationX(CameraRotation.X) * Matrix.CreateRotationY(CameraRotation.Y);
+			Matrix rotationMatrix = Matrix.CreateRotationX(CameraRotation.X) * 
+									Matrix.CreateRotationY(CameraRotation.Y);
 			// Build look at offset vector
 			Vector3 lookAtOffset = Vector3.Transform(Vector3.UnitZ, rotationMatrix);
 			// Update our camera's look at vector
@@ -157,18 +162,25 @@ namespace Deimos
 			movement = Vector3.Transform(movement, rotate);
 			// Return the value of camera position + movement vector
 
-			if (Collision.CheckCollision(CameraPosition + movement)) // Testing for the UPCOMING position
+			// Testing for the UPCOMING position
+			if (Collision.CheckCollision(CameraPosition + movement)) 
 			{
-				// Creating the new movement vector, which will make use able to have a smooth collision: being able to "slide" on the wall while colliding
+				// Creating the new movement vector, which will make use 
+				// able to have a smooth collision: being able to "slide" on 
+				// the wall while colliding
 				movement = new Vector3(
-					Collision.CheckCollision(CameraPosition + new Vector3(movement.X, 0, 0)) ? 0 : movement.X,
-					Collision.CheckCollision(CameraPosition + new Vector3(0, movement.Y, 0)) ? 0 : movement.Y,
-					Collision.CheckCollision(CameraPosition + new Vector3(0, 0, movement.Z)) ? 0 : movement.Z);
+					Collision.CheckCollision(CameraPosition + 
+								new Vector3(movement.X, 0, 0)) ? 0 : movement.X,
+					Collision.CheckCollision(CameraPosition + 
+								new Vector3(0, movement.Y, 0)) ? 0 : movement.Y,
+					Collision.CheckCollision(CameraPosition + 
+								new Vector3(0, 0, movement.Z)) ? 0 : movement.Z);
 				return CameraPosition + movement;
 			}
 			else
 			{
-				// There isn't any collision, so we just move the user with the movement he wanted to do
+				// There isn't any collision, so we just move the user with 
+				// the movement he wanted to do
 				return CameraPosition + movement;
 			}
 		}
@@ -191,7 +203,8 @@ namespace Deimos
 			KeyboardState ks = Keyboard.GetState();
 
 			// Handle basic key movement
-			// moveVector will be used to generate the movement vector used to move the player in the world.
+			// moveVector will be used to generate the movement vector used to
+			// move the player in the world.
 			Vector3 moveVector = Vector3.Zero;
 			if (ks.IsKeyDown(ForwardKey))
 			{
@@ -219,19 +232,10 @@ namespace Deimos
 			{
 				moveVector.Y = -1;
 			}
-			// Checking if there is a collision with the floor
-			// This is to prevent some bugs with being slowed down when touching the floor
-			// Create a rotate matrix
-			Matrix rotate = Matrix.CreateRotationY(CameraRotation.Y);
-			// Create a movement vector
-			Vector3 movement = new Vector3(0, moveVector.Y, 0); // Cancelling the X and Z scale to test for the collision
-			movement = Vector3.Transform(movement, rotate);
-			if (Collision.CheckCollision(CameraPosition + movement))
-			{
-				moveVector.Y = 0;
-			}
 
-			if (moveVector != Vector3.Zero) // If we are actually moving (if the vector changed depending on the ifs)
+			// If we are actually moving (if the vector changed depending
+			// on the ifs)
+			if (moveVector != Vector3.Zero) 
 			{
 				// Normalize that vector so that we don't move faster diagonally
 				moveVector.Normalize();
@@ -253,17 +257,25 @@ namespace Deimos
 			if (CurrentMouseState != PreviousMouseState)
 			{
 				// Cache mouse location
-				deltaX = CurrentMouseState.X - (Game.GraphicsDevice.Viewport.Width / 2); // We devide by 2 because mouse will be in the center
+				// We devide by 2 because mouse will be in the center
+				deltaX = CurrentMouseState.X - (Game.GraphicsDevice.Viewport.Width / 2); 
 				deltaY = CurrentMouseState.Y - (Game.GraphicsDevice.Viewport.Height / 2);
 
 				MouseRotationBuffer.X -= MouseSpeed * deltaX * dt;
 				MouseRotationBuffer.Y -= MouseSpeed * deltaY * dt;
 
-				// Limit the user so he can't do an unlimited movement with his mouse (like a 7683°)
-				if(MouseRotationBuffer.Y < MathHelper.ToRadians(-75.0f))
-					MouseRotationBuffer.Y = MouseRotationBuffer.Y - (MouseRotationBuffer.Y - MathHelper.ToRadians(-75.0f));
-				if(MouseRotationBuffer.Y > MathHelper.ToRadians(75.0f))
-					MouseRotationBuffer.Y = MouseRotationBuffer.Y - (MouseRotationBuffer.Y - MathHelper.ToRadians(75.0f));
+				// Limit the user so he can't do an unlimited movement with 
+				// his mouse (like a 7683°)
+				if (MouseRotationBuffer.Y < MathHelper.ToRadians(-75.0f))
+				{
+					MouseRotationBuffer.Y = MouseRotationBuffer.Y -
+						(MouseRotationBuffer.Y - MathHelper.ToRadians(-75.0f));
+				}
+				if (MouseRotationBuffer.Y > MathHelper.ToRadians(75.0f))
+				{
+					MouseRotationBuffer.Y = MouseRotationBuffer.Y -
+						(MouseRotationBuffer.Y - MathHelper.ToRadians(75.0f));
+				}
 
 				float mouseInverted = (MouseInverted == true) ? 1 : -1;
 
@@ -273,7 +285,8 @@ namespace Deimos
 						MathHelper.ToRadians(-75.0f),
 						MathHelper.ToRadians(75.0f)
 					),
-					MathHelper.WrapAngle(MouseRotationBuffer.X), // This is so the camera isn't going really fast after some time 
+					MathHelper.WrapAngle(MouseRotationBuffer.X), // This is so 
+					// the camera isn't going really fast after some time 
 					// (as we are increasing the speed with time)
 					0
 				);
@@ -285,7 +298,8 @@ namespace Deimos
 			}
 
 			// Putting the cursor in the middle of the screen
-			Mouse.SetPosition(Game.GraphicsDevice.Viewport.Width / 2, Game.GraphicsDevice.Viewport.Height / 2);
+			Mouse.SetPosition(Game.GraphicsDevice.Viewport.Width / 2,
+				Game.GraphicsDevice.Viewport.Height / 2);
 
 			PreviousMouseState = CurrentMouseState;
 

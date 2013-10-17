@@ -1,100 +1,184 @@
-///////////////////////
-// Variables
-///////////////////////
-// Main variables
-float4x4 World;
-float4x4 View;
-float4x4 Projection;
+float4x4 WVP;
+float3x3 World;
 
-// Used for ambient lighting
-float4 AmbientColor = float4(1, 1, 1, 1);
-float AmbientIntensity = 0.1;
+float3 Ke;
+float3 Ka;
+float3 Kd;
+float3 Ks;
+float specularPower;
 
-// Used for difused lighting
-float4x4 WorldInverseTranspose;
+float3 globalAmbient;
+float3 lightColor;
 
-float3 DiffuseLightDirection = float3(1, 0, 0);
-float4 DiffuseColor = float4(1, 1, 1, 1);
-float DiffuseIntensity = 1.0;
+float3 eyePosition;
+float3 lightDirection;
+float3 lightPosition;
+float spotPower;
 
-// Used for specular lighting
-float Shininess = 200;
-float4 SpecularColor = float4(1, 1, 1, 1);    
-float SpecularIntensity = 1;
-float3 ViewVector = float3(1, 0, 0);
-
-// Used for texturing
-texture ModelTexture;
-sampler2D textureSampler = sampler_state {
-	Texture = (ModelTexture);
-	MagFilter = Linear;
-	MinFilter = Linear;
-	AddressU = Clamp;
-	AddressV = Clamp;
+texture2D Texture;
+sampler2D texSampler = sampler_state
+{
+    Texture = <Texture>;
+    MinFilter = anisotropic;
+    MagFilter = anisotropic;
+    MipFilter = linear;
+    MaxAnisotropy = 16;
 };
 
-
-
-///////////////////////
-// Structures
-///////////////////////
 struct VertexShaderInput
 {
-	float4 Position : POSITION0;
-	float4 Normal : NORMAL0;
-	float2 TextureCoordinate : TEXCOORD0; // this is new
+    float4 Position : POSITION0;
+    float2 Texture  : TEXCOORD0;
+    float3 Normal   : NORMAL0;
 };
 
 struct VertexShaderOutput
 {
-	float4 Position : POSITION0;
-	float4 Color : COLOR0;
-	float3 Normal : TEXCOORD0;
-	float2 TextureCoordinate : TEXCOORD1; // this is new
+    float4 Position : POSITION0;
+    float2 Texture  : TEXCOORD0;
+    float3 PositionO: TEXCOORD1;
+    float3 Normal   : NORMAL0;
 };
 
-////////////////////////
-// Functions
-////////////////////////
 VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 {
-	VertexShaderOutput output;
+    VertexShaderOutput output;
 
-	float4 worldPosition = mul(input.Position, World);
-	float4 viewPosition = mul(worldPosition, View);
-	output.Position = mul(viewPosition, Projection);
+    output.Position = mul(input.Position, WVP);
 
-	float4 normal = mul(input.Normal, WorldInverseTranspose);
-	float lightIntensity = dot(normal, DiffuseLightDirection);
-	output.Color = saturate(DiffuseColor * DiffuseIntensity * lightIntensity);
+    output.Normal = input.Normal;
 
-	output.Normal = normal; // For Specular lighting
-	output.TextureCoordinate = input.TextureCoordinate; // For texturing
+    output.PositionO = input.Position.xyz;
 
-	return output;
+    output.Texture = input.Texture;
+  
+    return output;
 }
 
-float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
+float4 PSDirectionalLight(VertexShaderOutput input) : COLOR0
 {
-	float3 light = normalize(DiffuseLightDirection);
-	float3 normal = normalize(input.Normal);
-	float3 r = normalize(2 * dot(light, normal) * normal - light);
-	float3 v = normalize(mul(normalize(ViewVector), World));
+    //sample texture
+    float4 color = tex2D(texSampler,input.Texture);
 
-	float dotProduct = dot(r, v);
-	float4 specular = SpecularIntensity * SpecularColor * max(pow(abs(dotProduct), Shininess), 0) * length(input.Color);
+    //Emisie
+    float3 emissive = Ke;
 
-	float4 textureColor = tex2D(textureSampler, input.TextureCoordinate);
-	textureColor.a = 1;
+    //Ambient
+    float3 ambient = Ka*globalAmbient;
 
-	return saturate(textureColor * (input.Color) + AmbientColor * AmbientIntensity + specular);
+    //Difuze
+    float3 L = normalize(-lightDirection);
+    float diffuseLight = max(dot(input.Normal,L), 0);
+    float3 diffuse = Kd*lightColor*diffuseLight;
+
+    //Specular
+    float3 V = normalize(eyePosition - input.PositionO);
+    float3 H = normalize(L + V);
+    float specularLight = pow(dot(input.Normal,H),specularPower);
+    if(diffuseLight<=0) specularLight=0;
+    float3 specular = Ks * lightColor * specularLight;
+
+    //sum all light components
+    float3 light = emissive + ambient + diffuse + specular;
+
+    //multiply by light
+    color.rgb *= light;
+
+    return color;
 }
 
-technique Specular
+float4 PSPointLight(VertexShaderOutput input) : COLOR0
 {
-	pass Pass1
-	{
-		VertexShader = compile vs_2_0 VertexShaderFunction();
-		PixelShader = compile ps_2_0 PixelShaderFunction();
-	}
+    //sample texture
+    float4 color = tex2D(texSampler,input.Texture);
+
+    //Emisie
+    float3 emissive = Ke;
+
+    //Ambient
+    float3 ambient = Ka*globalAmbient;
+
+    //Difuze
+    float3 L = normalize(lightPosition - input.PositionO);
+    float diffuseLight = max(dot(input.Normal,L), 0);
+    float3 diffuse = Kd*lightColor*diffuseLight;
+
+    //Specular
+    float3 V = normalize(eyePosition - input.PositionO);
+    float3 H = normalize(L + V);
+    float specularLight = pow(dot(input.Normal,H),specularPower);
+    if(diffuseLight<=0) specularLight=0;
+    float3 specular = Ks * lightColor * specularLight;
+
+    //sum all light components
+    float3 light = emissive + ambient + diffuse + specular;
+
+    //multiply by light
+    color.rgb *= light;
+
+    return color;
+}
+
+float4 PSSpotLight(VertexShaderOutput input) : COLOR0
+{
+    //sample texture
+    float4 color = tex2D(texSampler,input.Texture);
+
+    //Emisie
+    float3 emissive = Ke;
+
+    //Ambient
+    float3 ambient = Ka*globalAmbient;
+
+    //Difuze
+    float3 L = normalize(lightPosition - input.PositionO);
+    float diffuseLight = max(dot(input.Normal,L), 0);
+    float3 diffuse = Kd*lightColor*diffuseLight;
+
+    //Specular
+    float3 V = normalize(eyePosition - input.PositionO);
+    float3 H = normalize(L + V);
+    float specularLight = pow(dot(input.Normal,H),specularPower);
+    if(diffuseLight<=0) specularLight=0;
+    float3 specular = Ks * lightColor * specularLight;
+
+    //spot scale
+    float spotScale = pow(max(dot(L,-lightDirection),0),spotPower);
+
+    //sum all light components
+    float3 light = emissive + ambient + (diffuse + specular)*spotScale;
+
+    
+
+    //multiply by light
+    color.rgb *= light;
+
+    return color ;
+}
+
+technique DirectionalLight
+{
+    pass Pass1
+    {
+        VertexShader = compile vs_3_0 VertexShaderFunction();
+        PixelShader = compile ps_3_0 PSDirectionalLight();
+    }
+}
+
+technique PointLight
+{
+    pass Pass1
+    {
+        VertexShader = compile vs_3_0 VertexShaderFunction();
+        PixelShader = compile ps_3_0 PSPointLight();
+    }
+}
+
+technique SpotLight
+{
+    pass Pass1
+    {
+        VertexShader = compile vs_3_0 VertexShaderFunction();
+        PixelShader = compile ps_3_0 PSSpotLight();
+    }
 }

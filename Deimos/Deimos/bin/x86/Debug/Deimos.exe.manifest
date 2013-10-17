@@ -98,14 +98,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Deimos.exe" size="23552">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Deimos.exe" size="25088">
       <assemblyIdentity name="Deimos" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>DWt4GO+Hv61L86F7A0ECpynv6t0=</dsig:DigestValue>
+        <dsig:DigestValue>W7EkJSAF0eMLomjtpVw3qJSYysM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -136,22 +136,31 @@
       <dsig:DigestValue>UYuRitQt0KB6Ak4/SLs9SgfX1wE=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\Models\Map\galery.xnb" size="862250">
+  <file name="Content\Models\Map\coucou.xnb" size="6174">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>uI7+P4ZxMnR8tA7J1IDYoUOW6V0=</dsig:DigestValue>
+      <dsig:DigestValue>DnKJC1o5FV55lo1994VgowR4xFw=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\Models\Map\map.xnb" size="3948">
+  <file name="Content\Models\Map\Grid.xnb" size="4194491">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>+DclDBWa/utylJv61cs8okqVJW0=</dsig:DigestValue>
+      <dsig:DigestValue>igCJvHW38byAcXw/xmJlb1BEN/o=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Grid_0.xnb" size="699291">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>gTH+/pWsxRzM5WMXu/NQOb/eY4o=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\Models\MISC\Alexandra\Ana_cspec.xnb" size="16777403">
@@ -187,16 +196,16 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>CO2s+Cw2wUF/pvq77qhE/VqW7/4=</dsig:DigestValue>
+      <dsig:DigestValue>mWJgHL5OY+GMjgXAnuJXuiya1Ug=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\Shaders\Lights\ambient.xnb" size="7088">
+  <file name="Content\Shaders\Lights\ambient.xnb" size="13848">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>omYOV5ooKE2fIBtqMcnXL3W3PCM=</dsig:DigestValue>
+      <dsig:DigestValue>rkA727hoQxKgtkfJS8s3PI5n3vc=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Game.ico" size="4286">

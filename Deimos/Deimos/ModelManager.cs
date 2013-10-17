@@ -97,44 +97,68 @@ namespace Deimos
 					model.CopyAbsoluteBoneTransformsTo(transforms);
 					foreach (ModelMesh mesh in model.Meshes)
 					{
-							//effect.EnableDefaultLighting();
-							//effect.View = camera.View;
-							//effect.Projection = camera.Projection;
-							//effect.World = Matrix.CreateTranslation(modelPosition);
-							//effect.TextureEnabled = true;
-							//effect.Texture = modelTexture;
+						//foreach (BasicEffect effect2 in mesh.Effects)
+						//{
+						//	effect2.EnableDefaultLighting();
+						//	effect2.View = camera.View;
+						//	effect2.Projection = camera.Projection;
+						//	effect2.World = Matrix.CreateTranslation(modelPosition);
+						//	effect2.TextureEnabled = true;
+						//	effect2.Texture = modelTexture;
+						//	effect.LightingEnabled = true; // Turn on the lighting subsystem.
+						//	effect.AmbientLightColor = new Vector3(0.2f, 0.2f, 0.2f);
+						//	effect.EmissiveColor = new Vector3(1, 0, 0);
+						//	effect.DirectionalLight0.DiffuseColor = new Vector3(1f, 0.2f, 0.2f); // a reddish light
+						//	effect.DirectionalLight0.Direction = new Vector3(1, 0, 0);  // coming along the x-axis
+						//	effect.DirectionalLight0.SpecularColor = new Vector3(0, 1, 0); // with green highlights
+						//}
 
-							//effect.LightingEnabled = true; // Turn on the lighting subsystem.
-							//effect.AmbientLightColor = new Vector3(0.2f, 0.2f, 0.2f);
-							//effect.EmissiveColor = new Vector3(1, 0, 0);
-							//effect.DirectionalLight0.DiffuseColor = new Vector3(1f, 0.2f, 0.2f); // a reddish light
-							//effect.DirectionalLight0.Direction = new Vector3(1, 0, 0);  // coming along the x-axis
-							//effect.DirectionalLight0.SpecularColor = new Vector3(0, 1, 0); // with green highlights
 
 
 						foreach (ModelMeshPart part in mesh.MeshParts)
 						{
 							part.Effect = effect;
+							//effect.Parameters["World"].SetValue(world);
+							//effect.Parameters["View"].SetValue(camera.View);
+							//effect.Parameters["Projection"].SetValue(camera.Projection);
+
+							//// Ambient light
+							//effect.Parameters["AmbientColor"].SetValue(Color.Beige.ToVector4());
+							//effect.Parameters["AmbientIntensity"].SetValue(0.01f);
+
+							//// Diffsuse light
+							//effect.Parameters["DiffuseLightDirection"].SetValue(new Vector3(1, 1, 0)); // Make the light follow the camera
+							//Matrix worldInverseTransposeMatrix = Matrix.Transpose(Matrix.Invert(mesh.ParentBone.Transform * world));
+							//effect.Parameters["WorldInverseTranspose"].SetValue(worldInverseTransposeMatrix);
+
+							//// Specular light
+							//effect.Parameters["ViewVector"].SetValue(camera.ViewVector);
+							//effect.Parameters["SpecularIntensity"].SetValue(0.01f);
+							////DebugScreen.Log(camera.ViewVector.ToString());
+
+
+							effect.Parameters["WVP"].SetValue(world * camera.View * camera.Projection);
 							effect.Parameters["World"].SetValue(world);
-							effect.Parameters["View"].SetValue(camera.View);
-							effect.Parameters["Projection"].SetValue(camera.Projection);
+							effect.Parameters["eyePosition"].SetValue(Vector3.Transform(camera.Position, Matrix.Invert(world)));
+							effect.Parameters["lightDirection"].SetValue(Vector3.TransformNormal(camera.ViewVector, Matrix.Invert(Matrix.CreateTranslation(camera.Position))));
+							effect.Parameters["lightPosition"].SetValue(Vector3.Transform(camera.Position, Matrix.Invert(Matrix.CreateTranslation(camera.Position))));
 
-							// Ambient light
-							effect.Parameters["AmbientColor"].SetValue(Color.Beige.ToVector4());
-							effect.Parameters["AmbientIntensity"].SetValue(0.01f);
 
-							// Diffsuse light
-							effect.Parameters["DiffuseLightDirection"].SetValue(camera.ViewVector); // Make the light follow the camera
-							Matrix worldInverseTransposeMatrix = Matrix.Transpose(Matrix.Invert(mesh.ParentBone.Transform * world));
-							effect.Parameters["WorldInverseTranspose"].SetValue(worldInverseTransposeMatrix);
-
-							// Specular light
-							effect.Parameters["ViewVector"].SetValue(camera.ViewVector);
-							effect.Parameters["SpecularIntensity"].SetValue(0f); // Disabling it, ugly
-							//DebugScreen.Log(camera.ViewVector.ToString());
 
 							// Texturing
-							effect.Parameters["ModelTexture"].SetValue(modelTexture);
+							if (modelTexture != null)
+							{
+								effect.Parameters["Texture"].SetValue(modelTexture);
+								//effect.CurrentTechnique = effect.Techniques["WithTexture"];
+							}
+							else
+							{
+								//effect.CurrentTechnique = effect.Techniques["WithoutTexture"];
+							}
+
+							effect.CurrentTechnique = effect.Techniques["SpotLight"];
+							effect.CurrentTechnique.Passes[0].Apply();
+
 						}
 						mesh.Draw();
 					}

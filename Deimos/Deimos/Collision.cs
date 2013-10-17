@@ -90,6 +90,7 @@ namespace Deimos
 			{
 				for (int i = 0; i < CollisionBoxesArray.Length; i++) // Looping through all the boudingboxes included previously
 				{
+					DebugScreen.Log(i.ToString());
 					if (CollisionBoxesArray[i].Contains(cameraBox) != ContainmentType.Disjoint) // If our player is inside the collision region
 						return true;
 				}

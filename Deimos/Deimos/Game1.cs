@@ -62,7 +62,7 @@ namespace Deimos
 
 			//LightManager = new LightManager();
 
-			ModelManager = new ModelManager(Camera.Collision);
+			ModelManager = new ModelManager();
 
 
 			IsMouseVisible = false;

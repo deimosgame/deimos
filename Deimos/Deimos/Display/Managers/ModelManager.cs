@@ -13,8 +13,6 @@ namespace Deimos
 	class ModelManager
 	{
 		// Attributes
-		private Collision Collision;
-
 		private List<Model> LoadedModels = new List<Model>();
 		private Model[] LoadedModelsArray;
 		private List<Texture2D> LoadedModelsTexture = new List<Texture2D>();
@@ -24,10 +22,9 @@ namespace Deimos
  
 
 		// Constructor
-		public ModelManager(Collision collision)
+		public ModelManager()
 		{
-			// Storing the collision class for later user
-			Collision = collision;
+			//
 		}
 
 

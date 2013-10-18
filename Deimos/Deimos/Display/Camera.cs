@@ -28,8 +28,6 @@ namespace Deimos
 		private float MouseSpeed = 0.1f;
 		private Boolean MouseInverted = false;
 
-		public Collision Collision;
-
 
 		// For testing purpose
 		private Keys ForwardKey = Keys.Z;
@@ -113,7 +111,7 @@ namespace Deimos
 		{
 			CameraSpeed = speed;
 
-			Collision = new Collision(1.2f, 2f, 2f);
+			Collision.SetPlayerDimensions(1.2f, 2f, 2f);
 
 			//Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(20, -1, 20)); // Adding the floor
 			//Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(-1, 20, 20)); // Adding the collision at the right

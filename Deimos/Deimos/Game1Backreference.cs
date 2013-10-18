@@ -17,7 +17,8 @@ namespace Deimos
 		const int number_of_rows = 129;
 		const int number_of_cols = 129;
 		const int number_of_vertices = number_of_rows * number_of_cols;
-		const int number_of_indices = (number_of_rows - 1) * (number_of_cols - 1) * 2 * 3;
+		const int number_of_indices = (number_of_rows - 1) * 
+										(number_of_cols - 1) * 2 * 3;
 		#endregion
 
 		#region Backreference 1 - Creating a basic VertexBuffer
@@ -27,7 +28,8 @@ namespace Deimos
 
 		void CreateVertexBuffer()
 		{
-			VertexPositionNormalTexture[] vertices = new VertexPositionNormalTexture[number_of_vertices];
+			VertexPositionNormalTexture[] vertices = 
+				new VertexPositionNormalTexture[number_of_vertices];
 
 			float halfWidth = (number_of_cols - 1) * 0.5f;
 			float halfDepth = (number_of_rows - 1) * 0.5f;
@@ -43,26 +45,39 @@ namespace Deimos
 
 					float y = getHeight(x, z);
 
-					vertices[i * number_of_cols + j].Position = new Vector3(x, y, z);
+					vertices[i * number_of_cols + j].Position = 
+						new Vector3(x, y, z);
 
-					vertices[i * number_of_cols + j].TextureCoordinate = new Vector2(j * du, i * dv);
+					vertices[i * number_of_cols + j].TextureCoordinate = 
+						new Vector2(j * du, i * dv);
 
 					Vector3 normal = new Vector3();
-					normal.X = -0.03f * z * (float)Math.Cos(0.1f * x) - 0.3f * (float)Math.Cos(0.1f * z);
+					normal.X = -0.03f * z * (float)Math.Cos(0.1f * x) 
+						- 0.3f * (float)Math.Cos(0.1f * z);
+
 					normal.Y = 1;
-					normal.Z = -0.3f * (float)Math.Sin(0.1f * x) + 0.03f * x * (float)Math.Sin(0.1f * z);
+
+					normal.Z = -0.3f * (float)Math.Sin(0.1f * x) 
+						+ 0.03f * x * (float)Math.Sin(0.1f * z);
+
 					normal.Normalize();
 					vertices[i * number_of_cols + j].Normal = normal;
 				}
 			}
 
-			vertexBuffer = new VertexBuffer(GraphicsDevice, VertexPositionNormalTexture.VertexDeclaration, number_of_vertices, BufferUsage.WriteOnly);
+			vertexBuffer = new VertexBuffer(
+				GraphicsDevice, 
+				VertexPositionNormalTexture.VertexDeclaration, 
+				number_of_vertices, 
+				BufferUsage.WriteOnly
+			);
 			vertexBuffer.SetData<VertexPositionNormalTexture>(vertices);
 		}
 
 		private float getHeight(float x, float z)
 		{
-			return 0.3f * (z * (float)Math.Sin(0.1f * x) + x * (float)Math.Cos(0.1f * z));
+			return 0.3f * (z * (float)Math.Sin(0.1f * x) 
+				+ x * (float)Math.Cos(0.1f * z));
 		}
 		#endregion
 
@@ -90,7 +105,12 @@ namespace Deimos
 				}
 			}
 
-			indexBuffer = new IndexBuffer(GraphicsDevice, IndexElementSize.ThirtyTwoBits, number_of_indices, BufferUsage.WriteOnly);
+			indexBuffer = new IndexBuffer(
+				GraphicsDevice, 
+				IndexElementSize.ThirtyTwoBits, 
+				number_of_indices, 
+				BufferUsage.WriteOnly
+			);
 			indexBuffer.SetData<int>(indices);
 
 		}

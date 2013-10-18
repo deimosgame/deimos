@@ -77,7 +77,11 @@ namespace Deimos
 		{
 			get
 			{
-				return Matrix.CreateLookAt(CameraPosition, CameraLookAt, Vector3.Up);
+				return Matrix.CreateLookAt(
+					CameraPosition, 
+					CameraLookAt, 
+					Vector3.Up
+				);
 			}
 		}
 
@@ -147,7 +151,10 @@ namespace Deimos
 			Matrix rotationMatrix = Matrix.CreateRotationX(CameraRotation.X) * 
 									Matrix.CreateRotationY(CameraRotation.Y);
 			// Build look at offset vector
-			Vector3 lookAtOffset = Vector3.Transform(Vector3.UnitZ, rotationMatrix);
+			Vector3 lookAtOffset = Vector3.Transform(
+				Vector3.UnitZ, 
+				rotationMatrix
+			);
 			// Update our camera's look at vector
 			CameraLookAt = CameraPosition + lookAtOffset;
 		}
@@ -174,7 +181,8 @@ namespace Deimos
 					Collision.CheckCollision(CameraPosition + 
 								new Vector3(0, movement.Y, 0)) ? 0 : movement.Y,
 					Collision.CheckCollision(CameraPosition + 
-								new Vector3(0, 0, movement.Z)) ? 0 : movement.Z);
+								new Vector3(0, 0, movement.Z)) ? 0 : movement.Z
+				);
 				return CameraPosition + movement;
 			}
 			else
@@ -258,8 +266,10 @@ namespace Deimos
 			{
 				// Cache mouse location
 				// We devide by 2 because mouse will be in the center
-				deltaX = CurrentMouseState.X - (Game.GraphicsDevice.Viewport.Width / 2); 
-				deltaY = CurrentMouseState.Y - (Game.GraphicsDevice.Viewport.Height / 2);
+				deltaX = CurrentMouseState.X 
+					- (Game.GraphicsDevice.Viewport.Width / 2); 
+				deltaY = CurrentMouseState.Y 
+					- (Game.GraphicsDevice.Viewport.Height / 2);
 
 				MouseRotationBuffer.X -= MouseSpeed * deltaX * dt;
 				MouseRotationBuffer.Y -= MouseSpeed * deltaY * dt;

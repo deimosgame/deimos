@@ -95,15 +95,17 @@ namespace Deimos
 			DebugScreen.LoadFont(spriteBatch, Content.Load<SpriteFont>("Fonts/debug"));
 
 			ModelManager.LoadModel(
-				Content.Load<Model>("Models/MISC/Ana_Model"), // Model
-				Content.Load<Texture2D>("Models/MISC/Alexandra/Ana_dif"), // Texture
+				Content,
+				"Models/MISC/Ana_Model", // Model
+				"Models/MISC/Alexandra/Ana_dif", // Texture
 				new Vector3(0, 0, 0) // Location
 			);
 
 
 			ModelManager.LoadModel(
-				Content.Load<Model>("Models/Map/coucou"), // Model
-				Content.Load<Texture2D>("Models/Map/Grid"), // Texture
+				Content,
+				"Models/Map/coucou", // Model
+				"Models/Map/Grid", // Texture
 				new Vector3(0, 0, 0) // Location
 			);
 			ModelManager.DoneAddingModels();
@@ -116,7 +118,7 @@ namespace Deimos
 			ShaderEffect.Parameters["Kd"].SetValue(1.0f);
 			ShaderEffect.Parameters["Ks"].SetValue(0.3f);
 			ShaderEffect.Parameters["specularPower"].SetValue(100);
-			ShaderEffect.Parameters["spotPower"].SetValue(1);
+			ShaderEffect.Parameters["spotPower"].SetValue(17);
 
 
 			CreateVertexBuffer();
@@ -188,7 +190,8 @@ namespace Deimos
 			ModelManager.DrawModels(Camera, ShaderEffect);
 
 
-			// Fixed bugs when mixing 2D and 3D (with the Sprites used in DebugScreen to draw text for instance)
+			// Fixed bugs when mixing 2D and 3D (with the Sprites used 
+			// in DebugScreen to draw text for instance)
 			GraphicsDevice.BlendState = BlendState.AlphaBlend;
 			GraphicsDevice.DepthStencilState = DepthStencilState.None;
 			GraphicsDevice.RasterizerState = RasterizerState.CullCounterClockwise;

@@ -98,6 +98,15 @@ namespace Deimos
 			}
 		}
 
+
+		public BoundingFrustum Frustum
+		{
+			get
+			{
+				return new BoundingFrustum(View * Projection);
+			}
+		}
+
 		// Constructor
 		public Camera(Game game, Vector3 position, Vector3 rotation, float speed)
 			: base(game)

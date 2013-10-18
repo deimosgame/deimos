@@ -127,11 +127,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Display\Camera.cs" />
+    <Compile Include="Display\Managers\LightManager.cs" />
+    <Compile Include="Display\Managers\MISC\LightTypes\DirectionalLight.cs" />
+    <Compile Include="Display\Managers\MISC\LightTypes\PointLight.cs" />
+    <Compile Include="Display\Managers\MISC\LightTypes\SpotLight.cs" />
     <Compile Include="Gameplay\Collision.cs" />
     <Compile Include="Tools\DebugScreen.cs" />
-    <Compile Include="Display\DisplayElements\Floor.cs" />
+    <Compile Include="MISC\Floor.cs" />
     <Compile Include="MISC\Game1Backreference.cs" />
-    <Compile Include="Display\DisplayElements\ModelManager.cs" />
+    <Compile Include="Display\Managers\ModelManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />

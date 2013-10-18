@@ -25,6 +25,8 @@ namespace Deimos
 
 		ModelManager ModelManager;
 
+		LightManager LightManager;
+
 
 
 		enum GameStates
@@ -58,7 +60,10 @@ namespace Deimos
 			Floor = new Floor(GraphicsDevice, 20, 20);
 			DebugScreen.SetCamera(Camera);
 
+			//LightManager = new LightManager();
+
 			ModelManager = new ModelManager(Camera.Collision);
+
 
 			IsMouseVisible = false;
 

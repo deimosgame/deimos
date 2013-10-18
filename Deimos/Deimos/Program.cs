@@ -2,7 +2,7 @@ using System;
 
 namespace Deimos
 {
-#if WINDOWS || XBOX
+#if WINDOWS
     static class Program
     {
         /// <summary>

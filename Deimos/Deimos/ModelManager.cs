@@ -33,7 +33,6 @@ namespace Deimos
 
 			foreach (ModelMesh mesh in model.Meshes)
 			{
-				DebugScreen.Log("Mesh!");
 				Collision.AddCollisionBoxDirectly(BuildBoundingBox(mesh, Matrix.Identity));
 			}
 		}
@@ -140,10 +139,10 @@ namespace Deimos
 							effect.Parameters["WVP"].SetValue(world * camera.View * camera.Projection);
 							effect.Parameters["World"].SetValue(world);
 							effect.Parameters["eyePosition"].SetValue(Vector3.Transform(camera.Position, Matrix.Invert(world)));
-							effect.Parameters["lightDirection"].SetValue(Vector3.TransformNormal(camera.ViewVector, Matrix.Invert(Matrix.CreateTranslation(camera.Position))));
-							effect.Parameters["lightPosition"].SetValue(Vector3.Transform(camera.Position, Matrix.Invert(Matrix.CreateTranslation(camera.Position))));
+							effect.Parameters["lightDirection"].SetValue(Vector3.TransformNormal(new Vector3(0, -1, 0), Matrix.Invert(world)));
+							effect.Parameters["lightPosition"].SetValue(Vector3.Transform(camera.Position, Matrix.Invert(world)));
 
-
+							
 
 							// Texturing
 							if (modelTexture != null)

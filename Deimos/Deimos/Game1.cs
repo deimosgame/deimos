@@ -112,11 +112,11 @@ namespace Deimos
 			ShaderEffect.Parameters["lightColor"].SetValue(Color.White.ToVector3());
 			ShaderEffect.Parameters["globalAmbient"].SetValue(Color.White.ToVector3());
 			ShaderEffect.Parameters["Ke"].SetValue(0.0f);
-			ShaderEffect.Parameters["Ka"].SetValue(0.2f);
+			ShaderEffect.Parameters["Ka"].SetValue(0.01f);
 			ShaderEffect.Parameters["Kd"].SetValue(1.0f);
 			ShaderEffect.Parameters["Ks"].SetValue(0.3f);
 			ShaderEffect.Parameters["specularPower"].SetValue(100);
-			ShaderEffect.Parameters["spotPower"].SetValue(5);
+			ShaderEffect.Parameters["spotPower"].SetValue(1);
 
 
 			CreateVertexBuffer();

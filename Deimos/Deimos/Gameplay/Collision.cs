@@ -42,19 +42,22 @@ namespace Deimos
 
 			FinishedAddingCollisions();
 		}
-
+		// Adding a box directly helps for the ModelManager class, as we're
+		// Creating a box directly from its methods when loading a model
 		public void AddCollisionBoxDirectly(BoundingBox box)
 		{
 			CollisionBoxes.Add(box);
 
 			FinishedAddingCollisions();
 		}
+
 		public void AddCollisionSphere(Vector3 coords, float radius)
 		{
 			CollisionSpheres.Add(new BoundingSphere(coords, radius));
 
 			FinishedAddingCollisions();
 		}
+		// Same here
 		public void AddCollisionSphereDirectly(BoundingSphere sphere)
 		{
 			CollisionSpheres.Add(sphere);
@@ -62,6 +65,7 @@ namespace Deimos
 			FinishedAddingCollisions();
 		}
 
+		// Convert all our lists to arrays
 		private void FinishedAddingCollisions()
 		{
 			CollisionBoxesArray = CollisionBoxes.ToArray();
@@ -109,6 +113,7 @@ namespace Deimos
 				}
 			}
 
+			// If we're here, then no collision has been matched
 			return false;
 				
 		}

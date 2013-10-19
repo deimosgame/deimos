@@ -31,11 +31,10 @@ namespace Deimos
 			effect.Parameters["lightColor"].SetValue(Color.White.ToVector3());
 			effect.Parameters["globalAmbient"].SetValue(Color.White.ToVector3());
 			effect.Parameters["Ke"].SetValue(0.0f);
-			effect.Parameters["Ka"].SetValue(0.01f);
+			effect.Parameters["Ka"].SetValue(0.5f);
 			effect.Parameters["Kd"].SetValue(1.0f);
 			effect.Parameters["Ks"].SetValue(0.3f);
 			effect.Parameters["specularPower"].SetValue(100);
-			effect.Parameters["spotPower"].SetValue(17);
 
 			Effect = effect;
 
@@ -80,17 +79,17 @@ namespace Deimos
 					effect.Parameters["Texture"].SetValue(
 						modelTexture
 					);
-					graphicsDevice.DrawIndexedPrimitives(
-						PrimitiveType.TriangleList,
-						part.VertexOffset,
-						0,
-						part.NumVertices,
-						part.StartIndex,
-						part.PrimitiveCount
-					);
 				}
 
-				graphicsDevice.BlendState = BlendState.Additive;
+				graphicsDevice.DrawIndexedPrimitives(
+					PrimitiveType.TriangleList,
+					part.VertexOffset,
+					0,
+					part.NumVertices,
+					part.StartIndex,
+					part.PrimitiveCount
+				);
+
 				// Applying our shader to all the mesh parts
 				effect.Parameters["WVP"].SetValue(
 					world *
@@ -99,10 +98,11 @@ namespace Deimos
 				);
 				effect.Parameters["World"].SetValue(world);
 				effect.Parameters["eyePosition"].SetValue(
-						camera.Position
+					camera.Position
 				);
 
 
+				graphicsDevice.BlendState = BlendState.Additive;
 				//Vector3 cameraView = camera.ViewVector;
 				//cameraView = new Vector3(
 				//	-cameraView.X,

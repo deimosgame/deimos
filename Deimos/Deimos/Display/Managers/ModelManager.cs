@@ -45,8 +45,8 @@ namespace Deimos
 			{
 				Collision.AddCollisionBoxDirectly(
 					BuildBoundingBox(
-						mesh, 
-						Matrix.Identity
+						mesh,
+						Matrix.CreateTranslation(position)
 					)
 				);
 			}

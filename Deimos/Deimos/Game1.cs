@@ -67,18 +67,10 @@ namespace Deimos
 			//graphics.PreferredBackBufferHeight = 1080;
 			//graphics.PreferredBackBufferWidth = 1280;
 			//graphics.IsFullScreen = true;
-			graphics.PreferMultiSampling = true; // Anti aliasing
-			graphics.SynchronizeWithVerticalRetrace = false; // Anti FPS blocking
-			IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec
+			//graphics.PreferMultiSampling = true; // Anti aliasing
+			//graphics.SynchronizeWithVerticalRetrace = false; // Anti FPS blocking
+			//IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec
 			graphics.ApplyChanges();
-
-
-			GraphicsDevice.BlendState = BlendState.AlphaBlend;
-			GraphicsDevice.DepthStencilState = DepthStencilState.None;
-			GraphicsDevice.RasterizerState = RasterizerState.CullCounterClockwise;
-			GraphicsDevice.SamplerStates[0] = SamplerState.LinearClamp;
-			GraphicsDevice.BlendState = BlendState.Opaque;
-			GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 
 
 			base.Initialize(); 
@@ -181,16 +173,6 @@ namespace Deimos
 
 			// Loading our effect in the ModelManager for our light
 			ModelManager.DrawModels(Camera, GraphicsDevice, ShaderEffect);
-
-
-			// Fixed bugs when mixing 2D and 3D (with the Sprites used 
-			// in DebugScreen to draw text for instance)
-			GraphicsDevice.BlendState = BlendState.AlphaBlend;
-			GraphicsDevice.DepthStencilState = DepthStencilState.None;
-			GraphicsDevice.RasterizerState = RasterizerState.CullCounterClockwise;
-			GraphicsDevice.SamplerStates[0] = SamplerState.LinearClamp;
-			GraphicsDevice.BlendState = BlendState.Opaque;
-			GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 
 
 			DebugScreen.Draw(gameTime);

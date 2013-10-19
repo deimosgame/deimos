@@ -98,14 +98,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Deimos.exe" size="26112">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Deimos.exe" size="27648">
       <assemblyIdentity name="Deimos" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>fEz9Yn/s3WtE9dKMaNa4jrd9ceE=</dsig:DigestValue>
+        <dsig:DigestValue>6bZF61zQJpAhmGnMeD6uBcUvNP8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -199,13 +199,13 @@
       <dsig:DigestValue>mWJgHL5OY+GMjgXAnuJXuiya1Ug=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\Shaders\Lights\ambient.xnb" size="13848">
+  <file name="Content\Shaders\Lights\ambient.xnb" size="11196">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>oE7ZidTkoKqR9LZWvqAsISHlPK8=</dsig:DigestValue>
+      <dsig:DigestValue>p1I+/oQpZWfU816+bIP+SwOU3Ak=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Game.ico" size="4286">

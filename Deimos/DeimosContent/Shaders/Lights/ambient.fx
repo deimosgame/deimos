@@ -55,17 +55,13 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
     return output;
 }
 
+float4 PSAmbient(VertexShaderOutput input) : COLOR0
+{
+    return float4(Ka*globalAmbient + Ke,1) * tex2D(texSampler,input.Texture);
+}
+
 float4 PSDirectionalLight(VertexShaderOutput input) : COLOR0
 {
-    //sample texture
-    float4 color = tex2D(texSampler,input.Texture);
-
-    //Emisie
-    float3 emissive = Ke;
-
-    //Ambient
-    float3 ambient = Ka*globalAmbient;
-
     //Difuze
     float3 L = normalize(-lightDirection);
     float diffuseLight = max(dot(input.Normal,L), 0);
@@ -74,30 +70,18 @@ float4 PSDirectionalLight(VertexShaderOutput input) : COLOR0
     //Specular
     float3 V = normalize(eyePosition - input.PositionO);
     float3 H = normalize(L + V);
-    float specularLight = pow(dot(input.Normal,H),specularPower);
+    float specularLight = pow(max(dot(input.Normal,H),0),specularPower);
     if(diffuseLight<=0) specularLight=0;
     float3 specular = Ks * lightColor * specularLight;
 
     //sum all light components
-    float3 light = emissive + ambient + diffuse + specular;
+    float3 light = diffuse + specular;
 
-    //multiply by light
-    color.rgb *= light;
-
-    return color;
+    return float4(light,1) * tex2D(texSampler,input.Texture);
 }
 
 float4 PSPointLight(VertexShaderOutput input) : COLOR0
 {
-    //sample texture
-    float4 color = tex2D(texSampler,input.Texture);
-
-    //Emisie
-    float3 emissive = Ke;
-
-    //Ambient
-    float3 ambient = Ka*globalAmbient;
-
     //Difuze
     float3 L = normalize(lightPosition - input.PositionO);
     float diffuseLight = max(dot(input.Normal,L), 0);
@@ -106,30 +90,18 @@ float4 PSPointLight(VertexShaderOutput input) : COLOR0
     //Specular
     float3 V = normalize(eyePosition - input.PositionO);
     float3 H = normalize(L + V);
-    float specularLight = pow(dot(input.Normal,H),specularPower);
+    float specularLight = pow(max(dot(input.Normal,H),0),specularPower);
     if(diffuseLight<=0) specularLight=0;
     float3 specular = Ks * lightColor * specularLight;
 
     //sum all light components
-    float3 light = emissive + ambient + diffuse + specular;
+    float3 light = diffuse + specular;
 
-    //multiply by light
-    color.rgb *= light;
-
-    return color;
+    return float4(light,1) * tex2D(texSampler,input.Texture);
 }
 
 float4 PSSpotLight(VertexShaderOutput input) : COLOR0
 {
-    //sample texture
-    float4 color = tex2D(texSampler,input.Texture);
-
-    //Emisie
-    float3 emissive = Ke;
-
-    //Ambient
-    float3 ambient = Ka*globalAmbient;
-
     //Difuze
     float3 L = normalize(lightPosition - input.PositionO);
     float diffuseLight = max(dot(input.Normal,L), 0);
@@ -138,7 +110,7 @@ float4 PSSpotLight(VertexShaderOutput input) : COLOR0
     //Specular
     float3 V = normalize(eyePosition - input.PositionO);
     float3 H = normalize(L + V);
-    float specularLight = pow(dot(input.Normal,H),specularPower);
+    float specularLight = pow(max(dot(input.Normal,H),0),specularPower);
     if(diffuseLight<=0) specularLight=0;
     float3 specular = Ks * lightColor * specularLight;
 
@@ -146,39 +118,28 @@ float4 PSSpotLight(VertexShaderOutput input) : COLOR0
     float spotScale = pow(max(dot(L,-lightDirection),0),spotPower);
 
     //sum all light components
-    float3 light = emissive + ambient + (diffuse + specular)*spotScale;
+    float3 light = (diffuse + specular)*spotScale;
 
-    
-
-    //multiply by light
-    color.rgb *= light;
-
-    return color ;
+    return float4(light,1) * tex2D(texSampler,input.Texture);
 }
 
-technique DirectionalLight
+technique MultiPassLight
 {
-    pass Pass1
+    pass Ambient
     {
         VertexShader = compile vs_3_0 VertexShaderFunction();
+        PixelShader = compile ps_3_0 PSAmbient();
+    }
+    pass Directional
+    {
         PixelShader = compile ps_3_0 PSDirectionalLight();
     }
-}
-
-technique PointLight
-{
-    pass Pass1
+    pass Point
     {
-        VertexShader = compile vs_3_0 VertexShaderFunction();
         PixelShader = compile ps_3_0 PSPointLight();
     }
-}
-
-technique SpotLight
-{
-    pass Pass1
+    pass Spot
     {
-        VertexShader = compile vs_3_0 VertexShaderFunction();
         PixelShader = compile ps_3_0 PSSpotLight();
     }
 }

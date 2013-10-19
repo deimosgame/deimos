@@ -133,6 +133,9 @@ namespace Deimos
 			moveTo(position, rotation);
 
 
+			LightManager.AddDirectionalLight(new Vector3(0, -1, 0), Color.White);
+
+
 
 			PreviousMouseState = Mouse.GetState();
 		}

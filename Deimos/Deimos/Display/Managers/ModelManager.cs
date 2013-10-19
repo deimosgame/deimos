@@ -106,7 +106,7 @@ namespace Deimos
 			return box;
 		}
 
-		public void DrawModels(Camera camera, Effect effect)
+		public void DrawModels(Camera camera, GraphicsDevice graphicsDevice, Effect effect)
 		{
 			if (LoadedModelsArray != null)
 			{
@@ -148,61 +148,7 @@ namespace Deimos
 						if (camera.Frustum.Contains(meshBox)
 							!= ContainmentType.Disjoint)
 						{
-							foreach (ModelMeshPart part in mesh.MeshParts)
-							{
-								// Applying our shader to all the mesh parts
-								effect.Parameters["WVP"].SetValue(
-									world *
-									camera.View *
-									camera.Projection
-								);
-								effect.Parameters["World"].SetValue(world);
-								effect.Parameters["eyePosition"].SetValue(
-									Vector3.Transform(
-										camera.Position,
-										Matrix.Invert(world)
-									)
-								);
-								Vector3 cameraView = camera.ViewVector;
-								cameraView = new Vector3(
-									-cameraView.X,
-									-cameraView.Y,
-									-cameraView.Z
-								);
-								effect.Parameters["lightDirection"].SetValue(
-									Vector3.TransformNormal(
-										cameraView,
-										Matrix.Invert(world)
-									)
-								);
-								effect.Parameters["lightPosition"].SetValue(
-									Vector3.Transform(
-										camera.Position,
-										Matrix.Invert(world)
-									)
-								);
-
-
-								// Texturing
-								if (modelTexture != null)
-								{
-									effect.Parameters["Texture"].SetValue(
-										modelTexture
-									);
-									//effect.CurrentTechnique = effect.Techniques["WithTexture"];
-								}
-								else
-								{
-									//effect.CurrentTechnique = effect.Techniques["WithoutTexture"];
-								}
-
-								effect.CurrentTechnique =
-									effect.Techniques["SpotLight"];
-								effect.CurrentTechnique.Passes[0].Apply();
-
-								part.Effect = effect;
-							}
-							mesh.Draw();
+							LightManager.ApplyLights(mesh, world, modelTexture, camera, effect, graphicsDevice);
 						}
 					}
 				}

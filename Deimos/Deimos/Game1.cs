@@ -25,8 +25,6 @@ namespace Deimos
 
 		ModelManager ModelManager;
 
-		LightManager LightManager;
-
 
 
 		enum GameStates
@@ -60,20 +58,18 @@ namespace Deimos
 			Floor = new Floor(GraphicsDevice, 20, 20);
 			DebugScreen.SetCamera(Camera);
 
-			//LightManager = new LightManager();
-
 			ModelManager = new ModelManager();
 
 
 			IsMouseVisible = false;
 
 			// Game settings
-			//graphics.PreferredBackBufferHeight = 340;
-			//graphics.PreferredBackBufferWidth = 480;
+			//graphics.PreferredBackBufferHeight = 1080;
+			//graphics.PreferredBackBufferWidth = 1280;
 			//graphics.IsFullScreen = true;
 			graphics.PreferMultiSampling = true; // Anti aliasing
-			//graphics.SynchronizeWithVerticalRetrace = false; // Anti FPS blocking
-			//IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec
+			graphics.SynchronizeWithVerticalRetrace = false; // Anti FPS blocking
+			IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec
 			graphics.ApplyChanges();
 
 
@@ -115,15 +111,9 @@ namespace Deimos
 			);
 			ModelManager.DoneAddingModels();
 
+
 			ShaderEffect = Content.Load<Effect>("Shaders/Lights/ambient");
-			ShaderEffect.Parameters["lightColor"].SetValue(Color.White.ToVector3());
-			ShaderEffect.Parameters["globalAmbient"].SetValue(Color.White.ToVector3());
-			ShaderEffect.Parameters["Ke"].SetValue(0.0f);
-			ShaderEffect.Parameters["Ka"].SetValue(0.01f);
-			ShaderEffect.Parameters["Kd"].SetValue(1.0f);
-			ShaderEffect.Parameters["Ks"].SetValue(0.3f);
-			ShaderEffect.Parameters["specularPower"].SetValue(100);
-			ShaderEffect.Parameters["spotPower"].SetValue(17);
+			ShaderEffect = LightManager.SetEffect(ShaderEffect);
 
 
 			CreateVertexBuffer();
@@ -188,11 +178,9 @@ namespace Deimos
 		{
 			GraphicsDevice.Clear(Color.Black);
 
-			//Floor.Draw(Camera, Effect);
-
 
 			// Loading our effect in the ModelManager for our light
-			ModelManager.DrawModels(Camera, ShaderEffect);
+			ModelManager.DrawModels(Camera, GraphicsDevice, ShaderEffect);
 
 
 			// Fixed bugs when mixing 2D and 3D (with the Sprites used 
@@ -203,6 +191,7 @@ namespace Deimos
 			GraphicsDevice.SamplerStates[0] = SamplerState.LinearClamp;
 			GraphicsDevice.BlendState = BlendState.Opaque;
 			GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+
 
 			DebugScreen.Draw(gameTime);
 

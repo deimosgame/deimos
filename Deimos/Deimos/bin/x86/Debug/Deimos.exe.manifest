@@ -105,7 +105,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>ioTeKI3bMyKhyZPqI5ruQkCIreQ=</dsig:DigestValue>
+        <dsig:DigestValue>Lb7WlYUGFg7CKHehvHdg+xIH8dw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -205,7 +205,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>JEPMvKCKUonoMPE//JWo+6nIh+Q=</dsig:DigestValue>
+      <dsig:DigestValue>Xvoh2lJGtThqwcKs19rS2wBIBhc=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Game.ico" size="4286">

@@ -29,6 +29,9 @@ namespace Deimos
 		private Boolean MouseInverted = false;
 
 
+		private SpotLight cameraSpotLight;
+
+
 		// For testing purpose
 		private Keys ForwardKey = Keys.Z;
 		private Keys BackKey = Keys.S;
@@ -132,8 +135,16 @@ namespace Deimos
 			// Set the camera position and rotation
 			moveTo(position, rotation);
 
+			// Adding the player spotlight
+			cameraSpotLight = LightManager.AddSpotLight(
+				Position,
+				-ViewVector,
+				Color.White,
+				20
+			);
 
-			//LightManager.AddDirectionalLight(new Vector3(0, -1, 0), Color.White);
+
+			//LightManager.AddPointLight(new Vector3(0, 10, 0), Color.Red);
 
 
 
@@ -322,6 +333,11 @@ namespace Deimos
 				Game.GraphicsDevice.Viewport.Height / 2);
 
 			PreviousMouseState = CurrentMouseState;
+
+
+			// Updating the camera torch:
+			cameraSpotLight.Position = Position;
+			cameraSpotLight.Direction = -ViewVector;
 
 			base.Update(gameTime);
 

@@ -29,7 +29,7 @@ namespace Deimos
 
 
 		// Methods
-		public void LoadModel(ContentManager content, string model, 
+		public void LoadModel(Effect effect, ContentManager content, string model, 
 			string texture, Vector3 position)
 		{
 			// Adding the model to our List/array as well as its location
@@ -49,6 +49,11 @@ namespace Deimos
 						Matrix.CreateTranslation(position)
 					)
 				);
+
+				foreach (ModelMeshPart part in mesh.MeshParts)
+				{
+					part.Effect = effect.Clone();
+				}
 			}
 		}
 
@@ -112,12 +117,18 @@ namespace Deimos
 			{
 				for (int i = 0; i < LoadedModelsArray.Length; i++)
 				{
+					// Loading the model
 					Model model = LoadedModelsArray[i];
+					// The model position
 					Vector3 modelPosition = LoadedModelsLocationArray[i];
+					// Its texture
 					Texture2D modelTexture = LoadedModelsTextureArray[i];
+					// Creating its world
 					Matrix world = Matrix.CreateTranslation(modelPosition);
 
+					// Creating our transforms matrix
 					Matrix[] transforms = new Matrix[model.Bones.Count];
+					// And applying bones to it
 					model.CopyAbsoluteBoneTransformsTo(transforms);
 					foreach (ModelMesh mesh in model.Meshes)
 					{
@@ -138,17 +149,24 @@ namespace Deimos
 							effect.DirectionalLight0.SpecularColor = new Vector3(0, 1, 0); // with green highlights
 						} */
 
-
+						// Building the box of the mesh to know if it's visible
 						BoundingBox meshBox = BuildBoundingBox(
 							mesh,
-							Matrix.Identity
+							Matrix.CreateTranslation(modelPosition)
 						);
 
 						// Only showing the model if the mesh is visible
 						if (camera.Frustum.Contains(meshBox)
 							!= ContainmentType.Disjoint)
 						{
-							LightManager.ApplyLights(mesh, world, modelTexture, camera, effect, graphicsDevice);
+							// Showing up our model with our lights
+							LightManager.ApplyLights(
+								mesh, 
+								world, 
+								modelTexture, 
+								camera, 
+								graphicsDevice
+							);
 						}
 					}
 				}

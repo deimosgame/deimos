@@ -31,7 +31,7 @@ namespace Deimos
 			effect.Parameters["lightColor"].SetValue(Color.White.ToVector3());
 			effect.Parameters["globalAmbient"].SetValue(Color.White.ToVector3());
 			effect.Parameters["Ke"].SetValue(0.0f);
-			effect.Parameters["Ka"].SetValue(0.5f);
+			effect.Parameters["Ka"].SetValue(0.01f);
 			effect.Parameters["Kd"].SetValue(1.0f);
 			effect.Parameters["Ks"].SetValue(0.3f);
 			effect.Parameters["specularPower"].SetValue(100);
@@ -42,55 +42,55 @@ namespace Deimos
 		}
 
 
-		static public void AddDirectionalLight(Vector3 direction, Color color)
+		static public DirectionalLight AddDirectionalLight(Vector3 direction, Color color)
 		{
-			DirectionalLights.Add(new DirectionalLight(direction, color));
+			DirectionalLight thisLight = new DirectionalLight(direction, color);
+			DirectionalLights.Add(thisLight);
+
+			return thisLight;
 		}
 
-		static public void AddPointLight(Vector3 position, Color color)
+		static public PointLight AddPointLight(Vector3 position, Color color)
 		{
-			PointLights.Add(new PointLight(position, color));
+			PointLight thisLight = new PointLight(position, color);
+			PointLights.Add(thisLight);
+
+			return thisLight;
 		}
 
-		static public void AddSpotLight(Vector3 position, Vector3 direction,
+		static public SpotLight AddSpotLight(Vector3 position, Vector3 direction,
 			Color color, float power)
 		{
-			SpotLights.Add(new SpotLight(position, direction, color, power));
+			SpotLight thisLight = new SpotLight(
+				position, 
+				direction, 
+				color, 
+				power
+			);
+			SpotLights.Add(thisLight);
+
+			return thisLight;
 		}
 
 		static public void ApplyLights(ModelMesh mesh, Matrix world, 
-			Texture2D modelTexture, Camera camera, Effect effect, 
-			GraphicsDevice graphicsDevice)
+			Texture2D modelTexture, Camera camera, GraphicsDevice graphicsDevice)
 		{
-			graphicsDevice.BlendState = BlendState.Opaque;
-			//graphicsDevice.DepthStencilState = DepthStencilState.Default;
-
-			effect.CurrentTechnique.Passes["Ambient"].Apply();
-
+			// Looping thorugh all of its meshparts
 			foreach (ModelMeshPart part in mesh.MeshParts)
 			{
+				// Setting our effect from the one stored in the meshPart
+				Effect effect = part.Effect;
+
+				// Setting the blendstate to opaque for the ambient light
+				graphicsDevice.BlendState = BlendState.Opaque;
+				// Applying the ambient light
+				effect.CurrentTechnique.Passes["Ambient"].Apply();
+
+				// Setting our buffers to be able to draw the other lights
 				graphicsDevice.SetVertexBuffer(part.VertexBuffer);
 				graphicsDevice.Indices = part.IndexBuffer;
 
-				// Texturing
-				graphicsDevice.BlendState = BlendState.AlphaBlend;
-				if (modelTexture != null)
-				{
-					effect.Parameters["Texture"].SetValue(
-						modelTexture
-					);
-				}
-
-				graphicsDevice.DrawIndexedPrimitives(
-					PrimitiveType.TriangleList,
-					part.VertexOffset,
-					0,
-					part.NumVertices,
-					part.StartIndex,
-					part.PrimitiveCount
-				);
-
-				// Applying our shader to all the mesh parts
+				// Setting up the default settings
 				effect.Parameters["WVP"].SetValue(
 					world *
 					camera.View *
@@ -101,7 +101,29 @@ namespace Deimos
 					camera.Position
 				);
 
+				// Texturing
+				graphicsDevice.BlendState = BlendState.AlphaBlend;
+				if (modelTexture != null)
+				{
+					effect.Parameters["Texture"].SetValue(
+						modelTexture
+					);
+				}
 
+				// Drawing the changes
+				graphicsDevice.DrawIndexedPrimitives(
+					PrimitiveType.TriangleList,
+					part.VertexOffset,
+					0,
+					part.NumVertices,
+					part.StartIndex,
+					part.PrimitiveCount
+				);
+
+
+
+				// Setting it up to additive because we'll be adding mutliple
+				// lights
 				graphicsDevice.BlendState = BlendState.Additive;
 				//Vector3 cameraView = camera.ViewVector;
 				//cameraView = new Vector3(
@@ -160,6 +182,8 @@ namespace Deimos
 
 				foreach (SpotLight light in SpotLights)
 				{
+					//DebugScreen.Log(light.Direction.ToString());
+
 					effect.Parameters["lightColor"].SetValue(light.Color.ToVector3());
 					effect.Parameters["lightPosition"].SetValue(light.Position);
 					effect.Parameters["lightDirection"].SetValue(light.Direction);
@@ -174,11 +198,7 @@ namespace Deimos
 						part.StartIndex,
 						part.PrimitiveCount
 					); 
-
 				}
-
-
-				//part.Effect = effect;
 			}
 		}
 	}

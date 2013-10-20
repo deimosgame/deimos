@@ -64,11 +64,11 @@ namespace Deimos
 			IsMouseVisible = false;
 
 			// Game settings
-			//graphics.PreferredBackBufferHeight = 1080;
-			//graphics.PreferredBackBufferWidth = 1280;
+			graphics.PreferredBackBufferHeight = 1080;
+			graphics.PreferredBackBufferWidth = 1280;
 			//graphics.IsFullScreen = true;
-			//graphics.PreferMultiSampling = true; // Anti aliasing
-			//graphics.SynchronizeWithVerticalRetrace = false; // Anti FPS blocking
+			//graphics.PreferMultiSampling = true; // Anti aliasing - Useless as custom effects
+			//graphics.SynchronizeWithVerticalRetrace = false; // VSync
 			//IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec
 			graphics.ApplyChanges();
 
@@ -83,11 +83,14 @@ namespace Deimos
 		protected override void LoadContent()
 		{
 			// Create a new SpriteBatch, which can be used to draw textures.
-			spriteBatch = new SpriteBatch(GraphicsDevice);
+			ShaderEffect = Content.Load<Effect>("Shaders/Lights/ambient");
+			ShaderEffect = LightManager.SetEffect(ShaderEffect);
 
+			spriteBatch = new SpriteBatch(GraphicsDevice);
 			DebugScreen.LoadFont(spriteBatch, Content.Load<SpriteFont>("Fonts/debug"));
 
 			ModelManager.LoadModel(
+				ShaderEffect,
 				Content,
 				"Models/MISC/Ana_Model", // Model
 				"Models/MISC/Alexandra/Ana_dif", // Texture
@@ -96,6 +99,7 @@ namespace Deimos
 
 
 			ModelManager.LoadModel(
+				ShaderEffect,
 				Content,
 				"Models/Map/coucou", // Model
 				"Models/Map/Grid", // Texture
@@ -104,8 +108,6 @@ namespace Deimos
 			ModelManager.DoneAddingModels();
 
 
-			ShaderEffect = Content.Load<Effect>("Shaders/Lights/ambient");
-			ShaderEffect = LightManager.SetEffect(ShaderEffect);
 
 
 			CreateVertexBuffer();

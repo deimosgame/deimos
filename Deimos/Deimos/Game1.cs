@@ -82,10 +82,13 @@ namespace Deimos
 			ShaderEffect = Content.Load<Effect>("Shaders/lights");
 
 			spriteBatch = new SpriteBatch(GraphicsDevice);
-			DebugScreen.LoadFont(spriteBatch, Content.Load<SpriteFont>("Fonts/debug"));
+			DebugScreen.LoadFont(
+				spriteBatch, 
+				Content.Load<SpriteFont>("Fonts/debug")
+			);
 
 
-			SceneManager.AddScene("main", ShaderEffect);
+			SceneManager.AddScene("main", ShaderEffect, Color.White, 100);
 			SceneManager.GetModelManager().LoadModel(
 				Content,
 				"Models/MISC/Ana_Model", // Model
@@ -100,7 +103,10 @@ namespace Deimos
 			);
 
 
-			SceneManager.GetLightManager().AddPointLight(new Vector3(0, 10, 0), Color.White);
+			SceneManager.GetLightManager().AddPointLight(
+				new Vector3(0, 10, 0), 
+				Color.White
+			);
 
 
 

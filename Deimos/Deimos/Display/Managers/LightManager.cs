@@ -16,17 +16,28 @@ namespace Deimos
 		List<PointLight> PointLights =  new List<PointLight>();
 		List<SpotLight> SpotLights =  new List<SpotLight>();
 
+		Vector3 AmbientColor;
+		float SpecularPower;
+
+
+		// Constructor
+		public LightManager(Color ambientColor, float specularPower)
+		{
+			AmbientColor = ambientColor.ToVector3();
+			SpecularPower = specularPower;
+		}
+
 
 		// Methods
 		public Effect SetEffect(Effect effect)
 		{
 			effect.Parameters["lightColor"].SetValue(Color.White.ToVector3());
-			effect.Parameters["globalAmbient"].SetValue(Color.White.ToVector3());
+			effect.Parameters["globalAmbient"].SetValue(AmbientColor);
 			effect.Parameters["Ke"].SetValue(0.0f);
 			effect.Parameters["Ka"].SetValue(0.01f);
 			effect.Parameters["Kd"].SetValue(1.0f);
 			effect.Parameters["Ks"].SetValue(0.3f);
-			effect.Parameters["specularPower"].SetValue(100);
+			effect.Parameters["specularPower"].SetValue(SpecularPower);
 
 			return effect;
 		}

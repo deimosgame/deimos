@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Deimos
@@ -18,9 +19,10 @@ namespace Deimos
 
 
 		// Methods
-		static public void AddScene(string sceneName, Effect effect)
+		static public void AddScene(string sceneName, Effect effect, 
+			Color ambientColor, float specularPower)
 		{
-			LightManager thisLightManager = new LightManager();
+			LightManager thisLightManager = new LightManager(ambientColor, specularPower);
 			ModelsList.Add(sceneName, new ModelManager(thisLightManager.SetEffect(effect)));
 			LightsList.Add(sceneName, thisLightManager);
 

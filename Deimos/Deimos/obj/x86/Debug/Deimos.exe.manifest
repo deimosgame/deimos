@@ -98,14 +98,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Deimos.exe" size="27648">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Deimos.exe" size="28160">
       <assemblyIdentity name="Deimos" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>E0/hwKB07fDV0/IZ+xXRwWcGcgc=</dsig:DigestValue>
+        <dsig:DigestValue>eGIBqRVWjkFMt4tbba9rTTBwb/Y=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

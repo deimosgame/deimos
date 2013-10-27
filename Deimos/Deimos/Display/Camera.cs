@@ -111,8 +111,6 @@ namespace Deimos
 		{
 			CameraSpeed = speed;
 
-			Collision.SetPlayerDimensions(1.2f, 2f, 2f);
-
 			//Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(20, -1, 20)); // Adding the floor
 			//Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(-1, 20, 20)); // Adding the collision at the right
 			//Collision.AddCollisionBox(new Vector3(20, 0, 0), new Vector3(21, 20, 20)); // Adding the collision at the left
@@ -176,17 +174,17 @@ namespace Deimos
 			// Return the value of camera position + movement vector
 
 			// Testing for the UPCOMING position
-			if (Collision.CheckCollision(CameraPosition + movement)) 
+			if (SceneManager.GetCollision().CheckCollision(CameraPosition + movement)) 
 			{
 				// Creating the new movement vector, which will make use 
 				// able to have a smooth collision: being able to "slide" on 
 				// the wall while colliding
 				movement = new Vector3(
-					Collision.CheckCollision(CameraPosition + 
+					SceneManager.GetCollision().CheckCollision(CameraPosition + 
 								new Vector3(movement.X, 0, 0)) ? 0 : movement.X,
-					Collision.CheckCollision(CameraPosition + 
+					SceneManager.GetCollision().CheckCollision(CameraPosition + 
 								new Vector3(0, movement.Y, 0)) ? 0 : movement.Y,
-					Collision.CheckCollision(CameraPosition + 
+					SceneManager.GetCollision().CheckCollision(CameraPosition + 
 								new Vector3(0, 0, movement.Z)) ? 0 : movement.Z
 				);
 				return CameraPosition + movement;

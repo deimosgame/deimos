@@ -14,17 +14,21 @@ namespace Deimos
 			new Dictionary<string, ModelManager>();
 		static Dictionary<string, LightManager> LightsList =
 			new Dictionary<string, LightManager>();
+		static Dictionary<string, Collision> CollisionList =
+			new Dictionary<string, Collision>();
 
 		static string CurrentScene;
 
 
 		// Methods
 		static public void AddScene(string sceneName, Effect effect, 
-			Color ambientColor, float specularPower)
+			Color ambientColor, float specularPower, Vector3 playerDimension)
 		{
 			LightManager thisLightManager = new LightManager(ambientColor, specularPower);
-			ModelsList.Add(sceneName, new ModelManager(thisLightManager.SetEffect(effect)));
+			Collision thisCollision = new Collision(playerDimension);
+			ModelsList.Add(sceneName, new ModelManager(thisLightManager.SetEffect(effect), thisCollision));
 			LightsList.Add(sceneName, thisLightManager);
+			CollisionList.Add(sceneName, thisCollision);
 
 			CurrentScene = sceneName;
 		}
@@ -47,6 +51,16 @@ namespace Deimos
 			}
 
 			return LightsList[sceneName];
+		}
+
+		static public Collision GetCollision(string sceneName = null)
+		{
+			if (sceneName == null)
+			{
+				sceneName = CurrentScene;
+			}
+
+			return CollisionList[sceneName];
 		}
 
 

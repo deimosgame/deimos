@@ -21,12 +21,15 @@ namespace Deimos
 		private Vector3[] LoadedModelsLocationArray;
 
 		Effect Effect;
+
+		Collision CollisionManager;
  
 
 		// Constructor
-		public ModelManager(Effect effect)
+		public ModelManager(Effect effect, Collision collisionManager)
 		{
 			Effect = effect;
+			CollisionManager = collisionManager;
 		}
 
 
@@ -45,7 +48,7 @@ namespace Deimos
 			// them to our collision class
 			foreach (ModelMesh mesh in thisModel.Meshes)
 			{
-				Collision.AddCollisionBoxDirectly(
+				CollisionManager.AddCollisionBoxDirectly(
 					BuildBoundingBox(
 						mesh,
 						Matrix.CreateTranslation(position)

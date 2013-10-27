@@ -8,72 +8,77 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Deimos
 {
-	static class Collision
+	class Collision
 	{
 		// Attributes
-		static Vector3 PlayerDimention;
+		Vector3 PlayerDimention;
 
-		static List<BoundingBox> CollisionBoxes = new List<BoundingBox>();
-		static BoundingBox[] CollisionBoxesArray;
+		List<BoundingBox> CollisionBoxes = new List<BoundingBox>();
+		BoundingBox[] CollisionBoxesArray;
 
-		static List<BoundingSphere> CollisionSpheres = new List<BoundingSphere>();
-		static BoundingSphere[] CollisionSpheresArray;
-
-
+		List<BoundingSphere> CollisionSpheres = new List<BoundingSphere>();
+		BoundingSphere[] CollisionSpheresArray;
 
 
-		// Methods
-		static public void SetPlayerDimensions(float height, float width, float depth)
+		// Constructor
+		public Collision(Vector3 playerDimension)
 		{
-		// These dimentions will be used to check for the camera collision:
-			// a player/human isn't a cube but a box; taller than larger
-			PlayerDimention.X = width;
-			PlayerDimention.Y = height;
-			PlayerDimention.Z = depth;
+			PlayerDimention = playerDimension;
 		}
 
 
-		static public void AddCollisionBox(Vector3 coords1, Vector3 coords2)
+		// Methods
+		public BoundingBox AddCollisionBox(Vector3 coords1, Vector3 coords2)
 		{
 			Vector3[] boxPoints = new Vector3[2];
 			boxPoints[0] = coords1;
 			boxPoints[1] = coords2;
-			CollisionBoxes.Add(BoundingBox.CreateFromPoints(boxPoints));
+			BoundingBox thisNewBox = BoundingBox.CreateFromPoints(boxPoints);
+			CollisionBoxes.Add(thisNewBox);
 
 			FinishedAddingCollisions();
+
+			return thisNewBox;
 		}
 		// Adding a box directly helps for the ModelManager class, as we're
 		// Creating a box directly from its methods when loading a model
-		static public void AddCollisionBoxDirectly(BoundingBox box)
+		public BoundingBox AddCollisionBoxDirectly(BoundingBox box)
 		{
 			CollisionBoxes.Add(box);
 
 			FinishedAddingCollisions();
+
+			return box;
 		}
 
-		static public void AddCollisionSphere(Vector3 coords, float radius)
+		public BoundingSphere AddCollisionSphere(Vector3 coords, float radius)
 		{
-			CollisionSpheres.Add(new BoundingSphere(coords, radius));
+			BoundingSphere thisNewSphere = new BoundingSphere(coords, radius);
+			CollisionSpheres.Add(thisNewSphere);
 
 			FinishedAddingCollisions();
+
+			return thisNewSphere;
 		}
 		// Same here
-		static public void AddCollisionSphereDirectly(BoundingSphere sphere)
+		public BoundingSphere AddCollisionSphereDirectly(BoundingSphere sphere)
 		{
 			CollisionSpheres.Add(sphere);
 
 			FinishedAddingCollisions();
+
+			return sphere;
 		}
 
 		// Convert all our lists to arrays
-		static public void FinishedAddingCollisions()
+		public void FinishedAddingCollisions()
 		{
 			CollisionBoxesArray = CollisionBoxes.ToArray();
 			CollisionSpheresArray = CollisionSpheres.ToArray();
 		}
 
 
-		static public Boolean CheckCollision(Vector3 cameraPosition)
+		public Boolean CheckCollision(Vector3 cameraPosition)
 		{
 			// Creating the sphere of the camera for later collisions checks
 			BoundingBox cameraBox = new BoundingBox(

@@ -88,7 +88,13 @@ namespace Deimos
 			);
 
 
-			SceneManager.AddScene("main", ShaderEffect, Color.White, 100);
+			SceneManager.AddScene(
+				"main", 
+				ShaderEffect, 
+				Color.White, 
+				100, 
+				new Vector3(1.2f, 2f, 2f)
+			);
 			SceneManager.GetModelManager().LoadModel(
 				Content,
 				"Models/MISC/Ana_Model", // Model

@@ -50,6 +50,12 @@ namespace Deimos
 		}
 
 
+		static public void SetCurrentScene(string currentScene)
+		{
+			CurrentScene = currentScene;
+		}
+
+
 		static public void DrawScene(Camera camera, 
 			GraphicsDevice graphicsDevice, string sceneName = null)
 		{

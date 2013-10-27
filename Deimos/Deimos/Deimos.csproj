@@ -131,6 +131,7 @@
     <Compile Include="Display\Managers\MISC\LightTypes\DirectionalLight.cs" />
     <Compile Include="Display\Managers\MISC\LightTypes\PointLight.cs" />
     <Compile Include="Display\Managers\MISC\LightTypes\SpotLight.cs" />
+    <Compile Include="Display\Managers\SceneManager.cs" />
     <Compile Include="Gameplay\Collision.cs" />
     <Compile Include="Tools\DebugScreen.cs" />
     <Compile Include="MISC\Floor.cs" />

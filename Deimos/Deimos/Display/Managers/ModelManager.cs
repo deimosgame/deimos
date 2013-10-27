@@ -19,17 +19,19 @@ namespace Deimos
 		private Texture2D[] LoadedModelsTextureArray;
 		private List<Vector3> LoadedModelsLocation = new List<Vector3>();
 		private Vector3[] LoadedModelsLocationArray;
+
+		Effect Effect;
  
 
 		// Constructor
-		public ModelManager()
+		public ModelManager(Effect effect)
 		{
-			//
+			Effect = effect;
 		}
 
 
 		// Methods
-		public void LoadModel(Effect effect, ContentManager content, string model, 
+		public void LoadModel(ContentManager content, string model, 
 			string texture, Vector3 position)
 		{
 			// Adding the model to our List/array as well as its location
@@ -52,9 +54,10 @@ namespace Deimos
 
 				foreach (ModelMeshPart part in mesh.MeshParts)
 				{
-					part.Effect = effect.Clone();
+					part.Effect = Effect.Clone();
 				}
 			}
+			DoneAddingModels();
 		}
 
 		public void DoneAddingModels()
@@ -111,7 +114,8 @@ namespace Deimos
 			return box;
 		}
 
-		public void DrawModels(Camera camera, GraphicsDevice graphicsDevice, Effect effect)
+		public void DrawModels(Camera camera, GraphicsDevice graphicsDevice,
+			LightManager lightManager)
 		{
 			if (LoadedModelsArray != null)
 			{
@@ -160,7 +164,7 @@ namespace Deimos
 							!= ContainmentType.Disjoint)
 						{
 							// Showing up our model with our lights
-							LightManager.ApplyLights(
+							lightManager.ApplyLights(
 								mesh, 
 								world, 
 								modelTexture, 

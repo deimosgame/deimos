@@ -8,7 +8,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Fonts\debug.xnb</Output>
-      <Time>2013-10-08T02:27:13.4133097+02:00</Time>
+      <Time>2013-10-23T22:35:49.3718301+02:00</Time>
     </Item>
     <Item>
       <Source>Fonts\menuTitle.spritefont</Source>
@@ -17,7 +17,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Fonts\menuTitle.xnb</Output>
-      <Time>2013-10-09T10:35:38.7832649+02:00</Time>
+      <Time>2013-10-23T22:35:49.4218769+02:00</Time>
     </Item>
     <Item>
       <Source>Fonts\menuElement.spritefont</Source>
@@ -26,7 +26,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Fonts\menuElement.xnb</Output>
-      <Time>2013-10-09T10:35:38.7676634+02:00</Time>
+      <Time>2013-10-23T22:35:49.3728335+02:00</Time>
     </Item>
     <Item>
       <Source>Models\MISC\Alexandra\Ana_dif.png</Source>
@@ -35,7 +35,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\MISC\Alexandra\Ana_dif.xnb</Output>
-      <Time>2013-10-13T12:08:02.0855889+02:00</Time>
+      <Time>2013-10-23T22:35:49.4659059+02:00</Time>
     </Item>
     <Item>
       <Source>Models\MISC\Alexandra\Ana_cspec.png</Source>
@@ -44,7 +44,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\MISC\Alexandra\Ana_cspec.xnb</Output>
-      <Time>2013-10-13T12:08:01.8981949+02:00</Time>
+      <Time>2013-10-23T22:35:49.4408927+02:00</Time>
     </Item>
     <Item>
       <Source>Models\MISC\Alexandra\Ana_norm.png</Source>
@@ -53,7 +53,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\MISC\Alexandra\Ana_norm.xnb</Output>
-      <Time>2013-10-13T12:08:02.1704835+02:00</Time>
+      <Time>2013-10-23T22:35:49.4809171+02:00</Time>
     </Item>
     <Item>
       <Source>Models\Map\Grid.png</Source>
@@ -62,7 +62,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Grid.xnb</Output>
-      <Time>2013-10-15T20:03:44.0633107+02:00</Time>
+      <Time>2013-10-23T22:35:49.4879206+02:00</Time>
     </Item>
     <Item>
       <Source>Models\MISC\Ana_Model.fbx</Source>
@@ -71,10 +71,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\MISC\Ana_Model.xnb</Output>
-      <Time>2013-10-17T21:29:41.0733667+02:00</Time>
+      <Time>2013-10-23T22:35:49.48592+02:00</Time>
       <Dependency>
         <Key>C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Models\MISC\Ana_Model_0.xml</Key>
-        <Value>2013-10-20T15:24:14.9458449+02:00</Value>
+        <Value>2013-10-23T22:48:15.9486038+02:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -84,35 +84,26 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\coucou.xnb</Output>
-      <Time>2013-10-15T20:01:51.7464304+02:00</Time>
+      <Time>2013-10-23T22:35:49.4939246+02:00</Time>
       <Dependency>
         <Key>C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Models\Map\coucou_0.xml</Key>
-        <Value>2013-10-20T15:24:15.280616+02:00</Value>
+        <Value>2013-10-23T22:48:16.1067104+02:00</Value>
       </Dependency>
       <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Grid_0.xnb</Request>
-    </Item>
-    <Item>
-      <Source>Shaders\Lights\ambient.fx</Source>
-      <Name>Shaders\Lights\ambient</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Shaders\Lights\ambient.xnb</Output>
-      <Time>2013-10-19T16:47:41.4818298+02:00</Time>
     </Item>
     <Item>
       <Source>Models\MISC\Ana_Model.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Models\MISC\Ana_Model_0.xml</Output>
-      <Time>2013-10-17T21:29:41.0733667+02:00</Time>
+      <Time>2013-10-23T22:35:49.48592+02:00</Time>
     </Item>
     <Item>
       <Source>Models\Map\coucou.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Models\Map\coucou_0.xml</Output>
-      <Time>2013-10-15T20:01:51.7464304+02:00</Time>
+      <Time>2013-10-23T22:35:49.4939246+02:00</Time>
     </Item>
     <Item>
       <Source>Models\Map\Grid.png</Source>
@@ -128,7 +119,16 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Grid_0.xnb</Output>
-      <Time>2013-10-15T20:03:44.0633107+02:00</Time>
+      <Time>2013-10-23T22:35:49.4879206+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Shaders\lights.fx</Source>
+      <Name>Shaders\lights</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Shaders\lights.xnb</Output>
+      <Time>2013-10-23T22:35:49.5159393+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

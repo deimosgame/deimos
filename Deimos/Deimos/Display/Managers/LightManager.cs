@@ -9,24 +9,16 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Deimos
 {
-	static class LightManager
+	class LightManager
 	{
 		// Attributes
-		static int numberOfRows = 129;
-		static int numberOfCols = 129;
-		static int numberOfVertices = numberOfRows * numberOfCols;
-		static int numberOfIndices = (numberOfRows - 1) 
-			* (numberOfCols - 1) * 2 * 3;
-
-		static List<DirectionalLight> DirectionalLights = new List<DirectionalLight>();
-		static List<PointLight> PointLights =  new List<PointLight>();
-		static List<SpotLight> SpotLights =  new List<SpotLight>();
-
-		static Effect Effect;
+		List<DirectionalLight> DirectionalLights = new List<DirectionalLight>();
+		List<PointLight> PointLights =  new List<PointLight>();
+		List<SpotLight> SpotLights =  new List<SpotLight>();
 
 
 		// Methods
-		static public Effect SetEffect(Effect effect)
+		public Effect SetEffect(Effect effect)
 		{
 			effect.Parameters["lightColor"].SetValue(Color.White.ToVector3());
 			effect.Parameters["globalAmbient"].SetValue(Color.White.ToVector3());
@@ -36,13 +28,11 @@ namespace Deimos
 			effect.Parameters["Ks"].SetValue(0.3f);
 			effect.Parameters["specularPower"].SetValue(100);
 
-			Effect = effect;
-
-			return Effect;
+			return effect;
 		}
 
 
-		static public DirectionalLight AddDirectionalLight(Vector3 direction, Color color)
+		public DirectionalLight AddDirectionalLight(Vector3 direction, Color color)
 		{
 			DirectionalLight thisLight = new DirectionalLight(direction, color);
 			DirectionalLights.Add(thisLight);
@@ -50,7 +40,7 @@ namespace Deimos
 			return thisLight;
 		}
 
-		static public PointLight AddPointLight(Vector3 position, Color color)
+		public PointLight AddPointLight(Vector3 position, Color color)
 		{
 			PointLight thisLight = new PointLight(position, color);
 			PointLights.Add(thisLight);
@@ -58,7 +48,7 @@ namespace Deimos
 			return thisLight;
 		}
 
-		static public SpotLight AddSpotLight(Vector3 position, Vector3 direction,
+		public SpotLight AddSpotLight(Vector3 position, Vector3 direction,
 			Color color, float power)
 		{
 			SpotLight thisLight = new SpotLight(
@@ -72,7 +62,7 @@ namespace Deimos
 			return thisLight;
 		}
 
-		static public void ApplyLights(ModelMesh mesh, Matrix world, 
+		public void ApplyLights(ModelMesh mesh, Matrix world, 
 			Texture2D modelTexture, Camera camera, GraphicsDevice graphicsDevice)
 		{
 			// Looping thorugh all of its meshparts

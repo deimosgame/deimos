@@ -23,8 +23,6 @@ namespace Deimos
 
 		Effect ShaderEffect;
 
-		ModelManager ModelManager;
-
 
 
 		enum GameStates
@@ -58,8 +56,6 @@ namespace Deimos
 			Floor = new Floor(GraphicsDevice, 20, 20);
 			DebugScreen.SetCamera(Camera);
 
-			ModelManager = new ModelManager();
-
 
 			IsMouseVisible = false;
 
@@ -83,29 +79,29 @@ namespace Deimos
 		protected override void LoadContent()
 		{
 			// Create a new SpriteBatch, which can be used to draw textures.
-			ShaderEffect = Content.Load<Effect>("Shaders/Lights/ambient");
-			ShaderEffect = LightManager.SetEffect(ShaderEffect);
+			ShaderEffect = Content.Load<Effect>("Shaders/lights");
 
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 			DebugScreen.LoadFont(spriteBatch, Content.Load<SpriteFont>("Fonts/debug"));
 
-			ModelManager.LoadModel(
-				ShaderEffect,
+
+			SceneManager.AddScene("main", ShaderEffect);
+			SceneManager.GetModelManager().LoadModel(
 				Content,
 				"Models/MISC/Ana_Model", // Model
 				"Models/MISC/Alexandra/Ana_dif", // Texture
 				new Vector3(0, 0, 0) // Location
 			);
-
-
-			ModelManager.LoadModel(
-				ShaderEffect,
+			SceneManager.GetModelManager().LoadModel(
 				Content,
 				"Models/Map/coucou", // Model
 				"Models/Map/Grid", // Texture
 				new Vector3(0, 0, 0) // Location
 			);
-			ModelManager.DoneAddingModels();
+
+
+			SceneManager.GetLightManager().AddPointLight(new Vector3(0, 10, 0), Color.White);
+
 
 
 
@@ -174,7 +170,8 @@ namespace Deimos
 
 
 			// Loading our effect in the ModelManager for our light
-			ModelManager.DrawModels(Camera, GraphicsDevice, ShaderEffect);
+			SceneManager.DrawScene(Camera, GraphicsDevice);
+			
 
 
 			DebugScreen.Draw(gameTime);

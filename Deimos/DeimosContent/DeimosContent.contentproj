@@ -91,8 +91,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Shaders\Lights\ambient.fx">
-      <Name>ambient</Name>
+    <Compile Include="Shaders\lights.fx">
+      <Name>lights</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
     </Compile>

@@ -136,23 +136,6 @@ namespace Deimos
 					model.CopyAbsoluteBoneTransformsTo(transforms);
 					foreach (ModelMesh mesh in model.Meshes)
 					{
-						/* This could be usefull for debugging
-						foreach (BasicEffect effect2 in mesh.Effects)
-						{
-							effect2.EnableDefaultLighting();
-							effect2.View = camera.View;
-							effect2.Projection = camera.Projection;
-							effect2.World = Matrix.CreateTranslation(modelPosition);
-							effect2.TextureEnabled = true;
-							effect2.Texture = modelTexture;
-							effect.LightingEnabled = true; // Turn on the lighting subsystem.
-							effect.AmbientLightColor = new Vector3(0.2f, 0.2f, 0.2f);
-							effect.EmissiveColor = new Vector3(1, 0, 0);
-							effect.DirectionalLight0.DiffuseColor = new Vector3(1f, 0.2f, 0.2f); // a reddish light
-							effect.DirectionalLight0.Direction = new Vector3(1, 0, 0);  // coming along the x-axis
-							effect.DirectionalLight0.SpecularColor = new Vector3(0, 1, 0); // with green highlights
-						} */
-
 						// Building the box of the mesh to know if it's visible
 						BoundingBox meshBox = BuildBoundingBox(
 							mesh,

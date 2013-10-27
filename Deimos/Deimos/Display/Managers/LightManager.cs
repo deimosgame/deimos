@@ -126,24 +126,6 @@ namespace Deimos
 				// Setting it up to additive because we'll be adding mutliple
 				// lights
 				graphicsDevice.BlendState = BlendState.Additive;
-				//Vector3 cameraView = camera.ViewVector;
-				//cameraView = new Vector3(
-				//	-cameraView.X,
-				//	-cameraView.Y,
-				//	-cameraView.Z
-				//);
-				//effect.Parameters["lightDirection"].SetValue(
-				//	Vector3.TransformNormal(
-				//		cameraView,
-				//		Matrix.Invert(world)
-				//	)
-				//);
-				//effect.Parameters["lightPosition"].SetValue(
-				//	Vector3.Transform(
-				//		camera.Position,
-				//		Matrix.Invert(world)
-				//	)
-				//);
 
 				
 

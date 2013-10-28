@@ -14,7 +14,7 @@ namespace Deimos
 	/// <summary>
 	/// This is the main type for your game
 	/// </summary>
-	public partial class Game1 : Microsoft.Xna.Framework.Game
+	public partial class DeimosGame : Microsoft.Xna.Framework.Game
 	{
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
@@ -35,7 +35,7 @@ namespace Deimos
 		GameStates CurrentGameState = GameStates.Playing;
 
 
-		public Game1()
+		public DeimosGame()
 		{
 			graphics = new GraphicsDeviceManager(this);
 
@@ -110,8 +110,16 @@ namespace Deimos
 
 
 			SceneManager.GetLightManager().AddPointLight(
-				new Vector3(0, 10, 0), 
+				new Vector3(0, 10, 10),
 				Color.White
+			);
+			SceneManager.GetLightManager().AddPointLight(
+				new Vector3(10, 10, 10), 
+				Color.Red
+			);
+			SceneManager.GetLightManager().AddPointLight(
+				new Vector3(-10, 10, -10),
+				Color.Green
 			);
 
 

@@ -10,7 +10,7 @@ namespace Deimos
         /// </summary>
         static void Main(string[] args)
         {
-            using (Game1 game = new Game1())
+            using (DeimosGame game = new DeimosGame())
             {
                 game.Run();
             }

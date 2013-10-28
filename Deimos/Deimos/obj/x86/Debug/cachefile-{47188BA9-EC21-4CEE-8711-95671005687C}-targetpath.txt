@@ -7,5 +7,5 @@ Content\Models\MISC\Alexandra\Ana_norm.xnb
 Content\Models\Map\Grid.xnb
 Content\Models\MISC\Ana_Model.xnb
 Content\Models\Map\coucou.xnb
-Content\Models\Map\Grid_0.xnb
 Content\Shaders\lights.xnb
+Content\Models\Map\Grid_0.xnb

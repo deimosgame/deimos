@@ -3,7 +3,7 @@
   <Asset Type="Graphics:MeshContent">
     <Name>pPlane1</Name>
     <Identity>
-      <SourceFilename>C:\Users\Manu\Documents\Visual Studio 2012\Projects\deimos\Deimos\DeimosContent\Models\Map\coucou.fbx</SourceFilename>
+      <SourceFilename>C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\DeimosContent\Models\Map\coucou.fbx</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 -6.610488E-16 0 1</Transform>
@@ -26,7 +26,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>lambert1</Name>
       <Identity>
-        <SourceFilename>C:\Users\Manu\Documents\Visual Studio 2012\Projects\deimos\Deimos\DeimosContent\Models\Map\coucou.fbx</SourceFilename>
+        <SourceFilename>C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\DeimosContent\Models\Map\coucou.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>

@@ -17,6 +17,9 @@ namespace Deimos
 		static Dictionary<string, Collision> CollisionList =
 			new Dictionary<string, Collision>();
 
+		static List<ModelManager> ConstantModelsList =
+			new List<ModelManager>();
+
 		static string CurrentScene;
 
 

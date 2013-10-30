@@ -16,7 +16,7 @@ namespace Deimos
 
 		static Camera Camera;
 
-		static Boolean ShowDebug = false;
+		static Boolean ShowDebug = true;
 
 		static private List<String> LogStrings = new List<String>();
 

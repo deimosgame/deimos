@@ -41,7 +41,14 @@ namespace Deimos
 			// & texture
 			Model thisModel = content.Load<Model>(model);
 			LoadedModels.Add(thisModel);
-			LoadedModelsTexture.Add(content.Load<Texture2D>(texture));
+			if (texture != null)
+			{
+				LoadedModelsTexture.Add(content.Load<Texture2D>(texture));
+			}
+			else
+			{
+				LoadedModelsTexture.Add(null);
+			}
 			LoadedModelsLocation.Add(position);
 
 			// Looping through its meshes to calculate its hitboxes and add 
@@ -131,7 +138,7 @@ namespace Deimos
 					// Its texture
 					Texture2D modelTexture = LoadedModelsTextureArray[i];
 					// Creating its world
-					Matrix world = Matrix.CreateTranslation(modelPosition);
+					Matrix world = Matrix.CreateScale(0.01f) * Matrix.CreateTranslation(modelPosition);
 
 					// Creating our transforms matrix
 					Matrix[] transforms = new Matrix[model.Bones.Count];
@@ -147,7 +154,7 @@ namespace Deimos
 
 						// Only showing the model if the mesh is visible
 						if (camera.Frustum.Contains(meshBox)
-							!= ContainmentType.Disjoint)
+							!= ContainmentType.Disjoint || true)
 						{
 							// Showing up our model with our lights
 							lightManager.ApplyLights(

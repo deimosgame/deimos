@@ -98,14 +98,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Deimos.exe" size="28672">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Deimos.exe" size="28160">
       <assemblyIdentity name="Deimos" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>OdT9IMYXGVCJP8HH49WLARGjxag=</dsig:DigestValue>
+        <dsig:DigestValue>EHfA5NJEdw9tzKRnNw48XRDbOKU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -161,6 +161,726 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>gTH+/pWsxRzM5WMXu/NQOb/eY4o=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\background.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>WD6ML+zA5gsD+pUpweFz4jmUL4o=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\background_0.xnb" size="699291">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>Mv/7X2sZyDjw9xHWjbHlVYzkWJo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\background_ddn.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>6fv0JoFIXYt+8Vsv6KmY88G7EjA=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\chain_texture.xnb" size="1048763">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>UkEhs5W8Sks4srONyjPPK/O2AyY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\chain_texture_0.xnb" size="175019">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>Luz7p3/Jk7sJhflxiGBxZoI1xa4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\chain_texture_ddn.xnb" size="1048763">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>1RLhEtOqdHboGvfqmKRAGn1lq1I=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\chain_texture_diff_mask.xnb" size="1048763">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>bpJBrK27Qr/5Ko1h55yVi5jNTpM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\chain_texture_mask.xnb" size="1048763">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>ERPAhqCeoYpgKlIQ1OS6k4i1RG4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\lion.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>WkQDQ2hfCsLE3rwk/ONO/geMxNg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\lion_0.xnb" size="699291">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>jDAkileKsfXIC4XqwVme6K6CZ5g=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\lion_ddn.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>ftzWFzPuKMQDYTAj4Qa4oBDjn/U=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\lion2_ddn.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>+LLRNVFZ2k9mVTE1wzC6qEc4Za0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\spnza_bricks_a_ddn.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>y8ro49isNI42PRzHrJNmj5oXSjs=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\spnza_bricks_a_diff.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>LVD0tOW+L6mQVRhrr+nZbU4TnBM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\spnza_bricks_a_diff_0.xnb" size="699291">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>oMHA/8iZUyZ9dzvGOZr+9Zy0xjM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\spnza_bricks_a_spec.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>knM/pC0ppGtPIvga5DUkagaBzt8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza.xnb" size="6802460">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>fL7OKkJ3arcTB9NcUec63YbQW/g=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_arch_ddn.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>ffP9wzoJ6qgU9NPjgkxeQ8XRd+M=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_arch_diff.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>psC76TcpUZAdeJ2setAyqGLRT+o=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_arch_diff_0.xnb" size="699291">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>+MLs8TPtzxBEqH+nmbWd2DadcAs=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_arch_spec.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>/f9VbkUZ4h6woJymGAbjdfUu2Ts=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_ceiling_a_diff.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>dJdeFsYgJzeei7a36TWRNnzH/CA=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_ceiling_a_diff_0.xnb" size="699291">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>fnWcCzVoTrGvA6wHNmX+VrwPS2c=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_ceiling_a_spec.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>/fLrOFxEY4v+kTjgHfcMPWgsrqE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_column_a_ddn.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>MNcAMHvomEq78fxDxEHbEUuIK+8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_column_a_diff.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>tHTkxVmE4ZIRBL0ZL7Jl4WN4Rx8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_column_a_diff_0.xnb" size="699291">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>4H1gSnKdGddewGGu49Si2UP5Mnc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_column_a_spec.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>LsdCzyr97xaIrCCOv2A47A9Yf3I=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_column_b_ddn.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>Hbj5dpKN6MDWLjR+nVA7vVO7cF0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_column_b_diff.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>3U5xwqI10EmT+VS9tCASrWmth0o=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_column_b_diff_0.xnb" size="699291">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>lvj/F8/kuBTtAQYZw9hbr7yJsz0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_column_b_spec.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>FwFINJzYSuOhkQWYrwdYqjgoiiQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_column_c_ddn.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>5azqnhl+i4piGLkIUhmyb4nbhJw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_column_c_diff.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>cIGfyaKM1p1ppTxE+MFPQ0vGvy0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_column_c_diff_0.xnb" size="699291">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>QfUWl+Sm8TvUzBLW+pZVfyif6as=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_column_c_spec.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>AlD9aR7lMhPa45zrdoYepB867/I=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_curtain_blue_diff.xnb" size="16777403">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>K+plhHgCm7gEk5FN9B7xLzXaM6w=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_curtain_blue_diff_0.xnb" size="2796447">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>7ai28HvfqdkR91f0bVui0gqAfKU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_curtain_diff.xnb" size="16777403">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>V6/5kKakm2se+WJDXbA8xAEAvRo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_curtain_diff_0.xnb" size="2796447">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>6n0Wwe5bj0ZdnPwUaDFTIH97mRs=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_curtain_green_diff.xnb" size="16777403">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>dpoTOB1XuWbGjIAaYkefDrTJE0I=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_curtain_green_diff_0.xnb" size="2796447">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>Xu64xTjsiq89R8jEYC2MmTLH2ks=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_details_diff.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>hIQ44xdyAO8X7cm66HmwBnLivXQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_details_diff_0.xnb" size="699291">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>hcG5M6opo8rPasyARVPJTCeMWJQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_details_spec.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>fvZuqt6wHiY0UwBNGxoLE8P/nOM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_fabric_blue_diff.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>Z17ub+nz26Nw3XlVZ5Q7177rI8s=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_fabric_blue_diff_0.xnb" size="699291">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>FejWq1UyxC8eZsr+3Ff+jn8LkY4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_fabric_diff.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>ktKXdBX7bZl5AAHboHR/f8/ffgg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_fabric_diff_0.xnb" size="699291">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>8UIcRElXnTUlr+7YrtwUP6sUff0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_fabric_green_diff.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>K5CgElqzJzpJTTvdNXnbeBAnclo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_fabric_green_diff_0.xnb" size="699291">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>3PbpGC19utmCDONZOjPeK1UVawI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_fabric_spec.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>pwPwOQ/1IEgtOnMrxpOEz5FuG/0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_flagpole_diff.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>s+qUwABjg3pIaxjQ3FrIZ39j4Xw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_flagpole_diff_0.xnb" size="699291">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>NJpAjSxi6+B3mNcoRjfCqYvFlnw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_flagpole_spec.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>QtF/x5/l8jq9OjKx3PT8BQ3lG7M=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_floor_a_diff.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>gCQqsoCyfMFLtXz179fpS95gpQE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_floor_a_diff_0.xnb" size="699291">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>22kJeEGSIDfcoVULe0J1qwK74Q4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_floor_a_spec.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>bpqIIS3YkwtAhvTGcDNzlbiRTLc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_roof_diff.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>yZwe0VfC/vq/X+lOr0KehefQjJo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_roof_diff_0.xnb" size="699291">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>TNkXU2ZVurOSA/FtJNqtc/22t/U=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_thorn_ddn.xnb" size="262331">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>/NlBrWko5HMj7sEONAH0tnl6TIY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_thorn_diff.xnb" size="1048763">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>kXhuxc7L8uq5FMf2MwC/gYdDpA8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_thorn_diff_0.xnb" size="174999">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>KhuhGc0sLFt7ZdAYxnats9Dk++0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_thorn_diff_mask.xnb" size="1048763">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>1lEnPOLUBdUWLqRCdJGjbZGiNQM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_thorn_mask.xnb" size="1048763">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>2E0eUHU9bVDlJFXFKY2NMY+a0K4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\sponza_thorn_spec.xnb" size="1048763">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>HSMMYwB8dN/Dz9apNCyeVybbzBc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\vase_ddn.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>gEahl4N9PqVlA3uRnauUDb7B9wg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\vase_dif.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>kAF2rB7IcG8l0AIUjUw9C5Cd2f4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\vase_dif_0.xnb" size="699291">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>GiUo7As6S9a5ywItSnoP/RKdx+g=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\vase_hanging.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>Xk3SecwqS5hnjrC8O+TljHo2i5Y=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\vase_hanging_0.xnb" size="699291">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>Ar9D/1V5phacPGYe7YWLkRpN4gc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\vase_plant.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>jLn9Tlg9dZ4OvCS2/wvzHj/jQQY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\vase_plant_0.xnb" size="699291">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>BkSCjvr6tDSYmVxk7BRRFWjOGd4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\vase_plant_diff_mask.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>3lfFlyWPDRJR+V9zSAtc13hqkZQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\vase_plant_mask.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>QsWW2nLagT0mGkfdCJ90lN4b5Sc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\vase_plant_spec.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>ooE9Fq4kPD3DYjddhiclFYTqjW4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\vase_round.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>uXUzP3T8XRzz2/7/1MR6VXqrwaA=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\vase_round_0.xnb" size="699291">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>cHzz1+2aTFFsuHHF0y9WIYCcMz4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\vase_round_ddn.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>WgaUFXlUL0prSNzMhj4CreMOBHA=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Models\Map\Sponza\vase_round_spec.xnb" size="4194491">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>NNyhLbMPExVlHPVfOqROhHycY1w=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\Models\MISC\Alexandra\Ana_cspec.xnb" size="16777403">

@@ -80,6 +80,7 @@ namespace Deimos
 
 		public Boolean CheckCollision(Vector3 cameraPosition)
 		{
+			return false;
 			// Creating the sphere of the camera for later collisions checks
 			BoundingBox cameraBox = new BoundingBox(
 				new Vector3(

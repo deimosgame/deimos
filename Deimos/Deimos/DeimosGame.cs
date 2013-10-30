@@ -60,8 +60,8 @@ namespace Deimos
 			IsMouseVisible = false;
 
 			// Game settings
-			graphics.PreferredBackBufferHeight = 1080;
-			graphics.PreferredBackBufferWidth = 1280;
+			//graphics.PreferredBackBufferHeight = 1080;
+			//graphics.PreferredBackBufferWidth = 1280;
 			//graphics.IsFullScreen = true;
 			//graphics.PreferMultiSampling = true; // Anti aliasing - Useless as custom effects
 			//graphics.SynchronizeWithVerticalRetrace = false; // VSync
@@ -95,31 +95,33 @@ namespace Deimos
 				100, 
 				new Vector3(1.2f, 2f, 2f)
 			);
+			//SceneManager.GetModelManager().LoadModel(
+			//	Content,
+			//	"Models/MISC/Ana_Model", // Model
+			//	"Models/MISC/Alexandra/Ana_dif", // Texture
+			//	new Vector3(0, 0, 0) // Location
+			//);
+			//SceneManager.GetModelManager().LoadModel(
+			//	Content,
+			//	"Models/Map/coucou", // Model
+			//	"Models/Map/Grid", // Texture
+			//	new Vector3(0, 0, 0) // Location
+			//);
 			SceneManager.GetModelManager().LoadModel(
 				Content,
-				"Models/MISC/Ana_Model", // Model
-				"Models/MISC/Alexandra/Ana_dif", // Texture
-				new Vector3(0, 0, 0) // Location
-			);
-			SceneManager.GetModelManager().LoadModel(
-				Content,
-				"Models/Map/coucou", // Model
-				"Models/Map/Grid", // Texture
-				new Vector3(0, 0, 0) // Location
+				"Models/Map/Sponza/sponza",
+				"Models/Map/Grid", // testing
+				new Vector3(0, 0, 0)
 			);
 
-
+			//SceneManager.GetLightManager().AddDirectionalLight(new Vector3(0, -1, 0), Color.White);
 			SceneManager.GetLightManager().AddPointLight(
-				new Vector3(0, 10, 10),
+				new Vector3(12, 1, 0),
 				Color.White
 			);
 			SceneManager.GetLightManager().AddPointLight(
-				new Vector3(10, 10, 10), 
-				Color.Red
-			);
-			SceneManager.GetLightManager().AddPointLight(
-				new Vector3(-10, 10, -10),
-				Color.Green
+				new Vector3(-1, 7, 0), 
+				Color.White
 			);
 
 

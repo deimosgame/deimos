@@ -111,6 +111,288 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Map\Sponza\background.tga">
+      <Name>background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\background_ddn.tga">
+      <Name>background_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\chain_texture.tga">
+      <Name>chain_texture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\chain_texture_ddn.tga">
+      <Name>chain_texture_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\chain_texture_diff_mask.tga">
+      <Name>chain_texture_diff_mask</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\chain_texture_mask.tga">
+      <Name>chain_texture_mask</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\lion.tga">
+      <Name>lion</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\lion2_ddn.tga">
+      <Name>lion2_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\lion_ddn.tga">
+      <Name>lion_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\spnza_bricks_a_ddn.tga">
+      <Name>spnza_bricks_a_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\spnza_bricks_a_diff.tga">
+      <Name>spnza_bricks_a_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\spnza_bricks_a_spec.tga">
+      <Name>spnza_bricks_a_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza.fbx">
+      <Name>sponza</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_arch_ddn.tga">
+      <Name>sponza_arch_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_arch_diff.tga">
+      <Name>sponza_arch_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_arch_spec.tga">
+      <Name>sponza_arch_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_ceiling_a_diff.tga">
+      <Name>sponza_ceiling_a_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_ceiling_a_spec.tga">
+      <Name>sponza_ceiling_a_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_column_a_ddn.tga">
+      <Name>sponza_column_a_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_column_a_diff.tga">
+      <Name>sponza_column_a_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_column_a_spec.tga">
+      <Name>sponza_column_a_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_column_b_ddn.tga">
+      <Name>sponza_column_b_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_column_b_diff.tga">
+      <Name>sponza_column_b_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_column_b_spec.tga">
+      <Name>sponza_column_b_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_column_c_ddn.tga">
+      <Name>sponza_column_c_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_column_c_diff.tga">
+      <Name>sponza_column_c_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_column_c_spec.tga">
+      <Name>sponza_column_c_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_curtain_blue_diff.tga">
+      <Name>sponza_curtain_blue_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_curtain_diff.tga">
+      <Name>sponza_curtain_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_curtain_green_diff.tga">
+      <Name>sponza_curtain_green_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_details_diff.tga">
+      <Name>sponza_details_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_details_spec.tga">
+      <Name>sponza_details_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_fabric_blue_diff.tga">
+      <Name>sponza_fabric_blue_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_fabric_diff.tga">
+      <Name>sponza_fabric_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_fabric_green_diff.tga">
+      <Name>sponza_fabric_green_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_fabric_spec.tga">
+      <Name>sponza_fabric_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_flagpole_diff.tga">
+      <Name>sponza_flagpole_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_flagpole_spec.tga">
+      <Name>sponza_flagpole_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_floor_a_diff.tga">
+      <Name>sponza_floor_a_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_floor_a_spec.tga">
+      <Name>sponza_floor_a_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_roof_diff.tga">
+      <Name>sponza_roof_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_thorn_ddn.tga">
+      <Name>sponza_thorn_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_thorn_diff.tga">
+      <Name>sponza_thorn_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_thorn_diff_mask.tga">
+      <Name>sponza_thorn_diff_mask</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_thorn_mask.tga">
+      <Name>sponza_thorn_mask</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\sponza_thorn_spec.tga">
+      <Name>sponza_thorn_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\vase_ddn.tga">
+      <Name>vase_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\vase_dif.tga">
+      <Name>vase_dif</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\vase_hanging.tga">
+      <Name>vase_hanging</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\vase_plant.tga">
+      <Name>vase_plant</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\vase_plant_diff_mask.tga">
+      <Name>vase_plant_diff_mask</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\vase_plant_mask.tga">
+      <Name>vase_plant_mask</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\vase_plant_spec.tga">
+      <Name>vase_plant_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\vase_round.tga">
+      <Name>vase_round</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\vase_round_ddn.tga">
+      <Name>vase_round_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Sponza\vase_round_spec.tga">
+      <Name>vase_round_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

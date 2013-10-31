@@ -5,10 +5,6 @@ Content\Models\MISC\Alexandra\Ana_dif.xnb
 Content\Models\MISC\Alexandra\Ana_cspec.xnb
 Content\Models\MISC\Alexandra\Ana_norm.xnb
 Content\Models\Map\Grid.xnb
-Content\Models\MISC\Ana_Model.xnb
-Content\Models\Map\coucou.xnb
-Content\Shaders\lights.xnb
-Content\Models\Map\Grid_0.xnb
 Content\Models\Map\Sponza\background.xnb
 Content\Models\Map\Sponza\background_ddn.xnb
 Content\Models\Map\Sponza\chain_texture.xnb
@@ -64,7 +60,11 @@ Content\Models\Map\Sponza\vase_plant_spec.xnb
 Content\Models\Map\Sponza\vase_round.xnb
 Content\Models\Map\Sponza\vase_round_ddn.xnb
 Content\Models\Map\Sponza\vase_round_spec.xnb
+Content\Models\MISC\Ana_Model.xnb
+Content\Models\Map\coucou.xnb
 Content\Models\Map\Sponza\sponza.xnb
+Content\Shaders\lights.xnb
+Content\Models\Map\Grid_0.xnb
 Content\Models\Map\Sponza\sponza_column_b_diff_0.xnb
 Content\Models\Map\Sponza\sponza_arch_diff_0.xnb
 Content\Models\Map\Sponza\sponza_column_a_diff_0.xnb

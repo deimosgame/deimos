@@ -50,7 +50,7 @@ namespace Deimos
 		/// </summary>
 		protected override void Initialize()
 		{
-			Camera = new Camera(this, new Vector3(10f, 3f, 5f), Vector3.Zero, 10f); // f means it's a float
+			Camera = new Camera(this, new Vector3(0f, 3f, 0f), Vector3.Zero, 10f); // f means it's a float
 			Components.Add(Camera);
 
 			Floor = new Floor(GraphicsDevice, 20, 20);
@@ -110,8 +110,8 @@ namespace Deimos
 			SceneManager.GetModelManager().LoadModel(
 				Content,
 				"Models/Map/Sponza/sponza",
-				"Models/Map/Grid", // testing
-				new Vector3(0, 0, 0)
+				new Vector3(0, 0, 0),
+				0.01f
 			);
 
 			//SceneManager.GetLightManager().AddDirectionalLight(new Vector3(0, -1, 0), Color.White);

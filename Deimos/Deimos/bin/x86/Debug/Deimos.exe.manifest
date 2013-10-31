@@ -98,14 +98,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Deimos.exe" size="28160">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Deimos.exe" size="27648">
       <assemblyIdentity name="Deimos" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>EHfA5NJEdw9tzKRnNw48XRDbOKU=</dsig:DigestValue>
+        <dsig:DigestValue>UJWM25rPrwISzAJyNk/2mOpVLps=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -925,7 +925,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>CqsSMe/ARB5B1Ekp8YjbOJ0jpnU=</dsig:DigestValue>
+      <dsig:DigestValue>PiLzbu2OSzdtwFk0toXiO8hUhNw=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Game.ico" size="4286">

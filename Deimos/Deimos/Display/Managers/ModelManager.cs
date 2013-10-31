@@ -14,11 +14,10 @@ namespace Deimos
 	{
 		// Attributes
 		private List<Model> LoadedModels = new List<Model>();
-		private Model[] LoadedModelsArray;
-		private List<Texture2D> LoadedModelsTexture = new List<Texture2D>();
-		private Texture2D[] LoadedModelsTextureArray;
-		private List<Vector3> LoadedModelsLocation = new List<Vector3>();
-		private Vector3[] LoadedModelsLocationArray;
+		private List<List<Texture2D>> LoadedMeshesTextures = new List<List<Texture2D>>();
+		private List<Matrix> LoadedModelsWorld = new List<Matrix>();
+
+		private bool FirstRender = true;
 
 		Effect Effect;
 
@@ -35,47 +34,37 @@ namespace Deimos
 
 		// Methods
 		public void LoadModel(ContentManager content, string model, 
-			string texture, Vector3 position)
+			Vector3 position, float scale)
 		{
 			// Adding the model to our List/array as well as its location
 			// & texture
 			Model thisModel = content.Load<Model>(model);
+			Matrix worldModel = 
+				Matrix.CreateScale(scale) * Matrix.CreateTranslation(position);
 			LoadedModels.Add(thisModel);
-			if (texture != null)
-			{
-				LoadedModelsTexture.Add(content.Load<Texture2D>(texture));
-			}
-			else
-			{
-				LoadedModelsTexture.Add(null);
-			}
-			LoadedModelsLocation.Add(position);
+			LoadedModelsWorld.Add(
+				worldModel
+			);
 
 			// Looping through its meshes to calculate its hitboxes and add 
 			// them to our collision class
+			List<Texture2D> texturesList = new List<Texture2D>();
 			foreach (ModelMesh mesh in thisModel.Meshes)
 			{
 				CollisionManager.AddCollisionBoxDirectly(
 					BuildBoundingBox(
 						mesh,
-						Matrix.CreateTranslation(position)
+						worldModel
 					)
 				);
+				texturesList.Add(((BasicEffect)mesh.Effects[0]).Texture);
 
 				foreach (ModelMeshPart part in mesh.MeshParts)
 				{
 					part.Effect = Effect.Clone();
 				}
 			}
-			DoneAddingModels();
-		}
-
-		public void DoneAddingModels()
-		{
-			// Converting all our lists to arrays
-			LoadedModelsArray = LoadedModels.ToArray();
-			LoadedModelsTextureArray = LoadedModelsTexture.ToArray();
-			LoadedModelsLocationArray = LoadedModelsLocation.ToArray();
+			LoadedMeshesTextures.Add(texturesList);
 		}
 
 		private BoundingBox BuildBoundingBox(ModelMesh mesh, 
@@ -127,47 +116,41 @@ namespace Deimos
 		public void DrawModels(Camera camera, GraphicsDevice graphicsDevice,
 			LightManager lightManager)
 		{
-			if (LoadedModelsArray != null)
+			for (int i = 0; i < LoadedModels.Count; i++)
 			{
-				for (int i = 0; i < LoadedModelsArray.Length; i++)
+				// Loading the model
+				Model model = LoadedModels[i];
+				// The model position
+				Matrix modelWorld = LoadedModelsWorld[i];
+				// Its texture
+				List<Texture2D> meshesTextures = LoadedMeshesTextures[i];
+
+				// Creating our transforms matrix
+				Matrix[] transforms = new Matrix[model.Bones.Count];
+				// And applying bones to it
+				model.CopyAbsoluteBoneTransformsTo(transforms);
+				foreach (ModelMesh mesh in model.Meshes)
 				{
-					// Loading the model
-					Model model = LoadedModelsArray[i];
-					// The model position
-					Vector3 modelPosition = LoadedModelsLocationArray[i];
-					// Its texture
-					Texture2D modelTexture = LoadedModelsTextureArray[i];
-					// Creating its world
-					Matrix world = Matrix.CreateScale(0.01f) * Matrix.CreateTranslation(modelPosition);
+					int iMesh = model.Meshes.IndexOf(mesh);
+					// Building the box of the mesh to know if it's visible
+					BoundingBox meshBox = BuildBoundingBox(
+						mesh,
+						modelWorld
+					);
 
-					// Creating our transforms matrix
-					Matrix[] transforms = new Matrix[model.Bones.Count];
-					// And applying bones to it
-					model.CopyAbsoluteBoneTransformsTo(transforms);
-					foreach (ModelMesh mesh in model.Meshes)
-					{
-						// Building the box of the mesh to know if it's visible
-						BoundingBox meshBox = BuildBoundingBox(
-							mesh,
-							Matrix.CreateTranslation(modelPosition)
-						);
-
-						// Only showing the model if the mesh is visible
-						if (camera.Frustum.Contains(meshBox)
-							!= ContainmentType.Disjoint || true)
-						{
-							// Showing up our model with our lights
-							lightManager.ApplyLights(
-								mesh, 
-								world, 
-								modelTexture, 
-								camera, 
-								graphicsDevice
-							);
-						}
-					}
+					// Showing up our model with our lights
+					lightManager.ApplyLights(
+						mesh, 
+						modelWorld, 
+						meshesTextures[iMesh], 
+						camera, 
+						graphicsDevice
+					);
 				}
 			}
+
+			// Not our first rendering anymore
+			FirstRender = false;
 		}
 	}
 }

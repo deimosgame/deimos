@@ -115,4 +115,3 @@ C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86
 C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\lion_0.xnb
 C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\background_0.xnb
 C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_details_diff_0.xnb
-C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\Deimos\obj\x86\Debug\Deimos.csprojResolveAssemblyReference.cache

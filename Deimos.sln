@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deimos", "Deimos\Deimos\Deimos.csproj", "{BD047396-B522-4D2B-9B82-474272D9FC8F}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "DeimosContent", "Deimos\DeimosContent\DeimosContent.contentproj", "{47188BA9-EC21-4CEE-8711-95671005687C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeimosContent", "Deimos\DeimosContent\DeimosContent.contentproj", "{47188BA9-EC21-4CEE-8711-95671005687C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeferredPipeline", "DeferredPipeline\DeferredPipeline.csproj", "{0656B47B-F22B-435F-8879-56EA5C1D1F41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +19,10 @@ Global
 		{BD047396-B522-4D2B-9B82-474272D9FC8F}.Release|x86.Build.0 = Release|x86
 		{47188BA9-EC21-4CEE-8711-95671005687C}.Debug|x86.ActiveCfg = Debug|x86
 		{47188BA9-EC21-4CEE-8711-95671005687C}.Release|x86.ActiveCfg = Release|x86
+		{0656B47B-F22B-435F-8879-56EA5C1D1F41}.Debug|x86.ActiveCfg = Debug|x86
+		{0656B47B-F22B-435F-8879-56EA5C1D1F41}.Debug|x86.Build.0 = Debug|x86
+		{0656B47B-F22B-435F-8879-56EA5C1D1F41}.Release|x86.ActiveCfg = Debug|x86
+		{0656B47B-F22B-435F-8879-56EA5C1D1F41}.Release|x86.Build.0 = Debug|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

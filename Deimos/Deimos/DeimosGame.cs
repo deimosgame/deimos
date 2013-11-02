@@ -17,11 +17,6 @@ namespace Deimos
 	public partial class DeimosGame : Microsoft.Xna.Framework.Game
 	{
 		GraphicsDeviceManager graphics;
-		SpriteBatch spriteBatch;
-		Camera Camera;
-		Floor Floor;
-
-		Effect ShaderEffect;
 
 
 
@@ -40,6 +35,9 @@ namespace Deimos
 			graphics = new GraphicsDeviceManager(this);
 
 			Content.RootDirectory = "Content";
+			DeferredRenderer renderer = new DeferredRenderer(this);
+			Components.Add(renderer);
+
 		}
 
 		/// <summary>
@@ -50,18 +48,11 @@ namespace Deimos
 		/// </summary>
 		protected override void Initialize()
 		{
-			Camera = new Camera(this, new Vector3(0f, 3f, 0f), Vector3.Zero, 10f); // f means it's a float
-			Components.Add(Camera);
-
-			Floor = new Floor(GraphicsDevice, 20, 20);
-			DebugScreen.SetCamera(Camera);
-
-
 			IsMouseVisible = false;
 
 			// Game settings
-			//graphics.PreferredBackBufferHeight = 1080;
-			//graphics.PreferredBackBufferWidth = 1280;
+			graphics.PreferredBackBufferWidth = 1344;
+			graphics.PreferredBackBufferHeight = 840;
 			//graphics.IsFullScreen = true;
 			//graphics.PreferMultiSampling = true; // Anti aliasing - Useless as custom effects
 			//graphics.SynchronizeWithVerticalRetrace = false; // VSync
@@ -78,58 +69,7 @@ namespace Deimos
 		/// </summary>
 		protected override void LoadContent()
 		{
-			// Create a new SpriteBatch, which can be used to draw textures.
-			ShaderEffect = Content.Load<Effect>("Shaders/lights");
-
-			spriteBatch = new SpriteBatch(GraphicsDevice);
-			DebugScreen.LoadFont(
-				spriteBatch, 
-				Content.Load<SpriteFont>("Fonts/debug")
-			);
-
-
-			SceneManager.AddScene(
-				"main", 
-				ShaderEffect, 
-				Color.White, 
-				100, 
-				new Vector3(1.2f, 2f, 2f)
-			);
-			//SceneManager.GetModelManager().LoadModel(
-			//	Content,
-			//	"Models/MISC/Ana_Model", // Model
-			//	"Models/MISC/Alexandra/Ana_dif", // Texture
-			//	new Vector3(0, 0, 0) // Location
-			//);
-			//SceneManager.GetModelManager().LoadModel(
-			//	Content,
-			//	"Models/Map/coucou", // Model
-			//	"Models/Map/Grid", // Texture
-			//	new Vector3(0, 0, 0) // Location
-			//);
-			SceneManager.GetModelManager().LoadModel(
-				Content,
-				"Models/Map/Sponza/sponza",
-				new Vector3(0, 0, 0),
-				0.01f
-			);
-
-			//SceneManager.GetLightManager().AddDirectionalLight(new Vector3(0, -1, 0), Color.White);
-			SceneManager.GetLightManager().AddPointLight(
-				new Vector3(12, 1, 0),
-				Color.White
-			);
-			SceneManager.GetLightManager().AddPointLight(
-				new Vector3(-1, 7, 0), 
-				Color.White
-			);
-
-
-
-
-
-			CreateVertexBuffer();
-			CreateIndexBuffer();
+			// 
 		}
 
 		/// <summary>
@@ -152,13 +92,6 @@ namespace Deimos
 			if (Keyboard.GetState().IsKeyDown(Keys.Back))
 				this.Exit();
 
-
-			GraphicsDevice.BlendState = BlendState.AlphaBlend;
-			GraphicsDevice.DepthStencilState = DepthStencilState.None;
-			GraphicsDevice.RasterizerState = RasterizerState.CullCounterClockwise;
-			GraphicsDevice.SamplerStates[0] = SamplerState.LinearClamp;
-			GraphicsDevice.BlendState = BlendState.Opaque;
-			GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 
 
 			switch (CurrentGameState)
@@ -190,13 +123,7 @@ namespace Deimos
 		{
 			GraphicsDevice.Clear(Color.Black);
 
-
-			// Loading our effect in the ModelManager for our light
-			SceneManager.DrawScene(Camera, GraphicsDevice);
-			
-
-
-			DebugScreen.Draw(gameTime);
+			//DebugScreen.Draw(gameTime);
 
 			base.Draw(gameTime);
 		}

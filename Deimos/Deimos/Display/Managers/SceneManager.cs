@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -10,77 +11,49 @@ namespace Deimos
 	static class SceneManager
 	{
 		// Attributes
-		static Dictionary<string, ModelManager> ModelsList = 
+		static Dictionary<string, ModelManager> ModelManagerList =
 			new Dictionary<string, ModelManager>();
-		static Dictionary<string, LightManager> LightsList =
+		static Dictionary<string, LightManager> LightManagerList =
 			new Dictionary<string, LightManager>();
-		static Dictionary<string, Collision> CollisionList =
-			new Dictionary<string, Collision>();
-
-		static List<ModelManager> ConstantModelsList =
-			new List<ModelManager>();
-
 		static string CurrentScene;
 
 
 		// Methods
-		static public void AddScene(string sceneName, Effect effect, 
-			Color ambientColor, float specularPower, Vector3 playerDimension)
+		public static void AddScene(string name)
 		{
-			LightManager thisLightManager = new LightManager(ambientColor, specularPower);
-			Collision thisCollision = new Collision(playerDimension);
-			ModelsList.Add(sceneName, new ModelManager(thisLightManager.SetEffect(effect), thisCollision));
-			LightsList.Add(sceneName, thisLightManager);
-			CollisionList.Add(sceneName, thisCollision);
+			ModelManager thisModelManager = new ModelManager();
+			ModelManagerList.Add(name, thisModelManager);
+			LightManager thisLightManager = new LightManager();
+			LightManagerList.Add(name, thisLightManager);
 
-			CurrentScene = sceneName;
+			CurrentScene = name;
 		}
 
-		static public ModelManager GetModelManager(string sceneName = null)
+		public static void SetCurrentScene(string name)
 		{
-			if (sceneName == null)
+			CurrentScene = name;
+		}
+
+		public static ModelManager GetModelManager(string name = null)
+		{
+			if (name == null)
 			{
-				sceneName = CurrentScene;
+				name = CurrentScene;
 			}
-
-			return ModelsList[sceneName];
+			return ModelManagerList[name];
 		}
-
-		static public LightManager GetLightManager(string sceneName = null)
+		public static LightManager GetLightManager(string name = null)
 		{
-			if (sceneName == null)
+			if (name == null)
 			{
-				sceneName = CurrentScene;
+				name = CurrentScene;
 			}
-
-			return LightsList[sceneName];
+			return LightManagerList[name];
 		}
 
-		static public Collision GetCollision(string sceneName = null)
+		public static void DrawCurrentScene(Camera camera, GraphicsDevice graphicsDevice, Effect effect)
 		{
-			if (sceneName == null)
-			{
-				sceneName = CurrentScene;
-			}
-
-			return CollisionList[sceneName];
-		}
-
-
-		static public void SetCurrentScene(string currentScene)
-		{
-			CurrentScene = currentScene;
-		}
-
-
-		static public void DrawScene(Camera camera, 
-			GraphicsDevice graphicsDevice, string sceneName = null)
-		{
-			GetModelManager(sceneName).DrawModels(
-				camera, 
-				graphicsDevice,
-				GetLightManager(sceneName)
-			);
+			
 		}
 	}
 }

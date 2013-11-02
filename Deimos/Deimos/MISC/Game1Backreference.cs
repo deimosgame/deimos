@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Deimos
 {
-	public partial class DeimosGame
+	public partial class Game1
 	{
 		#region Constants
 		const int number_of_rows = 129;

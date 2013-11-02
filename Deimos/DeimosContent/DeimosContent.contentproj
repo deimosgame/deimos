@@ -22,6 +22,9 @@
     <RootNamespace>DeimosContent</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DeferredPipeline">
+      <HintPath>..\..\DeferredPipeline\bin\x86\Debug\DeferredPipeline.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.EffectImporter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL">
       <Private>False</Private>
     </Reference>
@@ -63,50 +66,93 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\MISC\Alexandra\Ana_dif.png">
+    <Compile Include="Models\Characters\Alexandra\Ana_dif.png">
       <Name>Ana_dif</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\MISC\Ana_Model.fbx">
+    <Compile Include="Models\Characters\Ana_Model.fbx">
       <Name>Ana_Model</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>DeferredRendererModel</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\MISC\Alexandra\Ana_cspec.png">
+    <Compile Include="Models\Characters\Alexandra\Ana_cspec.png">
       <Name>Ana_cspec</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\MISC\Alexandra\Ana_norm.png">
+    <Compile Include="Models\Characters\Alexandra\Ana_norm.png">
       <Name>Ana_norm</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Shaders\lights.fx">
-      <Name>lights</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Models\Map\coucou.fbx">
       <Name>coucou</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>DeferredRendererModel</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Map\Grid.png">
       <Name>Grid</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Shaders\DeferredRendering\ClearGBuffer.fx">
+      <Name>ClearGBuffer</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </Compile>
+    <Compile Include="Shaders\DeferredRendering\CombineFinal.fx">
+      <Name>CombineFinal</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Shaders\Lights\DirectionalLight.fx">
+      <Name>DirectionalLight</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Shaders\Lights\PointLight.fx">
+      <Name>PointLight</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </Compile>
+    <Compile Include="Shaders\DeferredRendering\RenderGBuffer.fx">
+      <Name>RenderGBuffer</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\DeferredRendering\sphere.x">
+      <Name>sphere</Name>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\DeferredRendering\null_normal.tga">
+      <Name>null_normal</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\DeferredRendering\null_specular.tga">
+      <Name>null_specular</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -175,7 +221,7 @@
     <Compile Include="Models\Map\Sponza\sponza.fbx">
       <Name>sponza</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>DeferredRendererModel</Processor>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_arch_ddn.tga">
       <Name>sponza_arch_ddn</Name>

@@ -16,8 +16,6 @@ namespace Deimos
 
 		static Camera Camera;
 
-		static Boolean ShowDebug = true;
-
 		static private List<String> LogStrings = new List<String>();
 
 		static int FrameRate = 0;
@@ -59,12 +57,6 @@ namespace Deimos
 
 		static public void Draw(GameTime gameTime)
 		{
-			if (!ShowDebug)
-			{
-				// We don't want to show the debug screen so we don't
-				// draw it.
-				return; 
-			}
 			SpriteBatch.Begin();
 
 			FrameCounter++;

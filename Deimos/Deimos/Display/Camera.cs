@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Deimos
 {
-	class Camera : GameComponent
+	public class Camera : GameComponent
 	{
 		// Atributes
 		public Vector3 CameraPosition;
@@ -111,6 +111,8 @@ namespace Deimos
 		{
 			CameraSpeed = speed;
 
+			Collision.SetPlayerDimensions(1.2f, 2f, 2f);
+
 			//Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(20, -1, 20)); // Adding the floor
 			//Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(-1, 20, 20)); // Adding the collision at the right
 			//Collision.AddCollisionBox(new Vector3(20, 0, 0), new Vector3(21, 20, 20)); // Adding the collision at the left
@@ -129,6 +131,7 @@ namespace Deimos
 
 			// Set the camera position and rotation
 			moveTo(position, rotation);
+
 
 
 			PreviousMouseState = Mouse.GetState();
@@ -174,17 +177,17 @@ namespace Deimos
 			// Return the value of camera position + movement vector
 
 			// Testing for the UPCOMING position
-			if (SceneManager.GetCollision().CheckCollision(CameraPosition + movement)) 
+			if (Collision.CheckCollision(CameraPosition + movement)) 
 			{
 				// Creating the new movement vector, which will make use 
 				// able to have a smooth collision: being able to "slide" on 
 				// the wall while colliding
 				movement = new Vector3(
-					SceneManager.GetCollision().CheckCollision(CameraPosition + 
+					Collision.CheckCollision(CameraPosition + 
 								new Vector3(movement.X, 0, 0)) ? 0 : movement.X,
-					SceneManager.GetCollision().CheckCollision(CameraPosition + 
+					Collision.CheckCollision(CameraPosition + 
 								new Vector3(0, movement.Y, 0)) ? 0 : movement.Y,
-					SceneManager.GetCollision().CheckCollision(CameraPosition + 
+					Collision.CheckCollision(CameraPosition + 
 								new Vector3(0, 0, movement.Z)) ? 0 : movement.Z
 				);
 				return CameraPosition + movement;
@@ -318,7 +321,6 @@ namespace Deimos
 			PreviousMouseState = CurrentMouseState;
 
 			base.Update(gameTime);
-
 		}
 	}
 }

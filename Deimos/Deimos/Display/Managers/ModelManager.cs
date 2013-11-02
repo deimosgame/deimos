@@ -14,57 +14,42 @@ namespace Deimos
 	{
 		// Attributes
 		private List<Model> LoadedModels = new List<Model>();
-		private List<List<Texture2D>> LoadedMeshesTextures = new List<List<Texture2D>>();
+		private List<Texture2D> LoadedModelsTexture = new List<Texture2D>();
 		private List<Matrix> LoadedModelsWorld = new List<Matrix>();
-
-		private bool FirstRender = true;
-
-		Effect Effect;
-
-		Collision CollisionManager;
  
 
 		// Constructor
-		public ModelManager(Effect effect, Collision collisionManager)
+		public ModelManager()
 		{
-			Effect = effect;
-			CollisionManager = collisionManager;
+			//
 		}
 
 
 		// Methods
 		public void LoadModel(ContentManager content, string model, 
-			Vector3 position, float scale)
+			string texture, Vector3 position, float scale)
 		{
 			// Adding the model to our List/array as well as its location
 			// & texture
 			Model thisModel = content.Load<Model>(model);
-			Matrix worldModel = 
-				Matrix.CreateScale(scale) * Matrix.CreateTranslation(position);
 			LoadedModels.Add(thisModel);
+			LoadedModelsTexture.Add(content.Load<Texture2D>(texture));
 			LoadedModelsWorld.Add(
-				worldModel
+				Matrix.CreateScale(scale) * 
+				Matrix.CreateTranslation(position)
 			);
 
 			// Looping through its meshes to calculate its hitboxes and add 
 			// them to our collision class
-			List<Texture2D> texturesList = new List<Texture2D>();
 			foreach (ModelMesh mesh in thisModel.Meshes)
 			{
-				CollisionManager.AddCollisionBoxDirectly(
+				Collision.AddCollisionBoxDirectly(
 					BuildBoundingBox(
 						mesh,
-						worldModel
+						Matrix.CreateTranslation(position)
 					)
 				);
-				texturesList.Add(((BasicEffect)mesh.Effects[0]).Texture);
-
-				foreach (ModelMeshPart part in mesh.MeshParts)
-				{
-					part.Effect = Effect.Clone();
-				}
 			}
-			LoadedMeshesTextures.Add(texturesList);
 		}
 
 		private BoundingBox BuildBoundingBox(ModelMesh mesh, 
@@ -113,44 +98,51 @@ namespace Deimos
 			return box;
 		}
 
-		public void DrawModels(Camera camera, GraphicsDevice graphicsDevice,
-			LightManager lightManager)
+		public void DrawModels(Game game, Camera camera)
 		{
-			for (int i = 0; i < LoadedModels.Count; i++)
+			game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+			game.GraphicsDevice.RasterizerState = RasterizerState.CullCounterClockwise;
+			game.GraphicsDevice.BlendState = BlendState.Opaque;
+
+
+			if (LoadedModels.Count > 0)
 			{
-				// Loading the model
-				Model model = LoadedModels[i];
-				// The model position
-				Matrix modelWorld = LoadedModelsWorld[i];
-				// Its texture
-				List<Texture2D> meshesTextures = LoadedMeshesTextures[i];
-
-				// Creating our transforms matrix
-				Matrix[] transforms = new Matrix[model.Bones.Count];
-				// And applying bones to it
-				model.CopyAbsoluteBoneTransformsTo(transforms);
-				foreach (ModelMesh mesh in model.Meshes)
+				for (int i = 0; i < LoadedModels.Count; i++)
 				{
-					int iMesh = model.Meshes.IndexOf(mesh);
-					// Building the box of the mesh to know if it's visible
-					BoundingBox meshBox = BuildBoundingBox(
-						mesh,
-						modelWorld
-					);
+					// Loading the model
+					Model model = LoadedModels[i];
+					// The model world
+					Matrix modelWorld = LoadedModelsWorld[i];
+					// Its texture
+					Texture2D modelTexture = LoadedModelsTexture[i];
 
-					// Showing up our model with our lights
-					lightManager.ApplyLights(
-						mesh, 
-						modelWorld, 
-						meshesTextures[iMesh], 
-						camera, 
-						graphicsDevice
-					);
+					foreach (ModelMesh mesh in model.Meshes)
+					{
+						// Building the box of the mesh to know if it's visible
+						BoundingBox meshBox = BuildBoundingBox(
+							mesh,
+							modelWorld
+						);
+
+						// Only showing the model if the mesh is visible
+						if (camera.Frustum.Contains(meshBox)
+							!= ContainmentType.Disjoint)
+						{
+							foreach (Effect effect in mesh.Effects)
+							{
+								effect.Parameters["World"]
+									.SetValue(modelWorld);
+								effect.Parameters["View"]
+									.SetValue(camera.View);
+								effect.Parameters["Projection"]
+									.SetValue(camera.Projection);
+								//effect.Parameters["Texture"].SetValue(modelTexture);
+							}
+							mesh.Draw();
+						}
+					}
 				}
 			}
-
-			// Not our first rendering anymore
-			FirstRender = false;
 		}
 	}
 }

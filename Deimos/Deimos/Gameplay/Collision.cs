@@ -33,11 +33,12 @@ namespace Deimos
 		}
 
 
-		static public void AddCollisionBox(Vector3 coords1, Vector3 coords2)
+		static public void AddCollisionBox(Vector3 coords1, Vector3 coords2, 
+			float scale)
 		{
 			Vector3[] boxPoints = new Vector3[2];
-			boxPoints[0] = coords1;
-			boxPoints[1] = coords2;
+			boxPoints[0] = coords1 * scale;
+			boxPoints[1] = coords2 * scale;
 			CollisionBoxes.Add(BoundingBox.CreateFromPoints(boxPoints));
 
 			FinishedAddingCollisions();

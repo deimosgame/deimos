@@ -15,16 +15,16 @@
       </applicationRequestMinimum>
       <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
         <!--
-          UAC Manifest Options
-          If you want to change the Windows User Account Control level replace the 
-          requestedExecutionLevel node with one of the following.
+          Options du manifeste de contrôle de compte d'utilisateur
+          Si vous souhaitez modifier le niveau du contrôle de compte d'utilisateur Windows, remplacez le 
+          nœud requestedExecutionLevel par l'une des propositions suivantes :
 
         <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
         <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
         <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
 
-         If you want to utilize File and Registry Virtualization for backward 
-         compatibility then delete the requestedExecutionLevel node.
+         Si vous souhaitez utiliser la virtualisation de fichiers et du Registre pour la 
+         compatibilité descendante, supprimez le nœud requestedExecutionLevel.
     -->
         <requestedExecutionLevel level="asInvoker" uiAccess="false" />
       </requestedPrivileges>
@@ -98,14 +98,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Deimos.exe" size="30208">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Deimos.exe" size="30720">
       <assemblyIdentity name="Deimos" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>7GuO6e17l9AoJXSPSfkcc66h1ZM=</dsig:DigestValue>
+        <dsig:DigestValue>KuDqSGF6Qdp8JqiN4696hyPiBG4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -118,22 +118,22 @@
       <dsig:DigestValue>zlQ5P6+JWLhfqGQsNp23A30JnNA=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\Fonts\menuElement.xnb" size="23214">
+  <file name="Content\Fonts\menuElement.xnb" size="20654">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>c2A/wJ8PRLSYLnR5QC7mf/I8wCE=</dsig:DigestValue>
+      <dsig:DigestValue>i6wEy5aaSSZl7AUtkgvxVsNot0I=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Content\Fonts\menuTitle.xnb" size="24750">
+  <file name="Content\Fonts\menuTitle.xnb" size="22190">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>UYuRitQt0KB6Ak4/SLs9SgfX1wE=</dsig:DigestValue>
+      <dsig:DigestValue>qqz5gyPym8Z8TCVyRbDyT8yMsbo=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\Models\Characters\Alexandra\Ana_cspec.xnb" size="16777403">
@@ -934,7 +934,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>ZcVu/TtfpWUYHRdGTs5aG1qAD0Y=</dsig:DigestValue>
+      <dsig:DigestValue>XiWxbGWKONLk8qycbuCUhLp2vGU=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\Shaders\DeferredRendering\CombineFinal.xnb" size="3416">
@@ -943,7 +943,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>/DXkVI3uWUwNMY10rNBaNfKqf14=</dsig:DigestValue>
+      <dsig:DigestValue>Kfv80/oKJQ3JDlsZaE+b/ByrVBM=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\Shaders\DeferredRendering\RenderGBuffer.xnb" size="6392">
@@ -952,7 +952,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>5AorA6z5GRYy2W8+9xAjK7Oaeoc=</dsig:DigestValue>
+      <dsig:DigestValue>r/BkzLKL8JrYdDd9/uoFFdSZhb0=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\Shaders\Lights\DirectionalLight.xnb" size="6036">
@@ -961,7 +961,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>KeauEVw8p/4qOHCZiW2mU+B6vwU=</dsig:DigestValue>
+      <dsig:DigestValue>WIkrAwxHM8msjwbyrrjpkX4SpzE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\Shaders\Lights\PointLight.xnb" size="7080">
@@ -970,7 +970,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>6FkpMp1WveXYawq4F7uUO0RUcLw=</dsig:DigestValue>
+      <dsig:DigestValue>9KIIeM07SsM1r2Wjmylx50P4dHw=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\Textures\DeferredRendering\null_normal.xnb" size="443">

@@ -54,7 +54,7 @@ namespace Deimos
 			base.Initialize();
 			Camera = new Camera(
 				Game, 
-				new Vector3(10f, 3f, 5f), 
+				new Vector3(0f, 5f, 0f), 
 				Vector3.Zero, 
 				10f
 			);
@@ -322,6 +322,8 @@ namespace Deimos
 
 			FinalCombineEffect.Techniques[0].Passes[0].Apply();
 			QuadRenderer.Render(Vector2.One * -1, Vector2.One);
+
+			//DebugScreen.Draw(gameTime);
 		}
 
 		/// <summary>

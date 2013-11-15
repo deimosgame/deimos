@@ -1,2 +1,0 @@
-C:\Users\Manu\Documents\Visual Studio 2012\Projects\Deimos\Deimos\DeimosContent\obj\x86\Debug\DeimosContent.contentprojResolveAssemblyReference.cache
-C:\Users\epita\Documents\Visual Studio 2012\Projects\deimos\Deimos\DeimosContent\obj\x86\Debug\DeimosContent.contentprojResolveAssemblyReference.cache

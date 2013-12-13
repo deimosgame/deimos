@@ -28,9 +28,11 @@ namespace Deimos
 		private Effect ClearBufferEffect;
 		private Effect DirectionalLightEffect;
 		private Effect PointLightEffect;
+		private Effect SpotLightEffect;
 		private Effect FinalCombineEffect;
 
 		private Model SphereModel; //point ligt volume
+		private Model ConeModel;
 
 
 		private SpriteBatch SpriteBatch;
@@ -54,7 +56,7 @@ namespace Deimos
 			base.Initialize();
 			Camera = new Camera(
 				Game, 
-				new Vector3(0f, 5f, 0f), 
+				new Vector3(0f, 50f, 0f), 
 				Vector3.Zero, 
 				10f
 			);
@@ -117,21 +119,26 @@ namespace Deimos
 			FinalCombineEffect = Game.Content.Load<Effect>(
 				@"Shaders\DeferredRendering\CombineFinal"
 			);
-			SphereModel = Game.Content.Load<Model>(
-				@"Models\DeferredRendering\sphere"
-			);
 			DirectionalLightEffect = Game.Content.Load<Effect>(
 				@"Shaders\Lights\DirectionalLight"
 			);
 			PointLightEffect = Game.Content.Load<Effect>(
 				@"Shaders\Lights\PointLight"
 			);
+			SpotLightEffect = Game.Content.Load<Effect>(
+				@"Shaders\Lights\SpotLight"
+			);
+			SphereModel = Game.Content.Load<Model>(
+				@"Models\DeferredRendering\sphere"
+			);
+			ConeModel = Game.Content.Load<Model>(
+				@"Models\DeferredRendering\cone"
+			);
 
 			SceneManager.AddScene("main");
 			SceneManager.GetModelManager().LoadModel(
 				Game.Content,
 				"Models/Map/Sponza/sponza", // Model
-				"Models/Characters/Alexandra/Ana_dif", // Texture
 				new Vector3(0, 0, 0), // Location
 				0.01f
 			);
@@ -144,11 +151,19 @@ namespace Deimos
 			//);
 
 			SceneManager.GetLightManager().AddPointLight(
-				"center", 
-				new Vector3(0, 10, 0), 
-				30, 
-				2, 
+				"center",
+				new Vector3(0, 10, 0),
+				30,
+				2,
 				Color.White
+			);
+
+			SceneManager.GetLightManager().AddSpotLight(
+				"spotLight",
+				new Vector3(0, 10, 0),
+				new Vector3(0, -1, 0),
+				Color.Red,
+				30
 			);
 
 
@@ -198,7 +213,7 @@ namespace Deimos
 			QuadRenderer.Render(Vector2.One * -1, Vector2.One);
 		}
 
-		private void DrawPointLight(Vector3 lightPosition, Color color, 
+		private void DrawPointLight(Vector3 lightPosition, Color color,
 			float lightRadius, float lightIntensity)
 		{
 			// Set the G-Buffer parameters
@@ -209,7 +224,7 @@ namespace Deimos
 			// Compute the light world matrix
 			// scale according to light radius, and translate it to 
 			// light position
-			Matrix sphereWorldMatrix = Matrix.CreateScale(lightRadius) * 
+			Matrix sphereWorldMatrix = Matrix.CreateScale(lightRadius) *
 				Matrix.CreateTranslation(lightPosition);
 			PointLightEffect.Parameters["World"].SetValue(sphereWorldMatrix);
 			PointLightEffect.Parameters["View"].SetValue(Camera.View);
@@ -235,14 +250,14 @@ namespace Deimos
 			PointLightEffect.Parameters["halfPixel"].SetValue(HalfPixel);
 			// Calculate the distance between the camera and light center
 			float cameraToCenter = Vector3.Distance(
-				Camera.Position, 
+				Camera.Position,
 				lightPosition
 			);
 			// If we are inside the light volume, draw the sphere's inside face
 			if (cameraToCenter < lightRadius + 1f)
 				GraphicsDevice.RasterizerState = RasterizerState.CullClockwise;
 			else
-				GraphicsDevice.RasterizerState = 
+				GraphicsDevice.RasterizerState =
 					RasterizerState.CullCounterClockwise;
 
 			GraphicsDevice.DepthStencilState = DepthStencilState.None;
@@ -256,17 +271,90 @@ namespace Deimos
 					GraphicsDevice.SetVertexBuffer(meshPart.VertexBuffer);
 
 					GraphicsDevice.DrawIndexedPrimitives(
-						PrimitiveType.TriangleList, 
-						0, 
-						0, 
-						meshPart.NumVertices, 
-						meshPart.StartIndex, 
+						PrimitiveType.TriangleList,
+						0,
+						0,
+						meshPart.NumVertices,
+						meshPart.StartIndex,
 						meshPart.PrimitiveCount
 					);
 				}
 			}
 
-			GraphicsDevice.RasterizerState = 
+			GraphicsDevice.RasterizerState =
+				RasterizerState.CullCounterClockwise;
+			GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+		}
+
+		private void DrawSpotLight(Vector3 lightPosition, Color color,
+			float lightRadius, float lightIntensity)
+		{
+			// Set the G-Buffer parameters
+			SpotLightEffect.Parameters["colorMap"].SetValue(ColorRT);
+			SpotLightEffect.Parameters["normalMap"].SetValue(NormalRT);
+			SpotLightEffect.Parameters["depthMap"].SetValue(DepthRT);
+
+			// Compute the light world matrix
+			// scale according to light radius, and translate it to 
+			// light position
+			Matrix coneWorldMatrix = Matrix.CreateScale(lightRadius) *
+				Matrix.CreateTranslation(lightPosition);
+			SpotLightEffect.Parameters["World"].SetValue(coneWorldMatrix);
+			SpotLightEffect.Parameters["View"].SetValue(Camera.View);
+			SpotLightEffect.Parameters["Projection"]
+				.SetValue(Camera.Projection);
+			// Light position
+			SpotLightEffect.Parameters["lightPosition"]
+				.SetValue(lightPosition);
+
+			// Set the color, radius and Intensity
+			SpotLightEffect.Parameters["Color"].SetValue(color.ToVector3());
+			SpotLightEffect.Parameters["lightRadius"].SetValue(lightRadius);
+			SpotLightEffect.Parameters["lightIntensity"]
+				.SetValue(lightIntensity);
+
+			// Parameters for specular computations
+			SpotLightEffect.Parameters["cameraPosition"]
+				.SetValue(Camera.Position);
+			SpotLightEffect.Parameters["InvertViewProjection"].SetValue(
+				Matrix.Invert(Camera.View * Camera.Projection)
+			);
+			// Size of a halfpixel, for texture coordinates alignment
+			SpotLightEffect.Parameters["halfPixel"].SetValue(HalfPixel);
+			// Calculate the distance between the camera and light center
+			float cameraToCenter = Vector3.Distance(
+				Camera.Position,
+				lightPosition
+			);
+			// If we are inside the light volume, draw the sphere's inside face
+			if (cameraToCenter < lightRadius + 1f)
+				GraphicsDevice.RasterizerState = RasterizerState.CullClockwise;
+			else
+				GraphicsDevice.RasterizerState =
+					RasterizerState.CullCounterClockwise;
+
+			GraphicsDevice.DepthStencilState = DepthStencilState.None;
+
+			SpotLightEffect.Techniques[0].Passes[0].Apply();
+			foreach (ModelMesh mesh in ConeModel.Meshes)
+			{
+				foreach (ModelMeshPart meshPart in mesh.MeshParts)
+				{
+					GraphicsDevice.Indices = meshPart.IndexBuffer;
+					GraphicsDevice.SetVertexBuffer(meshPart.VertexBuffer);
+
+					GraphicsDevice.DrawIndexedPrimitives(
+						PrimitiveType.TriangleList,
+						0,
+						0,
+						meshPart.NumVertices,
+						meshPart.StartIndex,
+						meshPart.PrimitiveCount
+					);
+				}
+			}
+
+			GraphicsDevice.RasterizerState =
 				RasterizerState.CullCounterClockwise;
 			GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 		}
@@ -305,6 +393,16 @@ namespace Deimos
 					thisLight.Value.Color,
 					thisLight.Value.Radius,
 					thisLight.Value.Intensity
+				);
+			}
+			foreach (KeyValuePair<string, SpotLight> thisLight in 
+				SceneManager.GetLightManager().GetSpotLights())
+			{
+				DrawSpotLight(
+					thisLight.Value.Position,
+					thisLight.Value.Color,
+					2,
+					thisLight.Value.Power
 				);
 			}
 

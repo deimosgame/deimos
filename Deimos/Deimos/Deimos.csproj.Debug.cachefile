@@ -98,3 +98,5 @@ Content\Models\Map\Sponza\sponza_floor_a_diff_0.xnb
 Content\Models\Map\Sponza\lion_0.xnb
 Content\Models\Map\Sponza\background_0.xnb
 Content\Models\Map\Sponza\sponza_details_diff_0.xnb
+Content\Models\DeferredRendering\cone.xnb
+Content\Shaders\Lights\SpotLight.xnb

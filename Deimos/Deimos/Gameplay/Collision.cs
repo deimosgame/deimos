@@ -25,7 +25,7 @@ namespace Deimos
 		// Methods
 		static public void SetPlayerDimensions(float height, float width, float depth)
 		{
-		// These dimentions will be used to check for the camera collision:
+			// These dimentions will be used to check for the camera collision:
 			// a player/human isn't a cube but a box; taller than larger
 			PlayerDimention.X = width;
 			PlayerDimention.Y = height;
@@ -98,9 +98,11 @@ namespace Deimos
 				for (int i = 0; i < CollisionBoxesArray.Length; i++) 
 				{
 					// If our player is inside the collision region
-					if (CollisionBoxesArray[i].Contains(cameraBox) != 
-						ContainmentType.Disjoint) 
+					if (CollisionBoxesArray[i].Contains(cameraBox) !=
+						ContainmentType.Disjoint)
+					{
 						return true;
+					}
 				}
 			}
 

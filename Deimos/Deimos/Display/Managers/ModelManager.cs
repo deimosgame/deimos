@@ -14,7 +14,6 @@ namespace Deimos
 	{
 		// Attributes
 		private List<Model> LoadedModels = new List<Model>();
-		private List<Texture2D> LoadedModelsTexture = new List<Texture2D>();
 		private List<Matrix> LoadedModelsWorld = new List<Matrix>();
  
 
@@ -27,13 +26,12 @@ namespace Deimos
 
 		// Methods
 		public void LoadModel(ContentManager content, string model, 
-			string texture, Vector3 position, float scale)
+			Vector3 position, float scale)
 		{
 			// Adding the model to our List/array as well as its location
 			// & texture
 			Model thisModel = content.Load<Model>(model);
 			LoadedModels.Add(thisModel);
-			LoadedModelsTexture.Add(content.Load<Texture2D>(texture));
 			LoadedModelsWorld.Add(
 				Matrix.CreateScale(scale) * 
 				Matrix.CreateTranslation(position)
@@ -113,8 +111,6 @@ namespace Deimos
 					Model model = LoadedModels[i];
 					// The model world
 					Matrix modelWorld = LoadedModelsWorld[i];
-					// Its texture
-					Texture2D modelTexture = LoadedModelsTexture[i];
 
 					foreach (ModelMesh mesh in model.Meshes)
 					{
@@ -136,7 +132,6 @@ namespace Deimos
 									.SetValue(camera.View);
 								effect.Parameters["Projection"]
 									.SetValue(camera.Projection);
-								//effect.Parameters["Texture"].SetValue(modelTexture);
 							}
 							mesh.Draw();
 						}

@@ -37,8 +37,8 @@ namespace Deimos
 			set { collisionDetection = value; }
 		}
 
-		private Model collisionModel;
-		public Model CollisionModel
+		private CollidableModel.CollidableModel collisionModel;
+		public CollidableModel.CollidableModel CollisionModel
 		{
 			get { return collisionModel; }
 			set { collisionModel = value; }

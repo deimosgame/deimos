@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using CollidableModel;
 
 
 namespace Deimos
@@ -61,7 +62,6 @@ namespace Deimos
 
 		static public Boolean CheckCollision(Vector3 cameraPosition)
 		{
-			return false;
 			// Creating the sphere of the camera for later collisions checks
 			BoundingBox cameraBox = new BoundingBox(
 				new Vector3(
@@ -74,6 +74,15 @@ namespace Deimos
 					cameraPosition.Y,
 					cameraPosition.Z + (PlayerDimention.Z / 2)
 				)
+			);
+
+			BoundingSphere cameraSphere = new BoundingSphere(
+				new Vector3(
+					cameraPosition.X, 
+					cameraPosition.Y, 
+					cameraPosition.Z
+				),
+				PlayerDimention.Y
 			);
 
 			// Let's check for collision with our boxes
@@ -105,6 +114,27 @@ namespace Deimos
 			// And finally with our models collisions
 			Dictionary<string, LevelModel> levelModels = 
 				SceneManager.GetModelManager().GetLevelModels();
+			foreach (KeyValuePair<string, LevelModel> thisModel in levelModels)
+			{
+				if (!thisModel.Value.CollisionDetection)
+				{
+					continue;
+				}
+
+				var collidingFaces = new LinkedList<Face>();
+				var collisionPoints = new LinkedList<Vector3>();
+				// This method is used with pointer, so it does change 
+				// our above faces and points
+				thisModel.Value.CollisionModel.collisionData.collisions(
+					cameraSphere, 
+					collidingFaces, 
+					collisionPoints
+				);
+				if (collidingFaces.Count > 0)
+				{
+					return true;
+				}
+			}
 
 			// If we're here, then no collision has been matched
 			return false;

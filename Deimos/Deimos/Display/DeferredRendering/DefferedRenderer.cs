@@ -141,7 +141,7 @@ namespace Deimos
 				Game.Content,
 				"Models/Map/Sponza/sponza", // Model
 				new Vector3(0, 0, 0), // Location
-				0.01f
+				1f
 			);
 
 			SceneManager.AddScene("collision");
@@ -157,6 +157,7 @@ namespace Deimos
 				"Models/Characters/Ana_Model",
 				new Vector3(0, 5, 0)
 			);
+			SceneManager.SetCurrentScene("collision");
 			//SceneManager.GetModelManager().LoadModel(
 			//	Game.Content,
 			//	"Models/Map/coucou", // Model
@@ -168,7 +169,7 @@ namespace Deimos
 			SceneManager.GetLightManager().AddPointLight(
 				"center",
 				new Vector3(0, 10, 0),
-				30,
+				3000,
 				2,
 				Color.White
 			);
@@ -180,6 +181,12 @@ namespace Deimos
 				Color.Red,
 				30
 			);
+
+			SceneManager.GetLightManager().AddDirectionalLight(
+				"sunLight",
+				new Vector3(0, -1, 0),
+				Color.White
+				);
 
 
 			SpriteBatch = new SpriteBatch(GraphicsDevice);

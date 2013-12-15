@@ -66,6 +66,9 @@ Content\Models\Characters\Ana_Model.xnb
 Content\Models\Map\coucou.xnb
 Content\Models\Map\Sponza\sponza.xnb
 Content\Models\DeferredRendering\cone.xnb
+Content\Models\Characters\Ana_ModelCollision.xnb
+Content\Models\Map\coucouCollision.xnb
+Content\Models\Map\Sponza\sponzaCollision.xnb
 Content\Shaders\DeferredRendering\ClearGBuffer.xnb
 Content\Shaders\DeferredRendering\CombineFinal.xnb
 Content\Shaders\Lights\DirectionalLight.xnb
@@ -100,3 +103,4 @@ Content\Models\Map\Sponza\sponza_floor_a_diff_0.xnb
 Content\Models\Map\Sponza\lion_0.xnb
 Content\Models\Map\Sponza\background_0.xnb
 Content\Models\Map\Sponza\sponza_details_diff_0.xnb
+GeometryHelper.dll

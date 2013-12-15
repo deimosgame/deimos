@@ -21,10 +21,8 @@ namespace Deimos
 		// Methods
 		public static void AddScene(string name)
 		{
-			ModelManager thisModelManager = new ModelManager();
-			ModelManagerList.Add(name, thisModelManager);
-			LightManager thisLightManager = new LightManager();
-			LightManagerList.Add(name, thisLightManager);
+			ModelManagerList.Add(name, new ModelManager());
+			LightManagerList.Add(name, new LightManager());
 
 			CurrentScene = name;
 		}
@@ -49,11 +47,6 @@ namespace Deimos
 				name = CurrentScene;
 			}
 			return LightManagerList[name];
-		}
-
-		public static void DrawCurrentScene(Camera camera, GraphicsDevice graphicsDevice, Effect effect)
-		{
-			
 		}
 	}
 }

@@ -65,11 +65,13 @@ Content\Models\Map\Sponza\vase_round_spec.xnb
 Content\Models\Characters\Ana_Model.xnb
 Content\Models\Map\coucou.xnb
 Content\Models\Map\Sponza\sponza.xnb
+Content\Models\DeferredRendering\cone.xnb
 Content\Shaders\DeferredRendering\ClearGBuffer.xnb
 Content\Shaders\DeferredRendering\CombineFinal.xnb
 Content\Shaders\Lights\DirectionalLight.xnb
 Content\Shaders\Lights\PointLight.xnb
 Content\Shaders\DeferredRendering\RenderGBuffer.xnb
+Content\Shaders\Lights\SpotLight.xnb
 Content\Models\DeferredRendering\sphere.xnb
 Content\Textures\DeferredRendering\null_normal_0.xnb
 Content\Textures\DeferredRendering\null_specular_0.xnb
@@ -98,5 +100,3 @@ Content\Models\Map\Sponza\sponza_floor_a_diff_0.xnb
 Content\Models\Map\Sponza\lion_0.xnb
 Content\Models\Map\Sponza\background_0.xnb
 Content\Models\Map\Sponza\sponza_details_diff_0.xnb
-Content\Models\DeferredRendering\cone.xnb
-Content\Shaders\Lights\SpotLight.xnb

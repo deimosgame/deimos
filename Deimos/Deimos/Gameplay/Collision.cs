@@ -13,11 +13,11 @@ namespace Deimos
 		// Attributes
 		static Vector3 PlayerDimention;
 
-		static List<BoundingBox> CollisionBoxes = new List<BoundingBox>();
-		static BoundingBox[] CollisionBoxesArray;
+		static List<BoundingBox> CollisionBoxes = 
+			new List<BoundingBox>();
 
-		static List<BoundingSphere> CollisionSpheres = new List<BoundingSphere>();
-		static BoundingSphere[] CollisionSpheresArray;
+		static List<BoundingSphere> CollisionSpheres = 
+			new List<BoundingSphere>();
 
 
 
@@ -40,37 +40,22 @@ namespace Deimos
 			boxPoints[0] = coords1 * scale;
 			boxPoints[1] = coords2 * scale;
 			CollisionBoxes.Add(BoundingBox.CreateFromPoints(boxPoints));
-
-			FinishedAddingCollisions();
 		}
 		// Adding a box directly helps for the ModelManager class, as we're
 		// Creating a box directly from its methods when loading a model
 		static public void AddCollisionBoxDirectly(BoundingBox box)
 		{
 			CollisionBoxes.Add(box);
-
-			FinishedAddingCollisions();
 		}
 
 		static public void AddCollisionSphere(Vector3 coords, float radius)
 		{
 			CollisionSpheres.Add(new BoundingSphere(coords, radius));
-
-			FinishedAddingCollisions();
 		}
 		// Same here
 		static public void AddCollisionSphereDirectly(BoundingSphere sphere)
 		{
 			CollisionSpheres.Add(sphere);
-
-			FinishedAddingCollisions();
-		}
-
-		// Convert all our lists to arrays
-		static public void FinishedAddingCollisions()
-		{
-			CollisionBoxesArray = CollisionBoxes.ToArray();
-			CollisionSpheresArray = CollisionSpheres.ToArray();
 		}
 
 
@@ -92,13 +77,13 @@ namespace Deimos
 			);
 
 			// Let's check for collision with our boxes
-			if (CollisionBoxesArray != null)
+			if (CollisionBoxes.Count > 0)
 			{
 				// Looping through all the boudingboxes included previously
-				for (int i = 0; i < CollisionBoxesArray.Length; i++) 
+					foreach(BoundingBox collisionBox in CollisionBoxes)
 				{
 					// If our player is inside the collision region
-					if (CollisionBoxesArray[i].Contains(cameraBox) !=
+					if (collisionBox.Contains(cameraBox) !=
 						ContainmentType.Disjoint)
 					{
 						return true;
@@ -107,15 +92,19 @@ namespace Deimos
 			}
 
 			// Same with spheres
-			if (CollisionSpheresArray != null)
+			if (CollisionSpheres.Count > 0)
 			{
-				for (int i = 0; i < CollisionSpheresArray.Length; i++) 
+				foreach(BoundingSphere collisionSphere in CollisionSpheres)
 				{
-					if (CollisionSpheresArray[i].Contains(cameraBox) != 
+					if (collisionSphere.Contains(cameraBox) != 
 						ContainmentType.Disjoint)
 						return true;
 				}
 			}
+
+			// And finally with our models collisions
+			Dictionary<string, LevelModel> levelModels = 
+				SceneManager.GetModelManager().GetLevelModels();
 
 			// If we're here, then no collision has been matched
 			return false;

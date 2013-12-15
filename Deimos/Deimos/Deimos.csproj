@@ -134,6 +134,7 @@
     <Compile Include="Display\Managers\Types\Lights\SpotLight.cs" />
     <Compile Include="Display\Managers\SceneManager.cs" />
     <Compile Include="Display\DeferredRendering\QuadRenderer.cs" />
+    <Compile Include="Display\Managers\Types\Models\LevelModel.cs" />
     <Compile Include="Gameplay\Collision.cs" />
     <Compile Include="Tools\DebugScreen.cs" />
     <Compile Include="MISC\Floor.cs" />
@@ -147,6 +148,10 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\test\CollidableModel\CollidableModel_Windows.csproj">
+      <Project>{16841fc6-10a9-460e-bde9-37f205a80676}</Project>
+      <Name>CollidableModel_Windows</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DeimosContent\DeimosContent.contentproj">
       <Name>DeimosContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>

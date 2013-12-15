@@ -13,8 +13,8 @@ namespace Deimos
 	class ModelManager
 	{
 		// Attributes
-		private List<Model> LoadedModels = new List<Model>();
-		private List<Matrix> LoadedModelsWorld = new List<Matrix>();
+		private Dictionary<string, LevelModel> LoadedLevelModels = 
+			new Dictionary<string, LevelModel>();
  
 
 		// Constructor
@@ -25,29 +25,29 @@ namespace Deimos
 
 
 		// Methods
-		public void LoadModel(ContentManager content, string model, 
-			Vector3 position, float scale)
+		public void LoadModel(string modelName, ContentManager content, string model, 
+			Vector3 position, float scale = 1f, bool collisionDetection = true)
 		{
 			// Adding the model to our List/array as well as its location
 			// & texture
 			Model thisModel = content.Load<Model>(model);
-			LoadedModels.Add(thisModel);
-			LoadedModelsWorld.Add(
-				Matrix.CreateScale(scale) * 
-				Matrix.CreateTranslation(position)
-			);
-
-			// Looping through its meshes to calculate its hitboxes and add 
-			// them to our collision class
-			foreach (ModelMesh mesh in thisModel.Meshes)
+			LevelModel thisLevelModel = new LevelModel();
+			thisLevelModel.Model = thisModel;
+			thisLevelModel.Position = position;
+			thisLevelModel.Scale = scale;
+			thisLevelModel.CollisionDetection = collisionDetection;
+			if (collisionDetection)
 			{
-				Collision.AddCollisionBoxDirectly(
-					BuildBoundingBox(
-						mesh,
-						Matrix.CreateScale(scale) * Matrix.CreateTranslation(position)
-					)
-				);
+				Model thisModelCollision = content.Load<Model>(model + "Collision");
+				thisLevelModel.CollisionModel = thisModelCollision;
 			}
+			LoadedLevelModels.Add(modelName, thisLevelModel);
+
+		}
+
+		public Dictionary<string, LevelModel> GetLevelModels()
+		{
+			return LoadedLevelModels;
 		}
 
 		private BoundingBox BuildBoundingBox(ModelMesh mesh, 
@@ -103,16 +103,18 @@ namespace Deimos
 			game.GraphicsDevice.BlendState = BlendState.Opaque;
 
 
-			if (LoadedModels.Count > 0)
+			if (LoadedLevelModels.Count > 0)
 			{
-				for (int i = 0; i < LoadedModels.Count; i++)
+				foreach (KeyValuePair<string, LevelModel> thisLevelModel in
+					LoadedLevelModels)
 				{
 					// Loading the model
-					Model model = LoadedModels[i];
-					// The model world
-					Matrix modelWorld = LoadedModelsWorld[i];
+					LevelModel levelModel = thisLevelModel.Value;
 
-					foreach (ModelMesh mesh in model.Meshes)
+					Matrix modelWorld = Matrix.CreateScale(levelModel.Scale) *
+								Matrix.CreateTranslation(levelModel.Position);
+
+					foreach (ModelMesh mesh in levelModel.Model.Meshes)
 					{
 						// Building the box of the mesh to know if it's visible
 						BoundingBox meshBox = BuildBoundingBox(

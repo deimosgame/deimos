@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeimosContent", "Deimos\Dei
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeferredPipeline", "DeferredPipeline\DeferredPipeline.csproj", "{0656B47B-F22B-435F-8879-56EA5C1D1F41}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollidableModel_Windows", "..\test\CollidableModel\CollidableModel_Windows.csproj", "{16841FC6-10A9-460E-BDE9-37F205A80676}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollidableModelProcessor", "..\test\CollidableModelProcessor\CollidableModelProcessor.csproj", "{AE62AD81-FE76-41E3-947D-E02A0F69BD1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -23,6 +27,14 @@ Global
 		{0656B47B-F22B-435F-8879-56EA5C1D1F41}.Debug|x86.Build.0 = Debug|x86
 		{0656B47B-F22B-435F-8879-56EA5C1D1F41}.Release|x86.ActiveCfg = Debug|x86
 		{0656B47B-F22B-435F-8879-56EA5C1D1F41}.Release|x86.Build.0 = Debug|x86
+		{16841FC6-10A9-460E-BDE9-37F205A80676}.Debug|x86.ActiveCfg = Debug|x86
+		{16841FC6-10A9-460E-BDE9-37F205A80676}.Debug|x86.Build.0 = Debug|x86
+		{16841FC6-10A9-460E-BDE9-37F205A80676}.Release|x86.ActiveCfg = Release|x86
+		{16841FC6-10A9-460E-BDE9-37F205A80676}.Release|x86.Build.0 = Release|x86
+		{AE62AD81-FE76-41E3-947D-E02A0F69BD1C}.Debug|x86.ActiveCfg = Debug|x86
+		{AE62AD81-FE76-41E3-947D-E02A0F69BD1C}.Debug|x86.Build.0 = Debug|x86
+		{AE62AD81-FE76-41E3-947D-E02A0F69BD1C}.Release|x86.ActiveCfg = Debug|x86
+		{AE62AD81-FE76-41E3-947D-E02A0F69BD1C}.Release|x86.Build.0 = Debug|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -23,7 +23,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DeferredPipeline">
-      <HintPath>..\..\DeferredPipeline\bin\x86\Debug\DeferredPipeline.dll</HintPath>
+      <HintPath>..\..\DeferredPipeline\obj\x86\Debug\DeferredPipeline.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.EffectImporter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL">
       <Private>False</Private>
@@ -452,6 +452,12 @@
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\test\CollidableModelProcessor\CollidableModelProcessor.csproj">
+      <Project>{ae62ad81-fe76-41e3-947d-e02a0f69bd1c}</Project>
+      <Name>CollidableModelProcessor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 

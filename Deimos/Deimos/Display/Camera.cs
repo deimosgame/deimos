@@ -30,9 +30,9 @@ namespace Deimos
 
 
 		// For testing purpose
-		private Keys ForwardKey = Keys.W;
+		private Keys ForwardKey = Keys.Z;
 		private Keys BackKey = Keys.S;
-		private Keys LeftKey = Keys.A;
+		private Keys LeftKey = Keys.Q;
 		private Keys RightKey = Keys.D;
 
 

@@ -137,10 +137,25 @@ namespace Deimos
 
 			SceneManager.AddScene("main");
 			SceneManager.GetModelManager().LoadModel(
+				"map",
 				Game.Content,
 				"Models/Map/Sponza/sponza", // Model
 				new Vector3(0, 0, 0), // Location
 				0.01f
+			);
+
+			SceneManager.AddScene("collision");
+			SceneManager.GetModelManager().LoadModel(
+				"map",
+				Game.Content,
+				"Models/Map/coucou",
+				new Vector3(0, 0, 0)
+			);
+			SceneManager.GetModelManager().LoadModel(
+				"bonnasse",
+				Game.Content,
+				"Models/Characters/Ana_Model",
+				new Vector3(0, 5, 0)
 			);
 			//SceneManager.GetModelManager().LoadModel(
 			//	Game.Content,

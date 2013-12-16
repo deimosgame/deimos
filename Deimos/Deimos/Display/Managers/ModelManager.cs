@@ -31,7 +31,11 @@ namespace Deimos
 		{
 			// Adding the model to our List/array as well as its location
 			// & texture
-			Model thisModel = content.Load<Model>(model);
+			CollidableModel.CollidableModel thisModelCollision =
+					content.Load<CollidableModel.CollidableModel>(
+						model
+					);
+			Model thisModel = thisModelCollision.model;
 			LevelModel thisLevelModel = new LevelModel();
 			thisLevelModel.Model = thisModel;
 			thisLevelModel.Position = position;
@@ -39,10 +43,6 @@ namespace Deimos
 			thisLevelModel.CollisionDetection = collisionDetection;
 			if (collisionDetection)
 			{
-				CollidableModel.CollidableModel thisModelCollision = 
-					content.Load<CollidableModel.CollidableModel>(
-						model + "Collision"
-					);
 				thisLevelModel.CollisionModel = thisModelCollision;
 			}
 			LoadedLevelModels.Add(modelName, thisLevelModel);

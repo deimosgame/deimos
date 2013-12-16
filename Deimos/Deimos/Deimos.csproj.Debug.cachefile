@@ -66,8 +66,6 @@ Content\Models\Characters\Ana_Model.xnb
 Content\Models\Map\coucou.xnb
 Content\Models\Map\Sponza\sponza.xnb
 Content\Models\DeferredRendering\cone.xnb
-Content\Models\Characters\Ana_ModelCollision.xnb
-Content\Models\Map\coucouCollision.xnb
 Content\Models\Map\Sponza\sponzaCollision.xnb
 Content\Shaders\DeferredRendering\ClearGBuffer.xnb
 Content\Shaders\DeferredRendering\CombineFinal.xnb
@@ -103,4 +101,16 @@ Content\Models\Map\Sponza\sponza_floor_a_diff_0.xnb
 Content\Models\Map\Sponza\lion_0.xnb
 Content\Models\Map\Sponza\background_0.xnb
 Content\Models\Map\Sponza\sponza_details_diff_0.xnb
-GeometryHelper.dll
+Content\Models\Textures\arena_textures\pipe_1_0.xnb
+Content\Models\Textures\arena_textures\pipe_2_0.xnb
+Content\Models\Textures\arena_textures\stone_tex_0.xnb
+Content\Models\Textures\arena_textures\grass_0.xnb
+Content\Models\Textures\arena_textures\floor_1_0.xnb
+Content\Models\Textures\arena_textures\floorbox_0.xnb
+Content\Models\Textures\arena_textures\roof_1_0.xnb
+Content\Models\Textures\arena_textures\pylon_1_0.xnb
+Content\Models\Textures\arena_textures\flatwayLarge_1_0.xnb
+Content\Models\Textures\arena_textures\flatwayLarge_2_0.xnb
+Content\Models\Textures\arena_textures\metal_ground_0.xnb
+Content\Models\Textures\arena_textures\basefloor_0.xnb
+Content\Models\Map\arena.xnb

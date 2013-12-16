@@ -120,7 +120,7 @@ namespace Deimos
 				{
 					continue;
 				}
-
+				
 				var collidingFaces = new LinkedList<Face>();
 				var collisionPoints = new LinkedList<Vector3>();
 				// This method is used with pointer, so it does change 
@@ -131,6 +131,11 @@ namespace Deimos
 					collisionPoints
 				);
 				if (collidingFaces.Count > 0)
+				{
+					Console.WriteLine("Collision with " + thisModel.Key);
+					return true;
+				}
+				if (collisionPoints.Count > 0)
 				{
 					return true;
 				}

@@ -78,6 +78,10 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CollidableModel_Windows, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libraries\DLLs\CollidableModel_Windows.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
@@ -144,17 +148,11 @@
     <Compile Include="DeimosGame.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CollidableModel_Windows.dll" />
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
-    <EmbeddedResource Include="GeometryHelper.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\test\CollidableModel\CollidableModel_Windows.csproj">
-      <Project>{16841fc6-10a9-460e-bde9-37f205a80676}</Project>
-      <Name>CollidableModel_Windows</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DeimosContent\DeimosContent.contentproj">
       <Name>DeimosContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>

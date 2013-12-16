@@ -22,6 +22,9 @@
     <RootNamespace>DeimosContent</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CollidableModelProcessor">
+      <HintPath>..\..\libraries\DLLs\CollidableModelProcessor.dll</HintPath>
+    </Reference>
     <Reference Include="DeferredPipeline">
       <HintPath>..\..\DeferredPipeline\obj\x86\Debug\DeferredPipeline.dll</HintPath>
     </Reference>
@@ -76,7 +79,8 @@
     <Compile Include="Models\Characters\Ana_Model.fbx">
       <Name>Ana_Model</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>DeferredRendererModel</Processor>
+      <Processor>CollidableModelProcessor</Processor>
+      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -97,7 +101,8 @@
     <Compile Include="Models\Map\coucou.fbx">
       <Name>coucou</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>DeferredRendererModel</Processor>
+      <Processor>CollidableModelProcessor</Processor>
+      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -221,7 +226,8 @@
     <Compile Include="Models\Map\Sponza\sponza.fbx">
       <Name>sponza</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>DeferredRendererModel</Processor>
+      <Processor>CollidableModelProcessor</Processor>
+      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_arch_ddn.tga">
       <Name>sponza_arch_ddn</Name>
@@ -454,30 +460,19 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\test\CollidableModelProcessor\CollidableModelProcessor.csproj">
-      <Project>{ae62ad81-fe76-41e3-947d-e02a0f69bd1c}</Project>
-      <Name>CollidableModelProcessor</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Models\Characters\Ana_ModelCollision.fbx">
-      <Name>Ana_ModelCollision</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>CollidableModelProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Models\Map\coucouCollision.fbx">
-      <Name>coucouCollision</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>CollidableModelProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Models\Map\Sponza\sponzaCollision.fbx">
       <Name>sponzaCollision</Name>
       <Importer>FbxImporter</Importer>
       <Processor>CollidableModelProcessor</Processor>
+      <ProcessorParameters_AddVisualizationData>True</ProcessorParameters_AddVisualizationData>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Map\arena.fbx">
+      <Name>arena</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CollidableModelProcessor</Processor>
+      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

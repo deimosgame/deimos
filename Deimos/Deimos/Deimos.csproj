@@ -80,7 +80,7 @@
   <ItemGroup>
     <Reference Include="CollidableModel_Windows, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\libraries\DLLs\CollidableModel_Windows.dll</HintPath>
+      <HintPath>.\CollidableModel_Windows.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <Private>False</Private>
@@ -148,9 +148,11 @@
     <Compile Include="DeimosGame.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CollidableModelProcessor.dll" />
     <Content Include="CollidableModel_Windows.dll" />
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
+    <Content Include="GeometryHelper.dll" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DeimosContent\DeimosContent.contentproj">

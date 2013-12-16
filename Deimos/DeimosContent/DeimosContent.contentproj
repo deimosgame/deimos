@@ -23,7 +23,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CollidableModelProcessor">
-      <HintPath>..\..\libraries\DLLs\CollidableModelProcessor.dll</HintPath>
+      <HintPath>..\Deimos\CollidableModelProcessor.dll</HintPath>
     </Reference>
     <Reference Include="DeferredPipeline">
       <HintPath>..\..\DeferredPipeline\obj\x86\Debug\DeferredPipeline.dll</HintPath>
@@ -470,6 +470,34 @@
   <ItemGroup>
     <Compile Include="Models\Map\arena.fbx">
       <Name>arena</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CollidableModelProcessor</Processor>
+      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Characters\Minimon\minimon.fbx">
+      <Name>minimon</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CollidableModelProcessor</Processor>
+      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Misc\Barrel\sources\oil-drum_col.jpg">
+      <Name>oil-drum_col</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Misc\Barrel\oildrum_nor.jpg">
+      <Name>oildrum_nor</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Misc\Barrel\oildrum.fbx">
+      <Name>oildrum</Name>
       <Importer>FbxImporter</Importer>
       <Processor>CollidableModelProcessor</Processor>
       <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>

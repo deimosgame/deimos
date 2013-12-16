@@ -56,7 +56,7 @@ namespace Deimos
 			base.Initialize();
 			Camera = new Camera(
 				Game, 
-				new Vector3(0f, 50f, 0f), 
+				new Vector3(0f, 10f, 20f), 
 				Vector3.Zero, 
 				10f
 			);
@@ -136,13 +136,13 @@ namespace Deimos
 			);
 
 			SceneManager.AddScene("main");
-			SceneManager.GetModelManager().LoadModel(
-				"mapCrysis",
-				Game.Content,
-				"Models/Map/Sponza/sponza", // Model
-				new Vector3(0, 0, 0), // Location
-				0.01f
-			);
+			//SceneManager.GetModelManager().LoadModel(
+			//	"mapCrysis",
+			//	Game.Content,
+			//	"Models/Map/Sponza/sponza", // Model
+			//	new Vector3(0, 0, 0), // Location
+			//	0.01f
+			//);
 
 			SceneManager.AddScene("collisionTest");
 			SceneManager.GetModelManager().LoadModel(
@@ -154,19 +154,19 @@ namespace Deimos
 			SceneManager.GetModelManager().LoadModel(
 				"bonnasse",
 				Game.Content,
-				"Models/Characters/Ana_Model",
+				"Models/Characters/Minimon/minimon",
 				new Vector3(0, 0, 0)
 			);
 
 			SceneManager.AddScene("arena");
-			SceneManager.GetModelManager().LoadModel(
-				"mapArena",
-				Game.Content,
-				"Models/Map/arena",
-				Vector3.Zero
-			);
+			//SceneManager.GetModelManager().LoadModel(
+			//	"mapArena",
+			//	Game.Content,
+			//	"Models/Map/arena",
+			//	Vector3.Zero
+			//);
 
-			SceneManager.SetCurrentScene("arena");
+			SceneManager.SetCurrentScene("collisionTest");
 
 			SceneManager.GetLightManager().AddPointLight(
 				"center",
@@ -184,11 +184,11 @@ namespace Deimos
 			//	30
 			//);
 
-			//SceneManager.GetLightManager().AddDirectionalLight(
-			//	"sunLight",
-			//	new Vector3(0, -1, 0),
-			//	Color.White
-			//);
+			SceneManager.GetLightManager().AddDirectionalLight(
+				"sunLight",
+				new Vector3(0, -1, 0),
+				Color.White
+			);
 
 
 			SpriteBatch = new SpriteBatch(GraphicsDevice);

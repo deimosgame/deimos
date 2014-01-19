@@ -23,12 +23,6 @@ namespace Deimos
 			set { scale = value; }
 		}
 
-		private Model model;
-		public Model Model
-		{
-			get { return model; }
-			set { model = value; }
-		}
 
 		private bool collisionDetection = false;
 		public bool CollisionDetection

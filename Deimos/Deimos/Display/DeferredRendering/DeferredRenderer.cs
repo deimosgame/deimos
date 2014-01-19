@@ -17,7 +17,8 @@ namespace Deimos
 	/// </summary>
 	public class DeferredRenderer : DrawableGameComponent
 	{
-		private Camera Camera;
+        DeimosGame MainGame;
+
 		private QuadRenderComponent QuadRenderer;
 
 		private RenderTarget2D ColorRT; //color and specular intensity
@@ -39,10 +40,10 @@ namespace Deimos
 
 		private Vector2 HalfPixel;
 
-		public DeferredRenderer(Game game)
+		public DeferredRenderer(DeimosGame game)
 			: base(game)
 		{
-			//
+            MainGame = game;
 		}
 
 		/// <summary>
@@ -51,17 +52,9 @@ namespace Deimos
 		/// </summary>
 		public override void Initialize()
 		{
-			// TODO: Add your initialization code here
-
 			base.Initialize();
-			Camera = new Camera(
-				Game, 
-				new Vector3(0f, 10f, 20f), 
-				Vector3.Zero, 
-				10f
-			);
+			
 			QuadRenderer = new QuadRenderComponent(Game);
-			Game.Components.Add(Camera);
 			Game.Components.Add(QuadRenderer);
 		}
 
@@ -135,43 +128,38 @@ namespace Deimos
 				@"Models\DeferredRendering\cone"
 			);
 
-			SceneManager.AddScene("main");
-			//SceneManager.GetModelManager().LoadModel(
-			//	"mapCrysis",
-			//	Game.Content,
-			//	"Models/Map/Sponza/sponza", // Model
-			//	new Vector3(0, 0, 0), // Location
-			//	0.01f
-			//);
+            MainGame.SceneManager.AddScene("main");
+            MainGame.SceneManager.GetModelManager().LoadModel(
+				"mapCrysis",
+				"Models/Map/Sponza/sponza", // Model
+				new Vector3(0, 0, 0) // Location
+			);
 
-			SceneManager.AddScene("collisionTest");
-			SceneManager.GetModelManager().LoadModel(
+            MainGame.SceneManager.AddScene("collisionTest");
+            MainGame.SceneManager.GetModelManager().LoadModel(
 				"map",
-				Game.Content,
 				"Models/Map/coucou",
 				new Vector3(0, 0, 0)
 			);
-			SceneManager.GetModelManager().LoadModel(
+            MainGame.SceneManager.GetModelManager().LoadModel(
 				"bonnasse",
-				Game.Content,
 				"Models/Characters/Minimon/minimon",
 				new Vector3(0, 0, 0)
 			);
 
-			SceneManager.AddScene("arena");
-			//SceneManager.GetModelManager().LoadModel(
-			//	"mapArena",
-			//	Game.Content,
-			//	"Models/Map/arena",
-			//	Vector3.Zero
-			//);
+            MainGame.SceneManager.AddScene("arena");
+            MainGame.SceneManager.GetModelManager().LoadModel(
+				"mapArena",
+				"Models/Map/arena",
+				Vector3.Zero
+			);
 
-			SceneManager.SetCurrentScene("collisionTest");
+            MainGame.SceneManager.SetCurrentScene("collisionTest");
 
-			SceneManager.GetLightManager().AddPointLight(
+            MainGame.SceneManager.GetLightManager().AddPointLight(
 				"center",
-				new Vector3(0, 50, 0),
-				300,
+				new Vector3(0, 10, 0),
+				30,
 				2,
 				Color.White
 			);
@@ -184,7 +172,7 @@ namespace Deimos
 			//	30
 			//);
 
-			SceneManager.GetLightManager().AddDirectionalLight(
+            MainGame.SceneManager.GetLightManager().AddDirectionalLight(
 				"sunLight",
 				new Vector3(0, -1, 0),
 				Color.White
@@ -225,10 +213,10 @@ namespace Deimos
 			);
 
 			DirectionalLightEffect.Parameters["cameraPosition"].SetValue(
-				Camera.Position
+                MainGame.Camera.Position
 			);
 			DirectionalLightEffect.Parameters["InvertViewProjection"].SetValue(
-				Matrix.Invert(Camera.View * Camera.Projection)
+                Matrix.Invert(MainGame.Camera.View * MainGame.Camera.Projection)
 			);
 
 			DirectionalLightEffect.Parameters["halfPixel"].SetValue(HalfPixel);
@@ -251,9 +239,9 @@ namespace Deimos
 			Matrix sphereWorldMatrix = Matrix.CreateScale(lightRadius) *
 				Matrix.CreateTranslation(lightPosition);
 			PointLightEffect.Parameters["World"].SetValue(sphereWorldMatrix);
-			PointLightEffect.Parameters["View"].SetValue(Camera.View);
+            PointLightEffect.Parameters["View"].SetValue(MainGame.Camera.View);
 			PointLightEffect.Parameters["Projection"]
-				.SetValue(Camera.Projection);
+                .SetValue(MainGame.Camera.Projection);
 			// Light position
 			PointLightEffect.Parameters["lightPosition"]
 				.SetValue(lightPosition);
@@ -266,15 +254,15 @@ namespace Deimos
 
 			// Parameters for specular computations
 			PointLightEffect.Parameters["cameraPosition"]
-				.SetValue(Camera.Position);
+                .SetValue(MainGame.Camera.Position);
 			PointLightEffect.Parameters["InvertViewProjection"].SetValue(
-				Matrix.Invert(Camera.View * Camera.Projection)
+                Matrix.Invert(MainGame.Camera.View * MainGame.Camera.Projection)
 			);
 			// Size of a halfpixel, for texture coordinates alignment
 			PointLightEffect.Parameters["halfPixel"].SetValue(HalfPixel);
 			// Calculate the distance between the camera and light center
 			float cameraToCenter = Vector3.Distance(
-				Camera.Position,
+                MainGame.Camera.Position,
 				lightPosition
 			);
 			// If we are inside the light volume, draw the sphere's inside face
@@ -324,9 +312,9 @@ namespace Deimos
 			Matrix coneWorldMatrix = Matrix.CreateScale(lightRadius) *
 				Matrix.CreateTranslation(lightPosition);
 			SpotLightEffect.Parameters["World"].SetValue(coneWorldMatrix);
-			SpotLightEffect.Parameters["View"].SetValue(Camera.View);
+            SpotLightEffect.Parameters["View"].SetValue(MainGame.Camera.View);
 			SpotLightEffect.Parameters["Projection"]
-				.SetValue(Camera.Projection);
+                .SetValue(MainGame.Camera.Projection);
 			// Light position
 			SpotLightEffect.Parameters["lightPosition"]
 				.SetValue(lightPosition);
@@ -339,15 +327,15 @@ namespace Deimos
 
 			// Parameters for specular computations
 			SpotLightEffect.Parameters["cameraPosition"]
-				.SetValue(Camera.Position);
+                .SetValue(MainGame.Camera.Position);
 			SpotLightEffect.Parameters["InvertViewProjection"].SetValue(
-				Matrix.Invert(Camera.View * Camera.Projection)
+                Matrix.Invert(MainGame.Camera.View * MainGame.Camera.Projection)
 			);
 			// Size of a halfpixel, for texture coordinates alignment
 			SpotLightEffect.Parameters["halfPixel"].SetValue(HalfPixel);
 			// Calculate the distance between the camera and light center
 			float cameraToCenter = Vector3.Distance(
-				Camera.Position,
+                MainGame.Camera.Position,
 				lightPosition
 			);
 			// If we are inside the light volume, draw the sphere's inside face
@@ -387,9 +375,12 @@ namespace Deimos
 		{
 			SetGBuffer();
 			ClearGBuffer();
-			SceneManager.GetModelManager().DrawModels(Game, Camera);
+            MainGame.SceneManager.GetModelManager().DrawModels(Game, MainGame.Camera);
 			ResolveGBuffer();
 			DrawLights(gameTime);
+
+            Texture2D dummyTexture = new Texture2D(GraphicsDevice, 1, 1);
+            dummyTexture.SetData(new Color[] { Color.White });
 
 			base.Draw(gameTime);
 		}
@@ -401,8 +392,8 @@ namespace Deimos
 			GraphicsDevice.BlendState = BlendState.AlphaBlend;
 			GraphicsDevice.DepthStencilState = DepthStencilState.None;
 
-			foreach (KeyValuePair<string, DirectionalLight> thisLight in 
-				SceneManager.GetLightManager().GetDirectionalLights())
+			foreach (KeyValuePair<string, DirectionalLight> thisLight in
+                MainGame.SceneManager.GetLightManager().GetDirectionalLights())
 			{
 				DrawDirectionalLight(
 					thisLight.Value.Direction, 
@@ -410,7 +401,7 @@ namespace Deimos
 				);
 			}
 			foreach (KeyValuePair<string, PointLight> thisLight in
-				SceneManager.GetLightManager().GetPointLights())
+                MainGame.SceneManager.GetLightManager().GetPointLights())
 			{
 				DrawPointLight(
 					thisLight.Value.Position,
@@ -419,8 +410,8 @@ namespace Deimos
 					thisLight.Value.Intensity
 				);
 			}
-			foreach (KeyValuePair<string, SpotLight> thisLight in 
-				SceneManager.GetLightManager().GetSpotLights())
+			foreach (KeyValuePair<string, SpotLight> thisLight in
+                MainGame.SceneManager.GetLightManager().GetSpotLights())
 			{
 				DrawSpotLight(
 					thisLight.Value.Position,
@@ -444,8 +435,6 @@ namespace Deimos
 
 			FinalCombineEffect.Techniques[0].Passes[0].Apply();
 			QuadRenderer.Render(Vector2.One * -1, Vector2.One);
-
-			//DebugScreen.Draw(gameTime);
 		}
 
 		/// <summary>
@@ -454,8 +443,6 @@ namespace Deimos
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		public override void Update(GameTime gameTime)
 		{
-			//
-
 			base.Update(gameTime);
 		}
 	}

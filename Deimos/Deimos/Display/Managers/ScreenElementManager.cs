@@ -1,0 +1,110 @@
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Deimos
+{
+    class ScreenElementManager
+    {
+        private Dictionary<string, ScreenRectangle> ElementsRectangle =
+            new Dictionary<string, ScreenRectangle>();
+        private Dictionary<string, ScreenImage> ElementsImage =
+            new Dictionary<string, ScreenImage>();
+        private Dictionary<string, ScreenText> ElementsText =
+            new Dictionary<string, ScreenText>();
+
+        private Texture2D DummyTexture;
+
+        // Constructor
+        public ScreenElementManager(GraphicsDevice graphicsDevice)
+        {
+            DummyTexture = new Texture2D(graphicsDevice, 1, 1);
+            DummyTexture.SetData(new Color[] { Color.White });
+        }
+
+        // Methods
+        public ScreenRectangle AddRectangle(string name, int posX, int posY,
+            int zIndex, int width, int height, Color color)
+        {
+            ScreenRectangle element =
+                new ScreenRectangle(posX, posY, zIndex, width, height, color);
+            ElementsRectangle.Add(
+                name,
+                element
+            );
+            return element;
+        }
+
+        public ScreenImage AddImage(string name, int posX, int posY,
+            int zIndex, Texture2D image)
+        {
+            ScreenImage element =
+                new ScreenImage(posX, posY, zIndex, image);
+            ElementsImage.Add(
+                name,
+                element
+            );
+            return element;
+        }
+
+        public ScreenText AddText(string name, int posX, int posY,
+            int zIndex, SpriteFont font, string text)
+        {
+            ScreenText element =
+                new ScreenText(posX, posY, zIndex, font, text);
+            ElementsText.Add(
+                name,
+                element
+            );
+            return element;
+        }
+
+        public ScreenElement Get(string name)
+        {
+            if (ElementsRectangle.ContainsKey(name))
+            {
+                return ElementsRectangle[name];
+            }
+            else if (ElementsImage.ContainsKey(name))
+            {
+                return ElementsImage[name];
+            }
+            else if (ElementsText.ContainsKey(name))
+            {
+                return ElementsText[name];
+            }
+            throw new Exception("This key has not been found.");
+        }
+
+
+        public void DrawElements(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Begin(
+                SpriteSortMode.Immediate,
+                BlendState.Opaque,
+                SamplerState.PointWrap,
+                DepthStencilState.DepthRead,
+                RasterizerState.CullNone
+            );
+
+            if (ElementsRectangle.Count > 0)
+            {
+                
+                foreach (KeyValuePair<string, ScreenRectangle> elementKeyVal in
+                    ElementsRectangle)
+                {
+                    ScreenRectangle element = elementKeyVal.Value;
+                    spriteBatch.Draw(
+                        DummyTexture, 
+                        new Rectangle(element.PosX, element.PosY, element.Height, element.Width), element.Color
+                    );
+                }
+            }
+
+            spriteBatch.End();
+        }
+    }
+}

@@ -131,15 +131,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Display\Camera.cs" />
-    <Compile Include="Display\DeferredRendering\DefferedRenderer.cs" />
+    <Compile Include="Display\DeferredRendering\DeferredRenderer.cs" />
     <Compile Include="Display\Managers\LightManager.cs" />
+    <Compile Include="Display\Managers\ScreenElementManager.cs" />
     <Compile Include="Display\Managers\Types\Lights\DirectionalLight.cs" />
     <Compile Include="Display\Managers\Types\Lights\PointLight.cs" />
     <Compile Include="Display\Managers\Types\Lights\SpotLight.cs" />
     <Compile Include="Display\Managers\SceneManager.cs" />
     <Compile Include="Display\DeferredRendering\QuadRenderer.cs" />
     <Compile Include="Display\Managers\Types\Models\LevelModel.cs" />
+    <Compile Include="Display\Managers\Types\ScreenElement\ScreenElement.cs" />
+    <Compile Include="Display\Managers\Types\ScreenElement\ScreenImage.cs" />
+    <Compile Include="Display\Managers\Types\ScreenElement\ScreenRectangle.cs" />
+    <Compile Include="Display\Managers\Types\ScreenElement\ScreenText.cs" />
     <Compile Include="Gameplay\Collision.cs" />
+    <Compile Include="Gameplay\Scenes\SceneFloorCollisionTest.cs" />
+    <Compile Include="Gameplay\Scenes\SceneTemplate.cs" />
     <Compile Include="Tools\DebugScreen.cs" />
     <Compile Include="MISC\Floor.cs" />
     <Compile Include="Display\Managers\ModelManager.cs" />
@@ -185,6 +192,7 @@
   <ItemGroup>
     <None Include="Deimos_TemporaryKey.pfx" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

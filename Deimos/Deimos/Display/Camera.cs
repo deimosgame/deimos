@@ -13,9 +13,11 @@ namespace Deimos
 	public class Camera : GameComponent
 	{
 		// Atributes
+        private DeimosGame Game;
+
 		public Vector3 CameraPosition;
 		private Vector3 CameraRotation;
-		private float   CameraSpeed;
+		private float  CameraSpeed;
 		public Vector3 CameraLookAt;
 		public float AspectRatio;
 
@@ -28,6 +30,8 @@ namespace Deimos
 		private float MouseSpeed = 0.1f;
 		private Boolean MouseInverted = false;
 
+        private MainPlayerCollision Collision;
+
 
 		// For testing purpose
 		private Keys ForwardKey = Keys.Z;
@@ -39,11 +43,7 @@ namespace Deimos
 		// Properties
 		public Vector3 Position
 		{
-			get 
-			{ 
-				return CameraPosition; 
-			}
-
+			get { return CameraPosition; }
 			set
 			{
 				CameraPosition = value;
@@ -53,11 +53,7 @@ namespace Deimos
 
 		public Vector3 Rotation
 		{
-			get
-			{
-				return CameraRotation;
-			}
-
+			get { return CameraRotation; }
 			set
 			{
 				CameraRotation = value;
@@ -99,19 +95,19 @@ namespace Deimos
 
 		public BoundingFrustum Frustum
 		{
-			get
-			{
-				return new BoundingFrustum(View * Projection);
-			}
+			get { return new BoundingFrustum(View * Projection); }
 		}
 
 		// Constructor
-		public Camera(Game game, Vector3 position, Vector3 rotation, float speed)
+        public Camera(DeimosGame game, Vector3 position,
+            Vector3 rotation, float speed)
 			: base(game)
 		{
+            Game = game;
+
 			CameraSpeed = speed;
 
-			Collision.SetPlayerDimensions(1.2f, 2f, 2f);
+			Collision = new MainPlayerCollision(1.2f, 2f, 2f, game);
 
 			//Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(20, -1, 20)); // Adding the floor
 			//Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(-1, 20, 20)); // Adding the collision at the right
@@ -119,7 +115,7 @@ namespace Deimos
 			//Collision.AddCollisionBox(new Vector3(0, 0, 0), new Vector3(20, 20, -1)); // behind
 			//Collision.AddCollisionBox(new Vector3(0, 0, 20), new Vector3(20, 20, 21)); // In the front
 
-			AspectRatio = game.GraphicsDevice.Viewport.AspectRatio;
+            AspectRatio = 1;
 
 			// Setup projection matrix
 			Projection = Matrix.CreatePerspectiveFieldOfView(
@@ -136,6 +132,18 @@ namespace Deimos
 
 			PreviousMouseState = Mouse.GetState();
 		}
+
+        public override void Initialize()
+        {
+            AspectRatio = Game.GraphicsDevice.Viewport.AspectRatio;
+
+            Projection = Matrix.CreatePerspectiveFieldOfView(
+                MathHelper.PiOver4,
+                AspectRatio,
+                1.0f,
+                1000.0f // Draw distance
+            );
+        }
 
 
 
@@ -183,11 +191,11 @@ namespace Deimos
 				// able to have a smooth collision: being able to "slide" on 
 				// the wall while colliding
 				movement = new Vector3(
-					Collision.CheckCollision(CameraPosition + 
+                    Collision.CheckCollision(CameraPosition + 
 								new Vector3(movement.X, 0, 0)) ? 0 : movement.X,
-					Collision.CheckCollision(CameraPosition + 
+                    Collision.CheckCollision(CameraPosition + 
 								new Vector3(0, movement.Y, 0)) ? 0 : movement.Y,
-					Collision.CheckCollision(CameraPosition + 
+                    Collision.CheckCollision(CameraPosition + 
 								new Vector3(0, 0, movement.Z)) ? 0 : movement.Z
 				);
 				return CameraPosition + movement;
@@ -209,6 +217,11 @@ namespace Deimos
 		// Update method, overriding the original one
 		public override void Update(GameTime gameTime)
 		{
+            if (Game.CurrentGameState != DeimosGame.GameStates.Playing)
+            {
+                return;
+            }
+
 			float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
 			// Getting Mouse state

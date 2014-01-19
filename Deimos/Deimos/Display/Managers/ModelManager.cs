@@ -15,38 +15,34 @@ namespace Deimos
 		// Attributes
 		private Dictionary<string, LevelModel> LoadedLevelModels = 
 			new Dictionary<string, LevelModel>();
+        ContentManager ContentManager;
  
 
 		// Constructor
-		public ModelManager()
+        public ModelManager(ContentManager contentManager)
 		{
-			//
+            ContentManager = contentManager;
 		}
 
 
 		// Methods
-		public void LoadModel(string modelName, ContentManager content, 
+		public void LoadModel(string modelName, 
 			string model, Vector3 position, float scale = 1f, 
 			bool collisionDetection = true)
 		{
 			// Adding the model to our List/array as well as its location
 			// & texture
 			CollidableModel.CollidableModel thisModelCollision =
-					content.Load<CollidableModel.CollidableModel>(
+                    ContentManager.Load<CollidableModel.CollidableModel>(
 						model
 					);
 			Model thisModel = thisModelCollision.model;
 			LevelModel thisLevelModel = new LevelModel();
-			thisLevelModel.Model = thisModel;
 			thisLevelModel.Position = position;
 			thisLevelModel.Scale = scale;
 			thisLevelModel.CollisionDetection = collisionDetection;
-			if (collisionDetection)
-			{
-				thisLevelModel.CollisionModel = thisModelCollision;
-			}
+			thisLevelModel.CollisionModel = thisModelCollision;
 			LoadedLevelModels.Add(modelName, thisLevelModel);
-
 		}
 
 		public Dictionary<string, LevelModel> GetLevelModels()
@@ -118,29 +114,24 @@ namespace Deimos
 					Matrix modelWorld = Matrix.CreateScale(levelModel.Scale) *
 								Matrix.CreateTranslation(levelModel.Position);
 
-					foreach (ModelMesh mesh in levelModel.Model.Meshes)
-					{
-						// Building the box of the mesh to know if it's visible
-						BoundingBox meshBox = BuildBoundingBox(
-							mesh,
-							modelWorld
-						);
+                    Matrix[] transforms = new Matrix[levelModel.CollisionModel.model.Bones.Count];
+                    levelModel.CollisionModel.model.CopyAbsoluteBoneTransformsTo(transforms);
 
-						// Only showing the model if the mesh is visible
-						if (camera.Frustum.Contains(meshBox)
-							!= ContainmentType.Disjoint)
+					foreach (ModelMesh mesh in levelModel.CollisionModel.model.Meshes)
+					{
+                        Matrix meshPosition = transforms[mesh.ParentBone.Index];
+                        Matrix meshWorld = meshPosition * modelWorld;
+
+						foreach (Effect effect in mesh.Effects)
 						{
-							foreach (Effect effect in mesh.Effects)
-							{
-								effect.Parameters["World"]
-									.SetValue(modelWorld);
-								effect.Parameters["View"]
-									.SetValue(camera.View);
-								effect.Parameters["Projection"]
-									.SetValue(camera.Projection);
-							}
-							mesh.Draw();
+							effect.Parameters["World"]
+                                .SetValue(meshWorld);
+							effect.Parameters["View"]
+								.SetValue(camera.View);
+							effect.Parameters["Projection"]
+								.SetValue(camera.Projection);
 						}
+						mesh.Draw();
 					}
 				}
 			}

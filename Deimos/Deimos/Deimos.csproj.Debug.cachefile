@@ -62,12 +62,15 @@ Content\Models\Map\Sponza\vase_plant_spec.xnb
 Content\Models\Map\Sponza\vase_round.xnb
 Content\Models\Map\Sponza\vase_round_ddn.xnb
 Content\Models\Map\Sponza\vase_round_spec.xnb
+Content\Models\Misc\Barrel\sources\oil-drum_col.xnb
+Content\Models\Misc\Barrel\oildrum_nor.xnb
 Content\Models\Characters\Ana_Model.xnb
 Content\Models\Map\coucou.xnb
 Content\Models\Map\Sponza\sponza.xnb
 Content\Models\DeferredRendering\cone.xnb
 Content\Models\Map\Sponza\sponzaCollision.xnb
-Content\Models\Map\arena.xnb
+Content\Models\Characters\Minimon\minimon.xnb
+Content\Models\Misc\Barrel\oildrum.xnb
 Content\Shaders\DeferredRendering\ClearGBuffer.xnb
 Content\Shaders\DeferredRendering\CombineFinal.xnb
 Content\Shaders\Lights\DirectionalLight.xnb
@@ -114,8 +117,5 @@ Content\Models\Textures\arena_textures\flatwayLarge_1_0.xnb
 Content\Models\Textures\arena_textures\flatwayLarge_2_0.xnb
 Content\Models\Textures\arena_textures\metal_ground_0.xnb
 Content\Models\Textures\arena_textures\basefloor_0.xnb
-Content\Models\Characters\Minimon\minimon.xnb
-Content\Models\Misc\Barrel\oildrum_nor.xnb
-Content\Models\Misc\Barrel\oildrum.xnb
-Content\Models\Misc\Barrel\sources\oil-drum_col.xnb
 Content\Models\Misc\Barrel\sources\oil-drum_col_0.xnb
+Content\Models\Map\arena.xnb

@@ -9,32 +9,36 @@ using CollidableModel;
 
 namespace Deimos
 {
-	static class Collision
+	class MainPlayerCollision
 	{
 		// Attributes
-		static Vector3 PlayerDimention;
+        private DeimosGame MainGame;
 
-		static List<BoundingBox> CollisionBoxes = 
+        private Vector3 PlayerDimention;
+
+		List<BoundingBox> CollisionBoxes = 
 			new List<BoundingBox>();
 
-		static List<BoundingSphere> CollisionSpheres = 
+		List<BoundingSphere> CollisionSpheres = 
 			new List<BoundingSphere>();
 
 
-
-
-		// Methods
-		static public void SetPlayerDimensions(float height, float width, float depth)
+		// Constructor
+		public MainPlayerCollision(float playerHeight, float playerWidth, float playerDepth,
+            DeimosGame game)
 		{
 			// These dimentions will be used to check for the camera collision:
 			// a player/human isn't a cube but a box; taller than larger
-			PlayerDimention.X = width;
-			PlayerDimention.Y = height;
-			PlayerDimention.Z = depth;
+            PlayerDimention.X = playerWidth;
+            PlayerDimention.Y = playerHeight;
+            PlayerDimention.Z = playerDepth;
+
+            MainGame = game;
 		}
 
 
-		static public void AddCollisionBox(Vector3 coords1, Vector3 coords2, 
+        // Methods
+		public void AddCollisionBox(Vector3 coords1, Vector3 coords2, 
 			float scale)
 		{
 			Vector3[] boxPoints = new Vector3[2];
@@ -44,24 +48,29 @@ namespace Deimos
 		}
 		// Adding a box directly helps for the ModelManager class, as we're
 		// Creating a box directly from its methods when loading a model
-		static public void AddCollisionBoxDirectly(BoundingBox box)
+		public void AddCollisionBoxDirectly(BoundingBox box)
 		{
 			CollisionBoxes.Add(box);
 		}
 
-		static public void AddCollisionSphere(Vector3 coords, float radius)
+		public void AddCollisionSphere(Vector3 coords, float radius)
 		{
 			CollisionSpheres.Add(new BoundingSphere(coords, radius));
 		}
 		// Same here
-		static public void AddCollisionSphereDirectly(BoundingSphere sphere)
+		public void AddCollisionSphereDirectly(BoundingSphere sphere)
 		{
 			CollisionSpheres.Add(sphere);
 		}
 
 
-		static public Boolean CheckCollision(Vector3 cameraPosition)
+		public Boolean CheckCollision(Vector3 cameraPosition)
 		{
+            if (MainGame.CurrentPlayingState == DeimosGame.PlayingStates.NoClip)
+            {
+                return false;
+            }
+
 			// Creating the sphere of the camera for later collisions checks
 			BoundingBox cameraBox = new BoundingBox(
 				new Vector3(
@@ -112,8 +121,8 @@ namespace Deimos
 			}
 
 			// And finally with our models collisions
-			Dictionary<string, LevelModel> levelModels = 
-				SceneManager.GetModelManager().GetLevelModels();
+			Dictionary<string, LevelModel> levelModels =
+                MainGame.SceneManager.GetModelManager().GetLevelModels();
 			foreach (KeyValuePair<string, LevelModel> thisModel in levelModels)
 			{
 				if (!thisModel.Value.CollisionDetection)

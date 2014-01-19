@@ -8,31 +8,39 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Deimos
 {
-	static class SceneManager
+	class SceneManager
 	{
 		// Attributes
-		static Dictionary<string, ModelManager> ModelManagerList =
+		Dictionary<string, ModelManager> ModelManagerList =
 			new Dictionary<string, ModelManager>();
-		static Dictionary<string, LightManager> LightManagerList =
+		Dictionary<string, LightManager> LightManagerList =
 			new Dictionary<string, LightManager>();
-		static string CurrentScene;
+		string CurrentScene;
+        Game Game;
+
+
+        // Constructor
+        public SceneManager(Game game)
+        {
+            Game = game;
+        }
 
 
 		// Methods
-		public static void AddScene(string name)
+		public void AddScene(string name)
 		{
-			ModelManagerList.Add(name, new ModelManager());
+			ModelManagerList.Add(name, new ModelManager(Game.Content));
 			LightManagerList.Add(name, new LightManager());
 
 			CurrentScene = name;
 		}
 
-		public static void SetCurrentScene(string name)
+		public void SetCurrentScene(string name)
 		{
 			CurrentScene = name;
 		}
 
-		public static ModelManager GetModelManager(string name = null)
+		public ModelManager GetModelManager(string name = null)
 		{
 			if (name == null)
 			{
@@ -40,7 +48,7 @@ namespace Deimos
 			}
 			return ModelManagerList[name];
 		}
-		public static LightManager GetLightManager(string name = null)
+		public LightManager GetLightManager(string name = null)
 		{
 			if (name == null)
 			{

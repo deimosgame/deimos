@@ -145,7 +145,8 @@
     <Compile Include="Display\Managers\Types\ScreenElement\ScreenRectangle.cs" />
     <Compile Include="Display\Managers\Types\ScreenElement\ScreenText.cs" />
     <Compile Include="Gameplay\Collision.cs" />
-    <Compile Include="Gameplay\Scenes\SceneFloorCollisionTest.cs" />
+    <Compile Include="Gameplay\Scenes\SceneSkatePark.cs" />
+    <Compile Include="Gameplay\Scenes\SceneSponza.cs" />
     <Compile Include="Gameplay\Scenes\SceneTemplate.cs" />
     <Compile Include="Tools\DebugScreen.cs" />
     <Compile Include="MISC\Floor.cs" />

@@ -1,146 +1,267 @@
-float4x4 World;
-float4x4 View;
-float4x4 Projection;
-
-//color of the light 
-float3 Color; 
-
-//position of the camera, for specular light
-float3 cameraPosition; 
-
-//this is used to compute the world-position
-float4x4 InvertViewProjection; 
-
-//this is the position of the light
-float3 lightPosition;
-
-//how far does this light reach
-float lightRadius;
-
-//control the brightness of the light
-float lightIntensity = 1.0f;
-
-// diffuse color, and specularIntensity in the alpha channel
-texture colorMap; 
-// normals, and specularPower in the alpha channel
-texture normalMap;
-//depth
-texture depthMap;
-
-sampler colorSampler = sampler_state
-{
-    Texture = (colorMap);
-    AddressU = CLAMP;
-    AddressV = CLAMP;
-    MagFilter = LINEAR;
-    MinFilter = LINEAR;
-    Mipfilter = LINEAR;
-};
-sampler depthSampler = sampler_state
-{
-    Texture = (depthMap);
-    AddressU = CLAMP;
-    AddressV = CLAMP;
-    MagFilter = POINT;
-    MinFilter = POINT;
-    Mipfilter = POINT;
-};
-sampler normalSampler = sampler_state
-{
-    Texture = (normalMap);
-    AddressU = CLAMP;
-    AddressV = CLAMP;
-    MagFilter = POINT;
-    MinFilter = POINT;
-    Mipfilter = POINT;
-};
-
-
-struct VertexShaderInput
-{
-    float3 Position : POSITION0;
-};
-
-struct VertexShaderOutput
-{
-    float4 Position : POSITION0;
-    float4 ScreenPosition : TEXCOORD0;
-};
-
-VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
-{
-    VertexShaderOutput output;
-    //processing geometry coordinates
-    float4 worldPosition = mul(float4(input.Position,1), World);
-    float4 viewPosition = mul(worldPosition, View);
-    output.Position = mul(viewPosition, Projection);
-    output.ScreenPosition = output.Position;
-    return output;
-}
-
-float2 halfPixel;
-float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
-{
-    //obtain screen position
-    input.ScreenPosition.xy /= input.ScreenPosition.w;
-
-    //obtain textureCoordinates corresponding to the current pixel
-    //the screen coordinates are in [-1,1]*[1,-1]
-    //the texture coordinates need to be in [0,1]*[0,1]
-    float2 texCoord = 0.5f * (float2(input.ScreenPosition.x,-input.ScreenPosition.y) + 1);
-    //allign texels to pixels
-    texCoord -=halfPixel;
-
-    //get normal data from the normalMap
-    float4 normalData = tex2D(normalSampler,texCoord);
-    //tranform normal back into [-1,1] range
-    float3 normal = 2.0f * normalData.xyz - 1.0f;
-    //get specular power
-    float specularPower = normalData.a * 255;
-    //get specular intensity from the colorMap
-    float specularIntensity = tex2D(colorSampler, texCoord).a;
-
-    //read depth
-    float depthVal = tex2D(depthSampler,texCoord).r;
-
-    //compute screen-space position
-    float4 position;
-    position.xy = input.ScreenPosition.xy;
-    position.z = depthVal;
-    position.w = 1.0f;
-    //transform to world space
-    position = mul(position, InvertViewProjection);
-    position /= position.w;
-
-    //surface-to-light vector
-    float3 lightVector = lightPosition - position;
-
-    //compute attenuation based on distance - linear attenuation
-    float attenuation = saturate(1.0f - length(lightVector)/lightRadius); 
-
-    //normalize light vector
-    lightVector = normalize(lightVector); 
-
-    //compute diffuse light
-    float NdL = max(0,dot(normal,lightVector));
-    float3 diffuseLight = NdL * Color.rgb;
-
-    //reflection vector
-    float3 reflectionVector = normalize(reflect(-lightVector, normal));
-    //camera-to-surface vector
-    float3 directionToCamera = normalize(cameraPosition - position);
-    //compute specular light
-    float specularLight = specularIntensity * pow( saturate(dot(reflectionVector, directionToCamera)), specularPower);
-
-    //take into account attenuation and lightIntensity.
-    return attenuation * lightIntensity * float4(diffuseLight.rgb,specularLight);
-}
-
-technique Technique1
-{
-    pass Pass1
-    {
-        VertexShader = compile vs_2_0 VertexShaderFunction();
-        PixelShader = compile ps_2_0 PixelShaderFunction();
-    }
-}
+//World 
+float4x4 World; 
+ 
+//View 
+float4x4 View;  
+//Inverse View 
+float4x4 inverseView; 
+ 
+//Projection 
+float4x4 Projection; 
+ 
+//Inverse View Projection 
+float4x4 InverseViewProjection; 
+ 
+//Camera Position 
+float3 CameraPosition; 
+ 
+//Light ViewProjection 
+float4x4 LightViewProjection; 
+ 
+//Light Position 
+float3 LightPosition; 
+ 
+//Light Color 
+float4 LightColor; 
+ 
+//Light Intensity 
+float LightIntensity; 
+ 
+//SpotLight Direction Vector 
+float3 S; 
+ 
+//Light Angle Cos 
+float LightAngleCos; 
+ 
+//The Height of the Light(AKA It's FarPlane) 
+float LightHeight; 
+ 
+//GBuffer Texture Size 
+float2 GBufferTextureSize; 
+ 
+//Shadows? 
+bool Shadows; 
+ 
+//ShadowMap size 
+float shadowMapSize; 
+ 
+//This is for modulating the Light's Depth Precision (100) 
+float DepthPrecision; 
+ 
+//DepthBias for the Shadowing... (1.0f / 2000.0f) 
+float DepthBias; 
+ 
+//GBuffer Texture0 
+sampler GBuffer0 : register(s0); 
+ 
+//GBuffer Texture1 
+sampler GBuffer1 : register(s1); 
+ 
+//GBuffer Texture2 
+sampler GBuffer2 : register(s2); 
+ 
+//Attenuation Cookie Sampler 
+sampler Cookie : register(s3); 
+ 
+ //ShadowMap 
+sampler ShadowMap : register(s4); 
+ 
+//Vertex Input Structure 
+struct VSI 
+{ 
+	float4 Position : POSITION0; 
+}; 
+ 
+//Vertex Output Structure 
+struct VSO 
+{ 
+	float4 Position : POSITION0; 
+	float4 ScreenPosition : TEXCOORD0; 
+}; 
+ 
+//Vertex Shader 
+VSO VS(VSI input) 
+{ 
+	//Initialize Output 
+	VSO output; 
+ 
+	//Transform Position 
+	float4 worldPosition = mul(input.Position, World); 
+	float4 viewPosition = mul(worldPosition, View); 
+	output.Position = mul(viewPosition, Projection); 
+ 
+	//Pass to ScreenPosition 
+	output.ScreenPosition = output.Position; 
+ 
+	//Return 
+	return output; 
+} 
+ 
+//Manually Linear Sample 
+float4 manualSample(sampler Sampler, float2 UV, float2 textureSize) 
+{ 
+	float2 texelpos = textureSize * UV; 
+	float2 lerps = frac(texelpos); 
+	float texelSize = 1.0 / textureSize; 
+ 
+	float4 sourcevals[4]; 
+	sourcevals[0] = tex2D(Sampler, UV); 
+	sourcevals[1] = tex2D(Sampler, UV + float2(texelSize, 0)); 
+	sourcevals[2] = tex2D(Sampler, UV + float2(0, texelSize)); 
+	sourcevals[3] = tex2D(Sampler, UV + float2(texelSize, texelSize)); 
+ 
+	float4 interpolated = lerp(lerp(sourcevals[0], sourcevals[1], lerps.x), 
+		lerp(sourcevals[2], sourcevals[3], lerps.x ), lerps.y); 
+ 
+	return interpolated; 
+} 
+ 
+ 
+ 
+//Phong Shader 
+float4 Phong(float3 Position, float3 N, float radialAttenuation, 
+	float SpecularIntensity, float SpecularPower) 
+{ 
+	//Calculate Light vector 
+	float3 L = LightPosition.xyz - Position.xyz; 
+	//Calculate height Attenuation
+	float heightAttenuation = 1.0f - saturate(length(L) - (LightHeight / 2));
+ 
+	//Calculate total Attenuation 
+	float Attenuation = min(radialAttenuation, heightAttenuation); 
+ 
+	//Now Normalize the Light 
+	L = normalize(L); 
+ 
+	//Calculate L.S 
+	float SL = dot(L, S); 
+ 
+	//No asymmetrical returns in HLSL, so work around with this 
+	float4 Shading = 0; 
+ 
+	//If this pixel is in the SpotLights Cone 
+	if(SL <= LightAngleCos) 
+	{ 
+		//Calculate Reflection Vector 
+		float3 R = normalize(reflect(-L, N)); 
+ 
+		//Calculate Eye Vector 
+		float3 E = normalize(CameraPosition - Position.xyz); 
+ 
+		//Calculate N.L 
+		float NL = dot(N, L); 
+ 
+		//Calculate Diffuse 
+		float3 Diffuse = NL * LightColor.xyz; 
+ 
+		//Calculate Specular 
+		float Specular = SpecularIntensity * pow(saturate(dot(R, E)), 
+		SpecularPower); 
+ 
+		//Calculate Final Product 
+		Shading = Attenuation * LightIntensity * float4(Diffuse.rgb, Specular); 
+	} 
+ 
+	//Return Shading Value 
+	return Shading; 
+} 
+ 
+//Decoding of GBuffer Normals 
+float3 decode(float3 enc) 
+{ 
+	return (2.0f * enc.xyz- 1.0f); 
+} 
+ 
+//Decode Color Vector to Float Value for shadowMap 
+float RGBADecode(float4 value) 
+{ 
+	const float4 bits = float4(1.0 / (256.0 * 256.0 * 256.0), 
+		1.0 / (256.0 * 256.0), 
+		1.0 / 256.0, 
+		1
+	); 
+ 
+	return dot(value.xyzw , bits); 
+} 
+ 
+ 
+ 
+//Pixel Shader 
+float4 PS(VSO input) : COLOR0 
+{ 
+	//Get Screen Position 
+	input.ScreenPosition.xy /= input.ScreenPosition.w; 
+ 
+	//Calculate UV from ScreenPosition 
+	float2 UV = 0.5f * (float2(input.ScreenPosition.x, -input.ScreenPosition.y) + 
+		1) - float2(1.0f / GBufferTextureSize.xy); 
+ 
+	//Get All Data from Normal part of the GBuffer 
+	half4 encodedNormal = tex2D(GBuffer1, UV); 
+ 
+	//Decode Normal 
+	half3 Normal = mul(decode(encodedNormal.xyz), inverseView); 
+ 
+	//Get Specular Intensity from GBuffer 
+	float SpecularIntensity = tex2D(GBuffer0, UV).w; 
+ 
+	//Get Specular Power from GBuffer 
+	float SpecularPower = encodedNormal.w * 255; 
+ 
+	//Get Depth from GBuffer 
+	float Depth = manualSample(GBuffer2, UV, GBufferTextureSize).x; 
+ 
+	//Make Position in Homogenous Space using current ScreenSpace coordinates and 
+	//the Depth from the GBuffer 
+	float4 Position = 1.0f; 
+ 
+	Position.xy = input.ScreenPosition.xy; 
+ 
+	Position.z = Depth; 
+ 
+	//Transform Position from Homogenous Space to World Space 
+	Position = mul(Position, InverseViewProjection); 
+ 
+	Position /= Position.w; 
+ 
+	//Calculate Homogenous Position with respect to light 
+	float4 LightScreenPos = mul(Position, LightViewProjection); 
+ 
+	LightScreenPos /= LightScreenPos.w; 
+ 
+	//Calculate Projected UV from Light POV 
+	float2 LUV = 0.5f * (float2(LightScreenPos.x, -LightScreenPos.y) + 1); 
+ 
+	//Load the Projected Depth from the Shadow Map, do manual linear filtering 
+	float lZ = manualSample(ShadowMap, LUV, shadowMapSize); 
+ 
+	//Get Attenuation factor from cookie 
+	float Attenuation = tex2D(Cookie, LUV).r; 
+ 
+	//Assymetric Workaround... 
+	float ShadowFactor = 1; 
+ 
+	//If Shadowing is on then get the Shadow Factor 
+	if(Shadows) 
+	{ 
+		// Calculate distance to the light 
+		float len = max(0.01f, length(LightPosition - Position)) / DepthPrecision; 
+ 
+		//Calculate the Shadow Factor
+		ShadowFactor = (lZ * exp(-(DepthPrecision * 0.5f) * (len - DepthBias)));
+	} 
+ 
+	//Return Phong Shaded Value Modulated by Shadows if Shadowing is on 
+	return ShadowFactor * Phong(Position.xyz, Normal, Attenuation, SpecularIntensity, 
+		SpecularPower); 
+} 
+ 
+//Technique 
+technique Default 
+{ 
+	pass p0 
+	{ 
+		VertexShader = compile vs_3_0 VS(); 
+		PixelShader = compile ps_3_0 PS(); 
+	} 
+} 

@@ -11,12 +11,19 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Deimos
 {
-	/// <summary>
-	/// This is the main type for your game
-	/// </summary>
-	public partial class DeimosGame : Microsoft.Xna.Framework.Game
-	{
-		GraphicsDeviceManager Graphics;
+    /// <summary>
+    /// This is the main type for your game
+    /// </summary>
+    public partial class DeimosGame : Microsoft.Xna.Framework.Game
+    {
+        GraphicsDeviceManager Graphics;
+
+        ContentManager ModelsContent;
+        public ContentManager TempContent
+        {
+            get { return ModelsContent; }
+            private set { ModelsContent = value; }
+        }
 
         Camera camera;
         public Camera Camera
@@ -34,13 +41,13 @@ namespace Deimos
         }
 
 
-		public enum GameStates
-		{
-			StartMenu,
-			Pause,
-			GraphicOptions,
-			Playing
-		}
+        public enum GameStates
+        {
+            StartMenu,
+            Pause,
+            GraphicOptions,
+            Playing
+        }
         public enum PlayingStates
         {
             Normal,
@@ -63,73 +70,81 @@ namespace Deimos
         }
 
 
-		public DeimosGame()
-		{
-			Graphics = new GraphicsDeviceManager(this);
+        public DeimosGame()
+        {
+            TempContent = new ContentManager(Services);
+
+            Graphics = new GraphicsDeviceManager(this);
             Camera = new Camera(
                 this,
                 new Vector3(0f, 10f, 20f),
                 Vector3.Zero,
-                10f
+                100f
             );
             Components.Add(Camera);
 
-			Content.RootDirectory = "Content";
-			DeferredRenderer renderer = new DeferredRenderer(this);
-			Components.Add(renderer);
+            Content.RootDirectory = "Content";
+            TempContent.RootDirectory = "Content";
 
-            SceneManager = new SceneManager(this);
-		}
+            DeferredRenderer renderer = new DeferredRenderer(this);
+            Components.Add(renderer);
 
-
-		protected override void Initialize()
-		{
-			IsMouseVisible = false;
-
-			// Game settings
-			Graphics.PreferredBackBufferWidth = 1344;
-			Graphics.PreferredBackBufferHeight = 840;
-			//graphics.IsFullScreen = true;
-			//graphics.PreferMultiSampling = true; // Anti aliasing - Useless as custom effects
-			//graphics.SynchronizeWithVerticalRetrace = false; // VSync
-			//IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec
-			Graphics.ApplyChanges();
+            SceneManager = new SceneManager(this, TempContent);
+        }
 
 
-			base.Initialize(); 
-		}
+        protected override void Initialize()
+        {
+            IsMouseVisible = false;
+
+            // Game settings
+            Graphics.PreferredBackBufferWidth = 1344;
+            Graphics.PreferredBackBufferHeight = 840;
+            //graphics.IsFullScreen = true;
+            //graphics.PreferMultiSampling = true; // Anti aliasing - Useless as custom effects
+            //graphics.SynchronizeWithVerticalRetrace = false; // VSync
+            //IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec
+            Graphics.ApplyChanges();
 
 
-		protected override void LoadContent()
-		{
-			// 
-		}
+            base.Initialize();
+
+            SceneManager.SetScene<SceneSkatePark>();
+        }
 
 
-		protected override void UnloadContent()
-		{
-			// TODO: Unload any non ContentManager content here
-		}
+        protected override void LoadContent()
+        {
+            // 
+        }
 
 
-		protected override void Update(GameTime gameTime)
-		{
-			// Allows the game to exit
-			if (Keyboard.GetState().IsKeyDown(Keys.Escape))
-				this.Exit();
-
-		    base.Update(gameTime);
-		}
+        protected override void UnloadContent()
+        {
+            // TODO: Unload any non ContentManager content here
+        }
 
 
+        protected override void Update(GameTime gameTime)
+        {
+            // Allows the game to exit
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+                this.Exit();
 
-		protected override void Draw(GameTime gameTime)
-		{
-			GraphicsDevice.Clear(Color.Black);
+            SceneManager.Update();
 
-			
+            base.Update(gameTime);
+        }
 
-			base.Draw(gameTime);
-		}
-	}
+
+
+        protected override void Draw(GameTime gameTime)
+        {
+            GraphicsDevice.Clear(Color.Black);
+
+            
+
+            base.Draw(gameTime);
+        }
+    }
 }

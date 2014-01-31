@@ -35,9 +35,6 @@ namespace Deimos
         private Model SphereModel; //point ligt volume
         private Model ConeModel;
 
-
-        private SpriteBatch SpriteBatch;
-
         private Vector2 HalfPixel;
 
         public DeferredRenderer(DeimosGame game)
@@ -129,7 +126,6 @@ namespace Deimos
                 @"Models\DeferredRendering\cone"
             );
 
-            SpriteBatch = new SpriteBatch(GraphicsDevice);
             base.LoadContent();
         }
 

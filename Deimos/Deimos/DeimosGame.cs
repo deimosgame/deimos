@@ -18,6 +18,13 @@ namespace Deimos
     {
         GraphicsDeviceManager Graphics;
 
+        SpriteBatch spriteBatch;
+        public SpriteBatch SpriteBatch
+        {
+            get { return spriteBatch; }
+            set { spriteBatch = value; }
+        }
+
         ContentManager ModelsContent;
         public ContentManager TempContent
         {
@@ -33,11 +40,24 @@ namespace Deimos
         }
 
         SceneManager sceneManager;
-
         internal SceneManager SceneManager
         {
             get { return sceneManager; }
             private  set { sceneManager = value; }
+        }
+
+        ScreenElementManager screenElementManager;
+        internal ScreenElementManager ScreenElementManager
+        {
+            get { return screenElementManager; }
+            set { screenElementManager = value; }
+        }
+
+        DebugScreen debugScreen;
+        internal DebugScreen DebugScreen
+        {
+            get { return debugScreen; }
+            set { debugScreen = value; }
         }
 
 
@@ -79,7 +99,7 @@ namespace Deimos
                 this,
                 new Vector3(0f, 10f, 20f),
                 Vector3.Zero,
-                100f
+                10f
             );
             Components.Add(Camera);
 
@@ -108,17 +128,21 @@ namespace Deimos
 
 
             base.Initialize();
-
-            SceneManager.SetScene<SceneSkatePark>();
         }
 
 
         protected override void LoadContent()
         {
-            // 
+            SceneManager.SetScene<SceneSkatePark>();
+
+            SpriteBatch = new SpriteBatch(GraphicsDevice);
+
+            ScreenElementManager = new ScreenElementManager(GraphicsDevice);
+
+            DebugScreen = new DebugScreen(this);
         }
 
-
+         
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
@@ -141,10 +165,10 @@ namespace Deimos
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-
-            
-
             base.Draw(gameTime);
+
+
+            ScreenElementManager.DrawElements(SpriteBatch);
         }
     }
 }

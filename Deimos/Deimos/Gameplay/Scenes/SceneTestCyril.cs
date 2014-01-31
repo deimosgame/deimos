@@ -6,33 +6,28 @@ using System.Text;
 
 namespace Deimos
 {
-    class SceneSkatePark : SceneTemplate
+    class SceneTestCyril : SceneTemplate
     {
         SceneManager SceneManager;
         ModelManager ModelManager;
         LightManager LightManager;
 
         // Constructor
-        public SceneSkatePark(SceneManager sceneManager)
+        public SceneTestCyril(SceneManager sceneManager)
         {
             SceneManager = sceneManager;
             ModelManager = SceneManager.ModelManager;
             LightManager = SceneManager.LightManager;
 
             ModelManager.LoadModel(
-                 "skatepark",
-                 "Models/Map/arena", // Model
+                 "house",
+                 "Models/Map/Cyril", // Model
                  new Vector3(0, 0, 0) // Location
-            );
-            ModelManager.LoadModel(
-                 "Minion",
-                 "Models/Characters/Minimon/minimon", // Model
-                 new Vector3(10, 0, 0) // Location
-            );
+             );
         }
 
         // Destructor
-        ~SceneSkatePark()
+        ~SceneTestCyril()
         {
             ModelManager.UnloadModels();
         }
@@ -42,8 +37,8 @@ namespace Deimos
         {
             LightManager.AddPointLight(
                "player",
-               new Vector3(0, 0, 0), // Location
-               300, // Radius
+               new Vector3(0, 10, 0), // Location
+               50, // Radius
                2, // Intensity
                Color.White
             );
@@ -52,7 +47,7 @@ namespace Deimos
         // Update our things at each ticks
         public override void Update()
         {
-            LightManager.GetPointLight("player").Position = 
+            LightManager.GetPointLight("player").Position =
                 SceneManager.Game.Camera.CameraPosition;
         }
     }

@@ -51,10 +51,10 @@ namespace Deimos
         }
 
         public ScreenText AddText(string name, int posX, int posY,
-            int zIndex, SpriteFont font, string text)
+            int zIndex, SpriteFont font, string text, Color color)
         {
             ScreenText element =
-                new ScreenText(posX, posY, zIndex, font, text);
+                new ScreenText(posX, posY, zIndex, font, text, color);
             ElementsText.Add(
                 name,
                 element
@@ -89,19 +89,35 @@ namespace Deimos
                 DepthStencilState.DepthRead,
                 RasterizerState.CullNone
             );
-
-            if (ElementsRectangle.Count > 0)
+            foreach (KeyValuePair<string, ScreenRectangle> elementKeyVal in
+                ElementsRectangle)
             {
-                
-                foreach (KeyValuePair<string, ScreenRectangle> elementKeyVal in
-                    ElementsRectangle)
-                {
-                    ScreenRectangle element = elementKeyVal.Value;
-                    spriteBatch.Draw(
-                        DummyTexture, 
-                        new Rectangle(element.PosX, element.PosY, element.Height, element.Width), element.Color
-                    );
-                }
+                ScreenRectangle element = elementKeyVal.Value;
+                spriteBatch.Draw(
+                    DummyTexture,
+                    new Rectangle(element.PosX, element.PosY, element.Height, element.Width), element.Color
+                );
+            }
+            foreach (KeyValuePair<string, ScreenImage> elementKeyVal in
+                ElementsImage)
+            {
+                ScreenImage element = elementKeyVal.Value;
+                spriteBatch.Draw(
+                    element.Image,
+                    new Vector2(element.PosX, element.PosY),
+                    Color.White
+                );
+            }
+            foreach (KeyValuePair<string, ScreenText> elementKeyVal in
+                ElementsText)
+            {
+                ScreenText element = elementKeyVal.Value;
+                spriteBatch.DrawString(
+                    element.Font,
+                    element.Text,
+                    new Vector2(element.PosX, element.PosY),
+                    element.Color
+                );
             }
 
             spriteBatch.End();

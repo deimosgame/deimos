@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,15 +19,21 @@ namespace Deimos
             get;
             private set;
         }
+        public Color Color
+        {
+            get;
+            private set;
+        }
 
         public ScreenText(int posX, int posY, int zIndex, 
-            SpriteFont font, string text)
+            SpriteFont font, string text, Color color)
         {
             PosX = posX;
             PosY = posY;
             ZIndex = zIndex;
             Font = font;
             Text = text;
+            Color = color;
         }
     }
 }

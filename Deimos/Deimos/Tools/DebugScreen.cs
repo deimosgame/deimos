@@ -8,8 +8,19 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Deimos
 {
-	class DebugScreen
-	{
-		
-	}
+    class DebugScreen
+    {
+        DeimosGame Game;
+        public DebugScreen(DeimosGame game)
+        {
+            Game = game;
+
+            Game.ScreenElementManager.AddRectangle("test", 0, 0, 1, 20, 20, Color.Red);
+        }
+
+        public void Draw()
+        {
+            
+        }
+    }
 }

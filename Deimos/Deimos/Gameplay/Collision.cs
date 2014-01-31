@@ -125,23 +125,33 @@ namespace Deimos
                 MainGame.SceneManager.ModelManager.GetLevelModels();
             foreach (KeyValuePair<string, LevelModel> thisModel in levelModels)
             {
-                if (thisModel.Value.CollisionDetection == LevelModel.CollisionType.None)
+                LevelModel.CollisionType collisionType 
+                    = thisModel.Value.CollisionDetection;
+                if (collisionType == LevelModel.CollisionType.None)
                 {
                     continue;
                 }
-                
-                var collidingFaces = new LinkedList<Face>();
-                var collisionPoints = new LinkedList<Vector3>();
-                // This method is used with pointer, so it does change 
-                // our above faces and points
-                thisModel.Value.CollisionModel.collisionData.collisions(
-                    cameraSphere, 
-                    collidingFaces, 
-                    collisionPoints
-                );
-                if (collidingFaces.Count > 0 || collisionPoints.Count > 0)
+
+                if (collisionType == LevelModel.CollisionType.Accurate)
                 {
-                    return true;
+                    var collidingFaces = new LinkedList<Face>();
+                    var collisionPoints = new LinkedList<Vector3>();
+                    // This method is used with pointer, so it does change 
+                    // our above faces and points
+                    thisModel.Value.CollisionModel.collisionData.collisions(
+                        cameraSphere,
+                        collidingFaces,
+                        collisionPoints
+                    );
+                    if (collidingFaces.Count > 0 || collisionPoints.Count > 0)
+                    {
+                        return true;
+                    }
+                }
+
+                if (collisionType == LevelModel.CollisionType.Inaccurate)
+                {
+                    
                 }
             }
 

@@ -39,7 +39,6 @@ namespace Deimos
             Model thisModel = thisModelCollision.model;
             LevelModel thisLevelModel = new LevelModel();
             thisLevelModel.Position = position;
-            thisLevelModel.Scale = scale;
             thisLevelModel.CollisionDetection = collisionType;
             thisLevelModel.CollisionModel = thisModelCollision;
             LoadedLevelModels.Add(modelName, thisLevelModel);
@@ -117,7 +116,7 @@ namespace Deimos
                     // Loading the model
                     LevelModel levelModel = thisLevelModel.Value;
 
-                    Matrix modelWorld = Matrix.CreateScale(levelModel.Scale) *
+                    Matrix modelWorld = Matrix.CreateScale(1f) * // Should be the scale
                                 Matrix.CreateTranslation(levelModel.Position);
 
                     Matrix[] transforms = new Matrix[levelModel.CollisionModel.model.Bones.Count];

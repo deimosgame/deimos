@@ -24,8 +24,8 @@ namespace Deimos
 		}
 
 
-		private bool collisionDetection = false;
-		public bool CollisionDetection
+		private CollisionType collisionDetection;
+		public CollisionType CollisionDetection
 		{
 			get { return collisionDetection; }
 			set { collisionDetection = value; }
@@ -36,6 +36,13 @@ namespace Deimos
 		{
 			get { return collisionModel; }
 			set { collisionModel = value; }
+		}
+
+		public enum CollisionType
+		{
+			None,
+			Accurate,
+			Inaccurate
 		}
 
 	}

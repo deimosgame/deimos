@@ -125,7 +125,7 @@ namespace Deimos
                 MainGame.SceneManager.ModelManager.GetLevelModels();
             foreach (KeyValuePair<string, LevelModel> thisModel in levelModels)
             {
-                if (!thisModel.Value.CollisionDetection)
+                if (thisModel.Value.CollisionDetection == LevelModel.CollisionType.None)
                 {
                     continue;
                 }

@@ -28,7 +28,7 @@ namespace Deimos
         // Methods
         public void LoadModel(string modelName, 
             string model, Vector3 position, float scale = 1f, 
-            bool collisionDetection = true)
+            LevelModel.CollisionType collisionType = LevelModel.CollisionType.Inaccurate)
         {
             // Adding the model to our List/array as well as its location
             // & texture
@@ -40,7 +40,7 @@ namespace Deimos
             LevelModel thisLevelModel = new LevelModel();
             thisLevelModel.Position = position;
             thisLevelModel.Scale = scale;
-            thisLevelModel.CollisionDetection = collisionDetection;
+            thisLevelModel.CollisionDetection = collisionType;
             thisLevelModel.CollisionModel = thisModelCollision;
             LoadedLevelModels.Add(modelName, thisLevelModel);
         }

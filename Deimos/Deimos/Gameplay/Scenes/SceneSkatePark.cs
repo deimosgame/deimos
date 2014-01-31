@@ -24,11 +24,6 @@ namespace Deimos
                  "Models/Map/arena", // Model
                  new Vector3(0, 0, 0) // Location
             );
-            ModelManager.LoadModel(
-                 "Minion",
-                 "Models/Characters/Minimon/minimon", // Model
-                 new Vector3(10, 0, 0) // Location
-            );
         }
 
         // Destructor

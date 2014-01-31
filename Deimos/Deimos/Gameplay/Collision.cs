@@ -139,12 +139,7 @@ namespace Deimos
                     collidingFaces, 
                     collisionPoints
                 );
-                if (collidingFaces.Count > 0)
-                {
-                    Console.WriteLine("Collision with " + thisModel.Key);
-                    return true;
-                }
-                if (collisionPoints.Count > 0)
+                if (collidingFaces.Count > 0 || collisionPoints.Count > 0)
                 {
                     return true;
                 }

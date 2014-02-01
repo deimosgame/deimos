@@ -1,0 +1,1563 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline" xmlns:Framework="Microsoft.Xna.Framework" xmlns:Processors="Microsoft.Xna.Framework.Content.Pipeline.Processors">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>Fonts\debug.spritefont</Source>
+      <Name>Fonts\debug</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Fonts\debug.xnb</Output>
+      <Time>2014-02-01T01:21:38.5904837+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\menuTitle.spritefont</Source>
+      <Name>Fonts\menuTitle</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Fonts\menuTitle.xnb</Output>
+      <Time>2014-02-01T01:21:38.6113639+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\menuElement.spritefont</Source>
+      <Name>Fonts\menuElement</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Fonts\menuElement.xnb</Output>
+      <Time>2014-02-01T01:21:38.592451+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Characters\Alexandra\Ana_dif.png</Source>
+      <Name>Models\Characters\Alexandra\Ana_dif</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Characters\Alexandra\Ana_dif.xnb</Output>
+      <Time>2014-02-01T01:21:39.7070125+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Characters\Alexandra\Ana_cspec.png</Source>
+      <Name>Models\Characters\Alexandra\Ana_cspec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Characters\Alexandra\Ana_cspec.xnb</Output>
+      <Time>2014-02-01T01:21:39.1352372+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Characters\Alexandra\Ana_norm.png</Source>
+      <Name>Models\Characters\Alexandra\Ana_norm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Characters\Alexandra\Ana_norm.xnb</Output>
+      <Time>2014-02-01T01:21:40.0921816+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Grid.png</Source>
+      <Name>Models\Map\Grid</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Grid.xnb</Output>
+      <Time>2014-02-01T01:21:40.4613921+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\DeferredRendering\null_normal.tga</Source>
+      <Name>Textures\DeferredRendering\null_normal</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Textures\DeferredRendering\null_normal.xnb</Output>
+      <Time>2014-02-01T01:22:06.1360804+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\DeferredRendering\null_specular.tga</Source>
+      <Name>Textures\DeferredRendering\null_specular</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Textures\DeferredRendering\null_specular.xnb</Output>
+      <Time>2014-02-01T01:22:06.1370792+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\background.tga</Source>
+      <Name>Models\Map\Sponza\background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\background.xnb</Output>
+      <Time>2014-02-01T01:21:41.0411447+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\background_ddn.tga</Source>
+      <Name>Models\Map\Sponza\background_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\background_ddn.xnb</Output>
+      <Time>2014-02-01T01:21:41.2926389+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\chain_texture.tga</Source>
+      <Name>Models\Map\Sponza\chain_texture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\chain_texture.xnb</Output>
+      <Time>2014-02-01T01:21:41.5251037+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\chain_texture_ddn.tga</Source>
+      <Name>Models\Map\Sponza\chain_texture_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\chain_texture_ddn.xnb</Output>
+      <Time>2014-02-01T01:21:41.5310831+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\chain_texture_diff_mask.tga</Source>
+      <Name>Models\Map\Sponza\chain_texture_diff_mask</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\chain_texture_diff_mask.xnb</Output>
+      <Time>2014-02-01T01:21:41.5440579+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\chain_texture_mask.tga</Source>
+      <Name>Models\Map\Sponza\chain_texture_mask</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\chain_texture_mask.xnb</Output>
+      <Time>2014-02-01T01:21:41.5710006+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\lion.tga</Source>
+      <Name>Models\Map\Sponza\lion</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\lion.xnb</Output>
+      <Time>2014-02-01T01:21:41.5839809+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\lion2_ddn.tga</Source>
+      <Name>Models\Map\Sponza\lion2_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\lion2_ddn.xnb</Output>
+      <Time>2014-02-01T01:21:42.2506553+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\lion_ddn.tga</Source>
+      <Name>Models\Map\Sponza\lion_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\lion_ddn.xnb</Output>
+      <Time>2014-02-01T01:21:42.7085406+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\spnza_bricks_a_ddn.tga</Source>
+      <Name>Models\Map\Sponza\spnza_bricks_a_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\spnza_bricks_a_ddn.xnb</Output>
+      <Time>2014-02-01T01:21:42.7984218+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\spnza_bricks_a_diff.tga</Source>
+      <Name>Models\Map\Sponza\spnza_bricks_a_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\spnza_bricks_a_diff.xnb</Output>
+      <Time>2014-02-01T01:21:42.9570121+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\spnza_bricks_a_spec.tga</Source>
+      <Name>Models\Map\Sponza\spnza_bricks_a_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\spnza_bricks_a_spec.xnb</Output>
+      <Time>2014-02-01T01:21:43.0448149+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_arch_ddn.tga</Source>
+      <Name>Models\Map\Sponza\sponza_arch_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_arch_ddn.xnb</Output>
+      <Time>2014-02-01T01:21:45.5454305+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_arch_diff.tga</Source>
+      <Name>Models\Map\Sponza\sponza_arch_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_arch_diff.xnb</Output>
+      <Time>2014-02-01T01:21:46.2828432+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_arch_spec.tga</Source>
+      <Name>Models\Map\Sponza\sponza_arch_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_arch_spec.xnb</Output>
+      <Time>2014-02-01T01:21:46.3087846+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_ceiling_a_diff.tga</Source>
+      <Name>Models\Map\Sponza\sponza_ceiling_a_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_ceiling_a_diff.xnb</Output>
+      <Time>2014-02-01T01:21:47.218855+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_ceiling_a_spec.tga</Source>
+      <Name>Models\Map\Sponza\sponza_ceiling_a_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_ceiling_a_spec.xnb</Output>
+      <Time>2014-02-01T01:21:47.5282123+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_column_a_ddn.tga</Source>
+      <Name>Models\Map\Sponza\sponza_column_a_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_column_a_ddn.xnb</Output>
+      <Time>2014-02-01T01:21:47.9642266+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_column_a_diff.tga</Source>
+      <Name>Models\Map\Sponza\sponza_column_a_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_column_a_diff.xnb</Output>
+      <Time>2014-02-01T01:21:48.5619397+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_column_a_spec.tga</Source>
+      <Name>Models\Map\Sponza\sponza_column_a_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_column_a_spec.xnb</Output>
+      <Time>2014-02-01T01:21:48.8253789+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_column_b_ddn.tga</Source>
+      <Name>Models\Map\Sponza\sponza_column_b_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_column_b_ddn.xnb</Output>
+      <Time>2014-02-01T01:21:49.6017008+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_column_b_diff.tga</Source>
+      <Name>Models\Map\Sponza\sponza_column_b_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_column_b_diff.xnb</Output>
+      <Time>2014-02-01T01:21:50.0078194+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_column_b_spec.tga</Source>
+      <Name>Models\Map\Sponza\sponza_column_b_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_column_b_spec.xnb</Output>
+      <Time>2014-02-01T01:21:50.2283542+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_column_c_ddn.tga</Source>
+      <Name>Models\Map\Sponza\sponza_column_c_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_column_c_ddn.xnb</Output>
+      <Time>2014-02-01T01:21:50.7192891+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_column_c_diff.tga</Source>
+      <Name>Models\Map\Sponza\sponza_column_c_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_column_c_diff.xnb</Output>
+      <Time>2014-02-01T01:21:51.1014641+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_column_c_spec.tga</Source>
+      <Name>Models\Map\Sponza\sponza_column_c_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_column_c_spec.xnb</Output>
+      <Time>2014-02-01T01:21:51.2740915+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_curtain_blue_diff.tga</Source>
+      <Name>Models\Map\Sponza\sponza_curtain_blue_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_curtain_blue_diff.xnb</Output>
+      <Time>2014-02-01T01:21:52.6471763+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_curtain_diff.tga</Source>
+      <Name>Models\Map\Sponza\sponza_curtain_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_curtain_diff.xnb</Output>
+      <Time>2014-02-01T01:21:54.7176979+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_curtain_green_diff.tga</Source>
+      <Name>Models\Map\Sponza\sponza_curtain_green_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_curtain_green_diff.xnb</Output>
+      <Time>2014-02-01T01:21:56.3721596+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_details_diff.tga</Source>
+      <Name>Models\Map\Sponza\sponza_details_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_details_diff.xnb</Output>
+      <Time>2014-02-01T01:21:56.7004152+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_details_spec.tga</Source>
+      <Name>Models\Map\Sponza\sponza_details_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_details_spec.xnb</Output>
+      <Time>2014-02-01T01:21:56.8441146+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_fabric_blue_diff.tga</Source>
+      <Name>Models\Map\Sponza\sponza_fabric_blue_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_fabric_blue_diff.xnb</Output>
+      <Time>2014-02-01T01:21:57.4707423+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_fabric_diff.tga</Source>
+      <Name>Models\Map\Sponza\sponza_fabric_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_fabric_diff.xnb</Output>
+      <Time>2014-02-01T01:21:57.8958325+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_fabric_green_diff.tga</Source>
+      <Name>Models\Map\Sponza\sponza_fabric_green_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_fabric_green_diff.xnb</Output>
+      <Time>2014-02-01T01:21:58.1981848+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_fabric_spec.tga</Source>
+      <Name>Models\Map\Sponza\sponza_fabric_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_fabric_spec.xnb</Output>
+      <Time>2014-02-01T01:21:58.4436446+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_flagpole_diff.tga</Source>
+      <Name>Models\Map\Sponza\sponza_flagpole_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_flagpole_diff.xnb</Output>
+      <Time>2014-02-01T01:21:58.5803516+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_flagpole_spec.tga</Source>
+      <Name>Models\Map\Sponza\sponza_flagpole_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_flagpole_spec.xnb</Output>
+      <Time>2014-02-01T01:21:58.6981143+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_floor_a_diff.tga</Source>
+      <Name>Models\Map\Sponza\sponza_floor_a_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_floor_a_diff.xnb</Output>
+      <Time>2014-02-01T01:21:58.8787116+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_floor_a_spec.tga</Source>
+      <Name>Models\Map\Sponza\sponza_floor_a_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_floor_a_spec.xnb</Output>
+      <Time>2014-02-01T01:21:59.140165+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_roof_diff.tga</Source>
+      <Name>Models\Map\Sponza\sponza_roof_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_roof_diff.xnb</Output>
+      <Time>2014-02-01T01:21:59.5044008+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_thorn_ddn.tga</Source>
+      <Name>Models\Map\Sponza\sponza_thorn_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_thorn_ddn.xnb</Output>
+      <Time>2014-02-01T01:21:59.6450649+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_thorn_diff.tga</Source>
+      <Name>Models\Map\Sponza\sponza_thorn_diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_thorn_diff.xnb</Output>
+      <Time>2014-02-01T01:21:59.6530505+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_thorn_diff_mask.tga</Source>
+      <Name>Models\Map\Sponza\sponza_thorn_diff_mask</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_thorn_diff_mask.xnb</Output>
+      <Time>2014-02-01T01:21:59.9045057+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_thorn_mask.tga</Source>
+      <Name>Models\Map\Sponza\sponza_thorn_mask</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_thorn_mask.xnb</Output>
+      <Time>2014-02-01T01:21:59.9114969+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_thorn_spec.tga</Source>
+      <Name>Models\Map\Sponza\sponza_thorn_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_thorn_spec.xnb</Output>
+      <Time>2014-02-01T01:21:59.9224659+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\vase_ddn.tga</Source>
+      <Name>Models\Map\Sponza\vase_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\vase_ddn.xnb</Output>
+      <Time>2014-02-01T01:21:59.983408+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\vase_dif.tga</Source>
+      <Name>Models\Map\Sponza\vase_dif</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\vase_dif.xnb</Output>
+      <Time>2014-02-01T01:22:00.8365374+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\vase_hanging.tga</Source>
+      <Name>Models\Map\Sponza\vase_hanging</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\vase_hanging.xnb</Output>
+      <Time>2014-02-01T01:22:01.0550293+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\vase_plant.tga</Source>
+      <Name>Models\Map\Sponza\vase_plant</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\vase_plant.xnb</Output>
+      <Time>2014-02-01T01:22:01.3194681+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\vase_plant_diff_mask.tga</Source>
+      <Name>Models\Map\Sponza\vase_plant_diff_mask</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\vase_plant_diff_mask.xnb</Output>
+      <Time>2014-02-01T01:22:01.546011+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\vase_plant_mask.tga</Source>
+      <Name>Models\Map\Sponza\vase_plant_mask</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\vase_plant_mask.xnb</Output>
+      <Time>2014-02-01T01:22:01.5579469+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\vase_plant_spec.tga</Source>
+      <Name>Models\Map\Sponza\vase_plant_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\vase_plant_spec.xnb</Output>
+      <Time>2014-02-01T01:22:01.7575102+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\vase_round.tga</Source>
+      <Name>Models\Map\Sponza\vase_round</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\vase_round.xnb</Output>
+      <Time>2014-02-01T01:22:02.1277124+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\vase_round_ddn.tga</Source>
+      <Name>Models\Map\Sponza\vase_round_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\vase_round_ddn.xnb</Output>
+      <Time>2014-02-01T01:22:02.1496626+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\vase_round_spec.tga</Source>
+      <Name>Models\Map\Sponza\vase_round_spec</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\vase_round_spec.xnb</Output>
+      <Time>2014-02-01T01:22:02.5997194+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Characters\Ana_Model.fbx</Source>
+      <Name>Models\Characters\Ana_Model</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CollidableModelProcessor</Processor>
+      <Parameters>
+        <Data Key="ModelProcessor">DeferredRendererModel</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Characters\Ana_Model.xnb</Output>
+      <Time>2014-02-01T01:21:40.0991905+01:00</Time>
+      <Dependency>
+        <Key>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\obj\x86\Debug\Models\Characters\Ana_Model_0.xml</Key>
+        <Value>2014-02-01T01:55:31.2727119+01:00</Value>
+      </Dependency>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Textures\DeferredRendering\null_normal_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Textures\DeferredRendering\null_specular_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Shaders\DeferredRendering\RenderGBuffer.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\Map\coucou.fbx</Source>
+      <Name>Models\Map\coucou</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CollidableModelProcessor</Processor>
+      <Parameters>
+        <Data Key="ModelProcessor">DeferredRendererModel</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\coucou.xnb</Output>
+      <Time>2014-02-01T01:22:02.8371845+01:00</Time>
+      <Dependency>
+        <Key>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\obj\x86\Debug\Models\Map\coucou_0.xml</Key>
+        <Value>2014-02-01T01:55:32.2056837+01:00</Value>
+      </Dependency>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Grid_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Textures\DeferredRendering\null_normal_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Textures\DeferredRendering\null_specular_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Shaders\DeferredRendering\RenderGBuffer.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza.fbx</Source>
+      <Name>Models\Map\Sponza\sponza</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CollidableModelProcessor</Processor>
+      <Parameters>
+        <Data Key="ModelProcessor">DeferredRendererModel</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza.xnb</Output>
+      <Time>2014-02-01T01:21:45.2271668+01:00</Time>
+      <Dependency>
+        <Key>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\obj\x86\Debug\Models\Map\Sponza\sponza_0.xml</Key>
+        <Value>2014-02-01T01:55:44.3016249+01:00</Value>
+      </Dependency>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_column_b_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Textures\DeferredRendering\null_normal_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Textures\DeferredRendering\null_specular_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Shaders\DeferredRendering\RenderGBuffer.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_arch_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_column_a_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_thorn_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_ceiling_a_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\spnza_bricks_a_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_column_c_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_flagpole_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\vase_dif_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_curtain_green_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_fabric_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_fabric_blue_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_fabric_green_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\vase_hanging_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\chain_texture_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_roof_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\vase_plant_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\vase_round_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_curtain_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_curtain_blue_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_floor_a_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\lion_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\background_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_details_diff_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\DeferredRendering\cone.fbx</Source>
+      <Name>Models\DeferredRendering\cone</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\DeferredRendering\cone.xnb</Output>
+      <Time>2014-02-01T01:21:40.4583921+01:00</Time>
+      <Dependency>
+        <Key>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\obj\x86\Debug\Models\DeferredRendering\cone_0.xml</Key>
+        <Value>2014-02-01T01:56:04.832402+01:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponzaCollision.fbx</Source>
+      <Name>Models\Map\Sponza\sponzaCollision</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CollidableModelProcessor</Processor>
+      <Parameters>
+        <Data Key="AddVisualizationData">True</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponzaCollision.xnb</Output>
+      <Time>2014-02-01T01:21:45.5025265+01:00</Time>
+      <Dependency>
+        <Key>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\obj\x86\Debug\Models\Map\Sponza\sponzaCollision_0.xml</Key>
+        <Value>2014-02-01T01:56:13.315126+01:00</Value>
+      </Dependency>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_column_b_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_arch_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_column_a_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_thorn_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_ceiling_a_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\spnza_bricks_a_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_column_c_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_flagpole_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\vase_dif_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_curtain_green_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_fabric_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_fabric_blue_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_fabric_green_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\vase_hanging_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\chain_texture_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_roof_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\vase_plant_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\vase_round_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_curtain_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_curtain_blue_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_floor_a_diff_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\lion_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\background_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_details_diff_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\Map\arena.fbx</Source>
+      <Name>Models\Map\arena</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CollidableModelProcessor</Processor>
+      <Parameters>
+        <Data Key="ModelProcessor">DeferredRendererModel</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\arena.xnb</Output>
+      <Time>2014-02-01T01:22:02.8302087+01:00</Time>
+      <Dependency>
+        <Key>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\obj\x86\Debug\Models\Map\arena_0.xml</Key>
+        <Value>2014-02-01T01:56:18.6915422+01:00</Value>
+      </Dependency>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Textures\arena_textures\pipe_1_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Textures\DeferredRendering\null_normal_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Textures\DeferredRendering\null_specular_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Shaders\DeferredRendering\RenderGBuffer.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Textures\arena_textures\pipe_2_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Textures\arena_textures\stone_tex_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Textures\arena_textures\grass_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Textures\arena_textures\floor_1_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Textures\arena_textures\floorbox_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Textures\arena_textures\roof_1_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Textures\arena_textures\pylon_1_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Textures\arena_textures\flatwayLarge_1_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Textures\arena_textures\flatwayLarge_2_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Textures\arena_textures\metal_ground_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Textures\arena_textures\basefloor_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\Characters\Minimon\minimon.fbx</Source>
+      <Name>Models\Characters\Minimon\minimon</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CollidableModelProcessor</Processor>
+      <Parameters>
+        <Data Key="ModelProcessor">DeferredRendererModel</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Characters\Minimon\minimon.xnb</Output>
+      <Time>2014-02-01T01:21:40.3526165+01:00</Time>
+      <Dependency>
+        <Key>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\obj\x86\Debug\Models\Characters\Minimon\minimon_0.xml</Key>
+        <Value>2014-02-01T01:56:21.390729+01:00</Value>
+      </Dependency>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Textures\DeferredRendering\null_normal_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Textures\DeferredRendering\null_specular_0.xnb</Request>
+      <Request>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Shaders\DeferredRendering\RenderGBuffer.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Shaders\DeferredRendering\ClearGBuffer.fx</Source>
+      <Name>Shaders\DeferredRendering\ClearGBuffer</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Shaders\DeferredRendering\ClearGBuffer.xnb</Output>
+      <Time>2014-02-01T01:22:05.7301289+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Shaders\DeferredRendering\CombineFinal.fx</Source>
+      <Name>Shaders\DeferredRendering\CombineFinal</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Shaders\DeferredRendering\CombineFinal.xnb</Output>
+      <Time>2014-02-01T01:22:06.0113569+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Shaders\Lights\DirectionalLight.fx</Source>
+      <Name>Shaders\Lights\DirectionalLight</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Shaders\Lights\DirectionalLight.xnb</Output>
+      <Time>2014-02-01T01:22:06.0782446+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Shaders\Lights\PointLight.fx</Source>
+      <Name>Shaders\Lights\PointLight</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Shaders\Lights\PointLight.xnb</Output>
+      <Time>2014-02-01T01:22:06.0792+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Shaders\DeferredRendering\RenderGBuffer.fx</Source>
+      <Name>Shaders\DeferredRendering\RenderGBuffer</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Shaders\DeferredRendering\RenderGBuffer.xnb</Output>
+      <Time>2014-02-01T01:22:06.0203303+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Shaders\Lights\SpotLight.fx</Source>
+      <Name>Shaders\Lights\SpotLight</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Shaders\Lights\SpotLight.xnb</Output>
+      <Time>2014-02-01T01:22:06.0881907+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\DeferredRendering\sphere.x</Source>
+      <Name>Models\DeferredRendering\sphere</Name>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\DeferredRendering\sphere.xnb</Output>
+      <Time>2014-02-01T01:21:40.4603921+01:00</Time>
+      <Dependency>
+        <Key>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\obj\x86\Debug\Models\DeferredRendering\sphere_0.xml</Key>
+        <Value>2014-02-01T01:56:22.63905+01:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Models\Characters\Ana_Model.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\obj\x86\Debug\Models\Characters\Ana_Model_0.xml</Output>
+      <Time>2014-02-01T01:21:40.0991905+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\DeferredRendering\null_normal.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Textures\DeferredRendering\null_normal_0.xnb</Output>
+      <Time>2014-02-01T01:22:06.1360804+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\DeferredRendering\null_specular.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Textures\DeferredRendering\null_specular_0.xnb</Output>
+      <Time>2014-02-01T01:22:06.1370792+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\coucou.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\obj\x86\Debug\Models\Map\coucou_0.xml</Output>
+      <Time>2014-02-01T01:22:02.8371845+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Grid.png</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Grid_0.xnb</Output>
+      <Time>2014-02-01T01:21:40.4613921+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\obj\x86\Debug\Models\Map\Sponza\sponza_0.xml</Output>
+      <Time>2014-02-01T01:21:45.2271668+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_column_b_diff.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_column_b_diff_0.xnb</Output>
+      <Time>2014-02-01T01:21:50.0078194+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_arch_diff.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_arch_diff_0.xnb</Output>
+      <Time>2014-02-01T01:21:46.2828432+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_column_a_diff.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_column_a_diff_0.xnb</Output>
+      <Time>2014-02-01T01:21:48.5619397+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_thorn_diff.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_thorn_diff_0.xnb</Output>
+      <Time>2014-02-01T01:21:59.6530505+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_ceiling_a_diff.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_ceiling_a_diff_0.xnb</Output>
+      <Time>2014-02-01T01:21:47.218855+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\spnza_bricks_a_diff.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\spnza_bricks_a_diff_0.xnb</Output>
+      <Time>2014-02-01T01:21:42.9570121+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_column_c_diff.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_column_c_diff_0.xnb</Output>
+      <Time>2014-02-01T01:21:51.1014641+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_flagpole_diff.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_flagpole_diff_0.xnb</Output>
+      <Time>2014-02-01T01:21:58.5803516+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\vase_dif.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\vase_dif_0.xnb</Output>
+      <Time>2014-02-01T01:22:00.8365374+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_curtain_green_diff.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_curtain_green_diff_0.xnb</Output>
+      <Time>2014-02-01T01:21:56.3721596+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_fabric_diff.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_fabric_diff_0.xnb</Output>
+      <Time>2014-02-01T01:21:57.8958325+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_fabric_blue_diff.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_fabric_blue_diff_0.xnb</Output>
+      <Time>2014-02-01T01:21:57.4707423+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_fabric_green_diff.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_fabric_green_diff_0.xnb</Output>
+      <Time>2014-02-01T01:21:58.1981848+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\vase_hanging.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\vase_hanging_0.xnb</Output>
+      <Time>2014-02-01T01:22:01.0550293+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\chain_texture.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\chain_texture_0.xnb</Output>
+      <Time>2014-02-01T01:21:41.5251037+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_roof_diff.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_roof_diff_0.xnb</Output>
+      <Time>2014-02-01T01:21:59.5044008+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\vase_plant.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\vase_plant_0.xnb</Output>
+      <Time>2014-02-01T01:22:01.3194681+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\vase_round.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\vase_round_0.xnb</Output>
+      <Time>2014-02-01T01:22:02.1277124+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_curtain_diff.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_curtain_diff_0.xnb</Output>
+      <Time>2014-02-01T01:21:54.7176979+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_curtain_blue_diff.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_curtain_blue_diff_0.xnb</Output>
+      <Time>2014-02-01T01:21:52.6471763+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_floor_a_diff.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_floor_a_diff_0.xnb</Output>
+      <Time>2014-02-01T01:21:58.8787116+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\lion.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\lion_0.xnb</Output>
+      <Time>2014-02-01T01:21:41.5839809+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\background.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\background_0.xnb</Output>
+      <Time>2014-02-01T01:21:41.0411447+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponza_details_diff.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Map\Sponza\sponza_details_diff_0.xnb</Output>
+      <Time>2014-02-01T01:21:56.7004152+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\DeferredRendering\cone.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\obj\x86\Debug\Models\DeferredRendering\cone_0.xml</Output>
+      <Time>2014-02-01T01:21:40.4583921+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\Sponza\sponzaCollision.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\obj\x86\Debug\Models\Map\Sponza\sponzaCollision_0.xml</Output>
+      <Time>2014-02-01T01:21:45.5025265+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Map\arena.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\obj\x86\Debug\Models\Map\arena_0.xml</Output>
+      <Time>2014-02-01T01:22:02.8302087+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Textures\arena_textures\pipe_1.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Textures\arena_textures\pipe_1_0.xnb</Output>
+      <Time>2014-02-01T01:22:05.5254042+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Textures\arena_textures\pipe_2.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Textures\arena_textures\pipe_2_0.xnb</Output>
+      <Time>2014-02-01T01:22:05.5473808+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Textures\arena_textures\stone_tex.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Textures\arena_textures\stone_tex_0.xnb</Output>
+      <Time>2014-02-01T01:22:05.6361714+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Textures\arena_textures\grass.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Textures\arena_textures\grass_0.xnb</Output>
+      <Time>2014-02-01T01:22:05.4814884+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Textures\arena_textures\floor_1.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Textures\arena_textures\floor_1_0.xnb</Output>
+      <Time>2014-02-01T01:22:05.4286241+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Textures\arena_textures\floorbox.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Textures\arena_textures\floorbox_0.xnb</Output>
+      <Time>2014-02-01T01:22:05.4555525+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Textures\arena_textures\roof_1.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Textures\arena_textures\roof_1_0.xnb</Output>
+      <Time>2014-02-01T01:22:05.611211+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Textures\arena_textures\pylon_1.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Textures\arena_textures\pylon_1_0.xnb</Output>
+      <Time>2014-02-01T01:22:05.565313+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Textures\arena_textures\flatwayLarge_1.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Textures\arena_textures\flatwayLarge_1_0.xnb</Output>
+      <Time>2014-02-01T01:22:05.3966847+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Textures\arena_textures\flatwayLarge_2.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Textures\arena_textures\flatwayLarge_2_0.xnb</Output>
+      <Time>2014-02-01T01:22:05.4096722+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Textures\arena_textures\metal_ground.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Textures\arena_textures\metal_ground_0.xnb</Output>
+      <Time>2014-02-01T01:22:05.5054465+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Textures\arena_textures\basefloor.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\Models\Textures\arena_textures\basefloor_0.xnb</Output>
+      <Time>2014-02-01T01:22:05.3607475+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Characters\Minimon\minimon.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\obj\x86\Debug\Models\Characters\Minimon\minimon_0.xml</Output>
+      <Time>2014-02-01T01:21:40.3526165+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\DeferredRendering\sphere.x</Source>
+      <Importer>XImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\obj\x86\Debug\Models\DeferredRendering\sphere_0.xml</Output>
+      <Time>2014-02-01T01:21:40.4603921+01:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <ContentProjectGUID>{47188BA9-EC21-4CEE-8711-95671005687C}</ContentProjectGUID>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>HiDef</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\DeimosContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2011-09-01T17:22:30+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2011-09-01T17:22:30+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2011-09-01T17:22:30+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2011-09-01T17:22:30+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2011-09-01T17:22:30+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2011-09-01T17:22:30+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\DeferredPipeline\bin\x86\Debug\DeferredPipeline.dll</Key>
+        <Value>2014-02-01T01:55:16.8518233+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Users\Manu\Documents\Visual Studio 2012\Projects\test\Bounce\ContentProcessors\CollidableModelProcessor.dll</Key>
+        <Value>2013-12-16T18:10:11+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2014-01-30T23:52:33.7176487+01:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>

@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deimos", "Deimos\Deimos\Deimos.csproj", "{BD047396-B522-4D2B-9B82-474272D9FC8F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0656B47B-F22B-435F-8879-56EA5C1D1F41} = {0656B47B-F22B-435F-8879-56EA5C1D1F41}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeimosContent", "Deimos\DeimosContent\DeimosContent.contentproj", "{47188BA9-EC21-4CEE-8711-95671005687C}"
 EndProject

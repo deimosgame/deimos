@@ -1,0 +1,4 @@
+C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\DeferredPipeline\bin\x86\Debug\DeferredPipeline.dll
+C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\DeferredPipeline\bin\x86\Debug\DeferredPipeline.pdb
+C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\DeferredPipeline\obj\x86\Debug\DeferredPipeline.dll
+C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\DeferredPipeline\obj\x86\Debug\DeferredPipeline.pdb

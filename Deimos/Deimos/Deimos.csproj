@@ -80,7 +80,7 @@
   <ItemGroup>
     <Reference Include="CollidableModel_Windows, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\CollidableModel_Windows.dll</HintPath>
+      <HintPath>..\..\..\..\test\Bounce\ContentProcessors\CollidableModel_Windows.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <Private>False</Private>
@@ -148,7 +148,6 @@
     <Compile Include="Gameplay\Scenes\SceneSkatePark.cs" />
     <Compile Include="Gameplay\Scenes\SceneSponza.cs" />
     <Compile Include="Gameplay\Scenes\Template\SceneTemplate.cs" />
-    <Compile Include="Gameplay\Scenes\SceneTestCyril.cs" />
     <Compile Include="Tools\DebugScreen.cs" />
     <Compile Include="MISC\Floor.cs" />
     <Compile Include="Display\Managers\SubManagers\ModelManager.cs" />

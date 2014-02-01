@@ -23,10 +23,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CollidableModelProcessor">
-      <HintPath>..\Deimos\CollidableModelProcessor.dll</HintPath>
-    </Reference>
-    <Reference Include="DeferredPipeline">
-      <HintPath>..\..\DeferredPipeline\obj\x86\Debug\DeferredPipeline.dll</HintPath>
+      <HintPath>..\..\..\..\test\Bounce\ContentProcessors\CollidableModelProcessor.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.EffectImporter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL">
       <Private>False</Private>
@@ -52,6 +49,7 @@
       <Name>debug</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -59,6 +57,7 @@
       <Name>menuTitle</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +65,7 @@
       <Name>menuElement</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +73,7 @@
       <Name>Ana_dif</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +82,7 @@
       <Importer>FbxImporter</Importer>
       <Processor>CollidableModelProcessor</Processor>
       <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +90,7 @@
       <Name>Ana_cspec</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -95,6 +98,7 @@
       <Name>Ana_norm</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +107,7 @@
       <Importer>FbxImporter</Importer>
       <Processor>CollidableModelProcessor</Processor>
       <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +115,7 @@
       <Name>Grid</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -117,11 +123,13 @@
       <Name>ClearGBuffer</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Shaders\DeferredRendering\CombineFinal.fx">
       <Name>CombineFinal</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +137,7 @@
       <Name>DirectionalLight</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -136,11 +145,13 @@
       <Name>PointLight</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Shaders\DeferredRendering\RenderGBuffer.fx">
       <Name>RenderGBuffer</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +159,7 @@
       <Name>sphere</Name>
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -155,11 +167,13 @@
       <Name>null_normal</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Textures\DeferredRendering\null_specular.tga">
       <Name>null_specular</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -167,282 +181,338 @@
       <Name>background</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\background_ddn.tga">
       <Name>background_ddn</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\chain_texture.tga">
       <Name>chain_texture</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\chain_texture_ddn.tga">
       <Name>chain_texture_ddn</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\chain_texture_diff_mask.tga">
       <Name>chain_texture_diff_mask</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\chain_texture_mask.tga">
       <Name>chain_texture_mask</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\lion.tga">
       <Name>lion</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\lion2_ddn.tga">
       <Name>lion2_ddn</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\lion_ddn.tga">
       <Name>lion_ddn</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\spnza_bricks_a_ddn.tga">
       <Name>spnza_bricks_a_ddn</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\spnza_bricks_a_diff.tga">
       <Name>spnza_bricks_a_diff</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\spnza_bricks_a_spec.tga">
       <Name>spnza_bricks_a_spec</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza.fbx">
       <Name>sponza</Name>
       <Importer>FbxImporter</Importer>
       <Processor>CollidableModelProcessor</Processor>
       <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_arch_ddn.tga">
       <Name>sponza_arch_ddn</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_arch_diff.tga">
       <Name>sponza_arch_diff</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_arch_spec.tga">
       <Name>sponza_arch_spec</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_ceiling_a_diff.tga">
       <Name>sponza_ceiling_a_diff</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_ceiling_a_spec.tga">
       <Name>sponza_ceiling_a_spec</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_column_a_ddn.tga">
       <Name>sponza_column_a_ddn</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_column_a_diff.tga">
       <Name>sponza_column_a_diff</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_column_a_spec.tga">
       <Name>sponza_column_a_spec</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_column_b_ddn.tga">
       <Name>sponza_column_b_ddn</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_column_b_diff.tga">
       <Name>sponza_column_b_diff</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_column_b_spec.tga">
       <Name>sponza_column_b_spec</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_column_c_ddn.tga">
       <Name>sponza_column_c_ddn</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_column_c_diff.tga">
       <Name>sponza_column_c_diff</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_column_c_spec.tga">
       <Name>sponza_column_c_spec</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_curtain_blue_diff.tga">
       <Name>sponza_curtain_blue_diff</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_curtain_diff.tga">
       <Name>sponza_curtain_diff</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_curtain_green_diff.tga">
       <Name>sponza_curtain_green_diff</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_details_diff.tga">
       <Name>sponza_details_diff</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_details_spec.tga">
       <Name>sponza_details_spec</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_fabric_blue_diff.tga">
       <Name>sponza_fabric_blue_diff</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_fabric_diff.tga">
       <Name>sponza_fabric_diff</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_fabric_green_diff.tga">
       <Name>sponza_fabric_green_diff</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_fabric_spec.tga">
       <Name>sponza_fabric_spec</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_flagpole_diff.tga">
       <Name>sponza_flagpole_diff</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_flagpole_spec.tga">
       <Name>sponza_flagpole_spec</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_floor_a_diff.tga">
       <Name>sponza_floor_a_diff</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_floor_a_spec.tga">
       <Name>sponza_floor_a_spec</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_roof_diff.tga">
       <Name>sponza_roof_diff</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_thorn_ddn.tga">
       <Name>sponza_thorn_ddn</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_thorn_diff.tga">
       <Name>sponza_thorn_diff</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_thorn_diff_mask.tga">
       <Name>sponza_thorn_diff_mask</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_thorn_mask.tga">
       <Name>sponza_thorn_mask</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_thorn_spec.tga">
       <Name>sponza_thorn_spec</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\vase_ddn.tga">
       <Name>vase_ddn</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\vase_dif.tga">
       <Name>vase_dif</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\vase_hanging.tga">
       <Name>vase_hanging</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\vase_plant.tga">
       <Name>vase_plant</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\vase_plant_diff_mask.tga">
       <Name>vase_plant_diff_mask</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\vase_plant_mask.tga">
       <Name>vase_plant_mask</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\vase_plant_spec.tga">
       <Name>vase_plant_spec</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\vase_round.tga">
       <Name>vase_round</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\vase_round_ddn.tga">
       <Name>vase_round_ddn</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\vase_round_spec.tga">
       <Name>vase_round_spec</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -450,6 +520,7 @@
       <Name>cone</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -457,6 +528,7 @@
       <Name>SpotLight</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -465,6 +537,7 @@
       <Importer>FbxImporter</Importer>
       <Processor>CollidableModelProcessor</Processor>
       <ProcessorParameters_AddVisualizationData>True</ProcessorParameters_AddVisualizationData>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -473,6 +546,7 @@
       <Importer>FbxImporter</Importer>
       <Processor>CollidableModelProcessor</Processor>
       <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -481,30 +555,18 @@
       <Importer>FbxImporter</Importer>
       <Processor>CollidableModelProcessor</Processor>
       <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Misc\Barrel\sources\oil-drum_col.jpg">
-      <Name>oil-drum_col</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Models\Misc\Barrel\oildrum_nor.jpg">
-      <Name>oildrum_nor</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Models\Misc\Barrel\oildrum.fbx">
-      <Name>oildrum</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>CollidableModelProcessor</Processor>
-      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
+    <Folder Include="Models\Misc\" />
     <Folder Include="Shaders\SSAO\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DeferredPipeline\DeferredPipeline.csproj">
+      <Project>{0656b47b-f22b-435f-8879-56ea5c1d1f41}</Project>
+      <Name>DeferredPipeline</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 

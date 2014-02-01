@@ -250,8 +250,9 @@
     <Compile Include="Models\Map\Sponza\sponza.fbx">
       <Name>sponza</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>DeferredRendererModel</Processor>
+      <Processor>CollidableModelProcessor</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_arch_ddn.tga">
       <Name>sponza_arch_ddn</Name>

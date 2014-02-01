@@ -22,7 +22,8 @@ namespace Deimos
             ModelManager.LoadModel(
                  "mapCrysis",
                  "Models/Map/Sponza/sponza", // Model
-                 new Vector3(0, 0, 0) // Location
+                 new Vector3(0, 0, 0), // Location
+                 LevelModel.CollisionType.Accurate
              );
         }
 
@@ -38,21 +39,15 @@ namespace Deimos
             LightManager.AddPointLight(
                "center",
                new Vector3(0, 10, 0),
-               30,
+              430,
                2,
                Color.White
            );
-
-            LightManager.AddDirectionalLight(
-                "sunLight",
-                new Vector3(0, -1, 0),
-                Color.White
-            );
         }
 
         public override void Update()
         {
-            // Do the logic here
+            LightManager.GetPointLight("center").Position = SceneManager.Game.ThisPlayer.Position;
         }
     }
 }

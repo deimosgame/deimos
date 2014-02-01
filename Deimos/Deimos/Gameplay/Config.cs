@@ -15,7 +15,7 @@ namespace Deimos
         public Keys Jump = Keys.Space;
         public Keys Crouch = Keys.LeftControl;
 
-        public float MouseSensivity = 1;
+        public float MouseSensivity = 0.15f;
         public bool MouseInverted = false;
     }
 }

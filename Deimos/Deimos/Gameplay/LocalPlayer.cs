@@ -15,10 +15,14 @@ namespace Deimos
         MouseState PreviousMouseState;
         Vector3 MouseRotationBuffer;
 
+        MainPlayerCollision Collision;
+        Vector3 CameraOldPosition;
+
 
         public LocalPlayer(DeimosGame game)
         {
             Game = game;
+            Collision = new MainPlayerCollision(1.2f, 2f, 2f, game);
         }
 
         private Vector3 GetMovementVector()
@@ -59,6 +63,57 @@ namespace Deimos
             return moveVector;
         }
 
+        // Set camera position and rotation
+        public void MoveTo(Vector3 position, Vector3 rotation)
+        {
+            // Thanks to the properties set at the beginning, setting up these 
+            // values will execute the code inside the property (i.e update our
+            // vectors)
+            CameraOldPosition = Position;
+
+            Game.Camera.Position = position;
+            Game.Camera.Rotation = rotation;
+        }
+
+        // Methods that simulate movement
+        private Vector3 PreviewMove(Vector3 amount, float dt)
+        {
+            // Create a rotate matrix
+            Matrix rotate = Matrix.CreateRotationY(Game.ThisPlayer.Rotation.Y);
+            // Create a movement vector
+            Vector3 movement = new Vector3(amount.X, amount.Y, amount.Z);
+            movement = Vector3.Transform(movement, rotate);
+            // Return the value of camera position + movement vector
+
+            // Testing for the UPCOMING position
+            if (Collision.CheckCollision(Game.ThisPlayer.Position + movement))
+            {
+                // Creating the new movement vector, which will make use 
+                // able to have a smooth collision: being able to "slide" on 
+                // the wall while colliding
+                movement = new Vector3(
+                    Collision.CheckCollision(Game.ThisPlayer.Position +
+                                new Vector3(movement.X, 0, 0)) ? 0 : movement.X,
+                    Collision.CheckCollision(Game.ThisPlayer.Position +
+                                new Vector3(0, movement.Y, 0)) ? 0 : movement.Y,
+                    Collision.CheckCollision(Game.ThisPlayer.Position +
+                                new Vector3(0, 0, movement.Z)) ? 0 : movement.Z
+                );
+                return Game.ThisPlayer.Position + movement;
+            }
+            else
+            {
+                // There isn't any collision, so we just move the user with 
+                // the movement he wanted to do
+                return Game.ThisPlayer.Position + movement;
+            }
+        }
+
+        public void Move(Vector3 scale, float dt)
+        {
+            MoveTo(PreviewMove(scale, dt), Game.ThisPlayer.Rotation);
+        }
+
         public void HandleInput(GameTime gameTime)
         {
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -76,7 +131,7 @@ namespace Deimos
                 // Now we add in move factor and speed
                 moveVector *= dt * Speed;
                 // Move camera!
-                Game.Camera.Move(moveVector, dt);
+                Move(moveVector, dt);
             }
 
 

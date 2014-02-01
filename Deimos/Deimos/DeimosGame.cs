@@ -135,6 +135,8 @@ namespace Deimos
                 Vector3.Zero
             );
 
+            ThisPlayer.MoveTo(new Vector3(0f, 10f, 20f), Vector3.Zero);
+
 
             IsMouseVisible = false;
 
@@ -156,7 +158,7 @@ namespace Deimos
 
         protected override void LoadContent()
         {
-            SceneManager.SetScene<SceneSkatePark>();
+            SceneManager.SetScene<SceneSponza>();
 
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 

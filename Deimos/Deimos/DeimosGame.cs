@@ -131,11 +131,11 @@ namespace Deimos
         {
             Camera = new Camera(
                 this,
-                new Vector3(0f, 10f, 20f),
+                new Vector3(0f, 80f, 20f),
                 Vector3.Zero
             );
 
-            ThisPlayer.MoveTo(new Vector3(0f, 10f, 20f), Vector3.Zero);
+            ThisPlayer.MoveTo(new Vector3(0f, 80f, 20f), Vector3.Zero);
 
 
             IsMouseVisible = false;

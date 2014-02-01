@@ -55,11 +55,7 @@ namespace Deimos
 
             if (ks.IsKeyDown(Game.Config.Jump))
             {
-                moveVector.Y = 1;
-            }
-            if (ks.IsKeyDown(Game.Config.Crouch))
-            {
-                moveVector.Y = -1;
+                PlayerPhysics.GetInitGravity(20);
             }
 
             return moveVector;
@@ -83,22 +79,28 @@ namespace Deimos
             // Create a rotate matrix
             Matrix rotate = Matrix.CreateRotationY(Game.ThisPlayer.Rotation.Y);
             // Create a movement vector
-            Vector3 movement = new Vector3(amount.X, amount.Y, amount.Z);
+            float gravity = PlayerPhysics.ApplyGravity(dt);
+            Vector3 movement = new Vector3(amount.X, gravity, amount.Z);
+            Vector3 movementGravity = new Vector3(0, gravity, 0);
             movement = Vector3.Transform(movement, rotate);
+            movementGravity = Vector3.Transform(movementGravity, rotate);
             // Return the value of camera position + movement vector
 
             // Testing for the UPCOMING position
             if (Collision.CheckCollision(Game.ThisPlayer.Position + movement))
             {
-
+                if (Collision.CheckCollision(Game.ThisPlayer.Position + movementGravity))
+                {
+                    // Hit floor or ceiling
+                    PlayerPhysics.StopGravity();
+                }
                 // Creating the new movement vector, which will make us 
                 // able to have a smooth collision: being able to "slide" on 
                 // the wall while colliding
                 movement = new Vector3(
                     Collision.CheckCollision(Game.ThisPlayer.Position +
                                 new Vector3(movement.X, 0, 0)) ? 0 : movement.X,
-                    Collision.CheckCollision(Game.ThisPlayer.Position +
-                                new Vector3(0, movement.Y, 0)) ? 0 : movement.Y,
+                    0,
                     Collision.CheckCollision(Game.ThisPlayer.Position +
                                 new Vector3(0, 0, movement.Z)) ? 0 : movement.Z
                 );

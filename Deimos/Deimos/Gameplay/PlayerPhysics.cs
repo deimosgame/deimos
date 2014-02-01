@@ -10,11 +10,12 @@ namespace Deimos
     {
         public enum PhysicalState
         {
-            MidAir,
+            Jumping,
+            Falling,
             Walking
         }
 
-        PhysicalState state = PhysicalState.MidAir;
+        PhysicalState state = PhysicalState.Jumping;
         public PhysicalState State
         {
             get { return state; }
@@ -35,28 +36,32 @@ namespace Deimos
         {
             InitialVelocity = v;
             CurrentTime = 0;
-            State = PhysicalState.MidAir;
+            State = PhysicalState.Jumping;
         }
 
         public void StopGravity()
         {
-            State = PhysicalState.Walking;
-
+            if (State == PhysicalState.Jumping)
+            {
+                InitialVelocity = 0;
+                CurrentTime = 0;
+                State = PhysicalState.Falling;
+            }
+            else
+            {
+                State = PhysicalState.Walking;
+            }
         }
 
-        private void ApplyGravity(GameTime gameTime)
+        public float ApplyGravity(float dt)
         {
             float y = (InitialVelocity * CurrentTime) - (GravityCoef * (CurrentTime * CurrentTime) * 0.5f);
-            float dt = (float) gameTime.ElapsedGameTime.TotalSeconds;
-            Game.ThisPlayer.Move(new Vector3(0, y, 0), dt);
-        }
-
-        public void Update(GameTime gameTime)
-        {
-            if (State == PhysicalState.MidAir)
+            if (y < 0)
             {
-                ApplyGravity(gameTime);
+                State = PhysicalState.Falling;
             }
+            CurrentTime += dt;
+            return y;
         }
     }
 }

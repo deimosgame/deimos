@@ -7,14 +7,8 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Deimos
 {
-    public class LocalPlayer
+    public class LocalPlayer : Player
     {
-        Player playerInstance;
-        internal Player PlayerInstance
-        {
-            get { return playerInstance; }
-            set { playerInstance = value; }
-        }
 
         DeimosGame Game;
         MouseState CurrentMouseState;
@@ -22,9 +16,8 @@ namespace Deimos
         Vector3 MouseRotationBuffer;
 
 
-        public LocalPlayer(DeimosGame game, Player thisPlayer)
+        public LocalPlayer(DeimosGame game)
         {
-            PlayerInstance = thisPlayer;
             Game = game;
         }
 
@@ -81,7 +74,7 @@ namespace Deimos
                 // Normalize that vector so that we don't move faster diagonally
                 moveVector.Normalize();
                 // Now we add in move factor and speed
-                moveVector *= dt * PlayerInstance.Speed;
+                moveVector *= dt * Speed;
                 // Move camera!
                 Game.Camera.Move(moveVector, dt);
             }

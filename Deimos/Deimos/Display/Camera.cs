@@ -29,20 +29,20 @@ namespace Deimos
         // Properties
         public Vector3 Position
         {
-            get { return Game.ThisPlayer.PlayerInstance.Position; }
+            get { return Game.ThisPlayer.Position; }
             set
             {
-                Game.ThisPlayer.PlayerInstance.Position = value;
+                Game.ThisPlayer.Position = value;
                 updateLookAt();
             }
         }
 
         public Vector3 Rotation
         {
-            get { return Game.ThisPlayer.PlayerInstance.Rotation; }
+            get { return Game.ThisPlayer.Rotation; }
             set
             {
-                Game.ThisPlayer.PlayerInstance.Rotation = value;
+                Game.ThisPlayer.Rotation = value;
                 updateLookAt();
             }
         }
@@ -58,7 +58,7 @@ namespace Deimos
             get
             {
                 return Matrix.CreateLookAt(
-                    Game.ThisPlayer.PlayerInstance.Position, 
+                    Game.ThisPlayer.Position, 
                     CameraLookAt, 
                     Vector3.Up
                 );
@@ -70,7 +70,7 @@ namespace Deimos
             get
             {
                 Vector3 viewVector = Vector3.Transform(
-                    Game.ThisPlayer.PlayerInstance.Position - CameraLookAt, 
+                    Game.ThisPlayer.Position - CameraLookAt, 
                     Matrix.CreateRotationY(0)
                 );
                 viewVector.Normalize();
@@ -136,54 +136,54 @@ namespace Deimos
         private void updateLookAt()
         {
             // Build a rotation matrix
-            Matrix rotationMatrix = Matrix.CreateRotationX(Game.ThisPlayer.PlayerInstance.Rotation.X) *
-                                    Matrix.CreateRotationY(Game.ThisPlayer.PlayerInstance.Rotation.Y);
+            Matrix rotationMatrix = Matrix.CreateRotationX(Game.ThisPlayer.Rotation.X) *
+                                    Matrix.CreateRotationY(Game.ThisPlayer.Rotation.Y);
             // Build look at offset vector
             Vector3 lookAtOffset = Vector3.Transform(
                 Vector3.UnitZ, 
                 rotationMatrix
             );
             // Update our camera's look at vector
-            CameraLookAt = Game.ThisPlayer.PlayerInstance.Position + lookAtOffset;
+            CameraLookAt = Game.ThisPlayer.Position + lookAtOffset;
         }
 
         // Methods that simulate movement
         private Vector3 PreviewMove(Vector3 amount, float dt)
         {
             // Create a rotate matrix
-            Matrix rotate = Matrix.CreateRotationY(Game.ThisPlayer.PlayerInstance.Rotation.Y);
+            Matrix rotate = Matrix.CreateRotationY(Game.ThisPlayer.Rotation.Y);
             // Create a movement vector
             Vector3 movement = new Vector3(amount.X, amount.Y, amount.Z);
             movement = Vector3.Transform(movement, rotate);
             // Return the value of camera position + movement vector
 
             // Testing for the UPCOMING position
-            if (Collision.CheckCollision(Game.ThisPlayer.PlayerInstance.Position + movement)) 
+            if (Collision.CheckCollision(Game.ThisPlayer.Position + movement)) 
             {
                 // Creating the new movement vector, which will make use 
                 // able to have a smooth collision: being able to "slide" on 
                 // the wall while colliding
                 movement = new Vector3(
-                    Collision.CheckCollision(Game.ThisPlayer.PlayerInstance.Position + 
+                    Collision.CheckCollision(Game.ThisPlayer.Position + 
                                 new Vector3(movement.X, 0, 0)) ? 0 : movement.X,
-                    Collision.CheckCollision(Game.ThisPlayer.PlayerInstance.Position + 
+                    Collision.CheckCollision(Game.ThisPlayer.Position + 
                                 new Vector3(0, movement.Y, 0)) ? 0 : movement.Y,
-                    Collision.CheckCollision(Game.ThisPlayer.PlayerInstance.Position + 
+                    Collision.CheckCollision(Game.ThisPlayer.Position + 
                                 new Vector3(0, 0, movement.Z)) ? 0 : movement.Z
                 );
-                return Game.ThisPlayer.PlayerInstance.Position + movement;
+                return Game.ThisPlayer.Position + movement;
             }
             else
             {
                 // There isn't any collision, so we just move the user with 
                 // the movement he wanted to do
-                return Game.ThisPlayer.PlayerInstance.Position + movement;
+                return Game.ThisPlayer.Position + movement;
             }
         }
 
         public void Move(Vector3 scale, float dt)
         {
-            MoveTo(PreviewMove(scale, dt), Game.ThisPlayer.PlayerInstance.Rotation);
+            MoveTo(PreviewMove(scale, dt), Game.ThisPlayer.Rotation);
         }
     }
 }

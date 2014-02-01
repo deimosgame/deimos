@@ -50,7 +50,7 @@ namespace Deimos
         public override void Update()
         {
             LightManager.GetPointLight("player").Position = 
-                SceneManager.Game.ThisPlayer.PlayerInstance.Position;
+                SceneManager.Game.ThisPlayer.Position;
             PointLight light = LightManager.GetPointLight("player");
             if (light.Radius <= 90 || light.Radius >= 130)
             {

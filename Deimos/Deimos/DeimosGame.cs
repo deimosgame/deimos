@@ -107,7 +107,7 @@ namespace Deimos
 
         public DeimosGame()
         {
-            ThisPlayer = new LocalPlayer(this, new Player());
+            ThisPlayer = new LocalPlayer(this);
 
 
             TempContent = new ContentManager(Services);

@@ -18,11 +18,13 @@ namespace Deimos
         MainPlayerCollision Collision;
         Vector3 CameraOldPosition;
 
+        PlayerPhysics PlayerPhysics;
 
         public LocalPlayer(DeimosGame game)
         {
             Game = game;
-            Collision = new MainPlayerCollision(1.2f, 2f, 2f, game);
+            Collision = new MainPlayerCollision(10f, 1.8f, 1.8f, game);
+            PlayerPhysics = new PlayerPhysics(Game);
         }
 
         private Vector3 GetMovementVector()
@@ -88,7 +90,8 @@ namespace Deimos
             // Testing for the UPCOMING position
             if (Collision.CheckCollision(Game.ThisPlayer.Position + movement))
             {
-                // Creating the new movement vector, which will make use 
+
+                // Creating the new movement vector, which will make us 
                 // able to have a smooth collision: being able to "slide" on 
                 // the wall while colliding
                 movement = new Vector3(
@@ -163,7 +166,7 @@ namespace Deimos
                         (MouseRotationBuffer.Y - MathHelper.ToRadians(75.0f));
                 }
 
-                float mouseInverted = (Game.Config.MouseInverted == true) ? 1 : -1;
+                float mouseInverted = (Game.Config.MouseInverted) ? 1 : -1;
 
                 Game.Camera.Rotation = new Vector3(
                     mouseInverted * MathHelper.Clamp(

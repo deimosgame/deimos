@@ -8,45 +8,24 @@ namespace Deimos
 {
     public class Player
     {
-        Vector3 position;
-        public Vector3 Position
-        {
-            get { return position; }
-            set { position = value; }
-        }
+        public Vector3 Position;
+        
 
-        Vector3 rotation;
-        public Vector3 Rotation
-        {
-            get { return rotation; }
-            set { rotation = value; }
-        }
+        public Vector3 Rotation;
+        
 
-        Vector3 lookAt;
-        public Vector3 LookAt
-        {
-            get { return lookAt; }
-            set { lookAt = value; }
-        }
+        public Vector3 LookAt;
+        
 
         public enum Teams
         {
             Humans,
             Aliens
         }
-        Teams team;
-        internal Teams Team
-        {
-            get { return team; }
-            set { team = value; }
-        }
+        public Teams Team;
+        
 
-        float speed = 70;
-        public float Speed
-        {
-            get { return speed; }
-            set { speed = value; }
-        }
+        public float Speed = 70;
         
     }
 }

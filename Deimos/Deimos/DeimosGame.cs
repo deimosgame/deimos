@@ -141,11 +141,11 @@ namespace Deimos
             IsMouseVisible = false;
 
             // Game settings
-            Graphics.PreferredBackBufferWidth = 1344;
-            Graphics.PreferredBackBufferHeight = 840;
-            //Graphics.PreferredBackBufferWidth = 1920;
-            //Graphics.PreferredBackBufferHeight = 1080;
-            //Graphics.IsFullScreen = true;
+            //Graphics.PreferredBackBufferWidth = 1344;
+            //Graphics.PreferredBackBufferHeight = 840;
+            Graphics.PreferredBackBufferWidth = 1920;
+            Graphics.PreferredBackBufferHeight = 1080;
+            Graphics.IsFullScreen = true;
             //graphics.PreferMultiSampling = true; // Anti aliasing - Useless as custom effects
             //graphics.SynchronizeWithVerticalRetrace = false; // VSync
             //IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec
@@ -158,7 +158,7 @@ namespace Deimos
 
         protected override void LoadContent()
         {
-            SceneManager.SetScene<SceneSponza>();
+            SceneManager.SetScene<SceneSkatePark>();
 
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 

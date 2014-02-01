@@ -18,16 +18,13 @@ namespace Deimos
         MainPlayerCollision Collision;
         Vector3 CameraOldPosition;
 
-        PlayerPhysics PlayerPhysics;
-
         public LocalPlayer(DeimosGame game)
         {
             Game = game;
             Collision = new MainPlayerCollision(10f, 1.8f, 1.8f, game);
-            PlayerPhysics = new PlayerPhysics(Game);
         }
 
-        private Vector3 GetMovementVector()
+        private Vector3 GetMovementVector(float dt)
         {
             // Getting Mouse state
             CurrentMouseState = Mouse.GetState();
@@ -55,8 +52,10 @@ namespace Deimos
 
             if (ks.IsKeyDown(Game.Config.Jump))
             {
-                PlayerPhysics.GetInitGravity(20);
+                Game.ThisPlayerPhysics.GetInitGravity(3);
             }
+
+            moveVector.Y = Game.ThisPlayerPhysics.ApplyGravity(dt);
 
             return moveVector;
         }
@@ -74,14 +73,12 @@ namespace Deimos
         }
 
         // Methods that simulate movement
-        private Vector3 PreviewMove(Vector3 amount, float dt)
+        private Vector3 PreviewMove(Vector3 movement, float dt)
         {
             // Create a rotate matrix
             Matrix rotate = Matrix.CreateRotationY(Game.ThisPlayer.Rotation.Y);
             // Create a movement vector
-            float gravity = PlayerPhysics.ApplyGravity(dt);
-            Vector3 movement = new Vector3(amount.X, gravity, amount.Z);
-            Vector3 movementGravity = new Vector3(0, gravity, 0);
+            Vector3 movementGravity = new Vector3(0, movement.Y, 0);
             movement = Vector3.Transform(movement, rotate);
             movementGravity = Vector3.Transform(movementGravity, rotate);
             // Return the value of camera position + movement vector
@@ -92,7 +89,7 @@ namespace Deimos
                 if (Collision.CheckCollision(Game.ThisPlayer.Position + movementGravity))
                 {
                     // Hit floor or ceiling
-                    PlayerPhysics.StopGravity();
+                    Game.ThisPlayerPhysics.StopGravity();
                 }
                 // Creating the new movement vector, which will make us 
                 // able to have a smooth collision: being able to "slide" on 
@@ -128,7 +125,7 @@ namespace Deimos
             // Let's get user inputs
             KeyboardState ks = Keyboard.GetState();
 
-            Vector3 moveVector = GetMovementVector();
+            Vector3 moveVector = GetMovementVector(dt);
             if (moveVector != Vector3.Zero)
             {
                 // Normalize that vector so that we don't move faster diagonally

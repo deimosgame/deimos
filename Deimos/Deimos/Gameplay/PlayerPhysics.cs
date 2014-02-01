@@ -53,6 +53,7 @@ namespace Deimos
             }
         }
 
+
         public float ApplyGravity(float dt)
         {
             float y = (InitialVelocity * CurrentTime) - (GravityCoef * (CurrentTime * CurrentTime) * 0.5f);

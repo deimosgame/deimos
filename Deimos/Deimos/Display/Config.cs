@@ -1,0 +1,21 @@
+﻿using Microsoft.Xna.Framework.Input;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Deimos
+{
+    class Config
+    {
+        public Keys Forward = Keys.W;
+        public Keys Backward = Keys.S;
+        public Keys Left = Keys.A;
+        public Keys Right = Keys.D;
+        public Keys Jump = Keys.Space;
+        public Keys Crouch = Keys.LeftControl;
+
+        public float MouseSensivity = 1;
+        public bool MouseInverted = false;
+    }
+}

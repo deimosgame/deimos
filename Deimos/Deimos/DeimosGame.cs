@@ -39,6 +39,13 @@ namespace Deimos
             private set { camera = value; }
         }
 
+        LocalPlayer thisPlayer;
+        public LocalPlayer ThisPlayer
+        {
+            get { return thisPlayer; }
+            set { thisPlayer = value; }
+        }
+
         SceneManager sceneManager;
         internal SceneManager SceneManager
         {
@@ -59,6 +66,14 @@ namespace Deimos
             get { return debugScreen; }
             set { debugScreen = value; }
         }
+
+        Config config;
+        internal Config Config
+        {
+            get { return config; }
+            set { config = value; }
+        }
+
 
 
         public enum GameStates
@@ -92,16 +107,13 @@ namespace Deimos
 
         public DeimosGame()
         {
+            ThisPlayer = new LocalPlayer(this, new Player());
+
+
             TempContent = new ContentManager(Services);
 
             Graphics = new GraphicsDeviceManager(this);
-            Camera = new Camera(
-                this,
-                new Vector3(0f, 10f, 20f),
-                Vector3.Zero,
-                70f
-            );
-            Components.Add(Camera);
+
 
             Content.RootDirectory = "Content";
             TempContent.RootDirectory = "Content";
@@ -110,19 +122,28 @@ namespace Deimos
             Components.Add(renderer);
 
             SceneManager = new SceneManager(this, TempContent);
+
+            Config = new Config();
         }
 
 
         protected override void Initialize()
         {
+            Camera = new Camera(
+                this,
+                new Vector3(0f, 10f, 20f),
+                Vector3.Zero
+            );
+
+
             IsMouseVisible = false;
 
             // Game settings
-            //Graphics.PreferredBackBufferWidth = 1344;
-            //Graphics.PreferredBackBufferHeight = 840;
-            Graphics.PreferredBackBufferWidth = 1920;
-            Graphics.PreferredBackBufferHeight = 1080;
-            Graphics.IsFullScreen = true;
+            Graphics.PreferredBackBufferWidth = 1344;
+            Graphics.PreferredBackBufferHeight = 840;
+            //Graphics.PreferredBackBufferWidth = 1920;
+            //Graphics.PreferredBackBufferHeight = 1080;
+            //Graphics.IsFullScreen = true;
             //graphics.PreferMultiSampling = true; // Anti aliasing - Useless as custom effects
             //graphics.SynchronizeWithVerticalRetrace = false; // VSync
             //IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec
@@ -156,6 +177,8 @@ namespace Deimos
             // Allows the game to exit
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
+
+            ThisPlayer.HandleInput(gameTime);
 
             SceneManager.Update();
 

@@ -23,7 +23,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CollidableModelProcessor">
-      <HintPath>..\..\..\..\test\Bounce\ContentProcessors\CollidableModelProcessor.dll</HintPath>
+      <HintPath>..\Deimos\CollidableModelProcessor.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.EffectImporter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL">
       <Private>False</Private>
@@ -534,14 +534,6 @@
       <Importer>FbxImporter</Importer>
       <Processor>CollidableModelProcessor</Processor>
       <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Models\Characters\Minimon\minimon.fbx">
-      <Name>minimon</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>DeferredRendererModel</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>

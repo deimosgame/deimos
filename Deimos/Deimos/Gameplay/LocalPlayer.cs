@@ -50,9 +50,9 @@ namespace Deimos
                 moveVector.X = -1;
             }
 
-            if (ks.IsKeyDown(Game.Config.Jump))
+            if (ks.IsKeyDown(Game.Config.Jump) && Game.ThisPlayerPhysics.State == PlayerPhysics.PhysicalState.Walking)
             {
-                Game.ThisPlayerPhysics.GetInitGravity(3);
+                Game.ThisPlayerPhysics.GetInitGravity(3.4f);
             }
 
             moveVector.Y = Game.ThisPlayerPhysics.ApplyGravity(dt);
@@ -90,6 +90,7 @@ namespace Deimos
                 {
                     // Hit floor or ceiling
                     Game.ThisPlayerPhysics.StopGravity();
+                    movement.Y = 0;
                 }
                 // Creating the new movement vector, which will make us 
                 // able to have a smooth collision: being able to "slide" on 
@@ -97,7 +98,7 @@ namespace Deimos
                 movement = new Vector3(
                     Collision.CheckCollision(Game.ThisPlayer.Position +
                                 new Vector3(movement.X, 0, 0)) ? 0 : movement.X,
-                    0,
+                    movement.Y,
                     Collision.CheckCollision(Game.ThisPlayer.Position +
                                 new Vector3(0, 0, movement.Z)) ? 0 : movement.Z
                 );
@@ -128,10 +129,13 @@ namespace Deimos
             Vector3 moveVector = GetMovementVector(dt);
             if (moveVector != Vector3.Zero)
             {
+                float tempY = moveVector.Y;
+                moveVector.Y = 0;
                 // Normalize that vector so that we don't move faster diagonally
-                moveVector.Normalize();
+                if (moveVector != Vector3.Zero) moveVector.Normalize();
                 // Now we add in move factor and speed
                 moveVector *= dt * Speed;
+                moveVector.Y = tempY;
                 // Move camera!
                 Move(moveVector, dt);
             }

@@ -62,13 +62,8 @@ Content\Models\Map\Sponza\vase_plant_spec.xnb
 Content\Models\Map\Sponza\vase_round.xnb
 Content\Models\Map\Sponza\vase_round_ddn.xnb
 Content\Models\Map\Sponza\vase_round_spec.xnb
-Content\Models\Characters\Ana_Model.xnb
-Content\Models\Map\coucou.xnb
-Content\Models\Map\Sponza\sponza.xnb
 Content\Models\DeferredRendering\cone.xnb
-Content\Models\Map\Sponza\sponzaCollision.xnb
 Content\Models\Map\arena.xnb
-Content\Models\Characters\Minimon\minimon.xnb
 Content\Shaders\DeferredRendering\ClearGBuffer.xnb
 Content\Shaders\DeferredRendering\CombineFinal.xnb
 Content\Shaders\Lights\DirectionalLight.xnb
@@ -115,6 +110,10 @@ Content\Models\Textures\arena_textures\flatwayLarge_1_0.xnb
 Content\Models\Textures\arena_textures\flatwayLarge_2_0.xnb
 Content\Models\Textures\arena_textures\metal_ground_0.xnb
 Content\Models\Textures\arena_textures\basefloor_0.xnb
+Content\Models\Characters\Ana_Model.xnb
+Content\Models\Map\coucou.xnb
+Content\Models\Map\Sponza\sponza.xnb
+Content\Models\Characters\Minimon\minimon.xnb
 Content\Fonts\debug.spritefont
 Content\Fonts\menuTitle.spritefont
 Content\Fonts\menuElement.spritefont
@@ -190,6 +189,8 @@ Content\Models\Map\Sponza\vase_round_ddn.tga
 Content\Models\Map\Sponza\vase_round_spec.tga
 Content\Models\DeferredRendering\cone.fbx
 Content\Shaders\Lights\SpotLight.fx
-Content\Models\Map\Sponza\sponzaCollision.fbx
 Content\Models\Map\arena.fbx
 Content\Models\Characters\Minimon\minimon.fbx
+CollidableModelProcessor.dll
+CollidableModel_Windows.dll
+GeometryHelper.dll

@@ -80,8 +80,7 @@
     <Compile Include="Models\Characters\Ana_Model.fbx">
       <Name>Ana_Model</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>CollidableModelProcessor</Processor>
-      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
+      <Processor>DeferredRendererModel</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
@@ -105,8 +104,7 @@
     <Compile Include="Models\Map\coucou.fbx">
       <Name>coucou</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>CollidableModelProcessor</Processor>
-      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
+      <Processor>DeferredRendererModel</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
@@ -252,8 +250,7 @@
     <Compile Include="Models\Map\Sponza\sponza.fbx">
       <Name>sponza</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>CollidableModelProcessor</Processor>
-      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
+      <Processor>DeferredRendererModel</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\Map\Sponza\sponza_arch_ddn.tga">
@@ -532,15 +529,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Map\Sponza\sponzaCollision.fbx">
-      <Name>sponzaCollision</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>CollidableModelProcessor</Processor>
-      <ProcessorParameters_AddVisualizationData>True</ProcessorParameters_AddVisualizationData>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Models\Map\arena.fbx">
       <Name>arena</Name>
       <Importer>FbxImporter</Importer>
@@ -553,13 +541,13 @@
     <Compile Include="Models\Characters\Minimon\minimon.fbx">
       <Name>minimon</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>CollidableModelProcessor</Processor>
-      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
+      <Processor>DeferredRendererModel</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Misc\" />
+    <Folder Include="References\" />
     <Folder Include="Shaders\SSAO\" />
   </ItemGroup>
   <ItemGroup>

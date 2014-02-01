@@ -95,29 +95,22 @@ namespace Deimos
             );
 
             // Let's check for collision with our boxes
-            if (CollisionBoxes.Count > 0)
+            foreach(BoundingBox collisionBox in CollisionBoxes)
             {
-                // Looping through all the boudingboxes included previously
-                    foreach(BoundingBox collisionBox in CollisionBoxes)
+                // If our player is inside the collision region
+                if (collisionBox.Contains(cameraBox) !=
+                    ContainmentType.Disjoint)
                 {
-                    // If our player is inside the collision region
-                    if (collisionBox.Contains(cameraBox) !=
-                        ContainmentType.Disjoint)
-                    {
-                        return true;
-                    }
+                    return true;
                 }
             }
 
             // Same with spheres
-            if (CollisionSpheres.Count > 0)
+            foreach(BoundingSphere collisionSphere in CollisionSpheres)
             {
-                foreach(BoundingSphere collisionSphere in CollisionSpheres)
-                {
-                    if (collisionSphere.Contains(cameraBox) != 
-                        ContainmentType.Disjoint)
-                        return true;
-                }
+                if (collisionSphere.Contains(cameraBox) != 
+                    ContainmentType.Disjoint)
+                    return true;
             }
 
             // And finally with our models collisions

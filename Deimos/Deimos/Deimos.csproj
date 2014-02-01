@@ -156,11 +156,17 @@
     <Compile Include="DeimosGame.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CollidableModelProcessor.dll" />
-    <Content Include="CollidableModel_Windows.dll" />
+    <None Include="CollidableModelProcessor.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="CollidableModel_Windows.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
-    <Content Include="GeometryHelper.dll" />
+    <None Include="GeometryHelper.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DeimosContent\DeimosContent.contentproj">

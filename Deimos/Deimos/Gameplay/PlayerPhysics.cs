@@ -15,7 +15,7 @@ namespace Deimos
             Walking
         }
 
-        PhysicalState state = PhysicalState.Jumping;
+        PhysicalState state = PhysicalState.Walking;
         public PhysicalState State
         {
             get { return state; }
@@ -47,8 +47,10 @@ namespace Deimos
                 CurrentTime = 0;
                 State = PhysicalState.Falling;
             }
-            else
+            else if (State == PhysicalState.Falling)
             {
+                InitialVelocity = 0;
+                CurrentTime = 0;
                 State = PhysicalState.Walking;
             }
         }

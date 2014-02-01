@@ -21,7 +21,7 @@ namespace Deimos
         public LocalPlayer(DeimosGame game)
         {
             Game = game;
-            Collision = new MainPlayerCollision(10f, 1.8f, 1.8f, game);
+            Collision = new MainPlayerCollision(8f, 1f, 1f, game);
         }
 
         private Vector3 GetMovementVector(float dt)

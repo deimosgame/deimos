@@ -39,7 +39,7 @@ namespace Deimos
             LightManager.AddPointLight(
                "player",
                new Vector3(0, 0, 0), // Location
-               100, // Radius
+               400, // Radius
                2, // Intensity
                Color.White
             );
@@ -52,11 +52,11 @@ namespace Deimos
             LightManager.GetPointLight("player").Position = 
                 SceneManager.Game.ThisPlayer.Position;
             PointLight light = LightManager.GetPointLight("player");
-            if (light.Radius <= 90 || light.Radius >= 130)
+            /*if (light.Radius <= 90 || light.Radius >= 130)
             {
                 coeff = -coeff;
             }
-            light.Radius += coeff;
+            light.Radius += coeff;*/
         }
     }
 }

@@ -22,7 +22,8 @@ namespace Deimos
             ModelManager.LoadModel(
                  "skatepark",
                  "Models/Map/arena", // Model
-                 new Vector3(0, 0, 0) // Location
+                 new Vector3(0, 0, 0), // Location
+                 LevelModel.CollisionType.Accurate
             );
         }
 

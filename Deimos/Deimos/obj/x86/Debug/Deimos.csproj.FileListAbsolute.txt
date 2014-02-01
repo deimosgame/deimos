@@ -203,3 +203,4 @@ C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\b
 C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\bin\x86\Debug\CollidableModel_Windows.dll
 C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\obj\x86\Debug\Deimos.exe.manifest
 C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\obj\x86\Debug\Deimos.application
+C:\Users\Manu\Documents\Visual Studio 2012\Projects\epita\deimos\Deimos\Deimos\obj\x86\Debug\Deimos.csprojResolveAssemblyReference.cache

@@ -39,17 +39,24 @@ namespace Deimos
             LightManager.AddPointLight(
                "player",
                new Vector3(0, 0, 0), // Location
-               300, // Radius
+               100, // Radius
                2, // Intensity
                Color.White
             );
         }
 
         // Update our things at each ticks
+        float coeff = 0.2f;
         public override void Update()
         {
             LightManager.GetPointLight("player").Position = 
                 SceneManager.Game.Camera.CameraPosition;
+            PointLight light = LightManager.GetPointLight("player");
+            if (light.Radius <= 90 || light.Radius >= 130)
+            {
+                coeff = -coeff;
+            }
+            light.Radius += coeff;
         }
     }
 }

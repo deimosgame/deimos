@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Display\Camera.cs" />
+    <Compile Include="Gameplay\Bullet.cs" />
     <Compile Include="Gameplay\Config.cs" />
     <Compile Include="Display\DeferredRendering\DeferredRenderer.cs" />
     <Compile Include="Display\Managers\SubManagers\LightManager.cs" />
@@ -152,6 +153,7 @@
     <Compile Include="Gameplay\Scenes\SceneSkatePark.cs" />
     <Compile Include="Gameplay\Scenes\SceneSponza.cs" />
     <Compile Include="Gameplay\Scenes\Template\SceneTemplate.cs" />
+    <Compile Include="Gameplay\Weapon.cs" />
     <Compile Include="Tools\DebugScreen.cs" />
     <Compile Include="MISC\Floor.cs" />
     <Compile Include="Display\Managers\SubManagers\ModelManager.cs" />

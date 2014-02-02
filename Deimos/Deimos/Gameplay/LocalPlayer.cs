@@ -55,6 +55,11 @@ namespace Deimos
                 Game.ThisPlayerPhysics.GetInitGravity(3.5f);
             }
 
+            if (CurrentMouseState.LeftButton == ButtonState.Pressed)
+            {
+                //Attack
+            }
+
             Game.Config.DebugScreen = false;
             if (ks.IsKeyDown(Game.Config.ShowDebug))
             {

@@ -26,6 +26,7 @@ namespace Deimos
         float InitialVelocity = 0;
         float CurrentTime = 0;
         float GravityCoef = 12f;
+        bool ApplyingGravity = false;
 
         public PlayerPhysics(DeimosGame game)
         {
@@ -44,6 +45,7 @@ namespace Deimos
             if (State == PhysicalState.Jumping)
             {
                 InitialVelocity = 0;
+                CurrentTime = 0;
                 State = PhysicalState.Falling;
             }
             else if (State == PhysicalState.Falling)
@@ -58,7 +60,7 @@ namespace Deimos
         public float ApplyGravity(float dt)
         {
             float y = (InitialVelocity * CurrentTime) - 0.5f * (GravityCoef * (float)Math.Pow(CurrentTime, 2));
-            if (y <= 0)
+            if (y <= 0 && CurrentTime != 0)
             {
                 State = PhysicalState.Falling;
             }

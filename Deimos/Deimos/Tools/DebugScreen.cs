@@ -13,7 +13,7 @@ namespace Deimos
         DeimosGame Game;
         SpriteFont Font;
 
-        int FrameRate, FrameCounter;
+        int FrameRate, FrameCounter, UpdateRate, UpdateCounter;
         TimeSpan ElapsedTime = TimeSpan.Zero;
         public DebugScreen(DeimosGame game)
         {
@@ -66,9 +66,18 @@ namespace Deimos
                 Color.White
             );
             Game.ScreenElementManager.AddText(
+                "Ticks",
+                0,
+                (int)MapHeight + 50,
+                0,
+                Font,
+                "Ticks per sec: ",
+                Color.White
+            );
+            Game.ScreenElementManager.AddText(
                 "JumpState",
                 0,
-                (int) MapHeight + 50,
+                (int) MapHeight + 70,
                 0,
                 Font,
                 "JumpState: ",
@@ -83,6 +92,7 @@ namespace Deimos
             Game.ScreenElementManager.GetImage("LightMap").Show = true;
             Game.ScreenElementManager.GetText("Location").Show = true;
             Game.ScreenElementManager.GetText("FPS").Show = true;
+            Game.ScreenElementManager.GetText("Ticks").Show = true;
             Game.ScreenElementManager.GetText("JumpState").Show = true;
         }
         private void Hide()
@@ -92,17 +102,21 @@ namespace Deimos
             Game.ScreenElementManager.GetImage("LightMap").Show = false;
             Game.ScreenElementManager.GetText("Location").Show = false;
             Game.ScreenElementManager.GetText("FPS").Show = false;
+            Game.ScreenElementManager.GetText("Ticks").Show = false;
             Game.ScreenElementManager.GetText("JumpState").Show = false;
         }
 
         public void Update(GameTime gameTime)
         {
+            UpdateCounter++;
             ElapsedTime += gameTime.ElapsedGameTime;
 
             if (ElapsedTime > TimeSpan.FromSeconds(1))
             {
                 ElapsedTime -= TimeSpan.FromSeconds(1);
                 FrameRate = FrameCounter;
+                UpdateRate = UpdateCounter;
+                UpdateCounter = 0;
                 FrameCounter = 0;
             }
         }
@@ -126,6 +140,10 @@ namespace Deimos
             Game.ScreenElementManager.GetText("FPS").Text = String.Format(
                 "FPS: {0}",
                 FrameRate
+            );
+            Game.ScreenElementManager.GetText("Ticks").Text = String.Format(
+                "Ticks per sec: {0}",
+                UpdateRate
             );
             Game.ScreenElementManager.GetText("JumpState").Text = String.Format(
                 "JumpState: {0}",

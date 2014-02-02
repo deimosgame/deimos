@@ -26,8 +26,6 @@ namespace Deimos
 
         private Vector3 GetMovementVector(float dt)
         {
-            // Getting Mouse state
-            CurrentMouseState = Mouse.GetState();
             // Let's get user inputs
             KeyboardState ks = Keyboard.GetState();
 
@@ -52,7 +50,7 @@ namespace Deimos
 
             if (ks.IsKeyDown(Game.Config.Jump) && Game.ThisPlayerPhysics.State == PlayerPhysics.PhysicalState.Walking)
             {
-                Game.ThisPlayerPhysics.GetInitGravity(3.5f);
+                Game.ThisPlayerPhysics.GetInitGravity(5f);
             }
 
             if (CurrentMouseState.LeftButton == ButtonState.Pressed)
@@ -71,86 +69,9 @@ namespace Deimos
             return moveVector;
         }
 
-        // Set camera position and rotation
-        public void MoveTo(Vector3 position, Vector3 rotation)
+        public void GetMouseMovement(float dt)
         {
-            // Thanks to the properties set at the beginning, setting up these 
-            // values will execute the code inside the property (i.e update our
-            // vectors)
-            CameraOldPosition = Position;
-
-            Game.Camera.Position = position;
-            Game.Camera.Rotation = rotation;
-        }
-
-        // Methods that simulate movement
-        private Vector3 PreviewMove(Vector3 movement, float dt)
-        {
-            // Create a rotate matrix
-            Matrix rotate = Matrix.CreateRotationY(Game.ThisPlayer.Rotation.Y);
-            // Create a movement vector
-            Vector3 movementGravity = new Vector3(0, movement.Y, 0);
-            movement = Vector3.Transform(movement, rotate);
-            movementGravity = Vector3.Transform(movementGravity, rotate);
-            // Return the value of camera position + movement vector
-
-            // Testing for the UPCOMING position
-            if (Collision.CheckCollision(Game.ThisPlayer.Position + movement))
-            {
-                if (Collision.CheckCollision(Game.ThisPlayer.Position + movementGravity))
-                {
-                    // Hit floor or ceiling
-                    Game.ThisPlayerPhysics.StopGravity();
-                    movement.Y = 0;
-                }
-                // Creating the new movement vector, which will make us 
-                // able to have a smooth collision: being able to "slide" on 
-                // the wall while colliding
-                movement = new Vector3(
-                    Collision.CheckCollision(Game.ThisPlayer.Position +
-                                new Vector3(movement.X, 0, 0)) ? 0 : movement.X,
-                    movement.Y,
-                    Collision.CheckCollision(Game.ThisPlayer.Position +
-                                new Vector3(0, 0, movement.Z)) ? 0 : movement.Z
-                );
-                return Game.ThisPlayer.Position + movement;
-            }
-            else
-            {
-                // There isn't any collision, so we just move the user with 
-                // the movement he wanted to do
-                return Game.ThisPlayer.Position + movement;
-            }
-        }
-
-        public void Move(Vector3 scale, float dt)
-        {
-            MoveTo(PreviewMove(scale, dt), Game.ThisPlayer.Rotation);
-        }
-
-        public void HandleInput(GameTime gameTime)
-        {
-            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            // Getting Mouse state
             CurrentMouseState = Mouse.GetState();
-            // Let's get user inputs
-            KeyboardState ks = Keyboard.GetState();
-
-            Vector3 moveVector = GetMovementVector(dt);
-            if (moveVector != Vector3.Zero)
-            {
-                float tempY = moveVector.Y;
-                moveVector.Y = 0;
-                // Normalize that vector so that we don't move faster diagonally
-                if (moveVector != Vector3.Zero) moveVector.Normalize();
-                // Now we add in move factor and speed
-                moveVector *= dt * Speed;
-                moveVector.Y = tempY;
-                // Move camera!
-                Move(moveVector, dt);
-            }
-
 
             // Handle mouse movement
             float deltaX;
@@ -205,6 +126,88 @@ namespace Deimos
                 Game.GraphicsDevice.Viewport.Height / 2);
 
             PreviousMouseState = CurrentMouseState;
+        }
+
+        // Set camera position and rotation
+        public void MoveTo(Vector3 position, Vector3 rotation)
+        {
+            // Thanks to the properties set at the beginning, setting up these 
+            // values will execute the code inside the property (i.e update our
+            // vectors)
+            CameraOldPosition = Position;
+
+            Game.Camera.Position = position;
+            Game.Camera.Rotation = rotation;
+        }
+
+        // Methods that simulate movement
+        private Vector3 PreviewMove(Vector3 movement, float dt)
+        {
+            // Create a rotate matrix
+            Matrix rotate = Matrix.CreateRotationY(Game.ThisPlayer.Rotation.Y);
+            // Create a movement vector
+            Vector3 movementGravity = new Vector3(0, movement.Y, 0);
+            movement = Vector3.Transform(movement, rotate);
+            movementGravity = Vector3.Transform(movementGravity, rotate);
+            // Return the value of camera position + movement vector
+
+            // Testing for the UPCOMING position
+            if (Collision.CheckCollision(Game.ThisPlayer.Position + movement))
+            {
+                if (Collision.CheckCollision(Game.ThisPlayer.Position + movementGravity))
+                {
+                    // Hit floor or ceiling
+                    Game.ThisPlayerPhysics.StopGravity();
+                    movement.Y = 0;
+                }
+                else if(Game.ThisPlayerPhysics.State == PlayerPhysics.PhysicalState.Walking &&
+                    !Collision.CheckCollision(Game.ThisPlayer.Position + new Vector3(movement.X, 2, movement.Z)))
+                {
+                    movement.Y = 2;
+                }
+                // Creating the new movement vector, which will make us 
+                // able to have a smooth collision: being able to "slide" on 
+                // the wall while colliding
+                movement.X = Collision.CheckCollision(Game.ThisPlayer.Position +
+                                new Vector3(movement.X, 0, 0)) ? 0 : movement.X;
+                movement.Y = Collision.CheckCollision(Game.ThisPlayer.Position +
+                                new Vector3(movement.Y, 0, 0)) ? 0 : movement.Y;
+                movement.Z = Collision.CheckCollision(Game.ThisPlayer.Position +
+                                new Vector3(movement.Z, 0, 0)) ? 0 : movement.Z;
+                return Game.ThisPlayer.Position + movement;
+            }
+            else
+            {
+                // There isn't any collision, so we just move the user with 
+                // the movement he wanted to do
+                return Game.ThisPlayer.Position + movement;
+            }
+        }
+
+        public void Move(Vector3 scale, float dt)
+        {
+            MoveTo(PreviewMove(scale, dt), Game.ThisPlayer.Rotation);
+        }
+
+        public void HandleInput(GameTime gameTime)
+        {
+            float dt = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
+
+            GetMouseMovement(dt);
+
+            Vector3 moveVector = GetMovementVector(dt);
+            if (moveVector != Vector3.Zero)
+            {
+                float tempY = moveVector.Y;
+                moveVector.Y = 0;
+                // Normalize that vector so that we don't move faster diagonally
+                if (moveVector != Vector3.Zero) moveVector.Normalize();
+                // Now we add in move factor and speed
+                moveVector *= dt * Speed;
+                moveVector.Y = tempY;
+                // Move camera!
+                Move(moveVector, dt);
+            }
         }
     }
 }

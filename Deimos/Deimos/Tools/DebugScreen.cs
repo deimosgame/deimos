@@ -12,6 +12,9 @@ namespace Deimos
     {
         DeimosGame Game;
         SpriteFont Font;
+
+        int FrameRate, FrameCounter;
+        TimeSpan ElapsedTime = TimeSpan.Zero;
         public DebugScreen(DeimosGame game)
         {
             Game = game;
@@ -53,6 +56,15 @@ namespace Deimos
                 "Location: ",
                 Color.White
             );
+            Game.ScreenElementManager.AddText(
+                "FPS",
+                0,
+                (int)MapHeight + 30,
+                0,
+                Font,
+                "FPS: ",
+                Color.White
+            );
         }
 
         private void Show()
@@ -61,6 +73,7 @@ namespace Deimos
             Game.ScreenElementManager.GetImage("DepthMap").Show = true;
             Game.ScreenElementManager.GetImage("LightMap").Show = true;
             Game.ScreenElementManager.GetText("Location").Show = true;
+            Game.ScreenElementManager.GetText("FPS").Show = true;
         }
         private void Hide()
         {
@@ -68,10 +81,24 @@ namespace Deimos
             Game.ScreenElementManager.GetImage("DepthMap").Show = false;
             Game.ScreenElementManager.GetImage("LightMap").Show = false;
             Game.ScreenElementManager.GetText("Location").Show = false;
+            Game.ScreenElementManager.GetText("FPS").Show = false;
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            ElapsedTime += gameTime.ElapsedGameTime;
+
+            if (ElapsedTime > TimeSpan.FromSeconds(1))
+            {
+                ElapsedTime -= TimeSpan.FromSeconds(1);
+                FrameRate = FrameCounter;
+                FrameCounter = 0;
+            }
         }
 
         public void Draw(GameTime gameTime)
         {
+            FrameCounter++;
             if (!Game.Config.DebugScreen)
             {
                 Hide();
@@ -84,6 +111,10 @@ namespace Deimos
                 (int)Game.ThisPlayer.Position.X,
                 (int)Game.ThisPlayer.Position.Y,
                 (int)Game.ThisPlayer.Position.Z
+            );
+            Game.ScreenElementManager.GetText("FPS").Text = String.Format(
+                "FPS: {0}",
+                FrameRate
             );
         }
     }

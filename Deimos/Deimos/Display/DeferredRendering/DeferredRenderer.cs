@@ -245,7 +245,7 @@ namespace Deimos
         }
 
         private void DrawSpotLight(Vector3 lightPosition, Color color,
-            float lightRadius, float lightIntensity)
+            float lightRadius, Vector3 lightAngle, float lightIntensity)
         {
             // Set the G-Buffer parameters
             SpotLightEffect.Parameters["colorMap"].SetValue(ColorRT);
@@ -255,7 +255,10 @@ namespace Deimos
             // Compute the light world matrix
             // scale according to light radius, and translate it to 
             // light position
-            Matrix coneWorldMatrix = Matrix.CreateScale(lightRadius) *
+            Matrix coneWorldMatrix = 
+                Matrix.CreateRotationX(lightAngle.X) *
+                Matrix.CreateRotationX(lightAngle.Y) *
+                Matrix.CreateRotationX(lightAngle.Z) *
                 Matrix.CreateTranslation(lightPosition);
             SpotLightEffect.Parameters["World"].SetValue(coneWorldMatrix);
             SpotLightEffect.Parameters["View"].SetValue(MainGame.Camera.View);
@@ -264,6 +267,10 @@ namespace Deimos
             // Light position
             SpotLightEffect.Parameters["lightPosition"]
                 .SetValue(lightPosition);
+
+            SpotLightEffect.Parameters["lightDirection"].SetValue(lightAngle);
+            SpotLightEffect.Parameters["lightAngleCosine"].SetValue((float)Math.Cos(MathHelper.ToRadians(20)));
+            SpotLightEffect.Parameters["lightDecayExponent"].SetValue(100f);
 
             // Set the color, radius and Intensity
             SpotLightEffect.Parameters["Color"].SetValue(color.ToVector3());
@@ -362,7 +369,8 @@ namespace Deimos
                 DrawSpotLight(
                     thisLight.Value.Position,
                     thisLight.Value.Color,
-                    2,
+                    200,
+                    thisLight.Value.Direction,
                     thisLight.Value.Power
                 );
             }

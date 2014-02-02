@@ -60,7 +60,7 @@ namespace Deimos
                 //Attack
             }
 
-            Game.Config.DebugScreen = false;
+            Game.Config.DebugScreen = true;
             if (ks.IsKeyDown(Game.Config.ShowDebug))
             {
                 Game.Config.DebugScreen = true;

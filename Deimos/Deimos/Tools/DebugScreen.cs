@@ -65,6 +65,15 @@ namespace Deimos
                 "FPS: ",
                 Color.White
             );
+            Game.ScreenElementManager.AddText(
+                "JumpState",
+                0,
+                (int) MapHeight + 50,
+                0,
+                Font,
+                "JumpState: ",
+                Color.White
+            );
         }
 
         private void Show()
@@ -74,6 +83,7 @@ namespace Deimos
             Game.ScreenElementManager.GetImage("LightMap").Show = true;
             Game.ScreenElementManager.GetText("Location").Show = true;
             Game.ScreenElementManager.GetText("FPS").Show = true;
+            Game.ScreenElementManager.GetText("JumpState").Show = true;
         }
         private void Hide()
         {
@@ -82,6 +92,7 @@ namespace Deimos
             Game.ScreenElementManager.GetImage("LightMap").Show = false;
             Game.ScreenElementManager.GetText("Location").Show = false;
             Game.ScreenElementManager.GetText("FPS").Show = false;
+            Game.ScreenElementManager.GetText("JumpState").Show = false;
         }
 
         public void Update(GameTime gameTime)
@@ -115,6 +126,10 @@ namespace Deimos
             Game.ScreenElementManager.GetText("FPS").Text = String.Format(
                 "FPS: {0}",
                 FrameRate
+            );
+            Game.ScreenElementManager.GetText("JumpState").Text = String.Format(
+                "JumpState: {0}",
+                Game.ThisPlayerPhysics.State
             );
         }
     }

@@ -37,17 +37,25 @@ namespace Deimos
             );
             return element;
         }
+        public ScreenRectangle GetRectangle(string name)
+        {
+            return ElementsRectangle[name];
+        }
 
-        public ScreenImage AddImage(string name, int posX, int posY,
+        public ScreenImage AddImage(string name, int posX, int posY, float scale,
             int zIndex, Texture2D image)
         {
             ScreenImage element =
-                new ScreenImage(posX, posY, zIndex, image);
+                new ScreenImage(posX, posY, scale, zIndex, image);
             ElementsImage.Add(
                 name,
                 element
             );
             return element;
+        }
+        public ScreenImage GetImage(string name)
+        {
+            return ElementsImage[name];
         }
 
         public ScreenText AddText(string name, int posX, int posY,
@@ -61,22 +69,9 @@ namespace Deimos
             );
             return element;
         }
-
-        public ScreenElement Get(string name)
+        public ScreenText GetText(string name)
         {
-            if (ElementsRectangle.ContainsKey(name))
-            {
-                return ElementsRectangle[name];
-            }
-            else if (ElementsImage.ContainsKey(name))
-            {
-                return ElementsImage[name];
-            }
-            else if (ElementsText.ContainsKey(name))
-            {
-                return ElementsText[name];
-            }
-            throw new Exception("This key has not been found.");
+            return ElementsText[name];
         }
 
 
@@ -93,6 +88,10 @@ namespace Deimos
                 ElementsRectangle)
             {
                 ScreenRectangle element = elementKeyVal.Value;
+                if (!element.Show)
+                {
+                    continue;
+                }
                 spriteBatch.Draw(
                     DummyTexture,
                     new Rectangle(element.PosX, element.PosY, element.Height, element.Width), element.Color
@@ -102,16 +101,30 @@ namespace Deimos
                 ElementsImage)
             {
                 ScreenImage element = elementKeyVal.Value;
+                if (!element.Show)
+                {
+                    continue;
+                }
                 spriteBatch.Draw(
                     element.Image,
                     new Vector2(element.PosX, element.PosY),
-                    Color.White
+                    null,
+                    Color.White,
+                    0f,
+                    Vector2.Zero,
+                    element.Scale,
+                    SpriteEffects.None,
+                    0f
                 );
             }
             foreach (KeyValuePair<string, ScreenText> elementKeyVal in
                 ElementsText)
             {
                 ScreenText element = elementKeyVal.Value;
+                if (!element.Show)
+                {
+                    continue;
+                }
                 spriteBatch.DrawString(
                     element.Font,
                     element.Text,

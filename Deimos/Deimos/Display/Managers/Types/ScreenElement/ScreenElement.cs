@@ -22,5 +22,16 @@ namespace Deimos
             get;
             protected set;
         }
+
+        public bool Show
+        {
+            get;
+            set;
+        }
+
+        protected ScreenElement()
+        {
+            Show = true; // Default value
+        }
     }
 }

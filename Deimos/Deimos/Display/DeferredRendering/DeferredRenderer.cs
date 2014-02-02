@@ -21,10 +21,10 @@ namespace Deimos
 
         private QuadRenderComponent QuadRenderer;
 
-        private RenderTarget2D ColorRT; //color and specular intensity
-        private RenderTarget2D NormalRT; //normals + specular power
-        private RenderTarget2D DepthRT; //depth
-        private RenderTarget2D LightRT; //lighting
+        public RenderTarget2D ColorRT; //color and specular intensity
+        public RenderTarget2D NormalRT; //normals + specular power
+        public RenderTarget2D DepthRT; //depth
+        public RenderTarget2D LightRT; //lighting
 
         private Effect ClearBufferEffect;
         private Effect DirectionalLightEffect;

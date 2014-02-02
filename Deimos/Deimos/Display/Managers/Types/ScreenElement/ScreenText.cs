@@ -17,12 +17,12 @@ namespace Deimos
         public string Text
         {
             get;
-            private set;
+            set;
         }
         public Color Color
         {
             get;
-            private set;
+            set;
         }
 
         public ScreenText(int posX, int posY, int zIndex, 

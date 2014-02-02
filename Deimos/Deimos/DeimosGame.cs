@@ -39,6 +39,13 @@ namespace Deimos
             private set { camera = value; }
         }
 
+        DeferredRenderer renderer;
+        public DeferredRenderer Renderer
+        {
+            get { return renderer; }
+            private set { renderer = value; }
+        }
+
         LocalPlayer thisPlayer;
         public LocalPlayer ThisPlayer
         {
@@ -126,7 +133,7 @@ namespace Deimos
             Content.RootDirectory = "Content";
             TempContent.RootDirectory = "Content";
 
-            DeferredRenderer renderer = new DeferredRenderer(this);
+            Renderer = new DeferredRenderer(this);
             Components.Add(renderer);
 
             SceneManager = new SceneManager(this, TempContent);
@@ -172,7 +179,7 @@ namespace Deimos
 
             ScreenElementManager = new ScreenElementManager(GraphicsDevice);
 
-            //DebugScreen = new DebugScreen(this);
+            DebugScreen = new DebugScreen(this);
         }
 
          
@@ -202,7 +209,7 @@ namespace Deimos
             GraphicsDevice.Clear(Color.Black);
             base.Draw(gameTime);
 
-
+            DebugScreen.Draw(gameTime);
             ScreenElementManager.DrawElements(SpriteBatch);
         }
     }

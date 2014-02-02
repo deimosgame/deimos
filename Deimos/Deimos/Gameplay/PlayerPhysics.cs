@@ -25,7 +25,7 @@ namespace Deimos
         DeimosGame Game;
         float InitialVelocity = 0;
         float CurrentTime = 0;
-        float GravityCoef = 9.8f;
+        float GravityCoef = 12f;
 
         public PlayerPhysics(DeimosGame game)
         {

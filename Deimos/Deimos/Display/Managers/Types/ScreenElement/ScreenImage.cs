@@ -13,12 +13,18 @@ namespace Deimos
             get;
             private set;
         }
+        public float Scale
+        {
+            get;
+            private set;
+        }
 
-        public ScreenImage(int posX, int posY, int zIndex,
+        public ScreenImage(int posX, int posY, float scale, int zIndex,
             Texture2D image)
         {
             PosX = posX;
             PosY = posY;
+            Scale = scale;
             ZIndex = zIndex;
             Image = image;
         }

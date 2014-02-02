@@ -52,7 +52,13 @@ namespace Deimos
 
             if (ks.IsKeyDown(Game.Config.Jump) && Game.ThisPlayerPhysics.State == PlayerPhysics.PhysicalState.Walking)
             {
-                Game.ThisPlayerPhysics.GetInitGravity(3.4f);
+                Game.ThisPlayerPhysics.GetInitGravity(3.5f);
+            }
+
+            Game.Config.DebugScreen = false;
+            if (ks.IsKeyDown(Game.Config.ShowDebug))
+            {
+                Game.Config.DebugScreen = true;
             }
 
             moveVector.Y = Game.ThisPlayerPhysics.ApplyGravity(dt);

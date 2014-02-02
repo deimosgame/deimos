@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace Deimos
 {
-    class PlayerPhysics
+    class LocalPlayerPhysics
     {
         public enum PhysicalState
         {
@@ -28,7 +28,7 @@ namespace Deimos
         float GravityCoef = 12f;
         bool ApplyingGravity = false;
 
-        public PlayerPhysics(DeimosGame game)
+        public LocalPlayerPhysics(DeimosGame game)
         {
             Game = game;
         }

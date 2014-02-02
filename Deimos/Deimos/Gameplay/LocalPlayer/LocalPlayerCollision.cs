@@ -9,7 +9,7 @@ using CollidableModel;
 
 namespace Deimos
 {
-    class MainPlayerCollision
+    class LocalPlayerCollision
     {
         // Attributes
         private DeimosGame MainGame;
@@ -24,7 +24,7 @@ namespace Deimos
 
 
         // Constructor
-        public MainPlayerCollision(float playerHeight, float playerWidth, float playerDepth,
+        public LocalPlayerCollision(float playerHeight, float playerWidth, float playerDepth,
             DeimosGame game)
         {
             // These dimentions will be used to check for the camera collision:
@@ -144,7 +144,14 @@ namespace Deimos
 
                 if (collisionType == LevelModel.CollisionType.Inaccurate)
                 {
-                    
+                    BoundingBox nBB = new BoundingBox(
+                        thisModel.Value.CollisionModel.collisionData.geometry.boundingBox.Min + thisModel.Value.Position,
+                        thisModel.Value.CollisionModel.collisionData.geometry.boundingBox.Max + thisModel.Value.Position
+                    );
+                    if (nBB.Contains(cameraBox) != ContainmentType.Disjoint)
+                    {
+                        return true;
+                    }
                 }
             }
 

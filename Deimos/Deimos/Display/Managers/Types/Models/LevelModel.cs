@@ -16,13 +16,6 @@ namespace Deimos
 			set { position = value; }
 		}
 
-		private float scale;
-		public float Scale
-		{
-			get { return scale; }
-			set { scale = value; }
-		}
-
 
 		private CollisionType collisionDetection;
 		public CollisionType CollisionDetection

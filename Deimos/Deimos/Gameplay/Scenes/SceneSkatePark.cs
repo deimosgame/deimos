@@ -25,6 +25,12 @@ namespace Deimos
                  new Vector3(0, 0, 0), // Location
                  LevelModel.CollisionType.Accurate
             );
+            ModelManager.LoadModel(
+                 "bonasse",
+                 "Models/Characters/Ana_Model", // Model
+                 new Vector3(0, 0, 0), // Location
+                 LevelModel.CollisionType.None
+            );
         }
 
         // Destructor

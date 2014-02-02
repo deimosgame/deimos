@@ -146,10 +146,10 @@
     <Compile Include="Display\Managers\Types\ScreenElement\ScreenImage.cs" />
     <Compile Include="Display\Managers\Types\ScreenElement\ScreenRectangle.cs" />
     <Compile Include="Display\Managers\Types\ScreenElement\ScreenText.cs" />
-    <Compile Include="Gameplay\Collision.cs" />
-    <Compile Include="Gameplay\LocalPlayer.cs" />
+    <Compile Include="Gameplay\LocalPlayer\LocalPlayerCollision.cs" />
+    <Compile Include="Gameplay\LocalPlayer\LocalPlayer.cs" />
     <Compile Include="Gameplay\Player.cs" />
-    <Compile Include="Gameplay\PlayerPhysics.cs" />
+    <Compile Include="Gameplay\LocalPlayer\LocalPlayerPhysics.cs" />
     <Compile Include="Gameplay\Scenes\SceneSkatePark.cs" />
     <Compile Include="Gameplay\Scenes\SceneSponza.cs" />
     <Compile Include="Gameplay\Scenes\Template\SceneTemplate.cs" />

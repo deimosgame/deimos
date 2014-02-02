@@ -80,8 +80,9 @@
     <Compile Include="Models\Characters\Ana_Model.fbx">
       <Name>Ana_Model</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>DeferredRendererModel</Processor>
+      <Processor>CollidableModelProcessor</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
     </Compile>
   </ItemGroup>
   <ItemGroup>

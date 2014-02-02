@@ -53,8 +53,8 @@ namespace Deimos
             set { thisPlayer = value; }
         }
 
-        PlayerPhysics thisPlayerPhysics;
-        internal PlayerPhysics ThisPlayerPhysics
+        LocalPlayerPhysics thisPlayerPhysics;
+        internal LocalPlayerPhysics ThisPlayerPhysics
         {
             get { return thisPlayerPhysics; }
             set { thisPlayerPhysics = value; }
@@ -122,7 +122,7 @@ namespace Deimos
         public DeimosGame()
         {
             ThisPlayer = new LocalPlayer(this);
-            ThisPlayerPhysics = new PlayerPhysics(this);
+            ThisPlayerPhysics = new LocalPlayerPhysics(this);
 
 
             TempContent = new ContentManager(Services);

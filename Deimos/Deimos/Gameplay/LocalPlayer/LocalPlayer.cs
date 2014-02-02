@@ -15,13 +15,13 @@ namespace Deimos
         MouseState PreviousMouseState;
         Vector3 MouseRotationBuffer;
 
-        MainPlayerCollision Collision;
+        LocalPlayerCollision Collision;
         Vector3 CameraOldPosition;
 
         public LocalPlayer(DeimosGame game)
         {
             Game = game;
-            Collision = new MainPlayerCollision(8f, 1f, 1f, game);
+            Collision = new LocalPlayerCollision(8f, 1f, 1f, game);
         }
 
         private Vector3 GetMovementVector(float dt)
@@ -48,7 +48,7 @@ namespace Deimos
                 moveVector.X = -1;
             }
 
-            if (ks.IsKeyDown(Game.Config.Jump) && Game.ThisPlayerPhysics.State == PlayerPhysics.PhysicalState.Walking)
+            if (ks.IsKeyDown(Game.Config.Jump) && Game.ThisPlayerPhysics.State == LocalPlayerPhysics.PhysicalState.Walking)
             {
                 Game.ThisPlayerPhysics.GetInitGravity(5f);
             }
@@ -160,7 +160,7 @@ namespace Deimos
                     Game.ThisPlayerPhysics.StopGravity();
                     movement.Y = 0;
                 }
-                else if(Game.ThisPlayerPhysics.State == PlayerPhysics.PhysicalState.Walking &&
+                else if(Game.ThisPlayerPhysics.State == LocalPlayerPhysics.PhysicalState.Walking &&
                     !Collision.CheckCollision(Game.ThisPlayer.Position + new Vector3(movement.X, 2, movement.Z)))
                 {
                     movement.Y = 2;

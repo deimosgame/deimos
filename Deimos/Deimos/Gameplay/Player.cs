@@ -31,7 +31,6 @@ namespace Deimos
             set { health = value; }
         }
         
-        public float Speed = 70;
-        
+        public float Speed = 30;
     }
 }

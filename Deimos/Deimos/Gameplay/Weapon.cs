@@ -36,9 +36,19 @@ namespace Deimos
             set { firingRate = value; }
         }
 
+        private int maxAmmo;
+        private int minAmmo = 0;
+
+        private int currentAmmo;
+        public int CurrentAmmo
+        {
+            get { return currentAmmo; }
+            set { currentAmmo = value; }
+        }
+
         private void SetBullet()
         {
-            bullet = new Bullet(); // Spawning projectile
+            bullet = new Bullet(); // Constructing the projectile, function called by Fire()
         }
 
         private void Fire()

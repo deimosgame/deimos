@@ -24,10 +24,12 @@ namespace Deimos
             Collision = new LocalPlayerCollision(8f, 1f, 1f, game);
         }
 
+        // Let's get user inputs
+        public KeyboardState ks;
+
         private Vector3 GetMovementVector(float dt)
         {
-            // Let's get user inputs
-            KeyboardState ks = Keyboard.GetState();
+             ks = Keyboard.GetState();
 
             Vector3 moveVector = Vector3.Zero;
             if (ks.IsKeyDown(Game.Config.Forward))
@@ -48,14 +50,19 @@ namespace Deimos
                 moveVector.X = -1;
             }
 
-            if (ks.IsKeyDown(Game.Config.Jump) && Game.ThisPlayerPhysics.State == LocalPlayerPhysics.PhysicalState.Walking)
+            if (ks.IsKeyDown(Game.Config.Jump) && (Game.ThisPlayerPhysics.State == LocalPlayerPhysics.PhysicalState.Walking))
             {
-                Game.ThisPlayerPhysics.GetInitGravity(5f);
+                Game.ThisPlayerPhysics.InitiateJump(5f, 0.3f);
+            }
+
+            if (ks.IsKeyDown(Game.Config.Crouch))
+            {
+                // Crouch
             }
 
             if (CurrentMouseState.LeftButton == ButtonState.Pressed)
             {
-                //Attack
+                // Attack
             }
 
             Game.Config.DebugScreen = true;
@@ -171,9 +178,9 @@ namespace Deimos
                 movement.X = Collision.CheckCollision(Game.ThisPlayer.Position +
                                 new Vector3(movement.X, 0, 0)) ? 0 : movement.X;
                 movement.Y = Collision.CheckCollision(Game.ThisPlayer.Position +
-                                new Vector3(movement.Y, 0, 0)) ? 0 : movement.Y;
+                                new Vector3(0, movement.Y, 0)) ? 0 : movement.Y;
                 movement.Z = Collision.CheckCollision(Game.ThisPlayer.Position +
-                                new Vector3(movement.Z, 0, 0)) ? 0 : movement.Z;
+                                new Vector3(0, 0, movement.Z)) ? 0 : movement.Z;
                 return Game.ThisPlayer.Position + movement;
             }
             else
@@ -208,6 +215,8 @@ namespace Deimos
                 // Move camera!
                 Move(moveVector, dt);
             }
+
+
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Deimos
         // Attributes
         private DeimosGame MainGame;
 
-        private Vector3 PlayerDimention;
+        private Vector3 PlayerDimension;
 
         List<BoundingBox> CollisionBoxes = 
             new List<BoundingBox>();
@@ -27,11 +27,11 @@ namespace Deimos
         public LocalPlayerCollision(float playerHeight, float playerWidth, float playerDepth,
             DeimosGame game)
         {
-            // These dimentions will be used to check for the camera collision:
+            // These dimensions will be used to check for the camera collision:
             // a player/human isn't a cube but a box; taller than larger
-            PlayerDimention.X = playerWidth;
-            PlayerDimention.Y = playerHeight;
-            PlayerDimention.Z = playerDepth;
+            PlayerDimension.X = playerWidth;
+            PlayerDimension.Y = playerHeight;
+            PlayerDimension.Z = playerDepth;
 
             MainGame = game;
         }
@@ -74,14 +74,14 @@ namespace Deimos
             // Creating the sphere of the camera for later collisions checks
             BoundingBox cameraBox = new BoundingBox(
                 new Vector3(
-                    cameraPosition.X - (PlayerDimention.X / 2),
-                    cameraPosition.Y - (PlayerDimention.Y),
-                    cameraPosition.Z - (PlayerDimention.Z / 2)
+                    cameraPosition.X - (PlayerDimension.X / 2),
+                    cameraPosition.Y - (PlayerDimension.Y),
+                    cameraPosition.Z - (PlayerDimension.Z / 2)
                 ),
                 new Vector3(
-                    cameraPosition.X + (PlayerDimention.X / 2),
+                    cameraPosition.X + (PlayerDimension.X / 2),
                     cameraPosition.Y,
-                    cameraPosition.Z + (PlayerDimention.Z / 2)
+                    cameraPosition.Z + (PlayerDimension.Z / 2)
                 )
             );
 
@@ -91,7 +91,7 @@ namespace Deimos
                     cameraPosition.Y, 
                     cameraPosition.Z
                 ),
-                PlayerDimention.Y
+                PlayerDimension.Y
             );
 
             // Let's check for collision with our boxes

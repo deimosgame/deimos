@@ -32,12 +32,19 @@ namespace Deimos
 
         // bool ApplyingGravity = false;
 
-        float bunnyhop = 0f;
-        public float Bunnyhop
+        private float bunnyhopCoeff = 1f;
+        public float BunnyhopCoeff
         {
-            get { return bunnyhop; }
-            set { bunnyhop = value; }
+            get { return bunnyhopCoeff; }
+            set {
+                if (value > 3.5f)
+                {
+                    return;
+                }
+                bunnyhopCoeff = value; 
+            }
         }
+
 
         public LocalPlayerPhysics(DeimosGame game, LocalPlayer player)
         {
@@ -45,13 +52,12 @@ namespace Deimos
             CurrentPhysicsPlayer = player;
         }
 
-        public void InitiateJump(float v, float bunnyhopFactor)
+        public void InitiateJump(float v)
         {
             // Setting initial state for applied gravity
             InitialVelocity = v;
             CurrentTime = 0;
             State = PhysicalState.Jumping;
-            bunnyhop += bunnyhopFactor;
         }
 
         public void StopGravity() // Changing states, to start descending or stop descending
@@ -67,12 +73,7 @@ namespace Deimos
                 InitialVelocity = 0;
                 CurrentTime = 0;
                 State = PhysicalState.Walking;
-                CurrentPhysicsPlayer.Speed = 30f;
-
-                if (!CurrentPhysicsPlayer.ks.IsKeyDown(Game.Config.Jump))
-                {
-                    bunnyhop = 0;
-                }
+                BunnyhopCoeff += 0.2f;
             }
         }
 
@@ -84,8 +85,6 @@ namespace Deimos
             {
                 State = PhysicalState.Falling;
             }
-
-            CurrentPhysicsPlayer.Speed += bunnyhop;
 
             CurrentTime += dt;
             return y;

@@ -77,10 +77,19 @@ namespace Deimos
             Game.ScreenElementManager.AddText(
                 "JumpState",
                 0,
-                (int) MapHeight + 70,
+                (int)MapHeight + 70,
                 0,
                 Font,
                 "JumpState: ",
+                Color.White
+            );
+            Game.ScreenElementManager.AddText(
+                "BunnyCoeff",
+                0,
+                (int)MapHeight + 90,
+                0,
+                Font,
+                "BunnyCoeff: ",
                 Color.White
             );
         }
@@ -148,6 +157,10 @@ namespace Deimos
             Game.ScreenElementManager.GetText("JumpState").Text = String.Format(
                 "JumpState: {0}",
                 Game.ThisPlayerPhysics.State
+            );
+            Game.ScreenElementManager.GetText("BunnyCoeff").Text = String.Format(
+                "BunnyCoeff: {0}",
+                Game.ThisPlayerPhysics.BunnyhopCoeff
             );
         }
     }

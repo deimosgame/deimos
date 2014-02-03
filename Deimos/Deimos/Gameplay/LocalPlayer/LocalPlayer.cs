@@ -18,14 +18,13 @@ namespace Deimos
         LocalPlayerCollision Collision;
         Vector3 CameraOldPosition;
 
+        public KeyboardState ks;
+
         public LocalPlayer(DeimosGame game)
         {
             Game = game;
             Collision = new LocalPlayerCollision(8f, 1f, 1f, game);
         }
-
-        // Let's get user inputs
-        public KeyboardState ks;
 
         private Vector3 GetMovementVector(float dt)
         {
@@ -50,9 +49,16 @@ namespace Deimos
                 moveVector.X = -1;
             }
 
-            if (ks.IsKeyDown(Game.Config.Jump) && (Game.ThisPlayerPhysics.State == LocalPlayerPhysics.PhysicalState.Walking))
+            if (ks.IsKeyDown(Game.Config.Jump))
             {
-                Game.ThisPlayerPhysics.InitiateJump(5f, 0.3f);
+                if (Game.ThisPlayerPhysics.State == LocalPlayerPhysics.PhysicalState.Walking)
+                {
+                    Game.ThisPlayerPhysics.InitiateJump(5f);
+                }
+            }
+            else
+            {
+                Game.ThisPlayerPhysics.BunnyhopCoeff = 1;
             }
 
             if (ks.IsKeyDown(Game.Config.Crouch))
@@ -210,7 +216,7 @@ namespace Deimos
                 // Normalize that vector so that we don't move faster diagonally
                 if (moveVector != Vector3.Zero) moveVector.Normalize();
                 // Now we add in move factor and speed
-                moveVector *= dt * Speed;
+                moveVector *= dt * Speed * Game.ThisPlayerPhysics.BunnyhopCoeff;
                 moveVector.Y = tempY;
                 // Move camera!
                 Move(moveVector, dt);

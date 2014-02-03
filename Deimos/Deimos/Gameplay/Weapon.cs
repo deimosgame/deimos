@@ -17,8 +17,10 @@ namespace Deimos
         public WeaponState State
         {
             get { return state; }
-            set { state = State; }
+            set { state = value; }
         }
+
+        private Bullet bullet;
 
         private string name;
         public string Name
@@ -27,6 +29,21 @@ namespace Deimos
             set { name = Name; }
         }
 
+        private float firingRate;
+        public float FiringRate
+        {
+            get { return firingRate; }
+            set { firingRate = value; }
+        }
 
+        private void SetBullet()
+        {
+            bullet = new Bullet(); // Spawning projectile
+        }
+
+        private void Fire()
+        {
+            // Putting projectile in action
+        }
     }
 }

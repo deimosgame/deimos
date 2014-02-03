@@ -8,6 +8,8 @@ namespace Deimos
 {
     class Config
     {
+        public string PlayerName = "Unknown Soldier";
+
         public Keys Forward = Keys.W;
         public Keys Backward = Keys.S;
         public Keys Left = Keys.A;

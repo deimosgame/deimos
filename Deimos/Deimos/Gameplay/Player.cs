@@ -23,8 +23,14 @@ namespace Deimos
             Aliens
         }
         public Teams Team;
-        
 
+        private int health;
+        public int Health
+        {
+            get { return health; }
+            set { health = value; }
+        }
+        
         public float Speed = 70;
         
     }

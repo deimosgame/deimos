@@ -5,8 +5,11 @@ using System.Text;
 
 namespace Deimos
 {
-    class Weapon
+    public class Weapon
     {
+        DeimosGame Game;
+        BulletManager bulletManager;
+
         public enum WeaponState
         {
             AtEase,
@@ -19,8 +22,6 @@ namespace Deimos
             get { return state; }
             set { state = value; }
         }
-
-        private Bullet bullet;
 
         private string name;
         public string Name
@@ -36,24 +37,61 @@ namespace Deimos
             set { firingRate = value; }
         }
 
-        private int maxAmmo;
-        private int minAmmo = 0;
-
+        private int maxCartridgeAmmo;
+        private int maxCartridges;
+        private int currentCartridge;
+        public int CurrentCartridge
+        {
+            get { return currentCartridge; }
+            set
+            {
+                if (value <= maxCartridges)
+                {
+                    currentCartridge = value;
+                }
+            }
+        }
         private int currentAmmo;
         public int CurrentAmmo
         {
             get { return currentAmmo; }
-            set { currentAmmo = value; }
+            set
+            {
+                if (value <= maxCartridgeAmmo)
+                {
+                    currentAmmo = value;
+                }
+            }
         }
 
-        private void SetBullet()
+        public float minDmg;
+        public float maxDmg;
+
+        private float projectileSpeed;
+        public float ProjectileSpeed
         {
-            bullet = new Bullet(); // Constructing the projectile, function called by Fire()
+            get { return projectileSpeed; }
+            set { projectileSpeed = value; }
         }
 
-        private void Fire()
+        private float range;
+        public float Range
         {
-            // Putting projectile in action
+            get { return range; }
+            set { range = Range; }
+        }
+
+        public void Fire()
+        {
+            // Putting projectile in action through Bullet Manager
+            bulletManager.Propagate(bulletManager.SpawnBullet(this), 5f); // These methods are not final at all, they WILL be changed.
+        }
+
+        // Constructor
+        public Weapon(DeimosGame game)
+        {
+            Game = game;
+            bulletManager = game.BulletManager;
         }
     }
 }

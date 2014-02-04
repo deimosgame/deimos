@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace Deimos
 {
@@ -14,5 +15,38 @@ namespace Deimos
 
         // Damage calculations may also be made inside the Bullet class,
         // provided that values are restricted by Weapon, or Player.Health.
+
+        DeimosGame Game;
+
+        public Vector3 Direction;
+        public Vector3 Position;
+        public float speed;
+        public float range;
+        public float minimumDmg;
+        public float maximumDmg;
+
+        // Constructor
+        public Bullet(DeimosGame game)
+        { 
+            // Setting initial bullet spawn location
+            Position.X = game.ThisPlayer.Position.X+2;
+            Position.Y = game.ThisPlayer.Position.Y;
+            Position.Z = game.ThisPlayer.Position.Z;
+
+            // Setting bullet direction according to current player's camera
+            Direction = game.ThisPlayer.Rotation;
+
+            // Setting bullet properties according to current player's current weapon
+            speed = Game.ThisPlayer.CurrentWeapon.ProjectileSpeed;
+            range = Game.ThisPlayer.CurrentWeapon.Range;
+            minimumDmg = Game.ThisPlayer.CurrentWeapon.minDmg;
+            maximumDmg = Game.ThisPlayer.CurrentWeapon.maxDmg;
+        }
+
+        // Destructor
+        ~Bullet()
+        {
+
+        }
     }
 }

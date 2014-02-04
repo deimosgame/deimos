@@ -74,6 +74,13 @@ namespace Deimos
             set { screenElementManager = value; }
         }
 
+        BulletManager bulletManager;
+        internal BulletManager BulletManager
+        {
+            get { return bulletManager; }
+            set { bulletManager = value; }
+        }
+
         DebugScreen debugScreen;
         internal DebugScreen DebugScreen
         {
@@ -138,6 +145,8 @@ namespace Deimos
             SceneManager = new SceneManager(this, TempContent);
 
             Config = new Config();
+
+            BulletManager = new BulletManager(this);
         }
 
 

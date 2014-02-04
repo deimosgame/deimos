@@ -68,7 +68,7 @@ namespace Deimos
 
             if (CurrentMouseState.LeftButton == ButtonState.Pressed)
             {
-                // Attack
+                Game.ThisPlayer.CurrentWeapon.Fire();
             }
 
             Game.Config.DebugScreen = true;

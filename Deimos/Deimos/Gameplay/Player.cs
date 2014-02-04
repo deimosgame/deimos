@@ -24,6 +24,8 @@ namespace Deimos
         }
         public Teams Team;
 
+        public Weapon CurrentWeapon;
+
         private int health;
         public int Health
         {

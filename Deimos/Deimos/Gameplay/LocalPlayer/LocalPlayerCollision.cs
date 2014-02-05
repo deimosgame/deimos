@@ -75,12 +75,12 @@ namespace Deimos
             BoundingBox cameraBox = new BoundingBox(
                 new Vector3(
                     cameraPosition.X - (PlayerDimension.X / 2),
-                    cameraPosition.Y - (PlayerDimension.Y),
+                    cameraPosition.Y - (PlayerDimension.Y / 5) * 3,
                     cameraPosition.Z - (PlayerDimension.Z / 2)
                 ),
                 new Vector3(
                     cameraPosition.X + (PlayerDimension.X / 2),
-                    cameraPosition.Y,
+                    cameraPosition.Y + (PlayerDimension.Y / 5) * 2,
                     cameraPosition.Z + (PlayerDimension.Z / 2)
                 )
             );
@@ -132,7 +132,7 @@ namespace Deimos
                     // This method is used with pointer, so it does change 
                     // our above faces and points
                     thisModel.Value.CollisionModel.collisionData.collisions(
-                        cameraSphere,
+                        cameraBox,
                         collidingFaces,
                         collisionPoints
                     );

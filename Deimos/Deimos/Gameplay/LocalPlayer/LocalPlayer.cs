@@ -24,7 +24,7 @@ namespace Deimos
         public LocalPlayer(DeimosGame game)
         {
             Game = game;
-            Collision = new LocalPlayerCollision(8f, 1f, 1f, game);
+            Collision = new LocalPlayerCollision(33f, 1f, 1f, game);
         }
 
         public void InitializeInventory()
@@ -70,10 +70,6 @@ namespace Deimos
                 {
                     Game.ThisPlayerPhysics.InitiateJump(5f);
                 }
-            }
-            else
-            {
-                Game.ThisPlayerPhysics.BunnyhopCoeff = 1;
             }
 
             if (ks.IsKeyDown(Game.Config.Crouch))
@@ -187,6 +183,10 @@ namespace Deimos
                     // Hit floor or ceiling
                     Game.ThisPlayerPhysics.StopGravity();
                     movement.Y = 0;
+                    if (!ks.IsKeyDown(Game.Config.Jump))
+                    {
+                        Game.ThisPlayerPhysics.BunnyhopCoeff = 1;
+                    }
                 }
                 else if(Game.ThisPlayerPhysics.State == LocalPlayerPhysics.PhysicalState.Walking &&
                     !Collision.CheckCollision(Game.ThisPlayer.Position + new Vector3(movement.X, 2, movement.Z)))

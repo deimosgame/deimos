@@ -18,6 +18,8 @@ namespace Deimos
         public Keys Jump = Keys.Space;
         public Keys Crouch = Keys.LeftControl;
 
+        public Keys Reload = Keys.R;
+
         public Keys ShowDebug = Keys.Tab;
 
         public float MouseSensivity = 0.15f;

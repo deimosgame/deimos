@@ -34,7 +34,7 @@ namespace Deimos
             // Setting initial bullet spawn location
             Position.X = game.ThisPlayer.Position.X+2;
             Position.Y = game.ThisPlayer.Position.Y - 2;
-            Position.Z = game.ThisPlayer.Position.Z;
+            Position.Z = game.ThisPlayer.Position.Z+2;
 
             // Setting bullet direction according to current player's camera
             Direction = game.ThisPlayer.Rotation;

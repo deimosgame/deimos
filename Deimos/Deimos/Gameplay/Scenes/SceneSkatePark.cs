@@ -39,9 +39,9 @@ namespace Deimos
             LightManager.AddPointLight(
                "player",
                new Vector3(10, 10, 10), // Location
-               400, // Radius
+               300, // Radius
                2, // Intensity
-               Color.White
+               Color.CadetBlue
             );
             LightManager.AddSpotLight(
                 "test",
@@ -52,10 +52,30 @@ namespace Deimos
             );
         }
 
+        public float x = -1f;
+        Random rnd = new Random();
+        public int i = 0;
+        public int r = 0;
+
         // Update our things at each ticks
         public override void Update()
         {
+            PointLight light = LightManager.GetPointLight("player");
+            r = rnd.Next(0, 10);
+            if (i == r)
+            {
+                i = 0;
+                
+                light.Intensity += x;
+                x = -x;
+            }
 
+            if (i > 9)
+            {
+                i = 0;
+            }
+
+            i++;
         }
     }
 }

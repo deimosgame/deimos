@@ -33,9 +33,9 @@ namespace Deimos
 
             // Let's give them the default pistol ! :P
             Weapon Pistol = new Weapon(
-                Game, 
-                "Overpowered Laser Gun!", 
-                0, 1f, 7, 35, 14, 5, 35, 1f, 750f
+                Game,
+                "Overpowered Nerf Gun", 
+                0, 0.0000001f, 7, 35, 20, 50, 75, 1f, 750f
             );
             Inventory.PickupWeapon(Pistol);
             Inventory.SetCurrentWeapon(Pistol);
@@ -82,7 +82,12 @@ namespace Deimos
                 Game.ThisPlayer.CurrentWeapon.Fire();
             }
 
-            Game.Config.DebugScreen = true;
+            if (ks.IsKeyDown(Game.Config.Reload))
+            {
+                Game.ThisPlayer.Inventory.Reload();
+            }
+
+            // Game.Config.DebugScreen = true;
             if (ks.IsKeyDown(Game.Config.ShowDebug))
             {
                 Game.Config.DebugScreen = true;

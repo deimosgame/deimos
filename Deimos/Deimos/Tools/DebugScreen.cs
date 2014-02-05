@@ -92,6 +92,33 @@ namespace Deimos
                 "BunnyCoeff: ",
                 Color.White
             );
+            Game.ScreenElementManager.AddText(
+                "CurrentWeapon",
+                0,
+                (int)MapHeight + 110,
+                0,
+                Font,
+                "CurrentWeapon:",
+                Color.Blue
+            );
+            Game.ScreenElementManager.AddText(
+                "CurrentChamberAmmo",
+                0,
+                (int)MapHeight + 130,
+                0,
+                Font,
+                "CurrentChamberAmmo:",
+                Color.Blue
+            );
+            Game.ScreenElementManager.AddText(
+                "CurrentReservoirAmmo",
+                0,
+                (int)MapHeight + 150,
+                0,
+                Font,
+                "CurrentReservoirAmmo:",
+                Color.Blue
+            );
         }
 
         private void Show()
@@ -103,6 +130,10 @@ namespace Deimos
             Game.ScreenElementManager.GetText("FPS").Show = true;
             Game.ScreenElementManager.GetText("Ticks").Show = true;
             Game.ScreenElementManager.GetText("JumpState").Show = true;
+            Game.ScreenElementManager.GetText("BunnyCoeff").Show = true;
+            Game.ScreenElementManager.GetText("CurrentWeapon").Show = true;
+            Game.ScreenElementManager.GetText("CurrentChamberAmmo").Show = true;
+            Game.ScreenElementManager.GetText("CurrentReservoirAmmo").Show = true;
         }
         private void Hide()
         {
@@ -113,6 +144,10 @@ namespace Deimos
             Game.ScreenElementManager.GetText("FPS").Show = false;
             Game.ScreenElementManager.GetText("Ticks").Show = false;
             Game.ScreenElementManager.GetText("JumpState").Show = false;
+            Game.ScreenElementManager.GetText("BunnyCoeff").Show = false;
+            Game.ScreenElementManager.GetText("CurrentWeapon").Show = false;
+            Game.ScreenElementManager.GetText("CurrentChamberAmmo").Show = false;
+            Game.ScreenElementManager.GetText("CurrentReservoirAmmo").Show = false;
         }
 
         public void Update(GameTime gameTime)
@@ -161,6 +196,18 @@ namespace Deimos
             Game.ScreenElementManager.GetText("BunnyCoeff").Text = String.Format(
                 "BunnyCoeff: {0}",
                 Game.ThisPlayerPhysics.BunnyhopCoeff
+            );
+            Game.ScreenElementManager.GetText("CurrentWeapon").Text = String.Format(
+                "CurrentWeapon: {0}",
+                Game.ThisPlayer.CurrentWeapon.Name
+            );
+            Game.ScreenElementManager.GetText("CurrentChamberAmmo").Text = String.Format(
+                "CurrentChamberAmmo: {0}",
+                Game.ThisPlayer.CurrentWeapon.c_chamberAmmo
+            );
+            Game.ScreenElementManager.GetText("CurrentReservoirAmmo").Text = String.Format(
+                "CurrentReservoirAmmo: {0}",
+                Game.ThisPlayer.CurrentWeapon.c_reservoirAmmo
             );
         }
     }

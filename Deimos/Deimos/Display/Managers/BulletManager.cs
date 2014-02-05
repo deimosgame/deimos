@@ -28,7 +28,7 @@ namespace Deimos
         }
 
         // Methods
-        public Bullet SpawnBullet(Weapon weapon)
+        public Bullet SpawnBullet()
         {
             Bullet FiredBullet = new Bullet(Game);
             BulletTab.Add(FiredBullet);
@@ -44,10 +44,7 @@ namespace Deimos
             {
                 bullet.Position = bullet.Position * bullet.Direction * bullet.speed * dt;
                 // Collision or Hit check
-                
-            }
-
-            
+            }  
         }
 
         public void Update(Bullet bulletToFire, GameTime gameTime)

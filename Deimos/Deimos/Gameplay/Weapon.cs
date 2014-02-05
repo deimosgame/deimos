@@ -60,11 +60,10 @@ namespace Deimos
             set { projectileSpeed = value; }
         }
 
-        private float range;
         public float Range
         {
-            get { return range; }
-            set { range = Range; }
+            get;
+            private set;
         }
 
         // Constructor
@@ -101,7 +100,7 @@ namespace Deimos
             {
                 // Putting projectile in action through Bullet Manager
                 // These methods are not final at all, they WILL be changed.
-                bulletManager.SpawnBullet(this);
+                //bulletManager.SpawnBullet();
                 c_chamberAmmo--;
             }
             else Game.ThisPlayer.Inventory.Reload();

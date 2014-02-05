@@ -19,25 +19,36 @@ namespace Deimos
         }
         
         // Methods
-        public void PickupWeapon()
+        public void PickupWeapon(Weapon pickupWeapon)
         {
-            // We check if player already has the weapon, if not, we give it to him
-            if (!WeaponList.ContainsValue(Game.ThisPlayer.PickupWeapon))
+            // We check if player already has the weapon, if not, we give 
+            // it to him
+            if (!WeaponList.ContainsValue(pickupWeapon))
             {
-               WeaponList.Add(Game.ThisPlayer.PickupWeapon.Name, Game.ThisPlayer.PickupWeapon);
+               WeaponList.Add(
+                   pickupWeapon.Name, 
+                   pickupWeapon
+               );
 
-                // if the picked up weapon has priority over current weapon, we equip it
+                // if the picked up weapon has priority over current weapon, 
+                // we equip it
                 // Oldschool FTW!
-               if (Game.ThisPlayer.CurrentWeapon.Importance < Game.ThisPlayer.PickupWeapon.Importance)
+                // The current weapon may not be set at the beginning.
+               if (Game.ThisPlayer.CurrentWeapon != null && 
+                   Game.ThisPlayer.CurrentWeapon.Importance 
+                   < pickupWeapon.Importance)
                {
-                   SetCurrentWeapon(Game.ThisPlayer.PickupWeapon); // might be an overwriting problem, I trust Manu to tell me if there is
+                   // might be an overwriting problem, I trust Manu to 
+                   // tell me if there is
+                   SetCurrentWeapon(pickupWeapon); 
                }
             }
         }
 
         public void SetCurrentWeapon(Weapon weapon)
         {
-            if (!(Game.ThisPlayer.CurrentWeapon == weapon) && (WeaponList.ContainsValue(weapon)))
+            if (!(Game.ThisPlayer.CurrentWeapon == weapon) 
+                && (WeaponList.ContainsValue(weapon)))
             {
                 Game.ThisPlayer.CurrentWeapon = weapon;
             }
@@ -60,7 +71,8 @@ namespace Deimos
         {
             if (weapon.c_reservoirAmmo < weapon.m_reservoirAmmo)
             {
-                if (weapon.ammoPickup + weapon.c_reservoirAmmo >= weapon.m_reservoirAmmo)
+                if (weapon.ammoPickup + weapon.c_reservoirAmmo 
+                    >= weapon.m_reservoirAmmo)
                 {
                     weapon.c_reservoirAmmo = weapon.m_reservoirAmmo;
                 }
@@ -73,9 +85,11 @@ namespace Deimos
 
         public void Reload()
         {
-            if (Game.ThisPlayer.CurrentWeapon.c_chamberAmmo < Game.ThisPlayer.CurrentWeapon.m_chamberAmmo)
+            if (Game.ThisPlayer.CurrentWeapon.c_chamberAmmo < 
+                Game.ThisPlayer.CurrentWeapon.m_chamberAmmo)
             {
-                uint t = Game.ThisPlayer.CurrentWeapon.m_chamberAmmo - Game.ThisPlayer.CurrentWeapon.c_chamberAmmo;
+                uint t = Game.ThisPlayer.CurrentWeapon.m_chamberAmmo - 
+                    Game.ThisPlayer.CurrentWeapon.c_chamberAmmo;
 
                 if (t > Game.ThisPlayer.CurrentWeapon.c_reservoirAmmo)
                 {
@@ -87,7 +101,8 @@ namespace Deimos
             }
         }
 
-        // this method reloads the weapon automatically if the current chamber ammo is null
+        // this method reloads the weapon automatically if the current chamber 
+        // ammo is null
         public void UpdateAmmo()
         {
             if (Game.ThisPlayer.CurrentWeapon.c_chamberAmmo == 0)

@@ -68,15 +68,15 @@ namespace Deimos
         }
 
         // Constructor
-        public Weapon(DeimosGame game, string w_name, int w_priority, float w_firingRate, 
-                                        uint w_mca, uint w_mra, uint w_initialReservoirAmmo,
-                                        float w_minDmg, float w_maxDmg, 
-                                        float b_speed, float w_range)
+        public Weapon(DeimosGame game, string w_name, int w_priority, 
+            float w_firingRate, uint w_mca, uint w_mra, 
+            uint w_initialReservoirAmmo,float w_minDmg, float w_maxDmg, 
+            float b_speed, float w_range)
         {
             Game = game;
             bulletManager = game.BulletManager;
 
-            Name = w_name;
+            name = w_name;
             Importance = w_priority;
             FiringRate = w_firingRate;
             m_chamberAmmo = w_mca;

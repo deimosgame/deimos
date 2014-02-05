@@ -32,9 +32,12 @@ namespace Deimos
             Inventory = Game.WeaponManager;
 
             // Let's give them the default pistol ! :P
-            Weapon Pistol = new Weapon(Game, "Overpowered Laser Gun!", 0, 1f, 7, 35, 14, 5, 35, 1f, 750f);
-            Pistol = Game.ThisPlayer.PickupWeapon;
-            Inventory.PickupWeapon();
+            Weapon Pistol = new Weapon(
+                Game, 
+                "Overpowered Laser Gun!", 
+                0, 1f, 7, 35, 14, 5, 35, 1f, 750f
+            );
+            Inventory.PickupWeapon(Pistol);
             Inventory.SetCurrentWeapon(Pistol);
         }
 

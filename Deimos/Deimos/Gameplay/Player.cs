@@ -26,7 +26,6 @@ namespace Deimos
 
         public Weapon CurrentWeapon;
         public Weapon PreviousWeapon; // for quick-switch purposes
-        public Weapon PickupWeapon; // this is the weapon that the player will TRY to pickup
 
         private int health;
         public int Health

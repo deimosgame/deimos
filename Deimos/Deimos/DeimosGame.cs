@@ -154,7 +154,7 @@ namespace Deimos
             Config = new Config();
 
             WeaponManager = new WeaponManager(this);
-            // ThisPlayer.InitializeInventory();
+            ThisPlayer.InitializeInventory();
             BulletManager = new BulletManager(this);
         }
 
@@ -179,7 +179,7 @@ namespace Deimos
             //Graphics.PreferredBackBufferHeight = 1080;
             //Graphics.IsFullScreen = true;
             //Graphics.PreferMultiSampling = true; // Anti aliasing - Useless as custom effects
-            //Graphics.SynchronizeWithVerticalRetrace = false; // VSync
+            Graphics.SynchronizeWithVerticalRetrace = false; // VSync
             //IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec
             Graphics.ApplyChanges();
 

@@ -9,7 +9,6 @@ namespace Deimos
 {
     public class LocalPlayer : Player
     {
-
         DeimosGame Game;
         MouseState CurrentMouseState;
         MouseState PreviousMouseState;
@@ -18,12 +17,25 @@ namespace Deimos
         LocalPlayerCollision Collision;
         Vector3 CameraOldPosition;
 
+        public WeaponManager Inventory;
+
         public KeyboardState ks;
 
         public LocalPlayer(DeimosGame game)
         {
             Game = game;
             Collision = new LocalPlayerCollision(8f, 1f, 1f, game);
+        }
+
+        public void InitializeInventory()
+        {
+            Inventory = Game.WeaponManager;
+
+            // Let's give them the default pistol ! :P
+            Weapon Pistol = new Weapon(Game, "Overpowered Laser Gun!", 0, 1f, 7, 35, 14, 5, 35, 1f, 750f);
+            Pistol = Game.ThisPlayer.PickupWeapon;
+            Inventory.PickupWeapon();
+            Inventory.SetCurrentWeapon(Pistol);
         }
 
         private Vector3 GetMovementVector(float dt)

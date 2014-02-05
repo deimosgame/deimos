@@ -74,6 +74,13 @@ namespace Deimos
             set { screenElementManager = value; }
         }
 
+        WeaponManager weaponManager;
+        internal WeaponManager WeaponManager
+        {
+            get { return weaponManager; }
+            set { weaponManager = value; }
+        }
+
         BulletManager bulletManager;
         internal BulletManager BulletManager
         {
@@ -146,6 +153,8 @@ namespace Deimos
 
             Config = new Config();
 
+            WeaponManager = new WeaponManager(this);
+            ThisPlayer.InitializeInventory();
             BulletManager = new BulletManager(this);
         }
 

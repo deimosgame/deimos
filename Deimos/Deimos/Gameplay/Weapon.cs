@@ -80,9 +80,11 @@ namespace Deimos
             Importance = w_priority;
             FiringRate = w_firingRate;
             m_chamberAmmo = w_mca;
-            c_chamberAmmo = m_chamberAmmo; // to start out with a full chamber when weapon spawns
+            // to start out with a full chamber when weapon spawns
+            c_chamberAmmo = m_chamberAmmo; 
             m_reservoirAmmo = w_mra;
-            ammoPickup = w_initialReservoirAmmo; // if we want to give extra ammo to the player right from the pickup, we can
+            // if we want to give extra ammo to the player right from the pickup, we can
+            ammoPickup = w_initialReservoirAmmo; 
             minDmg = w_minDmg;
             maxDmg = w_maxDmg;
             ProjectileSpeed = b_speed;
@@ -98,7 +100,8 @@ namespace Deimos
             if (c_chamberAmmo != 0)
             {
                 // Putting projectile in action through Bullet Manager
-                bulletManager.Propagate(bulletManager.SpawnBullet(this), 5f); // These methods are not final at all, they WILL be changed.
+                // These methods are not final at all, they WILL be changed.
+                bulletManager.SpawnBullet(this);
                 c_chamberAmmo--;
             }
             else Game.ThisPlayer.Inventory.Reload();

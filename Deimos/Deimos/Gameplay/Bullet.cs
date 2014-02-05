@@ -24,13 +24,16 @@ namespace Deimos
         public float range;
         public float minimumDmg;
         public float maximumDmg;
+        public uint lifeSpan = 30;
 
         // Constructor
         public Bullet(DeimosGame game)
-        { 
+        {
+            Game = game;
+
             // Setting initial bullet spawn location
             Position.X = game.ThisPlayer.Position.X+2;
-            Position.Y = game.ThisPlayer.Position.Y;
+            Position.Y = game.ThisPlayer.Position.Y - 2;
             Position.Z = game.ThisPlayer.Position.Z;
 
             // Setting bullet direction according to current player's camera

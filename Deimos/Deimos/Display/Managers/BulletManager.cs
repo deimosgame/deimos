@@ -12,7 +12,8 @@ namespace Deimos
         // Attributes
         DeimosGame Game;
 
-        private List<Bullet> BulletTab = new List<Bullet>(); // the tab of bullets that calls functions for them
+        // the tab of bullets that calls functions for them
+        private List<Bullet> BulletTab = new List<Bullet>(); 
 
         // Constructor
         public BulletManager(DeimosGame game)
@@ -20,8 +21,7 @@ namespace Deimos
             Game = game;
         }
 
-        // Destructor
-        public void DestroyBullet(Bullet bullet)
+        private void DestroyBullet(Bullet bullet)
         {
             // And call the Bullet destructor??
             BulletTab.Remove(bullet);
@@ -36,13 +36,18 @@ namespace Deimos
             return FiredBullet;
         }
 
-        // These next two functions are purely first build test phase, they WILL be changed.
-        public void Propagate(Bullet bulletToFire, float dt)
+        // These next two functions are purely first build test phase, 
+        // they WILL be changed.
+        public void Propagate(float dt)
         {
+            foreach (Bullet bullet in BulletTab)
+            {
+                bullet.Position = bullet.Position * bullet.Direction * bullet.speed * dt;
+                // Collision or Hit check
+                
+            }
 
-            bulletToFire.Position = bulletToFire.Position * bulletToFire.Direction * bulletToFire.speed * dt;
-
-            // Collision or Hit check
+            
         }
 
         public void Update(Bullet bulletToFire, GameTime gameTime)
@@ -50,7 +55,7 @@ namespace Deimos
             float dt = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
 
 
-            Propagate(bulletToFire, dt);
+            Propagate(dt);
         }
     }
 }

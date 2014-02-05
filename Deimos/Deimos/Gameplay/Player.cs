@@ -27,13 +27,15 @@ namespace Deimos
         public Weapon CurrentWeapon;
         public Weapon PreviousWeapon; // for quick-switch purposes
 
-        private int health;
-        public int Health
+        private uint health;
+        public uint Health
         {
             get { return health; }
             set { health = value; }
         }
         
-        public float Speed = 30;
+        public float Speed = 70;
+
+        public int Score = 0;
     }
 }

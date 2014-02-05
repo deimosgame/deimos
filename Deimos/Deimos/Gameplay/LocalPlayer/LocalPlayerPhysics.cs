@@ -80,7 +80,7 @@ namespace Deimos
 
         public float ApplyGravity(float dt)
         {
-            float y = (InitialVelocity * CurrentTime) - 0.5f * (GravityCoef * (float)Math.Pow(CurrentTime, 2));
+            float y = (InitialVelocity * CurrentTime) - 0.8f * (GravityCoef * (float)Math.Pow(CurrentTime, 2));
             if (y <= 0 && CurrentTime != 0)
             {
                 State = PhysicalState.Falling;

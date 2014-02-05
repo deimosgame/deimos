@@ -99,6 +99,7 @@ namespace Deimos
             {
                 // Putting projectile in action through Bullet Manager
                 bulletManager.Propagate(bulletManager.SpawnBullet(this), 5f); // These methods are not final at all, they WILL be changed.
+                c_chamberAmmo--;
             }
             else Game.ThisPlayer.Inventory.Reload();
         }

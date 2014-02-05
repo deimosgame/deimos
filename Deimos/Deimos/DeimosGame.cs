@@ -154,7 +154,7 @@ namespace Deimos
             Config = new Config();
 
             WeaponManager = new WeaponManager(this);
-            ThisPlayer.InitializeInventory();
+            // ThisPlayer.InitializeInventory();
             BulletManager = new BulletManager(this);
         }
 

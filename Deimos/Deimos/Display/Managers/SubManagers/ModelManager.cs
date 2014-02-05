@@ -27,12 +27,8 @@ namespace Deimos
 
         // Methods
         public void LoadModel(string modelName, string model, Vector3 position,
-            LevelModel.CollisionType collisionType = LevelModel.CollisionType.Inaccurate)
+            LevelModel.CollisionType collisionType = LevelModel.CollisionType.Accurate)
         {
-            if (collisionType == LevelModel.CollisionType.Accurate && position != Vector3.Zero)
-            {
-                throw new Exception("You can't use the accurate collision detection if the model isn't at the origin.");
-            }
             // Adding the model to our List/array as well as its location
             // & texture
             CollidableModel.CollidableModel thisModelCollision =

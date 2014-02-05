@@ -141,18 +141,6 @@ namespace Deimos
                         return true;
                     }
                 }
-
-                if (collisionType == LevelModel.CollisionType.Inaccurate)
-                {
-                    BoundingBox nBB = new BoundingBox(
-                        thisModel.Value.CollisionModel.collisionData.geometry.boundingBox.Min + thisModel.Value.Position,
-                        thisModel.Value.CollisionModel.collisionData.geometry.boundingBox.Max + thisModel.Value.Position
-                    );
-                    if (nBB.Contains(cameraBox) != ContainmentType.Disjoint)
-                    {
-                        return true;
-                    }
-                }
             }
 
             // If we're here, then no collision has been matched

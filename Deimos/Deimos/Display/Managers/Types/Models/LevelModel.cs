@@ -34,8 +34,7 @@ namespace Deimos
 		public enum CollisionType
 		{
 			None,
-			Accurate,
-			Inaccurate
+			Accurate
 		}
 
 	}

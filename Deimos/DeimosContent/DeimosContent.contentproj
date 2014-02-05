@@ -540,6 +540,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Models\Map\Cyril\" />
     <Folder Include="Models\Misc\" />
     <Folder Include="References\" />
     <Folder Include="Shaders\SSAO\" />

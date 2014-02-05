@@ -72,26 +72,19 @@ namespace Deimos
             }
 
             // Creating the sphere of the camera for later collisions checks
-            BoundingBox cameraBox = new BoundingBox(
-                new Vector3(
-                    cameraPosition.X - (PlayerDimension.X / 2),
-                    cameraPosition.Y - (PlayerDimension.Y / 5) * 3,
-                    cameraPosition.Z - (PlayerDimension.Z / 2)
-                ),
-                new Vector3(
-                    cameraPosition.X + (PlayerDimension.X / 2),
-                    cameraPosition.Y + (PlayerDimension.Y / 5) * 2,
-                    cameraPosition.Z + (PlayerDimension.Z / 2)
-                )
+            Vector3 bbTop = new Vector3(
+                cameraPosition.X - (PlayerDimension.X / 2),
+                cameraPosition.Y - (PlayerDimension.Y / 5) * 3,
+                cameraPosition.Z - (PlayerDimension.Z / 2)
             );
-
-            BoundingSphere cameraSphere = new BoundingSphere(
-                new Vector3(
-                    cameraPosition.X, 
-                    cameraPosition.Y, 
-                    cameraPosition.Z
-                ),
-                PlayerDimension.Y
+            Vector3 bbBottom = new Vector3(
+                cameraPosition.X + (PlayerDimension.X / 2),
+                cameraPosition.Y + (PlayerDimension.Y / 5) * 2,
+                cameraPosition.Z + (PlayerDimension.Z / 2)
+            );
+            BoundingBox cameraBox = new BoundingBox(
+                bbTop,
+                bbBottom
             );
 
             // Let's check for collision with our boxes
@@ -132,7 +125,10 @@ namespace Deimos
                     // This method is used with pointer, so it does change 
                     // our above faces and points
                     thisModel.Value.CollisionModel.collisionData.collisions(
-                        cameraBox,
+                        new BoundingBox(
+                            bbTop - thisModel.Value.Position,
+                            bbBottom - thisModel.Value.Position
+                        ),
                         collidingFaces,
                         collisionPoints
                     );

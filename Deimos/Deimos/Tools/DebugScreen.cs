@@ -54,7 +54,7 @@ namespace Deimos
                 0,
                 Font,
                 "Location: ",
-                Color.White
+                Color.LightBlue
             );
             Game.ScreenElementManager.AddText(
                 "FPS",
@@ -63,7 +63,7 @@ namespace Deimos
                 0,
                 Font,
                 "FPS: ",
-                Color.White
+                Color.LightBlue
             );
             Game.ScreenElementManager.AddText(
                 "Ticks",
@@ -72,7 +72,7 @@ namespace Deimos
                 0,
                 Font,
                 "Ticks per sec: ",
-                Color.White
+                Color.LightBlue
             );
             Game.ScreenElementManager.AddText(
                 "JumpState",
@@ -90,7 +90,7 @@ namespace Deimos
                 0,
                 Font,
                 "BunnyCoeff: ",
-                Color.White
+                Color.Green
             );
             Game.ScreenElementManager.AddText(
                 "CurrentWeapon",
@@ -99,7 +99,7 @@ namespace Deimos
                 0,
                 Font,
                 "CurrentWeapon:",
-                Color.Blue
+                Color.Red
             );
             Game.ScreenElementManager.AddText(
                 "CurrentChamberAmmo",
@@ -108,7 +108,7 @@ namespace Deimos
                 0,
                 Font,
                 "CurrentChamberAmmo:",
-                Color.Blue
+                Color.Red
             );
             Game.ScreenElementManager.AddText(
                 "CurrentReservoirAmmo",
@@ -117,7 +117,7 @@ namespace Deimos
                 0,
                 Font,
                 "CurrentReservoirAmmo:",
-                Color.Blue
+                Color.Red
             );
         }
 

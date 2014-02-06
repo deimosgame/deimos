@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace Deimos
 {
@@ -29,7 +30,7 @@ namespace Deimos
                    pickupWeapon.Name, 
                    pickupWeapon
                );
-
+       
                 // if the picked up weapon has priority over current weapon, 
                 // we equip it
                 // Oldschool FTW!
@@ -85,20 +86,20 @@ namespace Deimos
 
         public void Reload()
         {
-            if (Game.ThisPlayer.CurrentWeapon.c_chamberAmmo < 
-                Game.ThisPlayer.CurrentWeapon.m_chamberAmmo)
-            {
-                uint t = Game.ThisPlayer.CurrentWeapon.m_chamberAmmo - 
-                    Game.ThisPlayer.CurrentWeapon.c_chamberAmmo;
+                    uint t = Game.ThisPlayer.CurrentWeapon.m_chamberAmmo -
+                        Game.ThisPlayer.CurrentWeapon.c_chamberAmmo;
 
-                if (t > Game.ThisPlayer.CurrentWeapon.c_reservoirAmmo)
-                {
-                    t = Game.ThisPlayer.CurrentWeapon.c_reservoirAmmo;
-                }
+                    if (t > Game.ThisPlayer.CurrentWeapon.c_reservoirAmmo)
+                    {
+                        t = Game.ThisPlayer.CurrentWeapon.c_reservoirAmmo;
+                    }
 
-                Game.ThisPlayer.CurrentWeapon.c_chamberAmmo += t;
-                Game.ThisPlayer.CurrentWeapon.c_reservoirAmmo -= t;
-            }
+                    Game.ThisPlayer.CurrentWeapon.c_chamberAmmo += t;
+                    Game.ThisPlayer.CurrentWeapon.c_reservoirAmmo -= t;
+                
+
+            Game.ThisPlayer.CurrentWeapon.reloadTimer = 0;
+            Game.ThisPlayer.CurrentWeapon.State = Weapon.WeaponState.AtEase;
         }
 
         // this method reloads the weapon automatically if the current chamber 

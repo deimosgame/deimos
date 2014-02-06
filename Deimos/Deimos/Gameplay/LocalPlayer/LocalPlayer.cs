@@ -35,8 +35,9 @@ namespace Deimos
             Weapon Pistol = new Weapon(
                 Game,
                 "Overpowered Nerf Gun", 
-                0, 0.0000001f, 7, 35, 20, 50, 75, 1f, 750f
+                0, 0.1f, 7, 35, 20, 1f, 50, 75, 1f, 750f
             );
+
             Inventory.PickupWeapon(Pistol);
             Inventory.SetCurrentWeapon(Pistol);
         }
@@ -44,6 +45,16 @@ namespace Deimos
         private Vector3 GetMovementVector(float dt)
         {
              ks = Keyboard.GetState();
+
+            // Let's update firing timer
+            Game.ThisPlayer.CurrentWeapon.fireTimer += dt;
+
+            // Let's increment the reloading timer if reloading
+            if (Game.ThisPlayer.CurrentWeapon.State ==
+                Weapon.WeaponState.Reloading)
+            {
+                Game.ThisPlayer.CurrentWeapon.reloadTimer += dt;
+            }
 
             Vector3 moveVector = Vector3.Zero;
             if (ks.IsKeyDown(Game.Config.Forward))
@@ -66,7 +77,8 @@ namespace Deimos
 
             if (ks.IsKeyDown(Game.Config.Jump))
             {
-                if (Game.ThisPlayerPhysics.State == LocalPlayerPhysics.PhysicalState.Walking)
+                if (Game.ThisPlayerPhysics.State == 
+                    LocalPlayerPhysics.PhysicalState.Walking)
                 {
                     Game.ThisPlayerPhysics.InitiateJump(5f);
                 }
@@ -77,17 +89,39 @@ namespace Deimos
                 // Crouch
             }
 
-            if (CurrentMouseState.LeftButton == ButtonState.Pressed)
+            // Fire Weapon
+            if (CurrentMouseState.LeftButton == ButtonState.Pressed &&
+                (Game.ThisPlayer.CurrentWeapon.State != 
+                Weapon.WeaponState.Reloading))
             {
-                Game.ThisPlayer.CurrentWeapon.Fire();
+                if (Game.ThisPlayer.CurrentWeapon.fireTimer >=
+                    Game.ThisPlayer.CurrentWeapon.FiringRate)
+                {
+                    Game.ThisPlayer.CurrentWeapon.Fire();
+                }
             }
 
-            if (ks.IsKeyDown(Game.Config.Reload))
+            // Initiate Reload timer
+            if (ks.IsKeyDown(Game.Config.Reload) &&
+                Game.ThisPlayer.CurrentWeapon.State ==
+                Weapon.WeaponState.AtEase &&
+                Game.ThisPlayer.CurrentWeapon.IsReloadable())
+            {
+                Game.ThisPlayer.CurrentWeapon.State = 
+                    Weapon.WeaponState.Reloading;
+            }
+
+            // Reload
+            if (Game.ThisPlayer.CurrentWeapon.State == 
+                Weapon.WeaponState.Reloading &&
+                Game.ThisPlayer.CurrentWeapon.reloadTimer >=
+                Game.ThisPlayer.CurrentWeapon.timeToReload)
             {
                 Game.ThisPlayer.Inventory.Reload();
             }
 
-            // Game.Config.DebugScreen = true;
+            Game.Config.DebugScreen = true;
+
             if (ks.IsKeyDown(Game.Config.ShowDebug))
             {
                 Game.Config.DebugScreen = true;

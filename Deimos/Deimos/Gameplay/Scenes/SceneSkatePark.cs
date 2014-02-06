@@ -84,7 +84,7 @@ namespace Deimos
 
             i++;
 
-            
+            ModelManager.GetLevelModel("PP19").Rotation = SceneManager.Game.ThisPlayer.Rotation;
         }
     }
 }

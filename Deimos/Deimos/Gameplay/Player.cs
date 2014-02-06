@@ -22,7 +22,16 @@ namespace Deimos
             Humans,
             Aliens
         }
+
+        public enum LifeState
+        {
+            Alive,
+            Dead
+        }
+
         public Teams Team;
+
+        public LifeState LifeState;
 
         public Weapon CurrentWeapon;
         public Weapon PreviousWeapon; // for quick-switch purposes
@@ -37,5 +46,7 @@ namespace Deimos
         public float Speed = 70;
 
         public int Score = 0;
+
+        
     }
 }

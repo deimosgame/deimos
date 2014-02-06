@@ -158,7 +158,6 @@ namespace Deimos
             BulletManager = new BulletManager(this);
         }
 
-
         protected override void Initialize()
         {
             Camera = new Camera(

@@ -27,7 +27,7 @@ namespace Deimos
 
         // Methods
         public void LoadModel(string modelName, string model, Vector3 position,
-            float scale = 1,
+            Vector3 rotation, float scale = 1, 
             LevelModel.CollisionType collisionType = LevelModel.CollisionType.Accurate)
         {
             // Adding the model to our List/array as well as its location
@@ -40,6 +40,7 @@ namespace Deimos
             LevelModel thisLevelModel = new LevelModel();
             thisLevelModel.Position = position;
             thisLevelModel.Scale = scale;
+            thisLevelModel.Rotation = rotation;
             thisLevelModel.CollisionDetection = collisionType;
             thisLevelModel.CollisionModel = thisModelCollision;
             LoadedLevelModels.Add(modelName, thisLevelModel);
@@ -54,6 +55,10 @@ namespace Deimos
         public Dictionary<string, LevelModel> GetLevelModels()
         {
             return LoadedLevelModels;
+        }
+        public LevelModel GetLevelModel(string name)
+        {
+            return LoadedLevelModels[name];
         }
 
         private BoundingBox BuildBoundingBox(ModelMesh mesh, 
@@ -117,7 +122,10 @@ namespace Deimos
                     // Loading the model
                     LevelModel levelModel = thisLevelModel.Value;
 
-                    Matrix modelWorld = Matrix.CreateScale(levelModel.Scale) * // Should be the scale
+                    Matrix modelWorld = Matrix.CreateScale(levelModel.Scale) *
+                                Matrix.CreateRotationX(levelModel.Rotation.X) *
+                                Matrix.CreateRotationY(levelModel.Rotation.Y) *
+                                Matrix.CreateRotationZ(levelModel.Rotation.Z) *
                                 Matrix.CreateTranslation(levelModel.Position);
 
                     Matrix[] transforms = new Matrix[levelModel.CollisionModel.model.Bones.Count];

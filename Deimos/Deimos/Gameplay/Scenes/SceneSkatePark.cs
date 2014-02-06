@@ -22,12 +22,14 @@ namespace Deimos
             ModelManager.LoadModel(
                  "skatepark",
                  "Models/Map/arena", // Model
-                 new Vector3(10, 0, 0) // Location
+                 new Vector3(10, 0, 0), // Location
+                 Vector3.Zero
             );
             ModelManager.LoadModel(
                 "PP19",
                 "Models/MISC/PP19/PP19Model",
                 Vector3.Zero,
+                new Vector3(0, 1, 0),
                 0.5f
             );
         }
@@ -81,6 +83,8 @@ namespace Deimos
             }
 
             i++;
+
+            
         }
     }
 }

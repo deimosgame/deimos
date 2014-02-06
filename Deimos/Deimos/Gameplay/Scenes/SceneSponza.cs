@@ -22,7 +22,8 @@ namespace Deimos
             ModelManager.LoadModel(
                  "mapCrysis",
                  "Models/Map/Sponza/sponza", // Model
-                 new Vector3(0, 0, 0) // Location
+                 new Vector3(0, 0, 0), // Location
+                 Vector3.Zero
              );
         }
 

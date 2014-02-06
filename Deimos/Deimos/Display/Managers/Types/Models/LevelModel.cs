@@ -19,6 +19,11 @@ namespace Deimos
             get;
             set;
         }
+        public Vector3 Rotation
+        {
+            get;
+            set;
+        }
         public CollisionType CollisionDetection
         {
             get;

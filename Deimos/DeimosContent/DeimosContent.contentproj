@@ -541,7 +541,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Map\Cyril\" />
-    <Folder Include="Models\Misc\" />
     <Folder Include="References\" />
     <Folder Include="Shaders\SSAO\" />
   </ItemGroup>
@@ -699,6 +698,31 @@
     </Compile>
     <Compile Include="Models\Textures\sky_top.tga">
       <Name>sky_top</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Misc\PP19\PP19Model.fbx">
+      <Name>PP19Model</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CollidableModelProcessor</Processor>
+      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Misc\PP19\PP19.png">
+      <Name>PP19</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Misc\PP19\tex\Tex_0008_1.jpg">
+      <Name>Tex_0008_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Misc\PP19\tex\Tex_0009_1.jpg">
+      <Name>Tex_0009_1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

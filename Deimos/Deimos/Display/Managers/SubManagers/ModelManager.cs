@@ -27,6 +27,7 @@ namespace Deimos
 
         // Methods
         public void LoadModel(string modelName, string model, Vector3 position,
+            float scale = 1,
             LevelModel.CollisionType collisionType = LevelModel.CollisionType.Accurate)
         {
             // Adding the model to our List/array as well as its location
@@ -38,6 +39,7 @@ namespace Deimos
             Model thisModel = thisModelCollision.model;
             LevelModel thisLevelModel = new LevelModel();
             thisLevelModel.Position = position;
+            thisLevelModel.Scale = scale;
             thisLevelModel.CollisionDetection = collisionType;
             thisLevelModel.CollisionModel = thisModelCollision;
             LoadedLevelModels.Add(modelName, thisLevelModel);
@@ -115,7 +117,7 @@ namespace Deimos
                     // Loading the model
                     LevelModel levelModel = thisLevelModel.Value;
 
-                    Matrix modelWorld = Matrix.CreateScale(1f) * // Should be the scale
+                    Matrix modelWorld = Matrix.CreateScale(levelModel.Scale) * // Should be the scale
                                 Matrix.CreateTranslation(levelModel.Position);
 
                     Matrix[] transforms = new Matrix[levelModel.CollisionModel.model.Bones.Count];

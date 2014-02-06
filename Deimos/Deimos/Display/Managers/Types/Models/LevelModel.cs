@@ -7,35 +7,33 @@ using System.Text;
 
 namespace Deimos
 {
-	class LevelModel
-	{
-		private Vector3 position;
-		public Vector3 Position
-		{
-			get { return position; }
-			set { position = value; }
-		}
+    class LevelModel
+    {
+        public Vector3 Position
+        {
+            get;
+            set;
+        }
+        public float Scale
+        {
+            get;
+            set;
+        }
+        public CollisionType CollisionDetection
+        {
+            get;
+            set;
+        }
+        public CollidableModel.CollidableModel CollisionModel
+        {
+            get;
+            set;
+        }
+        public enum CollisionType
+        {
+            None,
+            Accurate
+        }
 
-
-		private CollisionType collisionDetection;
-		public CollisionType CollisionDetection
-		{
-			get { return collisionDetection; }
-			set { collisionDetection = value; }
-		}
-
-		private CollidableModel.CollidableModel collisionModel;
-		public CollidableModel.CollidableModel CollisionModel
-		{
-			get { return collisionModel; }
-			set { collisionModel = value; }
-		}
-
-		public enum CollisionType
-		{
-			None,
-			Accurate
-		}
-
-	}
+    }
 }

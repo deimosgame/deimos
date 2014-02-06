@@ -126,8 +126,8 @@ namespace Deimos
                     // our above faces and points
                     thisModel.Value.CollisionModel.collisionData.collisions(
                         new BoundingBox(
-                            bbTop - thisModel.Value.Position,
-                            bbBottom - thisModel.Value.Position
+                            (bbTop - thisModel.Value.Position) / thisModel.Value.Scale,
+                            (bbBottom - thisModel.Value.Position) / thisModel.Value.Scale
                         ),
                         collidingFaces,
                         collisionPoints

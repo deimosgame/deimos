@@ -22,8 +22,7 @@ namespace Deimos
             ModelManager.LoadModel(
                  "mapCrysis",
                  "Models/Map/Sponza/sponza", // Model
-                 new Vector3(0, 0, 0), // Location
-                 LevelModel.CollisionType.Accurate
+                 new Vector3(0, 0, 0) // Location
              );
         }
 

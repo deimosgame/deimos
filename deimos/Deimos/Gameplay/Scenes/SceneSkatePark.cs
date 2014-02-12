@@ -30,7 +30,8 @@ namespace Deimos
                 "Models/MISC/PP19/PP19Model",
                 Vector3.Zero,
                 new Vector3(0, 1, 0),
-                0.5f
+                0.5f,
+                LevelModel.CollisionType.None
             );
         }
 
@@ -52,8 +53,8 @@ namespace Deimos
             );
             LightManager.AddSpotLight(
                 "test",
-                new Vector3(0, 10, 0),
-                new Vector3(0, 1, 0),
+                new Vector3(0, 20, 0),
+                new Vector3(0, -1, 0),
                 Color.White,
                 20
             );
@@ -67,24 +68,26 @@ namespace Deimos
         // Update our things at each ticks
         public override void Update()
         {
-            PointLight light = LightManager.GetPointLight("player");
-            r = rnd.Next(0, 10);
-            if (i == r)
-            {
-                i = 0;
+            //PointLight light = LightManager.GetPointLight("player");
+            //r = rnd.Next(0, 10);
+            //if (i == r)
+            //{
+            //    i = 0;
                 
-                light.Intensity += x;
-                x = -x;
-            }
+            //    light.Intensity += x;
+            //    x = -x;
+            //}
 
-            if (i > 9)
-            {
-                i = 0;
-            }
+            //if (i > 9)
+            //{
+            //    i = 0;
+            //}
 
-            i++;
-
-            ModelManager.GetLevelModel("PP19").Rotation = SceneManager.Game.ThisPlayer.Rotation;
+            //i++;
+            LevelModel weapon = ModelManager.GetLevelModel("PP19");
+            weapon.Rotation = SceneManager.Game.ThisPlayer.Rotation;
+            weapon.Position = SceneManager.Game.ThisPlayer.Position + weapon.Rotation * 5;
+            
         }
     }
 }

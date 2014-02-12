@@ -4,6 +4,9 @@ float3 lightDirection;
 //color of the light 
 float3 Color; 
 
+//light intensity
+float Intensity;
+
 //position of the camera, for specular light
 float3 cameraPosition; 
 
@@ -97,7 +100,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
     float3 lightVector = -normalize(lightDirection);
 
     //compute diffuse light
-    float NdL = max(0,dot(normal,lightVector));
+    float NdL = max(0,dot(normal,lightVector)) + 1;
     float3 diffuseLight = NdL * Color.rgb;
 
     //reflexion vector
@@ -108,7 +111,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
     float specularLight = specularIntensity * pow( saturate(dot(reflectionVector, directionToCamera)), specularPower);
 
     //output the two lights
-    return float4(diffuseLight.rgb, specularLight) ;
+    return float4(diffuseLight.rgb, specularLight) * Intensity;
 }
 
 technique Technique0

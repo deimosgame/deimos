@@ -15,13 +15,17 @@ namespace Deimos
 
         int FrameRate, FrameCounter, UpdateRate, UpdateCounter;
         TimeSpan ElapsedTime = TimeSpan.Zero;
+        List<string> DebugConsole = new List<string>();
+
         public DebugScreen(DeimosGame game)
         {
             Game = game;
             Font = Game.Content.Load<SpriteFont>("Fonts/debug");
             float coeff = 0.15f;
-            float MapWidth = Game.Renderer.NormalRT.Width * coeff;
-            float MapHeight = Game.Renderer.NormalRT.Height * coeff;
+            float WindowWidth = Game.Renderer.NormalRT.Width;
+            float WindowHeight = Game.Renderer.NormalRT.Height;
+            float MapWidth = WindowWidth * coeff;
+            float MapHeight = WindowHeight * coeff;
             Game.ScreenElementManager.AddImage(
                 "NormalMap",
                 0,
@@ -119,6 +123,15 @@ namespace Deimos
                 "CurrentReservoirAmmo:",
                 Color.Red
             );
+            Game.ScreenElementManager.AddText(
+                "DebugConsole",
+                0,
+                (int)WindowHeight - 400,
+                0,
+                Font,
+                "Debug",
+                Color.White
+            );
         }
 
         private void Show()
@@ -148,6 +161,11 @@ namespace Deimos
             Game.ScreenElementManager.GetText("CurrentWeapon").Show = false;
             Game.ScreenElementManager.GetText("CurrentChamberAmmo").Show = false;
             Game.ScreenElementManager.GetText("CurrentReservoirAmmo").Show = false;
+        }
+
+        public void Debug(string text)
+        {
+            DebugConsole.Add(text);
         }
 
         public void Update(GameTime gameTime)
@@ -209,6 +227,12 @@ namespace Deimos
                 "CurrentReservoirAmmo: {0}",
                 Game.ThisPlayer.CurrentWeapon.c_reservoirAmmo
             );
+
+            string finalDebug = "";
+            foreach (string line in DebugConsole)
+            {
+
+            }
         }
     }
 }

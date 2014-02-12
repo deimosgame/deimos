@@ -133,6 +133,7 @@
     <Compile Include="Display\Camera.cs" />
     <Compile Include="Display\Managers\BulletManager.cs" />
     <Compile Include="Display\Managers\WeaponManager.cs" />
+    <Compile Include="Facades\SceneManager.cs" />
     <Compile Include="Gameplay\Bullet.cs" />
     <Compile Include="Gameplay\Config.cs" />
     <Compile Include="Display\DeferredRendering\DeferredRenderer.cs" />
@@ -156,6 +157,9 @@
     <Compile Include="Gameplay\Scenes\SceneSponza.cs" />
     <Compile Include="Gameplay\Scenes\Template\SceneTemplate.cs" />
     <Compile Include="Gameplay\Weapon.cs" />
+    <Compile Include="Sound\Music.cs" />
+    <Compile Include="Sound\SoundEffectObject.cs" />
+    <Compile Include="Sound\SoundManager.cs" />
     <Compile Include="Tools\DebugScreen.cs" />
     <Compile Include="MISC\Floor.cs" />
     <Compile Include="Display\Managers\SubManagers\ModelManager.cs" />

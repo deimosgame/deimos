@@ -145,7 +145,8 @@ namespace Deimos
             QuadRenderer.Render(Vector2.One * -1, Vector2.One);
         }
 
-        private void DrawDirectionalLight(Vector3 lightDirection, Color color)
+        private void DrawDirectionalLight(Vector3 lightDirection, Color color,
+            float intensity = 1f)
         {
             DirectionalLightEffect.Parameters["colorMap"].SetValue(ColorRT);
             DirectionalLightEffect.Parameters["normalMap"].SetValue(NormalRT);
@@ -157,6 +158,7 @@ namespace Deimos
             DirectionalLightEffect.Parameters["Color"].SetValue(
                 color.ToVector3()
             );
+            DirectionalLightEffect.Parameters["Intensity"].SetValue(intensity);
 
             DirectionalLightEffect.Parameters["cameraPosition"].SetValue(
                 MainGame.Camera.Position
@@ -347,6 +349,12 @@ namespace Deimos
             GraphicsDevice.BlendState = BlendState.AlphaBlend;
             GraphicsDevice.DepthStencilState = DepthStencilState.None;
 
+            // Ambient light
+            DrawDirectionalLight(
+                Vector3.Zero,
+                Color.White,
+                0.1f
+            );
             foreach (KeyValuePair<string, DirectionalLight> thisLight in
                 MainGame.SceneManager.LightManager.GetDirectionalLights())
             {

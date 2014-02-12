@@ -84,8 +84,10 @@ namespace Deimos
             //}
 
             //i++;
-
-            ModelManager.GetLevelModel("PP19").Rotation = SceneManager.Game.ThisPlayer.Rotation;
+            LevelModel weapon = ModelManager.GetLevelModel("PP19");
+            weapon.Rotation = SceneManager.Game.ThisPlayer.Rotation;
+            weapon.Position = SceneManager.Game.ThisPlayer.Position + weapon.Rotation * 5;
+            
         }
     }
 }

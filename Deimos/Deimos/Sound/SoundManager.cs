@@ -13,10 +13,9 @@ namespace Deimos
     class SoundManager
     {
         //Attributes
-        //SoundEffect mySound;
         ContentManager ContentManager;
 
-        private Dictionary<string, SoundEffect> SoundEffect = new Dictionary<string, SoundEffect>();
+        private Dictionary<string, SoundEffectObject> SoundEffect = new Dictionary<string, SoundEffectObject>();
         private Dictionary<string, Song> Song = new Dictionary<string, Song>();
 
         //Constructor
@@ -26,16 +25,26 @@ namespace Deimos
         }
 
         //Methods
-        public void LoadSoundEffect(string path)
+        public void AddSoundEffect(string name,string path)
         {
-            SoundEffect currentEffect;
-            currentEffect = ContentManager.Load<SoundEffect>(path);
+            SoundEffectObject song = new SoundEffectObject(ContentManager, path);
+            song.name = name;
+            SoundEffect.Add(name, song);
         }
 
-        public void PlayEffect(SoundEffect mySound)
+        public void Play(string name, Vector3 posReceiver, Vector3 posEmitter)
         {
-            mySound.Play();
+            SoundEffect[name].Play3D(posEmitter, posReceiver);
+        }
 
+        public void Pause(string name)
+        {
+            SoundEffect[name].Pause();
+        }
+
+        public void Stop(string name)
+        {
+            SoundEffect[name].Stop();
         }
 
     }

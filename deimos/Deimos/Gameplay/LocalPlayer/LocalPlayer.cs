@@ -14,17 +14,17 @@ namespace Deimos
         MouseState PreviousMouseState;
         Vector3 MouseRotationBuffer;
 
-        LocalPlayerCollision Collision;
         Vector3 CameraOldPosition;
 
         public WeaponManager Inventory;
 
         public KeyboardState ks;
 
+        float w_switch_timer = 0f;
+
         public LocalPlayer(DeimosGame game)
         {
             Game = game;
-            Collision = new LocalPlayerCollision(33f, 1f, 1f, game);
         }
 
         public void InitializeInventory()
@@ -34,102 +34,263 @@ namespace Deimos
             // Let's give them the default pistol ! :P
             Weapon Pistol = new Weapon(
                 Game,
-                "Overpowered Nerf Gun", 
-                0, 0.1f, 7, 35, 20, 1f, 50, 75, 1f, 750f
+                "Pistol", 
+                0, 0.2f, 7, 46, 14, 1.3f, 15, 30, 2f, 250f
             );
 
             Inventory.PickupWeapon(Pistol);
+
+            Weapon Rifle = new Weapon(
+                Game,
+                "Rifle",
+                2, 0.1f, 31, 150, 60, 2.2f, 25, 40, 2f, 500f
+            );
+
+            Inventory.PickupWeapon(Rifle);
             Inventory.SetCurrentWeapon(Pistol);
+            Inventory.SetPreviousWeapon(Rifle);
         }
 
         private Vector3 GetMovementVector(float dt)
         {
-             ks = Keyboard.GetState();
+            ks = Keyboard.GetState();
 
-            // Let's update firing timer
-            Game.ThisPlayer.CurrentWeapon.fireTimer += dt;
+            // Let's update firing timer if necessary
+            if (Game.ThisPlayer.CurrentWeapon.fireTimer < 
+                Game.ThisPlayer.CurrentWeapon.FiringRate)
+            {
+                Game.ThisPlayer.CurrentWeapon.fireTimer += dt;
+            }
 
             // Let's increment the reloading timer if reloading
             if (Game.ThisPlayer.CurrentWeapon.State ==
                 Weapon.WeaponState.Reloading)
-            {
-                Game.ThisPlayer.CurrentWeapon.reloadTimer += dt;
+            { 
+                Game.ThisPlayer.CurrentWeapon.reloadTimer += dt; 
             }
 
-            Vector3 moveVector = Vector3.Zero;
-            if (ks.IsKeyDown(Game.Config.Forward))
+            // Let's increase weapon switch timer if switching
+            if (Game.ThisPlayer.CurrentWeapon.State == Weapon.WeaponState.Switching)
             {
-                moveVector.Z = 1;
-            }
-            if (ks.IsKeyDown(Game.Config.Backward))
-            {
-                moveVector.Z = -1;
-            }
-
-            if (ks.IsKeyDown(Game.Config.Left))
-            {
-                moveVector.X = 1;
-            }
-            if (ks.IsKeyDown(Game.Config.Right))
-            {
-                moveVector.X = -1;
-            }
-
-            if (ks.IsKeyDown(Game.Config.Jump))
-            {
-                if (Game.ThisPlayerPhysics.State == 
-                    LocalPlayerPhysics.PhysicalState.Walking)
+                if (w_switch_timer < Game.ThisPlayer.Inventory.GetSwitchTime(Game.ThisPlayer.PreviousWeapon))
                 {
-                    Game.ThisPlayerPhysics.InitiateJump(5f);
+                    w_switch_timer += dt;
+                }
+                else
+                {
+                    Game.ThisPlayer.Inventory.QuickSwitch(
+                        Game.ThisPlayer.CurrentWeapon,
+                        Game.ThisPlayer.PreviousWeapon);
+                    w_switch_timer = 0f;
                 }
             }
 
-            if (ks.IsKeyDown(Game.Config.Crouch))
+            // Let's increment the sprint timer if sprinting,
+            // and if not, let's cool stuff down
+            if (Game.ThisPlayer.CurrentSpeedState ==
+                SpeedState.Sprinting)
             {
+                Game.ThisPlayer.SprintTimer += dt;
+            }
+            else
+            {
+                // cooling down sprint if not already
+                if (Game.ThisPlayer.CooldownTimer < Game.ThisPlayer.SprintCooldown)
+                {
+                    Game.ThisPlayer.CooldownTimer += dt;
+                }
+
+                // setting the sprint timer
+                if (Game.ThisPlayer.SprintTimer > 0f)
+                {
+                    float cd = 0f;
+
+                    if (Game.ThisPlayer.CurrentSpeedState == SpeedState.Running)
+                    {
+                        cd = dt / 2f;
+                    }
+                    else if (Game.ThisPlayer.CurrentSpeedState == SpeedState.Walking)
+                    {
+                        cd = dt;
+                    }
+
+                    Game.ThisPlayer.SprintTimer -= cd;
+                }
+            }
+
+                // Let's handle walkstate resets
+                if (ks.IsKeyUp(Game.Config.Walk) && 
+                   (ks.IsKeyUp(Game.Config.Sprint)) &&
+                   (ks.IsKeyUp(Game.Config.Crouch)))
+                {
+                    Game.ThisPlayer.CurrentSpeedState = SpeedState.Running;
+                }
+
+                // Let's handle walkstates and speed settings
+                switch (Game.ThisPlayer.CurrentSpeedState)
+                {
+                    case SpeedState.Running:
+                        Game.ThisPlayer.Speed = RunSpeed;
+                        break;
+
+                    case SpeedState.Sprinting:
+                        if (Game.ThisPlayer.SprintTimer < Game.ThisPlayer.MaxSprintTime)
+                        {
+                            Game.ThisPlayer.Speed = SprintSpeed;
+                        }
+                        else
+                        {
+                            Game.ThisPlayer.CurrentSpeedState = SpeedState.Running;
+                            Game.ThisPlayer.Speed = RunSpeed;
+                            Game.ThisPlayer.SprintTimer = 0f;
+                            Game.ThisPlayer.CooldownTimer = 0f;
+                        }
+                        break;
+
+                    case SpeedState.Walking:
+                        Game.ThisPlayer.Speed = WalkSpeed;
+                        break;
+                }
+
+                // Let's handle input
+                Vector3 moveVector = Vector3.Zero;
+                if (ks.IsKeyDown(Game.Config.Forward))
+                {
+                    moveVector.Z = 1;
+                }
+                if (ks.IsKeyDown(Game.Config.Backward))
+                {
+                    moveVector.Z = -1;
+                }
+
+                if (ks.IsKeyDown(Game.Config.Left))
+                {
+                    moveVector.X = 1;
+                }
+                if (ks.IsKeyDown(Game.Config.Right))
+                {
+                    moveVector.X = -1;
+                }
+
+                // Jump
+                if (ks.IsKeyDown(Game.Config.Jump))
+                {
+                    if (Game.CurrentPlayingState == DeimosGame.PlayingStates.NoClip)
+                    {
+                        moveVector.Y = 1;
+                    }
+
+                    else
+                    {
+                        if (Game.ThisPlayerPhysics.State ==
+                        LocalPlayerPhysics.PhysicalState.Walking)
+                        {
+                            if (Game.ThisPlayer.CurrentSpeedState == SpeedState.Sprinting)
+                            {
+                                Game.ThisPlayer.CurrentSpeedState = SpeedState.Running;
+                            }
+                            Game.ThisPlayerPhysics.InitiateJump(4.3f);
+                        }
+                    }
+                }
+
                 // Crouch
-            }
-
-            // Fire Weapon
-            if (CurrentMouseState.LeftButton == ButtonState.Pressed &&
-                (Game.ThisPlayer.CurrentWeapon.State != 
-                Weapon.WeaponState.Reloading))
-            {
-                if (Game.ThisPlayer.CurrentWeapon.fireTimer >=
-                    Game.ThisPlayer.CurrentWeapon.FiringRate)
+                if (ks.IsKeyDown(Game.Config.Crouch))
                 {
-                    Game.ThisPlayer.CurrentWeapon.Fire();
+                    if (Game.CurrentPlayingState == DeimosGame.PlayingStates.NoClip)
+                    {
+                        moveVector.Y = -1;
+                    }
+                    else if (Game.ThisPlayerPhysics.State ==
+                        LocalPlayerPhysics.PhysicalState.Walking &&
+                    Game.ThisPlayer.CurrentSpeedState != SpeedState.Sprinting)
+                    {
+                        Game.ThisPlayer.CurrentSpeedState = SpeedState.Crouching;
+                    }
                 }
-            }
 
-            // Initiate Reload timer
-            if (ks.IsKeyDown(Game.Config.Reload) &&
-                Game.ThisPlayer.CurrentWeapon.State ==
-                Weapon.WeaponState.AtEase &&
-                Game.ThisPlayer.CurrentWeapon.IsReloadable())
-            {
-                Game.ThisPlayer.CurrentWeapon.State = 
-                    Weapon.WeaponState.Reloading;
-            }
+                // Initiate sprint and sprint timer
+                if (ks.IsKeyDown(Game.Config.Sprint) &&
+                    Game.ThisPlayerPhysics.State ==
+                    LocalPlayerPhysics.PhysicalState.Walking &&
+                    Game.ThisPlayer.CooldownTimer >= Game.ThisPlayer.SprintCooldown)
+                {
+                    Game.ThisPlayer.CurrentSpeedState = SpeedState.Sprinting;
+                }
 
-            // Reload
-            if (Game.ThisPlayer.CurrentWeapon.State == 
-                Weapon.WeaponState.Reloading &&
-                Game.ThisPlayer.CurrentWeapon.reloadTimer >=
-                Game.ThisPlayer.CurrentWeapon.timeToReload)
-            {
-                Game.ThisPlayer.Inventory.Reload();
-            }
+                // Walk
+                if (ks.IsKeyDown(Game.Config.Walk))
+                {
+                    Game.ThisPlayer.CurrentSpeedState = SpeedState.Walking;
+                }
 
-            Game.Config.DebugScreen = true;
+                // Fire Weapon
+                if (CurrentMouseState.LeftButton == ButtonState.Pressed &&
+                    Game.ThisPlayer.CurrentWeapon.State !=
+                    Weapon.WeaponState.Reloading &&
+                    Game.ThisPlayer.CurrentSpeedState != SpeedState.Sprinting)
+                {
+                    if (Game.ThisPlayer.CurrentWeapon.fireTimer >=
+                        Game.ThisPlayer.CurrentWeapon.FiringRate)
+                    {
+                        Game.ThisPlayer.CurrentWeapon.Fire();
 
-            if (ks.IsKeyDown(Game.Config.ShowDebug))
-            {
+                        // reloading if no bullet left after shot
+                        Game.ThisPlayer.Inventory.UpdateAmmo();
+                    }
+                }
+
+                // Initiate Reload timer
+                if (ks.IsKeyDown(Game.Config.Reload) &&
+                    Game.ThisPlayer.CurrentWeapon.State ==
+                    Weapon.WeaponState.AtEase &&
+                    Game.ThisPlayer.CurrentWeapon.IsReloadable() &&
+                    Game.ThisPlayer.CurrentSpeedState != SpeedState.Sprinting)
+                {
+                    Game.ThisPlayer.CurrentWeapon.State =
+                        Weapon.WeaponState.Reloading;
+                }
+
+                // Reload when timer satisfied
+                if (Game.ThisPlayer.CurrentWeapon.State ==
+                    Weapon.WeaponState.Reloading &&
+                    Game.ThisPlayer.CurrentWeapon.reloadTimer >=
+                    Game.ThisPlayer.CurrentWeapon.timeToReload)
+                {
+                    Game.ThisPlayer.Inventory.Reload();
+                }
+
+                // Quick-Switch weapon: timer initiate
+                if (ks.IsKeyDown(Game.Config.QuickSwitch) &&
+                    Game.ThisPlayer.CurrentSpeedState != SpeedState.Sprinting &&
+                    Game.ThisPlayer.CurrentWeapon.State == Weapon.WeaponState.AtEase)
+                {
+                    Game.ThisPlayer.CurrentWeapon.State = Weapon.WeaponState.Switching;
+                }
+
+                // Testing purposes: picking up ammo
+                if (ks.IsKeyDown(Keys.O))
+                {
+                    Game.ThisPlayer.ammoPickup = 10;
+                    Game.ThisPlayer.Inventory.PickupAmmo(Game.ThisPlayer.CurrentWeapon);
+
+                    Game.ThisPlayer.Inventory.UpdateAmmo();
+                }
+            
                 Game.Config.DebugScreen = true;
-            }
 
-            moveVector.Y = Game.ThisPlayerPhysics.ApplyGravity(dt);
+                if (ks.IsKeyDown(Game.Config.ShowDebug))
+                {
+                    Game.Config.DebugScreen = true;
+                }
 
-            return moveVector;
+                if (Game.CurrentPlayingState != DeimosGame.PlayingStates.NoClip)
+                {
+                    moveVector.Y = Game.ThisPlayerPhysics.ApplyGravity(dt);
+                }
+
+                return moveVector;
+            
         }
 
         public void GetMouseMovement(float dt)
@@ -215,9 +376,9 @@ namespace Deimos
             // Return the value of camera position + movement vector
 
             // Testing for the UPCOMING position
-            if (Collision.CheckCollision(Game.ThisPlayer.Position + movement))
+            if (Game.SceneManager.Collision.CheckCollision(Game.ThisPlayer.Position + movement))
             {
-                if (Collision.CheckCollision(Game.ThisPlayer.Position + movementGravity))
+                if (Game.SceneManager.Collision.CheckCollision(Game.ThisPlayer.Position + movementGravity))
                 {
                     // Hit floor or ceiling
                     Game.ThisPlayerPhysics.StopGravity();
@@ -228,19 +389,26 @@ namespace Deimos
                     }
                 }
                 else if(Game.ThisPlayerPhysics.State == LocalPlayerPhysics.PhysicalState.Walking &&
-                    !Collision.CheckCollision(Game.ThisPlayer.Position + new Vector3(movement.X, 2, movement.Z)))
+                    !Game.SceneManager.Collision.CheckCollision(
+                        Game.ThisPlayer.Position + new Vector3(movement.X, 2, movement.Z)))
                 {
                     movement.Y = 2;
                 }
                 // Creating the new movement vector, which will make us 
                 // able to have a smooth collision: being able to "slide" on 
                 // the wall while colliding
-                movement.X = Collision.CheckCollision(Game.ThisPlayer.Position +
-                                new Vector3(movement.X, 0, 0)) ? 0 : movement.X;
-                movement.Y = Collision.CheckCollision(Game.ThisPlayer.Position +
-                                new Vector3(0, movement.Y, 0)) ? 0 : movement.Y;
-                movement.Z = Collision.CheckCollision(Game.ThisPlayer.Position +
-                                new Vector3(0, 0, movement.Z)) ? 0 : movement.Z;
+                movement.X = Game.SceneManager.Collision.CheckCollision(
+                                    Game.ThisPlayer.Position +
+                                    new Vector3(movement.X, 0, 0)
+                                ) ? 0 : movement.X;
+                movement.Y = Game.SceneManager.Collision.CheckCollision(
+                                    Game.ThisPlayer.Position +
+                                    new Vector3(0, movement.Y, 0)
+                                ) ? 0 : movement.Y;
+                movement.Z = Game.SceneManager.Collision.CheckCollision(
+                                    Game.ThisPlayer.Position +
+                                    new Vector3(0, 0, movement.Z)
+                             ) ? 0 : movement.Z;
                 return Game.ThisPlayer.Position + movement;
             }
             else

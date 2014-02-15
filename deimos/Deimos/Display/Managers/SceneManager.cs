@@ -12,30 +12,29 @@ namespace Deimos
     class SceneManager
     {
         // Attributes
-        Dictionary<string, ModelManager> ModelManagerList =
-            new Dictionary<string, ModelManager>();
-        Dictionary<string, LightManager> LightManagerList =
-            new Dictionary<string, LightManager>();
-        ModelManager modelManager;
         internal ModelManager ModelManager
         {
-            get { return modelManager; }
-            private set { modelManager = value; }
+            get;
+            private set;
         }
 
-        LightManager lightManager;
         internal LightManager LightManager
         {
-            get { return lightManager; }
-            private set { lightManager = value; }
+            get;
+            private set;
+        }
+
+        internal LocalPlayerCollision Collision
+        {
+            get;
+            private set;
         }
         SceneTemplate CurrentScene;
 
-        DeimosGame game;
         public DeimosGame Game
         {
-            get { return game; }
-            private set { game = value; }
+            get;
+            private set;
         }
 
         ContentManager Content;
@@ -46,8 +45,9 @@ namespace Deimos
         {
             Game = game;
             Content = content;
-            ModelManager = new ModelManager(Content);
+            ModelManager = new ModelManager(Content, game);
             LightManager = new LightManager();
+            Collision    = new LocalPlayerCollision(33f, 1f, 1f, game);
         }
 
 
@@ -60,8 +60,11 @@ namespace Deimos
 
             ModelManager = null;
             LightManager = null;
-            ModelManager = new ModelManager(Content);
+            Collision    = null;
+           
+            ModelManager = new ModelManager(Content, Game);
             LightManager = new LightManager();
+            Collision    = new LocalPlayerCollision(33f, 1f, 1f, Game);
 
             CurrentScene = (SceneTemplate)Activator.CreateInstance(typeof(T), new object[] { this });
 

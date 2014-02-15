@@ -9,17 +9,35 @@ namespace Deimos
 {
     class LevelModel
     {
+        private Vector3 position;
         public Vector3 Position
         {
-            get;
-            set;
+            get { return position; }
+            set {
+                position = value;
+                UpdateMatrix();
+            }
         }
+        private float scale;
         public float Scale
         {
-            get;
-            set;
+            get { return scale; }
+            set {
+                scale = value;
+                UpdateMatrix();
+            }
         }
+        private Vector3 rotation;
         public Vector3 Rotation
+        {
+            get { return rotation; }
+            set
+            {
+                rotation = value;
+                UpdateMatrix();
+            }
+        }
+        public Matrix WorldMatrix
         {
             get;
             set;
@@ -40,5 +58,13 @@ namespace Deimos
             Accurate
         }
 
+        private void UpdateMatrix()
+        {
+            WorldMatrix = Matrix.CreateScale(Scale) *
+                Matrix.CreateRotationX(Rotation.X) *
+                Matrix.CreateRotationY(Rotation.Y) *
+                Matrix.CreateRotationZ(Rotation.Z) *
+                Matrix.CreateTranslation(Position);
+        }
     }
 }

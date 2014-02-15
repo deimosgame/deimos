@@ -10,7 +10,7 @@ namespace Deimos
     {
         DeimosGame Game;
 
-        private Dictionary<string, Weapon> WeaponList =
+        private Dictionary<string, Weapon> PlayerInventory =
             new Dictionary<string, Weapon>();
 
         // Constructor
@@ -24,9 +24,9 @@ namespace Deimos
         {
             // We check if player already has the weapon, if not, we give 
             // it to him
-            if (!WeaponList.ContainsValue(pickupWeapon))
+            if (!PlayerInventory.ContainsValue(pickupWeapon))
             {
-               WeaponList.Add(
+               PlayerInventory.Add(
                    pickupWeapon.Name, 
                    pickupWeapon
                );
@@ -49,20 +49,41 @@ namespace Deimos
         public void SetCurrentWeapon(Weapon weapon)
         {
             if (!(Game.ThisPlayer.CurrentWeapon == weapon) 
-                && (WeaponList.ContainsValue(weapon)))
+                && (PlayerInventory.ContainsValue(weapon)))
             {
                 Game.ThisPlayer.CurrentWeapon = weapon;
             }
         }
 
-        private void QuickSwitch(Weapon firstWeapon, Weapon secondWeapon)
+        public void SetPreviousWeapon(Weapon weapon)
+        {
+            if (!(Game.ThisPlayer.PreviousWeapon == weapon)
+                && (PlayerInventory.ContainsValue(weapon)))
+            {
+                Game.ThisPlayer.PreviousWeapon = weapon;
+            }
+        }
+
+        public float GetSwitchTime(Weapon weapon)
+        {
+            float time = weapon.timeToReload / 5f;
+
+            return time;
+        }
+
+        public void QuickSwitch(Weapon firstWeapon, Weapon secondWeapon)
         {
             if (firstWeapon != secondWeapon)
             {
                 Weapon temp = firstWeapon;
                 firstWeapon = secondWeapon;
                 secondWeapon = temp;
+
+                SetCurrentWeapon(firstWeapon);
+                SetPreviousWeapon(secondWeapon);
             }
+
+            Game.ThisPlayer.CurrentWeapon.State = Weapon.WeaponState.AtEase;
 
             // Destroy temp maybe? or does visual studio do it by itself?
         }
@@ -72,14 +93,14 @@ namespace Deimos
         {
             if (weapon.c_reservoirAmmo < weapon.m_reservoirAmmo)
             {
-                if (weapon.ammoPickup + weapon.c_reservoirAmmo 
+                if (Game.ThisPlayer.ammoPickup + weapon.c_reservoirAmmo 
                     >= weapon.m_reservoirAmmo)
                 {
                     weapon.c_reservoirAmmo = weapon.m_reservoirAmmo;
                 }
                 else
                 {
-                    weapon.c_reservoirAmmo += weapon.ammoPickup;
+                    weapon.c_reservoirAmmo += Game.ThisPlayer.ammoPickup;
                 }
             }
         }
@@ -106,16 +127,18 @@ namespace Deimos
         // ammo is null
         public void UpdateAmmo()
         {
-            if (Game.ThisPlayer.CurrentWeapon.c_chamberAmmo == 0)
+            if (!Game.ThisPlayer.CurrentWeapon.HasAmmo() &&
+                            Game.ThisPlayer.CurrentWeapon.IsReloadable())
             {
-                Reload();
+                Game.ThisPlayer.CurrentWeapon.State =
+                    Weapon.WeaponState.Reloading;
             }
         }
 
         // A forced 'add weapon' method for admin purposes
         public void ForceAdd(Weapon weapon)
         {
-            WeaponList.Add(weapon.Name, weapon);
+            PlayerInventory.Add(weapon.Name, weapon);
         }
     }
 }

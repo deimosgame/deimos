@@ -14,13 +14,10 @@ namespace Deimos
         // Attributes
         private DeimosGame MainGame;
 
-        private Vector3 PlayerDimension;
+        public Vector3 PlayerDimension;
 
-        List<BoundingBox> CollisionBoxes = 
-            new List<BoundingBox>();
-
-        List<BoundingSphere> CollisionSpheres = 
-            new List<BoundingSphere>();
+        List<CollisionElement> CollisionElements =
+            new List<CollisionElement>();
 
 
         // Constructor
@@ -39,28 +36,54 @@ namespace Deimos
 
         // Methods
         public void AddCollisionBox(Vector3 coords1, Vector3 coords2, 
-            float scale)
+            Action<CollisionElement, DeimosGame> onCollision)
         {
-            Vector3[] boxPoints = new Vector3[2];
-            boxPoints[0] = coords1 * scale;
-            boxPoints[1] = coords2 * scale;
-            CollisionBoxes.Add(BoundingBox.CreateFromPoints(boxPoints));
+            CollisionElement element = new CollisionElement();
+            element.Box = new BoundingBox(coords1, coords2);
+            element.ElementType = CollisionElement.CollisionType.Box;
+            element.Event = onCollision;
+            CollisionElements.Add(element);
         }
         // Adding a box directly helps for the ModelManager class, as we're
         // Creating a box directly from its methods when loading a model
-        public void AddCollisionBoxDirectly(BoundingBox box)
+        public void AddCollisionBoxDirectly(BoundingBox box,
+            Action<CollisionElement, DeimosGame> onCollision)
         {
-            CollisionBoxes.Add(box);
+            CollisionElement element = new CollisionElement();
+            element.Box = box;
+            element.ElementType = CollisionElement.CollisionType.Box;
+            element.Event = onCollision;
+            CollisionElements.Add(element);
         }
 
-        public void AddCollisionSphere(Vector3 coords, float radius)
+        public void AddCollisionSphere(Vector3 coords, float radius,
+            Action<CollisionElement, DeimosGame> onCollision)
         {
-            CollisionSpheres.Add(new BoundingSphere(coords, radius));
+            CollisionElement element = new CollisionElement();
+            element.Sphere = new BoundingSphere(coords, radius);
+            element.ElementType = CollisionElement.CollisionType.Sphere;
+            element.Event = onCollision;
+            CollisionElements.Add(element);
         }
         // Same here
-        public void AddCollisionSphereDirectly(BoundingSphere sphere)
+        public void AddCollisionSphereDirectly(BoundingSphere sphere,
+            Action<CollisionElement, DeimosGame> onCollision)
         {
-            CollisionSpheres.Add(sphere);
+            CollisionElement element = new CollisionElement();
+            element.Sphere = sphere;
+            element.ElementType = CollisionElement.CollisionType.Sphere;
+            element.Event = onCollision;
+            CollisionElements.Add(element);
+        }
+
+        public void AddLevelModel(LevelModel model,
+            Action<CollisionElement, DeimosGame> onCollision)
+        {
+            CollisionElement element = new CollisionElement();
+            element.Model = model;
+            element.ElementType = CollisionElement.CollisionType.Model;
+            element.Event = onCollision;
+            CollisionElements.Add(element);
         }
 
 
@@ -87,61 +110,60 @@ namespace Deimos
                 bbBottom
             );
 
-            // Let's check for collision with our boxes
-            foreach(BoundingBox collisionBox in CollisionBoxes)
-            {
-                // If our player is inside the collision region
-                if (collisionBox.Contains(cameraBox) !=
-                    ContainmentType.Disjoint)
-                {
-                    return true;
-                }
-            }
-
-            // Same with spheres
-            foreach(BoundingSphere collisionSphere in CollisionSpheres)
-            {
-                if (collisionSphere.Contains(cameraBox) != 
-                    ContainmentType.Disjoint)
-                    return true;
-            }
-
             // And finally with our models collisions
-            Dictionary<string, LevelModel> levelModels =
-                MainGame.SceneManager.ModelManager.GetLevelModels();
-            foreach (KeyValuePair<string, LevelModel> thisModel in levelModels)
+            foreach (CollisionElement thisElement in 
+                CollisionElements)
             {
-                LevelModel.CollisionType collisionType 
-                    = thisModel.Value.CollisionDetection;
-                if (collisionType == LevelModel.CollisionType.None)
+                bool isCollision = false;
+                switch (thisElement.ElementType)
                 {
-                    continue;
+                    case CollisionElement.CollisionType.Box:
+                        if (thisElement.Box.Contains(cameraBox) !=
+                            ContainmentType.Disjoint)
+                        {
+                            isCollision = true;
+                        }
+                        break;
+                    case CollisionElement.CollisionType.Sphere:
+                        if (thisElement.Sphere.Contains(cameraBox) !=
+                            ContainmentType.Disjoint)
+                        {
+                            isCollision = true;
+                        }
+                        break;
+                    case CollisionElement.CollisionType.Model:
+                        if (thisElement.Model.CollisionDetection == 
+                            LevelModel.CollisionType.None)
+                        {
+                            continue;
+                        }
+                        var collidingFaces = new LinkedList<Face>();
+                        var collisionPoints = new LinkedList<Vector3>();
+                        // This method is used with pointer, so it does change 
+                        // our above faces and points
+                        thisElement.Model.CollisionModel.collisionData.collisions(
+                            new BoundingBox(
+                                (bbTop - thisElement.Model.Position) / thisElement.Model.Scale,
+                                (bbBottom - thisElement.Model.Position) / thisElement.Model.Scale
+                            ),
+                            collidingFaces,
+                            collisionPoints
+                        );
+                        if (collidingFaces.Count > 0 || collisionPoints.Count > 0)
+                        {
+                            isCollision = true;
+                        }
+                        break;
                 }
-
-                if (collisionType == LevelModel.CollisionType.Accurate)
+                if (isCollision)
                 {
-                    var collidingFaces = new LinkedList<Face>();
-                    var collisionPoints = new LinkedList<Vector3>();
-                    // This method is used with pointer, so it does change 
-                    // our above faces and points
-                    thisModel.Value.CollisionModel.collisionData.collisions(
-                        new BoundingBox(
-                            (bbTop - thisModel.Value.Position) / thisModel.Value.Scale,
-                            (bbBottom - thisModel.Value.Position) / thisModel.Value.Scale
-                        ),
-                        collidingFaces,
-                        collisionPoints
-                    );
-                    if (collidingFaces.Count > 0 || collisionPoints.Count > 0)
-                    {
-                        return true;
-                    }
+                    thisElement.Event(thisElement, MainGame);
+                    return true;
                 }
             }
 
             // If we're here, then no collision has been matched
             return false;
-                
         }
 
     }

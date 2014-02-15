@@ -132,8 +132,8 @@
   <ItemGroup>
     <Compile Include="Display\Camera.cs" />
     <Compile Include="Display\Managers\BulletManager.cs" />
+    <Compile Include="Display\Managers\MenuManager.cs" />
     <Compile Include="Display\Managers\WeaponManager.cs" />
-    <Compile Include="Facades\SceneManager.cs" />
     <Compile Include="Gameplay\Bullet.cs" />
     <Compile Include="Gameplay\Config.cs" />
     <Compile Include="Display\DeferredRendering\DeferredRenderer.cs" />
@@ -151,8 +151,11 @@
     <Compile Include="Display\Managers\Types\ScreenElement\ScreenText.cs" />
     <Compile Include="Gameplay\LocalPlayer\LocalPlayerCollision.cs" />
     <Compile Include="Gameplay\LocalPlayer\LocalPlayer.cs" />
+    <Compile Include="Gameplay\LocalPlayer\LocalPlayerDisplay.cs" />
+    <Compile Include="Gameplay\LocalPlayer\Types\CollisionElement.cs" />
     <Compile Include="Gameplay\Player.cs" />
     <Compile Include="Gameplay\LocalPlayer\LocalPlayerPhysics.cs" />
+    <Compile Include="Gameplay\Scenes\SceneDeimos.cs" />
     <Compile Include="Gameplay\Scenes\SceneSkatePark.cs" />
     <Compile Include="Gameplay\Scenes\SceneSponza.cs" />
     <Compile Include="Gameplay\Scenes\Template\SceneTemplate.cs" />
@@ -212,6 +215,7 @@
     <None Include="Deimos_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Facades\" />
     <Folder Include="Gameplay\Menus\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

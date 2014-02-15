@@ -25,10 +25,14 @@ namespace Deimos
         DeimosGame Game;
         LocalPlayer CurrentPhysicsPlayer;
 
+        Vector3 acceleration = Vector3.Zero;
+
         float InitialVelocity = 0;
         float CurrentTime = 0;
 
         float GravityCoef = 12f;
+
+        float bunnyhopmax = 3.45f;
 
         // bool ApplyingGravity = false;
 
@@ -37,7 +41,7 @@ namespace Deimos
         {
             get { return bunnyhopCoeff; }
             set {
-                if (value > 3.5f)
+                if (value > bunnyhopmax)
                 {
                     return;
                 }
@@ -45,13 +49,14 @@ namespace Deimos
             }
         }
 
-
+        // Constructor
         public LocalPlayerPhysics(DeimosGame game, LocalPlayer player)
         {
             Game = game;
             CurrentPhysicsPlayer = player;
         }
 
+        // Methods
         public void InitiateJump(float v)
         {
             // Setting initial state for applied gravity
@@ -73,13 +78,18 @@ namespace Deimos
                 InitialVelocity = 0;
                 CurrentTime = 0;
                 State = PhysicalState.Walking;
-                BunnyhopCoeff += 0.2f;
+                BunnyhopCoeff += 0.15f;
             }
         }
 
 
         public float ApplyGravity(float dt)
         {
+            //if (Game.CurrentPlayingState == DeimosGame.PlayingStates.NoClip)
+            //{
+            //    return 0;
+            //}
+
             float y = (InitialVelocity * CurrentTime) - 0.8f * (GravityCoef * (float)Math.Pow(CurrentTime, 2));
             if (y <= 0 && CurrentTime != 0)
             {

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,10 +19,13 @@ namespace Deimos
 
         private Texture2D DummyTexture;
 
+        private DeimosGame Game;
+
         // Constructor
-        public ScreenElementManager(GraphicsDevice graphicsDevice)
+        public ScreenElementManager(DeimosGame game)
         {
-            DummyTexture = new Texture2D(graphicsDevice, 1, 1);
+            Game = game;
+            DummyTexture = new Texture2D(game.GraphicsDevice, 1, 1);
             DummyTexture.SetData(new Color[] { Color.White });
         }
 
@@ -74,6 +78,59 @@ namespace Deimos
             return ElementsText[name];
         }
 
+        public void HandleMouse()
+        {
+            MouseState mouseState = Mouse.GetState();
+            Rectangle mouseRectangle = new Rectangle(mouseState.X, mouseState.Y, 1, 1);
+            foreach (KeyValuePair<string, ScreenRectangle> thisElement in ElementsRectangle)
+            {
+                ScreenRectangle thisRectangle = thisElement.Value;
+                Rectangle rectangle = new Rectangle(
+                    thisRectangle.PosX,
+                    thisRectangle.PosY,
+                    thisRectangle.Width,
+                    thisRectangle.Height
+                );
+                HandleEvent(thisRectangle, mouseRectangle, rectangle, mouseState);
+            } 
+            foreach (KeyValuePair<string, ScreenImage> thisElement in ElementsImage)
+            {
+                ScreenImage thisRectangle = thisElement.Value;
+                Rectangle rectangle = new Rectangle(
+                    thisRectangle.PosX,
+                    thisRectangle.PosY,
+                    thisRectangle.Image.Width,
+                    thisRectangle.Image.Height
+                );
+                HandleEvent(thisRectangle, mouseRectangle, rectangle, mouseState);
+            }
+        }
+        private void HandleEvent(ScreenElement el, Rectangle mouse, Rectangle elRect,
+            MouseState mouseState)
+        {
+            if (mouse.Intersects(elRect))
+            {
+                if (el.LastState != ScreenElement.ElState.Hover)
+                {
+                    el.OnHover(el, Game);
+                    el.LastState = ScreenElement.ElState.Hover;
+                }
+                if (mouseState.RightButton == ButtonState.Pressed
+                    && el.LastState != ScreenElement.ElState.Click)
+                {
+                    el.OnClick(el, Game);
+                    el.LastState = ScreenElement.ElState.Click;
+                }
+            }
+            else
+            {
+                if (el.LastState != ScreenElement.ElState.Out)
+                {
+                    el.OnOut(el, Game);
+                    el.LastState = ScreenElement.ElState.Out;
+                }
+            }
+        }
 
         public void DrawElements(SpriteBatch spriteBatch)
         {

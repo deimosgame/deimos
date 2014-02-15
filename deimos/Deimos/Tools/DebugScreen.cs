@@ -22,10 +22,8 @@ namespace Deimos
             Game = game;
             Font = Game.Content.Load<SpriteFont>("Fonts/debug");
             float coeff = 0.15f;
-            float WindowWidth = Game.Renderer.NormalRT.Width;
-            float WindowHeight = Game.Renderer.NormalRT.Height;
-            float MapWidth = WindowWidth * coeff;
-            float MapHeight = WindowHeight * coeff;
+            float MapWidth = Game.Renderer.NormalRT.Width * coeff;
+            float MapHeight = Game.Renderer.NormalRT.Height * coeff;
             Game.ScreenElementManager.AddImage(
                 "NormalMap",
                 0,
@@ -63,74 +61,110 @@ namespace Deimos
             Game.ScreenElementManager.AddText(
                 "FPS",
                 0,
-                (int)MapHeight + 30,
+                (int)MapHeight + 50,
                 0,
                 Font,
                 "FPS: ",
-                Color.LightBlue
+                Color.White
             );
             Game.ScreenElementManager.AddText(
                 "Ticks",
                 0,
-                (int)MapHeight + 50,
+                (int)MapHeight + 70,
                 0,
                 Font,
                 "Ticks per sec: ",
-                Color.LightBlue
+                Color.White
             );
             Game.ScreenElementManager.AddText(
                 "JumpState",
                 0,
-                (int)MapHeight + 70,
+                (int)MapHeight + 90,
                 0,
                 Font,
                 "JumpState: ",
-                Color.White
+                Color.LightGreen
             );
             Game.ScreenElementManager.AddText(
                 "BunnyCoeff",
                 0,
-                (int)MapHeight + 90,
+                (int)MapHeight + 110,
                 0,
                 Font,
                 "BunnyCoeff: ",
-                Color.Green
+                Color.LightGreen
             );
             Game.ScreenElementManager.AddText(
                 "CurrentWeapon",
                 0,
-                (int)MapHeight + 110,
+                (int)MapHeight + 130,
                 0,
                 Font,
                 "CurrentWeapon:",
-                Color.Red
+                Color.LightCoral
             );
             Game.ScreenElementManager.AddText(
                 "CurrentChamberAmmo",
                 0,
-                (int)MapHeight + 130,
+                (int)MapHeight + 150,
                 0,
                 Font,
                 "CurrentChamberAmmo:",
-                Color.Red
+                Color.LightCoral
             );
             Game.ScreenElementManager.AddText(
                 "CurrentReservoirAmmo",
                 0,
-                (int)MapHeight + 150,
+                (int)MapHeight + 170,
                 0,
                 Font,
                 "CurrentReservoirAmmo:",
-                Color.Red
+                Color.LightCoral
+            );
+            Game.ScreenElementManager.AddText(
+                "Rotation",
+                0,
+                (int)MapHeight + 30,
+                0,
+                Font,
+                "Rotation: ",
+                Color.LightBlue
+            );
+            Game.ScreenElementManager.AddText(
+                "SpeedState",
+                0,
+                (int)MapHeight + 190,
+                0,
+                Font,
+                "Speed State: ",
+                Color.LightSalmon
+            );
+            Game.ScreenElementManager.AddText(
+                "SprintTimer",
+                0,
+                (int)MapHeight + 210,
+                0,
+                Font,
+                "Sprint Timer: ",
+                Color.LightSalmon
+            );
+            Game.ScreenElementManager.AddText(
+                "CooldownTimer",
+                0,
+                (int)MapHeight + 230,
+                0,
+                Font,
+                "Cooldown Timer: ",
+                Color.LightSalmon
             );
             Game.ScreenElementManager.AddText(
                 "DebugConsole",
                 0,
-                (int)WindowHeight - 400,
+                (int)MapHeight + 250,
                 0,
                 Font,
-                "Debug",
-                Color.White
+                "Console",
+                Color.LightSalmon
             );
         }
 
@@ -147,6 +181,10 @@ namespace Deimos
             Game.ScreenElementManager.GetText("CurrentWeapon").Show = true;
             Game.ScreenElementManager.GetText("CurrentChamberAmmo").Show = true;
             Game.ScreenElementManager.GetText("CurrentReservoirAmmo").Show = true;
+            Game.ScreenElementManager.GetText("Rotation").Show = true;
+            Game.ScreenElementManager.GetText("SpeedState").Show = true;
+            Game.ScreenElementManager.GetText("SprintTimer").Show = true;
+            Game.ScreenElementManager.GetText("CooldownTimer").Show = true;
         }
         private void Hide()
         {
@@ -161,6 +199,10 @@ namespace Deimos
             Game.ScreenElementManager.GetText("CurrentWeapon").Show = false;
             Game.ScreenElementManager.GetText("CurrentChamberAmmo").Show = false;
             Game.ScreenElementManager.GetText("CurrentReservoirAmmo").Show = false;
+            Game.ScreenElementManager.GetText("Rotation").Show = false;
+            Game.ScreenElementManager.GetText("SpeedState").Show = false;
+            Game.ScreenElementManager.GetText("SprintTimer").Show = false;
+            Game.ScreenElementManager.GetText("CooldownTimer").Show = false;
         }
 
         public void Debug(string text)
@@ -227,12 +269,36 @@ namespace Deimos
                 "CurrentReservoirAmmo: {0}",
                 Game.ThisPlayer.CurrentWeapon.c_reservoirAmmo
             );
+            Game.ScreenElementManager.GetText("Rotation").Text = String.Format(
+                "Rotation: x:{0}; y:{1}; z:{2}",
+                (float)Game.ThisPlayer.Rotation.X,
+                (float)Game.ThisPlayer.Rotation.Y,
+                (float)Game.ThisPlayer.Rotation.Z
+            );
+            Game.ScreenElementManager.GetText("SpeedState").Text = String.Format(
+                "Speed State: {0}",
+                Game.ThisPlayer.CurrentSpeedState
+            );
+            Game.ScreenElementManager.GetText("SprintTimer").Text = String.Format(
+                "Sprint Timer: {0}",
+                Game.ThisPlayer.SprintTimer
+            );
+            Game.ScreenElementManager.GetText("CooldownTimer").Text = String.Format(
+                "CooldownTimer: {0}",
+                Game.ThisPlayer.CooldownTimer
+            );
 
             string finalDebug = "";
-            foreach (string line in DebugConsole)
+            int southLimit = DebugConsole.Count - 10;
+            if (southLimit < 0)
             {
-
+                southLimit = 0;
             }
+            for (int i = DebugConsole.Count - 1; i > southLimit; i--)
+            {
+                finalDebug += DebugConsole[i] + "\n";
+            }
+            Game.ScreenElementManager.GetText("DebugConsole").Text = finalDebug;
         }
     }
 }

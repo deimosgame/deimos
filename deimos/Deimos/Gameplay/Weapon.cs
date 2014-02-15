@@ -14,7 +14,8 @@ namespace Deimos
         {
             AtEase,
             Firing,
-            Reloading
+            Reloading,
+            Switching
         }
 
         private WeaponState state = WeaponState.AtEase;
@@ -51,10 +52,12 @@ namespace Deimos
         public uint m_chamberAmmo; // maximum chamber ammo
         public uint c_reservoirAmmo; // current ammo in the reservoir
         public uint m_reservoirAmmo; // maximum reservoir ammo
-        public uint ammoPickup; // amount of ammo that is potentially picked up
+        //public uint ammoPickup; // amount of ammo that is potentially picked up
 
         public float reloadTimer = 0; // timer used for reload
         public float timeToReload; // time needed to reload
+
+        public float timeToSwitch = 0f;
 
         public bool reloadable = false;
 
@@ -93,7 +96,7 @@ namespace Deimos
             m_reservoirAmmo = w_mra;
             timeToReload = w_reloadt;
             // if we want to give extra ammo to the player right from the pickup, we can
-            ammoPickup = w_initialReservoirAmmo; 
+            Game.ThisPlayer.ammoPickup = w_initialReservoirAmmo; 
             minDmg = w_minDmg;
             maxDmg = w_maxDmg;
             ProjectileSpeed = b_speed;
@@ -113,7 +116,7 @@ namespace Deimos
                 // These methods are not final at all, they WILL be changed.
                 //bulletManager.SpawnBullet();
                 c_chamberAmmo--;
-                fireTimer = 0; // reset the reload timer
+                fireTimer = 0; // reset the fire timer
                 State = WeaponState.AtEase;
             }
             else if (IsReloadable())
@@ -126,6 +129,11 @@ namespace Deimos
         {
             return (c_chamberAmmo < m_chamberAmmo &&
                 c_reservoirAmmo > 0);
+        }
+
+        public bool HasAmmo()
+        {
+            return (c_chamberAmmo > 0);
         }
     }
 }

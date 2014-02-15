@@ -29,9 +29,19 @@ namespace Deimos
             Dead
         }
 
+        public enum SpeedState
+        {
+            Crouching,
+            Walking,
+            Running,
+            Sprinting
+        }
+
         public Teams Team;
 
-        public LifeState LifeStateb;
+        public LifeState CurrentLifeState;
+
+        public SpeedState CurrentSpeedState = SpeedState.Walking;
 
         public Weapon CurrentWeapon;
         public Weapon PreviousWeapon; // for quick-switch purposes
@@ -42,11 +52,21 @@ namespace Deimos
             get { return health; }
             set { health = value; }
         }
-        
-        public float Speed = 70;
+
+        public float MaxSprintTime = 5f;
+        public float SprintTimer = 0f;
+
+        public float SprintCooldown = 5f;
+        public float CooldownTimer = 5f;
+
+        public float WalkSpeed = 20f;
+        public float RunSpeed = 50f;
+        public float SprintSpeed = 90f;
+
+        public float Speed;
 
         public int Score = 0;
 
-        
+        public uint ammoPickup = 0; // amount of ammo that is potentially picked up
     }
 }

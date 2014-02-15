@@ -29,9 +29,40 @@ namespace Deimos
             set;
         }
 
+        public Action<ScreenElement, DeimosGame> OnHover
+        {
+            get;
+            set;
+        }
+        public Action<ScreenElement, DeimosGame> OnOut
+        {
+            get;
+            set;
+        }
+        public Action<ScreenElement, DeimosGame> OnClick
+        {
+            get;
+            set;
+        }
+
+        public enum ElState
+        {
+            Hover,
+            Out,
+            Click
+        }
+        public ElState LastState
+        {
+            get;
+            set;
+        }
+
         protected ScreenElement()
         {
             Show = true; // Default value
+            OnHover = delegate(ScreenElement el, DeimosGame g) { };
+            OnOut = delegate(ScreenElement el, DeimosGame g) { };
+            OnClick = delegate(ScreenElement el, DeimosGame g) { };
         }
     }
 }

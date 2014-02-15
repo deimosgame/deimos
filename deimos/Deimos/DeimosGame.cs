@@ -118,7 +118,7 @@ namespace Deimos
             NoClip
         }
 
-        GameStates currentGameState = GameStates.Playing;
+        GameStates currentGameState = GameStates.Pause;
         public GameStates CurrentGameState
         {
             get { return currentGameState; }
@@ -156,17 +156,19 @@ namespace Deimos
             WeaponManager = new WeaponManager(this);
             ThisPlayer.InitializeInventory();
             BulletManager = new BulletManager(this);
+
+            
         }
 
         protected override void Initialize()
         {
             Camera = new Camera(
                 this,
-                new Vector3(0f, 80f, 20f),
+                new Vector3(0f, 9f,20f),
                 Vector3.Zero
             );
 
-            ThisPlayer.MoveTo(new Vector3(0f, 80f, 20f), Vector3.Zero);
+            ThisPlayer.MoveTo(new Vector3(0f, 9.5f, 20f), Vector3.Zero);
 
 
             IsMouseVisible = false;
@@ -193,7 +195,7 @@ namespace Deimos
 
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 
-            ScreenElementManager = new ScreenElementManager(GraphicsDevice);
+            ScreenElementManager = new ScreenElementManager(this);
 
             DebugScreen = new DebugScreen(this);
         }
@@ -211,9 +213,30 @@ namespace Deimos
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
 
-            ThisPlayer.HandleInput(gameTime);
+            // Testing purposes: switching clip/noclip
+            if (Keyboard.GetState().IsKeyDown(Keys.N))
+            {
+                CurrentPlayingState = DeimosGame.PlayingStates.NoClip;
+            }
 
-            SceneManager.Update();
+            if (Keyboard.GetState().IsKeyDown(Keys.M))
+            {
+                CurrentPlayingState = DeimosGame.PlayingStates.Normal;
+            }
+
+            if (currentGameState == GameStates.Playing)
+            {
+                ThisPlayer.HandleInput(gameTime);
+
+                SceneManager.Update();
+
+                this.IsMouseVisible = false;
+            }
+            else
+            {
+                this.IsMouseVisible = true;
+            }
+
             DebugScreen.Update(gameTime);
 
             base.Update(gameTime);

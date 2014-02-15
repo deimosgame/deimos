@@ -16,12 +16,14 @@ namespace Deimos
         private Dictionary<string, LevelModel> LoadedLevelModels = 
             new Dictionary<string, LevelModel>();
         ContentManager ContentManager;
+        DeimosGame Game;
  
 
         // Constructor
-        public ModelManager(ContentManager contentManager)
+        public ModelManager(ContentManager contentManager, DeimosGame game)
         {
             ContentManager = contentManager;
+            Game = game;
         }
 
 
@@ -44,6 +46,10 @@ namespace Deimos
             thisLevelModel.CollisionDetection = collisionType;
             thisLevelModel.CollisionModel = thisModelCollision;
             LoadedLevelModels.Add(modelName, thisLevelModel);
+            Game.SceneManager.Collision.AddLevelModel(
+                thisLevelModel,
+                delegate(CollisionElement el, DeimosGame game) { }
+            );
         }
 
         public void UnloadModels()
@@ -122,19 +128,13 @@ namespace Deimos
                     // Loading the model
                     LevelModel levelModel = thisLevelModel.Value;
 
-                    Matrix modelWorld = Matrix.CreateScale(levelModel.Scale) *
-                                Matrix.CreateRotationX(levelModel.Rotation.X) *
-                                Matrix.CreateRotationY(levelModel.Rotation.Y) *
-                                Matrix.CreateRotationZ(levelModel.Rotation.Z) *
-                                Matrix.CreateTranslation(levelModel.Position);
-
                     Matrix[] transforms = new Matrix[levelModel.CollisionModel.model.Bones.Count];
                     levelModel.CollisionModel.model.CopyAbsoluteBoneTransformsTo(transforms);
 
                     foreach (ModelMesh mesh in levelModel.CollisionModel.model.Meshes)
                     {
                         Matrix meshPosition = transforms[mesh.ParentBone.Index];
-                        Matrix meshWorld = meshPosition * modelWorld;
+                        Matrix meshWorld = meshPosition * thisLevelModel.Value.WorldMatrix;
 
                         foreach (Effect effect in mesh.Effects)
                         {

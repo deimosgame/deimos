@@ -21,7 +21,7 @@ namespace Deimos
 
             ModelManager.LoadModel(
                  "ourMap",
-                 "Models/Map/ourMap", // Model
+                 "Models/Map/hl/hl", // Model
                  new Vector3(10, 0, 0), // Location
                  Vector3.Zero
             );
@@ -30,7 +30,7 @@ namespace Deimos
                 "Models/MISC/PP19/PP19Model",
                 Vector3.Zero,
                 new Vector3(0, 1, 0),
-                0.5f,
+                0.1f,
                 LevelModel.CollisionType.None
             );
         }
@@ -49,7 +49,7 @@ namespace Deimos
                new Vector3(10, 10, 10), // Location
                300, // Radius
                2, // Intensity
-               Color.CadetBlue
+               Color.White
             );
         }
         // Update our things at each ticks

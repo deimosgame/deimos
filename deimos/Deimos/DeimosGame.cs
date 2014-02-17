@@ -118,6 +118,8 @@ namespace Deimos
             NoClip
         }
 
+
+
         GameStates currentGameState = GameStates.Playing;
         public GameStates CurrentGameState
         {
@@ -131,6 +133,7 @@ namespace Deimos
             get { return currentPlayingState; }
             private set { currentPlayingState = value; }
         }
+
 
 
         public DeimosGame()
@@ -168,19 +171,18 @@ namespace Deimos
                 Vector3.Zero
             );
 
-            ThisPlayer.MoveTo(new Vector3(0f, 9.5f, 20f), Vector3.Zero);
-
+            ThisPlayer.PlayerSpawn(new Vector3(-45f, 11f, -8f), Vector3.Zero);
 
             IsMouseVisible = false;
 
             // Game settings
-            //Graphics.PreferredBackBufferWidth = 1344;
-            //Graphics.PreferredBackBufferHeight = 840;
-            Graphics.PreferredBackBufferWidth = 1920;
-            Graphics.PreferredBackBufferHeight = 1080;
-            Graphics.IsFullScreen = true;
+            Graphics.PreferredBackBufferWidth = 1344;
+            Graphics.PreferredBackBufferHeight = 840;
+            //Graphics.PreferredBackBufferWidth = 1920;
+            //Graphics.PreferredBackBufferHeight = 1080;
+            //Graphics.IsFullScreen = true;
             //Graphics.PreferMultiSampling = true; // Anti aliasing - Useless as custom effects
-            //Graphics.SynchronizeWithVerticalRetrace = false; // VSync
+            Graphics.SynchronizeWithVerticalRetrace = false; // VSync
             //IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec
             Graphics.ApplyChanges();
 
@@ -191,7 +193,7 @@ namespace Deimos
 
         protected override void LoadContent()
         {
-            SceneManager.SetScene<SceneSkatePark>();
+            SceneManager.SetScene<SceneDeimos>();
 
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 
@@ -224,7 +226,33 @@ namespace Deimos
                 CurrentPlayingState = DeimosGame.PlayingStates.Normal;
             }
 
-            if (currentGameState == GameStates.Playing)
+            // for testing: player death and respawning
+            if (Keyboard.GetState().IsKeyDown(Keys.J))
+            {
+                ThisPlayer.PlayerRespawn(new Vector3(-45f, 11f, -8f), Vector3.Zero);
+                CurrentPlayingState = PlayingStates.Normal;
+            }
+            
+            if (Keyboard.GetState().IsKeyDown(Keys.K))
+            {
+                ThisPlayer.PlayerKill();
+                CurrentPlayingState = PlayingStates.NoClip;
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.L))
+            {
+                ThisPlayer.Health--;
+
+                if (ThisPlayer.Health == 0)
+                {
+                    ThisPlayer.PlayerKill();
+                    CurrentPlayingState = PlayingStates.NoClip;
+                }
+            }
+
+            if (currentGameState == GameStates.Playing &&
+                (ThisPlayer.CurrentLifeState == Player.LifeState.Alive ||
+                CurrentPlayingState == PlayingStates.NoClip))
             {
                 ThisPlayer.HandleInput(gameTime);
 

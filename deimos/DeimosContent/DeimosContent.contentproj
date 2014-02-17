@@ -176,345 +176,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Map\Sponza\background.tga">
-      <Name>background</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\background_ddn.tga">
-      <Name>background_ddn</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\chain_texture.tga">
-      <Name>chain_texture</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\chain_texture_ddn.tga">
-      <Name>chain_texture_ddn</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\chain_texture_diff_mask.tga">
-      <Name>chain_texture_diff_mask</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\chain_texture_mask.tga">
-      <Name>chain_texture_mask</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\lion.tga">
-      <Name>lion</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\lion2_ddn.tga">
-      <Name>lion2_ddn</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\lion_ddn.tga">
-      <Name>lion_ddn</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\spnza_bricks_a_ddn.tga">
-      <Name>spnza_bricks_a_ddn</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\spnza_bricks_a_diff.tga">
-      <Name>spnza_bricks_a_diff</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\spnza_bricks_a_spec.tga">
-      <Name>spnza_bricks_a_spec</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza.fbx">
-      <Name>sponza</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>CollidableModelProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_arch_ddn.tga">
-      <Name>sponza_arch_ddn</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_arch_diff.tga">
-      <Name>sponza_arch_diff</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_arch_spec.tga">
-      <Name>sponza_arch_spec</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_ceiling_a_diff.tga">
-      <Name>sponza_ceiling_a_diff</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_ceiling_a_spec.tga">
-      <Name>sponza_ceiling_a_spec</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_column_a_ddn.tga">
-      <Name>sponza_column_a_ddn</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_column_a_diff.tga">
-      <Name>sponza_column_a_diff</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_column_a_spec.tga">
-      <Name>sponza_column_a_spec</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_column_b_ddn.tga">
-      <Name>sponza_column_b_ddn</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_column_b_diff.tga">
-      <Name>sponza_column_b_diff</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_column_b_spec.tga">
-      <Name>sponza_column_b_spec</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_column_c_ddn.tga">
-      <Name>sponza_column_c_ddn</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_column_c_diff.tga">
-      <Name>sponza_column_c_diff</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_column_c_spec.tga">
-      <Name>sponza_column_c_spec</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_curtain_blue_diff.tga">
-      <Name>sponza_curtain_blue_diff</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_curtain_diff.tga">
-      <Name>sponza_curtain_diff</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_curtain_green_diff.tga">
-      <Name>sponza_curtain_green_diff</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_details_diff.tga">
-      <Name>sponza_details_diff</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_details_spec.tga">
-      <Name>sponza_details_spec</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_fabric_blue_diff.tga">
-      <Name>sponza_fabric_blue_diff</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_fabric_diff.tga">
-      <Name>sponza_fabric_diff</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_fabric_green_diff.tga">
-      <Name>sponza_fabric_green_diff</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_fabric_spec.tga">
-      <Name>sponza_fabric_spec</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_flagpole_diff.tga">
-      <Name>sponza_flagpole_diff</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_flagpole_spec.tga">
-      <Name>sponza_flagpole_spec</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_floor_a_diff.tga">
-      <Name>sponza_floor_a_diff</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_floor_a_spec.tga">
-      <Name>sponza_floor_a_spec</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_roof_diff.tga">
-      <Name>sponza_roof_diff</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_thorn_ddn.tga">
-      <Name>sponza_thorn_ddn</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_thorn_diff.tga">
-      <Name>sponza_thorn_diff</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_thorn_diff_mask.tga">
-      <Name>sponza_thorn_diff_mask</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_thorn_mask.tga">
-      <Name>sponza_thorn_mask</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\sponza_thorn_spec.tga">
-      <Name>sponza_thorn_spec</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\vase_ddn.tga">
-      <Name>vase_ddn</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\vase_dif.tga">
-      <Name>vase_dif</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\vase_hanging.tga">
-      <Name>vase_hanging</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\vase_plant.tga">
-      <Name>vase_plant</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\vase_plant_diff_mask.tga">
-      <Name>vase_plant_diff_mask</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\vase_plant_mask.tga">
-      <Name>vase_plant_mask</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\vase_plant_spec.tga">
-      <Name>vase_plant_spec</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\vase_round.tga">
-      <Name>vase_round</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\vase_round_ddn.tga">
-      <Name>vase_round_ddn</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Models\Map\Sponza\vase_round_spec.tga">
-      <Name>vase_round_spec</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Models\DeferredRendering\cone.fbx">
       <Name>cone</Name>
       <Importer>FbxImporter</Importer>
@@ -540,7 +201,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\Map\Cyril\" />
     <Folder Include="References\" />
   </ItemGroup>
   <ItemGroup>
@@ -727,18 +387,552 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Models\Map\ourMap4.fbx">
-      <Name>ourMap</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>CollidableModelProcessor</Processor>
-      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Shaders\SSAO\Simple.fx">
       <Name>Simple</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Map\hl\hl.fbx">
+      <Name>hl</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CollidableModelProcessor</Processor>
+      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Map\hl\hl_material_0.tga">
+      <Name>hl_material_0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_1.tga">
+      <Name>hl_material_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_10.tga">
+      <Name>hl_material_10</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_100.tga">
+      <Name>hl_material_100</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_101.tga">
+      <Name>hl_material_101</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_102.tga">
+      <Name>hl_material_102</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_103.tga">
+      <Name>hl_material_103</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_104.tga">
+      <Name>hl_material_104</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_11.tga">
+      <Name>hl_material_11</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_12.tga">
+      <Name>hl_material_12</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_13.tga">
+      <Name>hl_material_13</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_14.tga">
+      <Name>hl_material_14</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_15.tga">
+      <Name>hl_material_15</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_16.tga">
+      <Name>hl_material_16</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_17.tga">
+      <Name>hl_material_17</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_18.tga">
+      <Name>hl_material_18</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_19.tga">
+      <Name>hl_material_19</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_2.tga">
+      <Name>hl_material_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_20.tga">
+      <Name>hl_material_20</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_21.tga">
+      <Name>hl_material_21</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_22.tga">
+      <Name>hl_material_22</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_23.tga">
+      <Name>hl_material_23</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_24.tga">
+      <Name>hl_material_24</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_25.tga">
+      <Name>hl_material_25</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_26.tga">
+      <Name>hl_material_26</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_27.tga">
+      <Name>hl_material_27</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_28.tga">
+      <Name>hl_material_28</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_29.tga">
+      <Name>hl_material_29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_3.tga">
+      <Name>hl_material_3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_30.tga">
+      <Name>hl_material_30</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_31.tga">
+      <Name>hl_material_31</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_32.tga">
+      <Name>hl_material_32</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_33.tga">
+      <Name>hl_material_33</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_34.tga">
+      <Name>hl_material_34</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_35.tga">
+      <Name>hl_material_35</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_36.tga">
+      <Name>hl_material_36</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_37.tga">
+      <Name>hl_material_37</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_38.tga">
+      <Name>hl_material_38</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_39.tga">
+      <Name>hl_material_39</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_4.tga">
+      <Name>hl_material_4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_40.tga">
+      <Name>hl_material_40</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_41.tga">
+      <Name>hl_material_41</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_42.tga">
+      <Name>hl_material_42</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_43.tga">
+      <Name>hl_material_43</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_44.tga">
+      <Name>hl_material_44</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_45.tga">
+      <Name>hl_material_45</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_46.tga">
+      <Name>hl_material_46</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_47.tga">
+      <Name>hl_material_47</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_48.tga">
+      <Name>hl_material_48</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_49.tga">
+      <Name>hl_material_49</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_5.tga">
+      <Name>hl_material_5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_50.tga">
+      <Name>hl_material_50</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_51.tga">
+      <Name>hl_material_51</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_52.tga">
+      <Name>hl_material_52</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_53.tga">
+      <Name>hl_material_53</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_54.tga">
+      <Name>hl_material_54</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_55.tga">
+      <Name>hl_material_55</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_56.tga">
+      <Name>hl_material_56</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_57.tga">
+      <Name>hl_material_57</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_58.tga">
+      <Name>hl_material_58</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_59.tga">
+      <Name>hl_material_59</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_6.tga">
+      <Name>hl_material_6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_60.tga">
+      <Name>hl_material_60</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_61.tga">
+      <Name>hl_material_61</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_62.tga">
+      <Name>hl_material_62</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_63.tga">
+      <Name>hl_material_63</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_64.tga">
+      <Name>hl_material_64</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_65.tga">
+      <Name>hl_material_65</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_66.tga">
+      <Name>hl_material_66</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_67.tga">
+      <Name>hl_material_67</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_68.tga">
+      <Name>hl_material_68</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_69.tga">
+      <Name>hl_material_69</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_7.tga">
+      <Name>hl_material_7</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_70.tga">
+      <Name>hl_material_70</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_71.tga">
+      <Name>hl_material_71</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_72.tga">
+      <Name>hl_material_72</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_73.tga">
+      <Name>hl_material_73</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_74.tga">
+      <Name>hl_material_74</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_75.tga">
+      <Name>hl_material_75</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_76.tga">
+      <Name>hl_material_76</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_77.tga">
+      <Name>hl_material_77</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_78.tga">
+      <Name>hl_material_78</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_79.tga">
+      <Name>hl_material_79</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_8.tga">
+      <Name>hl_material_8</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_80.tga">
+      <Name>hl_material_80</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_81.tga">
+      <Name>hl_material_81</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_82.tga">
+      <Name>hl_material_82</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_83.tga">
+      <Name>hl_material_83</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_84.tga">
+      <Name>hl_material_84</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_85.tga">
+      <Name>hl_material_85</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_86.tga">
+      <Name>hl_material_86</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_87.tga">
+      <Name>hl_material_87</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_88.tga">
+      <Name>hl_material_88</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_89.tga">
+      <Name>hl_material_89</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_9.tga">
+      <Name>hl_material_9</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_90.tga">
+      <Name>hl_material_90</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_91.tga">
+      <Name>hl_material_91</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_92.tga">
+      <Name>hl_material_92</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_93.tga">
+      <Name>hl_material_93</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_94.tga">
+      <Name>hl_material_94</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_95.tga">
+      <Name>hl_material_95</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_96.tga">
+      <Name>hl_material_96</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_97.tga">
+      <Name>hl_material_97</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_98.tga">
+      <Name>hl_material_98</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\hl\hl_material_99.tga">
+      <Name>hl_material_99</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Map\hl\Wish You Were Here.jpg">
+      <Name>Wish You Were Here</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

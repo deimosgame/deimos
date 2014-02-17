@@ -45,9 +45,6 @@ namespace Deimos
         {
             Game = game;
             Content = content;
-            ModelManager = new ModelManager(Content, game);
-            LightManager = new LightManager();
-            Collision    = new LocalPlayerCollision(33f, 1f, 1f, game);
         }
 
 

@@ -157,7 +157,6 @@
     <Compile Include="Gameplay\LocalPlayer\LocalPlayerPhysics.cs" />
     <Compile Include="Gameplay\Scenes\SceneDeimos.cs" />
     <Compile Include="Gameplay\Scenes\SceneSkatePark.cs" />
-    <Compile Include="Gameplay\Scenes\SceneSponza.cs" />
     <Compile Include="Gameplay\Scenes\Template\SceneTemplate.cs" />
     <Compile Include="Gameplay\Weapon.cs" />
     <Compile Include="Tools\DebugScreen.cs" />

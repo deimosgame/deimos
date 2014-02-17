@@ -59,13 +59,6 @@ namespace Deimos
                2, // Intensity
                Color.CadetBlue
             );
-            LightManager.AddSpotLight(
-                "test",
-                new Vector3(0, 20, 0),
-                new Vector3(0, -1, 0),
-                Color.White,
-                20
-            );
         }
 
         public float x = -1f;

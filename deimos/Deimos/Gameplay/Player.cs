@@ -9,13 +9,11 @@ namespace Deimos
     public class Player
     {
         public Vector3 Position;
-        
 
         public Vector3 Rotation;
-        
 
         public Vector3 LookAt;
-        
+
 
         public enum Teams
         {
@@ -37,36 +35,116 @@ namespace Deimos
             Sprinting
         }
 
-        public Teams Team;
 
-        public LifeState CurrentLifeState;
+        public Teams Team = Teams.Humans;
+
+        public LifeState CurrentLifeState = LifeState.Dead;
 
         public SpeedState CurrentSpeedState = SpeedState.Walking;
 
         public Weapon CurrentWeapon;
         public Weapon PreviousWeapon; // for quick-switch purposes
 
-        private uint health;
-        public uint Health
+        private int health;
+        public int Health
         {
             get { return health; }
-            set { health = value; }
+            set
+            {
+                if (value > 100)
+                { health = 100; return; }
+                if (value < 0)
+                { health = 0; return; }
+                health = value;
+            }
         }
 
         public float MaxSprintTime = 5f;
-        public float SprintTimer = 0f;
+        private float sprintTimer = 0f;
+        public float SprintTimer
+        {
+            get { return sprintTimer; }
+            set
+            {
+                if (value > MaxSprintTime)
+                { sprintTimer = MaxSprintTime; return; }
+                if (value < 0)
+                { sprintTimer = 0; return; }
+                sprintTimer = value;
+            }
+        }
 
-        public float SprintCooldown = 5f;
-        public float CooldownTimer = 5f;
+        public float SprintCooldown = 3.5f;
+        private float cooldownTimer = 5f;
+        public float CooldownTimer
+        {
+            get { return cooldownTimer; }
+            set
+            {
+                if (value > SprintCooldown)
+                { cooldownTimer = SprintCooldown; return; }
+                if (value < 0)
+                { cooldownTimer = 0; return; }
+                cooldownTimer = value;
+            }
+        }
 
-        public float WalkSpeed = 20f;
-        public float RunSpeed = 50f;
-        public float SprintSpeed = 90f;
+        public float WalkSpeed = 10f;
+        public float RunSpeed = 30f;
+        public float SprintSpeed = 60f;
 
         public float Speed;
 
         public int Score = 0;
 
         public uint ammoPickup = 0; // amount of ammo that is potentially picked up
+
+        public void PlayerSpawn(Vector3 spawnpoint, Vector3 angle)
+        {
+            CurrentLifeState = LifeState.Alive;
+
+            Position = spawnpoint;
+            Rotation = angle;
+
+            Health = 100;
+        }
+
+        public void PlayerRespawn(Vector3 respawnlocation, Vector3 angle)
+        {
+            if (CurrentLifeState == LifeState.Dead)
+            {
+                CurrentLifeState = LifeState.Alive;
+
+                Position = respawnlocation;
+                Rotation = angle;
+
+                Health = 100;
+            }
+        }
+
+        public void PlayerKill()
+        {
+            if (CurrentLifeState == LifeState.Alive)
+            {
+                Health = 0;
+                CurrentLifeState = LifeState.Dead;
+
+                Score--;
+            }
+        }
+
+        public bool IsAlive()
+        {
+            if (Health > 0)
+            {
+                CurrentLifeState = LifeState.Alive;
+                return true;
+            }
+            else
+            {
+                CurrentLifeState = LifeState.Dead;
+                return false;
+            }
+        }
     }
 }

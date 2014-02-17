@@ -149,6 +149,7 @@ Content\Models\Textures\arena_textures\metal_ground_0.xnb
 Content\Models\Textures\arena_textures\basefloor_0.xnb
 Content\Tex_0008_1_0.xnb
 Content\Tex_0009_1_0.xnb
+Content\Shaders\SSAO\Simple.xnb
 Content\Fonts\debug.spritefont
 Content\Fonts\menuTitle.spritefont
 Content\Fonts\menuElement.spritefont

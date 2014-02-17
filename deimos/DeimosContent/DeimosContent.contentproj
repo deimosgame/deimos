@@ -542,7 +542,6 @@
   <ItemGroup>
     <Folder Include="Models\Map\Cyril\" />
     <Folder Include="References\" />
-    <Folder Include="Shaders\SSAO\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\DeferredPipeline\DeferredPipeline.csproj">
@@ -734,6 +733,13 @@
       <Processor>CollidableModelProcessor</Processor>
       <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Shaders\SSAO\Simple.fx">
+      <Name>Simple</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 

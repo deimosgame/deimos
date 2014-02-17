@@ -160,9 +160,6 @@
     <Compile Include="Gameplay\Scenes\SceneSponza.cs" />
     <Compile Include="Gameplay\Scenes\Template\SceneTemplate.cs" />
     <Compile Include="Gameplay\Weapon.cs" />
-    <Compile Include="Sound\Music.cs" />
-    <Compile Include="Sound\SoundEffectObject.cs" />
-    <Compile Include="Sound\SoundManager.cs" />
     <Compile Include="Tools\DebugScreen.cs" />
     <Compile Include="MISC\Floor.cs" />
     <Compile Include="Display\Managers\SubManagers\ModelManager.cs" />

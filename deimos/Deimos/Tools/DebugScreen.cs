@@ -48,6 +48,14 @@ namespace Deimos
                 0,
                 (Texture2D)Game.Renderer.LightRT
             );
+            Game.ScreenElementManager.AddImage(
+                "SSAOMap",
+                (int)MapWidth * 3,
+                0,
+                coeff,
+                0,
+                (Texture2D)Game.Renderer.SSAORT
+            );
 
             Game.ScreenElementManager.AddText(
                 "Location",

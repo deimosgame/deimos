@@ -118,7 +118,7 @@ namespace Deimos
             NoClip
         }
 
-        GameStates currentGameState = GameStates.Pause;
+        GameStates currentGameState = GameStates.Playing;
         public GameStates CurrentGameState
         {
             get { return currentGameState; }
@@ -174,13 +174,13 @@ namespace Deimos
             IsMouseVisible = false;
 
             // Game settings
-            Graphics.PreferredBackBufferWidth = 1344;
-            Graphics.PreferredBackBufferHeight = 840;
-            //Graphics.PreferredBackBufferWidth = 1920;
-            //Graphics.PreferredBackBufferHeight = 1080;
-            //Graphics.IsFullScreen = true;
+            //Graphics.PreferredBackBufferWidth = 1344;
+            //Graphics.PreferredBackBufferHeight = 840;
+            Graphics.PreferredBackBufferWidth = 1920;
+            Graphics.PreferredBackBufferHeight = 1080;
+            Graphics.IsFullScreen = true;
             //Graphics.PreferMultiSampling = true; // Anti aliasing - Useless as custom effects
-            Graphics.SynchronizeWithVerticalRetrace = false; // VSync
+            //Graphics.SynchronizeWithVerticalRetrace = false; // VSync
             //IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec
             Graphics.ApplyChanges();
 

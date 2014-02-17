@@ -25,11 +25,13 @@ namespace Deimos
         public RenderTarget2D NormalRT; //normals + specular power
         public RenderTarget2D DepthRT; //depth
         public RenderTarget2D LightRT; //lighting
+        public RenderTarget2D SSAORT; //lighting
 
         private Effect ClearBufferEffect;
         private Effect DirectionalLightEffect;
         private Effect PointLightEffect;
         private Effect SpotLightEffect;
+        private Effect SSAOEffect;
         private Effect FinalCombineEffect;
 
         private Model SphereModel; //point ligt volume
@@ -102,6 +104,14 @@ namespace Deimos
                 SurfaceFormat.Color,
                 DepthFormat.None
             );
+            SSAORT = new RenderTarget2D(
+                GraphicsDevice,
+                backbufferWidth,
+                backbufferHeight,
+                false,
+                SurfaceFormat.Color,
+                DepthFormat.None
+            );
 
 
             ClearBufferEffect = Game.Content.Load<Effect>(
@@ -118,6 +128,9 @@ namespace Deimos
             );
             SpotLightEffect = Game.Content.Load<Effect>(
                 @"Shaders\Lights\SpotLight"
+            );
+            SSAOEffect = Game.Content.Load<Effect>(
+                @"Shaders\SSAO\Simple"
             );
             SphereModel = Game.Content.Load<Model>(
                 @"Models\DeferredRendering\sphere"
@@ -328,12 +341,25 @@ namespace Deimos
             GraphicsDevice.DepthStencilState = DepthStencilState.Default;
         }
 
+        private void DrawSSAO()
+        {
+            SSAOEffect.Parameters["Projection"].SetValue(MainGame.Camera.Projection);
+            SSAOEffect.Parameters["cornerFustrum"].SetValue(MainGame.Camera.Frustum.Far.Normal);
+            SSAOEffect.Parameters["sampleRadius"].SetValue(0);
+            SSAOEffect.Parameters["distanceScale"].SetValue(0);
+            SSAOEffect.Parameters["GBufferTextureSize"].SetValue(new Vector2(SSAORT.Width, SSAORT.Height));
+            SSAOEffect.CurrentTechnique.Passes[0].Apply();
+
+
+        }
+
         public override void Draw(GameTime gameTime)
         {
             SetGBuffer();
             ClearGBuffer();
             MainGame.SceneManager.ModelManager.DrawModels(Game, MainGame.Camera);
             ResolveGBuffer();
+            DrawSSAO();
             DrawLights(gameTime);
 
             Texture2D dummyTexture = new Texture2D(GraphicsDevice, 1, 1);

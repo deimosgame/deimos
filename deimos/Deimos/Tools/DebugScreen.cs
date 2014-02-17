@@ -167,13 +167,41 @@ namespace Deimos
             );
             Game.ScreenElementManager.AddText(
                 "DebugConsole",
-                0,
-                (int)MapHeight + 250,
+                (int)(MapWidth/coeff)-400,
+                10,
                 0,
                 Font,
                 "Console",
                 Color.LightSalmon
             );
+            Game.ScreenElementManager.AddText(
+                "PlayingState",
+                0,
+                (int)MapHeight + 250,
+                0,
+                Font,
+                "Playing State:",
+                Color.DeepPink
+            );
+            Game.ScreenElementManager.AddText(
+                "LifeState",
+                0,
+                (int)MapHeight + 270,
+                0,
+                Font,
+                "Life State:",
+                Color.DeepPink
+            );
+            Game.ScreenElementManager.AddText(
+                "Health",
+                0,
+                (int)MapHeight + 290,
+                0,
+                Font,
+                "Health:",
+                Color.DeepPink
+            );
+
         }
 
         private void Show()
@@ -193,6 +221,9 @@ namespace Deimos
             Game.ScreenElementManager.GetText("SpeedState").Show = true;
             Game.ScreenElementManager.GetText("SprintTimer").Show = true;
             Game.ScreenElementManager.GetText("CooldownTimer").Show = true;
+            Game.ScreenElementManager.GetText("PlayingState").Show = true;
+            Game.ScreenElementManager.GetText("LifeState").Show = true;
+            Game.ScreenElementManager.GetText("Health").Show = true;
         }
         private void Hide()
         {
@@ -211,6 +242,9 @@ namespace Deimos
             Game.ScreenElementManager.GetText("SpeedState").Show = false;
             Game.ScreenElementManager.GetText("SprintTimer").Show = false;
             Game.ScreenElementManager.GetText("CooldownTimer").Show = false;
+            Game.ScreenElementManager.GetText("PlayingState").Show = false;
+            Game.ScreenElementManager.GetText("LifeState").Show = false;
+            Game.ScreenElementManager.GetText("Health").Show = false;
         }
 
         public void Debug(string text)
@@ -294,6 +328,18 @@ namespace Deimos
             Game.ScreenElementManager.GetText("CooldownTimer").Text = String.Format(
                 "CooldownTimer: {0}",
                 Game.ThisPlayer.CooldownTimer
+            );
+            Game.ScreenElementManager.GetText("PlayingState").Text = String.Format(
+                "Playing State: {0}",
+                Game.CurrentPlayingState
+            );
+            Game.ScreenElementManager.GetText("LifeState").Text = String.Format(
+                "Life State: {0}",
+                Game.ThisPlayer.CurrentLifeState
+            );
+            Game.ScreenElementManager.GetText("Health").Text = String.Format(
+                "Health: {0}",
+                Game.ThisPlayer.Health
             );
 
             string finalDebug = "";

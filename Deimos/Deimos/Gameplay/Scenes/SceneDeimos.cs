@@ -15,7 +15,7 @@ namespace Deimos
         // Constructor
         public SceneDeimos(SceneManager sceneManager)
         {
-            PlayerSize = new Vector3(33f, 1f, 1f);
+            PlayerSize = new Vector3(15f, 1f, 1f);
             SceneManager = sceneManager;
             ModelManager = SceneManager.ModelManager;
             LightManager = SceneManager.LightManager;
@@ -60,7 +60,7 @@ namespace Deimos
         // Update our things at each ticks
         public override void Update()
         {
-            
+            SceneManager.Game.DebugScreen.Debug("debugconsole");
         }
     }
 }

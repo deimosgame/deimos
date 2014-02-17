@@ -88,7 +88,7 @@ namespace Deimos
             // Let's increment the sprint timer if sprinting,
             // and if not, let's cool stuff down
             if (Game.ThisPlayer.CurrentSpeedState ==
-                SpeedState.Sprinting)
+                SpeedState.Sprinting && ks.IsKeyDown(Game.Config.Forward))
             {
                 Game.ThisPlayer.SprintTimer += dt;
             }
@@ -134,16 +134,24 @@ namespace Deimos
                         break;
 
                     case SpeedState.Sprinting:
-                        if (Game.ThisPlayer.SprintTimer < Game.ThisPlayer.MaxSprintTime)
+                        if (ks.IsKeyDown(Game.Config.Forward))
                         {
-                            Game.ThisPlayer.Speed = SprintSpeed;
+                            if (Game.ThisPlayer.SprintTimer < Game.ThisPlayer.MaxSprintTime)
+                            {
+                                Game.ThisPlayer.Speed = SprintSpeed;
+                            }
+                            else
+                            {
+                                Game.ThisPlayer.CurrentSpeedState = SpeedState.Running;
+                                Game.ThisPlayer.Speed = RunSpeed;
+                                Game.ThisPlayer.SprintTimer = 0f;
+                                Game.ThisPlayer.CooldownTimer = 0f;
+                            }
                         }
                         else
                         {
                             Game.ThisPlayer.CurrentSpeedState = SpeedState.Running;
                             Game.ThisPlayer.Speed = RunSpeed;
-                            Game.ThisPlayer.SprintTimer = 0f;
-                            Game.ThisPlayer.CooldownTimer = 0f;
                         }
                         break;
 
@@ -213,7 +221,8 @@ namespace Deimos
                 if (ks.IsKeyDown(Game.Config.Sprint) &&
                     Game.ThisPlayerPhysics.State ==
                     LocalPlayerPhysics.PhysicalState.Walking &&
-                    Game.ThisPlayer.CooldownTimer >= Game.ThisPlayer.SprintCooldown)
+                    Game.ThisPlayer.CooldownTimer >= Game.ThisPlayer.SprintCooldown &&
+                    ks.IsKeyDown(Game.Config.Forward))
                 {
                     Game.ThisPlayer.CurrentSpeedState = SpeedState.Sprinting;
                 }

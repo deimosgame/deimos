@@ -61,12 +61,20 @@ namespace Deimos
            
             ModelManager = new ModelManager(Content, Game);
             LightManager = new LightManager();
-            Collision    = new LocalPlayerCollision(33f, 1f, 1f, Game);
 
             CurrentScene = (SceneTemplate)Activator.CreateInstance(typeof(T), new object[] { this });
 
-            // Constructor is automatically called (of the Scene), which is 
-            // supposed to load models and so on.
+            Collision = new LocalPlayerCollision(
+                CurrentScene.PlayerSize.X,
+                CurrentScene.PlayerSize.Y,
+                CurrentScene.PlayerSize.Z, 
+                Game
+            );
+
+            // Constructor is automatically called (of the Scene)
+
+            // We need to call the load method to load our models
+            CurrentScene.Load();
 
             // Let's init the scene (useful for our lights for example)
             CurrentScene.Initialize();

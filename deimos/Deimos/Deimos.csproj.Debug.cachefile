@@ -51,7 +51,6 @@ Content\Shaders\Lights\DirectionalLight.xnb
 Content\Shaders\Lights\PointLight.xnb
 Content\Shaders\DeferredRendering\RenderGBuffer.xnb
 Content\Shaders\Lights\SpotLight.xnb
-Content\Shaders\SSAO\Simple.xnb
 Content\Models\DeferredRendering\sphere.xnb
 Content\Textures\DeferredRendering\null_normal_0.xnb
 Content\Textures\DeferredRendering\null_specular_0.xnb
@@ -70,6 +69,7 @@ Content\Models\Textures\arena_textures\metal_ground_0.xnb
 Content\Models\Textures\arena_textures\basefloor_0.xnb
 Content\Tex_0008_1_0.xnb
 Content\Tex_0009_1_0.xnb
+Content\Shaders\SSAO\Simple.xnb
 Content\Models\Map\hl\hl_material_0.xnb
 Content\Models\Map\hl\hl_material_1.xnb
 Content\Models\Map\hl\hl_material_10.xnb

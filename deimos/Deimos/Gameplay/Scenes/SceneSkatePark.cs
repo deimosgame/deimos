@@ -15,10 +15,22 @@ namespace Deimos
         // Constructor
         public SceneSkatePark(SceneManager sceneManager)
         {
+            PlayerSize = new Vector3(33f, 1f, 1f);
+
             SceneManager = sceneManager;
             ModelManager = SceneManager.ModelManager;
             LightManager = SceneManager.LightManager;
+        }
 
+        // Destructor
+        ~SceneSkatePark()
+        {
+            ModelManager.UnloadModels();
+        }
+
+        // Load our models and such
+        public override void Load()
+        {
             ModelManager.LoadModel(
                  "skatepark",
                  "Models/Map/arena", // Model
@@ -41,12 +53,6 @@ namespace Deimos
                     game.ThisPlayer.Position = new Vector3(0, 80, 20);
                 }
             );
-        }
-
-        // Destructor
-        ~SceneSkatePark()
-        {
-            ModelManager.UnloadModels();
         }
 
         // Initialize our lights and such

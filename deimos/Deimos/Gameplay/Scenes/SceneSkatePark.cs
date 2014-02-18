@@ -25,7 +25,7 @@ namespace Deimos
         // Destructor
         ~SceneSkatePark()
         {
-            ModelManager.UnloadModels();
+            //
         }
 
         // Load our models and such

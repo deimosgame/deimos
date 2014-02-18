@@ -17,15 +17,6 @@ namespace Deimos
         public string Path;
         public float W_Direct;
 
-        public enum WeaponState
-        {
-            AtEase,
-            Firing,
-            Reloading,
-            Switching,
-            Aiming
-        }
-
         private WeaponState state = WeaponState.AtEase;
         public WeaponState State
         {
@@ -163,6 +154,11 @@ namespace Deimos
             {
                 State = WeaponState.Reloading;
             }
+        }
+
+        public bool IsFirable()
+        {
+            return c_chamberAmmo > 0;
         }
 
         public bool IsReloadable()

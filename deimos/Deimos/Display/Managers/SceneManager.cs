@@ -12,6 +12,12 @@ namespace Deimos
     class SceneManager
     {
         // Attributes
+        internal ResourceManager ResourceManager
+        {
+            get;
+            private set;
+        }
+
         internal ModelManager ModelManager
         {
             get;
@@ -55,11 +61,13 @@ namespace Deimos
             // of the Scene
             CurrentScene = null;
 
+            ResourceManager = null;
             ModelManager = null;
             LightManager = null;
             Collision    = null;
-           
-            ModelManager = new ModelManager(Content, Game);
+
+            ResourceManager = new ResourceManager(Content);
+            ModelManager = new ModelManager(Game);
             LightManager = new LightManager();
 
             CurrentScene = (SceneTemplate)Activator.CreateInstance(typeof(T), new object[] { this });

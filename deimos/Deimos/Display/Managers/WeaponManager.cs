@@ -6,6 +6,15 @@ using Microsoft.Xna.Framework;
 
 namespace Deimos
 {
+    public enum WeaponState
+    {
+        AtEase,
+        Firing,
+        Reloading,
+        Switching,
+        Aiming
+    }
+
     public class WeaponManager
     {
         DeimosGame Game;
@@ -49,10 +58,10 @@ namespace Deimos
 
         public void SetCurrentWeapon(string name)
         {
-                if (PlayerInventory.ContainsKey(name))
-                {
-                    Game.ThisPlayer.CurrentWeapon = PlayerInventory[name];
-                }
+            if (PlayerInventory.ContainsKey(name))
+            {
+                Game.ThisPlayer.CurrentWeapon = PlayerInventory[name];
+            }
         }
 
         public void SetPreviousWeapon(string name)
@@ -84,7 +93,7 @@ namespace Deimos
                 SetPreviousWeapon(secondWeapon.Name);
             }
 
-            Game.ThisPlayer.CurrentWeapon.State = Weapon.WeaponState.AtEase;
+            Game.ThisPlayer.CurrentWeapon.State = WeaponState.AtEase;
 
             // Destroy temp maybe? or does visual studio do it by itself?
         }
@@ -106,22 +115,38 @@ namespace Deimos
             }
         }
 
+        public void Fire()
+        {
+            Weapon currentWeapon = Game.ThisPlayer.CurrentWeapon;
+            if (!currentWeapon.IsFirable())
+            {
+                return;
+            }
+            currentWeapon.State = WeaponState.Firing;
+            // Putting projectile in action through Bullet Manager
+            // These methods are not final at all, they WILL be changed.
+            Game.BulletManager.SpawnBullet();
+            currentWeapon.c_chamberAmmo--;
+            currentWeapon.FireTimer = 0; // reset the fire timer
+            currentWeapon.State = WeaponState.AtEase;
+        }
+
         public void Reload()
         {
-                    uint t = Game.ThisPlayer.CurrentWeapon.m_chamberAmmo -
-                        Game.ThisPlayer.CurrentWeapon.c_chamberAmmo;
+            uint t = Game.ThisPlayer.CurrentWeapon.m_chamberAmmo -
+                Game.ThisPlayer.CurrentWeapon.c_chamberAmmo;
 
-                    if (t > Game.ThisPlayer.CurrentWeapon.c_reservoirAmmo)
-                    {
-                        t = Game.ThisPlayer.CurrentWeapon.c_reservoirAmmo;
-                    }
+            if (t > Game.ThisPlayer.CurrentWeapon.c_reservoirAmmo)
+            {
+                t = Game.ThisPlayer.CurrentWeapon.c_reservoirAmmo;
+            }
 
-                    Game.ThisPlayer.CurrentWeapon.c_chamberAmmo += t;
-                    Game.ThisPlayer.CurrentWeapon.c_reservoirAmmo -= t;
+            Game.ThisPlayer.CurrentWeapon.c_chamberAmmo += t;
+            Game.ThisPlayer.CurrentWeapon.c_reservoirAmmo -= t;
                 
 
             Game.ThisPlayer.CurrentWeapon.ReloadTimer = 0;
-            Game.ThisPlayer.CurrentWeapon.State = Weapon.WeaponState.AtEase;
+            Game.ThisPlayer.CurrentWeapon.State = WeaponState.AtEase;
         }
 
         // this method reloads the weapon automatically if the current chamber 
@@ -132,7 +157,7 @@ namespace Deimos
                             Game.ThisPlayer.CurrentWeapon.IsReloadable())
             {
                 Game.ThisPlayer.CurrentWeapon.State =
-                    Weapon.WeaponState.Reloading;
+                    WeaponState.Reloading;
             }
         }
 

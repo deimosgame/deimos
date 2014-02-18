@@ -24,7 +24,7 @@ namespace Deimos
         // Destructor
         ~SceneDeimos()
         {
-            ModelManager.UnloadModels();
+            //
         }
 
         // Load our models and such

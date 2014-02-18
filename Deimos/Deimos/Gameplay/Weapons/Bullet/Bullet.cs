@@ -24,7 +24,7 @@ namespace Deimos
         public float range;
         public float minimumDmg;
         public float maximumDmg;
-        public uint lifeSpan = 30;
+        public float lifeSpan = 30;
 
         // Constructor
         public Bullet(DeimosGame game)

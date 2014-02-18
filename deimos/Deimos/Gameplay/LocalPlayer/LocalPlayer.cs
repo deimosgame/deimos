@@ -106,7 +106,7 @@ namespace Deimos
             PlayerActions.HandleActions(dt);
             PlayerCombat.HandleCombat(dt);
             Stuff(dt);
-            Game.ThisPlayerDisplay.DisplayCurrentWeapon(Weapon.WeaponState.AtEase);
+            Game.ThisPlayerDisplay.DisplayCurrentWeapon(WeaponState.AtEase);
        }
    }
 }

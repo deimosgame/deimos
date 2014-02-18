@@ -43,8 +43,19 @@ namespace Deimos
             foreach (Bullet bullet in BulletTab)
             {
                 bullet.Position = bullet.Position * bullet.Direction * bullet.speed * dt;
-                // Collision or Hit check
             }  
+        }
+
+        public void Age(float dt)
+        {
+            foreach (var bullet in BulletTab)
+            {
+                bullet.lifeSpan -= dt;
+                if (bullet.lifeSpan <= 0)
+                {
+                    BulletTab.Remove(bullet);
+                }
+            }
         }
 
         public void Update(Bullet bulletToFire, GameTime gameTime)

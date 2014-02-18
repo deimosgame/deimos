@@ -28,7 +28,7 @@ namespace Deimos
 
             // let's increment the reloading timer if reloading
             if (Game.ThisPlayer.CurrentWeapon.State ==
-                Weapon.WeaponState.Reloading)
+                WeaponState.Reloading)
             {
                 if (Game.ThisPlayer.CurrentWeapon.ReloadTimer <
                     Game.ThisPlayer.CurrentWeapon.TimeToReload)
@@ -43,7 +43,7 @@ namespace Deimos
 
               // let's increase weapon switch timer if switching
             if (Game.ThisPlayer.CurrentWeapon.State == 
-                Weapon.WeaponState.Switching)
+                WeaponState.Switching)
             {
                 if (w_switch_timer < Game.ThisPlayer.Inventory.GetSwitchTime(Game.ThisPlayer.PreviousWeapon))
                 {
@@ -78,21 +78,21 @@ namespace Deimos
                 CanReload())
             {
                 Game.ThisPlayer.CurrentWeapon.State =
-                    Weapon.WeaponState.Reloading;
+                    WeaponState.Reloading;
             }
 
             if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.QuickSwitch) &&
                 CanQuickSwitch())
             {
                 Game.ThisPlayer.CurrentWeapon.State =
-                    Weapon.WeaponState.Switching;
+                    WeaponState.Switching;
             }
         }
 
         private bool CanFire()
         {
             return ((Game.ThisPlayer.CurrentWeapon.State ==
-                Weapon.WeaponState.AtEase) &&
+                WeaponState.AtEase) &&
 
                 (Game.ThisPlayer.CurrentSpeedState !=
                 LocalPlayer.SpeedState.Sprinting) &&
@@ -106,7 +106,7 @@ namespace Deimos
             return (Game.ThisPlayer.CurrentWeapon.IsReloadable() &&
 
                 (Game.ThisPlayer.CurrentWeapon.State ==
-                Weapon.WeaponState.AtEase) &&
+                WeaponState.AtEase) &&
 
                 (Game.ThisPlayer.CurrentSpeedState !=
                 LocalPlayer.SpeedState.Sprinting));
@@ -119,7 +119,7 @@ namespace Deimos
                 Game.ThisPlayer.PreviousWeapon != null &&
 
                 (Game.ThisPlayer.CurrentWeapon.State ==
-                Weapon.WeaponState.AtEase) &&
+                WeaponState.AtEase) &&
 
                 (Game.ThisPlayer.CurrentSpeedState !=
                 LocalPlayer.SpeedState.Sprinting));

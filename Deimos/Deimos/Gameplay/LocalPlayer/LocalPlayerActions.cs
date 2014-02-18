@@ -100,7 +100,7 @@ namespace Deimos
                 (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Forward)) &&
 
                 (Game.ThisPlayer.CurrentWeapon.State ==
-                Weapon.WeaponState.AtEase));
+                WeaponState.AtEase));
         }
 
 

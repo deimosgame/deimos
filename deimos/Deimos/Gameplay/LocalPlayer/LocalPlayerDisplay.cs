@@ -39,12 +39,12 @@ namespace Deimos
         }
 
         // To get proper weapon display, attached to player
-        public void DisplayCurrentWeapon(Weapon.WeaponState state)
+        public void DisplayCurrentWeapon(WeaponState state)
         {
             switch (state)
             {
 
-                case Weapon.WeaponState.AtEase :
+                case WeaponState.AtEase :
                     Matrix cameraWorld = Matrix.Invert(Game.Camera.View);
 
                     Matrix weaponWorld = cameraWorld;
@@ -60,16 +60,16 @@ namespace Deimos
                         );
                     break;
                    
-                case Weapon.WeaponState.Aiming :
+                case WeaponState.Aiming :
                     break;
 
-                case Weapon.WeaponState.Firing :
+                case WeaponState.Firing :
                     break;
 
-                case Weapon.WeaponState.Reloading :
+                case WeaponState.Reloading :
                     break;
 
-                case Weapon.WeaponState.Switching :
+                case WeaponState.Switching :
                     break;
             }
         }

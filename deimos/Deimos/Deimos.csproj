@@ -133,6 +133,7 @@
     <Compile Include="Display\Camera.cs" />
     <Compile Include="Display\Managers\BulletManager.cs" />
     <Compile Include="Display\Managers\MenuManager.cs" />
+    <Compile Include="Display\Managers\ResourceManager.cs" />
     <Compile Include="Display\Managers\WeaponManager.cs" />
     <Compile Include="Gameplay\LocalPlayer\LocalPlayerActions.cs" />
     <Compile Include="Gameplay\LocalPlayer\LocalPlayerMovement.cs" />

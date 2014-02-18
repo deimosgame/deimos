@@ -15,14 +15,12 @@ namespace Deimos
         // Attributes
         private Dictionary<string, LevelModel> LoadedLevelModels = 
             new Dictionary<string, LevelModel>();
-        ContentManager ContentManager;
         DeimosGame Game;
  
 
         // Constructor
-        public ModelManager(ContentManager contentManager, DeimosGame game)
+        public ModelManager(DeimosGame game)
         {
-            ContentManager = contentManager;
             Game = game;
         }
 
@@ -35,9 +33,7 @@ namespace Deimos
             // Adding the model to our List/array as well as its location
             // & texture
             CollidableModel.CollidableModel thisModelCollision =
-                    ContentManager.Load<CollidableModel.CollidableModel>(
-                        model
-                    );
+                    Game.SceneManager.ResourceManager.LoadModel(model);
             Model thisModel = thisModelCollision.model;
             LevelModel thisLevelModel = new LevelModel();
             thisLevelModel.Position = position;
@@ -50,12 +46,6 @@ namespace Deimos
                 thisLevelModel,
                 delegate(CollisionElement el, DeimosGame game) { }
             );
-        }
-
-        public void UnloadModels()
-        {
-            ContentManager.Unload();
-            LoadedLevelModels.Clear();
         }
 
         public Dictionary<string, LevelModel> GetLevelModels()

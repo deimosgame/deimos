@@ -41,7 +41,7 @@ namespace Deimos
                 "PP19",
                 "Models/MISC/PP19/PP19Model",
                 Vector3.Zero,
-                new Vector3(0, 1, 0),
+                new Vector3(3, 0, 3),
                 0.1f,
                 LevelModel.CollisionType.None
             );
@@ -91,46 +91,23 @@ namespace Deimos
             //}
 
             //i++;
+
+            // FROM HERE
             LevelModel weapon = ModelManager.GetLevelModel("PP19");
             Matrix cameraWorld = Matrix.Invert(SceneManager.Game.Camera.View);
 
-            Matrix weaponWorld = cameraWorld; //gives your weapon a matrix that is co-located and co-rotated with camera
-
-            //then simply reposition the weapon matrix as necessary
-            //weapon.Position = SceneManager.Game.ThisPlayer.Position;
-            weapon.WorldMatrix = Matrix.CreateScale(0.1f) *
+            Matrix weaponWorld = cameraWorld;
+            weapon.Position = SceneManager.Game.ThisPlayer.Position;
+            weapon.WorldMatrix = Matrix.CreateScale(0.05f) *
+                Matrix.CreateRotationX((float)Math.PI) *
+                Matrix.CreateRotationZ((float)Math.PI) *
                 weaponWorld *
                 Matrix.CreateTranslation(
-                    (cameraWorld.Forward * -1) +
-                    (cameraWorld.Down * 1) +
-                    (cameraWorld.Right * 1)
+                    (cameraWorld.Forward * 4) +
+                    (cameraWorld.Down * 0.5f) +
+                    (cameraWorld.Right * 0.8f)
                 );
-            //weapon.WorldMatrix = WeaponWorldMatrix(SceneManager.Game.ThisPlayer.Position, SceneManager.Game.ThisPlayer.Rotation.Y, SceneManager.Game.ThisPlayer.Rotation.X);
-            
-        }
-
-        private Matrix WeaponWorldMatrix(Vector3 Position, float updown, float leftright)
-        {
-            Vector3 xAxis;
-            Vector3 yAxis;
-
-            xAxis.X = SceneManager.Game.Camera.View.M11;
-            xAxis.Y = SceneManager.Game.Camera.View.M21;
-            xAxis.Z = SceneManager.Game.Camera.View.M31;
-
-            yAxis.X = SceneManager.Game.Camera.View.M12;
-            yAxis.Y = SceneManager.Game.Camera.View.M22;
-            yAxis.Z = SceneManager.Game.Camera.View.M32;
-
-            Position += new Vector3(1, 0, 0) / 5;  //How far infront of the camera The gun will be
-            Position += xAxis * 1f;      //X axis offset
-            Position += -yAxis * 0.5f;     //Y axis offset
-            SceneManager.Game.DebugScreen.Debug(Position.ToString());
-            return Matrix.CreateScale(0.1f)                        //Size of the Gun
-                * Matrix.CreateFromYawPitchRoll(MathHelper.ToRadians(5), 0, 0)      //Rotation offset
-                * Matrix.CreateRotationX(updown)
-                * Matrix.CreateRotationY(leftright)
-                * Matrix.CreateTranslation(Position);
+            // TO HERE
         }
     }
 }

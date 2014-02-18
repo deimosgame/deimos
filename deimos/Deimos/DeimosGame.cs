@@ -193,7 +193,7 @@ namespace Deimos
 
         protected override void LoadContent()
         {
-            SceneManager.SetScene<SceneDeimos>();
+            SceneManager.SetScene<SceneSkatePark>();
 
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 

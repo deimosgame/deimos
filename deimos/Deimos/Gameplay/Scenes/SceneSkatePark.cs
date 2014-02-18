@@ -42,7 +42,7 @@ namespace Deimos
                 "Models/MISC/PP19/PP19Model",
                 Vector3.Zero,
                 new Vector3(0, 1, 0),
-                0.5f,
+                0.1f,
                 LevelModel.CollisionType.None
             );
             SceneManager.Collision.AddCollisionBox(
@@ -92,9 +92,20 @@ namespace Deimos
 
             //i++;
             LevelModel weapon = ModelManager.GetLevelModel("PP19");
-            weapon.Rotation = SceneManager.Game.ThisPlayer.Rotation;
+            Matrix cameraWorld = Matrix.Invert(SceneManager.Game.Camera.View);
 
-            weapon.WorldMatrix = WeaponWorldMatrix(SceneManager.Game.ThisPlayer.Position, SceneManager.Game.ThisPlayer.Rotation.Y, SceneManager.Game.ThisPlayer.Rotation.X);
+            Matrix weaponWorld = cameraWorld; //gives your weapon a matrix that is co-located and co-rotated with camera
+
+            //then simply reposition the weapon matrix as necessary
+            //weapon.Position = SceneManager.Game.ThisPlayer.Position;
+            weapon.WorldMatrix = Matrix.CreateScale(0.1f) *
+                weaponWorld *
+                Matrix.CreateTranslation(
+                    (cameraWorld.Forward * -1) +
+                    (cameraWorld.Down * 1) +
+                    (cameraWorld.Right * 1)
+                );
+            //weapon.WorldMatrix = WeaponWorldMatrix(SceneManager.Game.ThisPlayer.Position, SceneManager.Game.ThisPlayer.Rotation.Y, SceneManager.Game.ThisPlayer.Rotation.X);
             
         }
 

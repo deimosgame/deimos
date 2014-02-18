@@ -51,7 +51,7 @@ namespace Deimos
                     weapon.Position = Game.ThisPlayer.Position;
                     weapon.WorldMatrix =
                         Matrix.CreateScale(Game.ThisPlayer.CurrentWeapon.W_Scaling) *
-                        Matrix.CreateRotationY((float)Math.PI) *
+                        Matrix.CreateRotationY(Game.ThisPlayer.CurrentWeapon.W_Direct) *
                         weaponWorld *
                         Matrix.CreateTranslation(
                             (cameraWorld.Forward * Game.ThisPlayer.CurrentWeapon.W_Offset.X) +

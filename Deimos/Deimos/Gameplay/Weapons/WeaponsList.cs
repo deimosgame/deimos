@@ -33,7 +33,7 @@ namespace Deimos
         {
             SetWeapon(new Weapon(
                 Game,
-                new Vector3(3.8f, 0.5f, 0.7f), 0.05f,
+                new Vector3(3.8f, 0.5f, 0.7f), 0.05f, (float)Math.PI,
                 "Models/Weapons/PP19/PP19Model", "Assault Rifle", 2,
                 0.1f,
                 31, 147, 60,

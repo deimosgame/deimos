@@ -14,8 +14,8 @@ namespace Deimos
         // Attributes for proper display
         public Vector3 W_Offset;
         public float W_Scaling;
-
         public string Path;
+        public float W_Direct;
 
         public enum WeaponState
         {
@@ -86,7 +86,7 @@ namespace Deimos
         }
 
         // Constructor
-        public Weapon(DeimosGame game, Vector3 w_offset, float w_scaling,
+        public Weapon(DeimosGame game, Vector3 w_offset, float w_scaling, float w_direction,
             string path, string w_name, int w_priority, 
             float w_firingRate, uint w_mca, uint w_mra, 
             uint w_initialReservoirAmmo, float w_reloadt, float w_minDmg, float w_maxDmg, 
@@ -97,6 +97,7 @@ namespace Deimos
 
             W_Offset = w_offset;
             W_Scaling = w_scaling;
+            W_Direct = w_direction;
 
             Path = path;
 

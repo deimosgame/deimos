@@ -13,7 +13,9 @@ namespace Deimos
     class ModelManager
     {
         // Attributes
-        private Dictionary<string, LevelModel> LoadedLevelModels = 
+        private Dictionary<string, LevelModel> LoadedLevelModels =
+            new Dictionary<string, LevelModel>();
+        private Dictionary<string, LevelModel> LoadedPrivateModels =
             new Dictionary<string, LevelModel>();
         DeimosGame Game;
  
@@ -26,8 +28,18 @@ namespace Deimos
 
 
         // Methods
+
+        /// <summary>
+        /// Load a model to the scene, with some defaulf configuration.
+        /// </summary>
+        /// <param name="modelName">The name of the model</param>
+        /// <param name="model">The path to the model</param>
+        /// <param name="position">The position of the model</param>
+        /// <param name="rotation">The rotation of the model</param>
+        /// <param name="scale">The scale of the model</param>
+        /// <param name="collisionType">The collision type of the model</param>
         public void LoadModel(string modelName, string model, Vector3 position,
-            Vector3 rotation, float scale = 1, 
+            Vector3 rotation, float scale = 1,
             LevelModel.CollisionType collisionType = LevelModel.CollisionType.Accurate)
         {
             // Adding the model to our List/array as well as its location
@@ -47,14 +59,72 @@ namespace Deimos
                 delegate(CollisionElement el, DeimosGame game) { }
             );
         }
+        /// <summary>
+        /// Used to load game models ONLY. DON'T use that in the scene!
+        /// </summary>
+        /// <param name="modelName">The name of the model</param>
+        /// <param name="model">The path to the model</param>
+        /// <param name="position">The position of the model</param>
+        /// <param name="rotation">The rotation of the model</param>
+        /// <param name="scale">The scale of the model</param>
+        /// <param name="collisionType">The collision type of the model</param>
+        public void LoadPrivateModel(string modelName, string model, Vector3 position,
+            Vector3 rotation, float scale = 1,
+            LevelModel.CollisionType collisionType = LevelModel.CollisionType.Accurate)
+        {
+            // Adding the model to our List/array as well as its location
+            // & texture
+            CollidableModel.CollidableModel thisModelCollision =
+                    Game.SceneManager.ResourceManager.LoadModel(model);
+            Model thisModel = thisModelCollision.model;
+            LevelModel thisLevelModel = new LevelModel();
+            thisLevelModel.Position = position;
+            thisLevelModel.Scale = scale;
+            thisLevelModel.Rotation = rotation;
+            thisLevelModel.CollisionDetection = collisionType;
+            thisLevelModel.CollisionModel = thisModelCollision;
+            LoadedPrivateModels.Add(modelName, thisLevelModel);
+            Game.SceneManager.Collision.AddLevelModel(
+                thisLevelModel,
+                delegate(CollisionElement el, DeimosGame game) { }
+            );
+        }
 
+        /// <summary>
+        /// Used to get the dictionnary containing all the level models.
+        /// </summary>
+        /// <returns></returns>
         public Dictionary<string, LevelModel> GetLevelModels()
         {
             return LoadedLevelModels;
         }
+
+        /// <summary>
+        /// Used to get a specific level model.
+        /// </summary>
+        /// <param name="name">Level model name.</param>
+        /// <returns></returns>
         public LevelModel GetLevelModel(string name)
         {
             return LoadedLevelModels[name];
+        }
+
+        /// <summary>
+        /// Used to remove a level model from the scene.
+        /// </summary>
+        /// <param name="name">The name of the model to remove</param>
+        public void RemoveLevelModel(string name)
+        {
+            LoadedLevelModels.Remove(name);
+        }
+
+        /// <summary>
+        /// Used to remove a level model from the scene.
+        /// </summary>
+        /// <param name="name">The name of the model to remove</param>
+        public void RemovePrivateModel(string name)
+        {
+            LoadedPrivateModels.Remove(name);
         }
 
         private BoundingBox BuildBoundingBox(ModelMesh mesh, 
@@ -103,6 +173,11 @@ namespace Deimos
             return box;
         }
 
+        /// <summary>
+        /// Draw all the models, applying the effect to them.
+        /// </summary>
+        /// <param name="game"></param>
+        /// <param name="camera"></param>
         public void DrawModels(Game game, Camera camera)
         {
             game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;

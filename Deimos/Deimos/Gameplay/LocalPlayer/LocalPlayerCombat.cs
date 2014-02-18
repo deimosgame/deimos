@@ -68,7 +68,7 @@ namespace Deimos
                 ButtonState.Pressed &&
                 CanFire())
             {
-                Game.ThisPlayer.CurrentWeapon.Fire();
+                Game.ThisPlayer.Inventory.Fire();
 
                 // reloading if no bullet left after shot
                 Game.ThisPlayer.Inventory.UpdateAmmo();

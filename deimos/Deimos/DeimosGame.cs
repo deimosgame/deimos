@@ -266,6 +266,7 @@ namespace Deimos
                 ThisPlayer.HandleInput(gameTime);
 
                 SceneManager.Update();
+                BulletManager.Update(gameTime);
 
                 this.IsMouseVisible = false;
             }

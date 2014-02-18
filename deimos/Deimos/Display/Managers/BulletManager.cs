@@ -21,49 +21,78 @@ namespace Deimos
             Game = game;
         }
 
+        // Methods
+        /// <summary>
+        /// Add a new bullet to our world.
+        /// </summary>
+        public void SpawnBullet()
+        {
+            Bullet FiredBullet = new Bullet(Game, Game.ThisPlayer.Position, Game.Camera.ViewVector);
+            BulletTab.Add(FiredBullet);
+
+            Game.SceneManager.ModelManager.LoadPrivateModel(
+                "Bullet" + BulletTab.FindIndex(delegate(Bullet bullet) { return bullet == FiredBullet; }).ToString(),
+                "Models/Weapons/PP19/PP19Model", // Model
+                 new Vector3(10, 0, 0), // Location
+                 Vector3.Zero,
+                 0.1f,
+                 LevelModel.CollisionType.Accurate
+            );
+        }
+
+        /// <summary>
+        /// Destroys the corresponding bullet
+        /// </summary>
+        /// <param name="bullet"></param>
         private void DestroyBullet(Bullet bullet)
         {
-            // And call the Bullet destructor??
+            Game.SceneManager.ModelManager.RemoveLevelModel(
+                "Bullet" + BulletTab.FindIndex(delegate(Bullet b) { return b == bullet; }).ToString()
+            );
             BulletTab.Remove(bullet);
         }
 
-        // Methods
-        public Bullet SpawnBullet()
+        /// <summary>
+        /// Propagate our bullets, with its direction.
+        /// </summary>
+        /// <param name="dt"></param>
+        public void Propagate(Bullet bullet, float dt)
         {
-            Bullet FiredBullet = new Bullet(Game);
-            BulletTab.Add(FiredBullet);
-
-            return FiredBullet;
+            bullet.Position += bullet.Direction * bullet.speed * dt;
         }
 
-        // These next two functions are purely first build test phase, 
-        // they WILL be changed.
-        public void Propagate(float dt)
+        /// <summary>
+        /// Updates the age of the bullets and if they are too old, destroy them.
+        /// </summary>
+        /// <param name="dt"></param>
+        public void Age(Bullet bullet, float dt)
         {
-            foreach (Bullet bullet in BulletTab)
+            bullet.lifeSpan -= dt;
+            if (bullet.lifeSpan <= 0)
             {
-                bullet.Position = bullet.Position * bullet.Direction * bullet.speed * dt;
-            }  
-        }
-
-        public void Age(float dt)
-        {
-            foreach (var bullet in BulletTab)
-            {
-                bullet.lifeSpan -= dt;
-                if (bullet.lifeSpan <= 0)
-                {
-                    BulletTab.Remove(bullet);
-                }
+                DestroyBullet(bullet);
             }
         }
 
-        public void Update(Bullet bulletToFire, GameTime gameTime)
+        public void CheckCollision(Bullet bullet)
+        {
+            
+        }
+
+        /// <summary>
+        /// Method to be called at each update of the game. Updates every bullets.
+        /// </summary>
+        /// <param name="gameTime"></param>
+        public void Update(GameTime gameTime)
         {
             float dt = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
 
-
-            Propagate(dt);
+            for (int i = 0; i < BulletTab.Count; i++)
+            {
+                Bullet bullet = BulletTab[i];
+                Propagate(bullet, dt);
+                Age(bullet, dt);
+            }
         }
     }
 }

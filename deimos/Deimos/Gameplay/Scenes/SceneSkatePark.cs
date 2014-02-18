@@ -99,8 +99,7 @@ namespace Deimos
             Matrix weaponWorld = cameraWorld;
             weapon.Position = SceneManager.Game.ThisPlayer.Position;
             weapon.WorldMatrix = Matrix.CreateScale(0.05f) *
-                Matrix.CreateRotationX((float)Math.PI) *
-                Matrix.CreateRotationZ((float)Math.PI) *
+                Matrix.CreateRotationY((float)Math.PI) *
                 weaponWorld *
                 Matrix.CreateTranslation(
                     (cameraWorld.Forward * 4) +

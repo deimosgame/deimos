@@ -10,6 +10,7 @@ namespace Deimos
     {
         DeimosGame Game;
 
+        // This is the player's dynamic Weapon Inventory
         private Dictionary<string, Weapon> PlayerInventory =
             new Dictionary<string, Weapon>();
 
@@ -19,7 +20,7 @@ namespace Deimos
             Game = game;
         }
         
-        // Methods
+        // Methods for the Player Inventory
         public void PickupWeapon(Weapon pickupWeapon)
         {
             // We check if player already has the weapon, if not, we give 
@@ -41,26 +42,26 @@ namespace Deimos
                {
                    // might be an overwriting problem, I trust Manu to 
                    // tell me if there is
-                   SetCurrentWeapon(pickupWeapon); 
+                   SetCurrentWeapon(pickupWeapon.Name); 
                }
             }
         }
 
-        public void SetCurrentWeapon(Weapon weapon)
+        public void SetCurrentWeapon(string name)
         {
-            if (!(Game.ThisPlayer.CurrentWeapon == weapon) 
-                && (PlayerInventory.ContainsValue(weapon)))
-            {
-                Game.ThisPlayer.CurrentWeapon = weapon;
-            }
+                if (PlayerInventory.ContainsKey(name))
+                {
+                    Game.ThisPlayer.CurrentWeapon = PlayerInventory[name];
+                }
         }
 
-        public void SetPreviousWeapon(Weapon weapon)
+        public void SetPreviousWeapon(string name)
         {
-            if (!(Game.ThisPlayer.PreviousWeapon == weapon)
-                && (PlayerInventory.ContainsValue(weapon)))
+            if (!(Game.ThisPlayer.PreviousWeapon == 
+                PlayerInventory[name])
+                && (PlayerInventory.ContainsKey(name)))
             {
-                Game.ThisPlayer.PreviousWeapon = weapon;
+                Game.ThisPlayer.PreviousWeapon = PlayerInventory[name];
             }
         }
 
@@ -79,8 +80,8 @@ namespace Deimos
                 firstWeapon = secondWeapon;
                 secondWeapon = temp;
 
-                SetCurrentWeapon(firstWeapon);
-                SetPreviousWeapon(secondWeapon);
+                SetCurrentWeapon(firstWeapon.Name);
+                SetPreviousWeapon(secondWeapon.Name);
             }
 
             Game.ThisPlayer.CurrentWeapon.State = Weapon.WeaponState.AtEase;

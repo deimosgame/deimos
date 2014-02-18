@@ -37,14 +37,6 @@ namespace Deimos
                  new Vector3(10, 0, 0), // Location
                  Vector3.Zero
             );
-            ModelManager.LoadModel(
-                "PP19",
-                "Models/MISC/PP19/PP19Model",
-                Vector3.Zero,
-                new Vector3(3, 0, 3),
-                0.1f,
-                LevelModel.CollisionType.None
-            );
             SceneManager.Collision.AddCollisionBox(
                 new Vector3(-1000, -80, -1000),
                 new Vector3(1000, -81, 1000),
@@ -67,10 +59,10 @@ namespace Deimos
             );
         }
 
-        public float x = -1f;
-        Random rnd = new Random();
-        public int i = 0;
-        public int r = 0;
+        //public float x = -1f;
+        //Random rnd = new Random();
+        //public int i = 0;
+        //public int r = 0;
 
         // Update our things at each ticks
         public override void Update()
@@ -91,22 +83,6 @@ namespace Deimos
             //}
 
             //i++;
-
-            // FROM HERE
-            LevelModel weapon = ModelManager.GetLevelModel("PP19");
-            Matrix cameraWorld = Matrix.Invert(SceneManager.Game.Camera.View);
-
-            Matrix weaponWorld = cameraWorld;
-            weapon.Position = SceneManager.Game.ThisPlayer.Position;
-            weapon.WorldMatrix = Matrix.CreateScale(0.05f) *
-                Matrix.CreateRotationY((float)Math.PI) *
-                weaponWorld *
-                Matrix.CreateTranslation(
-                    (cameraWorld.Forward * 4) +
-                    (cameraWorld.Down * 0.5f) +
-                    (cameraWorld.Right * 0.8f)
-                );
-            // TO HERE
         }
     }
 }

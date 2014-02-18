@@ -36,21 +36,13 @@ namespace Deimos
                  new Vector3(10, 0, 0), // Location
                  Vector3.Zero
             );
-            ModelManager.LoadModel(
-                "PP19",
-                "Models/MISC/PP19/PP19Model",
-                Vector3.Zero,
-                new Vector3(0, 1, 0),
-                0.1f,
-                LevelModel.CollisionType.None
-            );
         }
 
         // Initialize our lights and such
         public override void Initialize()
         {
             LightManager.AddPointLight(
-               "player",
+               "Main",
                new Vector3(10, 10, 10), // Location
                300, // Radius
                2, // Intensity
@@ -60,7 +52,7 @@ namespace Deimos
         // Update our things at each ticks
         public override void Update()
         {
-            SceneManager.Game.DebugScreen.Debug("debugconsole");
+            //SceneManager.Game.DebugScreen.Debug("debugconsole");
         }
     }
 }

@@ -201,6 +201,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Models\Misc\" />
     <Folder Include="References\" />
   </ItemGroup>
   <ItemGroup>
@@ -357,31 +358,6 @@
     </Compile>
     <Compile Include="Models\Textures\sky_top.tga">
       <Name>sky_top</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Models\Misc\PP19\PP19Model.fbx">
-      <Name>PP19Model</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>CollidableModelProcessor</Processor>
-      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Models\Misc\PP19\PP19.png">
-      <Name>PP19</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Models\Misc\PP19\tex\Tex_0008_1.jpg">
-      <Name>Tex_0008_1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Models\Misc\PP19\tex\Tex_0009_1.jpg">
-      <Name>Tex_0009_1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -931,6 +907,35 @@
   <ItemGroup>
     <Compile Include="Models\Map\hl\Wish You Were Here.jpg">
       <Name>Wish You Were Here</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Weapons\PP19\PP19.png">
+      <Name>PP19</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Weapons\PP19\PP19Model.fbx">
+      <Name>PP19Model</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CollidableModelProcessor</Processor>
+      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Weapons\PP19\tex\Tex_0008_1.jpg">
+      <Name>Tex_0008_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Weapons\PP19\tex\Tex_0009_1.jpg">
+      <Name>Tex_0009_1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

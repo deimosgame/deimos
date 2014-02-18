@@ -29,26 +29,15 @@ namespace Deimos
 
         public void InitializeInventory()
         {
-            Inventory = Game.WeaponManager;
+            Inventory = new WeaponManager(Game);
 
-            // Let's give them the default pistol ! :P
-            Weapon Pistol = new Weapon(
-                Game,
-                "Pistol", 
-                0, 0.2f, 7, 46, 14, 1.3f, 15, 30, 2f, 250f
-            );
+            Inventory.PickupWeapon(Game.Weapons.GetWeapon("Assault Rifle"));
+            Inventory.SetCurrentWeapon("Assault Rifle");
 
-            Inventory.PickupWeapon(Pistol);
+            ammoPickup = CurrentWeapon.m_reservoirAmmo;
+            Inventory.PickupAmmo(CurrentWeapon);
 
-            Weapon Rifle = new Weapon(
-                Game,
-                "Rifle",
-                2, 0.1f, 31, 150, 60, 2.2f, 25, 40, 2f, 500f
-            );
-
-            Inventory.PickupWeapon(Rifle);
-            Inventory.SetCurrentWeapon(Pistol);
-            Inventory.SetPreviousWeapon(Rifle);
+            Game.ThisPlayerDisplay.LoadCurrentWeaponModel();
         }
 
         private Vector3 GetMovementVector(float dt)
@@ -221,6 +210,7 @@ namespace Deimos
                 if (ks.IsKeyDown(Game.Config.Sprint) &&
                     Game.ThisPlayerPhysics.State ==
                     LocalPlayerPhysics.PhysicalState.Walking &&
+                    Game.ThisPlayer.CurrentWeapon.State != Weapon.WeaponState.Reloading &&
                     Game.ThisPlayer.CooldownTimer >= Game.ThisPlayer.SprintCooldown &&
                     ks.IsKeyDown(Game.Config.Forward))
                 {
@@ -271,6 +261,8 @@ namespace Deimos
 
                 // Quick-Switch weapon: timer initiate
                 if (ks.IsKeyDown(Game.Config.QuickSwitch) &&
+                    Game.ThisPlayer.CurrentWeapon != null &&
+                    Game.ThisPlayer.PreviousWeapon != null &&
                     Game.ThisPlayer.CurrentSpeedState != SpeedState.Sprinting &&
                     Game.ThisPlayer.CurrentWeapon.State == Weapon.WeaponState.AtEase)
                 {
@@ -437,20 +429,26 @@ namespace Deimos
         {
             float dt = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
 
-            GetMouseMovement(dt);
-
-            Vector3 moveVector = GetMovementVector(dt);
-            if (moveVector != Vector3.Zero)
+            if (Game.ThisPlayer.IsAlive() ||
+                Game.CurrentPlayingState == DeimosGame.PlayingStates.NoClip)
             {
-                float tempY = moveVector.Y;
-                moveVector.Y = 0;
-                // Normalize that vector so that we don't move faster diagonally
-                if (moveVector != Vector3.Zero) moveVector.Normalize();
-                // Now we add in move factor and speed
-                moveVector *= dt * Speed * Game.ThisPlayerPhysics.BunnyhopCoeff;
-                moveVector.Y = tempY;
-                // Move camera!
-                Move(moveVector, dt);
+                GetMouseMovement(dt);
+
+                Vector3 moveVector = GetMovementVector(dt);
+                if (moveVector != Vector3.Zero)
+                {
+                    float tempY = moveVector.Y;
+                    moveVector.Y = 0;
+                    // Normalize that vector so that we don't move faster diagonally
+                    if (moveVector != Vector3.Zero) moveVector.Normalize();
+                    // Now we add in move factor and speed
+                    moveVector *= dt * Speed * Game.ThisPlayerPhysics.BunnyhopCoeff;
+                    moveVector.Y = tempY;
+                    // Move camera!
+                    Move(moveVector, dt);
+                }
+
+                Game.ThisPlayerDisplay.DisplayCurrentWeapon(Weapon.WeaponState.AtEase);
             }
 
 

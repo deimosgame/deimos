@@ -60,6 +60,13 @@ namespace Deimos
             set { thisPlayerPhysics = value; }
         }
 
+        LocalPlayerDisplay thisPlayerDisplay;
+        internal LocalPlayerDisplay ThisPlayerDisplay
+        {
+            get { return thisPlayerDisplay; }
+            set { thisPlayerDisplay = value; }
+        }
+
         SceneManager sceneManager;
         internal SceneManager SceneManager
         {
@@ -74,11 +81,11 @@ namespace Deimos
             set { screenElementManager = value; }
         }
 
-        WeaponManager weaponManager;
-        internal WeaponManager WeaponManager
+        WeaponsList weapons;
+        internal WeaponsList Weapons
         {
-            get { return weaponManager; }
-            set { weaponManager = value; }
+            get { return weapons; }
+            set { weapons = value; }
         }
 
         BulletManager bulletManager;
@@ -140,6 +147,7 @@ namespace Deimos
         {
             ThisPlayer = new LocalPlayer(this);
             ThisPlayerPhysics = new LocalPlayerPhysics(this, thisPlayer);
+            ThisPlayerDisplay = new LocalPlayerDisplay(this);
 
             TempContent = new ContentManager(Services);
 
@@ -156,15 +164,14 @@ namespace Deimos
 
             Config = new Config();
 
-            WeaponManager = new WeaponManager(this);
-            ThisPlayer.InitializeInventory();
+            Weapons = new WeaponsList(this);
             BulletManager = new BulletManager(this);
-
-            
         }
 
         protected override void Initialize()
         {
+            Weapons.Initialise();
+
             Camera = new Camera(
                 this,
                 new Vector3(0f, 9f,20f),
@@ -193,13 +200,15 @@ namespace Deimos
 
         protected override void LoadContent()
         {
-            SceneManager.SetScene<SceneSkatePark>();
+            SceneManager.SetScene<SceneDeimos>();
 
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 
             ScreenElementManager = new ScreenElementManager(this);
 
             DebugScreen = new DebugScreen(this);
+
+            ThisPlayer.InitializeInventory();
         }
 
          

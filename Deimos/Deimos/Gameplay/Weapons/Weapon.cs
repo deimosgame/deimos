@@ -54,7 +54,19 @@ namespace Deimos
             set { firingRate = value; }
         }
 
-        public float fireTimer;
+        private float fireTimer;
+        public float FireTimer
+        {
+            get { return fireTimer; }
+            set
+            {
+                if (value > FiringRate)
+                { fireTimer = FiringRate; return; }
+                if (value < 0)
+                { fireTimer = 0; return; }
+                fireTimer = value;
+            }
+        }
 
         public uint c_chamberAmmo; // current ammo in the chamber
         public uint m_chamberAmmo; // maximum chamber ammo
@@ -62,8 +74,21 @@ namespace Deimos
         public uint m_reservoirAmmo; // maximum reservoir ammo
         //public uint ammoPickup; // amount of ammo that is potentially picked up
 
-        public float reloadTimer = 0; // timer used for reload
-        public float timeToReload; // time needed to reload
+        private float reloadTimer = 0; // timer used for reload
+        public float ReloadTimer
+        {
+            get { return reloadTimer; }
+            set
+            {
+                if (value > TimeToReload)
+                { reloadTimer = TimeToReload; return; }
+                if (value < 0)
+                { reloadTimer = 0; return; }
+                reloadTimer = value;
+            }
+        }
+
+        public float TimeToReload; // time needed to reload
 
         public float timeToSwitch = 0f;
 
@@ -109,7 +134,7 @@ namespace Deimos
             // to start out with a full chamber when weapon spawns
             c_chamberAmmo = m_chamberAmmo; 
             m_reservoirAmmo = w_mra;
-            timeToReload = w_reloadt;
+            TimeToReload = w_reloadt;
             //// if we want to give extra ammo to the player right from the pickup, we can
             //Game.ThisPlayer.ammoPickup = w_initialReservoirAmmo; 
             //minDmg = w_minDmg;
@@ -131,7 +156,7 @@ namespace Deimos
                 // These methods are not final at all, they WILL be changed.
                 //bulletManager.SpawnBullet();
                 c_chamberAmmo--;
-                fireTimer = 0; // reset the fire timer
+                FireTimer = 0; // reset the fire timer
                 State = WeaponState.AtEase;
             }
             else if (IsReloadable())

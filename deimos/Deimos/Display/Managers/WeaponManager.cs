@@ -67,7 +67,7 @@ namespace Deimos
 
         public float GetSwitchTime(Weapon weapon)
         {
-            float time = weapon.timeToReload / 5f;
+            float time = weapon.TimeToReload / 5f;
 
             return time;
         }
@@ -120,7 +120,7 @@ namespace Deimos
                     Game.ThisPlayer.CurrentWeapon.c_reservoirAmmo -= t;
                 
 
-            Game.ThisPlayer.CurrentWeapon.reloadTimer = 0;
+            Game.ThisPlayer.CurrentWeapon.ReloadTimer = 0;
             Game.ThisPlayer.CurrentWeapon.State = Weapon.WeaponState.AtEase;
         }
 

@@ -134,6 +134,9 @@
     <Compile Include="Display\Managers\BulletManager.cs" />
     <Compile Include="Display\Managers\MenuManager.cs" />
     <Compile Include="Display\Managers\WeaponManager.cs" />
+    <Compile Include="Gameplay\LocalPlayer\LocalPlayerActions.cs" />
+    <Compile Include="Gameplay\LocalPlayer\LocalPlayerMovement.cs" />
+    <Compile Include="Gameplay\LocalPlayer\LocalPlayerCombat.cs" />
     <Compile Include="Gameplay\Weapons\Bullet\Bullet.cs" />
     <Compile Include="Gameplay\Config.cs" />
     <Compile Include="Display\DeferredRendering\DeferredRenderer.cs" />

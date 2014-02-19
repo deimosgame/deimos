@@ -12,6 +12,7 @@ namespace Deimos
         DeimosGame Game;
         Vector3 MoveVector;
         Vector3 Acceleration;
+        Vector3 LastMoveVector;
 
         public LocalPlayerMovement(DeimosGame game)
         {
@@ -26,49 +27,53 @@ namespace Deimos
             // Let's handle movement input
             if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Forward))
             {
-                Game.ThisPlayerPhysics.Accelerate();
+                Game.ThisPlayerPhysics.Accelerate(LocalPlayerPhysics.AccelerationDirection.Z);
                 movementVector += Vector3.Backward;
             }
             if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Backward))
             {
-                Game.ThisPlayerPhysics.Accelerate();
-                movementVector += Vector3.Forward;
+                Game.ThisPlayerPhysics.Decelerate(LocalPlayerPhysics.AccelerationDirection.Z);
+                movementVector += Vector3.Backward;
             }
             if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Left))
             {
-                Game.ThisPlayerPhysics.Accelerate();
+                Game.ThisPlayerPhysics.Accelerate(LocalPlayerPhysics.AccelerationDirection.X);
                 movementVector += Vector3.Right;
             }
             if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Right))
             {
-                Game.ThisPlayerPhysics.Accelerate();
-                movementVector += Vector3.Left;
+                Game.ThisPlayerPhysics.Decelerate(LocalPlayerPhysics.AccelerationDirection.X);
+                movementVector += Vector3.Right;
             }
-            if (movementVector == Vector3.Zero)
-            {
-                Game.ThisPlayerPhysics.Decelerate();
-            }
-
 
             if (movementVector != Vector3.Zero)
             {
                 movementVector.Normalize();
+                LastMoveVector = movementVector;
             }
             else
             {
-                if (Game.ThisPlayerPhysics.LastMovementVector != Vector3.Zero)
-                {
-                    movementVector = Game.ThisPlayerPhysics.LastMovementVector;
-                }
+                movementVector = LastMoveVector;
             }
 
-            Game.ThisPlayerPhysics.LastMovementVector = movementVector;
+            if (Game.ThisPlayer.ks.IsKeyUp(Game.Config.Forward)
+                && Game.ThisPlayer.ks.IsKeyUp(Game.Config.Backward))
+            {
+                Game.ThisPlayerPhysics.Reset(LocalPlayerPhysics.AccelerationDirection.Z);
+            }
+            if (Game.ThisPlayer.ks.IsKeyUp(Game.Config.Left)
+                && Game.ThisPlayer.ks.IsKeyUp(Game.Config.Right))
+            {
+                Game.ThisPlayerPhysics.Reset(LocalPlayerPhysics.AccelerationDirection.X);
+            }
+
+            LastMoveVector = movementVector;
 
             //if (Game.CurrentPlayingState != DeimosGame.PlayingStates.NoClip)
             //{
             //    moveVector.Y = Game.ThisPlayerPhysics.ApplyGravity(dt);
             //}
-            return movementVector * Game.ThisPlayerPhysics.GetDV(); ;
+            return movementVector * Game.ThisPlayerPhysics.GetAcceleration(); ;
         }
 
         public void GetMouseMovement(float dt)

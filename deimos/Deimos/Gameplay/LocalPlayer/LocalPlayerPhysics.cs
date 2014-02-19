@@ -29,7 +29,25 @@ namespace Deimos
         public PhysicalState GravityState = PhysicalState.Walking;
         public AccelerationState Accelerestate = AccelerationState.Still;
 
+        public Vector3 lastMovementVector = Vector3.Zero;
+        public Vector3 LastMovementVector
+        {
+            get;
+            set;
+        }
         public float dv = 0.05f;
+        private float tempDv = 0;
+        private float TempDv
+        {
+            get
+            {
+                return tempDv;
+            }
+            set
+            {
+                tempDv = Math.Max(0, Math.Min(value, 1));
+            }
+        }
 
         // Constructor
         public LocalPlayerPhysics(DeimosGame game)
@@ -45,6 +63,7 @@ namespace Deimos
             {
                 Accelerestate = AccelerationState.On;
             }
+            TempDv += dv;
         }
 
         public void Decelerate()
@@ -55,19 +74,12 @@ namespace Deimos
             {
                 Accelerestate = AccelerationState.Off;
             }
+            TempDv -= dv;
         }
 
         public float GetDV()
         {
-            switch (Accelerestate)
-            {
-                case AccelerationState.On:
-                    return dv;
-                case AccelerationState.Off:
-                    return -dv;
-                default:
-                    return 0;
-            }
+            return TempDv;
         }
     }
 }

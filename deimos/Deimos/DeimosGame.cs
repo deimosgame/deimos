@@ -146,7 +146,7 @@ namespace Deimos
         public DeimosGame()
         {
             ThisPlayer = new LocalPlayer(this);
-            ThisPlayerPhysics = new LocalPlayerPhysics(this, thisPlayer);
+            ThisPlayerPhysics = new LocalPlayerPhysics(this);
             ThisPlayerDisplay = new LocalPlayerDisplay(this);
 
             TempContent = new ContentManager(Services);

@@ -14,6 +14,8 @@ namespace Deimos
 
         public Vector3 LookAt;
 
+        public Vector3 Acceleration;
+
 
         public enum Teams
         {

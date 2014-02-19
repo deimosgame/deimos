@@ -94,7 +94,7 @@ namespace Deimos
             return ((Game.ThisPlayer.CooldownTimer >=
                 Game.ThisPlayer.SprintCooldown) &&
 
-                (Game.ThisPlayerPhysics.State ==
+                (Game.ThisPlayerPhysics.GravityState ==
                 LocalPlayerPhysics.PhysicalState.Walking) &&
 
                 (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Forward)) &&

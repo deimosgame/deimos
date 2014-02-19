@@ -94,15 +94,6 @@ namespace Deimos
                 Color.LightGreen
             );
             Game.ScreenElementManager.AddText(
-                "BunnyCoeff",
-                0,
-                (int)MapHeight + 110,
-                0,
-                Font,
-                "BunnyCoeff: ",
-                Color.LightGreen
-            );
-            Game.ScreenElementManager.AddText(
                 "CurrentWeapon",
                 0,
                 (int)MapHeight + 130,
@@ -201,6 +192,15 @@ namespace Deimos
                 "Health:",
                 Color.DeepPink
             );
+            Game.ScreenElementManager.AddText(
+                "Acceleration",
+                0,
+                (int)MapHeight + 310,
+                0,
+                Font,
+                "Acceleration:",
+                Color.Yellow
+            );
 
         }
 
@@ -213,7 +213,6 @@ namespace Deimos
             Game.ScreenElementManager.GetText("FPS").Show = true;
             Game.ScreenElementManager.GetText("Ticks").Show = true;
             Game.ScreenElementManager.GetText("JumpState").Show = true;
-            Game.ScreenElementManager.GetText("BunnyCoeff").Show = true;
             Game.ScreenElementManager.GetText("CurrentWeapon").Show = true;
             Game.ScreenElementManager.GetText("CurrentChamberAmmo").Show = true;
             Game.ScreenElementManager.GetText("CurrentReservoirAmmo").Show = true;
@@ -224,6 +223,7 @@ namespace Deimos
             Game.ScreenElementManager.GetText("PlayingState").Show = true;
             Game.ScreenElementManager.GetText("LifeState").Show = true;
             Game.ScreenElementManager.GetText("Health").Show = true;
+            Game.ScreenElementManager.GetText("Acceleration").Show = true;
         }
         private void Hide()
         {
@@ -234,7 +234,6 @@ namespace Deimos
             Game.ScreenElementManager.GetText("FPS").Show = false;
             Game.ScreenElementManager.GetText("Ticks").Show = false;
             Game.ScreenElementManager.GetText("JumpState").Show = false;
-            Game.ScreenElementManager.GetText("BunnyCoeff").Show = false;
             Game.ScreenElementManager.GetText("CurrentWeapon").Show = false;
             Game.ScreenElementManager.GetText("CurrentChamberAmmo").Show = false;
             Game.ScreenElementManager.GetText("CurrentReservoirAmmo").Show = false;
@@ -245,6 +244,7 @@ namespace Deimos
             Game.ScreenElementManager.GetText("PlayingState").Show = false;
             Game.ScreenElementManager.GetText("LifeState").Show = false;
             Game.ScreenElementManager.GetText("Health").Show = false;
+            Game.ScreenElementManager.GetText("Acceleration").Show = false;
         }
 
         public void Debug(string text)
@@ -293,11 +293,7 @@ namespace Deimos
             );
             Game.ScreenElementManager.GetText("JumpState").Text = String.Format(
                 "JumpState: {0}",
-                Game.ThisPlayerPhysics.State
-            );
-            Game.ScreenElementManager.GetText("BunnyCoeff").Text = String.Format(
-                "BunnyCoeff: {0}",
-                Game.ThisPlayerPhysics.BunnyhopCoeff
+                Game.ThisPlayerPhysics.GravityState
             );
             Game.ScreenElementManager.GetText("CurrentWeapon").Text = String.Format(
                 "CurrentWeapon: {0}",
@@ -340,6 +336,12 @@ namespace Deimos
             Game.ScreenElementManager.GetText("Health").Text = String.Format(
                 "Health: {0}",
                 Game.ThisPlayer.Health
+            );
+            Game.ScreenElementManager.GetText("Acceleration").Text = String.Format(
+                "Acceleration: x:{0}; y:{1}; z:{2}",
+                (float)Game.ThisPlayer.Acceleration.X,
+                (float)Game.ThisPlayer.Acceleration.Y,
+                (float)Game.ThisPlayer.Acceleration.Z
             );
 
             string finalDebug = "";

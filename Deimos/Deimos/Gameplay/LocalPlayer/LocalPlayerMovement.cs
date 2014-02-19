@@ -11,6 +11,7 @@ namespace Deimos
     {
         DeimosGame Game;
         Vector3 MoveVector;
+        Vector3 Acceleration;
 
         public LocalPlayerMovement(DeimosGame game)
         {
@@ -22,24 +23,30 @@ namespace Deimos
             Game.ThisPlayer.ks = Keyboard.GetState();
 
             // Let's handle movement input
-            MoveVector = Vector3.Zero;
-
             if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Forward))
             {
-                MoveVector.Z = 1;
+                Game.ThisPlayerPhysics.Accelerate(0);
             }
-            if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Backward))
+            else if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Backward))
             {
-                MoveVector.Z = -1;
+                Game.ThisPlayerPhysics.Accelerate(1);
+            }
+            else if (Game.ThisPlayer.Acceleration.Z != 0)
+            {
+                Game.ThisPlayerPhysics.Decelerate(0);
             }
 
             if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Left))
             {
-                MoveVector.X = 1;
+                Game.ThisPlayerPhysics.Accelerate(2);
             }
-            if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Right))
+            else if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Right))
             {
-                MoveVector.X = -1;
+                Game.ThisPlayerPhysics.Accelerate(3);
+            }
+            else if (Game.ThisPlayer.Acceleration.X != 0)
+            {
+                Game.ThisPlayerPhysics.Decelerate(1);
             }
 
             //if (Game.CurrentPlayingState != DeimosGame.PlayingStates.NoClip)
@@ -47,7 +54,7 @@ namespace Deimos
             //    moveVector.Y = Game.ThisPlayerPhysics.ApplyGravity(dt);
             //}
 
-            return MoveVector;
+            return Game.ThisPlayer.Acceleration;
         }
 
         public void GetMouseMovement(float dt)
@@ -140,14 +147,14 @@ namespace Deimos
                 if (Game.SceneManager.Collision.CheckCollision(Game.ThisPlayer.Position + movementGravity))
                 {
                     // Hit floor or ceiling
-                    Game.ThisPlayerPhysics.StopGravity();
+                    
                     movement.Y = 0;
                     if (!Game.ThisPlayer.ks.IsKeyDown(Game.Config.Jump))
                     {
-                        Game.ThisPlayerPhysics.BunnyhopCoeff = 1;
+                        
                     }
                 }
-                else if (Game.ThisPlayerPhysics.State == LocalPlayerPhysics.PhysicalState.Walking &&
+                else if (Game.ThisPlayerPhysics.GravityState == LocalPlayerPhysics.PhysicalState.Walking &&
                     !Game.SceneManager.Collision.CheckCollision(
                         Game.ThisPlayer.Position + new Vector3(movement.X, 2, movement.Z)))
                 {
@@ -188,20 +195,10 @@ namespace Deimos
         {
             GetMouseMovement(dt);
 
-            MoveVector = GetMovementVector(dt);
-
-            if (MoveVector != Vector3.Zero)
-            {
-                float tempY = MoveVector.Y;
-                MoveVector.Y = 0;
-                // Normalize that vector so that we don't move faster diagonally
-                if (MoveVector != Vector3.Zero) MoveVector.Normalize();
-                // Now we add in move factor and speed
-                MoveVector *= dt * Game.ThisPlayer.Speed * Game.ThisPlayerPhysics.BunnyhopCoeff;
-                MoveVector.Y = tempY;
-                // Move camera!
-                Move(MoveVector, dt);
-            }
+            Acceleration = GetMovementVector(dt);
+            //if (Acceleration != Vector3.Zero) Acceleration.Normalize();
+            MoveVector = Acceleration * dt * Game.ThisPlayer.Speed;
+            Move(MoveVector, dt);
         }
 
     }

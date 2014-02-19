@@ -8,6 +8,8 @@ namespace Deimos
 {
     class LocalPlayerPhysics
     {
+        DeimosGame Game;
+
         public enum PhysicalState
         {
             Jumping,
@@ -15,89 +17,166 @@ namespace Deimos
             Walking
         }
 
-        PhysicalState state = PhysicalState.Walking;
-        public PhysicalState State
+        public enum AccelerationState
         {
-            get { return state; }
-            set { state = value; }
+            Still,
+            On,
+            Constant,
+            Off,
+            Maxed
         }
 
-        DeimosGame Game;
-        LocalPlayer CurrentPhysicsPlayer;
+        public PhysicalState GravityState = PhysicalState.Walking;
+        public AccelerationState Accelerestate = AccelerationState.Still;
 
-        Vector3 acceleration = Vector3.Zero;
-
-        float InitialVelocity = 0;
-        float CurrentTime = 0;
-
-        float GravityCoef = 12f;
-
-        float bunnyhopmax = 3.45f;
-
-        // bool ApplyingGravity = false;
-
-        private float bunnyhopCoeff = 1f;
-        public float BunnyhopCoeff
-        {
-            get { return bunnyhopCoeff; }
-            set {
-                if (value > bunnyhopmax)
-                {
-                    return;
-                }
-                bunnyhopCoeff = value; 
-            }
-        }
+        public float dv = 0.05f;
 
         // Constructor
-        public LocalPlayerPhysics(DeimosGame game, LocalPlayer player)
+        public LocalPlayerPhysics(DeimosGame game)
         {
             Game = game;
-            CurrentPhysicsPlayer = player;
         }
 
         // Methods
-        public void InitiateJump(float v)
+        public void Accelerate(int direction)
         {
-            // Setting initial state for applied gravity
-            InitialVelocity = v;
-            CurrentTime = 0;
-            State = PhysicalState.Jumping;
+            switch (Accelerestate)
+            {
+                case AccelerationState.Still:
+                    Accelerestate = AccelerationState.On;
+                    break;
+
+                case AccelerationState.On:
+                    ProcessAcceleration(direction);
+                    break;
+
+                case AccelerationState.Off:
+                    Accelerestate = AccelerationState.On;
+                    break;
+
+                case AccelerationState.Constant:
+                    break;
+
+                case AccelerationState.Maxed:
+                    break;
+            }
         }
 
-        public void StopGravity() // Changing states, to start descending or stop descending
+        public void Decelerate(int direction)
         {
-            if (State == PhysicalState.Jumping)
+            switch (Accelerestate)
             {
-                InitialVelocity = 0;
-                CurrentTime = 0;
-                State = PhysicalState.Falling;
-            }
-            else if (State == PhysicalState.Falling)
-            {
-                InitialVelocity = 0;
-                CurrentTime = 0;
-                State = PhysicalState.Walking;
-                BunnyhopCoeff += 0.15f;
+                case AccelerationState.Still:
+                    break;
+
+                case AccelerationState.On:
+                    Accelerestate = AccelerationState.Off;
+                    break;
+
+                case AccelerationState.Constant:
+                    Accelerestate = AccelerationState.Off;
+                    break;
+
+                case AccelerationState.Off:
+                    ProcessDeceleration(direction);
+                    break;
+
+                case AccelerationState.Maxed:
+                    Accelerestate = AccelerationState.Off;
+                    break;
             }
         }
 
-
-        public float ApplyGravity(float dt)
+        public void ProcessAcceleration(int direction)
         {
-            //if (Game.CurrentPlayingState == DeimosGame.PlayingStates.NoClip)
-            //{
-            //    return 0;
-            //}
-
-            float y = (InitialVelocity * CurrentTime) - 0.8f * (GravityCoef * (float)Math.Pow(CurrentTime, 2));
-            if (y <= 0 && CurrentTime != 0)
+            switch (direction)
             {
-                State = PhysicalState.Falling;
-            }
+                case 0:
+                    {
+                        if (Game.ThisPlayer.Acceleration.Z < 1)
+                        { Game.ThisPlayer.Acceleration.Z += dv; }
+                        else
+                        { Game.ThisPlayer.Acceleration.Z = 1; }
+                    }
+                    break;
 
-            CurrentTime += dt;
-            return y;
+                case 1:
+                    {
+                        if (Game.ThisPlayer.Acceleration.Z > -1)
+                        { Game.ThisPlayer.Acceleration.Z -= dv; }
+                        else
+                        { Game.ThisPlayer.Acceleration.Z = -1; }
+                    }
+                    break;
+
+                case 2:
+                    {
+                        if (Game.ThisPlayer.Acceleration.X < 1)
+                        { Game.ThisPlayer.Acceleration.X += dv; }
+                        else
+                        { Game.ThisPlayer.Acceleration.X = 1; }
+                    }
+                    break;
+
+                case 3:
+                    {
+                        if (Game.ThisPlayer.Acceleration.X > -1)
+                        { Game.ThisPlayer.Acceleration.X -= dv; }
+                        else
+                        { Game.ThisPlayer.Acceleration.X = -1; }
+                    }
+                    break;
+            }
+        }
+
+        public void ProcessDeceleration(int direction)
+        {
+            switch (direction)
+            {
+                case 0:
+                    {
+                        if (Game.ThisPlayer.Acceleration.Z > 0)
+                        {
+                            Game.ThisPlayer.Acceleration.Z -= dv;
+                            if (Game.ThisPlayer.Acceleration.Z <= 0)
+                            {
+                                Game.ThisPlayer.Acceleration.Z = 0;
+                            }
+                        }
+                        else
+                        {
+                            Game.ThisPlayer.Acceleration.Z += dv;
+                            if (Game.ThisPlayer.Acceleration.Z >= 0)
+                            {
+                                Game.ThisPlayer.Acceleration.Z = 0;
+                            }
+                        }
+
+                    }
+                    break;
+
+                case 1:
+                    {
+                        if (Game.ThisPlayer.Acceleration.X > 0)
+                        {
+                            Game.ThisPlayer.Acceleration.X -= dv;
+                            if (Game.ThisPlayer.Acceleration.X <= 0)
+                            {
+                                Game.ThisPlayer.Acceleration.X = 0;
+                            }
+                        }
+                        else
+                        {
+                            Game.ThisPlayer.Acceleration.X += dv;
+                            if (Game.ThisPlayer.Acceleration.X >= 0)
+                            {
+                                Game.ThisPlayer.Acceleration.X = 0;
+                            }
+                        }
+
+                    }
+                    break;
+            }
         }
     }
 }

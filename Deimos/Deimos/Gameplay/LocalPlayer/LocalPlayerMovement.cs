@@ -21,40 +21,46 @@ namespace Deimos
         public Vector3 GetMovementVector(float dt)
         {
             Game.ThisPlayer.ks = Keyboard.GetState();
+            Vector3 movementVector = Vector3.Zero;
 
             // Let's handle movement input
             if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Forward))
             {
-                Game.ThisPlayerPhysics.Accelerate(0);
+                Game.ThisPlayerPhysics.Accelerate();
+                movementVector += Vector3.Forward;
             }
-            else if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Backward))
+            if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Backward))
             {
-                Game.ThisPlayerPhysics.Accelerate(1);
+                Game.ThisPlayerPhysics.Accelerate();
+                movementVector += Vector3.Backward;
             }
-            else if (Game.ThisPlayer.Acceleration.Z != 0)
+            if (Game.ThisPlayer.Acceleration.Z != 0)
             {
-                Game.ThisPlayerPhysics.Decelerate(0);
+                //Game.ThisPlayerPhysics.Decelerate();
             }
 
             if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Left))
             {
-                Game.ThisPlayerPhysics.Accelerate(2);
+                Game.ThisPlayerPhysics.Accelerate();
+                movementVector += Vector3.Left;
             }
-            else if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Right))
+            if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Right))
             {
-                Game.ThisPlayerPhysics.Accelerate(3);
+                Game.ThisPlayerPhysics.Accelerate();
+                movementVector += Vector3.Right;
             }
-            else if (Game.ThisPlayer.Acceleration.X != 0)
+            if (Game.ThisPlayer.Acceleration.X != 0)
             {
-                Game.ThisPlayerPhysics.Decelerate(1);
+                //Game.ThisPlayerPhysics.Decelerate();
             }
+
+            movementVector.Normalize();
 
             //if (Game.CurrentPlayingState != DeimosGame.PlayingStates.NoClip)
             //{
             //    moveVector.Y = Game.ThisPlayerPhysics.ApplyGravity(dt);
             //}
-
-            return Game.ThisPlayer.Acceleration;
+            return movementVector * Game.ThisPlayerPhysics.dv;
         }
 
         public void GetMouseMovement(float dt)

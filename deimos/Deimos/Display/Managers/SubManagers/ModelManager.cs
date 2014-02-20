@@ -110,6 +110,16 @@ namespace Deimos
         }
 
         /// <summary>
+        /// Used to get a specific level model. DON'T use that in the scene!
+        /// </summary>
+        /// <param name="name">Level model name.</param>
+        /// <returns></returns>
+        public LevelModel GetPrivateModel(string name)
+        {
+            return LoadedPrivateModels[name];
+        }
+
+        /// <summary>
         /// Used to remove a level model from the scene.
         /// </summary>
         /// <param name="name">The name of the model to remove</param>
@@ -119,7 +129,7 @@ namespace Deimos
         }
 
         /// <summary>
-        /// Used to remove a level model from the scene.
+        /// Used to remove a private model from the game. DON'T use that in the scene!
         /// </summary>
         /// <param name="name">The name of the model to remove</param>
         public void RemovePrivateModel(string name)
@@ -184,34 +194,37 @@ namespace Deimos
             game.GraphicsDevice.RasterizerState = RasterizerState.CullCounterClockwise;
             game.GraphicsDevice.BlendState = BlendState.Opaque;
 
+            IterateModels(game, camera, LoadedLevelModels);
+            IterateModels(game, camera, LoadedPrivateModels);
+        }
 
-            if (LoadedLevelModels.Count > 0)
+        public void IterateModels(Game game, Camera camera, 
+            Dictionary<string, LevelModel> models)
+        {
+            foreach (KeyValuePair<string, LevelModel> thisLevelModel in
+                    models)
             {
-                foreach (KeyValuePair<string, LevelModel> thisLevelModel in
-                    LoadedLevelModels)
+                // Loading the model
+                LevelModel levelModel = thisLevelModel.Value;
+
+                Matrix[] transforms = new Matrix[levelModel.CollisionModel.model.Bones.Count];
+                levelModel.CollisionModel.model.CopyAbsoluteBoneTransformsTo(transforms);
+
+                foreach (ModelMesh mesh in levelModel.CollisionModel.model.Meshes)
                 {
-                    // Loading the model
-                    LevelModel levelModel = thisLevelModel.Value;
+                    Matrix meshPosition = transforms[mesh.ParentBone.Index];
+                    Matrix meshWorld = meshPosition * thisLevelModel.Value.WorldMatrix;
 
-                    Matrix[] transforms = new Matrix[levelModel.CollisionModel.model.Bones.Count];
-                    levelModel.CollisionModel.model.CopyAbsoluteBoneTransformsTo(transforms);
-
-                    foreach (ModelMesh mesh in levelModel.CollisionModel.model.Meshes)
+                    foreach (Effect effect in mesh.Effects)
                     {
-                        Matrix meshPosition = transforms[mesh.ParentBone.Index];
-                        Matrix meshWorld = meshPosition * thisLevelModel.Value.WorldMatrix;
-
-                        foreach (Effect effect in mesh.Effects)
-                        {
-                            effect.Parameters["World"]
-                                .SetValue(meshWorld);
-                            effect.Parameters["View"]
-                                .SetValue(camera.View);
-                            effect.Parameters["Projection"]
-                                .SetValue(camera.Projection);
-                        }
-                        mesh.Draw();
+                        effect.Parameters["World"]
+                            .SetValue(meshWorld);
+                        effect.Parameters["View"]
+                            .SetValue(camera.View);
+                        effect.Parameters["Projection"]
+                            .SetValue(camera.Projection);
                     }
+                    mesh.Draw();
                 }
             }
         }

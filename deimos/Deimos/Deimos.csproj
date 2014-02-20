@@ -135,6 +135,7 @@
     <Compile Include="Display\Managers\MenuManager.cs" />
     <Compile Include="Display\Managers\ResourceManager.cs" />
     <Compile Include="Display\Managers\WeaponManager.cs" />
+    <Compile Include="Facades\General.cs" />
     <Compile Include="Gameplay\LocalPlayer\LocalPlayerActions.cs" />
     <Compile Include="Gameplay\LocalPlayer\LocalPlayerMovement.cs" />
     <Compile Include="Gameplay\LocalPlayer\LocalPlayerCombat.cs" />
@@ -216,7 +217,6 @@
     <None Include="Deimos_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Facades\" />
     <Folder Include="Gameplay\Menus\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

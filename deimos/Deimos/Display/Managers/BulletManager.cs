@@ -13,7 +13,7 @@ namespace Deimos
         DeimosGame Game;
 
         // the tab of bullets that calls functions for them
-        private List<Bullet> BulletTab = new List<Bullet>(); 
+        private Dictionary<string, Bullet> BulletTab = new Dictionary<string, Bullet>();
 
         // Constructor
         public BulletManager(DeimosGame game)
@@ -27,16 +27,18 @@ namespace Deimos
         /// </summary>
         public void SpawnBullet()
         {
-            Bullet FiredBullet = new Bullet(Game, Game.ThisPlayer.Position, Game.Camera.ViewVector);
-            BulletTab.Add(FiredBullet);
+            Vector3 bulletPosition = Game.ThisPlayer.Position - Game.Camera.ViewVector * 10;
+            Bullet FiredBullet = new Bullet(Game, bulletPosition, - Game.Camera.ViewVector);
+            string id = "Bullet" + General.Uniqid();
+            BulletTab.Add(id, FiredBullet);
 
             Game.SceneManager.ModelManager.LoadPrivateModel(
-                "Bullet" + BulletTab.FindIndex(delegate(Bullet bullet) { return bullet == FiredBullet; }).ToString(),
+                id,
                 "Models/Weapons/PP19/PP19Model", // Model
-                 new Vector3(10, 0, 0), // Location
-                 Vector3.Zero,
+                 bulletPosition, // Location
+                 Game.ThisPlayer.Rotation,
                  0.1f,
-                 LevelModel.CollisionType.Accurate
+                 LevelModel.CollisionType.None
             );
         }
 
@@ -44,33 +46,35 @@ namespace Deimos
         /// Destroys the corresponding bullet
         /// </summary>
         /// <param name="bullet"></param>
-        private void DestroyBullet(Bullet bullet)
+        private void DestroyBullet(string key)
         {
-            Game.SceneManager.ModelManager.RemoveLevelModel(
-                "Bullet" + BulletTab.FindIndex(delegate(Bullet b) { return b == bullet; }).ToString()
+            Game.SceneManager.ModelManager.RemovePrivateModel(
+                key
             );
-            BulletTab.Remove(bullet);
+            BulletTab.Remove(key);
         }
 
         /// <summary>
         /// Propagate our bullets, with its direction.
         /// </summary>
         /// <param name="dt"></param>
-        public void Propagate(Bullet bullet, float dt)
+        public void Propagate(string key, Bullet bullet, float dt)
         {
             bullet.Position += bullet.Direction * bullet.speed * dt;
+            Game.SceneManager.ModelManager.GetPrivateModel(key).Position = 
+                bullet.Position;
         }
 
         /// <summary>
         /// Updates the age of the bullets and if they are too old, destroy them.
         /// </summary>
         /// <param name="dt"></param>
-        public void Age(Bullet bullet, float dt)
+        public void Age(string key, Bullet bullet, float dt)
         {
             bullet.lifeSpan -= dt;
             if (bullet.lifeSpan <= 0)
             {
-                DestroyBullet(bullet);
+                DestroyBullet(key);
             }
         }
 
@@ -87,11 +91,18 @@ namespace Deimos
         {
             float dt = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
 
-            for (int i = 0; i < BulletTab.Count; i++)
+            // We can't iterate through the dictionnary and edit it at the same
+            // time: this is why we need to store the keys in another list.
+            List<string> BulletTabKeys = new List<string>();
+            foreach (string key in BulletTab.Keys)
             {
-                Bullet bullet = BulletTab[i];
-                Propagate(bullet, dt);
-                Age(bullet, dt);
+                BulletTabKeys.Add(key);
+            }
+            foreach (string key in BulletTabKeys)
+            {
+                Bullet bullet = BulletTab[key];
+                Propagate(key, bullet, dt);
+                Age(key, bullet, dt);
             }
         }
     }

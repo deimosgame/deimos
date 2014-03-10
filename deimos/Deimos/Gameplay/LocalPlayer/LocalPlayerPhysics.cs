@@ -35,28 +35,16 @@ namespace Deimos
 
         public PhysicalState GravityState = PhysicalState.Walking;
         public AccelerationState Accelerestate = AccelerationState.Still;
-        public float dv = 0.15f;
-        private float tempDv = 0;
-        private float TempDv
-        {
-            get
-            {
-                return tempDv;
-            }
-            set
-            {
-                tempDv = Math.Max(0, Math.Min(value, 1));
-            }
-        }
+        public float dv = 0.05f;
         private Vector3 acceleration;
         private Vector3 Acceleration
         {
             get { return acceleration; }
             set
             {
-                acceleration.X = Math.Max(-1, Math.Min(value.X, 1));
-                acceleration.Y = Math.Max(-1, Math.Min(value.Y, 1));
-                acceleration.Z = Math.Max(-1, Math.Min(value.Z, 1));
+                acceleration.X = Math.Max(-GetMaxHorizAcceleration(), Math.Min(value.X, GetMaxHorizAcceleration()));
+                acceleration.Y = Math.Max(-GetMaxHorizAcceleration(), Math.Min(value.Y, GetMaxHorizAcceleration()));
+                acceleration.Z = Math.Max(-GetMaxHorizAcceleration(), Math.Min(value.Z, GetMaxHorizAcceleration()));
             }
         }
 
@@ -177,6 +165,27 @@ namespace Deimos
         public Vector3 GetAcceleration()
         {
             return Acceleration;
+        }
+
+        private float GetMaxHorizAcceleration()
+        {
+            switch (Game.ThisPlayer.CurrentSpeedState)
+            {
+                case Player.SpeedState.Running:
+                    return 1f;
+
+                case Player.SpeedState.Sprinting:
+                    return 1.5f;
+
+                case Player.SpeedState.Walking:
+                    return 0.5f;
+
+                case Player.SpeedState.Crouching:
+                    return 0.3f;
+
+                default:
+                    return 1f;
+            }
         }
     }
 }

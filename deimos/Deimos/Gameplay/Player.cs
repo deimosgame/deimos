@@ -91,11 +91,7 @@ namespace Deimos
             }
         }
 
-        public float WalkSpeed = 10f;
-        public float RunSpeed = 30f;
-        public float SprintSpeed = 60f;
-
-        public float Speed;
+        public float Speed = 50f;
 
         public int Score = 0;
 

@@ -21,7 +21,7 @@ namespace Deimos
             switch (Game.ThisPlayer.CurrentSpeedState)
             {
                 case LocalPlayer.SpeedState.Running:
-                    Game.ThisPlayer.Speed = Game.ThisPlayer.RunSpeed;
+                    //Game.ThisPlayer.Speed = Game.ThisPlayer.RunSpeed;
                     break;
 
                 case LocalPlayer.SpeedState.Sprinting:
@@ -29,12 +29,12 @@ namespace Deimos
                     {
                         if (Game.ThisPlayer.SprintTimer < Game.ThisPlayer.MaxSprintTime)
                         {
-                            Game.ThisPlayer.Speed = Game.ThisPlayer.SprintSpeed;
+                            //Game.ThisPlayer.Speed = Game.ThisPlayer.SprintSpeed;
                         }
                         else
                         {
                             Game.ThisPlayer.CurrentSpeedState = LocalPlayer.SpeedState.Running;
-                            Game.ThisPlayer.Speed = Game.ThisPlayer.RunSpeed;
+                            //Game.ThisPlayer.Speed = Game.ThisPlayer.RunSpeed;
                             Game.ThisPlayer.SprintTimer = 0f;
                             Game.ThisPlayer.CooldownTimer = 0f;
                         }
@@ -42,12 +42,12 @@ namespace Deimos
                     else
                     {
                         Game.ThisPlayer.CurrentSpeedState = LocalPlayer.SpeedState.Running;
-                        Game.ThisPlayer.Speed = Game.ThisPlayer.RunSpeed;
+                        //Game.ThisPlayer.Speed = Game.ThisPlayer.RunSpeed;
                     }
                     break;
 
                 case LocalPlayer.SpeedState.Walking:
-                    Game.ThisPlayer.Speed = Game.ThisPlayer.WalkSpeed;
+                    //Game.ThisPlayer.Speed = Game.ThisPlayer.WalkSpeed;
                     break;
             }
         }

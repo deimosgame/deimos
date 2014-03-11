@@ -38,7 +38,7 @@ namespace Deimos
                  new Vector3(10, 0, 0), // Location
                  Vector3.Zero
             );
-            //SoundManager.AddSoundEffect("fire", "");
+            SoundManager.AddSoundEffect("scary", "Sounds/ScaryMusic");
         }
 
         // Initialize our lights and such
@@ -51,6 +51,7 @@ namespace Deimos
                2, // Intensity
                Color.White
             );
+            SoundManager.Play3D("scary", SceneManager.Game.ThisPlayer.Position, new Vector3(-60, 10, -30));
         }
         // Update our things at each ticks
         public override void Update()

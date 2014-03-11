@@ -353,21 +353,6 @@ namespace Deimos
 
         }
 
-        public override void Draw(GameTime gameTime)
-        {
-            SetGBuffer();
-            ClearGBuffer();
-            MainGame.SceneManager.ModelManager.DrawModels(Game, MainGame.Camera);
-            ResolveGBuffer();
-            DrawSSAO();
-            DrawLights(gameTime);
-
-            Texture2D dummyTexture = new Texture2D(GraphicsDevice, 1, 1);
-            dummyTexture.SetData(new Color[] { Color.White });
-
-            base.Draw(gameTime);
-        }
-
         private void DrawLights(GameTime gameTime)
         {
             GraphicsDevice.SetRenderTarget(LightRT);
@@ -426,6 +411,27 @@ namespace Deimos
 
             FinalCombineEffect.Techniques[0].Passes[0].Apply();
             QuadRenderer.Render(Vector2.One * -1, Vector2.One);
+        }
+
+
+        public override void Draw(GameTime gameTime)
+        {
+            if (MainGame.CurrentGameState != DeimosGame.GameStates.Playing)
+            {
+                return;
+            }
+
+            SetGBuffer();
+            ClearGBuffer();
+            MainGame.SceneManager.ModelManager.DrawModels(Game, MainGame.Camera);
+            ResolveGBuffer();
+            DrawSSAO();
+            DrawLights(gameTime);
+
+            Texture2D dummyTexture = new Texture2D(GraphicsDevice, 1, 1);
+            dummyTexture.SetData(new Color[] { Color.White });
+
+            base.Draw(gameTime);
         }
 
         /// <summary>

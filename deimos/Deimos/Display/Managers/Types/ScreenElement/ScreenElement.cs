@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,12 +8,7 @@ namespace Deimos
 {
     abstract class ScreenElement
     {
-        public int PosX
-        {
-            get;
-            protected set;
-        }
-        public int PosY
+        public Vector2 Pos
         {
             get;
             protected set;

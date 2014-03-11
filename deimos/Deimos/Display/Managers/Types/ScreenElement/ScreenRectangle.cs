@@ -27,8 +27,7 @@ namespace Deimos
         public ScreenRectangle(int posX, int posY, int zIndex, 
             int width, int height, Color color)
         {
-            PosX = posX;
-            PosY = posY;
+            Pos = new Vector2(posX, posY);
             ZIndex = zIndex;
             Width = width;
             Height = height;

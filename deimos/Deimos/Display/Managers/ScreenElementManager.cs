@@ -50,7 +50,18 @@ namespace Deimos
             int zIndex, Texture2D image)
         {
             ScreenImage element =
-                new ScreenImage(posX, posY, scale, zIndex, image);
+                new ScreenImage(posX, posY, scale, scale, zIndex, image);
+            ElementsImage.Add(
+                name,
+                element
+            );
+            return element;
+        }
+        public ScreenImage AddImage(string name, int posX, int posY, float scaleX,
+           float scaleY, int zIndex, Texture2D image)
+        {
+            ScreenImage element =
+                new ScreenImage(posX, posY, scaleX, scaleY, zIndex, image);
             ElementsImage.Add(
                 name,
                 element
@@ -86,8 +97,8 @@ namespace Deimos
             {
                 ScreenRectangle thisRectangle = thisElement.Value;
                 Rectangle rectangle = new Rectangle(
-                    thisRectangle.PosX,
-                    thisRectangle.PosY,
+                    (int)thisRectangle.Pos.X,
+                    (int)thisRectangle.Pos.Y,
                     thisRectangle.Width,
                     thisRectangle.Height
                 );
@@ -97,8 +108,8 @@ namespace Deimos
             {
                 ScreenImage thisRectangle = thisElement.Value;
                 Rectangle rectangle = new Rectangle(
-                    thisRectangle.PosX,
-                    thisRectangle.PosY,
+                    (int)thisRectangle.Pos.X,
+                    (int)thisRectangle.Pos.Y,
                     thisRectangle.Image.Width,
                     thisRectangle.Image.Height
                 );
@@ -151,7 +162,7 @@ namespace Deimos
                 }
                 spriteBatch.Draw(
                     DummyTexture,
-                    new Rectangle(element.PosX, element.PosY, element.Height, element.Width), element.Color
+                    new Rectangle((int)element.Pos.X, (int)element.Pos.Y, element.Height, element.Width), element.Color
                 );
             }
             foreach (KeyValuePair<string, ScreenImage> elementKeyVal in
@@ -164,12 +175,12 @@ namespace Deimos
                 }
                 spriteBatch.Draw(
                     element.Image,
-                    new Vector2(element.PosX, element.PosY),
+                    element.Pos,
                     null,
                     Color.White,
-                    0f,
+                    0,
                     Vector2.Zero,
-                    element.Scale,
+                    new Vector2(element.ScaleX, element.ScaleY),
                     SpriteEffects.None,
                     0f
                 );
@@ -185,7 +196,7 @@ namespace Deimos
                 spriteBatch.DrawString(
                     element.Font,
                     element.Text,
-                    new Vector2(element.PosX, element.PosY),
+                    element.Pos,
                     element.Color
                 );
             }

@@ -165,6 +165,9 @@
     <Compile Include="Gameplay\Scenes\Template\SceneTemplate.cs" />
     <Compile Include="Gameplay\Weapons\Weapon.cs" />
     <Compile Include="Gameplay\Weapons\WeaponsList.cs" />
+    <Compile Include="Sounds\SongObject.cs" />
+    <Compile Include="Sounds\SoundEffectObject.cs" />
+    <Compile Include="Sounds\SoundManager.cs" />
     <Compile Include="Tools\DebugScreen.cs" />
     <Compile Include="MISC\Floor.cs" />
     <Compile Include="Display\Managers\SubManagers\ModelManager.cs" />

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,23 +9,16 @@ namespace Deimos
 {
     class ScreenImage : ScreenElement
     {
-        public Texture2D Image
-        {
-            get;
-            private set;
-        }
-        public float Scale
-        {
-            get;
-            private set;
-        }
+        public Texture2D Image;
+        public float ScaleX;
+        public float ScaleY;
 
-        public ScreenImage(int posX, int posY, float scale, int zIndex,
+        public ScreenImage(int posX, int posY, float scaleX, float scaleY, int zIndex,
             Texture2D image)
         {
-            PosX = posX;
-            PosY = posY;
-            Scale = scale;
+            Pos = new Vector2(posX, posY);
+            ScaleX = scaleX;
+            ScaleY = scaleY;
             ZIndex = zIndex;
             Image = image;
         }

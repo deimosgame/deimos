@@ -28,8 +28,7 @@ namespace Deimos
         public ScreenText(int posX, int posY, int zIndex, 
             SpriteFont font, string text, Color color)
         {
-            PosX = posX;
-            PosY = posY;
+            Pos = new Vector2(posX, posY);
             ZIndex = zIndex;
             Font = font;
             Text = text;

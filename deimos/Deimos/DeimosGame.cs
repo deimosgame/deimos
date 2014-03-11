@@ -113,6 +113,8 @@ namespace Deimos
 
         public enum GameStates
         {
+            IntroStarting,
+            Intro,
             StartMenu,
             Pause,
             GraphicOptions,
@@ -127,7 +129,7 @@ namespace Deimos
 
 
 
-        GameStates currentGameState = GameStates.Playing;
+        GameStates currentGameState = GameStates.IntroStarting;
         public GameStates CurrentGameState
         {
             get { return currentGameState; }
@@ -141,17 +143,19 @@ namespace Deimos
             private set { currentPlayingState = value; }
         }
 
+        private VideoPlayer VideoPlayer;
+        private Video IntroVideo;
 
 
         public DeimosGame()
         {
-            ThisPlayer = new LocalPlayer(this);
-            ThisPlayerPhysics = new LocalPlayerPhysics(this);
-            ThisPlayerDisplay = new LocalPlayerDisplay(this);
+            
 
             TempContent = new ContentManager(Services);
 
             Graphics = new GraphicsDeviceManager(this);
+
+            VideoPlayer = new VideoPlayer();
 
 
             Content.RootDirectory = "Content";
@@ -160,25 +164,12 @@ namespace Deimos
             Renderer = new DeferredRenderer(this);
             Components.Add(renderer);
 
-            SceneManager = new SceneManager(this, TempContent);
 
             Config = new Config();
-
-            Weapons = new WeaponsList(this);
-            BulletManager = new BulletManager(this);
         }
 
         protected override void Initialize()
         {
-            Weapons.Initialise();
-
-            Camera = new Camera(
-                this,
-                new Vector3(0f, 9f,20f),
-                Vector3.Zero
-            );
-
-            ThisPlayer.PlayerSpawn(new Vector3(-45f, 11f, -8f), Vector3.Zero);
 
             IsMouseVisible = false;
 
@@ -200,15 +191,13 @@ namespace Deimos
 
         protected override void LoadContent()
         {
-            SceneManager.SetScene<SceneDeimos>();
+            IntroVideo = Content.Load<Video>("Videos/Intro");
 
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 
             ScreenElementManager = new ScreenElementManager(this);
 
             DebugScreen = new DebugScreen(this);
-
-            ThisPlayer.InitializeInventory();
         }
 
          
@@ -223,6 +212,14 @@ namespace Deimos
             // Allows the game to exit
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
+
+            if (CurrentGameState == GameStates.IntroStarting &&
+                VideoPlayer.State == MediaState.Stopped)
+            {
+                VideoPlayer.Play(IntroVideo);
+                CurrentGameState = GameStates.Intro;
+                screenElementManager.AddImage("Intro", 0, 0, 1, 1, 1, null);
+            }
 
             // Testing purposes: switching clip/noclip
             if (Keyboard.GetState().IsKeyDown(Keys.N))
@@ -287,8 +284,65 @@ namespace Deimos
             GraphicsDevice.Clear(Color.Black);
             base.Draw(gameTime);
 
+            if (CurrentGameState == GameStates.Intro)
+            {
+                Texture2D videoTexture = null;
+                if (VideoPlayer.State != MediaState.Stopped)
+                {
+                    videoTexture = VideoPlayer.GetTexture();
+                }
+
+                // Draw the video, if we have a texture to draw.
+                if (videoTexture != null)
+                {
+                    ScreenImage sImage = screenElementManager.GetImage("Intro");
+                    sImage.Image = videoTexture;
+                    float height = GraphicsDevice.Viewport.Height;
+                    float width = GraphicsDevice.Viewport.Width;
+                    float vHeight = videoTexture.Height;
+                    float vWidth = videoTexture.Width;
+                    sImage.ScaleX = width / vWidth;
+                    sImage.ScaleY = height / vHeight;
+                }
+                else
+                {
+                    CurrentGameState = GameStates.Playing;
+                    VideoPlayer.Dispose();
+                    screenElementManager.GetImage("Intro").Show = false;
+
+                    InitGameplay();
+                }
+            }
+
             DebugScreen.Draw(gameTime);
             ScreenElementManager.DrawElements(SpriteBatch);
+        }
+
+        private void InitGameplay()
+        {
+
+
+            ThisPlayer = new LocalPlayer(this);
+            ThisPlayerPhysics = new LocalPlayerPhysics(this);
+            ThisPlayerDisplay = new LocalPlayerDisplay(this);
+
+            SceneManager = new SceneManager(this, TempContent);
+            SceneManager.SetScene<SceneDeimos>();
+
+            Weapons = new WeaponsList(this);
+            BulletManager = new BulletManager(this);
+
+            Weapons.Initialise();
+            ThisPlayer.InitializeInventory();
+
+
+            Camera = new Camera(
+                this,
+                new Vector3(0f, 9f, 20f),
+                Vector3.Zero
+            );
+
+            ThisPlayer.PlayerSpawn(new Vector3(-45f, 11f, -8f), Vector3.Zero);
         }
     }
 }

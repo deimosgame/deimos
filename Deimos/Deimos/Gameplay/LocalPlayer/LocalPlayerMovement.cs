@@ -175,8 +175,11 @@ namespace Deimos
                 {
                     if (Game.ThisPlayerPhysics.GravityState == LocalPlayerPhysics.PhysicalState.Falling)
                     {
-                        movement.Y = 0;
-                        Game.ThisPlayer.Position.Y = GetNearFloor(Game.ThisPlayer.Position + new Vector3(movement.X, 2, movement.Z), 0.1f);
+                        movement.Y = -GetNearFloorDistance(Game.ThisPlayer.Position + new Vector3(movement.X, 0, movement.Z), 0.1f);
+                        if (movement.Y > 0)
+                        {
+                            movement.Y = 0;
+                        }
                     }
                     // Hit floor or ceiling
                     Game.ThisPlayerPhysics.StabilizeGravity();

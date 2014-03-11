@@ -25,11 +25,11 @@ namespace Deimos
             set { spriteBatch = value; }
         }
 
-        ContentManager ModelsContent;
+        ContentManager tempContent;
         public ContentManager TempContent
         {
-            get { return ModelsContent; }
-            private set { ModelsContent = value; }
+            get { return tempContent; }
+            private set { tempContent = value; }
         }
 
         Camera camera;

@@ -30,6 +30,12 @@ namespace Deimos
             private set;
         }
 
+        internal SoundManager SoundManager
+        {
+            get;
+            private set;
+        }
+
         internal LocalPlayerCollision Collision
         {
             get;
@@ -64,11 +70,13 @@ namespace Deimos
             ResourceManager = null;
             ModelManager = null;
             LightManager = null;
+            SoundManager = null;
             Collision    = null;
 
             ResourceManager = new ResourceManager(Content);
             ModelManager = new ModelManager(Game);
             LightManager = new LightManager();
+            SoundManager = new SoundManager(Content);
 
             CurrentScene = (SceneTemplate)Activator.CreateInstance(typeof(T), new object[] { this });
 

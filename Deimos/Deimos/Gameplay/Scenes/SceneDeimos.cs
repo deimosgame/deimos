@@ -11,6 +11,7 @@ namespace Deimos
         SceneManager SceneManager;
         ModelManager ModelManager;
         LightManager LightManager;
+        SoundManager SoundManager;
 
         // Constructor
         public SceneDeimos(SceneManager sceneManager)
@@ -19,6 +20,7 @@ namespace Deimos
             SceneManager = sceneManager;
             ModelManager = SceneManager.ModelManager;
             LightManager = SceneManager.LightManager;
+            SoundManager = SceneManager.SoundManager;
         }
 
         // Destructor
@@ -36,6 +38,7 @@ namespace Deimos
                  new Vector3(10, 0, 0), // Location
                  Vector3.Zero
             );
+            //SoundManager.AddSoundEffect("fire", "");
         }
 
         // Initialize our lights and such

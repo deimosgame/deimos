@@ -255,6 +255,8 @@ namespace Deimos
 
             if (GravityState == PhysicalState.Jumping)
             {
+                vi = 0;
+                t = 0;
                 GravityState = PhysicalState.Falling;
             }
         }

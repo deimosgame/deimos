@@ -261,7 +261,7 @@ namespace Deimos
 
         public void Jump()
         {
-            vi = 4f;
+            vi = 8f;
             t = 0f;
             GravityState = PhysicalState.Jumping;
 

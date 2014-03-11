@@ -173,16 +173,20 @@ namespace Deimos
             {
                 if (Game.SceneManager.Collision.CheckCollision(Game.ThisPlayer.Position + movementGravity))
                 {
+                    if (Game.ThisPlayerPhysics.GravityState == LocalPlayerPhysics.PhysicalState.Falling)
+                    {
+                        movement.Y = 0;
+                        Game.ThisPlayer.Position.Y = GetNearFloor(Game.ThisPlayer.Position + new Vector3(movement.X, 2, movement.Z), 0.1f);
+                    }
                     // Hit floor or ceiling
                     Game.ThisPlayerPhysics.StabilizeGravity();
                     //Game.ThisPlayerPhysics.Reset(LocalPlayerPhysics.AccelerationDirection.Y);
-                    movement.Y = 0;
                 }
                 else if (Game.ThisPlayerPhysics.GravityState == LocalPlayerPhysics.PhysicalState.Walking &&
                     !Game.SceneManager.Collision.CheckCollision(
                         Game.ThisPlayer.Position + new Vector3(movement.X, 2, movement.Z)))
                 {
-                    movement.Y = 2f;
+                    movement.Y = GetNearFloorDistance(Game.ThisPlayer.Position + new Vector3(movement.X, 2, movement.Z), 0.1f);
                 }
                 // Creating the new movement vector, which will make us 
                 // able to have a smooth collision: being able to "slide" on 
@@ -223,6 +227,21 @@ namespace Deimos
             //if (Acceleration != Vector3.Zero) Acceleration.Normalize();
             MoveVector = Acceleration * dt * Game.ThisPlayer.Speed;
             Move(MoveVector, dt);
+        }
+
+        private float GetNearFloor(Vector3 pos, float increment)
+        {
+            while (!Game.SceneManager.Collision.CheckCollision(pos))
+            {
+                pos.Y -= increment;
+            }
+            return pos.Y + increment;
+        }
+
+        private float GetNearFloorDistance(Vector3 pos, float increment)
+        {
+            float x = GetNearFloor(pos, increment);
+            return pos.Y - x;
         }
 
     }

@@ -33,17 +33,21 @@ namespace Deimos
             Maxed
         }
 
-        public PhysicalState GravityState = PhysicalState.Walking;
+        public PhysicalState GravityState = PhysicalState.Falling;
+        public float t = 0f;
+        public float c_gravity = 9.8f;
+        public float vi;
+
         public AccelerationState Accelerestate = AccelerationState.Still;
-        public float dv = 0.05f;
+        public Vector3 dv = new Vector3(0.3f, 0.1f, 0.1f);
         private Vector3 acceleration;
-        private Vector3 Acceleration
+        public Vector3 Acceleration
         {
             get { return acceleration; }
             set
             {
                 acceleration.X = Math.Max(-GetMaxHorizAcceleration(), Math.Min(value.X, GetMaxHorizAcceleration()));
-                acceleration.Y = Math.Max(-GetMaxHorizAcceleration(), Math.Min(value.Y, GetMaxHorizAcceleration()));
+                acceleration.Y = Math.Max(-GetMaxVertAcceleration(), Math.Min(value.Y, GetMaxVertAcceleration()));
                 acceleration.Z = Math.Max(-GetMaxHorizAcceleration(), Math.Min(value.Z, GetMaxHorizAcceleration()));
             }
         }
@@ -55,6 +59,12 @@ namespace Deimos
         }
 
         // Methods
+        public Vector3 GetAcceleration()
+        {
+            return Acceleration;
+        }
+
+        // MOVEMENT RELATED
         public void Accelerate(AccelerationDirection dir)
         {
             if (Accelerestate == AccelerationState.Still
@@ -65,13 +75,21 @@ namespace Deimos
             switch(dir)
             {
                 case AccelerationDirection.X:
-                    Acceleration += new Vector3(dv, 0, 0);
+                    Acceleration += new Vector3(dv.X, 0, 0);
                     break;
                 case AccelerationDirection.Y:
-                    Acceleration += new Vector3(0, dv, 0);
+                    Acceleration += new Vector3(0, 1f, 0);
                     break;
                 case AccelerationDirection.Z:
-                    Acceleration += new Vector3(0, 0, dv);
+                    if (acceleration.Z < GetMaxHorizAcceleration())
+                    {
+                        Acceleration += new Vector3(0, 0, dv.Z);
+
+                        if (acceleration.Z > GetMaxHorizAcceleration())
+                        {
+                            acceleration.Z = 1f;
+                        }
+                    }
                     break;
             }
         }
@@ -87,13 +105,13 @@ namespace Deimos
             switch (dir)
             {
                 case AccelerationDirection.X:
-                    Acceleration -= new Vector3(dv, 0, 0);
+                    Acceleration -= new Vector3(dv.X, 0, 0);
                     break;
                 case AccelerationDirection.Y:
-                    Acceleration -= new Vector3(0, dv, 0);
+                    Acceleration -= new Vector3(0, dv.Y, 0);
                     break;
                 case AccelerationDirection.Z:
-                    Acceleration -= new Vector3(0, 0, dv);
+                    Acceleration -= new Vector3(0, 0, dv.Z);
                     break;
             }
         }
@@ -162,29 +180,97 @@ namespace Deimos
             }
         }
 
-        public Vector3 GetAcceleration()
-        {
-            return Acceleration;
-        }
-
         private float GetMaxHorizAcceleration()
         {
+            float primal_speed;
+
             switch (Game.ThisPlayer.CurrentSpeedState)
             {
                 case Player.SpeedState.Running:
-                    return 1f;
+                    primal_speed = 1f;
+                    break;
 
                 case Player.SpeedState.Sprinting:
-                    return 1.5f;
+                    primal_speed = 1.5f;
+                    break;
 
                 case Player.SpeedState.Walking:
-                    return 0.5f;
+                    primal_speed = 0.5f;
+                    break;
 
                 case Player.SpeedState.Crouching:
-                    return 0.3f;
+                    primal_speed = 0.3f;
+                    break;
 
                 default:
+                    primal_speed = 1f;
+                    break;
+            }
+
+            return primal_speed;
+        }
+
+        // GRAVITY RELATED
+        private float GetMaxVertAcceleration()
+        {
+            switch (GravityState)
+            {
+                case PhysicalState.Walking:
+                    return 0f;
+
+                case PhysicalState.Jumping:
                     return 1f;
+
+                case PhysicalState.Falling:
+                    return 1f;
+
+                default:
+                    return 0f;
+            }
+        }
+
+        public void ApplyGravity(float dt)
+        {
+            float vy = (vi * t) - ((float)Math.Pow(t, 2) * c_gravity);
+            acceleration.Y = vy;
+            
+            if (vy < 0f)
+            { 
+                GravityState = PhysicalState.Falling;
+            }
+
+            t += dt;
+        }
+
+        public void StabilizeGravity()
+        {
+            if (GravityState == PhysicalState.Falling)
+            {
+                t = 0;
+                vi = 0;
+                GravityState = PhysicalState.Walking;
+                acceleration.Y = 0f;
+                Reset(AccelerationDirection.Z);
+            }
+
+            if (GravityState == PhysicalState.Jumping)
+            {
+                GravityState = PhysicalState.Falling;
+            }
+        }
+
+        public void Jump()
+        {
+            vi = 4f;
+            t = 0f;
+            GravityState = PhysicalState.Jumping;
+
+
+            if (acceleration.Z > 0)
+            {
+                Accelerestate = AccelerationState.Maxed;
+                acceleration.Z += dv.Z;
+                
             }
         }
     }

@@ -15,7 +15,7 @@ namespace Deimos
         // Constructor
         public SceneDeimos(SceneManager sceneManager)
         {
-            PlayerSize = new Vector3(15f, 1f, 1f);
+            PlayerSize = new Vector3(20, 0.2f, 0.2f);
             SceneManager = sceneManager;
             ModelManager = SceneManager.ModelManager;
             LightManager = SceneManager.LightManager;

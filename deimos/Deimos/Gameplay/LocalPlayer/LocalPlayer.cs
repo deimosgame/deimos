@@ -25,6 +25,8 @@ namespace Deimos
         LocalPlayerMovement PlayerMovement;
         LocalPlayerCombat PlayerCombat;
 
+        public float dt;
+
         public LocalPlayer(DeimosGame game)
         {
             Game = game;
@@ -100,13 +102,13 @@ namespace Deimos
         
         public void HandleInput(GameTime gameTime)
         {
-            float dt = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
+            dt = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
 
             PlayerMovement.HandleMovement(dt);
             PlayerActions.HandleActions(dt);
             PlayerCombat.HandleCombat(dt);
             Stuff(dt);
-            Game.ThisPlayerDisplay.DisplayCurrentWeapon(WeaponState.AtEase);
+            Game.ThisPlayerDisplay.DisplayCurrentWeapon(Game.ThisPlayer.CurrentWeapon.State);
        }
    }
 }

@@ -201,6 +201,25 @@ namespace Deimos
                 "Acceleration:",
                 Color.Yellow
             );
+            Game.ScreenElementManager.AddText(
+                "G-Time",
+                0,
+                (int)MapHeight + 330,
+                0,
+                Font,
+                "G-Time:",
+                Color.Blue
+            );
+            Game.ScreenElementManager.AddText(
+                "InitialVelocity",
+                0,
+                (int)MapHeight + 350,
+                0,
+                Font,
+                "InitialVelocity:",
+                Color.Blue
+            );
+            
 
         }
 
@@ -209,6 +228,7 @@ namespace Deimos
             Game.ScreenElementManager.GetImage("NormalMap").Show = true;
             Game.ScreenElementManager.GetImage("DepthMap").Show = true;
             Game.ScreenElementManager.GetImage("LightMap").Show = true;
+            Game.ScreenElementManager.GetImage("SSAOMap").Show = true;
             Game.ScreenElementManager.GetText("Location").Show = true;
             Game.ScreenElementManager.GetText("FPS").Show = true;
             Game.ScreenElementManager.GetText("Ticks").Show = true;
@@ -224,12 +244,16 @@ namespace Deimos
             Game.ScreenElementManager.GetText("LifeState").Show = true;
             Game.ScreenElementManager.GetText("Health").Show = true;
             Game.ScreenElementManager.GetText("Acceleration").Show = true;
+            Game.ScreenElementManager.GetText("G-Time").Show = true;
+            Game.ScreenElementManager.GetText("InitialVelocity").Show = true;
+            Game.ScreenElementManager.GetText("DebugConsole").Show = true;
         }
         private void Hide()
         {
             Game.ScreenElementManager.GetImage("NormalMap").Show = false;
             Game.ScreenElementManager.GetImage("DepthMap").Show = false;
             Game.ScreenElementManager.GetImage("LightMap").Show = false;
+            Game.ScreenElementManager.GetImage("SSAOMap").Show = false;
             Game.ScreenElementManager.GetText("Location").Show = false;
             Game.ScreenElementManager.GetText("FPS").Show = false;
             Game.ScreenElementManager.GetText("Ticks").Show = false;
@@ -245,6 +269,9 @@ namespace Deimos
             Game.ScreenElementManager.GetText("LifeState").Show = false;
             Game.ScreenElementManager.GetText("Health").Show = false;
             Game.ScreenElementManager.GetText("Acceleration").Show = false;
+            Game.ScreenElementManager.GetText("G-Time").Show = false;
+            Game.ScreenElementManager.GetText("InitialVelocity").Show = false;
+            Game.ScreenElementManager.GetText("DebugConsole").Show = false;
         }
 
         public void Debug(string text)
@@ -339,9 +366,17 @@ namespace Deimos
             );
             Game.ScreenElementManager.GetText("Acceleration").Text = String.Format(
                 "Acceleration: x:{0}; y:{1}; z:{2}",
-                (float)Game.ThisPlayer.Acceleration.X,
-                (float)Game.ThisPlayer.Acceleration.Y,
-                (float)Game.ThisPlayer.Acceleration.Z
+                (float)Game.ThisPlayerPhysics.GetAcceleration().X,
+                (float)Game.ThisPlayerPhysics.GetAcceleration().Y,
+                (float)Game.ThisPlayerPhysics.GetAcceleration().Z
+            );
+            Game.ScreenElementManager.GetText("G-Time").Text = String.Format(
+                "G-Time: {0}",
+                Game.ThisPlayerPhysics.t
+            );
+            Game.ScreenElementManager.GetText("InitialVelocity").Text = String.Format(
+                "InitialVelocity: {0}",
+                Game.ThisPlayerPhysics.vi
             );
 
             string finalDebug = "";

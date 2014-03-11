@@ -67,13 +67,21 @@ namespace Deimos
                 Game.ThisPlayerPhysics.Reset(LocalPlayerPhysics.AccelerationDirection.X);
             }
 
+            if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Jump) &&
+                Game.ThisPlayerPhysics.GravityState == LocalPlayerPhysics.PhysicalState.Walking)
+            {
+                Game.ThisPlayerPhysics.Jump();
+            }
+
+            if (Game.CurrentPlayingState != DeimosGame.PlayingStates.NoClip)
+            {
+                Game.ThisPlayerPhysics.ApplyGravity(dt);
+                movementVector.Y = 1;
+            }
+
             LastMoveVector = movementVector;
 
-            //if (Game.CurrentPlayingState != DeimosGame.PlayingStates.NoClip)
-            //{
-            //    moveVector.Y = Game.ThisPlayerPhysics.ApplyGravity(dt);
-            //}
-            return movementVector * Game.ThisPlayerPhysics.GetAcceleration(); ;
+            return movementVector * Game.ThisPlayerPhysics.GetAcceleration();
         }
 
         public void GetMouseMovement(float dt)
@@ -166,18 +174,15 @@ namespace Deimos
                 if (Game.SceneManager.Collision.CheckCollision(Game.ThisPlayer.Position + movementGravity))
                 {
                     // Hit floor or ceiling
-                    
+                    Game.ThisPlayerPhysics.StabilizeGravity();
+                    //Game.ThisPlayerPhysics.Reset(LocalPlayerPhysics.AccelerationDirection.Y);
                     movement.Y = 0;
-                    if (!Game.ThisPlayer.ks.IsKeyDown(Game.Config.Jump))
-                    {
-                        
-                    }
                 }
                 else if (Game.ThisPlayerPhysics.GravityState == LocalPlayerPhysics.PhysicalState.Walking &&
                     !Game.SceneManager.Collision.CheckCollision(
                         Game.ThisPlayer.Position + new Vector3(movement.X, 2, movement.Z)))
                 {
-                    movement.Y = 2;
+                    movement.Y = 2f;
                 }
                 // Creating the new movement vector, which will make us 
                 // able to have a smooth collision: being able to "slide" on 

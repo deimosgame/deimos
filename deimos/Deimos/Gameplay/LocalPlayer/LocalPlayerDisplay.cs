@@ -41,26 +41,16 @@ namespace Deimos
         // To get proper weapon display, attached to player
         public void DisplayCurrentWeapon(WeaponState state)
         {
+            Vector3 Offset = Vector3.Zero;
+
             switch (state)
             {
-
                 case WeaponState.AtEase :
-                    Matrix cameraWorld = Matrix.Invert(Game.Camera.View);
-
-                    Matrix weaponWorld = cameraWorld;
-                    weapon.Position = Game.ThisPlayer.Position;
-                    weapon.WorldMatrix =
-                        Matrix.CreateScale(Game.ThisPlayer.CurrentWeapon.W_Scaling) *
-                        Matrix.CreateRotationY(Game.ThisPlayer.CurrentWeapon.W_Direct) *
-                        weaponWorld *
-                        Matrix.CreateTranslation(
-                            (cameraWorld.Forward * Game.ThisPlayer.CurrentWeapon.W_Offset.X) +
-                            (cameraWorld.Down * Game.ThisPlayer.CurrentWeapon.W_Offset.Y) +
-                            (cameraWorld.Right * Game.ThisPlayer.CurrentWeapon.W_Offset.Z)
-                        );
+                    Offset = Game.ThisPlayer.CurrentWeapon.W_Offset;
                     break;
                    
                 case WeaponState.Aiming :
+                    Offset = Vector3.Zero;
                     break;
 
                 case WeaponState.Firing :
@@ -72,6 +62,20 @@ namespace Deimos
                 case WeaponState.Switching :
                     break;
             }
+
+            Matrix cameraWorld = Matrix.Invert(Game.Camera.View);
+
+            Matrix weaponWorld = cameraWorld;
+            weapon.Position = Game.ThisPlayer.Position;
+            weapon.WorldMatrix =
+                Matrix.CreateScale(Game.ThisPlayer.CurrentWeapon.W_Scaling) *
+                Matrix.CreateRotationY(Game.ThisPlayer.CurrentWeapon.W_Direct) *
+                weaponWorld *
+                Matrix.CreateTranslation(
+                    (cameraWorld.Forward * Offset.X) +
+                    (cameraWorld.Down * Offset.Y) +
+                    (cameraWorld.Right * Offset.Z)
+                );
         }
     }
 }

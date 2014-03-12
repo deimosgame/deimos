@@ -9,7 +9,6 @@ namespace Deimos
     public class LocalPlayerActions
     {
         DeimosGame Game;
-        LocalPlayer Player;
 
         public LocalPlayerActions(DeimosGame game)
         {

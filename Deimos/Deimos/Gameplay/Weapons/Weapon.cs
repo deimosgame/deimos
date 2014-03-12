@@ -149,6 +149,8 @@ namespace Deimos
                 c_chamberAmmo--;
                 FireTimer = 0; // reset the fire timer
                 State = WeaponState.AtEase;
+
+                
             }
             else if (IsReloadable())
             {

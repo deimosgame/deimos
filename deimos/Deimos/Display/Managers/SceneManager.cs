@@ -87,6 +87,9 @@ namespace Deimos
                 Game
             );
 
+            // Let's load our default files
+            LoadDefault();
+
             // Constructor is automatically called (of the Scene)
 
             // We need to call the load method to load our models
@@ -96,9 +99,15 @@ namespace Deimos
             CurrentScene.Initialize();
         }
 
+        public void LoadDefault()
+        {
+            SoundManager.AddSoundEffect("weaponFire", "Sounds/GunFire");
+        }
+
         public void Update()
         {
             CurrentScene.Update();
+            SoundManager.Update();
         }
     }
 }

@@ -126,6 +126,7 @@ namespace Deimos
             // Putting projectile in action through Bullet Manager
             // These methods are not final at all, they WILL be changed.
             Game.BulletManager.SpawnBullet();
+            Game.SceneManager.SoundManager.Play("weaponFire");
             currentWeapon.c_chamberAmmo--;
             currentWeapon.FireTimer = 0; // reset the fire timer
             currentWeapon.State = WeaponState.AtEase;

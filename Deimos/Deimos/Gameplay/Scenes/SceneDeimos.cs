@@ -51,11 +51,13 @@ namespace Deimos
                2, // Intensity
                Color.White
             );
-            SoundManager.Play3D("scary", SceneManager.Game.ThisPlayer.Position, new Vector3(-60, 10, -30));
+            SoundManager.Play3D("scary", SceneManager.Game.ThisPlayer.Position, new Vector3(-127, 6, -64));
+            //SoundManager.Play("scary");
         }
         // Update our things at each ticks
         public override void Update()
         {
+            SoundManager.SetListener("scary", SceneManager.Game.ThisPlayer.Position);
             //SceneManager.Game.DebugScreen.Debug("debugconsole");
         }
     }

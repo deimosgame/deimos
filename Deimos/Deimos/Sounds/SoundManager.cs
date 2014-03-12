@@ -45,6 +45,15 @@ namespace Deimos
             SoundEffect[name].Play();
         }
 
+        public void SetEmiter(string name, Vector3 pos)
+        {
+            SoundEffect[name].SetEmiter(pos);
+        }
+        public void SetListener(string name, Vector3 pos)
+        {
+            SoundEffect[name].SetListener(pos);
+        }
+
 
         //SongObjects
 
@@ -93,6 +102,16 @@ namespace Deimos
         public void Previous(string name)
         {
             SongDic[name].PreviousSong();
+        }
+
+
+        // MISC
+        public void Update()
+        {
+            foreach (KeyValuePair<string, SoundEffectObject> item in SoundEffect)
+            {
+                item.Value.Update();
+            }
         }
     }
 }

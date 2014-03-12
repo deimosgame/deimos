@@ -12,10 +12,13 @@ namespace Deimos
     {
         private Dictionary<string, ScreenRectangle> ElementsRectangle =
             new Dictionary<string, ScreenRectangle>();
+        private List<string> ElementsRectangleList = new List<string>();
         private Dictionary<string, ScreenImage> ElementsImage =
             new Dictionary<string, ScreenImage>();
+        private List<string> ElementsImageList = new List<string>();
         private Dictionary<string, ScreenText> ElementsText =
             new Dictionary<string, ScreenText>();
+        private List<string> ElementsTextList = new List<string>();
 
         private Texture2D DummyTexture;
 
@@ -31,32 +34,34 @@ namespace Deimos
 
         // Methods
         public ScreenRectangle AddRectangle(string name, int posX, int posY,
-            int zIndex, int width, int height, Color color)
+            int zIndex, int width, int height, Color color,
+            Action<ScreenElement, DeimosGame> onClick)
         {
             ScreenRectangle element =
                 new ScreenRectangle(posX, posY, zIndex, width, height, color);
+            element.OnClick = onClick;
             ElementsRectangle.Add(
                 name,
                 element
             );
+            ElementsRectangleList.Add(name);
             return element;
+        }
+        public ScreenRectangle AddRectangle(string name, int posX, int posY,
+            int zIndex, int width, int height, Color color)
+        {
+            return AddRectangle(name, posX, posY, zIndex, width, height, color, null);
         }
         public ScreenRectangle GetRectangle(string name)
         {
             return ElementsRectangle[name];
         }
-
-        public ScreenImage AddImage(string name, int posX, int posY, float scale,
-            int zIndex, Texture2D image)
+        public void RemoveRectangle(string name)
         {
-            ScreenImage element =
-                new ScreenImage(posX, posY, scale, scale, zIndex, image);
-            ElementsImage.Add(
-                name,
-                element
-            );
-            return element;
+            ElementsRectangle.Remove(name);
+            ElementsRectangleList.Remove(name);
         }
+
         public ScreenImage AddImage(string name, int posX, int posY, float scaleX,
            float scaleY, int zIndex, Texture2D image)
         {
@@ -66,11 +71,23 @@ namespace Deimos
                 name,
                 element
             );
+            ElementsImageList.Add(name);
+
             return element;
+        }
+        public ScreenImage AddImage(string name, int posX, int posY, float scale,
+            int zIndex, Texture2D image)
+        {
+            return AddImage(name, posX, posY, scale, scale, zIndex, image);
         }
         public ScreenImage GetImage(string name)
         {
             return ElementsImage[name];
+        }
+        public void RemoveImage(string name)
+        {
+            ElementsImage.Remove(name);
+            ElementsImageList.Remove(name);
         }
 
         public ScreenText AddText(string name, int posX, int posY,
@@ -88,30 +105,34 @@ namespace Deimos
         {
             return ElementsText[name];
         }
+        public void RemoveText(string name)
+        {
+            ElementsText.Remove(name);
+        }
 
         public void HandleMouse()
         {
             MouseState mouseState = Mouse.GetState();
             Rectangle mouseRectangle = new Rectangle(mouseState.X, mouseState.Y, 1, 1);
-            foreach (KeyValuePair<string, ScreenRectangle> thisElement in ElementsRectangle)
+            for (int i = 0; i < ElementsRectangleList.Count; i++)
             {
-                ScreenRectangle thisRectangle = thisElement.Value;
+                ScreenRectangle thisRectangle = ElementsRectangle[ElementsRectangleList[i]];
                 Rectangle rectangle = new Rectangle(
                     (int)thisRectangle.Pos.X,
                     (int)thisRectangle.Pos.Y,
-                    thisRectangle.Width,
-                    thisRectangle.Height
+                    thisRectangle.Height,
+                    thisRectangle.Width
                 );
                 HandleEvent(thisRectangle, mouseRectangle, rectangle, mouseState);
-            } 
-            foreach (KeyValuePair<string, ScreenImage> thisElement in ElementsImage)
+            }
+            for (int i = 0; i < ElementsImageList.Count; i++)
             {
-                ScreenImage thisRectangle = thisElement.Value;
+                ScreenImage thisRectangle = ElementsImage[ElementsImageList[i]];
                 Rectangle rectangle = new Rectangle(
                     (int)thisRectangle.Pos.X,
                     (int)thisRectangle.Pos.Y,
-                    thisRectangle.Image.Width,
-                    thisRectangle.Image.Height
+                    thisRectangle.Image.Height,
+                    thisRectangle.Image.Width
                 );
                 HandleEvent(thisRectangle, mouseRectangle, rectangle, mouseState);
             }
@@ -126,7 +147,7 @@ namespace Deimos
                     el.OnHover(el, Game);
                     el.LastState = ScreenElement.ElState.Hover;
                 }
-                if (mouseState.RightButton == ButtonState.Pressed
+                if (mouseState.LeftButton == ButtonState.Pressed
                     && el.LastState != ScreenElement.ElState.Click)
                 {
                     el.OnClick(el, Game);

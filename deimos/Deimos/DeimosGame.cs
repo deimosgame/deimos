@@ -18,95 +18,88 @@ namespace Deimos
     {
         GraphicsDeviceManager Graphics;
 
-        SpriteBatch spriteBatch;
         public SpriteBatch SpriteBatch
         {
-            get { return spriteBatch; }
-            set { spriteBatch = value; }
+            get;
+            set;
         }
 
-        ContentManager tempContent;
         public ContentManager TempContent
         {
-            get { return tempContent; }
-            private set { tempContent = value; }
+            get;
+            private set;
         }
 
-        Camera camera;
         public Camera Camera
         {
-            get { return camera; }
-            private set { camera = value; }
+            get;
+            private set;
         }
 
-        DeferredRenderer renderer;
         public DeferredRenderer Renderer
         {
-            get { return renderer; }
-            private set { renderer = value; }
+            get;
+            private set;
         }
 
-        LocalPlayer thisPlayer;
         public LocalPlayer ThisPlayer
         {
-            get { return thisPlayer; }
-            set { thisPlayer = value; }
+            get;
+            set;
         }
 
-        LocalPlayerPhysics thisPlayerPhysics;
         internal LocalPlayerPhysics ThisPlayerPhysics
         {
-            get { return thisPlayerPhysics; }
-            set { thisPlayerPhysics = value; }
+            get;
+            set;
         }
 
-        LocalPlayerDisplay thisPlayerDisplay;
         internal LocalPlayerDisplay ThisPlayerDisplay
         {
-            get { return thisPlayerDisplay; }
-            set { thisPlayerDisplay = value; }
+            get;
+            set;
         }
 
-        SceneManager sceneManager;
         internal SceneManager SceneManager
         {
-            get { return sceneManager; }
-            private  set { sceneManager = value; }
+            get;
+            private set;
         }
 
-        ScreenElementManager screenElementManager;
         internal ScreenElementManager ScreenElementManager
         {
-            get { return screenElementManager; }
-            set { screenElementManager = value; }
+            get;
+            set;
         }
 
-        WeaponsList weapons;
         internal WeaponsList Weapons
         {
-            get { return weapons; }
-            set { weapons = value; }
+            get;
+            set;
         }
 
-        BulletManager bulletManager;
         internal BulletManager BulletManager
         {
-            get { return bulletManager; }
-            set { bulletManager = value; }
+            get;
+            set;
         }
 
-        DebugScreen debugScreen;
         internal DebugScreen DebugScreen
         {
-            get { return debugScreen; }
-            set { debugScreen = value; }
+            get;
+            set;
         }
 
-        Config config;
         internal Config Config
         {
-            get { return config; }
-            set { config = value; }
+            get;
+            set;
+        }
+
+        internal MenuManager MenuManager
+        {
+            get;
+            set;
         }
 
 
@@ -149,8 +142,6 @@ namespace Deimos
 
         public DeimosGame()
         {
-            
-
             TempContent = new ContentManager(Services);
 
             Graphics = new GraphicsDeviceManager(this);
@@ -162,7 +153,7 @@ namespace Deimos
             TempContent.RootDirectory = "Content";
 
             Renderer = new DeferredRenderer(this);
-            Components.Add(renderer);
+            Components.Add(Renderer);
 
 
             Config = new Config();
@@ -198,6 +189,42 @@ namespace Deimos
             ScreenElementManager = new ScreenElementManager(this);
 
             DebugScreen = new DebugScreen(this);
+
+            MenuManager = new MenuManager(this);
+
+
+            //////////////////////////////////////////////////////
+            // Menus
+            /////////////////////////////////////////////////////
+            MenuScreen StartScreen = MenuManager.Add("Start");
+            StartScreen.AddElement("Play", delegate(ScreenElement el, DeimosGame game)
+            {
+                MenuManager.Hide();
+                game.CurrentGameState = GameStates.Playing;
+                game.InitGameplay();
+            });
+            StartScreen.AddElement("Exit", delegate(ScreenElement el, DeimosGame game)
+            {
+                this.Exit();
+            });
+
+            MenuScreen PauseScreen = MenuManager.Add("Pause");
+            PauseScreen.AddElement("Resume", delegate(ScreenElement el, DeimosGame game)
+            {
+                // Making sure the mouse is in the center of the screen:
+                // We don't want to generate a movement when leaving this
+                // pause screen.
+                Mouse.SetPosition(GraphicsDevice.Viewport.Width / 2,
+                GraphicsDevice.Viewport.Height / 2);
+                MenuManager.Hide();
+                game.CurrentGameState = GameStates.Playing;
+            });
+            PauseScreen.AddElement("Exit", delegate(ScreenElement el, DeimosGame game)
+            {
+                this.Exit();
+            });
+            /////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////
         }
 
          
@@ -209,67 +236,49 @@ namespace Deimos
 
         protected override void Update(GameTime gameTime)
         {
-            // Allows the game to exit
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
-                this.Exit();
+            {
+                MenuManager.Set("Pause");
+                CurrentGameState = GameStates.Pause;
+            }
 
             if (CurrentGameState == GameStates.IntroStarting &&
                 VideoPlayer.State == MediaState.Stopped)
             {
                 VideoPlayer.Play(IntroVideo);
                 CurrentGameState = GameStates.Intro;
-                screenElementManager.AddImage("Intro", 0, 0, 1, 1, 1, null);
+                ScreenElementManager.AddImage("Intro", 0, 0, 1, 1, 1, null);
             }
 
-            // Testing purposes: switching clip/noclip
-            if (Keyboard.GetState().IsKeyDown(Keys.N))
+            switch (CurrentGameState)
             {
-                CurrentPlayingState = DeimosGame.PlayingStates.NoClip;
-            }
+                case GameStates.IntroStarting:
+                    if(VideoPlayer.State == MediaState.Stopped)
+                    {
+                        VideoPlayer.Play(IntroVideo);
+                        CurrentGameState = GameStates.Intro;
+                        ScreenElementManager.AddImage("Intro", 0, 0, 1, 1, 1, null);
+                    }
+                    break;
+                case GameStates.Intro:
+                    //
+                    break;
+                case GameStates.StartMenu:
+                case GameStates.Pause:
+                case GameStates.GraphicOptions:
+                    IsMouseVisible = true;
+                    ScreenElementManager.HandleMouse();
+                    break;
+                case GameStates.Playing:
+                default:
+                    IsMouseVisible = false;
 
-            if (Keyboard.GetState().IsKeyDown(Keys.M))
-            {
-                CurrentPlayingState = DeimosGame.PlayingStates.Normal;
-            }
+                    ThisPlayer.HandleInput(gameTime);
+                    SceneManager.Update();
+                    BulletManager.Update(gameTime);
 
-            // for testing: player death and respawning
-            if (Keyboard.GetState().IsKeyDown(Keys.J))
-            {
-                ThisPlayer.PlayerRespawn(new Vector3(-45f, 11f, -8f), Vector3.Zero);
-                CurrentPlayingState = PlayingStates.Normal;
-            }
-            
-            if (Keyboard.GetState().IsKeyDown(Keys.K))
-            {
-                ThisPlayer.PlayerKill();
-                CurrentPlayingState = PlayingStates.NoClip;
-            }
-
-            if (Keyboard.GetState().IsKeyDown(Keys.L))
-            {
-                ThisPlayer.Health--;
-
-                if (ThisPlayer.Health == 0)
-                {
-                    ThisPlayer.PlayerKill();
-                    CurrentPlayingState = PlayingStates.NoClip;
-                }
-            }
-
-            if (currentGameState == GameStates.Playing &&
-                (ThisPlayer.CurrentLifeState == Player.LifeState.Alive ||
-                CurrentPlayingState == PlayingStates.NoClip))
-            {
-                ThisPlayer.HandleInput(gameTime);
-
-                SceneManager.Update();
-                BulletManager.Update(gameTime);
-
-                this.IsMouseVisible = false;
-            }
-            else
-            {
-                this.IsMouseVisible = true;
+                    TestBindings(gameTime);
+                    break;
             }
 
             DebugScreen.Update(gameTime);
@@ -295,7 +304,7 @@ namespace Deimos
                 // Draw the video, if we have a texture to draw.
                 if (videoTexture != null)
                 {
-                    ScreenImage sImage = screenElementManager.GetImage("Intro");
+                    ScreenImage sImage = ScreenElementManager.GetImage("Intro");
                     sImage.Image = videoTexture;
                     float height = GraphicsDevice.Viewport.Height;
                     float width = GraphicsDevice.Viewport.Width;
@@ -306,11 +315,11 @@ namespace Deimos
                 }
                 else
                 {
-                    CurrentGameState = GameStates.Playing;
+                    CurrentGameState = GameStates.StartMenu;
                     VideoPlayer.Dispose();
-                    screenElementManager.GetImage("Intro").Show = false;
+                    ScreenElementManager.RemoveImage("Intro");
 
-                    InitGameplay();
+                    MenuManager.Set("Start");
                 }
             }
 
@@ -343,6 +352,44 @@ namespace Deimos
             );
 
             ThisPlayer.PlayerSpawn(new Vector3(-45f, 11f, -8f), Vector3.Zero);
+        }
+
+        private void TestBindings(GameTime gameTime)
+        {
+            // Testing purposes: switching clip/noclip
+            if (Keyboard.GetState().IsKeyDown(Keys.N))
+            {
+                CurrentPlayingState = DeimosGame.PlayingStates.NoClip;
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.M))
+            {
+                CurrentPlayingState = DeimosGame.PlayingStates.Normal;
+            }
+
+            // for testing: player death and respawning
+            if (Keyboard.GetState().IsKeyDown(Keys.J))
+            {
+                ThisPlayer.PlayerRespawn(new Vector3(-45f, 11f, -8f), Vector3.Zero);
+                CurrentPlayingState = PlayingStates.Normal;
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.K))
+            {
+                ThisPlayer.PlayerKill();
+                CurrentPlayingState = PlayingStates.NoClip;
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.L))
+            {
+                ThisPlayer.Health--;
+
+                if (ThisPlayer.Health == 0)
+                {
+                    ThisPlayer.PlayerKill();
+                    CurrentPlayingState = PlayingStates.NoClip;
+                }
+            }
         }
     }
 }

@@ -134,8 +134,12 @@
     <Compile Include="Display\Managers\BulletManager.cs" />
     <Compile Include="Display\Managers\MenuManager.cs" />
     <Compile Include="Display\Managers\ResourceManager.cs" />
+    <Compile Include="Display\Managers\Types\Menu\MenuElement.cs" />
+    <Compile Include="Display\Managers\Types\Menu\MenuScreen.cs" />
     <Compile Include="Display\Managers\WeaponManager.cs" />
-    <Compile Include="Facades\General.cs" />
+    <Compile Include="Facades\DisplayFacade.cs" />
+    <Compile Include="Facades\GameplayFacade.cs" />
+    <Compile Include="Facades\GeneralFacade.cs" />
     <Compile Include="Gameplay\LocalPlayer\LocalPlayerActions.cs" />
     <Compile Include="Gameplay\LocalPlayer\LocalPlayerMovement.cs" />
     <Compile Include="Gameplay\LocalPlayer\LocalPlayerCombat.cs" />

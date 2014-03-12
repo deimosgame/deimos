@@ -29,7 +29,7 @@ namespace Deimos
         {
             Vector3 bulletPosition = Game.ThisPlayer.Position - Game.Camera.ViewVector * 10;
             Bullet FiredBullet = new Bullet(Game, bulletPosition, - Game.Camera.ViewVector);
-            string id = "Bullet" + General.Uniqid();
+            string id = "Bullet" + GeneralFacade.Uniqid();
             BulletTab.Add(id, FiredBullet);
 
             Game.SceneManager.ModelManager.LoadPrivateModel(

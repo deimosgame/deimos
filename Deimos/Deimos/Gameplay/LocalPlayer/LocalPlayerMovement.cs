@@ -227,7 +227,6 @@ namespace Deimos
             GetMouseMovement(dt);
 
             Acceleration = GetMovementVector(dt);
-            //if (Acceleration != Vector3.Zero) Acceleration.Normalize();
             MoveVector = Acceleration * dt * Game.ThisPlayer.Speed;
             Move(MoveVector, dt);
         }

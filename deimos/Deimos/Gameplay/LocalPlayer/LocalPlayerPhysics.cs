@@ -34,12 +34,12 @@ namespace Deimos
         }
 
         public PhysicalState GravityState = PhysicalState.Falling;
-        public float t = 0f;
+        public float timer_gravity = 0f;
         public float c_gravity = 9.8f;
-        public float vi;
+        public float initial_velocity;
 
         public AccelerationState Accelerestate = AccelerationState.Still;
-        public Vector3 dv = new Vector3(0.3f, 0.1f, 0.1f);
+        public Vector3 dv = new Vector3(0.3f, 0.09f, 0.09f);
         private Vector3 acceleration;
         public Vector3 Acceleration
         {
@@ -231,7 +231,7 @@ namespace Deimos
 
         public void ApplyGravity(float dt)
         {
-            float vy = (vi * t) - ((float)Math.Pow(t, 2) * c_gravity);
+            float vy = (initial_velocity * timer_gravity) - ((float)Math.Pow(timer_gravity, 2) * c_gravity);
             acceleration.Y = vy;
             
             if (vy < 0f)
@@ -239,41 +239,39 @@ namespace Deimos
                 GravityState = PhysicalState.Falling;
             }
 
-            t += dt;
+            timer_gravity += dt;
         }
 
         public void StabilizeGravity()
         {
             if (GravityState == PhysicalState.Falling)
             {
-                t = 0;
-                vi = 0;
+                timer_gravity = 0;
+                initial_velocity = 0;
                 GravityState = PhysicalState.Walking;
                 acceleration.Y = 0f;
-                Reset(AccelerationDirection.Z);
             }
 
             if (GravityState == PhysicalState.Jumping)
             {
-                vi = 0;
-                t = 0;
+                initial_velocity = 0;
+                timer_gravity = 0;
                 GravityState = PhysicalState.Falling;
             }
         }
 
         public void Jump()
         {
-            vi = 4f;
-            t = 0f;
+            initial_velocity = 4f;
+            timer_gravity = 0f;
             GravityState = PhysicalState.Jumping;
 
-
-            if (acceleration.Z > 0)
-            {
-                Accelerestate = AccelerationState.Maxed;
-                acceleration.Z += dv.Z;
+            //if (acceleration.Z > 0)
+            //{
+            //    Accelerestate = AccelerationState.Maxed;
+            //    Accelerate(AccelerationDirection.Z);
                 
-            }
+            //}
         }
     }
 }

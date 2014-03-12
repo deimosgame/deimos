@@ -372,11 +372,11 @@ namespace Deimos
             );
             Game.ScreenElementManager.GetText("G-Time").Text = String.Format(
                 "G-Time: {0}",
-                Game.ThisPlayerPhysics.t
+                Game.ThisPlayerPhysics.timer_gravity
             );
             Game.ScreenElementManager.GetText("InitialVelocity").Text = String.Format(
                 "InitialVelocity: {0}",
-                Game.ThisPlayerPhysics.vi
+                Game.ThisPlayerPhysics.initial_velocity
             );
 
             string finalDebug = "";

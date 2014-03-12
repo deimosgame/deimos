@@ -46,19 +46,67 @@ namespace Deimos
         {
             LightManager.AddPointLight(
                "Main",
-               new Vector3(10, 10, 10), // Location
-               300, // Radius
+               new Vector3(-85, 6, -45), // Location
+               50, // Radius
                2, // Intensity
                Color.White
+            );
+            LightManager.AddPointLight(
+               "Corridor1",
+               new Vector3(-21, 8, 110), // Location
+               18, // Radius
+               1, // Intensity
+               Color.Red
+            );
+            LightManager.AddPointLight(
+               "Corridor2",
+               new Vector3(88, 6, 110), // Location
+               18, // Radius
+               1, // Intensity
+               Color.Red
+            );
+            LightManager.AddPointLight(
+               "Scary",
+               new Vector3(37, -6, 200), // Location
+               50, // Radius
+               2, // Intensity
+               Color.LightBlue
             );
             SoundManager.Play3D("scary", SceneManager.Game.ThisPlayer.Position, new Vector3(-127, 6, -64));
             //SoundManager.Play("scary");
         }
+
+        public float x = -1f;
+        Random rnd = new Random();
+        public int i = 0;
+        public int r = 0;
+
         // Update our things at each ticks
         public override void Update()
         {
             SoundManager.SetListener("scary", SceneManager.Game.ThisPlayer.Position);
             //SceneManager.Game.DebugScreen.Debug("debugconsole");
+
+            PointLight light1 = LightManager.GetPointLight("Corridor1");
+            PointLight light2 = LightManager.GetPointLight("Corridor2");
+            PointLight light3 = LightManager.GetPointLight("Scary");
+            r = rnd.Next(0, 10);
+            if (i == r)
+            {
+                i = 0;
+
+                light1.Intensity += x;
+                light2.Intensity += x;
+                light3.Intensity += x;
+                x = -x;
+            }
+
+            if (i > 9)
+            {
+                i = 0;
+            }
+
+            i++;
         }
     }
 }

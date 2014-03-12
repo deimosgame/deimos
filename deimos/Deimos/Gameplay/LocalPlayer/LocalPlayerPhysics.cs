@@ -37,6 +37,7 @@ namespace Deimos
         public float timer_gravity = 0f;
         public float c_gravity = 9.8f;
         public float initial_velocity;
+        private bool isForcedMovement = false;
 
         public AccelerationState Accelerestate = AccelerationState.Still;
         public Vector3 dv = new Vector3(0.3f, 0.09f, 0.09f);
@@ -81,15 +82,7 @@ namespace Deimos
                     Acceleration += new Vector3(0, 1f, 0);
                     break;
                 case AccelerationDirection.Z:
-                    if (acceleration.Z < GetMaxHorizAcceleration())
-                    {
-                        Acceleration += new Vector3(0, 0, dv.Z);
-
-                        if (acceleration.Z > GetMaxHorizAcceleration())
-                        {
-                            acceleration.Z = 1f;
-                        }
-                    }
+                    Acceleration += new Vector3(0, 0, dv.Z);
                     break;
             }
         }
@@ -250,6 +243,7 @@ namespace Deimos
                 initial_velocity = 0;
                 GravityState = PhysicalState.Walking;
                 acceleration.Y = 0f;
+                isForcedMovement = false;
             }
 
             if (GravityState == PhysicalState.Jumping)
@@ -257,21 +251,45 @@ namespace Deimos
                 initial_velocity = 0;
                 timer_gravity = 0;
                 GravityState = PhysicalState.Falling;
+                isForcedMovement = false;   
             }
         }
 
-        public void Jump()
+        public void Jump(bool propulsion)
         {
+            // Interrupting player sprint
+            if (Game.ThisPlayer.CurrentSpeedState == Player.SpeedState.Sprinting)
+            {
+                Game.ThisPlayer.CurrentSpeedState = Player.SpeedState.Running;
+            }
+
+            // Setting initial parameters to kick off the player
             initial_velocity = 4f;
             timer_gravity = 0f;
             GravityState = PhysicalState.Jumping;
 
-            //if (acceleration.Z > 0)
-            //{
-            //    Accelerestate = AccelerationState.Maxed;
-            //    Accelerate(AccelerationDirection.Z);
-                
-            //}
+            // Bunny hopping and forward propulsion
+            if (propulsion)
+            {
+                isForcedMovement = true;
+                Accelerate(AccelerationDirection.Z);
+            }
+        }
+
+        public bool ShouldResetMovement(AccelerationDirection direction)
+        {
+            switch (direction)
+            {
+                case AccelerationDirection.Z:
+                    if (isForcedMovement)
+                    {
+                        return false;
+                    }
+                    return true;
+
+                default:
+                    return true;
+            }
         }
     }
 }

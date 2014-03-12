@@ -57,7 +57,8 @@ namespace Deimos
             }
 
             if (Game.ThisPlayer.ks.IsKeyUp(Game.Config.Forward)
-                && Game.ThisPlayer.ks.IsKeyUp(Game.Config.Backward))
+                && Game.ThisPlayer.ks.IsKeyUp(Game.Config.Backward)
+                && Game.ThisPlayerPhysics.ShouldResetMovement(LocalPlayerPhysics.AccelerationDirection.Z))
             {
                 Game.ThisPlayerPhysics.Reset(LocalPlayerPhysics.AccelerationDirection.Z);
             }
@@ -65,12 +66,6 @@ namespace Deimos
                 && Game.ThisPlayer.ks.IsKeyUp(Game.Config.Right))
             {
                 Game.ThisPlayerPhysics.Reset(LocalPlayerPhysics.AccelerationDirection.X);
-            }
-
-            if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Jump) &&
-                Game.ThisPlayerPhysics.GravityState == LocalPlayerPhysics.PhysicalState.Walking)
-            {
-                Game.ThisPlayerPhysics.Jump();
             }
 
             if (Game.CurrentPlayingState != DeimosGame.PlayingStates.NoClip)

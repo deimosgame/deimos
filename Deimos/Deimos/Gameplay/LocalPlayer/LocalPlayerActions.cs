@@ -103,6 +103,12 @@ namespace Deimos
                 WeaponState.AtEase));
         }
 
+        private bool CanJump()
+        {
+            return (Game.ThisPlayerPhysics.GravityState ==
+                LocalPlayerPhysics.PhysicalState.Walking);
+        }
+
 
         private void CheckActions()
         {
@@ -119,6 +125,19 @@ namespace Deimos
             {
                 Game.ThisPlayer.CurrentSpeedState = 
                     LocalPlayer.SpeedState.Sprinting;
+            }
+
+            if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Jump) &&
+                CanJump())
+            {
+                bool propulsion = false;
+
+                if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Forward))
+                {
+                    propulsion = true;
+                }
+
+                Game.ThisPlayerPhysics.Jump(propulsion);
             }
         }
 

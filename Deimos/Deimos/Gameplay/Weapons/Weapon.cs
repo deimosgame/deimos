@@ -137,27 +137,6 @@ namespace Deimos
             //Game.ThisPlayer.Inventory.PickupAmmo(this);
         }
 
-        public void Fire()
-        {
-            // checking if we have enough ammo
-            if (c_chamberAmmo != 0)
-            {
-                State = WeaponState.Firing;
-                // Putting projectile in action through Bullet Manager
-                // These methods are not final at all, they WILL be changed.
-                //bulletManager.SpawnBullet();
-                c_chamberAmmo--;
-                FireTimer = 0; // reset the fire timer
-                State = WeaponState.AtEase;
-
-                
-            }
-            else if (IsReloadable())
-            {
-                State = WeaponState.Reloading;
-            }
-        }
-
         public bool IsFirable()
         {
             return c_chamberAmmo > 0;

@@ -124,7 +124,6 @@ namespace Deimos
             }
             currentWeapon.State = WeaponState.Firing;
             // Putting projectile in action through Bullet Manager
-            // These methods are not final at all, they WILL be changed.
             Game.BulletManager.SpawnBullet();
             Game.SceneManager.SoundManager.Play("weaponFire");
             currentWeapon.c_chamberAmmo--;

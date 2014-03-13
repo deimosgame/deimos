@@ -11,8 +11,13 @@ namespace Deimos
         AtEase,
         Firing,
         Reloading,
-        Switching,
-        Aiming
+        Switching
+    }
+
+    public enum AimState
+    {
+        False,
+        True
     }
 
     public class WeaponManager

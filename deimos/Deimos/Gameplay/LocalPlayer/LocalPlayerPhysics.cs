@@ -41,7 +41,7 @@ namespace Deimos
 
         public AccelerationState Accelerestate = AccelerationState.Still;
         public Vector3 dv = new Vector3(0.3f, 0.09f, 0.09f);
-        private Vector3 acceleration;
+        public Vector3 acceleration;
         public Vector3 Acceleration
         {
             get { return acceleration; }
@@ -264,7 +264,7 @@ namespace Deimos
             }
 
             // Setting initial parameters to kick off the player
-            initial_velocity = 4f;
+            initial_velocity = 4.05f;
             timer_gravity = 0f;
             GravityState = PhysicalState.Jumping;
 

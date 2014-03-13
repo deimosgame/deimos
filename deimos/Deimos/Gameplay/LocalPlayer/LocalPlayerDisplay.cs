@@ -39,28 +39,31 @@ namespace Deimos
         }
 
         // To get proper weapon display, attached to player
-        public void DisplayCurrentWeapon(WeaponState state)
+        public void DisplayCurrentWeapon(Weapon wep)
         {
             Vector3 Offset = Vector3.Zero;
 
-            switch (state)
+            if (wep.AimState == AimState.True)
             {
-                case WeaponState.AtEase :
-                    Offset = Game.ThisPlayer.CurrentWeapon.W_Offset;
-                    break;
-                   
-                case WeaponState.Aiming :
-                    Offset = Vector3.Zero;
-                    break;
+                Offset = new Vector3(3.5f, 0.5f, 0f);
+            }
+            else
+            {
+                switch (wep.State)
+                {
+                    case WeaponState.AtEase:
+                        Offset = Game.ThisPlayer.CurrentWeapon.W_Offset;
+                        break;
 
-                case WeaponState.Firing :
-                    break;
+                    case WeaponState.Firing:
+                        break;
 
-                case WeaponState.Reloading :
-                    break;
+                    case WeaponState.Reloading:
+                        break;
 
-                case WeaponState.Switching :
-                    break;
+                    case WeaponState.Switching:
+                        break;
+                }
             }
 
             Matrix cameraWorld = Matrix.Invert(Game.Camera.View);

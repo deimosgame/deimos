@@ -25,58 +25,89 @@ namespace Deimos
             Vector3 movementVector = Vector3.Zero;
 
             // Let's handle movement input
-            if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Forward))
+            if (Game.CurrentPlayingState != DeimosGame.PlayingStates.NoClip)
             {
-                Game.ThisPlayerPhysics.Accelerate(LocalPlayerPhysics.AccelerationDirection.Z);
-                movementVector += Vector3.Backward;
-            }
-            if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Backward))
-            {
-                Game.ThisPlayerPhysics.Decelerate(LocalPlayerPhysics.AccelerationDirection.Z);
-                movementVector += Vector3.Backward;
-            }
-            if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Left))
-            {
-                Game.ThisPlayerPhysics.Accelerate(LocalPlayerPhysics.AccelerationDirection.X);
-                movementVector += Vector3.Right;
-            }
-            if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Right))
-            {
-                Game.ThisPlayerPhysics.Decelerate(LocalPlayerPhysics.AccelerationDirection.X);
-                movementVector += Vector3.Right;
-            }
+                if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Forward))
+                {
+                    Game.ThisPlayerPhysics.Accelerate(LocalPlayerPhysics.AccelerationDirection.Z);
+                    movementVector += Vector3.Backward;
+                }
+                if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Backward))
+                {
+                    Game.ThisPlayerPhysics.Decelerate(LocalPlayerPhysics.AccelerationDirection.Z);
+                    movementVector += Vector3.Backward;
+                }
+                if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Left))
+                {
+                    Game.ThisPlayerPhysics.Accelerate(LocalPlayerPhysics.AccelerationDirection.X);
+                    movementVector += Vector3.Right;
+                }
+                if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Right))
+                {
+                    Game.ThisPlayerPhysics.Decelerate(LocalPlayerPhysics.AccelerationDirection.X);
+                    movementVector += Vector3.Right;
+                }
 
-            if (movementVector != Vector3.Zero)
-            {
-                movementVector.Normalize();
+                if (movementVector != Vector3.Zero)
+                {
+                    movementVector.Normalize();
+                    LastMoveVector = movementVector;
+                }
+                else
+                {
+                    movementVector = LastMoveVector;
+                }
+
+                if (Game.ThisPlayer.ks.IsKeyUp(Game.Config.Forward)
+                    && Game.ThisPlayer.ks.IsKeyUp(Game.Config.Backward)
+                    && Game.ThisPlayerPhysics.ShouldResetMovement(LocalPlayerPhysics.AccelerationDirection.Z))
+                {
+                    Game.ThisPlayerPhysics.Reset(LocalPlayerPhysics.AccelerationDirection.Z);
+                }
+                if (Game.ThisPlayer.ks.IsKeyUp(Game.Config.Left)
+                    && Game.ThisPlayer.ks.IsKeyUp(Game.Config.Right))
+                {
+                    Game.ThisPlayerPhysics.Reset(LocalPlayerPhysics.AccelerationDirection.X);
+                }
+
+                    Game.ThisPlayerPhysics.ApplyGravity(dt);
+                    movementVector.Y = 1;
+
                 LastMoveVector = movementVector;
+
+                return movementVector * Game.ThisPlayerPhysics.GetAcceleration();
             }
             else
             {
-                movementVector = LastMoveVector;
+                if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Forward))
+                {
+                    movementVector += Vector3.Backward;
+                }
+                if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Backward))
+                {
+                    movementVector += Vector3.Forward;
+                }
+                if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Left))
+                {
+                    movementVector += Vector3.Right;
+                }
+                if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Right))
+                {
+                    movementVector += Vector3.Left;
+                }
+                if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Jump))
+                {
+                    movementVector += Vector3.Up;
+                }
+                if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Crouch))
+                {
+                    movementVector += Vector3.Down;
+                }
+
+                return movementVector;
             }
 
-            if (Game.ThisPlayer.ks.IsKeyUp(Game.Config.Forward)
-                && Game.ThisPlayer.ks.IsKeyUp(Game.Config.Backward)
-                && Game.ThisPlayerPhysics.ShouldResetMovement(LocalPlayerPhysics.AccelerationDirection.Z))
-            {
-                Game.ThisPlayerPhysics.Reset(LocalPlayerPhysics.AccelerationDirection.Z);
-            }
-            if (Game.ThisPlayer.ks.IsKeyUp(Game.Config.Left)
-                && Game.ThisPlayer.ks.IsKeyUp(Game.Config.Right))
-            {
-                Game.ThisPlayerPhysics.Reset(LocalPlayerPhysics.AccelerationDirection.X);
-            }
-
-            if (Game.CurrentPlayingState != DeimosGame.PlayingStates.NoClip)
-            {
-                Game.ThisPlayerPhysics.ApplyGravity(dt);
-                movementVector.Y = 1;
-            }
-
-            LastMoveVector = movementVector;
-
-            return movementVector * Game.ThisPlayerPhysics.GetAcceleration();
+            
         }
 
         public void GetMouseMovement(float dt)

@@ -87,6 +87,23 @@ namespace Deimos
                 Game.ThisPlayer.CurrentWeapon.State =
                     WeaponState.Switching;
             }
+
+            if (Game.ThisPlayer.CurrentMouseState.RightButton ==
+                ButtonState.Pressed && CanAim())
+            {
+                Game.ThisPlayer.CurrentWeapon.AimState = AimState.True;
+            }
+            else
+            { Game.ThisPlayer.CurrentWeapon.AimState = AimState.False; }
+        }
+
+        private bool CanAim()
+        {
+            return (
+                //(Game.ThisPlayer.CurrentWeapon.AimState == AimState.False)
+                 (Game.ThisPlayer.CurrentWeapon.State == WeaponState.AtEase)
+                && (Game.ThisPlayer.CurrentSpeedState != Player.SpeedState.Sprinting)
+                );
         }
 
         private bool CanFire()

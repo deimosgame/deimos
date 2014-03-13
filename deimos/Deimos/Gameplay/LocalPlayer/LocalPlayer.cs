@@ -79,7 +79,7 @@ namespace Deimos
             PlayerActions.HandleActions(dt);
             PlayerCombat.HandleCombat(dt);
             Stuff(dt);
-            Game.ThisPlayerDisplay.DisplayCurrentWeapon(Game.ThisPlayer.CurrentWeapon.State);
+            Game.ThisPlayerDisplay.DisplayCurrentWeapon(Game.ThisPlayer.CurrentWeapon);
        }
    }
 }

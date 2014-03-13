@@ -273,7 +273,10 @@ namespace Deimos
                 default:
                     IsMouseVisible = false;
 
-                    ThisPlayer.HandleInput(gameTime);
+                    if (ThisPlayer.IsAlive())
+                    {
+                        ThisPlayer.HandleInput(gameTime);
+                    }
                     SceneManager.Update();
                     BulletManager.Update(gameTime);
 
@@ -329,8 +332,6 @@ namespace Deimos
 
         private void InitGameplay()
         {
-
-
             ThisPlayer = new LocalPlayer(this);
             ThisPlayerPhysics = new LocalPlayerPhysics(this);
             ThisPlayerDisplay = new LocalPlayerDisplay(this);
@@ -343,7 +344,6 @@ namespace Deimos
 
             Weapons.Initialise();
             ThisPlayer.InitializeInventory();
-
 
             Camera = new Camera(
                 this,
@@ -360,6 +360,9 @@ namespace Deimos
             if (Keyboard.GetState().IsKeyDown(Keys.N))
             {
                 CurrentPlayingState = DeimosGame.PlayingStates.NoClip;
+                ThisPlayerPhysics.timer_gravity = 0;
+                ThisPlayerPhysics.acceleration = Vector3.Zero;
+                ThisPlayerPhysics.initial_velocity = 0;
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.M))
@@ -377,7 +380,6 @@ namespace Deimos
             if (Keyboard.GetState().IsKeyDown(Keys.K))
             {
                 ThisPlayer.PlayerKill();
-                CurrentPlayingState = PlayingStates.NoClip;
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.L))
@@ -387,7 +389,6 @@ namespace Deimos
                 if (ThisPlayer.Health == 0)
                 {
                     ThisPlayer.PlayerKill();
-                    CurrentPlayingState = PlayingStates.NoClip;
                 }
             }
         }

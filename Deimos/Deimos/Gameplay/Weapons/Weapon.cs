@@ -24,6 +24,13 @@ namespace Deimos
             set { state = value; }
         }
 
+        private AimState aimstate = AimState.False;
+        public AimState AimState
+        {
+            get { return aimstate; }
+            set { aimstate = value; }
+        }
+
         private string name;
         public string Name
         {

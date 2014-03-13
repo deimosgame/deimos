@@ -91,7 +91,7 @@ namespace Deimos
             }
         }
 
-        public float Speed = 40f;
+        public float Speed = 28.5f;
 
         public int Score = 0;
 

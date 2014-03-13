@@ -364,7 +364,7 @@ namespace Deimos
             DrawDirectionalLight(
                 Vector3.Zero,
                 Color.White,
-                0.07f
+                0.1f
             );
             foreach (KeyValuePair<string, DirectionalLight> thisLight in
                 MainGame.SceneManager.LightManager.GetDirectionalLights())

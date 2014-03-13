@@ -167,12 +167,12 @@ namespace Deimos
             // Game settings
             //Graphics.PreferredBackBufferWidth = 1344;
             //Graphics.PreferredBackBufferHeight = 840;
-            Graphics.PreferredBackBufferWidth = 1920;
-            Graphics.PreferredBackBufferHeight = 1080;
+            Graphics.PreferredBackBufferWidth = 1400;
+            Graphics.PreferredBackBufferHeight = 1050;
             Graphics.IsFullScreen = true;
             //Graphics.PreferMultiSampling = true; // Anti aliasing - Useless as custom effects
             //Graphics.SynchronizeWithVerticalRetrace = false; // VSync
-            //IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec
+            IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec
             Graphics.ApplyChanges();
 
 
@@ -351,7 +351,7 @@ namespace Deimos
                 Vector3.Zero
             );
 
-            ThisPlayer.PlayerSpawn(new Vector3(-45f, 11f, -8f), Vector3.Zero);
+            ThisPlayer.PlayerSpawn(new Vector3(-60f, 20f, -8f), Vector3.Zero);
         }
 
         private void TestBindings(GameTime gameTime)

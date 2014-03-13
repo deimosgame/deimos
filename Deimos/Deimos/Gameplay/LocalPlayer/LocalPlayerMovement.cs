@@ -94,6 +94,7 @@ namespace Deimos
                     - (Game.GraphicsDevice.Viewport.Width / 2);
                 deltaY = Game.ThisPlayer.CurrentMouseState.Y
                     - (Game.GraphicsDevice.Viewport.Height / 2);
+           
 
                 Game.ThisPlayer.MouseRotationBuffer.X -= 
                     Game.Config.MouseSensivity * deltaX * dt;

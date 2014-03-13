@@ -39,6 +39,14 @@ namespace Deimos
                  Vector3.Zero
             );
             SoundManager.AddSoundEffect("scary", "Sounds/ScaryMusic");
+            SceneManager.Collision.AddCollisionBox(
+                new Vector3(-1000, -80, -1000),
+                new Vector3(1000, -81, 1000),
+                delegate(CollisionElement element, DeimosGame game)
+                {
+                    game.ThisPlayer.Position = new Vector3(0, 80, 20);
+                }
+            );
         }
 
         // Initialize our lights and such

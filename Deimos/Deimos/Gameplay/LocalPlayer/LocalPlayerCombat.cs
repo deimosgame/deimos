@@ -10,6 +10,7 @@ namespace Deimos
     {
         DeimosGame Game;
         float w_switch_timer;
+        string target_weapon;
 
         public LocalPlayerCombat(DeimosGame game)
         {
@@ -45,15 +46,14 @@ namespace Deimos
             if (Game.ThisPlayer.CurrentWeapon.State == 
                 WeaponState.Switching)
             {
-                if (w_switch_timer < Game.ThisPlayer.Inventory.GetSwitchTime(Game.ThisPlayer.PreviousWeapon))
+                if (w_switch_timer < Game.ThisPlayer.Inventory.GetSwitchTime(target_weapon))
                 {
                     w_switch_timer += dt;
                 }
                 else
                 {
-                    Game.ThisPlayer.Inventory.QuickSwitch(
-                        Game.ThisPlayer.CurrentWeapon,
-                        Game.ThisPlayer.PreviousWeapon);
+                    Game.ThisPlayer.Inventory.Switch(target_weapon);
+
                     w_switch_timer = 0f;
                 }
             }
@@ -74,6 +74,38 @@ namespace Deimos
                 Game.ThisPlayer.Inventory.UpdateAmmo();
             }
 
+            // switching weapons
+            if (Game.ThisPlayer.ks.IsKeyDown(Keys.NumPad1) &&
+                CanSwitch())
+            {
+                if (Game.ThisPlayer.Inventory.Contains("Pistol"))
+                {
+                Game.ThisPlayer.CurrentWeapon.State =
+                    WeaponState.Switching;
+                target_weapon = "Pistol";
+                }
+            }
+            if (Game.ThisPlayer.ks.IsKeyDown(Keys.NumPad2) &&
+                CanSwitch())
+            {
+                if (Game.ThisPlayer.Inventory.Contains("Assault Rifle"))
+                {
+                    Game.ThisPlayer.CurrentWeapon.State =
+                        WeaponState.Switching;
+                    target_weapon = "Assault Rifle";
+                }
+            }
+            if (Game.ThisPlayer.ks.IsKeyDown(Keys.NumPad3) &&
+                CanSwitch())
+            {
+                if (Game.ThisPlayer.Inventory.Contains("Bazooka"))
+                {
+                    Game.ThisPlayer.CurrentWeapon.State =
+                        WeaponState.Switching;
+                    target_weapon = "Bazooka";
+                }
+            }
+
             if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Reload) &&
                 CanReload())
             {
@@ -86,6 +118,7 @@ namespace Deimos
             {
                 Game.ThisPlayer.CurrentWeapon.State =
                     WeaponState.Switching;
+                target_weapon = Game.ThisPlayer.PreviousWeapon.Name;
             }
 
             if (Game.ThisPlayer.CurrentMouseState.RightButton ==
@@ -129,17 +162,23 @@ namespace Deimos
                 LocalPlayer.SpeedState.Sprinting));
         }
 
+        private bool CanSwitch()
+        {
+            return (
+                (Game.ThisPlayer.CurrentWeapon.State ==
+                WeaponState.AtEase) &&
+
+                (Game.ThisPlayer.CurrentSpeedState !=
+                LocalPlayer.SpeedState.Sprinting));
+        }
+
         private bool CanQuickSwitch()
         {
             return (Game.ThisPlayer.CurrentWeapon != null &&
 
                 Game.ThisPlayer.PreviousWeapon != null &&
 
-                (Game.ThisPlayer.CurrentWeapon.State ==
-                WeaponState.AtEase) &&
-
-                (Game.ThisPlayer.CurrentSpeedState !=
-                LocalPlayer.SpeedState.Sprinting));
+                CanSwitch());
         }
 
         public void HandleCombat(float dt)

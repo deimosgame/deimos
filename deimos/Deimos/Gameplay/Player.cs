@@ -16,6 +16,12 @@ namespace Deimos
 
         public Vector3 Acceleration;
 
+        public enum Spec
+        {
+            Overwatch,
+            Agent,
+            Soldier
+        }
 
         public enum Teams
         {
@@ -37,6 +43,7 @@ namespace Deimos
             Sprinting
         }
 
+        public Spec Class = Spec.Soldier;
 
         public Teams Team = Teams.Humans;
 
@@ -53,15 +60,16 @@ namespace Deimos
             get { return health; }
             set
             {
-                if (value > 100)
-                { health = 100; return; }
+                if (value > m_health)
+                { health = m_health; return; }
                 if (value < 0)
                 { health = 0; return; }
                 health = value;
             }
         }
+        private int m_health;
 
-        public float MaxSprintTime = 5f;
+        public float MaxSprintTime;
         private float sprintTimer = 0f;
         public float SprintTimer
         {
@@ -76,8 +84,8 @@ namespace Deimos
             }
         }
 
-        public float SprintCooldown = 3.5f;
-        private float cooldownTimer = 5f;
+        public float SprintCooldown;
+        private float cooldownTimer;
         public float CooldownTimer
         {
             get { return cooldownTimer; }
@@ -90,8 +98,8 @@ namespace Deimos
                 cooldownTimer = value;
             }
         }
-
-        public float Speed = 28.5f;
+        
+        public float Speed;
 
         public int Score = 0;
 
@@ -104,7 +112,7 @@ namespace Deimos
             Position = spawnpoint;
             Rotation = angle;
 
-            Health = 100;
+            SetStats();
         }
 
         public void PlayerRespawn(Vector3 respawnlocation, Vector3 angle)
@@ -116,7 +124,7 @@ namespace Deimos
                 Position = respawnlocation;
                 Rotation = angle;
 
-                Health = 100;
+                SetStats();
             }
         }
 
@@ -142,6 +150,51 @@ namespace Deimos
             {
                 CurrentLifeState = LifeState.Dead;
                 return false;
+            }
+        }
+
+        public void SetStats()
+        {
+            switch (Class)
+            {
+                case Spec.Soldier:
+                    {
+                        m_health = 100;
+                        Health = m_health;
+
+                        Speed = 28.5f;
+                        SprintCooldown = 3.5f;
+                        CooldownTimer = 5f;
+                        MaxSprintTime = 5f;
+                    }
+                    break;
+
+                case Spec.Agent:
+                    {
+                        m_health = 80;
+                        Health = m_health;
+
+                        Speed = 35f;
+                        SprintCooldown = 2.5f;
+                        CooldownTimer = 7f;
+                        MaxSprintTime = 7f;
+                    }
+                    break;
+
+                case Spec.Overwatch:
+                    {
+                        m_health = 120;
+                        Health = m_health;
+
+                        Speed = 20.5f;
+                        SprintCooldown = 5f;
+                        CooldownTimer = 2f;
+                        MaxSprintTime = 2f;
+                    }
+                    break;
+
+                default:
+                    break;
             }
         }
     }

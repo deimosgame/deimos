@@ -165,11 +165,11 @@ namespace Deimos
             IsMouseVisible = false;
 
             // Game settings
-            //Graphics.PreferredBackBufferWidth = 1344;
-            //Graphics.PreferredBackBufferHeight = 840;
-            Graphics.PreferredBackBufferWidth = 1400;
-            Graphics.PreferredBackBufferHeight = 1050;
-            Graphics.IsFullScreen = true;
+            Graphics.PreferredBackBufferWidth = 1344;
+            Graphics.PreferredBackBufferHeight = 840;
+            //Graphics.PreferredBackBufferWidth = 1400;
+            //Graphics.PreferredBackBufferHeight = 1050;
+            //Graphics.IsFullScreen = true;
             //Graphics.PreferMultiSampling = true; // Anti aliasing - Useless as custom effects
             //Graphics.SynchronizeWithVerticalRetrace = false; // VSync
             IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec
@@ -343,7 +343,6 @@ namespace Deimos
             BulletManager = new BulletManager(this);
 
             Weapons.Initialise();
-            ThisPlayer.InitializeInventory();
 
             Camera = new Camera(
                 this,
@@ -351,6 +350,8 @@ namespace Deimos
                 Vector3.Zero
             );
 
+            ThisPlayer.Inventory = new WeaponManager(this);
+            ThisPlayer.InitializeInventory(ThisPlayer.Class);
             ThisPlayer.PlayerSpawn(new Vector3(-60f, 20f, -8f), Vector3.Zero);
         }
 
@@ -374,12 +375,15 @@ namespace Deimos
             if (Keyboard.GetState().IsKeyDown(Keys.J))
             {
                 ThisPlayer.PlayerRespawn(new Vector3(-45f, 11f, -8f), Vector3.Zero);
+                ThisPlayer.InitializeInventory(ThisPlayer.Class);
                 CurrentPlayingState = PlayingStates.Normal;
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.K))
             {
                 ThisPlayer.PlayerKill();
+                ThisPlayer.Inventory.Flush();
+                ThisPlayer.Class = Player.Spec.Agent;
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.L))

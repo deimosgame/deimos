@@ -13,6 +13,7 @@ namespace Deimos
 
         // Attributes for proper display
         public Vector3 W_Offset;
+        public Vector3 W_Offset_Aim;
         public float W_Scaling;
         public string Path;
         public float W_Direct;
@@ -109,7 +110,7 @@ namespace Deimos
         }
 
         // Constructor
-        public Weapon(DeimosGame game, Vector3 w_offset, float w_scaling, float w_direction,
+        public Weapon(DeimosGame game, Vector3 w_offset, Vector3 w_aimoffset, float w_scaling, float w_direction,
             string path, string w_name, int w_priority, 
             float w_firingRate, uint w_mca, uint w_mra, 
             uint w_initialReservoirAmmo, float w_reloadt, float w_minDmg, float w_maxDmg, 
@@ -119,6 +120,7 @@ namespace Deimos
             bulletManager = game.BulletManager;
 
             W_Offset = w_offset;
+            W_Offset_Aim = w_aimoffset;
             W_Scaling = w_scaling;
             W_Direct = w_direction;
 

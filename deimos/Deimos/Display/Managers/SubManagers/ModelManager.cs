@@ -228,5 +228,10 @@ namespace Deimos
                 }
             }
         }
+
+        public bool LevelModelExists(string name)
+        {
+            return (LoadedLevelModels.ContainsKey(name));
+        }
     }
 }

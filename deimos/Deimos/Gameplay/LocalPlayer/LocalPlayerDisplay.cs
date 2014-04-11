@@ -20,22 +20,62 @@ namespace Deimos
         // To load the model of our current weapon when spawned
         public void LoadCurrentWeaponModel()
         {
-            Game.SceneManager.ModelManager.LoadModel(
-                Game.ThisPlayer.CurrentWeapon.Name,
-                Game.ThisPlayer.CurrentWeapon.Path,
-                Vector3.Zero,
-                Vector3.Zero,
-                Game.ThisPlayer.CurrentWeapon.W_Scaling,
-                LevelModel.CollisionType.None
-            );
+            if (!Game.SceneManager.ModelManager.LevelModelExists(
+                Game.ThisPlayer.CurrentWeapon.Name))
+            {
+                Game.SceneManager.ModelManager.LoadModel(
+                    Game.ThisPlayer.CurrentWeapon.Name,
+                    Game.ThisPlayer.CurrentWeapon.Path,
+                    Vector3.Zero,
+                    Vector3.Zero,
+                    Game.ThisPlayer.CurrentWeapon.W_Scaling,
+                    LevelModel.CollisionType.None
+                );
 
-            weapon = Game.SceneManager.ModelManager.GetLevelModel("Assault Rifle");
+                weapon = Game.SceneManager.ModelManager.GetLevelModel(
+                        Game.ThisPlayer.CurrentWeapon.Name);
+            }
+        }
+
+        // to switch between loadad weapon models according to player's will
+        public void SetCurrentWeaponModel()
+        {
+            if (Game.SceneManager.ModelManager.LevelModelExists(
+                Game.ThisPlayer.CurrentWeapon.Name))
+            {
+                weapon = Game.SceneManager.ModelManager.GetLevelModel(
+                    Game.ThisPlayer.CurrentWeapon.Name);
+            }
+            else
+            {
+                LoadCurrentWeaponModel();
+            }
         }
 
         // To unload our weapon when it is no longer the current one
         public void UnloadCurrentWeaponModel()
         {
-            
+           
+        }
+
+        // when dying, unloading all weapon models
+        public void UnloadAllWeapons()
+        {
+            if (Game.SceneManager.ModelManager.LevelModelExists("Pistol"))
+            {
+            Game.SceneManager.ModelManager.RemoveLevelModel(
+                "Pistol");
+            }
+            if (Game.SceneManager.ModelManager.LevelModelExists("Assault Rifle"))
+            {
+            Game.SceneManager.ModelManager.RemoveLevelModel(
+                "Assault Rifle");
+            }
+            if (Game.SceneManager.ModelManager.LevelModelExists("Bazooka"))
+            {
+            Game.SceneManager.ModelManager.RemoveLevelModel(
+                "Bazooka");
+            }
         }
 
         // To get proper weapon display, attached to player
@@ -45,7 +85,7 @@ namespace Deimos
 
             if (wep.AimState == AimState.True)
             {
-                Offset = new Vector3(3.5f, 0.5f, 0f);
+                Offset = Game.ThisPlayer.CurrentWeapon.W_Offset_Aim;
             }
             else
             {

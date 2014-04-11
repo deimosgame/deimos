@@ -36,12 +36,35 @@ namespace Deimos
             PlayerCombat = new LocalPlayerCombat(game);
         }
 
-        public void InitializeInventory()
+        public void InitializeInventory(Player.Spec spec)
         {
-            Inventory = new WeaponManager(Game);
+            switch (spec)
+            {
+                case Spec.Soldier:
+                    {
+                        Inventory.PickupWeapon(Game.Weapons.GetWeapon("Pistol"));
+                        Inventory.PickupWeapon(Game.Weapons.GetWeapon("Assault Rifle"));
+                        Inventory.PickupWeapon(Game.Weapons.GetWeapon("Bazooka"));
+                    }
+                    break;
 
-            Inventory.PickupWeapon(Game.Weapons.GetWeapon("Assault Rifle"));
-            Inventory.SetCurrentWeapon("Assault Rifle");
+                case Spec.Agent:
+                    {
+                        Inventory.PickupWeapon(Game.Weapons.GetWeapon("Pistol"));
+                        Inventory.PickupWeapon(Game.Weapons.GetWeapon("Assault Rifle"));
+                    }
+                    break;
+
+                case Spec.Overwatch:
+                    {
+                        Inventory.PickupWeapon(Game.Weapons.GetWeapon("Assault Rifle"));
+                        Inventory.PickupWeapon(Game.Weapons.GetWeapon("Bazooka"));
+                    }
+                    break;
+
+                default:
+                    break;
+            }
 
             ammoPickup = CurrentWeapon.m_reservoirAmmo;
             Inventory.PickupAmmo(CurrentWeapon);

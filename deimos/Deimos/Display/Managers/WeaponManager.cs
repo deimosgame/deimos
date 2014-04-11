@@ -27,6 +27,8 @@ namespace Deimos
         // This is the player's dynamic Weapon Inventory
         private Dictionary<string, Weapon> PlayerInventory =
             new Dictionary<string, Weapon>();
+        private string[] Order = new string[5];
+        uint b_weapons = 0;
 
         // Constructor
         public WeaponManager(DeimosGame game)
@@ -41,24 +43,38 @@ namespace Deimos
             // it to him
             if (!PlayerInventory.ContainsValue(pickupWeapon))
             {
-               PlayerInventory.Add(
+                PlayerInventory.Add(
                    pickupWeapon.Name, 
                    pickupWeapon
-               );
+                );
+
+                Order[b_weapons] = pickupWeapon.Name;
+                b_weapons++;
        
                 // if the picked up weapon has priority over current weapon, 
                 // we equip it
                 // Oldschool FTW!
                 // The current weapon may not be set at the beginning.
-               if (Game.ThisPlayer.CurrentWeapon != null && 
+               if (Game.ThisPlayer.CurrentWeapon == null)
+               {
+                   SetCurrentWeapon(pickupWeapon.Name);
+               }
+               else if (Game.ThisPlayer.CurrentWeapon != null && 
                    Game.ThisPlayer.CurrentWeapon.Importance 
                    < pickupWeapon.Importance)
                {
                    // might be an overwriting problem, I trust Manu to 
                    // tell me if there is
-                   SetCurrentWeapon(pickupWeapon.Name); 
+                   SetPreviousWeapon(Game.ThisPlayer.CurrentWeapon.Name);
+                   SetCurrentWeapon(pickupWeapon.Name);
                }
+               Sort();
             }
+        }
+
+        public void Sort()
+        {
+            
         }
 
         public void SetCurrentWeapon(string name)
@@ -71,31 +87,32 @@ namespace Deimos
 
         public void SetPreviousWeapon(string name)
         {
-            if (!(Game.ThisPlayer.PreviousWeapon == 
-                PlayerInventory[name])
-                && (PlayerInventory.ContainsKey(name)))
+            if ((PlayerInventory.ContainsKey(name))
+                 && !(Game.ThisPlayer.PreviousWeapon == 
+                PlayerInventory[name]))
             {
                 Game.ThisPlayer.PreviousWeapon = PlayerInventory[name];
             }
         }
 
-        public float GetSwitchTime(Weapon weapon)
+        public float GetSwitchTime(string w_name)
         {
-            float time = weapon.TimeToReload / 5f;
+            float time = PlayerInventory[w_name].TimeToReload / 5f;
 
             return time;
         }
 
-        public void QuickSwitch(Weapon firstWeapon, Weapon secondWeapon)
+        public void QuickSwitch(string firstWeapon, string secondWeapon)
         {
             if (firstWeapon != secondWeapon)
             {
-                Weapon temp = firstWeapon;
+                string temp = firstWeapon;
                 firstWeapon = secondWeapon;
                 secondWeapon = temp;
 
-                SetCurrentWeapon(firstWeapon.Name);
-                SetPreviousWeapon(secondWeapon.Name);
+                SetCurrentWeapon(firstWeapon);
+                SetPreviousWeapon(secondWeapon);
+                Game.ThisPlayerDisplay.SetCurrentWeaponModel();
             }
 
             Game.ThisPlayer.CurrentWeapon.State = WeaponState.AtEase;
@@ -170,6 +187,90 @@ namespace Deimos
         public void ForceAdd(Weapon weapon)
         {
             PlayerInventory.Add(weapon.Name, weapon);
+            Order[b_weapons] = weapon.Name;
+            b_weapons++;
+
+            Sort();
+        }
+
+        // Weapon-dropping
+        public void DropWeapon()
+        {
+            if (PlayerInventory.ContainsKey(Game.ThisPlayer.CurrentWeapon.Name))
+            {
+                PlayerInventory.Remove(Game.ThisPlayer.CurrentWeapon.Name);
+                RemoveFromOrder(Game.ThisPlayer.CurrentWeapon.Name);
+            }
+
+            Sort();
+        }
+
+        public void RemoveFromOrder(string name)
+        {
+            if (Order.First<string>((x) => x == name) != null)
+            {
+                int i = 0;
+
+                while (Order[i] != name)
+                {
+                    i++; ;
+                }
+
+                for (int j = i; j < Order.Length - 1; j++)
+                {
+                    Order[j] = Order[j + 1];
+                    i = j;
+                }
+
+                Order[i + 1] = null;
+                b_weapons--;
+            }
+        }
+
+        public void Switch(string w_name)
+        {
+            string n_weapon = "";
+
+            switch (w_name)
+            {
+                case "Pistol" :
+                    n_weapon = Order[0];
+                    break;
+
+                case "Assault Rifle" :
+                    n_weapon = Order[1];
+                    break;
+                
+                case "Bazooka" :
+                    n_weapon = Order[2];
+                    break;
+
+                default:
+                    break;
+            }
+
+            string n_oldweapon = Game.ThisPlayer.CurrentWeapon.Name;
+
+            if (PlayerInventory.ContainsKey(n_weapon))
+            {
+                SetCurrentWeapon(n_weapon);
+                SetPreviousWeapon(n_oldweapon);
+                Game.ThisPlayerDisplay.SetCurrentWeaponModel();
+
+                Game.ThisPlayer.CurrentWeapon.State = WeaponState.AtEase;
+            }
+        }
+
+        public bool Contains(string name)
+        {
+            return PlayerInventory.ContainsKey(name);
+        }
+
+        public void Flush()
+        {
+            PlayerInventory = new Dictionary<string, Weapon>();
+            Order = new string[5];
+            b_weapons = 0;
         }
     }
 }

@@ -34,10 +34,17 @@ namespace Deimos
             PlayerMovement = new LocalPlayerMovement(game);
             PlayerActions = new LocalPlayerActions(game);
             PlayerCombat = new LocalPlayerCombat(game);
+
+            Name = Game.Config.PlayerName;
+            Instance = "main";
         }
 
         public void InitializeInventory(Player.Spec spec)
         {
+            Inventory = new WeaponManager(Game);
+            Game.ThisPlayer.CurrentWeapon = null;
+            Game.ThisPlayer.PreviousWeapon = null;
+
             switch (spec)
             {
                 case Spec.Soldier:
@@ -83,11 +90,9 @@ namespace Deimos
                 Game.ThisPlayer.Inventory.UpdateAmmo();
             }
 
-            Game.Config.DebugScreen = false;
-
             if (ks.IsKeyDown(Game.Config.ShowDebug))
             {
-                Game.Config.DebugScreen = true;
+                Game.Config.DebugScreen = !Game.Config.DebugScreen;
             }
 
         }

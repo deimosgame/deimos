@@ -277,6 +277,21 @@ namespace Deimos
                     {
                         ThisPlayer.HandleInput(gameTime);
                     }
+                    else
+                    {
+                        if (Keyboard.GetState().IsKeyDown(Keys.NumPad1))
+                        { 
+                            ThisPlayer.Class = Player.Spec.Soldier;
+                        }
+                        if (Keyboard.GetState().IsKeyDown(Keys.NumPad2))
+                        { 
+                            ThisPlayer.Class = Player.Spec.Overwatch; 
+                        }
+                        if (Keyboard.GetState().IsKeyDown(Keys.NumPad3))
+                        { 
+                            ThisPlayer.Class = Player.Spec.Agent; 
+                        }
+                    }
                     SceneManager.Update();
                     BulletManager.Update(gameTime);
 
@@ -383,7 +398,6 @@ namespace Deimos
             {
                 ThisPlayer.PlayerKill();
                 ThisPlayer.Inventory.Flush();
-                ThisPlayer.Class = Player.Spec.Agent;
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.L))

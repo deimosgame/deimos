@@ -8,6 +8,10 @@ namespace Deimos
 {
     public class Player
     {
+        public string Name;
+
+        public string Instance;
+
         public Vector3 Position;
 
         public Vector3 Rotation;

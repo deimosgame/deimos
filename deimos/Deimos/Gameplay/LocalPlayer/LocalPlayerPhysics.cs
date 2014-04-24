@@ -40,7 +40,7 @@ namespace Deimos
         private bool isForcedMovement = false;
 
         public AccelerationState Accelerestate = AccelerationState.Still;
-        public Vector3 dv = new Vector3(0.3f, 0.09f, 0.09f);
+        public Vector3 dv = new Vector3(0.09f, 0.09f, 0.09f);
         public Vector3 acceleration;
         public Vector3 Acceleration
         {
@@ -52,6 +52,7 @@ namespace Deimos
                 acceleration.Z = Math.Max(-GetMaxHorizAcceleration(), Math.Min(value.Z, GetMaxHorizAcceleration()));
             }
         }
+        public Vector3 Momentum;
 
         // Constructor
         public LocalPlayerPhysics(DeimosGame game)
@@ -255,7 +256,7 @@ namespace Deimos
             }
         }
 
-        public void Jump(bool propulsion)
+        public void Jump()
         {
             // Interrupting player sprint
             if (Game.ThisPlayer.CurrentSpeedState == Player.SpeedState.Sprinting)
@@ -267,29 +268,27 @@ namespace Deimos
             initial_velocity = 4.05f;
             timer_gravity = 0f;
             GravityState = PhysicalState.Jumping;
-
-            // Bunny hopping and forward propulsion
-            if (propulsion)
-            {
-                isForcedMovement = true;
-                Accelerate(AccelerationDirection.Z);
-            }
         }
 
-        public bool ShouldResetMovement(AccelerationDirection direction)
-        {
-            switch (direction)
-            {
-                case AccelerationDirection.Z:
-                    if (isForcedMovement)
-                    {
-                        return false;
-                    }
-                    return true;
+        //public bool ShouldResetMovement(AccelerationDirection direction)
+        //{
+        //    switch (direction)
+        //    {
+        //        case AccelerationDirection.Z:
+        //            if (isForcedMovement)
+        //            {
+        //                return false;
+        //            }
+        //            return true;
 
-                default:
-                    return true;
-            }
-        }
+        //        default:
+        //            return true;
+        //    }
+        //}
+
+        //public Vector3 CreateMomentum()
+        //{
+        //    return (Game.ThisPlayer.Rotation * Acceleration.Z);
+        //}
     }
 }

@@ -97,9 +97,14 @@ namespace Deimos
 
         public float GetSwitchTime(string w_name)
         {
-            float time = PlayerInventory[w_name].TimeToReload / 5f;
-
-            return time;
+            if (Game.ThisPlayer.Inventory.Contains(w_name))
+            {
+                return PlayerInventory[w_name].TimeToReload / 5f;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         public void QuickSwitch(string firstWeapon, string secondWeapon)
@@ -229,36 +234,36 @@ namespace Deimos
 
         public void Switch(string w_name)
         {
-            string n_weapon = "";
+            string n_weapon = w_name;
 
-            switch (w_name)
-            {
-                case "Pistol" :
-                    n_weapon = Order[0];
-                    break;
+            //switch (w_name)
+            //{
+            //    case "Pistol" :
+            //        n_weapon = Order[0];
+            //        break;
 
-                case "Assault Rifle" :
-                    n_weapon = Order[1];
-                    break;
+            //    case "Assault Rifle" :
+            //        n_weapon = Order[1];
+            //        break;
                 
-                case "Bazooka" :
-                    n_weapon = Order[2];
-                    break;
+            //    case "Bazooka" :
+            //        n_weapon = Order[2];
+            //        break;
 
-                default:
-                    break;
-            }
+            //    default:
+            //        break;
+            //}
 
             string n_oldweapon = Game.ThisPlayer.CurrentWeapon.Name;
 
-            if (PlayerInventory.ContainsKey(n_weapon))
+            if (n_weapon != n_oldweapon && PlayerInventory.ContainsKey(n_weapon))
             {
                 SetCurrentWeapon(n_weapon);
                 SetPreviousWeapon(n_oldweapon);
                 Game.ThisPlayerDisplay.SetCurrentWeaponModel();
-
-                Game.ThisPlayer.CurrentWeapon.State = WeaponState.AtEase;
             }
+
+            Game.ThisPlayer.CurrentWeapon.State = WeaponState.AtEase;
         }
 
         public bool Contains(string name)

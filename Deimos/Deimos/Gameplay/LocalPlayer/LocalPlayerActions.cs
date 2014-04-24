@@ -129,14 +129,7 @@ namespace Deimos
             if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Jump) &&
                 CanJump())
             {
-                bool propulsion = false;
-
-                if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Forward))
-                {
-                    propulsion = true;
-                }
-
-                Game.ThisPlayerPhysics.Jump(propulsion);
+                Game.ThisPlayerPhysics.Jump();
             }
         }
 

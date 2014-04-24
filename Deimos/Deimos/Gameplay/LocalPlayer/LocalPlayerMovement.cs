@@ -58,9 +58,9 @@ namespace Deimos
                     movementVector = LastMoveVector;
                 }
 
+                //&& Game.ThisPlayerPhysics.ShouldResetMovement(LocalPlayerPhysics.AccelerationDirection.Z))
                 if (Game.ThisPlayer.ks.IsKeyUp(Game.Config.Forward)
-                    && Game.ThisPlayer.ks.IsKeyUp(Game.Config.Backward)
-                    && Game.ThisPlayerPhysics.ShouldResetMovement(LocalPlayerPhysics.AccelerationDirection.Z))
+                    && Game.ThisPlayer.ks.IsKeyUp(Game.Config.Backward))
                 {
                     Game.ThisPlayerPhysics.Reset(LocalPlayerPhysics.AccelerationDirection.Z);
                 }

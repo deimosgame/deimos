@@ -75,8 +75,8 @@ namespace Deimos
             }
 
             // switching weapons
-            if (Game.ThisPlayer.ks.IsKeyDown(Keys.NumPad1) &&
-                CanSwitch())
+            if (Game.ThisPlayer.ks.IsKeyDown(Keys.D1) &&
+                CanSwitch("Pistol"))
             {
                 if (Game.ThisPlayer.Inventory.Contains("Pistol"))
                 {
@@ -85,8 +85,8 @@ namespace Deimos
                 target_weapon = "Pistol";
                 }
             }
-            if (Game.ThisPlayer.ks.IsKeyDown(Keys.NumPad2) &&
-                CanSwitch())
+            if (Game.ThisPlayer.ks.IsKeyDown(Keys.D2) &&
+                CanSwitch("Assault Rifle"))
             {
                 if (Game.ThisPlayer.Inventory.Contains("Assault Rifle"))
                 {
@@ -95,8 +95,8 @@ namespace Deimos
                     target_weapon = "Assault Rifle";
                 }
             }
-            if (Game.ThisPlayer.ks.IsKeyDown(Keys.NumPad3) &&
-                CanSwitch())
+            if (Game.ThisPlayer.ks.IsKeyDown(Keys.D3) &&
+                CanSwitch("Bazooka"))
             {
                 if (Game.ThisPlayer.Inventory.Contains("Bazooka"))
                 {
@@ -162,9 +162,12 @@ namespace Deimos
                 LocalPlayer.SpeedState.Sprinting));
         }
 
-        private bool CanSwitch()
+        private bool CanSwitch(string s)
         {
             return (
+
+                (Game.ThisPlayer.CurrentWeapon.Name != s) &&
+
                 (Game.ThisPlayer.CurrentWeapon.State ==
                 WeaponState.AtEase) &&
 
@@ -178,7 +181,7 @@ namespace Deimos
 
                 Game.ThisPlayer.PreviousWeapon != null &&
 
-                CanSwitch());
+                CanSwitch(Game.ThisPlayer.PreviousWeapon.Name));
         }
 
         public void HandleCombat(float dt)

@@ -6,6 +6,13 @@ using Microsoft.Xna.Framework;
 
 namespace Deimos
 {
+    public enum Type
+    {
+        Firearm,
+        Melee,
+        Grenade
+    }
+
     public enum WeaponState
     {
         AtEase,
@@ -18,6 +25,13 @@ namespace Deimos
     {
         False,
         True
+    }
+
+    public enum ActionOnHit
+    {
+        Damage,
+        Event,
+        Heal
     }
 
     public class WeaponManager

@@ -168,7 +168,6 @@ namespace Deimos
 
         protected override void Initialize()
         {
-
             IsMouseVisible = false;
 
             // Game settings

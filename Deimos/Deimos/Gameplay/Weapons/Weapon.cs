@@ -32,6 +32,8 @@ namespace Deimos
             set { aimstate = value; }
         }
 
+        private ActionOnHit Effect;
+
         private string name;
         public string Name
         {
@@ -110,11 +112,13 @@ namespace Deimos
         }
 
         // Constructor
-        public Weapon(DeimosGame game, Vector3 w_offset, Vector3 w_aimoffset, float w_scaling, float w_direction,
+        public Weapon(DeimosGame game,
+            Vector3 w_offset, Vector3 w_aimoffset, float w_scaling, float w_direction,
             string path, string w_name, int w_priority, 
             float w_firingRate, uint w_mca, uint w_mra, 
             uint w_initialReservoirAmmo, float w_reloadt, float w_minDmg, float w_maxDmg, 
-            float b_speed, float w_range)
+            float b_speed, float w_range,
+            Type type = Type.Firearm, ActionOnHit effect =  ActionOnHit.Damage)
         {
             Game = game;
             bulletManager = game.BulletManager;

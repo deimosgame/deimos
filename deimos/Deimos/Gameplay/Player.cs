@@ -65,13 +65,13 @@ namespace Deimos
             set
             {
                 if (value > m_health)
-                { health = m_health; return; }
+                { health = (int)m_health; return; }
                 if (value < 0)
                 { health = 0; return; }
                 health = value;
             }
         }
-        private int m_health;
+        protected uint m_health;
 
         public float MaxSprintTime;
         private float sprintTimer = 0f;
@@ -109,40 +109,6 @@ namespace Deimos
 
         public uint ammoPickup = 0; // amount of ammo that is potentially picked up
 
-        public void PlayerSpawn(Vector3 spawnpoint, Vector3 angle)
-        {
-            CurrentLifeState = LifeState.Alive;
-
-            Position = spawnpoint;
-            Rotation = angle;
-
-            SetStats();
-        }
-
-        public void PlayerRespawn(Vector3 respawnlocation, Vector3 angle)
-        {
-            if (CurrentLifeState == LifeState.Dead)
-            {
-                CurrentLifeState = LifeState.Alive;
-
-                Position = respawnlocation;
-                Rotation = angle;
-
-                SetStats();
-            }
-        }
-
-        public void PlayerKill()
-        {
-            if (CurrentLifeState == LifeState.Alive)
-            {
-                Health = 0;
-                CurrentLifeState = LifeState.Dead;
-
-                Score--;
-            }
-        }
-
         public bool IsAlive()
         {
             if (Health > 0)
@@ -154,51 +120,6 @@ namespace Deimos
             {
                 CurrentLifeState = LifeState.Dead;
                 return false;
-            }
-        }
-
-        public void SetStats()
-        {
-            switch (Class)
-            {
-                case Spec.Soldier:
-                    {
-                        m_health = 100;
-                        Health = m_health;
-
-                        Speed = 28.5f;
-                        SprintCooldown = 3.5f;
-                        CooldownTimer = 5f;
-                        MaxSprintTime = 5f;
-                    }
-                    break;
-
-                case Spec.Agent:
-                    {
-                        m_health = 80;
-                        Health = m_health;
-
-                        Speed = 35f;
-                        SprintCooldown = 2.5f;
-                        CooldownTimer = 7f;
-                        MaxSprintTime = 7f;
-                    }
-                    break;
-
-                case Spec.Overwatch:
-                    {
-                        m_health = 120;
-                        Health = m_health;
-
-                        Speed = 20.5f;
-                        SprintCooldown = 5f;
-                        CooldownTimer = 2f;
-                        MaxSprintTime = 2f;
-                    }
-                    break;
-
-                default:
-                    break;
             }
         }
     }

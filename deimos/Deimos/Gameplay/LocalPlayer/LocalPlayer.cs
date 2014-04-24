@@ -50,22 +50,36 @@ namespace Deimos
                 case Spec.Soldier:
                     {
                         Inventory.PickupWeapon(Game.Weapons.GetWeapon("Pistol"));
+                        ammoPickup = CurrentWeapon.m_reservoirAmmo;
+                        Inventory.PickupAmmo(CurrentWeapon);
                         Inventory.PickupWeapon(Game.Weapons.GetWeapon("Assault Rifle"));
+                        ammoPickup = CurrentWeapon.m_reservoirAmmo;
+                        Inventory.PickupAmmo(CurrentWeapon);
                         Inventory.PickupWeapon(Game.Weapons.GetWeapon("Bazooka"));
+                        ammoPickup = CurrentWeapon.m_reservoirAmmo;
+                        Inventory.PickupAmmo(CurrentWeapon);
                     }
                     break;
 
                 case Spec.Agent:
                     {
                         Inventory.PickupWeapon(Game.Weapons.GetWeapon("Pistol"));
+                        ammoPickup = CurrentWeapon.m_reservoirAmmo;
+                        Inventory.PickupAmmo(CurrentWeapon);
                         Inventory.PickupWeapon(Game.Weapons.GetWeapon("Assault Rifle"));
+                        ammoPickup = CurrentWeapon.m_reservoirAmmo;
+                        Inventory.PickupAmmo(CurrentWeapon);
                     }
                     break;
 
                 case Spec.Overwatch:
                     {
                         Inventory.PickupWeapon(Game.Weapons.GetWeapon("Assault Rifle"));
+                        ammoPickup = CurrentWeapon.m_reservoirAmmo;
+                        Inventory.PickupAmmo(CurrentWeapon);
                         Inventory.PickupWeapon(Game.Weapons.GetWeapon("Bazooka"));
+                        ammoPickup = CurrentWeapon.m_reservoirAmmo;
+                        Inventory.PickupAmmo(CurrentWeapon);
                     }
                     break;
 
@@ -77,6 +91,102 @@ namespace Deimos
             Inventory.PickupAmmo(CurrentWeapon);
 
             Game.ThisPlayerDisplay.LoadCurrentWeaponModel();
+        }
+
+        public void PlayerSpawn(Vector3 spawnpoint, Vector3 angle)
+        {
+            CurrentLifeState = LifeState.Alive;
+
+            Position = spawnpoint;
+            Rotation = angle;
+
+            CooldownTimer = SprintCooldown;
+
+            SetStats();
+        }
+
+        public void PlayerRespawn(Vector3 respawnlocation, Vector3 angle, string instance)
+        {
+            if (CurrentLifeState == LifeState.Dead)
+            {
+                Name = Game.Config.PlayerName;
+                Instance = instance;
+
+                CurrentLifeState = LifeState.Alive;
+
+                Position = respawnlocation;
+                Rotation = angle;
+
+                CooldownTimer = SprintCooldown;
+
+                SetStats();
+            }
+        }
+
+        public void PlayerKill()
+        {
+            if (CurrentLifeState == LifeState.Alive)
+            {
+                Health = 0;
+
+                Game.ThisPlayerPhysics.acceleration = Vector3.Zero;
+                Game.ThisPlayerPhysics.GravityState = LocalPlayerPhysics.PhysicalState.Walking;
+                Game.ThisPlayerPhysics.Accelerestate = LocalPlayerPhysics.AccelerationState.Still;
+                Game.ThisPlayerPhysics.timer_gravity = 0f;
+                Game.ThisPlayerPhysics.initial_velocity = 0f;
+
+                Game.ThisPlayerDisplay.UnloadAllWeapons();
+
+                SprintTimer = 0f;
+
+                CurrentLifeState = LifeState.Dead;
+
+                Score--;
+            }
+        }
+
+        public void SetStats()
+        {
+            switch (Class)
+            {
+                case Spec.Soldier:
+                    {
+                        m_health = Game.Constants.HealthSoldier;
+                        Health = (int)m_health;
+
+                        Speed = Game.Constants.SpeedSoldier;
+                        SprintCooldown = Game.Constants.SprintCooldownSoldier;
+                        MaxSprintTime = Game.Constants.MaxSprintSoldier;
+                    }
+                    break;
+
+                case Spec.Overwatch:
+                    {
+                        m_health = Game.Constants.HealthOverwatch;
+                        Health = (int)m_health;
+
+                        Speed = Game.Constants.SpeedOverwatch;
+                        SprintCooldown = Game.Constants.SprintCooldownOverwatch;
+                        MaxSprintTime = Game.Constants.MaxSprintOverwatch;
+                    }
+                    break;
+
+                case Spec.Agent:
+                    {
+                        m_health = Game.Constants.HealthAgent;
+                        Health = (int)m_health;
+
+                        Speed = Game.Constants.SpeedAgent;
+                        SprintCooldown = Game.Constants.SprintCooldownAgent;
+                        MaxSprintTime = Game.Constants.MaxSprintAgent;
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+
+            CooldownTimer = MaxSprintTime;
         }
 
         private void Stuff(float dt)
@@ -109,5 +219,10 @@ namespace Deimos
             Stuff(dt);
             Game.ThisPlayerDisplay.DisplayCurrentWeapon(Game.ThisPlayer.CurrentWeapon);
        }
+
+        public bool FireSprint()
+        {
+            return PlayerCombat.firesprint;
+        }
    }
 }

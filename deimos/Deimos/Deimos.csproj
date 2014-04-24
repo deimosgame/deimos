@@ -140,6 +140,7 @@
     <Compile Include="Facades\DisplayFacade.cs" />
     <Compile Include="Facades\GameplayFacade.cs" />
     <Compile Include="Facades\GeneralFacade.cs" />
+    <Compile Include="Gameplay\Constants.cs" />
     <Compile Include="Gameplay\LocalPlayer\LocalPlayerActions.cs" />
     <Compile Include="Gameplay\LocalPlayer\LocalPlayerMovement.cs" />
     <Compile Include="Gameplay\LocalPlayer\LocalPlayerCombat.cs" />

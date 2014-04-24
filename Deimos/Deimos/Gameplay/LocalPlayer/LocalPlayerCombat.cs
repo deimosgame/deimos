@@ -11,6 +11,7 @@ namespace Deimos
         DeimosGame Game;
         float w_switch_timer;
         string target_weapon;
+        public bool firesprint = true;
 
         public LocalPlayerCombat(DeimosGame game)
         {
@@ -68,10 +69,21 @@ namespace Deimos
                 ButtonState.Pressed &&
                 CanFire())
             {
+                if (Game.ThisPlayer.CurrentSpeedState ==
+                    Player.SpeedState.Sprinting)
+                {
+                    Game.ThisPlayer.CurrentSpeedState = Player.SpeedState.Running;
+                    firesprint = false;
+                }
                 Game.ThisPlayer.Inventory.Fire();
 
                 // reloading if no bullet left after shot
                 Game.ThisPlayer.Inventory.UpdateAmmo();
+            }
+
+            if (!firesprint && Game.ThisPlayer.ks.IsKeyUp(Game.Config.Sprint))
+            {
+                firesprint = true;
             }
 
             // switching weapons
@@ -143,9 +155,6 @@ namespace Deimos
         {
             return ((Game.ThisPlayer.CurrentWeapon.State ==
                 WeaponState.AtEase) &&
-
-                (Game.ThisPlayer.CurrentSpeedState !=
-                LocalPlayer.SpeedState.Sprinting) &&
                 
                 (Game.ThisPlayer.CurrentWeapon.FireTimer ==
                 Game.ThisPlayer.CurrentWeapon.FiringRate));

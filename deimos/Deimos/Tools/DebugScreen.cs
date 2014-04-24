@@ -219,6 +219,15 @@ namespace Deimos
                 "InitialVelocity:",
                 Color.Blue
             );
+            Game.ScreenElementManager.AddText(
+                "Class",
+                0,
+                (int)MapHeight + 370,
+                0,
+                Font,
+                "Player Class:",
+                Color.Red
+            );
             
 
         }
@@ -247,6 +256,7 @@ namespace Deimos
             Game.ScreenElementManager.GetText("G-Time").Show = true;
             Game.ScreenElementManager.GetText("InitialVelocity").Show = true;
             Game.ScreenElementManager.GetText("DebugConsole").Show = true;
+            Game.ScreenElementManager.GetText("Class").Show = true;
         }
         private void Hide()
         {
@@ -272,6 +282,7 @@ namespace Deimos
             Game.ScreenElementManager.GetText("G-Time").Show = false;
             Game.ScreenElementManager.GetText("InitialVelocity").Show = false;
             Game.ScreenElementManager.GetText("DebugConsole").Show = false;
+            Game.ScreenElementManager.GetText("Class").Show = false;
         }
 
         public void Debug(string text)
@@ -377,6 +388,10 @@ namespace Deimos
             Game.ScreenElementManager.GetText("InitialVelocity").Text = String.Format(
                 "InitialVelocity: {0}",
                 Game.ThisPlayerPhysics.initial_velocity
+            );
+            Game.ScreenElementManager.GetText("Class").Text = String.Format(
+                "Player Class: {0}",
+                Game.ThisPlayer.Class
             );
 
             string finalDebug = "";

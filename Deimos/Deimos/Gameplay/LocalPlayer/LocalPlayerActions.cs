@@ -90,7 +90,9 @@ namespace Deimos
 
         private bool CanSprint()
         {
-            return ((Game.ThisPlayer.CooldownTimer >=
+            return (Game.ThisPlayer.FireSprint() &&
+                
+                (Game.ThisPlayer.CooldownTimer >=
                 Game.ThisPlayer.SprintCooldown) &&
 
                 (Game.ThisPlayerPhysics.GravityState ==

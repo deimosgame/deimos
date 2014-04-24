@@ -37,7 +37,6 @@ namespace Deimos
         public float timer_gravity = 0f;
         public float c_gravity = 9.8f;
         public float initial_velocity;
-        private bool isForcedMovement = false;
 
         public AccelerationState Accelerestate = AccelerationState.Still;
         public Vector3 dv = new Vector3(0.09f, 0.09f, 0.09f);
@@ -244,7 +243,6 @@ namespace Deimos
                 initial_velocity = 0;
                 GravityState = PhysicalState.Walking;
                 acceleration.Y = 0f;
-                isForcedMovement = false;
             }
 
             if (GravityState == PhysicalState.Jumping)
@@ -252,7 +250,6 @@ namespace Deimos
                 initial_velocity = 0;
                 timer_gravity = 0;
                 GravityState = PhysicalState.Falling;
-                isForcedMovement = false;   
             }
         }
 
@@ -265,9 +262,27 @@ namespace Deimos
             }
 
             // Setting initial parameters to kick off the player
-            initial_velocity = 4.05f;
+            initial_velocity = GetJumpVelocity();
             timer_gravity = 0f;
             GravityState = PhysicalState.Jumping;
+        }
+
+        public float GetJumpVelocity()
+        {
+            switch (Game.ThisPlayer.Class)
+            {
+                case Player.Spec.Soldier:
+                    return Game.Constants.JumpSoldier;
+
+                case Player.Spec.Overwatch:
+                    return Game.Constants.JumpOverwatch;
+
+                case Player.Spec.Agent:
+                    return Game.Constants.JumpAgent;
+
+                default:
+                    return Game.Constants.JumpSoldier;
+            }
         }
 
         //public bool ShouldResetMovement(AccelerationDirection direction)

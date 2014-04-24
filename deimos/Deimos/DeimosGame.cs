@@ -96,6 +96,12 @@ namespace Deimos
             set;
         }
 
+        internal Constants Constants
+        {
+            get;
+            set;
+        }
+
         internal MenuManager MenuManager
         {
             get;
@@ -157,6 +163,7 @@ namespace Deimos
 
 
             Config = new Config();
+            Constants = new Constants();
         }
 
         protected override void Initialize()
@@ -389,7 +396,7 @@ namespace Deimos
             // for testing: player death and respawning
             if (Keyboard.GetState().IsKeyDown(Keys.J))
             {
-                ThisPlayer.PlayerRespawn(new Vector3(-45f, 11f, -8f), Vector3.Zero);
+                ThisPlayer.PlayerRespawn(new Vector3(-45f, 11f, -8f), Vector3.Zero, "main");
                 ThisPlayer.InitializeInventory(ThisPlayer.Class);
                 CurrentPlayingState = PlayingStates.Normal;
             }

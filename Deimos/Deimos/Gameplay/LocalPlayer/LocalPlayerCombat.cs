@@ -117,6 +117,26 @@ namespace Deimos
                     target_weapon = "Bazooka";
                 }
             }
+            if (Game.ThisPlayer.ks.IsKeyDown(Keys.D4) &&
+                CanSwitch("Arbiter"))
+            {
+                if (Game.ThisPlayer.Inventory.Contains("Arbiter"))
+                {
+                    Game.ThisPlayer.CurrentWeapon.State =
+                        WeaponState.Switching;
+                    target_weapon = "Arbiter";
+                }
+            }
+            if (Game.ThisPlayer.ks.IsKeyDown(Keys.D5) &&
+                CanSwitch("Carver"))
+            {
+                if (Game.ThisPlayer.Inventory.Contains("Carver"))
+                {
+                    Game.ThisPlayer.CurrentWeapon.State =
+                        WeaponState.Switching;
+                    target_weapon = "Carver";
+                }
+            }
 
             if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Reload) &&
                 CanReload())

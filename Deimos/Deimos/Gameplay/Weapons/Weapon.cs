@@ -18,6 +18,8 @@ namespace Deimos
         public string Path;
         public float W_Direct;
 
+        public Type Type;
+
         private WeaponState state = WeaponState.AtEase;
         public WeaponState State
         {
@@ -122,6 +124,9 @@ namespace Deimos
         {
             Game = game;
             bulletManager = game.BulletManager;
+
+            Type = type;
+            Effect = effect;
 
             W_Offset = w_offset;
             W_Offset_Aim = w_aimoffset;

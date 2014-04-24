@@ -69,6 +69,7 @@ namespace Deimos
                         Inventory.PickupWeapon(Game.Weapons.GetWeapon("Assault Rifle"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
                         Inventory.PickupAmmo(CurrentWeapon);
+                        Inventory.PickupWeapon(Game.Weapons.GetWeapon("Carver"));
                     }
                     break;
 
@@ -80,6 +81,7 @@ namespace Deimos
                         Inventory.PickupWeapon(Game.Weapons.GetWeapon("Bazooka"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
                         Inventory.PickupAmmo(CurrentWeapon);
+                        Inventory.PickupWeapon(Game.Weapons.GetWeapon("Arbiter"));
                     }
                     break;
 

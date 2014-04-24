@@ -76,6 +76,16 @@ namespace Deimos
             Game.SceneManager.ModelManager.RemoveLevelModel(
                 "Bazooka");
             }
+            if (Game.SceneManager.ModelManager.LevelModelExists("Arbiter"))
+            {
+                Game.SceneManager.ModelManager.RemoveLevelModel(
+                    "Arbiter");
+            }
+            if (Game.SceneManager.ModelManager.LevelModelExists("Carver"))
+            {
+                Game.SceneManager.ModelManager.RemoveLevelModel(
+                    "Carver");
+            }
         }
 
         // To get proper weapon display, attached to player

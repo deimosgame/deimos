@@ -55,13 +55,37 @@ namespace Deimos
             );
             SetWeapon(new Weapon(
                 Game,
-                new Vector3(3.8f, 0.5f, 0.7f),
-                new Vector3(3.5f, 0.5f, 0f), 0.05f, (float)Math.PI,
-                "Models/Weapons/PP19/PP19Model", "Bazooka", 3,
+                new Vector3(0.6f, 1.3f, 0.5f),
+                new Vector3(0.6f, 1.3f, 0.5f), 0.0025f, (float)((Math.PI) / -2),
+                "Models/Weapons/RPG/RPG", "Bazooka", 4,
                 3f,
                 1, 5, 1,
                 3f, 40, 60,
                 20f, 200f
+                )
+            );
+            SetWeapon(new Weapon(
+                Game,
+                new Vector3(3.8f, 4f, 1.5f),
+                new Vector3(3.5f, 0.5f, 0f), 1f, 1.8f,
+                "Models/Weapons/Arbiter/arbiter", "Arbiter", 3,
+                1.5f,
+                0, 0, 0,
+                0, 30, 50,
+                0, 15,
+                Type.Melee, ActionOnHit.Damage
+                )
+            );
+            SetWeapon(new Weapon(
+                Game,
+                new Vector3(1.5f, 0.8f, 0.4f),
+                new Vector3(3.5f, 0f, 0f), 0.1f, -1.2f,
+                "Models/Weapons/Knife/knife", "Carver", 0,
+                0.2f,
+                0, 0, 0,
+                0, 30, 50,
+                0, 15,
+                Type.Melee, ActionOnHit.Damage
                 )
             );
         }

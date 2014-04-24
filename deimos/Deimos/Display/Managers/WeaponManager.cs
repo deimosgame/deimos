@@ -159,17 +159,32 @@ namespace Deimos
         public void Fire()
         {
             Weapon currentWeapon = Game.ThisPlayer.CurrentWeapon;
-            if (!currentWeapon.IsFirable())
+
+            switch (currentWeapon.Type)
             {
-                return;
+                case Type.Firearm:
+                    {
+                        if (!currentWeapon.IsFirable())
+                        {
+                            return;
+                        }
+                        currentWeapon.State = WeaponState.Firing;
+                        // Putting projectile in action through Bullet Manager
+                        Game.BulletManager.SpawnBullet();
+                        Game.SceneManager.SoundManager.Play("weaponFire");
+                        currentWeapon.c_chamberAmmo--;
+                        currentWeapon.FireTimer = 0; // reset the fire timer
+                        currentWeapon.State = WeaponState.AtEase;
+                    }
+                    break;
+
+                case Type.Melee:
+                    break;
+
+                case Type.Grenade:
+                    break;
             }
-            currentWeapon.State = WeaponState.Firing;
-            // Putting projectile in action through Bullet Manager
-            Game.BulletManager.SpawnBullet();
-            Game.SceneManager.SoundManager.Play("weaponFire");
-            currentWeapon.c_chamberAmmo--;
-            currentWeapon.FireTimer = 0; // reset the fire timer
-            currentWeapon.State = WeaponState.AtEase;
+        
         }
 
         public void Reload()

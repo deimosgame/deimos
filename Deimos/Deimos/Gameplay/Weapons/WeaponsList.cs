@@ -67,7 +67,7 @@ namespace Deimos
             SetWeapon(new Weapon(
                 Game,
                 new Vector3(3.8f, 4f, 1.5f),
-                new Vector3(3.5f, 0.5f, 0f), 1f, 1.8f,
+                new Vector3(3.8f, 4f, 1.5f), 1f, 1.8f,
                 "Models/Weapons/Arbiter/arbiter", "Arbiter", 3,
                 1.5f,
                 0, 0, 0,
@@ -79,7 +79,7 @@ namespace Deimos
             SetWeapon(new Weapon(
                 Game,
                 new Vector3(1.5f, 0.8f, 0.4f),
-                new Vector3(3.5f, 0f, 0f), 0.1f, -1.2f,
+                new Vector3(1.5f, 0.8f, 0.4f), 0.1f, -1.2f,
                 "Models/Weapons/Knife/knife", "Carver", 0,
                 0.2f,
                 0, 0, 0,

@@ -153,6 +153,7 @@ namespace Deimos
             {
                 case Spec.Soldier:
                     {
+                        Name = "Unknown Soldier";
                         m_health = Game.Constants.HealthSoldier;
                         Health = (int)m_health;
 
@@ -164,6 +165,7 @@ namespace Deimos
 
                 case Spec.Overwatch:
                     {
+                        Name = "Gabe";
                         m_health = Game.Constants.HealthOverwatch;
                         Health = (int)m_health;
 
@@ -175,6 +177,7 @@ namespace Deimos
 
                 case Spec.Agent:
                     {
+                        Name = "Varidar";
                         m_health = Game.Constants.HealthAgent;
                         Health = (int)m_health;
 

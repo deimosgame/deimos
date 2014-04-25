@@ -222,10 +222,28 @@ namespace Deimos
             Game.ScreenElementManager.AddText(
                 "Class",
                 0,
-                (int)MapHeight + 370,
+                (int)MapHeight + 390,
                 0,
                 Font,
                 "Player Class:",
+                Color.Red
+            );
+            Game.ScreenElementManager.AddText(
+                "Name",
+                0,
+                (int)MapHeight + 370,
+                0,
+                Font,
+                "Player Name:",
+                Color.Red
+            );
+            Game.ScreenElementManager.AddText(
+                "Instance",
+                0,
+                (int)MapHeight + 410,
+                0,
+                Font,
+                "Spawn Instance:",
                 Color.Red
             );
             
@@ -257,6 +275,8 @@ namespace Deimos
             Game.ScreenElementManager.GetText("InitialVelocity").Show = true;
             Game.ScreenElementManager.GetText("DebugConsole").Show = true;
             Game.ScreenElementManager.GetText("Class").Show = true;
+            Game.ScreenElementManager.GetText("Name").Show = true;
+            Game.ScreenElementManager.GetText("Instance").Show = true;
         }
         private void Hide()
         {
@@ -283,6 +303,8 @@ namespace Deimos
             Game.ScreenElementManager.GetText("InitialVelocity").Show = false;
             Game.ScreenElementManager.GetText("DebugConsole").Show = false;
             Game.ScreenElementManager.GetText("Class").Show = false;
+            Game.ScreenElementManager.GetText("Name").Show = false;
+            Game.ScreenElementManager.GetText("Instance").Show = false;
         }
 
         public void Debug(string text)
@@ -392,6 +414,14 @@ namespace Deimos
             Game.ScreenElementManager.GetText("Class").Text = String.Format(
                 "Player Class: {0}",
                 Game.ThisPlayer.Class
+            );
+            Game.ScreenElementManager.GetText("Name").Text = String.Format(
+                "Player Name: {0}",
+                Game.ThisPlayer.Name
+            );
+            Game.ScreenElementManager.GetText("Instance").Text = String.Format(
+                "Spawn Instance: {0}",
+                Game.ThisPlayer.Instance
             );
 
             string finalDebug = "";

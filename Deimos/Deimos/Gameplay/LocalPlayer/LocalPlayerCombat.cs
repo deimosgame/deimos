@@ -40,6 +40,7 @@ namespace Deimos
                 else
                 {
                     Game.ThisPlayer.Inventory.Reload();
+                    Game.ThisPlayerDisplay.ShowWeapon();
                 }
             }
 
@@ -54,6 +55,7 @@ namespace Deimos
                 else
                 {
                     Game.ThisPlayer.Inventory.Switch(target_weapon);
+                    Game.ThisPlayerDisplay.ShowWeapon();
 
                     w_switch_timer = 0f;
                 }

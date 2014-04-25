@@ -66,5 +66,7 @@ namespace Deimos
                 Matrix.CreateRotationZ(Rotation.Z) *
                 Matrix.CreateTranslation(Position);
         }
+
+        public bool show = true;
     }
 }

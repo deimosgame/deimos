@@ -204,27 +204,30 @@ namespace Deimos
             foreach (KeyValuePair<string, LevelModel> thisLevelModel in
                     models)
             {
-                // Loading the model
-                LevelModel levelModel = thisLevelModel.Value;
-
-                Matrix[] transforms = new Matrix[levelModel.CollisionModel.model.Bones.Count];
-                levelModel.CollisionModel.model.CopyAbsoluteBoneTransformsTo(transforms);
-
-                foreach (ModelMesh mesh in levelModel.CollisionModel.model.Meshes)
+                if (thisLevelModel.Value.show)
                 {
-                    Matrix meshPosition = transforms[mesh.ParentBone.Index];
-                    Matrix meshWorld = meshPosition * thisLevelModel.Value.WorldMatrix;
+                    // Loading the model
+                    LevelModel levelModel = thisLevelModel.Value;
 
-                    foreach (Effect effect in mesh.Effects)
+                    Matrix[] transforms = new Matrix[levelModel.CollisionModel.model.Bones.Count];
+                    levelModel.CollisionModel.model.CopyAbsoluteBoneTransformsTo(transforms);
+
+                    foreach (ModelMesh mesh in levelModel.CollisionModel.model.Meshes)
                     {
-                        effect.Parameters["World"]
-                            .SetValue(meshWorld);
-                        effect.Parameters["View"]
-                            .SetValue(camera.View);
-                        effect.Parameters["Projection"]
-                            .SetValue(camera.Projection);
+                        Matrix meshPosition = transforms[mesh.ParentBone.Index];
+                        Matrix meshWorld = meshPosition * thisLevelModel.Value.WorldMatrix;
+
+                        foreach (Effect effect in mesh.Effects)
+                        {
+                            effect.Parameters["World"]
+                                .SetValue(meshWorld);
+                            effect.Parameters["View"]
+                                .SetValue(camera.View);
+                            effect.Parameters["Projection"]
+                                .SetValue(camera.Projection);
+                        }
+                        mesh.Draw();
                     }
-                    mesh.Draw();
                 }
             }
         }

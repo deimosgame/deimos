@@ -106,12 +106,15 @@ namespace Deimos
                         break;
 
                     case WeaponState.Firing:
+                        Offset = Game.ThisPlayer.CurrentWeapon.W_Offset;
                         break;
 
                     case WeaponState.Reloading:
+                        HideWeapon();
                         break;
 
                     case WeaponState.Switching:
+                        HideWeapon();
                         break;
                 }
             }
@@ -129,6 +132,16 @@ namespace Deimos
                     (cameraWorld.Down * Offset.Y) +
                     (cameraWorld.Right * Offset.Z)
                 );
+        }
+
+        public void HideWeapon()
+        {
+            weapon.show = false;
+        }
+
+        public void ShowWeapon()
+        {
+            weapon.show = true;
         }
     }
 }

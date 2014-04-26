@@ -132,6 +132,7 @@
   <ItemGroup>
     <Compile Include="Display\Camera.cs" />
     <Compile Include="Gameplay\Objects\ObjectManager.cs" />
+    <Compile Include="Gameplay\Objects\ObjectsList.cs" />
     <Compile Include="Gameplay\Objects\PickupEffect.cs" />
     <Compile Include="Gameplay\Weapons\Bullet\BulletManager.cs" />
     <Compile Include="Display\Managers\MenuManager.cs" />

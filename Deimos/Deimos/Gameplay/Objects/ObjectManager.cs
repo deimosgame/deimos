@@ -45,39 +45,51 @@ namespace Deimos
 
             // Creating and inserting a unique world weapon object
             // according to parameters.
-        public string AddWeapon(string name, string path, 
-            string weaponToken, int initial_ammo,
+        public string AddWeapon(string name, int initial_ammo,
             Vector3 position, PickupObject.State state, float respawn,
             Vector3 rotation = default(Vector3))
         {
             string t = GenerateWeaponToken();
             n_weapontoken++;
 
-            PickupWeapons.Add(t, new PickupWeapon(
-                name, path, position, t, weaponToken, initial_ammo,
-                state, respawn, rotation));
+            // tweaking the object according to parameters
+            PickupWeapon w = Game.Objects.GetWeaponObject(name);
+            w.Ammo = initial_ammo;
+            w.Position = position;
+            w.Status = state;
+            w.T_Respawn = respawn;
+            w.Rotation = rotation;
 
-            Game.SceneManager.ModelManager.LoadModel(t, path,
-                position, rotation, 1, LevelModel.CollisionType.None);
+            PickupWeapons.Add(t, w);
+
+            Game.SceneManager.ModelManager.LoadModel(t, w.Model,
+                position, rotation, w.Scale, LevelModel.CollisionType.None);
 
             return t;
         }
 
             // Creating and inserting a unique world effect object
             // according to parameters
-        public string AddEffect(string name, string path,
-            Vector3 position, PickupEffect.Effect effect,
-            PickupObject.State state, float respawn,
+        public string AddEffect(string name,
+            Vector3 position,
+            PickupObject.State state,
+            float respawn,
             Vector3 rotation = default(Vector3))
         {
             string t = GenerateEffectToken();
             n_effecttoken++;
 
-            PickupEffects.Add(t, new PickupEffect(
-                name, path, position, effect, t, state, respawn, rotation));
+            // tweaking the desired effect object to parameters
+            PickupEffect e = Game.Objects.GetEffectObject(name);
+            e.Position = position;
+            e.Status = state;
+            e.T_Respawn = respawn;
+            e.Rotation = rotation;
 
-            Game.SceneManager.ModelManager.LoadModel(t, path,
-                position, rotation, 1, LevelModel.CollisionType.None);
+            PickupEffects.Add(t, e);
+
+            Game.SceneManager.ModelManager.LoadModel(t, e.Model,
+                position, rotation, e.Scale, LevelModel.CollisionType.None);
 
             return t;
         }
@@ -102,6 +114,7 @@ namespace Deimos
             if (PickupWeapons.ContainsKey(token))
             {
                 PickupWeapons.Remove(token);
+                n_weapontoken--;
 
                 // unloading the models
                 Game.SceneManager.ModelManager.RemoveLevelModel(token);
@@ -114,6 +127,7 @@ namespace Deimos
             if (PickupEffects.ContainsKey(token))
             {
                 PickupEffects.Remove(token);
+                n_effecttoken--;
 
                 //unloading the models
                 Game.SceneManager.ModelManager.RemoveLevelModel(token);
@@ -157,10 +171,7 @@ namespace Deimos
             {
                 if (thisWeapon.Value.Status == PickupObject.State.Active)
                 {
-                    // Manu can you help me complete this code that lets
-                    // players pick up the object?
-                    // Perhaps a method in the PickupWeapon class
-                    // that handles it, and triggers the Inventory
+                    thisWeapon.Value.CheckPickup();
                 }
                 else
                 {
@@ -171,7 +182,7 @@ namespace Deimos
                         
                         // showing once again the now active object
                         Game.SceneManager.ModelManager.GetLevelModel(
-                            thisWeapon.Value.Token).show = true;
+                            thisWeapon.Key).show = true;
 
                         // resetting its respawn timer
                         thisWeapon.Value.respawn_timer = 0;
@@ -180,7 +191,7 @@ namespace Deimos
                     {
                         // hiding the inactive object from the world
                         Game.SceneManager.ModelManager.GetLevelModel(
-                            thisWeapon.Value.Token).show = false;
+                            thisWeapon.Key).show = false;
 
                         // incrementing the respawn timer
                         thisWeapon.Value.respawn_timer += dt;
@@ -193,7 +204,7 @@ namespace Deimos
             {
                 if (thisEffect.Value.Status == PickupObject.State.Active)
                 {
-                    // same thing for these effects
+                    thisEffect.Value.CheckPickup();
                 }
                 else
                 {
@@ -204,7 +215,7 @@ namespace Deimos
 
                         // showing once again the now active object
                         Game.SceneManager.ModelManager.GetLevelModel(
-                            thisEffect.Value.Token).show = true;
+                            thisEffect.Key).show = true;
 
                         // resetting its respawn timer
                         thisEffect.Value.respawn_timer = 0;
@@ -213,7 +224,7 @@ namespace Deimos
                     {
                         // hiding the inactive object from the world
                         Game.SceneManager.ModelManager.GetLevelModel(
-                            thisEffect.Value.Token).show = false;
+                            thisEffect.Key).show = false;
 
                         // incrementing the respawn timer
                         thisEffect.Value.respawn_timer += dt;

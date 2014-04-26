@@ -13,6 +13,9 @@ namespace Deimos
         LightManager LightManager;
         SoundManager SoundManager;
 
+        // tokens
+        string token_health_pack;
+
         // Constructor
         public SceneDeimos(SceneManager sceneManager)
         {
@@ -84,6 +87,12 @@ namespace Deimos
             );
             SoundManager.Play3D("scary", SceneManager.Game.ThisPlayer.Position, new Vector3(-127, 6, -64));
             //SoundManager.Play("scary");
+
+            token_health_pack = Objects.AddEffect("Health Pack",
+                new Vector3(-90f, 1f, -49f),
+                PickupObject.State.Active,
+                5
+            );
         }
 
         public float x = -1f;
@@ -94,7 +103,9 @@ namespace Deimos
         // Update our things at each ticks
         public override void Update()
         {
+
             SoundManager.SetListener("scary", SceneManager.Game.ThisPlayer.Position);
+
             //SceneManager.Game.DebugScreen.Debug("debugconsole");
 
             //PointLight light1 = LightManager.GetPointLight("Corridor1");
@@ -117,6 +128,13 @@ namespace Deimos
             //}
 
             //i++;
+
+            if (SceneManager.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.G))
+            {
+                Objects.SetStateEffect(token_health_pack, PickupObject.State.Inactive);
+            }
+
+            Objects.Update(SceneManager.Game.ThisPlayer.dt);
         }
     }
 }

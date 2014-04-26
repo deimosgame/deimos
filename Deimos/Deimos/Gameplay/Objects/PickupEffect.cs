@@ -19,22 +19,18 @@ namespace Deimos
         public Effect O_Effect;
 
         // Constructor
-        public PickupEffect(string name, string path,
-            Vector3 position, Effect effect, string token,
-            State state, float respawn,
-            Vector3 rotation = default(Vector3))
+        public PickupEffect(string name, string path, float scale, Effect effect)
         {
             Name = name;
             Model = path;
-            Position = position;
-            Rotation = rotation;
-            Token = token;
-
+            Scale = scale;
             O_Effect = effect;
+        }
 
-            Status = state;
-
-            T_Respawn = respawn;
+        // Methods
+        public override void Treat()
+        {
+            
         }
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace Deimos
 {
-    public class PickupObject
+    abstract public class PickupObject
     {
         // This is the base class for 
         // World objects that are pickup objects
@@ -20,7 +20,7 @@ namespace Deimos
         public string Name;
         public string Model;
 
-        public string Token;
+        public float Scale;
 
         public Vector3 Position;
         public Vector3 Rotation;
@@ -30,5 +30,18 @@ namespace Deimos
 
         public float T_Respawn;
         public float respawn_timer = 0;
+
+        // Abstract methods
+
+        abstract public void Treat();
+
+        // Common methods
+        public void CheckPickup()
+        {
+            // Code that lets players pick up the object
+
+            // And then we treat the effects
+            Treat();
+        }
     }
 }

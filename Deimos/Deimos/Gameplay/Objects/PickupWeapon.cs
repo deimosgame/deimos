@@ -13,24 +13,19 @@ namespace Deimos
         public int Ammo;
 
         // Constructor
-        public PickupWeapon(string name, string path,
-            Vector3 position, string token,
-            string weaponToken, int initial_ammo,
-            State state, float respawn,
-            Vector3 rotation = default(Vector3))
+        public PickupWeapon(string name, string path, float scale,
+            string weaponToken)
         {
             Name = name;
             Model = path;
-            Position = position;
-            Rotation = rotation;
-
-            Token = token;
+            Scale = scale;
             Represents = weaponToken;
-            Ammo = initial_ammo;
+        }
 
-            Status = state;
-
-            T_Respawn = respawn;
+        // Methods
+        public override void Treat()
+        {
+            
         }
     }
 }

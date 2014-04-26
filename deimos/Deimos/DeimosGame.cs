@@ -78,6 +78,12 @@ namespace Deimos
             set;
         }
 
+        internal ObjectsList Objects
+        {
+            get;
+            set;
+        }
+
         internal BulletManager BulletManager
         {
             get;
@@ -353,6 +359,13 @@ namespace Deimos
 
         private void InitGameplay()
         {
+            Weapons = new WeaponsList(this);
+            BulletManager = new BulletManager(this);
+            Objects = new ObjectsList();
+
+            Weapons.Initialise();
+            Objects.Initialize();
+
             ThisPlayer = new LocalPlayer(this);
             ThisPlayerPhysics = new LocalPlayerPhysics(this);
             ThisPlayerDisplay = new LocalPlayerDisplay(this);
@@ -360,10 +373,7 @@ namespace Deimos
             SceneManager = new SceneManager(this, TempContent);
             SceneManager.SetScene<SceneDeimos>();
 
-            Weapons = new WeaponsList(this);
-            BulletManager = new BulletManager(this);
-
-            Weapons.Initialise();
+            
 
             Camera = new Camera(
                 this,

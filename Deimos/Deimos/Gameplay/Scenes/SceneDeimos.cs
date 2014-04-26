@@ -21,6 +21,8 @@ namespace Deimos
             ModelManager = SceneManager.ModelManager;
             LightManager = SceneManager.LightManager;
             SoundManager = SceneManager.SoundManager;
+
+            Objects = new ObjectManager(SceneManager.Game);
         }
 
         // Destructor

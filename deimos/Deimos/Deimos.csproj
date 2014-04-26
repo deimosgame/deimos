@@ -131,12 +131,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Display\Camera.cs" />
-    <Compile Include="Display\Managers\BulletManager.cs" />
+    <Compile Include="Gameplay\Objects\ObjectManager.cs" />
+    <Compile Include="Gameplay\Objects\PickupEffect.cs" />
+    <Compile Include="Gameplay\Weapons\Bullet\BulletManager.cs" />
     <Compile Include="Display\Managers\MenuManager.cs" />
     <Compile Include="Display\Managers\ResourceManager.cs" />
     <Compile Include="Display\Managers\Types\Menu\MenuElement.cs" />
     <Compile Include="Display\Managers\Types\Menu\MenuScreen.cs" />
-    <Compile Include="Display\Managers\WeaponManager.cs" />
+    <Compile Include="Gameplay\Weapons\WeaponManager.cs" />
     <Compile Include="Facades\DisplayFacade.cs" />
     <Compile Include="Facades\GameplayFacade.cs" />
     <Compile Include="Facades\GeneralFacade.cs" />
@@ -144,6 +146,8 @@
     <Compile Include="Gameplay\LocalPlayer\LocalPlayerActions.cs" />
     <Compile Include="Gameplay\LocalPlayer\LocalPlayerMovement.cs" />
     <Compile Include="Gameplay\LocalPlayer\LocalPlayerCombat.cs" />
+    <Compile Include="Gameplay\Objects\PickupObject.cs" />
+    <Compile Include="Gameplay\Objects\PickupWeapon.cs" />
     <Compile Include="Gameplay\Weapons\Bullet\Bullet.cs" />
     <Compile Include="Gameplay\Config.cs" />
     <Compile Include="Display\DeferredRendering\DeferredRenderer.cs" />

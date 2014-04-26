@@ -170,34 +170,6 @@ namespace Deimos
             }
         }
 
-        //public void Next()
-        //{
-        //    if (c_weapon + 1 != 5)
-        //    {
-        //        c_weapon++;
-        //        Switch(GetName(Order[c_weapon]));
-        //    }
-        //    else
-        //    {
-        //        c_weapon = FirstIndex();
-        //        Switch(GetName(Order[c_weapon]));
-        //    }
-        //}
-
-        //public void Previous()
-        //{
-        //    if (c_weapon - 1 != -1 && Order[c_weapon - 1] != '\0')
-        //    {
-        //        c_weapon--;
-        //        Switch(GetName(Order[c_weapon]));
-        //    }
-        //    else
-        //    {
-        //        c_weapon = 4;
-        //        Switch(GetName(Order[c_weapon]));
-        //    }
-        //}
-
         public void Sort()
         {
             Array.Sort(Order);
@@ -376,31 +348,11 @@ namespace Deimos
 
         public void Switch(string w_name)
         {
-            string n_weapon = w_name;
-
-            //switch (w_name)
-            //{
-            //    case "Pistol" :
-            //        n_weapon = Order[0];
-            //        break;
-
-            //    case "Assault Rifle" :
-            //        n_weapon = Order[1];
-            //        break;
-                
-            //    case "Bazooka" :
-            //        n_weapon = Order[2];
-            //        break;
-
-            //    default:
-            //        break;
-            //}
-
             string n_oldweapon = Game.ThisPlayer.CurrentWeapon.Name;
 
-            if (n_weapon != n_oldweapon && PlayerInventory.ContainsKey(n_weapon))
+            if (w_name != n_oldweapon && PlayerInventory.ContainsKey(w_name))
             {
-                SetCurrentWeapon(n_weapon);
+                SetCurrentWeapon(w_name);
                 SetPreviousWeapon(n_oldweapon);
                 Game.ThisPlayerDisplay.SetCurrentWeaponModel();
             }

@@ -16,5 +16,7 @@ namespace Deimos
         abstract public void Update();
 
         public Vector3 PlayerSize;
+
+        public ObjectManager Objects;
     }
 }

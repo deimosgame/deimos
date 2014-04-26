@@ -88,6 +88,24 @@ namespace Deimos
                 firesprint = true;
             }
 
+            // mousewheeling for next/previous weapon
+            if (Game.ThisPlayer.CurrentMouseState.ScrollWheelValue >
+                Game.ThisPlayer.previousScrollValue &&
+                CanSwitch(Game.ThisPlayer.Inventory.GetPrevious()))
+            {
+                Game.ThisPlayer.CurrentWeapon.State =
+                    WeaponState.Switching;
+                target_weapon = Game.ThisPlayer.Inventory.GetPrevious();
+            }
+            else if (Game.ThisPlayer.CurrentMouseState.ScrollWheelValue <
+                Game.ThisPlayer.previousScrollValue &&
+                CanSwitch(Game.ThisPlayer.Inventory.GetNext()))
+            {
+                Game.ThisPlayer.CurrentWeapon.State =
+                    WeaponState.Switching;
+                target_weapon = Game.ThisPlayer.Inventory.GetNext();
+            }
+
             // switching weapons
             if (Game.ThisPlayer.ks.IsKeyDown(Keys.D1) &&
                 CanSwitch("Pistol"))

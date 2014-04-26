@@ -41,13 +41,17 @@ namespace Deimos
         // This is the player's dynamic Weapon Inventory
         private Dictionary<string, Weapon> PlayerInventory =
             new Dictionary<string, Weapon>();
-        private string[] Order = new string[5];
-        uint b_weapons = 0;
+        private char[] Order;
+        int max_n_weapons = 5;
+        uint n_weapons = 0;
+        int c_weapon = 0;
 
         // Constructor
         public WeaponManager(DeimosGame game)
         {
             Game = game;
+
+            Order = new char[max_n_weapons];
         }
         
         // Methods for the Player Inventory
@@ -62,8 +66,9 @@ namespace Deimos
                    pickupWeapon
                 );
 
-                Order[b_weapons] = pickupWeapon.Name;
-                b_weapons++;
+                Order[n_weapons] = pickupWeapon.representative;
+                n_weapons++;
+                Sort();
        
                 // if the picked up weapon has priority over current weapon, 
                 // we equip it
@@ -72,6 +77,7 @@ namespace Deimos
                if (Game.ThisPlayer.CurrentWeapon == null)
                {
                    SetCurrentWeapon(pickupWeapon.Name);
+                   c_weapon = Array.IndexOf(Order, GetRep(pickupWeapon.Name));
                }
                else if (Game.ThisPlayer.CurrentWeapon != null && 
                    Game.ThisPlayer.CurrentWeapon.Importance 
@@ -81,14 +87,120 @@ namespace Deimos
                    // tell me if there is
                    SetPreviousWeapon(Game.ThisPlayer.CurrentWeapon.Name);
                    SetCurrentWeapon(pickupWeapon.Name);
+                   c_weapon = Array.IndexOf(Order, GetRep(pickupWeapon.Name));
                }
-               Sort();
             }
         }
 
+        private string GetName(char c)
+        {
+            switch (c)
+            {
+                case 'A':
+                    return "Carver";
+                case 'B':
+                    return "Pistol";
+                case 'C':
+                    return "Assault Rifle";
+                case 'D':
+                    return "Arbiter";
+                case 'E':
+                    return "Bazooka";
+                default:
+                    return "hands";
+            }
+        }
+
+        private char GetRep(string name)
+        {
+            switch (name)
+            {
+                case "Carver":
+                    return 'A';
+                case "Pistol":
+                    return 'B';
+                case "Assault Rifle":
+                    return 'C';
+                case "Arbiter":
+                    return 'D';
+                case "Bazooka":
+                    return 'E';
+                default:
+                    return '0';
+            }
+        }
+
+        private int FirstIndex()
+        {
+            int i = 0;
+
+            while (i < Order.Length && Order[i] == '\0')
+            {
+                i++;
+            }
+
+            return i;
+        }
+
+        public string GetNext()
+        {
+            if (c_weapon + 1 != max_n_weapons)
+            {
+                c_weapon++;
+                return GetName(Order[c_weapon]);
+            }
+            else
+            {
+                c_weapon = FirstIndex();
+                return GetName(Order[c_weapon]);
+            }
+        }
+
+        public string GetPrevious()
+        {
+            if (c_weapon - 1 != -1 && Order[c_weapon -1] != '\0')
+            {
+                c_weapon--;
+                return GetName(Order[c_weapon]);
+            }
+            else
+            {
+                c_weapon = max_n_weapons-  1;
+                return GetName(Order[c_weapon]);
+            }
+        }
+
+        //public void Next()
+        //{
+        //    if (c_weapon + 1 != 5)
+        //    {
+        //        c_weapon++;
+        //        Switch(GetName(Order[c_weapon]));
+        //    }
+        //    else
+        //    {
+        //        c_weapon = FirstIndex();
+        //        Switch(GetName(Order[c_weapon]));
+        //    }
+        //}
+
+        //public void Previous()
+        //{
+        //    if (c_weapon - 1 != -1 && Order[c_weapon - 1] != '\0')
+        //    {
+        //        c_weapon--;
+        //        Switch(GetName(Order[c_weapon]));
+        //    }
+        //    else
+        //    {
+        //        c_weapon = 4;
+        //        Switch(GetName(Order[c_weapon]));
+        //    }
+        //}
+
         public void Sort()
         {
-            
+            Array.Sort(Order);
         }
 
         public void SetCurrentWeapon(string name)
@@ -96,6 +208,7 @@ namespace Deimos
             if (PlayerInventory.ContainsKey(name))
             {
                 Game.ThisPlayer.CurrentWeapon = PlayerInventory[name];
+                c_weapon = Array.IndexOf(Order, GetRep(name));
             }
         }
 
@@ -221,8 +334,8 @@ namespace Deimos
         public void ForceAdd(Weapon weapon)
         {
             PlayerInventory.Add(weapon.Name, weapon);
-            Order[b_weapons] = weapon.Name;
-            b_weapons++;
+            Order[n_weapons] = weapon.representative;
+            n_weapons++;
 
             Sort();
         }
@@ -233,19 +346,19 @@ namespace Deimos
             if (PlayerInventory.ContainsKey(Game.ThisPlayer.CurrentWeapon.Name))
             {
                 PlayerInventory.Remove(Game.ThisPlayer.CurrentWeapon.Name);
-                RemoveFromOrder(Game.ThisPlayer.CurrentWeapon.Name);
+                RemoveFromOrder(Game.ThisPlayer.CurrentWeapon.representative);
             }
 
             Sort();
         }
 
-        public void RemoveFromOrder(string name)
+        public void RemoveFromOrder(char rep)
         {
-            if (Order.First<string>((x) => x == name) != null)
+            if (Order.First<char>((x) => x == rep) != null)
             {
                 int i = 0;
 
-                while (Order[i] != name)
+                while (Order[i] != rep)
                 {
                     i++; ;
                 }
@@ -256,8 +369,8 @@ namespace Deimos
                     i = j;
                 }
 
-                Order[i + 1] = null;
-                b_weapons--;
+                Order[i + 1] = '\0';
+                n_weapons--;
             }
         }
 
@@ -303,8 +416,9 @@ namespace Deimos
         public void Flush()
         {
             PlayerInventory = new Dictionary<string, Weapon>();
-            Order = new string[5];
-            b_weapons = 0;
+            Order = new char[max_n_weapons];
+            n_weapons = 0;
+            c_weapon = 0;
         }
     }
 }

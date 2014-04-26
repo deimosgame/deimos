@@ -113,10 +113,14 @@ namespace Deimos
             private set;
         }
 
+        // to facilitate sorting and inventory management
+        // the representative goes in line with the priority of the weapon
+        public char representative;
+
         // Constructor
         public Weapon(DeimosGame game,
             Vector3 w_offset, Vector3 w_aimoffset, float w_scaling, float w_direction,
-            string path, string w_name, int w_priority, 
+            string path, string w_name, int w_priority, char rep,
             float w_firingRate, uint w_mca, uint w_mra, 
             uint w_initialReservoirAmmo, float w_reloadt, float w_minDmg, float w_maxDmg, 
             float b_speed, float w_range,
@@ -134,6 +138,8 @@ namespace Deimos
             W_Direct = w_direction;
 
             Path = path;
+
+            representative = rep;
 
             name = w_name;
             Importance = w_priority;

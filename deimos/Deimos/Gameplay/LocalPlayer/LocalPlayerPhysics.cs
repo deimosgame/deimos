@@ -51,7 +51,8 @@ namespace Deimos
                 acceleration.Z = Math.Max(-GetMaxHorizAcceleration(), Math.Min(value.Z, GetMaxHorizAcceleration()));
             }
         }
-        public Vector3 Momentum;
+
+        public Vector3 momentum;
 
         // Constructor
         public LocalPlayerPhysics(DeimosGame game)
@@ -63,6 +64,18 @@ namespace Deimos
         public Vector3 GetAcceleration()
         {
             return Acceleration;
+        }
+
+        public Vector3 GetMomentum()
+        {
+            if (momentum == Vector3.Zero)
+            {
+                return (new Vector3(1, 1, 1));
+            }
+            else
+            {
+                return momentum;
+            }
         }
 
         // MOVEMENT RELATED
@@ -114,7 +127,11 @@ namespace Deimos
             switch(dir)
             {
                 case AccelerationDirection.X:
-                    if (Acceleration.X == 0) return;
+                    if (Acceleration.X == 0)
+                    {
+                        momentum.X = 0;
+                        return;
+                    }
                     if (Acceleration.X > 0)
                     {
                         Decelerate(dir);
@@ -152,7 +169,11 @@ namespace Deimos
                     }
                     break;
                 case AccelerationDirection.Z:
-                    if (Acceleration.Z == 0) return;
+                    if (Acceleration.Z == 0)
+                    {
+                        momentum.Z = 0;
+                        return;
+                    }
                     if (Acceleration.Z > 0)
                     {
                         Decelerate(dir);
@@ -243,6 +264,7 @@ namespace Deimos
                 initial_velocity = 0;
                 GravityState = PhysicalState.Walking;
                 acceleration.Y = 0f;
+                momentum.Y = 0;
             }
 
             if (GravityState == PhysicalState.Jumping)
@@ -260,6 +282,9 @@ namespace Deimos
             {
                 Game.ThisPlayer.CurrentSpeedState = Player.SpeedState.Running;
             }
+
+            // creating the potential momentum
+            momentum = CreateMomentum();
 
             // Setting initial parameters to kick off the player
             initial_velocity = GetJumpVelocity();
@@ -285,6 +310,7 @@ namespace Deimos
             }
         }
 
+        // hard-coded momentum for display purposes
         //public bool ShouldResetMovement(AccelerationDirection direction)
         //{
         //    switch (direction)
@@ -301,9 +327,12 @@ namespace Deimos
         //    }
         //}
 
-        //public Vector3 CreateMomentum()
-        //{
-        //    return (Game.ThisPlayer.Rotation * Acceleration.Z);
-        //}
+        public Vector3 CreateMomentum()
+        {
+            Vector3 direction = -Game.Camera.ViewVector;
+            direction.Y = 1;
+
+            return (direction);
+        }
     }
 }

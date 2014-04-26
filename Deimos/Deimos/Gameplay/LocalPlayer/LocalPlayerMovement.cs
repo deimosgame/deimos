@@ -75,7 +75,9 @@ namespace Deimos
 
                 LastMoveVector = movementVector;
 
-                return movementVector * Game.ThisPlayerPhysics.GetAcceleration();
+                // * Game.ThisPlayerPhysics.GetMomentum()
+                return (movementVector * 
+                    Game.ThisPlayerPhysics.GetAcceleration());
             }
             else
             {

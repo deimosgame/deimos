@@ -15,6 +15,7 @@ namespace Deimos
 
         public MouseState CurrentMouseState;
         public MouseState PreviousMouseState;
+        public float previousScrollValue;
         public Vector3 MouseRotationBuffer;
 
         public Vector3 CameraOldPosition;
@@ -223,6 +224,8 @@ namespace Deimos
             PlayerCombat.HandleCombat(dt);
             Stuff(dt);
             Game.ThisPlayerDisplay.DisplayCurrentWeapon(Game.ThisPlayer.CurrentWeapon);
+
+            previousScrollValue = CurrentMouseState.ScrollWheelValue;
        }
 
         public bool FireSprint()

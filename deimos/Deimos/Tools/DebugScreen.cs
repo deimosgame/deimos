@@ -246,6 +246,33 @@ namespace Deimos
                 "Spawn Instance:",
                 Color.Red
             );
+            Game.ScreenElementManager.AddText(
+                "View",
+                0,
+                (int)MapHeight + 430,
+                0,
+                Font,
+                "Camera View:",
+                Color.Yellow
+            );
+            Game.ScreenElementManager.AddText(
+                "Momentum",
+                0,
+                (int)MapHeight + 450,
+                0,
+                Font,
+                "Momentum:",
+                Color.Yellow
+            );
+            Game.ScreenElementManager.AddText(
+                "Scroll",
+                0,
+                (int)MapHeight + 470,
+                0,
+                Font,
+                "Scroll:",
+                Color.White
+            );
             
 
         }
@@ -277,6 +304,9 @@ namespace Deimos
             Game.ScreenElementManager.GetText("Class").Show = true;
             Game.ScreenElementManager.GetText("Name").Show = true;
             Game.ScreenElementManager.GetText("Instance").Show = true;
+            Game.ScreenElementManager.GetText("View").Show = true;
+            Game.ScreenElementManager.GetText("Momentum").Show = true;
+            Game.ScreenElementManager.GetText("Scroll").Show = true;
         }
         private void Hide()
         {
@@ -305,6 +335,9 @@ namespace Deimos
             Game.ScreenElementManager.GetText("Class").Show = false;
             Game.ScreenElementManager.GetText("Name").Show = false;
             Game.ScreenElementManager.GetText("Instance").Show = false;
+            Game.ScreenElementManager.GetText("View").Show = false;
+            Game.ScreenElementManager.GetText("Momentum").Show = false;
+            Game.ScreenElementManager.GetText("Scroll").Show = false;
         }
 
         public void Debug(string text)
@@ -422,6 +455,22 @@ namespace Deimos
             Game.ScreenElementManager.GetText("Instance").Text = String.Format(
                 "Spawn Instance: {0}",
                 Game.ThisPlayer.Instance
+            );
+            Game.ScreenElementManager.GetText("View").Text = String.Format(
+                "Camera View x:{0}; y:{1}; z:{2}",
+                (float)Game.Camera.ViewVector.X,
+                (float)Game.Camera.ViewVector.Y,
+                (float)Game.Camera.ViewVector.Z
+            );
+            Game.ScreenElementManager.GetText("Momentum").Text = String.Format(
+                "Momentum: x:{0}; y:{1}; z:{2}",
+                (float)Game.ThisPlayerPhysics.momentum.X,
+                (float)Game.ThisPlayerPhysics.momentum.Y,
+                (float)Game.ThisPlayerPhysics.momentum.Z
+            );
+            Game.ScreenElementManager.GetText("Scroll").Text = String.Format(
+                "Scroll: {0}",
+                Game.ThisPlayer.previousScrollValue
             );
 
             string finalDebug = "";

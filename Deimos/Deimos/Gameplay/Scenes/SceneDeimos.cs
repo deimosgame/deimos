@@ -95,26 +95,26 @@ namespace Deimos
             SoundManager.SetListener("scary", SceneManager.Game.ThisPlayer.Position);
             //SceneManager.Game.DebugScreen.Debug("debugconsole");
 
-            PointLight light1 = LightManager.GetPointLight("Corridor1");
-            PointLight light2 = LightManager.GetPointLight("Corridor2");
-            PointLight light3 = LightManager.GetPointLight("Scary");
-            r = rnd.Next(0, 10);
-            if (i == r)
-            {
-                i = 0;
+            //PointLight light1 = LightManager.GetPointLight("Corridor1");
+            //PointLight light2 = LightManager.GetPointLight("Corridor2");
+            //PointLight light3 = LightManager.GetPointLight("Scary");
+            //r = rnd.Next(0, 10);
+            //if (i == r)
+            //{
+            //    i = 0;
 
-                light1.Intensity += x;
-                light2.Intensity += x;
-                light3.Intensity += x;
-                x = -x;
-            }
+            //    light1.Intensity += x;
+            //    light2.Intensity += x;
+            //    light3.Intensity += x;
+            //    x = -x;
+            //}
 
-            if (i > 9)
-            {
-                i = 0;
-            }
+            //if (i > 9)
+            //{
+            //    i = 0;
+            //}
 
-            i++;
+            //i++;
         }
     }
 }

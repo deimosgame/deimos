@@ -75,6 +75,13 @@ namespace Deimos
                 0.4f,
                 PickupEffect.Effect.Speed)
             );
+
+            // Essence of Phobia pickup
+            SetWeaponObj(new PickupWeapon("MysteryPickup",
+                "Models/Weapons/PP19/PP19Model",
+                0.5f,
+                'P')
+            );
         }
 
         public PickupWeapon GetWeaponObject(string n)

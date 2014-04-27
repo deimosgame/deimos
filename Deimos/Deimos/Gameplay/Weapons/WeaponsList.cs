@@ -88,6 +88,17 @@ namespace Deimos
                 20f, 200f
                 )
             );
+
+            // Our Mystery Weapon!
+            SetWeapon(new Weapon(
+                Game,
+                new Vector3(3.8f, 0.5f, 0.7f),
+                new Vector3(3.5f, 0.5f, 0f), 0.05f, (float)Math.PI,
+                "Models/Weapons/PP19/PP19Model", "Essence of Phobia",
+                10, 'P', 1, 1, 2,
+                0, 2, 0, 0, 25, 75,
+                Type.Firearm, ActionOnHit.Event)
+            );
         }
 
         public string GetName(char c)
@@ -104,6 +115,8 @@ namespace Deimos
                     return "Arbiter";
                 case 'E':
                     return "Bazooka";
+                case 'P':
+                    return "Essence of Phobia";
                 default:
                     return "hands";
             }
@@ -123,6 +136,8 @@ namespace Deimos
                     return 'D';
                 case "Bazooka":
                     return 'E';
+                case "Essence of Phobia":
+                    return 'P';
                 default:
                     return '0';
             }

@@ -129,6 +129,11 @@ namespace Deimos
                 PickupObject.State.Active,
                 10
             );
+
+            List<Vector3> mysterspawns = new List<Vector3>();
+            mysterspawns.Add(new Vector3(-110, 5, -40));
+            mysterspawns.Add(new Vector3(-70, 8, -40));
+            Objects.CreateMystery(mysterspawns, 10, 20, 1, default(Vector3));
         }
 
         public float x = -1f;
@@ -168,27 +173,33 @@ namespace Deimos
             if (SceneManager.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.G)
                 && (Objects.GetEffect(token_gravity_boost).Status == PickupObject.State.Active))
             {
-                Objects.TreatEffect(Objects.GetEffect(token_gravity_boost));
+                Objects.TreatEffect(Objects.GetEffect(token_gravity_boost), token_gravity_boost);
             }
             if (SceneManager.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.F)
                 && (Objects.GetEffect(token_speed_boost).Status == PickupObject.State.Active))
             {
-                Objects.TreatEffect(Objects.GetEffect(token_speed_boost));
+                Objects.TreatEffect(Objects.GetEffect(token_speed_boost), token_speed_boost);
             }
             if (SceneManager.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.H)
                 && (Objects.GetEffect(token_health_pack).Status == PickupObject.State.Active))
             {
-                Objects.TreatEffect(Objects.GetEffect(token_health_pack));
+                Objects.TreatEffect(Objects.GetEffect(token_health_pack), token_health_pack);
             }
             if (SceneManager.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.C)
                 && (Objects.GetWeapon(token_arbiter).Status == PickupObject.State.Active))
             {
-                Objects.TreatWeapon(Objects.GetWeapon(token_arbiter));
+                Objects.TreatWeapon(Objects.GetWeapon(token_arbiter), token_arbiter);
             }
             if (SceneManager.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.V)
                 && (Objects.GetWeapon(token_pistol).Status == PickupObject.State.Active))
             {
-                Objects.TreatWeapon(Objects.GetWeapon(token_pistol));
+                Objects.TreatWeapon(Objects.GetWeapon(token_pistol), token_pistol);
+            }
+            if (SceneManager.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.U)
+                && (Objects.GetMysteryPickup().Status == PickupObject.State.Active))
+            {
+                Objects.TreatWeapon(Objects.GetMysteryPickup(), Objects.GetMysteryPickup().Name);
+                Objects.SetMysteryRespawn();
             }
             
 

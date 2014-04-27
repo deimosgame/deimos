@@ -157,6 +157,16 @@ namespace Deimos
                     target_weapon = "Carver";
                 }
             }
+            if (Game.ThisPlayer.ks.IsKeyDown(Keys.T) &&
+                CanSwitch("Essence of Phobia"))
+            {
+                if (Game.ThisPlayer.Inventory.Contains("Essence of Phobia"))
+                {
+                    Game.ThisPlayer.CurrentWeapon.State =
+                        WeaponState.Switching;
+                    target_weapon = "Essence of Phobia";
+                }
+            }
 
             if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Reload) &&
                 CanReload())

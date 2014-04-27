@@ -23,6 +23,8 @@ namespace Deimos
             // for token management
         int n_weapontoken = 0;
         int n_effecttoken = 0;
+            // mystery weapon management (eventual)
+        private MysteryManager Mystery;
 
 
         // Constructor
@@ -175,7 +177,7 @@ namespace Deimos
         // Effect treating methods
 
             // Treating the effects of a weapon pickup object
-        public void TreatWeapon(PickupWeapon w)
+        public void TreatWeapon(PickupWeapon w, string token)
         {
             if (Game.ThisPlayer.Inventory.Contains(
                 Game.Weapons.GetName(w.Represents)))
@@ -198,6 +200,10 @@ namespace Deimos
 
                     // and let's set its respawn timer to 0
                     w.respawn_timer = 0;
+
+                    // hiding the inactive object from the world
+                    Game.SceneManager.ModelManager.GetLevelModel(
+                        token).show = false;
                 }
             }
             else
@@ -219,11 +225,15 @@ namespace Deimos
 
                 // and the timer to 0
                 w.respawn_timer = 0;
+
+                // hiding the inactive object from the world
+                Game.SceneManager.ModelManager.GetLevelModel(
+                    token).show = false;
             }
         }
 
             // Treating the effects of an effect pickup object
-        public void TreatEffect(PickupEffect e)
+        public void TreatEffect(PickupEffect e, string token)
         {
             switch (e.O_Effect)
             {
@@ -250,6 +260,10 @@ namespace Deimos
 
                             e.Status = PickupObject.State.Inactive;
                             e.respawn_timer = 0;
+
+                            // hiding the inactive object from the world
+                            Game.SceneManager.ModelManager.GetLevelModel(
+                                token).show = false;
                         }
                     }
                     break;
@@ -271,6 +285,10 @@ namespace Deimos
                             // let's deactivate the world object
                             e.Status = PickupObject.State.Inactive;
                             e.respawn_timer = 0;
+
+                            // hiding the inactive object from the world
+                            Game.SceneManager.ModelManager.GetLevelModel(
+                                token).show = false;
 
                             // let's give the boost to the player!
                             Game.ThisPlayer.Speed += e.Intensity;
@@ -294,6 +312,10 @@ namespace Deimos
                         // let's deactivate the world object
                         e.Status = PickupObject.State.Inactive;
                         e.respawn_timer = 0;
+
+                        // hiding the inactive object from the world
+                        Game.SceneManager.ModelManager.GetLevelModel(
+                            token).show = false;
 
                         // let's boost the player!
                         Game.ThisPlayerPhysics.JumpVelocity += e.Intensity;
@@ -332,10 +354,6 @@ namespace Deimos
                     }
                     else
                     {
-                        // hiding the inactive object from the world
-                        Game.SceneManager.ModelManager.GetLevelModel(
-                            thisWeapon.Key).show = false;
-
                         // incrementing the respawn timer
                         thisWeapon.Value.respawn_timer += dt;
                     }
@@ -365,10 +383,6 @@ namespace Deimos
                     }
                     else
                     {
-                        // hiding the inactive object from the world
-                        Game.SceneManager.ModelManager.GetLevelModel(
-                            thisEffect.Key).show = false;
-
                         // incrementing the respawn timer
                         thisEffect.Value.respawn_timer += dt;
                     }
@@ -376,6 +390,7 @@ namespace Deimos
             }
 
             HandleBoostTimers(dt);
+            UpdateMystery(dt);
         }
 
         private void HandleBoostTimers(float dt)
@@ -450,5 +465,29 @@ namespace Deimos
         }
 
 
+        // Mystery weapon management
+
+            // Instantiating a mystery weapon
+        public void CreateMystery(List<Vector3> spawns, int t_min, int t_max,
+            int initial_ammo, Vector3 rotation = default(Vector3))
+        {
+            Mystery = new MysteryManager(Game, spawns,
+                t_min, t_max, initial_ammo, rotation);
+        }
+
+        public void UpdateMystery(float dt)
+        {
+            Mystery.Update(dt);
+        }
+
+        public PickupWeapon GetMysteryPickup()
+        {
+            return Mystery.MysteryWeapon;
+        }
+
+        public void SetMysteryRespawn()
+        {
+            Mystery.SetRespawn();
+        }
     }
 }

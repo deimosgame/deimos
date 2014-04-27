@@ -131,9 +131,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Display\Camera.cs" />
-    <Compile Include="Gameplay\Objects\ObjectManager.cs" />
+    <Compile Include="Gameplay\Objects\Managers\ObjectManager.cs" />
     <Compile Include="Gameplay\Objects\ObjectsList.cs" />
-    <Compile Include="Gameplay\Objects\PickupEffect.cs" />
+    <Compile Include="Gameplay\Objects\Type\PickupEffect.cs" />
+    <Compile Include="Gameplay\Objects\Managers\SubManagers\MysteryManager.cs" />
     <Compile Include="Gameplay\Weapons\Bullet\BulletManager.cs" />
     <Compile Include="Display\Managers\MenuManager.cs" />
     <Compile Include="Display\Managers\ResourceManager.cs" />
@@ -147,8 +148,8 @@
     <Compile Include="Gameplay\LocalPlayer\LocalPlayerActions.cs" />
     <Compile Include="Gameplay\LocalPlayer\LocalPlayerMovement.cs" />
     <Compile Include="Gameplay\LocalPlayer\LocalPlayerCombat.cs" />
-    <Compile Include="Gameplay\Objects\PickupObject.cs" />
-    <Compile Include="Gameplay\Objects\PickupWeapon.cs" />
+    <Compile Include="Gameplay\Objects\Type\PickupObject.cs" />
+    <Compile Include="Gameplay\Objects\Type\PickupWeapon.cs" />
     <Compile Include="Gameplay\Weapons\Bullet\Bullet.cs" />
     <Compile Include="Gameplay\Config.cs" />
     <Compile Include="Display\DeferredRendering\DeferredRenderer.cs" />

@@ -12,7 +12,7 @@ namespace Deimos
     {
         // Attributes
         private SoundEffect MySong;
-        private Vector3 Emiter;
+        private Vector3 Emitter;
         private Vector3 Listener;
         private AudioEmitter AudioEmitter;
         private AudioListener AudioListener;
@@ -30,7 +30,7 @@ namespace Deimos
         // Methods
         public void Play3D(Vector3 emitterLocation, Vector3 cameraPosition)
         {
-            Emiter = emitterLocation;
+            Emitter = emitterLocation;
             Listener = cameraPosition;
             AudioEmitter = new AudioEmitter();
             AudioListener = new AudioListener();
@@ -51,7 +51,7 @@ namespace Deimos
 
         public void SetEmiter(Vector3 pos)
         {
-            Emiter = pos;
+            Emitter = pos;
         }
         public void SetListener(Vector3 pos)
         {
@@ -77,7 +77,7 @@ namespace Deimos
                 else
                 {
                     AudioListener.Position = Listener;
-                    AudioEmitter.Position = Emiter;
+                    AudioEmitter.Position = Emitter;
                     Sound3DInstances[i].Apply3D(AudioListener, AudioEmitter);
                 }
             }

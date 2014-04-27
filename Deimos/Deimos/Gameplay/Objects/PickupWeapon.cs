@@ -9,12 +9,12 @@ namespace Deimos
     public class PickupWeapon : PickupObject
     {
         // Attributes
-        public string Represents;
+        public char Represents;
         public int Ammo;
 
         // Constructor
         public PickupWeapon(string name, string path, float scale,
-            string weaponToken)
+            char weaponToken)
         {
             Name = name;
             Model = path;

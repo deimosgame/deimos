@@ -42,7 +42,7 @@ namespace Deimos
         private Dictionary<string, Weapon> PlayerInventory =
             new Dictionary<string, Weapon>();
         private char[] Order;
-        int max_n_weapons = 5;
+        int max_n_weapons = 6;
         uint n_weapons = 0;
         int c_weapon = 0;
 
@@ -66,7 +66,7 @@ namespace Deimos
                    pickupWeapon
                 );
 
-                Order[n_weapons] = pickupWeapon.representative;
+                Order[0] = pickupWeapon.representative;
                 n_weapons++;
                 Sort();
        
@@ -77,56 +77,15 @@ namespace Deimos
                if (Game.ThisPlayer.CurrentWeapon == null)
                {
                    SetCurrentWeapon(pickupWeapon.Name);
-                   c_weapon = Array.IndexOf(Order, GetRep(pickupWeapon.Name));
+                   c_weapon = Array.IndexOf(Order, Game.Weapons.GetRep(pickupWeapon.Name));
                }
                else if (Game.ThisPlayer.CurrentWeapon != null && 
                    Game.ThisPlayer.CurrentWeapon.Importance 
                    < pickupWeapon.Importance)
                {
-                   // might be an overwriting problem, I trust Manu to 
-                   // tell me if there is
-                   SetPreviousWeapon(Game.ThisPlayer.CurrentWeapon.Name);
-                   SetCurrentWeapon(pickupWeapon.Name);
-                   c_weapon = Array.IndexOf(Order, GetRep(pickupWeapon.Name));
+                   Game.ThisPlayer.SetTargetWeapon(pickupWeapon.Name);
+                   Game.ThisPlayer.CurrentWeapon.State = WeaponState.Switching;
                }
-            }
-        }
-
-        private string GetName(char c)
-        {
-            switch (c)
-            {
-                case 'A':
-                    return "Carver";
-                case 'B':
-                    return "Pistol";
-                case 'C':
-                    return "Assault Rifle";
-                case 'D':
-                    return "Arbiter";
-                case 'E':
-                    return "Bazooka";
-                default:
-                    return "hands";
-            }
-        }
-
-        private char GetRep(string name)
-        {
-            switch (name)
-            {
-                case "Carver":
-                    return 'A';
-                case "Pistol":
-                    return 'B';
-                case "Assault Rifle":
-                    return 'C';
-                case "Arbiter":
-                    return 'D';
-                case "Bazooka":
-                    return 'E';
-                default:
-                    return '0';
             }
         }
 
@@ -134,39 +93,63 @@ namespace Deimos
         {
             int i = 0;
 
-            while (i < Order.Length && Order[i] == '\0')
+            while (i < Order.Length - 1 && Order[i] == '\0')
             {
                 i++;
             }
 
             return i;
         }
-
+        
         public string GetNext()
         {
             if (c_weapon + 1 != max_n_weapons)
             {
-                c_weapon++;
-                return GetName(Order[c_weapon]);
+                return Game.Weapons.GetName(Order[c_weapon + 1]);
             }
             else
             {
-                c_weapon = FirstIndex();
-                return GetName(Order[c_weapon]);
+                return Game.Weapons.GetName(Order[FirstIndex()]);
             }
         }
 
         public string GetPrevious()
         {
-            if (c_weapon - 1 != -1 && Order[c_weapon -1] != '\0')
+            if (c_weapon - 1 != -1 && Order[c_weapon - 1] != '\0')
             {
-                c_weapon--;
-                return GetName(Order[c_weapon]);
+                return Game.Weapons.GetName(Order[c_weapon - 1]);
             }
             else
             {
-                c_weapon = max_n_weapons-  1;
-                return GetName(Order[c_weapon]);
+                return Game.Weapons.GetName(Order[max_n_weapons - 1]);
+            }
+        }
+
+        public string SetNext()
+        {
+            if (c_weapon + 1 != max_n_weapons)
+            {
+                c_weapon++;
+                return Game.Weapons.GetName(Order[c_weapon]);
+            }
+            else
+            {
+                c_weapon = FirstIndex();
+                return Game.Weapons.GetName(Order[c_weapon]);
+            }
+        }
+
+        public string SetPrevious()
+        {
+            if (c_weapon - 1 != -1 && Order[c_weapon - 1] != '\0')
+            {
+                c_weapon--;
+                return Game.Weapons.GetName(Order[c_weapon]);
+            }
+            else
+            {
+                c_weapon = max_n_weapons - 1;
+                return Game.Weapons.GetName(Order[c_weapon]);
             }
         }
 
@@ -180,7 +163,7 @@ namespace Deimos
             if (PlayerInventory.ContainsKey(name))
             {
                 Game.ThisPlayer.CurrentWeapon = PlayerInventory[name];
-                c_weapon = Array.IndexOf(Order, GetRep(name));
+                c_weapon = Array.IndexOf(Order, Game.Weapons.GetRep(name));
             }
         }
 
@@ -216,29 +199,48 @@ namespace Deimos
 
                 SetCurrentWeapon(firstWeapon);
                 SetPreviousWeapon(secondWeapon);
+                c_weapon = Array.IndexOf(Order, Game.Weapons.GetRep(
+                    Game.ThisPlayer.CurrentWeapon.Name));
                 Game.ThisPlayerDisplay.SetCurrentWeaponModel();
             }
 
             Game.ThisPlayer.CurrentWeapon.State = WeaponState.AtEase;
 
+            UpdateAmmo();
+
             // Destroy temp maybe? or does visual studio do it by itself?
         }
 
         // Reloading, cartridges, ...
-        public void PickupAmmo(Weapon weapon)
+        public void PickupAmmo(string name)
         {
-            if (weapon.c_reservoirAmmo < weapon.m_reservoirAmmo)
+            if (PlayerInventory[name].c_reservoirAmmo < 
+                PlayerInventory[name].m_reservoirAmmo)
             {
-                if (Game.ThisPlayer.ammoPickup + weapon.c_reservoirAmmo 
-                    >= weapon.m_reservoirAmmo)
+                if (Game.ThisPlayer.ammoPickup + 
+                    PlayerInventory[name].c_reservoirAmmo 
+                    >= PlayerInventory[name].m_reservoirAmmo)
                 {
-                    weapon.c_reservoirAmmo = weapon.m_reservoirAmmo;
+                    PlayerInventory[name].c_reservoirAmmo = 
+                        PlayerInventory[name].m_reservoirAmmo;
                 }
                 else
                 {
-                    weapon.c_reservoirAmmo += Game.ThisPlayer.ammoPickup;
+                    PlayerInventory[name].c_reservoirAmmo += 
+                        Game.ThisPlayer.ammoPickup;
                 }
             }
+
+            if (Game.ThisPlayer.CurrentWeapon.Name == name)
+            {
+                UpdateAmmo();
+            }
+        }
+
+        public bool IsAtMaxAmmo(string name)
+        {
+            return (PlayerInventory[name].c_reservoirAmmo ==
+                PlayerInventory[name].m_reservoirAmmo);
         }
 
         public void Fire()
@@ -313,38 +315,38 @@ namespace Deimos
         }
 
         // Weapon-dropping
-        public void DropWeapon()
-        {
-            if (PlayerInventory.ContainsKey(Game.ThisPlayer.CurrentWeapon.Name))
-            {
-                PlayerInventory.Remove(Game.ThisPlayer.CurrentWeapon.Name);
-                RemoveFromOrder(Game.ThisPlayer.CurrentWeapon.representative);
-            }
+        //public void DropWeapon()
+        //{
+        //    if (PlayerInventory.ContainsKey(Game.ThisPlayer.CurrentWeapon.Name))
+        //    {
+        //        PlayerInventory.Remove(Game.ThisPlayer.CurrentWeapon.Name);
+        //        RemoveFromOrder(Game.ThisPlayer.CurrentWeapon.representative);
+        //    }
 
-            Sort();
-        }
+        //    Sort();
+        //}
 
-        public void RemoveFromOrder(char rep)
-        {
-            if (Order.First<char>((x) => x == rep) != null)
-            {
-                int i = 0;
+        //public void RemoveFromOrder(char rep)
+        //{
+        //    if (Order.First<char>((x) => x == rep) != null)
+        //    {
+        //        int i = 0;
 
-                while (Order[i] != rep)
-                {
-                    i++; ;
-                }
+        //        while (Order[i] != rep)
+        //        {
+        //            i++; ;
+        //        }
 
-                for (int j = i; j < Order.Length - 1; j++)
-                {
-                    Order[j] = Order[j + 1];
-                    i = j;
-                }
+        //        for (int j = i; j < Order.Length - 1; j++)
+        //        {
+        //            Order[j] = Order[j + 1];
+        //            i = j;
+        //        }
 
-                Order[i + 1] = '\0';
-                n_weapons--;
-            }
-        }
+        //        Order[i + 1] = '\0';
+        //        n_weapons--;
+        //    }
+        //}
 
         public void Switch(string w_name)
         {
@@ -354,10 +356,14 @@ namespace Deimos
             {
                 SetCurrentWeapon(w_name);
                 SetPreviousWeapon(n_oldweapon);
+                c_weapon = Array.IndexOf(Order, Game.Weapons.GetRep(
+                Game.ThisPlayer.CurrentWeapon.Name));
                 Game.ThisPlayerDisplay.SetCurrentWeaponModel();
             }
 
             Game.ThisPlayer.CurrentWeapon.State = WeaponState.AtEase;
+
+            UpdateAmmo();
         }
 
         public bool Contains(string name)

@@ -18,6 +18,9 @@ namespace Deimos
         string token_speed_boost;
         string token_gravity_boost;
 
+        string token_arbiter;
+        string token_pistol;
+
         // Constructor
         public SceneDeimos(SceneManager sceneManager)
         {
@@ -112,6 +115,20 @@ namespace Deimos
                 10,
                 5
             );
+
+            token_arbiter = Objects.AddWeapon("ArbiterPickup",
+                0,
+                new Vector3(-100, 2, -55),
+                PickupObject.State.Active,
+                10
+            );
+
+            token_pistol = Objects.AddWeapon("PistolPickup",
+                20,
+                new Vector3(-70, 2, -55),
+                PickupObject.State.Active,
+                10
+            );
         }
 
         public float x = -1f;
@@ -162,6 +179,16 @@ namespace Deimos
                 && (Objects.GetEffect(token_health_pack).Status == PickupObject.State.Active))
             {
                 Objects.TreatEffect(Objects.GetEffect(token_health_pack));
+            }
+            if (SceneManager.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.C)
+                && (Objects.GetWeapon(token_arbiter).Status == PickupObject.State.Active))
+            {
+                Objects.TreatWeapon(Objects.GetWeapon(token_arbiter));
+            }
+            if (SceneManager.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.V)
+                && (Objects.GetWeapon(token_pistol).Status == PickupObject.State.Active))
+            {
+                Objects.TreatWeapon(Objects.GetWeapon(token_pistol));
             }
             
 

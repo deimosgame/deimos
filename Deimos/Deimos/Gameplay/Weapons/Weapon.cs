@@ -168,7 +168,8 @@ namespace Deimos
 
         public bool IsReloadable()
         {
-            return (c_chamberAmmo < m_chamberAmmo &&
+            return (Type == Type.Firearm &&
+                c_chamberAmmo < m_chamberAmmo &&
                 c_reservoirAmmo > 0);
         }
 

@@ -33,13 +33,14 @@ namespace Deimos
         {
             SetWeapon(new Weapon(
                 Game,
-                new Vector3(3.8f, 0.5f, 0.7f),
-                new Vector3(3.5f, 0.5f, 0f), 0.05f, (float)Math.PI,
-                "Models/Weapons/PP19/PP19Model", "Assault Rifle", 2, 'C',
-                0.1f,
-                31, 147, 60,
-                2.2f, 10, 25,
-                30f, 500f
+                new Vector3(1.5f, 0.8f, 0.4f),
+                new Vector3(1.5f, 0.8f, 0.4f), 0.1f, -1.2f,
+                "Models/Weapons/Knife/knife", "Carver", 0, 'A',
+                0.2f,
+                0, 0, 0,
+                1, 30, 50,
+                0, 15,
+                Type.Melee, ActionOnHit.Damage
                 )
             );
             SetWeapon(new Weapon(
@@ -55,13 +56,13 @@ namespace Deimos
             );
             SetWeapon(new Weapon(
                 Game,
-                new Vector3(0.6f, 1.3f, 0.5f),
-                new Vector3(0.6f, 1.3f, 0.5f), 0.0025f, (float)((Math.PI) / -2),
-                "Models/Weapons/RPG/RPG", "Bazooka", 4 , 'E',
-                3f,
-                1, 5, 1,
-                3f, 40, 60,
-                20f, 200f
+                new Vector3(3.8f, 0.5f, 0.7f),
+                new Vector3(3.5f, 0.5f, 0f), 0.05f, (float)Math.PI,
+                "Models/Weapons/PP19/PP19Model", "Assault Rifle", 2, 'C',
+                0.1f,
+                31, 147, 60,
+                2.2f, 10, 25,
+                30f, 500f
                 )
             );
             SetWeapon(new Weapon(
@@ -71,23 +72,60 @@ namespace Deimos
                 "Models/Weapons/Arbiter/arbiter", "Arbiter", 3, 'D',
                 1.5f,
                 0, 0, 0,
-                0, 30, 50,
+                1.5f, 30, 50,
                 0, 15,
                 Type.Melee, ActionOnHit.Damage
                 )
             );
             SetWeapon(new Weapon(
                 Game,
-                new Vector3(1.5f, 0.8f, 0.4f),
-                new Vector3(1.5f, 0.8f, 0.4f), 0.1f, -1.2f,
-                "Models/Weapons/Knife/knife", "Carver", 0, 'A',
-                0.2f,
-                0, 0, 0,
-                0, 30, 50,
-                0, 15,
-                Type.Melee, ActionOnHit.Damage
+                new Vector3(0.6f, 1.3f, 0.5f),
+                new Vector3(0.6f, 1.3f, 0.5f), 0.0025f, (float)((Math.PI) / -2),
+                "Models/Weapons/RPG/RPG", "Bazooka", 4 , 'E',
+                3f,
+                1, 5, 1,
+                3f, 40, 60,
+                20f, 200f
                 )
             );
+        }
+
+        public string GetName(char c)
+        {
+            switch (c)
+            {
+                case 'A':
+                    return "Carver";
+                case 'B':
+                    return "Pistol";
+                case 'C':
+                    return "Assault Rifle";
+                case 'D':
+                    return "Arbiter";
+                case 'E':
+                    return "Bazooka";
+                default:
+                    return "hands";
+            }
+        }
+
+        public char GetRep(string name)
+        {
+            switch (name)
+            {
+                case "Carver":
+                    return 'A';
+                case "Pistol":
+                    return 'B';
+                case "Assault Rifle":
+                    return 'C';
+                case "Arbiter":
+                    return 'D';
+                case "Bazooka":
+                    return 'E';
+                default:
+                    return '0';
+            }
         }
 
         public Weapon GetWeapon(string name)

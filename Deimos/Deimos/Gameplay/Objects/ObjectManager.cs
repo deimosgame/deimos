@@ -38,12 +38,16 @@ namespace Deimos
             // Generating tokens. tokens are like indexes in this instance
         public string GenerateWeaponToken()
         {
-            return (n_weapontoken.ToString());
+            string t = "w";
+            t += n_weapontoken.ToString();
+            return t;
         }
 
         public string GenerateEffectToken()
         {
-            return (n_effecttoken.ToString());
+            string t = "e";
+            t += n_effecttoken.ToString();
+            return t;
         }
 
             // Creating and inserting a unique world weapon object
@@ -173,7 +177,49 @@ namespace Deimos
             // Treating the effects of a weapon pickup object
         public void TreatWeapon(PickupWeapon w)
         {
+            if (Game.ThisPlayer.Inventory.Contains(
+                Game.Weapons.GetName(w.Represents)))
+            {
+                if (Game.ThisPlayer.Inventory.IsAtMaxAmmo(
+                    Game.Weapons.GetName(w.Represents)))
+                {
+                    return;
+                }
+                else
+                {
+                    // let's give the ammo to the player
+                    Game.ThisPlayer.ammoPickup =
+                        (uint)w.Ammo;
+                    Game.ThisPlayer.Inventory.PickupAmmo(
+                        Game.Weapons.GetName(w.Represents));
 
+                    // let's deactivate the weapon object
+                    w.Status = PickupObject.State.Inactive;
+
+                    // and let's set its respawn timer to 0
+                    w.respawn_timer = 0;
+                }
+            }
+            else
+            {
+                // if the player does not have the weapon,
+                // we will give it to them
+                Game.ThisPlayer.Inventory.PickupWeapon(
+                    Game.Weapons.GetWeapon(
+                    Game.Weapons.GetName(w.Represents)));
+
+                // and now the ammo for the new weapon
+                Game.ThisPlayer.ammoPickup =
+                    (uint)w.Ammo;
+                Game.ThisPlayer.Inventory.PickupAmmo(
+                    Game.Weapons.GetName(w.Represents));
+
+                // let's now deactivate the weapon object
+                w.Status = PickupObject.State.Inactive;
+
+                // and the timer to 0
+                w.respawn_timer = 0;
+            }
         }
 
             // Treating the effects of an effect pickup object

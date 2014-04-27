@@ -10,7 +10,7 @@ namespace Deimos
     {
         DeimosGame Game;
         float w_switch_timer;
-        string target_weapon;
+        public string target_weapon;
         public bool firesprint = true;
 
         public LocalPlayerCombat(DeimosGame game)
@@ -91,19 +91,19 @@ namespace Deimos
             // mousewheeling for next/previous weapon
             if (Game.ThisPlayer.CurrentMouseState.ScrollWheelValue >
                 Game.ThisPlayer.previousScrollValue &&
-                CanSwitch(Game.ThisPlayer.Inventory.GetPrevious()))
-            {
-                Game.ThisPlayer.CurrentWeapon.State =
-                    WeaponState.Switching;
-                target_weapon = Game.ThisPlayer.Inventory.GetPrevious();
-            }
-            else if (Game.ThisPlayer.CurrentMouseState.ScrollWheelValue <
-                Game.ThisPlayer.previousScrollValue &&
                 CanSwitch(Game.ThisPlayer.Inventory.GetNext()))
             {
                 Game.ThisPlayer.CurrentWeapon.State =
                     WeaponState.Switching;
-                target_weapon = Game.ThisPlayer.Inventory.GetNext();
+                target_weapon = Game.ThisPlayer.Inventory.SetNext();
+            }
+            else if (Game.ThisPlayer.CurrentMouseState.ScrollWheelValue <
+                Game.ThisPlayer.previousScrollValue &&
+                CanSwitch(Game.ThisPlayer.Inventory.GetPrevious()))
+            {
+                Game.ThisPlayer.CurrentWeapon.State =
+                    WeaponState.Switching;
+                target_weapon = Game.ThisPlayer.Inventory.SetPrevious();
             }
 
             // switching weapons

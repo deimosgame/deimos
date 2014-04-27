@@ -94,6 +94,15 @@ namespace Deimos
                 Color.LightGreen
             );
             Game.ScreenElementManager.AddText(
+                "WeaponState",
+                0,
+                (int)MapHeight + 110,
+                0,
+                Font,
+                "Weapon State: ",
+                Color.LightCoral
+            );
+            Game.ScreenElementManager.AddText(
                 "CurrentWeapon",
                 0,
                 (int)MapHeight + 130,
@@ -307,6 +316,7 @@ namespace Deimos
             Game.ScreenElementManager.GetText("View").Show = true;
             Game.ScreenElementManager.GetText("Momentum").Show = true;
             Game.ScreenElementManager.GetText("Scroll").Show = true;
+            Game.ScreenElementManager.GetText("WeaponState").Show = true;
         }
         private void Hide()
         {
@@ -338,6 +348,7 @@ namespace Deimos
             Game.ScreenElementManager.GetText("View").Show = false;
             Game.ScreenElementManager.GetText("Momentum").Show = false;
             Game.ScreenElementManager.GetText("Scroll").Show = false;
+            Game.ScreenElementManager.GetText("WeaponState").Show = false;
         }
 
         public void Debug(string text)
@@ -471,6 +482,10 @@ namespace Deimos
             Game.ScreenElementManager.GetText("Scroll").Text = String.Format(
                 "Scroll: {0}",
                 Game.ThisPlayer.previousScrollValue
+            );
+            Game.ScreenElementManager.GetText("WeaponState").Text = String.Format(
+                "Weapon State: {0}",
+                Game.ThisPlayer.CurrentWeapon.State
             );
 
             string finalDebug = "";

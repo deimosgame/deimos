@@ -52,13 +52,13 @@ namespace Deimos
                     {
                         Inventory.PickupWeapon(Game.Weapons.GetWeapon("Pistol"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
-                        Inventory.PickupAmmo(CurrentWeapon);
+                        Inventory.PickupAmmo("Pistol");
                         Inventory.PickupWeapon(Game.Weapons.GetWeapon("Assault Rifle"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
-                        Inventory.PickupAmmo(CurrentWeapon);
+                        Inventory.PickupAmmo("Assault Rifle");
                         Inventory.PickupWeapon(Game.Weapons.GetWeapon("Bazooka"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
-                        Inventory.PickupAmmo(CurrentWeapon);
+                        Inventory.PickupAmmo("Bazooka");
                     }
                     break;
 
@@ -66,10 +66,10 @@ namespace Deimos
                     {
                         Inventory.PickupWeapon(Game.Weapons.GetWeapon("Pistol"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
-                        Inventory.PickupAmmo(CurrentWeapon);
+                        Inventory.PickupAmmo("Pistol");
                         Inventory.PickupWeapon(Game.Weapons.GetWeapon("Assault Rifle"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
-                        Inventory.PickupAmmo(CurrentWeapon);
+                        Inventory.PickupAmmo("Assault Rifle");
                         Inventory.PickupWeapon(Game.Weapons.GetWeapon("Carver"));
                     }
                     break;
@@ -78,11 +78,11 @@ namespace Deimos
                     {
                         Inventory.PickupWeapon(Game.Weapons.GetWeapon("Assault Rifle"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
-                        Inventory.PickupAmmo(CurrentWeapon);
+                        Inventory.PickupAmmo("Assault Rifle");
+                        Inventory.PickupWeapon(Game.Weapons.GetWeapon("Arbiter"));
                         Inventory.PickupWeapon(Game.Weapons.GetWeapon("Bazooka"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
-                        Inventory.PickupAmmo(CurrentWeapon);
-                        Inventory.PickupWeapon(Game.Weapons.GetWeapon("Arbiter"));
+                        Inventory.PickupAmmo("Bazooka");
                     }
                     break;
 
@@ -91,7 +91,7 @@ namespace Deimos
             }
 
             ammoPickup = CurrentWeapon.m_reservoirAmmo;
-            Inventory.PickupAmmo(CurrentWeapon);
+            Inventory.PickupAmmo(CurrentWeapon.Name);
 
             Game.ThisPlayerDisplay.LoadCurrentWeaponModel();
         }
@@ -207,7 +207,7 @@ namespace Deimos
             if (ks.IsKeyDown(Keys.O))
             {
                 Game.ThisPlayer.ammoPickup = 10;
-                Game.ThisPlayer.Inventory.PickupAmmo(Game.ThisPlayer.CurrentWeapon);
+                Game.ThisPlayer.Inventory.PickupAmmo(Game.ThisPlayer.CurrentWeapon.Name);
 
                 Game.ThisPlayer.Inventory.UpdateAmmo();
             }
@@ -237,6 +237,16 @@ namespace Deimos
         public bool FireSprint()
         {
             return PlayerCombat.firesprint;
+        }
+
+        public string GetTargetWeapon()
+        {
+            return PlayerCombat.target_weapon;
+        }
+
+        public void SetTargetWeapon(string name)
+        {
+            PlayerCombat.target_weapon = name;
         }
    }
 }

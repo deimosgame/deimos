@@ -33,30 +33,30 @@ namespace Deimos
         public void Initialize()
         {
             // Preset Weapon Objects to be picked up
-            SetWeaponObj(new PickupWeapon("Carver",
+            SetWeaponObj(new PickupWeapon("CarverPickup",
                 "Models/Weapons/Knife/knife",
                 0.1f, 
-                "A")
+                'A')
             );
-            SetWeaponObj(new PickupWeapon("Pistol",
+            SetWeaponObj(new PickupWeapon("PistolPickup",
                 "Models/Weapons/M9/Handgun",
                 0.0035f,
-                "B")
+                'B')
             );
-            SetWeaponObj(new PickupWeapon("Assault Rifle",
+            SetWeaponObj(new PickupWeapon("AssaultRiflePickup",
                 "Models/Weapons/PP19/PP19Model",
                 0.05f,
-                "C")
+                'C')
             );
-            SetWeaponObj(new PickupWeapon("Bazooka",
-                "Models/Weapons/RPG/RPG",
-                0.0025f,
-                "D")
-            );
-            SetWeaponObj(new PickupWeapon("Arbiter",
+            SetWeaponObj(new PickupWeapon("ArbiterPickup",
                 "Models/Weapons/Arbiter/arbiter",
                 1,
-                "E")
+                'D')
+            );
+            SetWeaponObj(new PickupWeapon("BazookaPickup",
+                "Models/Weapons/RPG/RPG",
+                0.0025f,
+                'E')
             );
 
             // Preset Effect Objects to be picked up

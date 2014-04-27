@@ -21,11 +21,5 @@ namespace Deimos
             Scale = scale;
             Represents = weaponToken;
         }
-
-        // Methods
-        public override void Treat()
-        {
-            
-        }
     }
 }

@@ -30,18 +30,5 @@ namespace Deimos
 
         public float T_Respawn;
         public float respawn_timer = 0;
-
-        // Abstract methods
-
-        abstract public void Treat();
-
-        // Common methods
-        public void CheckPickup()
-        {
-            // Code that lets players pick up the object
-
-            // And then we treat the effects
-            Treat();
-        }
     }
 }

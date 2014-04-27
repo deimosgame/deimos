@@ -17,6 +17,9 @@ namespace Deimos
             new Dictionary<string, PickupWeapon>();
         private Dictionary<string, PickupEffect> PickupEffects =
             new Dictionary<string, PickupEffect>();
+            // for boost time handling
+        private List<PickupEffect> ActiveEffects =
+            new List<PickupEffect>();
             // for token management
         int n_weapontoken = 0;
         int n_effecttoken = 0;
@@ -72,8 +75,9 @@ namespace Deimos
             // according to parameters
         public string AddEffect(string name,
             Vector3 position,
-            PickupObject.State state,
+            PickupObject.State state, float intensity,
             float respawn,
+            float duration = 0,
             Vector3 rotation = default(Vector3))
         {
             string t = GenerateEffectToken();
@@ -83,8 +87,10 @@ namespace Deimos
             PickupEffect e = Game.Objects.GetEffectObject(name);
             e.Position = position;
             e.Status = state;
+            e.Intensity = intensity;
             e.T_Respawn = respawn;
             e.Rotation = rotation;
+            e.E_Duration = duration;
 
             PickupEffects.Add(t, e);
 
@@ -162,6 +168,97 @@ namespace Deimos
             }
         }
 
+        // Effect treating methods
+
+            // Treating the effects of a weapon pickup object
+        public void TreatWeapon(PickupWeapon w)
+        {
+
+        }
+
+            // Treating the effects of an effect pickup object
+        public void TreatEffect(PickupEffect e)
+        {
+            switch (e.O_Effect)
+            {
+                case PickupEffect.Effect.Health:
+                    {
+                        if (Game.ThisPlayer.IsAtMaxHealth())
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            int addup = Game.ThisPlayer.Health +
+                                (int)e.Intensity;
+
+                            if (addup >= Game.ThisPlayer.M_Health)
+                            {
+                                Game.ThisPlayer.Health =
+                                    (int)Game.ThisPlayer.M_Health;
+                            }
+                            else
+                            {
+                                Game.ThisPlayer.Health = addup;
+                            }
+
+                            e.Status = PickupObject.State.Inactive;
+                            e.respawn_timer = 0;
+                        }
+                    }
+                    break;
+
+                case PickupEffect.Effect.Speed:
+                    {
+                        if (Game.ThisPlayer.Speedboosted)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            // Let's update the player's boolean
+                            Game.ThisPlayer.Speedboosted = true;
+
+                            // Let's add the effect to active effects list
+                            ActiveEffects.Add(e);
+
+                            // let's deactivate the world object
+                            e.Status = PickupObject.State.Inactive;
+                            e.respawn_timer = 0;
+
+                            // let's give the boost to the player!
+                            Game.ThisPlayer.Speed += e.Intensity;
+                        }
+                    }
+                    break;
+
+                case PickupEffect.Effect.Gravity:
+                    if (Game.ThisPlayer.Gravityboosted)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        // Let's update the player's boolean
+                        Game.ThisPlayer.Gravityboosted = true;
+
+                        // Let's add the effect to the active effects list
+                        ActiveEffects.Add(e);
+
+                        // let's deactivate the world object
+                        e.Status = PickupObject.State.Inactive;
+                        e.respawn_timer = 0;
+
+                        // let's boost the player!
+                        Game.ThisPlayerPhysics.JumpVelocity += e.Intensity;
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
             //to update all existing weapon objects in the world
             // according to the game
         public void Update(float dt)
@@ -171,7 +268,7 @@ namespace Deimos
             {
                 if (thisWeapon.Value.Status == PickupObject.State.Active)
                 {
-                    thisWeapon.Value.CheckPickup();
+
                 }
                 else
                 {
@@ -204,7 +301,7 @@ namespace Deimos
             {
                 if (thisEffect.Value.Status == PickupObject.State.Active)
                 {
-                    thisEffect.Value.CheckPickup();
+
                 }
                 else
                 {
@@ -231,7 +328,81 @@ namespace Deimos
                     }
                 }
             }
+
+            HandleBoostTimers(dt);
         }
+
+        private void HandleBoostTimers(float dt)
+        {
+            List<PickupEffect> toBeRemoved =
+                new List<PickupEffect>();
+
+            foreach (PickupEffect effect in ActiveEffects)
+            {
+                switch (effect.O_Effect)
+                {
+                    case PickupEffect.Effect.Speed:
+                        {
+                            if (effect.t_effect >= effect.E_Duration)
+                            {
+                                // we reset the timer to 0
+                                effect.t_effect = 0;
+
+                                // we reset the player's speed
+                                Game.ThisPlayer.Speed -= effect.Intensity;
+                                
+                                // since the effect is no longer active,
+                                // we will remove it
+                                toBeRemoved.Add(effect);
+
+                                // and we set the player's boolean
+                                Game.ThisPlayer.Speedboosted = false;
+                            }
+                            else
+                            {
+                                // if the effect is still running, we just 
+                                // increment the timer
+                                effect.t_effect += dt;
+                            }
+                        }
+                        break;
+
+                    case PickupEffect.Effect.Gravity:
+                        {
+                            if (effect.t_effect >= effect.E_Duration)
+                            {
+                                // reset the timer to 0
+                                effect.t_effect = 0;
+
+                                // resetting the player's gravity
+                                Game.ThisPlayerPhysics.JumpVelocity -= effect.Intensity;
+
+                                // we remove the effect since its gone
+                                toBeRemoved.Add(effect);
+
+                                // Resetting the player's boolean
+                                Game.ThisPlayer.Gravityboosted = false;
+                            }
+                            else
+                            {
+                                // incremeting the timer if still boosted
+                                effect.t_effect += dt;
+                            }
+                        }
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+
+            // removing the active effects to be removed
+            foreach (PickupEffect e in toBeRemoved)
+            {
+                ActiveEffects.Remove(e);
+            }
+        }
+
 
     }
 }

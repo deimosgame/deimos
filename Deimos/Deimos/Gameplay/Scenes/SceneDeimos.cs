@@ -15,6 +15,8 @@ namespace Deimos
 
         // tokens
         string token_health_pack;
+        string token_speed_boost;
+        string token_gravity_boost;
 
         // Constructor
         public SceneDeimos(SceneManager sceneManager)
@@ -91,6 +93,23 @@ namespace Deimos
             token_health_pack = Objects.AddEffect("Health Pack",
                 new Vector3(-90f, 1f, -49f),
                 PickupObject.State.Active,
+                50,
+                5
+            );
+
+            token_speed_boost = Objects.AddEffect("Speed Boost",
+                new Vector3(-70, 3, -49f),
+                PickupObject.State.Active,
+                20,
+                10,
+                5
+            );
+
+            token_gravity_boost = Objects.AddEffect("Gravity Boost",
+                new Vector3(-110, 2, -49),
+                PickupObject.State.Active,
+                3,
+                10,
                 5
             );
         }
@@ -103,7 +122,6 @@ namespace Deimos
         // Update our things at each ticks
         public override void Update()
         {
-
             SoundManager.SetListener("scary", SceneManager.Game.ThisPlayer.Position);
 
             //SceneManager.Game.DebugScreen.Debug("debugconsole");
@@ -129,10 +147,23 @@ namespace Deimos
 
             //i++;
 
-            if (SceneManager.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.G))
+
+            if (SceneManager.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.G)
+                && (Objects.GetEffect(token_gravity_boost).Status == PickupObject.State.Active))
             {
-                Objects.SetStateEffect(token_health_pack, PickupObject.State.Inactive);
+                Objects.TreatEffect(Objects.GetEffect(token_gravity_boost));
             }
+            if (SceneManager.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.F)
+                && (Objects.GetEffect(token_speed_boost).Status == PickupObject.State.Active))
+            {
+                Objects.TreatEffect(Objects.GetEffect(token_speed_boost));
+            }
+            if (SceneManager.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.H)
+                && (Objects.GetEffect(token_health_pack).Status == PickupObject.State.Active))
+            {
+                Objects.TreatEffect(Objects.GetEffect(token_health_pack));
+            }
+            
 
             Objects.Update(SceneManager.Game.ThisPlayer.dt);
         }

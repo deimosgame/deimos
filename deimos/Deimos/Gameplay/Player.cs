@@ -47,6 +47,9 @@ namespace Deimos
             Sprinting
         }
 
+        public bool Speedboosted = false;
+        public bool Gravityboosted = false;
+
         public Spec Class = Spec.Soldier;
 
         public Teams Team = Teams.Humans;
@@ -72,6 +75,11 @@ namespace Deimos
             }
         }
         protected uint m_health;
+        public uint M_Health
+        {
+            get { return m_health; }
+            set { m_health = value; }
+        }
 
         public float MaxSprintTime;
         private float sprintTimer = 0f;
@@ -121,6 +129,11 @@ namespace Deimos
                 CurrentLifeState = LifeState.Dead;
                 return false;
             }
+        }
+
+        public bool IsAtMaxHealth()
+        {
+            return (Health == (int)m_health);
         }
     }
 }

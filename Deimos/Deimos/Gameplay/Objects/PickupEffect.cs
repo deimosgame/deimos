@@ -17,6 +17,10 @@ namespace Deimos
         }
 
         public Effect O_Effect;
+        public float Intensity;
+
+        public float E_Duration;
+        public float t_effect = 0;
 
         // Constructor
         public PickupEffect(string name, string path, float scale, Effect effect)
@@ -25,12 +29,6 @@ namespace Deimos
             Model = path;
             Scale = scale;
             O_Effect = effect;
-        }
-
-        // Methods
-        public override void Treat()
-        {
-            
         }
     }
 }

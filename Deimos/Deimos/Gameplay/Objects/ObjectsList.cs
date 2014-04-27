@@ -67,12 +67,12 @@ namespace Deimos
             );
             SetEffectObj(new PickupEffect("Gravity Boost",
                 "Models/Weapons/Arbiter/arbiter",
-                1,
-                PickupEffect.Effect.Speed)
+                2,
+                PickupEffect.Effect.Gravity)
             );
             SetEffectObj(new PickupEffect("Speed Boost",
                 "Models/Weapons/PP19/PP19Model",
-                0.05f,
+                0.4f,
                 PickupEffect.Effect.Speed)
             );
         }

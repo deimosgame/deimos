@@ -161,6 +161,8 @@ namespace Deimos
                         Speed = Game.Constants.SpeedSoldier;
                         SprintCooldown = Game.Constants.SprintCooldownSoldier;
                         MaxSprintTime = Game.Constants.MaxSprintSoldier;
+
+                        Game.ThisPlayerPhysics.JumpVelocity = Game.Constants.JumpSoldier;
                     }
                     break;
 
@@ -173,6 +175,8 @@ namespace Deimos
                         Speed = Game.Constants.SpeedOverwatch;
                         SprintCooldown = Game.Constants.SprintCooldownOverwatch;
                         MaxSprintTime = Game.Constants.MaxSprintOverwatch;
+
+                        Game.ThisPlayerPhysics.JumpVelocity = Game.Constants.JumpOverwatch;
                     }
                     break;
 
@@ -185,6 +189,8 @@ namespace Deimos
                         Speed = Game.Constants.SpeedAgent;
                         SprintCooldown = Game.Constants.SprintCooldownAgent;
                         MaxSprintTime = Game.Constants.MaxSprintAgent;
+
+                        Game.ThisPlayerPhysics.JumpVelocity = Game.Constants.JumpAgent;
                     }
                     break;
 

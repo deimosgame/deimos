@@ -37,6 +37,7 @@ namespace Deimos
         public float timer_gravity = 0f;
         public float c_gravity = 9.8f;
         public float initial_velocity;
+        public float JumpVelocity;
 
         public AccelerationState Accelerestate = AccelerationState.Still;
         public Vector3 dv = new Vector3(0.09f, 0.09f, 0.09f);
@@ -287,27 +288,9 @@ namespace Deimos
             momentum = CreateMomentum();
 
             // Setting initial parameters to kick off the player
-            initial_velocity = GetJumpVelocity();
+            initial_velocity = JumpVelocity;
             timer_gravity = 0f;
             GravityState = PhysicalState.Jumping;
-        }
-
-        public float GetJumpVelocity()
-        {
-            switch (Game.ThisPlayer.Class)
-            {
-                case Player.Spec.Soldier:
-                    return Game.Constants.JumpSoldier;
-
-                case Player.Spec.Overwatch:
-                    return Game.Constants.JumpOverwatch;
-
-                case Player.Spec.Agent:
-                    return Game.Constants.JumpAgent;
-
-                default:
-                    return Game.Constants.JumpSoldier;
-            }
         }
 
         // hard-coded momentum for display purposes

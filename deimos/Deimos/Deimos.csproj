@@ -132,7 +132,6 @@
   <ItemGroup>
     <Compile Include="Display\Camera.cs" />
     <Compile Include="Display\Managers\CollisionManager.cs" />
-    <Compile Include="Display\Managers\Types\Models\Collidable.cs" />
     <Compile Include="Gameplay\Objects\Managers\ObjectManager.cs" />
     <Compile Include="Gameplay\Objects\ObjectsList.cs" />
     <Compile Include="Gameplay\Objects\Type\PickupEffect.cs" />

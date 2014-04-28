@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace Deimos
 {
-    class Bullet : Collidable
+    class Bullet : CollisionElement
     {
         public bool Collided = false;
 
@@ -27,7 +27,7 @@ namespace Deimos
 
         // Constructor
         public Bullet(Vector3 pos, Vector3 dir)
-            : base(new Vector3(0.01f, 0.01f, 0.01f))
+            : base(new Vector3(1f, 1f, 1f))
         {
             // Setting initial bullet spawn location
             Position = pos;
@@ -46,6 +46,14 @@ namespace Deimos
         ~Bullet()
         {
 
+        }
+
+        // Methods
+        public override void CollisionEvent(CollisionElement element)
+        {
+            Collided = true;
+
+            base.CollisionEvent(element);
         }
     }
 }

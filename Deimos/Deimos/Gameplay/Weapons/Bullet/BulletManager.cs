@@ -61,11 +61,7 @@ namespace Deimos
             {
                 return;
             }
-            if (bullet.CheckCollision(bullet.Position))
-            {
-                bullet.Collided = true;
-                return;
-            }
+            bullet.CheckCollision(bullet.Position);
             bullet.Position += bullet.Direction * bullet.speed * dt;
             GeneralFacade.SceneManager.ModelManager.GetPrivateModel(key).Position = 
                 bullet.Position;
@@ -82,11 +78,6 @@ namespace Deimos
             {
                 DestroyBullet(key);
             }
-        }
-
-        public void CheckCollision(Bullet bullet)
-        {
-            
         }
 
         /// <summary>

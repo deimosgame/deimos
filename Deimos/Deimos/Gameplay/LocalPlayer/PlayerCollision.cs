@@ -9,7 +9,7 @@ using CollidableModel;
 
 namespace Deimos
 {
-    class PlayerCollision : Collidable
+    class PlayerCollision : CollisionElement
     {
         // Constructor
         public PlayerCollision(float playerHeight, float playerWidth, float playerDepth)
@@ -18,7 +18,7 @@ namespace Deimos
             //
         }
 
-        private BoundingBox GenerateBox(Vector3 position, Vector3 dimension)
+        public override BoundingBox GenerateBox(Vector3 position, Vector3 dimension)
         {
             Vector3 bbTop = new Vector3(
                 position.X - (dimension.X / 2),
@@ -34,6 +34,21 @@ namespace Deimos
                 bbTop,
                 bbBottom
             );
+        }
+
+        public override void CollisionEvent(CollisionElement element)
+        {
+            return;
+        }
+
+        public override bool PreCollisionBypass()
+        {
+            if (GeneralFacade.Game.CurrentPlayingState == DeimosGame.PlayingStates.NoClip)
+            {
+                return true;
+            }
+
+            return false;
         }
 
     }

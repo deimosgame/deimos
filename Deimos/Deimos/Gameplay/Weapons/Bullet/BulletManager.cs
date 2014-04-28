@@ -34,7 +34,7 @@ namespace Deimos
                 "Models/Weapons/PP19/PP19Model", // Model
                  bulletPosition, // Location
                  GameplayFacade.ThisPlayer.Rotation,
-                 0.1f,
+                 0.025f,
                  LevelModel.CollisionType.None
             );
         }
@@ -57,6 +57,15 @@ namespace Deimos
         /// <param name="dt"></param>
         public void Propagate(string key, Bullet bullet, float dt)
         {
+            if (bullet.Collided)
+            {
+                return;
+            }
+            if (bullet.CheckCollision(bullet.Position))
+            {
+                bullet.Collided = true;
+                return;
+            }
             bullet.Position += bullet.Direction * bullet.speed * dt;
             GeneralFacade.SceneManager.ModelManager.GetPrivateModel(key).Position = 
                 bullet.Position;

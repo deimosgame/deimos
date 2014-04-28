@@ -6,8 +6,10 @@ using Microsoft.Xna.Framework;
 
 namespace Deimos
 {
-    class Bullet
+    class Bullet : Collidable
     {
+        public bool Collided = false;
+
         // The projectile is always spawned by the weapon,
         // and destroys itself after collision with boundingbox,
         // or dissipates when it is sure of not hitting anything after completion of trajectory
@@ -25,6 +27,7 @@ namespace Deimos
 
         // Constructor
         public Bullet(Vector3 pos, Vector3 dir)
+            : base(new Vector3(0.01f, 0.01f, 0.01f))
         {
             // Setting initial bullet spawn location
             Position = pos;

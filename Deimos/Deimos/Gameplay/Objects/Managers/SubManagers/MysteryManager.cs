@@ -50,7 +50,7 @@ namespace Deimos
 
             SetRespawn();
 
-            GeneralFacade.Game.SceneManager.ModelManager.LoadModel(
+            GeneralFacade.SceneManager.ModelManager.LoadModel(
                 MysteryWeapon.Name,
                 MysteryWeapon.Model,
                 MysteryWeapon.Position,
@@ -58,7 +58,7 @@ namespace Deimos
                 MysteryWeapon.Scale,
                 LevelModel.CollisionType.None
             );
-            GeneralFacade.Game.SceneManager.ModelManager.GetLevelModel(
+            GeneralFacade.SceneManager.ModelManager.GetLevelModel(
                 MysteryWeapon.Name).show = false;
         }
 
@@ -93,9 +93,9 @@ namespace Deimos
             respawn_t = 0;
 
             // showing once again the now active object
-            GeneralFacade.Game.SceneManager.ModelManager.GetLevelModel(
+            GeneralFacade.SceneManager.ModelManager.GetLevelModel(
                 MysteryWeapon.Name).Position = MysteryWeapon.Position;
-            GeneralFacade.Game.SceneManager.ModelManager.GetLevelModel(
+            GeneralFacade.SceneManager.ModelManager.GetLevelModel(
                 MysteryWeapon.Name).show = true;
         }
 

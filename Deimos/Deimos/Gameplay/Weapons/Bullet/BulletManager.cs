@@ -8,17 +8,14 @@ namespace Deimos
 {
     class BulletManager
     {
-
         // Attributes
-        DeimosGame Game;
-
         // the tab of bullets that calls functions for them
         private Dictionary<string, Bullet> BulletTab = new Dictionary<string, Bullet>();
 
         // Constructor
-        public BulletManager(DeimosGame game)
+        public BulletManager()
         {
-            Game = game;
+            //
         }
 
         // Methods
@@ -27,16 +24,16 @@ namespace Deimos
         /// </summary>
         public void SpawnBullet()
         {
-            Vector3 bulletPosition = Game.ThisPlayer.Position - DisplayFacade.Camera.ViewVector * 10;
-            Bullet FiredBullet = new Bullet(Game, bulletPosition, -DisplayFacade.Camera.ViewVector);
+            Vector3 bulletPosition = GameplayFacade.ThisPlayer.Position - DisplayFacade.Camera.ViewVector * 10;
+            Bullet FiredBullet = new Bullet(bulletPosition, -DisplayFacade.Camera.ViewVector);
             string id = "Bullet" + GeneralFacade.Uniqid();
             BulletTab.Add(id, FiredBullet);
 
-            Game.SceneManager.ModelManager.LoadPrivateModel(
+            GeneralFacade.SceneManager.ModelManager.LoadPrivateModel(
                 id,
                 "Models/Weapons/PP19/PP19Model", // Model
                  bulletPosition, // Location
-                 Game.ThisPlayer.Rotation,
+                 GameplayFacade.ThisPlayer.Rotation,
                  0.1f,
                  LevelModel.CollisionType.None
             );
@@ -48,7 +45,7 @@ namespace Deimos
         /// <param name="bullet"></param>
         private void DestroyBullet(string key)
         {
-            Game.SceneManager.ModelManager.RemovePrivateModel(
+            GeneralFacade.SceneManager.ModelManager.RemovePrivateModel(
                 key
             );
             BulletTab.Remove(key);
@@ -61,7 +58,7 @@ namespace Deimos
         public void Propagate(string key, Bullet bullet, float dt)
         {
             bullet.Position += bullet.Direction * bullet.speed * dt;
-            Game.SceneManager.ModelManager.GetPrivateModel(key).Position = 
+            GeneralFacade.SceneManager.ModelManager.GetPrivateModel(key).Position = 
                 bullet.Position;
         }
 

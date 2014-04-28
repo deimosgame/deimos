@@ -8,7 +8,6 @@ namespace Deimos
 {
     public class Weapon
     {
-        DeimosGame Game;
         BulletManager bulletManager;
 
         // Attributes for proper display
@@ -118,16 +117,14 @@ namespace Deimos
         public char representative;
 
         // Constructor
-        public Weapon(DeimosGame game,
-            Vector3 w_offset, Vector3 w_aimoffset, float w_scaling, float w_direction,
+        public Weapon(Vector3 w_offset, Vector3 w_aimoffset, float w_scaling, float w_direction,
             string path, string w_name, int w_priority, char rep,
             float w_firingRate, uint w_mca, uint w_mra, 
             uint w_initialReservoirAmmo, float w_reloadt, float w_minDmg, float w_maxDmg, 
             float b_speed, float w_range,
             Type type = Type.Firearm, ActionOnHit effect =  ActionOnHit.Damage)
         {
-            Game = game;
-            bulletManager = game.BulletManager;
+            bulletManager = GeneralFacade.Game.BulletManager;
 
             Type = type;
             Effect = effect;

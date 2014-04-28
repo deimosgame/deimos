@@ -8,16 +8,14 @@ namespace Deimos
 {
     public class WeaponsList
     {
-        DeimosGame Game;
-
         // This is the static list of predefined Weapons
         public Dictionary<string, Weapon> WeaponList =
             new Dictionary<string, Weapon>();
 
         // Constructor
-        public WeaponsList(DeimosGame game)
+        public WeaponsList()
         {
-            Game = game;
+            //
         }
 
         // Methods
@@ -32,7 +30,6 @@ namespace Deimos
         public void Initialise()
         {
             SetWeapon(new Weapon(
-                Game,
                 new Vector3(1.5f, 0.8f, 0.4f),
                 new Vector3(1.5f, 0.8f, 0.4f), 0.1f, -1.2f,
                 "Models/Weapons/Knife/knife", "Carver", 0, 'A',
@@ -44,7 +41,6 @@ namespace Deimos
                 )
             );
             SetWeapon(new Weapon(
-                Game,
                 new Vector3(4f, 1.2f, 1.6f),
                 new Vector3(3.5f, 1.5f, 0f), 0.0035f, (float)((Math.PI) / -2),
                 "Models/Weapons/M9/Handgun", "Pistol", 1, 'B',
@@ -55,7 +51,6 @@ namespace Deimos
                 )
             );
             SetWeapon(new Weapon(
-                Game,
                 new Vector3(3.8f, 0.5f, 0.7f),
                 new Vector3(3.5f, 0.5f, 0f), 0.05f, (float)Math.PI,
                 "Models/Weapons/PP19/PP19Model", "Assault Rifle", 2, 'C',
@@ -66,7 +61,6 @@ namespace Deimos
                 )
             );
             SetWeapon(new Weapon(
-                Game,
                 new Vector3(3.8f, 4f, 1.5f),
                 new Vector3(3.8f, 4f, 1.5f), 1f, 1.8f,
                 "Models/Weapons/Arbiter/arbiter", "Arbiter", 3, 'D',
@@ -78,7 +72,6 @@ namespace Deimos
                 )
             );
             SetWeapon(new Weapon(
-                Game,
                 new Vector3(0.6f, 1.3f, 0.5f),
                 new Vector3(0.6f, 1.3f, 0.5f), 0.0025f, (float)((Math.PI) / -2),
                 "Models/Weapons/RPG/RPG", "Bazooka", 4 , 'E',
@@ -91,7 +84,6 @@ namespace Deimos
 
             // Our Mystery Weapon!
             SetWeapon(new Weapon(
-                Game,
                 new Vector3(3.8f, 0.5f, 0.7f),
                 new Vector3(3.5f, 0.5f, 0f), 0.05f, (float)Math.PI,
                 "Models/Weapons/PP19/PP19Model", "Essence of Phobia",

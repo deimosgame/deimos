@@ -367,7 +367,7 @@ namespace Deimos
                 0.3f
             );
             foreach (KeyValuePair<string, DirectionalLight> thisLight in
-                MainGame.SceneManager.LightManager.GetDirectionalLights())
+                GeneralFacade.SceneManager.LightManager.GetDirectionalLights())
             {
                 DrawDirectionalLight(
                     thisLight.Value.Direction, 
@@ -375,7 +375,7 @@ namespace Deimos
                 );
             }
             foreach (KeyValuePair<string, PointLight> thisLight in
-                MainGame.SceneManager.LightManager.GetPointLights())
+                GeneralFacade.SceneManager.LightManager.GetPointLights())
             {
                 DrawPointLight(
                     thisLight.Value.Position,
@@ -385,7 +385,7 @@ namespace Deimos
                 );
             }
             foreach (KeyValuePair<string, SpotLight> thisLight in
-                MainGame.SceneManager.LightManager.GetSpotLights())
+                GeneralFacade.SceneManager.LightManager.GetSpotLights())
             {
                 DrawSpotLight(
                     thisLight.Value.Position,
@@ -423,7 +423,7 @@ namespace Deimos
 
             SetGBuffer();
             ClearGBuffer();
-            MainGame.SceneManager.ModelManager.DrawModels(Game, DisplayFacade.Camera);
+            GeneralFacade.SceneManager.ModelManager.DrawModels(Game, DisplayFacade.Camera);
             ResolveGBuffer();
             DrawSSAO();
             DrawLights(gameTime);

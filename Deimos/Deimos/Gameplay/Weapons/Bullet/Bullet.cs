@@ -15,9 +15,6 @@ namespace Deimos
 
         // Damage calculations may also be made inside the Bullet class,
         // provided that values are restricted by Weapon, or Player.Health.
-
-        DeimosGame Game;
-
         public Vector3 Direction;
         public Vector3 Position;
         public float speed;
@@ -27,10 +24,8 @@ namespace Deimos
         public float lifeSpan = 5;
 
         // Constructor
-        public Bullet(DeimosGame game, Vector3 pos, Vector3 dir)
+        public Bullet(Vector3 pos, Vector3 dir)
         {
-            Game = game;
-
             // Setting initial bullet spawn location
             Position = pos;
 
@@ -38,10 +33,10 @@ namespace Deimos
             Direction = dir;
 
             // Setting bullet properties according to current player's current weapon
-            speed = Game.ThisPlayer.CurrentWeapon.ProjectileSpeed;
-            range = Game.ThisPlayer.CurrentWeapon.Range;
-            minimumDmg = Game.ThisPlayer.CurrentWeapon.minDmg;
-            maximumDmg = Game.ThisPlayer.CurrentWeapon.maxDmg;
+            speed = GameplayFacade.ThisPlayer.CurrentWeapon.ProjectileSpeed;
+            range = GameplayFacade.ThisPlayer.CurrentWeapon.Range;
+            minimumDmg = GameplayFacade.ThisPlayer.CurrentWeapon.minDmg;
+            maximumDmg = GameplayFacade.ThisPlayer.CurrentWeapon.maxDmg;
         }
 
         // Destructor

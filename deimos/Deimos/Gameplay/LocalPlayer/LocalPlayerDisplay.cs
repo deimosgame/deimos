@@ -18,31 +18,31 @@ namespace Deimos
         // To load the model of our current weapon when spawned
         public void LoadCurrentWeaponModel()
         {
-            if (!GeneralFacade.Game.SceneManager.ModelManager.LevelModelExists(
-                GeneralFacade.Game.ThisPlayer.CurrentWeapon.Name))
+            if (!GeneralFacade.SceneManager.ModelManager.LevelModelExists(
+                GameplayFacade.ThisPlayer.CurrentWeapon.Name))
             {
-                GeneralFacade.Game.SceneManager.ModelManager.LoadModel(
-                    GeneralFacade.Game.ThisPlayer.CurrentWeapon.Name,
-                    GeneralFacade.Game.ThisPlayer.CurrentWeapon.Path,
+                GeneralFacade.SceneManager.ModelManager.LoadModel(
+                    GameplayFacade.ThisPlayer.CurrentWeapon.Name,
+                    GameplayFacade.ThisPlayer.CurrentWeapon.Path,
                     Vector3.Zero,
                     Vector3.Zero,
-                    GeneralFacade.Game.ThisPlayer.CurrentWeapon.W_Scaling,
+                    GameplayFacade.ThisPlayer.CurrentWeapon.W_Scaling,
                     LevelModel.CollisionType.None
                 );
 
-                weapon = GeneralFacade.Game.SceneManager.ModelManager.GetLevelModel(
-                        GeneralFacade.Game.ThisPlayer.CurrentWeapon.Name);
+                weapon = GeneralFacade.SceneManager.ModelManager.GetLevelModel(
+                        GameplayFacade.ThisPlayer.CurrentWeapon.Name);
             }
         }
 
         // to switch between loadad weapon models according to player's will
         public void SetCurrentWeaponModel()
         {
-            if (GeneralFacade.Game.SceneManager.ModelManager.LevelModelExists(
-                GeneralFacade.Game.ThisPlayer.CurrentWeapon.Name))
+            if (GeneralFacade.SceneManager.ModelManager.LevelModelExists(
+                GameplayFacade.ThisPlayer.CurrentWeapon.Name))
             {
-                weapon = GeneralFacade.Game.SceneManager.ModelManager.GetLevelModel(
-                    GeneralFacade.Game.ThisPlayer.CurrentWeapon.Name);
+                weapon = GeneralFacade.SceneManager.ModelManager.GetLevelModel(
+                    GameplayFacade.ThisPlayer.CurrentWeapon.Name);
             }
             else
             {
@@ -59,29 +59,29 @@ namespace Deimos
         // when dying, unloading all weapon models
         public void UnloadAllWeapons()
         {
-            if (GeneralFacade.Game.SceneManager.ModelManager.LevelModelExists("Pistol"))
+            if (GeneralFacade.SceneManager.ModelManager.LevelModelExists("Pistol"))
             {
-                GeneralFacade.Game.SceneManager.ModelManager.RemoveLevelModel(
+                GeneralFacade.SceneManager.ModelManager.RemoveLevelModel(
                 "Pistol");
             }
-            if (GeneralFacade.Game.SceneManager.ModelManager.LevelModelExists("Assault Rifle"))
+            if (GeneralFacade.SceneManager.ModelManager.LevelModelExists("Assault Rifle"))
             {
-                GeneralFacade.Game.SceneManager.ModelManager.RemoveLevelModel(
+                GeneralFacade.SceneManager.ModelManager.RemoveLevelModel(
                 "Assault Rifle");
             }
-            if (GeneralFacade.Game.SceneManager.ModelManager.LevelModelExists("Bazooka"))
+            if (GeneralFacade.SceneManager.ModelManager.LevelModelExists("Bazooka"))
             {
-                GeneralFacade.Game.SceneManager.ModelManager.RemoveLevelModel(
+                GeneralFacade.SceneManager.ModelManager.RemoveLevelModel(
                 "Bazooka");
             }
-            if (GeneralFacade.Game.SceneManager.ModelManager.LevelModelExists("Arbiter"))
+            if (GeneralFacade.SceneManager.ModelManager.LevelModelExists("Arbiter"))
             {
-                GeneralFacade.Game.SceneManager.ModelManager.RemoveLevelModel(
+                GeneralFacade.SceneManager.ModelManager.RemoveLevelModel(
                     "Arbiter");
             }
-            if (GeneralFacade.Game.SceneManager.ModelManager.LevelModelExists("Carver"))
+            if (GeneralFacade.SceneManager.ModelManager.LevelModelExists("Carver"))
             {
-                GeneralFacade.Game.SceneManager.ModelManager.RemoveLevelModel(
+                GeneralFacade.SceneManager.ModelManager.RemoveLevelModel(
                     "Carver");
             }
         }
@@ -93,18 +93,18 @@ namespace Deimos
 
             if (wep.AimState == AimState.True)
             {
-                Offset = GeneralFacade.Game.ThisPlayer.CurrentWeapon.W_Offset_Aim;
+                Offset = GameplayFacade.ThisPlayer.CurrentWeapon.W_Offset_Aim;
             }
             else
             {
                 switch (wep.State)
                 {
                     case WeaponState.AtEase:
-                        Offset = GeneralFacade.Game.ThisPlayer.CurrentWeapon.W_Offset;
+                        Offset = GameplayFacade.ThisPlayer.CurrentWeapon.W_Offset;
                         break;
 
                     case WeaponState.Firing:
-                        Offset = GeneralFacade.Game.ThisPlayer.CurrentWeapon.W_Offset;
+                        Offset = GameplayFacade.ThisPlayer.CurrentWeapon.W_Offset;
                         break;
 
                     case WeaponState.Reloading:
@@ -120,10 +120,10 @@ namespace Deimos
             Matrix cameraWorld = Matrix.Invert(DisplayFacade.Camera.View);
 
             Matrix weaponWorld = cameraWorld;
-            weapon.Position = GeneralFacade.Game.ThisPlayer.Position;
+            weapon.Position = GameplayFacade.ThisPlayer.Position;
             weapon.WorldMatrix =
-                Matrix.CreateScale(GeneralFacade.Game.ThisPlayer.CurrentWeapon.W_Scaling) *
-                Matrix.CreateRotationY(GeneralFacade.Game.ThisPlayer.CurrentWeapon.W_Direct) *
+                Matrix.CreateScale(GameplayFacade.ThisPlayer.CurrentWeapon.W_Scaling) *
+                Matrix.CreateRotationY(GameplayFacade.ThisPlayer.CurrentWeapon.W_Direct) *
                 weaponWorld *
                 Matrix.CreateTranslation(
                     (cameraWorld.Forward * Offset.X) +

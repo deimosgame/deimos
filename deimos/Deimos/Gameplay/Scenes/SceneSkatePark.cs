@@ -42,7 +42,7 @@ namespace Deimos
                 new Vector3(1000, -81, 1000),
                 delegate(CollisionElement element, DeimosGame game)
                 {
-                    game.ThisPlayer.Position = new Vector3(0, 80, 20);
+                    GameplayFacade.ThisPlayer.Position = new Vector3(0, 80, 20);
                 }
             );
         }

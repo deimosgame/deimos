@@ -381,9 +381,9 @@ namespace Deimos
 
             GeneralFacade.Game.ScreenElementManager.GetText("Location").Text = String.Format(
                 "Location: x:{0}; y:{1}; z:{2}",
-                (int)GeneralFacade.Game.ThisPlayer.Position.X,
-                (int)GeneralFacade.Game.ThisPlayer.Position.Y,
-                (int)GeneralFacade.Game.ThisPlayer.Position.Z
+                (int)GameplayFacade.ThisPlayer.Position.X,
+                (int)GameplayFacade.ThisPlayer.Position.Y,
+                (int)GameplayFacade.ThisPlayer.Position.Z
             );
             GeneralFacade.Game.ScreenElementManager.GetText("FPS").Text = String.Format(
                 "FPS: {0}",
@@ -395,37 +395,37 @@ namespace Deimos
             );
             GeneralFacade.Game.ScreenElementManager.GetText("JumpState").Text = String.Format(
                 "JumpState: {0}",
-                GeneralFacade.Game.ThisPlayerPhysics.GravityState
+                GameplayFacade.ThisPlayerPhysics.GravityState
             );
             GeneralFacade.Game.ScreenElementManager.GetText("CurrentWeapon").Text = String.Format(
                 "CurrentWeapon: {0}",
-                GeneralFacade.Game.ThisPlayer.CurrentWeapon.Name
+                GameplayFacade.ThisPlayer.CurrentWeapon.Name
             );
             GeneralFacade.Game.ScreenElementManager.GetText("CurrentChamberAmmo").Text = String.Format(
                 "CurrentChamberAmmo: {0}",
-                GeneralFacade.Game.ThisPlayer.CurrentWeapon.c_chamberAmmo
+                GameplayFacade.ThisPlayer.CurrentWeapon.c_chamberAmmo
             );
             GeneralFacade.Game.ScreenElementManager.GetText("CurrentReservoirAmmo").Text = String.Format(
                 "CurrentReservoirAmmo: {0}",
-                GeneralFacade.Game.ThisPlayer.CurrentWeapon.c_reservoirAmmo
+                GameplayFacade.ThisPlayer.CurrentWeapon.c_reservoirAmmo
             );
             GeneralFacade.Game.ScreenElementManager.GetText("Rotation").Text = String.Format(
                 "Rotation: x:{0}; y:{1}; z:{2}",
-                (float)GeneralFacade.Game.ThisPlayer.Rotation.X,
-                (float)GeneralFacade.Game.ThisPlayer.Rotation.Y,
-                (float)GeneralFacade.Game.ThisPlayer.Rotation.Z
+                (float)GameplayFacade.ThisPlayer.Rotation.X,
+                (float)GameplayFacade.ThisPlayer.Rotation.Y,
+                (float)GameplayFacade.ThisPlayer.Rotation.Z
             );
             GeneralFacade.Game.ScreenElementManager.GetText("SpeedState").Text = String.Format(
                 "Speed State: {0}",
-                GeneralFacade.Game.ThisPlayer.CurrentSpeedState
+                GameplayFacade.ThisPlayer.CurrentSpeedState
             );
             GeneralFacade.Game.ScreenElementManager.GetText("SprintTimer").Text = String.Format(
                 "Sprint Timer: {0}",
-                GeneralFacade.Game.ThisPlayer.SprintTimer
+                GameplayFacade.ThisPlayer.SprintTimer
             );
             GeneralFacade.Game.ScreenElementManager.GetText("CooldownTimer").Text = String.Format(
                 "CooldownTimer: {0}",
-                GeneralFacade.Game.ThisPlayer.CooldownTimer
+                GameplayFacade.ThisPlayer.CooldownTimer
             );
             GeneralFacade.Game.ScreenElementManager.GetText("PlayingState").Text = String.Format(
                 "Playing State: {0}",
@@ -433,37 +433,37 @@ namespace Deimos
             );
             GeneralFacade.Game.ScreenElementManager.GetText("LifeState").Text = String.Format(
                 "Life State: {0}",
-                GeneralFacade.Game.ThisPlayer.CurrentLifeState
+                GameplayFacade.ThisPlayer.CurrentLifeState
             );
             GeneralFacade.Game.ScreenElementManager.GetText("Health").Text = String.Format(
                 "Health: {0}",
-                GeneralFacade.Game.ThisPlayer.Health
+                GameplayFacade.ThisPlayer.Health
             );
             GeneralFacade.Game.ScreenElementManager.GetText("Acceleration").Text = String.Format(
                 "Acceleration: x:{0}; y:{1}; z:{2}",
-                (float)GeneralFacade.Game.ThisPlayerPhysics.GetAcceleration().X,
-                (float)GeneralFacade.Game.ThisPlayerPhysics.GetAcceleration().Y,
-                (float)GeneralFacade.Game.ThisPlayerPhysics.GetAcceleration().Z
+                (float)GameplayFacade.ThisPlayerPhysics.GetAcceleration().X,
+                (float)GameplayFacade.ThisPlayerPhysics.GetAcceleration().Y,
+                (float)GameplayFacade.ThisPlayerPhysics.GetAcceleration().Z
             );
             GeneralFacade.Game.ScreenElementManager.GetText("G-Time").Text = String.Format(
                 "G-Time: {0}",
-                GeneralFacade.Game.ThisPlayerPhysics.timer_gravity
+                GameplayFacade.ThisPlayerPhysics.timer_gravity
             );
             GeneralFacade.Game.ScreenElementManager.GetText("InitialVelocity").Text = String.Format(
                 "InitialVelocity: {0}",
-                GeneralFacade.Game.ThisPlayerPhysics.initial_velocity
+                GameplayFacade.ThisPlayerPhysics.initial_velocity
             );
             GeneralFacade.Game.ScreenElementManager.GetText("Class").Text = String.Format(
                 "Player Class: {0}",
-                GeneralFacade.Game.ThisPlayer.Class
+                GameplayFacade.ThisPlayer.Class
             );
             GeneralFacade.Game.ScreenElementManager.GetText("Name").Text = String.Format(
                 "Player Name: {0}",
-                GeneralFacade.Game.ThisPlayer.Name
+                GameplayFacade.ThisPlayer.Name
             );
             GeneralFacade.Game.ScreenElementManager.GetText("Instance").Text = String.Format(
                 "Spawn Instance: {0}",
-                GeneralFacade.Game.ThisPlayer.Instance
+                GameplayFacade.ThisPlayer.Instance
             );
             GeneralFacade.Game.ScreenElementManager.GetText("View").Text = String.Format(
                 "Camera View x:{0}; y:{1}; z:{2}",
@@ -473,17 +473,17 @@ namespace Deimos
             );
             GeneralFacade.Game.ScreenElementManager.GetText("Momentum").Text = String.Format(
                 "Momentum: x:{0}; y:{1}; z:{2}",
-                (float)GeneralFacade.Game.ThisPlayerPhysics.momentum.X,
-                (float)GeneralFacade.Game.ThisPlayerPhysics.momentum.Y,
-                (float)GeneralFacade.Game.ThisPlayerPhysics.momentum.Z
+                (float)GameplayFacade.ThisPlayerPhysics.momentum.X,
+                (float)GameplayFacade.ThisPlayerPhysics.momentum.Y,
+                (float)GameplayFacade.ThisPlayerPhysics.momentum.Z
             );
             GeneralFacade.Game.ScreenElementManager.GetText("Scroll").Text = String.Format(
                 "Scroll: {0}",
-                GeneralFacade.Game.ThisPlayer.previousScrollValue
+                GameplayFacade.ThisPlayer.previousScrollValue
             );
             GeneralFacade.Game.ScreenElementManager.GetText("WeaponState").Text = String.Format(
                 "Weapon State: {0}",
-                GeneralFacade.Game.ThisPlayer.CurrentWeapon.State
+                GameplayFacade.ThisPlayer.CurrentWeapon.State
             );
 
             string finalDebug = "";

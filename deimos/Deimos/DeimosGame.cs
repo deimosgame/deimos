@@ -24,30 +24,6 @@ namespace Deimos
             private set;
         }
 
-        public LocalPlayer ThisPlayer
-        {
-            get;
-            set;
-        }
-
-        internal LocalPlayerPhysics ThisPlayerPhysics
-        {
-            get;
-            set;
-        }
-
-        internal LocalPlayerDisplay ThisPlayerDisplay
-        {
-            get;
-            set;
-        }
-
-        internal SceneManager SceneManager
-        {
-            get;
-            private set;
-        }
-
         internal ScreenElementManager ScreenElementManager
         {
             get;
@@ -116,7 +92,7 @@ namespace Deimos
 
 
 
-        GameStates currentGameState = GameStates.Playing;
+        GameStates currentGameState = GameStates.IntroStarting;
         public GameStates CurrentGameState
         {
             get { return currentGameState; }
@@ -270,26 +246,26 @@ namespace Deimos
                 default:
                     IsMouseVisible = false;
 
-                    if (ThisPlayer.IsAlive())
+                    if (GameplayFacade.ThisPlayer.IsAlive())
                     {
-                        ThisPlayer.HandleInput(gameTime);
+                        GameplayFacade.ThisPlayer.HandleInput(gameTime);
                     }
                     else
                     {
                         if (Keyboard.GetState().IsKeyDown(Keys.NumPad1))
-                        { 
-                            ThisPlayer.Class = Player.Spec.Soldier;
+                        {
+                            GameplayFacade.ThisPlayer.Class = Player.Spec.Soldier;
                         }
                         if (Keyboard.GetState().IsKeyDown(Keys.NumPad2))
-                        { 
-                            ThisPlayer.Class = Player.Spec.Overwatch; 
+                        {
+                            GameplayFacade.ThisPlayer.Class = Player.Spec.Overwatch; 
                         }
                         if (Keyboard.GetState().IsKeyDown(Keys.NumPad3))
-                        { 
-                            ThisPlayer.Class = Player.Spec.Agent; 
+                        {
+                            GameplayFacade.ThisPlayer.Class = Player.Spec.Agent; 
                         }
                     }
-                    SceneManager.Update();
+                    GeneralFacade.SceneManager.Update();
                     BulletManager.Update(gameTime);
 
                     TestBindings(gameTime);
@@ -344,19 +320,19 @@ namespace Deimos
 
         private void InitGameplay()
         {
-            Weapons = new WeaponsList(this);
-            BulletManager = new BulletManager(this);
+            Weapons = new WeaponsList();
+            BulletManager = new BulletManager();
             Objects = new ObjectsList();
 
             Weapons.Initialise();
             Objects.Initialize();
 
-            ThisPlayer = new LocalPlayer();
-            ThisPlayerPhysics = new LocalPlayerPhysics();
-            ThisPlayerDisplay = new LocalPlayerDisplay();
+            GameplayFacade.ThisPlayer = new LocalPlayer();
+            GameplayFacade.ThisPlayerPhysics = new LocalPlayerPhysics();
+            GameplayFacade.ThisPlayerDisplay = new LocalPlayerDisplay();
 
-            SceneManager = new SceneManager(GeneralFacade.TempContent);
-            SceneManager.SetScene<SceneDeimos>();
+            GeneralFacade.SceneManager = new SceneManager(GeneralFacade.TempContent);
+            GeneralFacade.SceneManager.SetScene<SceneDeimos>();
 
             
 
@@ -365,9 +341,9 @@ namespace Deimos
                 Vector3.Zero
             );
 
-            ThisPlayer.Inventory = new WeaponManager();
-            ThisPlayer.InitializeInventory(ThisPlayer.Class);
-            ThisPlayer.PlayerSpawn(new Vector3(-60f, 20f, -8f), Vector3.Zero);
+            GameplayFacade.ThisPlayer.Inventory = new WeaponManager();
+            GameplayFacade.ThisPlayer.InitializeInventory(GameplayFacade.ThisPlayer.Class);
+            GameplayFacade.ThisPlayer.PlayerSpawn(new Vector3(-60f, 20f, -8f), Vector3.Zero);
         }
 
         private void TestBindings(GameTime gameTime)
@@ -376,9 +352,9 @@ namespace Deimos
             if (Keyboard.GetState().IsKeyDown(Keys.N))
             {
                 CurrentPlayingState = DeimosGame.PlayingStates.NoClip;
-                ThisPlayerPhysics.timer_gravity = 0;
-                ThisPlayerPhysics.acceleration = Vector3.Zero;
-                ThisPlayerPhysics.initial_velocity = 0;
+                GameplayFacade.ThisPlayerPhysics.timer_gravity = 0;
+                GameplayFacade.ThisPlayerPhysics.acceleration = Vector3.Zero;
+                GameplayFacade.ThisPlayerPhysics.initial_velocity = 0;
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.M))
@@ -389,24 +365,24 @@ namespace Deimos
             // for testing: player death and respawning
             if (Keyboard.GetState().IsKeyDown(Keys.J))
             {
-                ThisPlayer.PlayerRespawn(new Vector3(-45f, 11f, -8f), Vector3.Zero, "main");
-                ThisPlayer.InitializeInventory(ThisPlayer.Class);
+                GameplayFacade.ThisPlayer.PlayerRespawn(new Vector3(-45f, 11f, -8f), Vector3.Zero, "main");
+                GameplayFacade.ThisPlayer.InitializeInventory(GameplayFacade.ThisPlayer.Class);
                 CurrentPlayingState = PlayingStates.Normal;
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.K))
             {
-                ThisPlayer.PlayerKill();
-                ThisPlayer.Inventory.Flush();
+                GameplayFacade.ThisPlayer.PlayerKill();
+                GameplayFacade.ThisPlayer.Inventory.Flush();
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.L))
             {
-                ThisPlayer.Health--;
+                GameplayFacade.ThisPlayer.Health--;
 
-                if (ThisPlayer.Health == 0)
+                if (GameplayFacade.ThisPlayer.Health == 0)
                 {
-                    ThisPlayer.PlayerKill();
+                    GameplayFacade.ThisPlayer.PlayerKill();
                 }
             }
         }

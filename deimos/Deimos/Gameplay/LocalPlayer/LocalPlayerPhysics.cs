@@ -197,7 +197,7 @@ namespace Deimos
         {
             float primal_speed;
 
-            switch (GeneralFacade.Game.ThisPlayer.CurrentSpeedState)
+            switch (GameplayFacade.ThisPlayer.CurrentSpeedState)
             {
                 case Player.SpeedState.Running:
                     primal_speed = 1f;
@@ -277,9 +277,9 @@ namespace Deimos
         public void Jump()
         {
             // Interrupting player sprint
-            if (GeneralFacade.Game.ThisPlayer.CurrentSpeedState == Player.SpeedState.Sprinting)
+            if (GameplayFacade.ThisPlayer.CurrentSpeedState == Player.SpeedState.Sprinting)
             {
-                GeneralFacade.Game.ThisPlayer.CurrentSpeedState = Player.SpeedState.Running;
+                GameplayFacade.ThisPlayer.CurrentSpeedState = Player.SpeedState.Running;
             }
 
             // creating the potential momentum

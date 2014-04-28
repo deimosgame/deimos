@@ -44,7 +44,7 @@ namespace Deimos
             // Adding the model to our List/array as well as its location
             // & texture
             CollidableModel.CollidableModel thisModelCollision =
-                    GeneralFacade.Game.SceneManager.ResourceManager.LoadModel(model);
+                    GeneralFacade.SceneManager.ResourceManager.LoadModel(model);
             Model thisModel = thisModelCollision.model;
             LevelModel thisLevelModel = new LevelModel();
             thisLevelModel.Position = position;
@@ -53,7 +53,7 @@ namespace Deimos
             thisLevelModel.CollisionDetection = collisionType;
             thisLevelModel.CollisionModel = thisModelCollision;
             LoadedLevelModels.Add(modelName, thisLevelModel);
-            GeneralFacade.Game.SceneManager.Collision.AddLevelModel(
+            GeneralFacade.SceneManager.Collision.AddLevelModel(
                 thisLevelModel,
                 delegate(CollisionElement el, DeimosGame game) { }
             );
@@ -74,7 +74,7 @@ namespace Deimos
             // Adding the model to our List/array as well as its location
             // & texture
             CollidableModel.CollidableModel thisModelCollision =
-                    GeneralFacade.Game.SceneManager.ResourceManager.LoadModel(model);
+                    GeneralFacade.SceneManager.ResourceManager.LoadModel(model);
             Model thisModel = thisModelCollision.model;
             LevelModel thisLevelModel = new LevelModel();
             thisLevelModel.Position = position;
@@ -83,7 +83,7 @@ namespace Deimos
             thisLevelModel.CollisionDetection = collisionType;
             thisLevelModel.CollisionModel = thisModelCollision;
             LoadedPrivateModels.Add(modelName, thisLevelModel);
-            GeneralFacade.Game.SceneManager.Collision.AddLevelModel(
+            GeneralFacade.SceneManager.Collision.AddLevelModel(
                 thisLevelModel,
                 delegate(CollisionElement el, DeimosGame game) { }
             );

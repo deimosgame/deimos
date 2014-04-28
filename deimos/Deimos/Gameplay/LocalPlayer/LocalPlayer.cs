@@ -39,8 +39,8 @@ namespace Deimos
         public void InitializeInventory(Player.Spec spec)
         {
             Inventory = new WeaponManager();
-            GeneralFacade.Game.ThisPlayer.CurrentWeapon = null;
-            GeneralFacade.Game.ThisPlayer.PreviousWeapon = null;
+            GameplayFacade.ThisPlayer.CurrentWeapon = null;
+            GameplayFacade.ThisPlayer.PreviousWeapon = null;
 
             switch (spec)
             {
@@ -89,7 +89,7 @@ namespace Deimos
             ammoPickup = CurrentWeapon.m_reservoirAmmo;
             Inventory.PickupAmmo(CurrentWeapon.Name);
 
-            GeneralFacade.Game.ThisPlayerDisplay.LoadCurrentWeaponModel();
+            GameplayFacade.ThisPlayerDisplay.LoadCurrentWeaponModel();
         }
 
         public void PlayerSpawn(Vector3 spawnpoint, Vector3 angle)
@@ -128,13 +128,13 @@ namespace Deimos
             {
                 Health = 0;
 
-                GeneralFacade.Game.ThisPlayerPhysics.acceleration = Vector3.Zero;
-                GeneralFacade.Game.ThisPlayerPhysics.GravityState = LocalPlayerPhysics.PhysicalState.Walking;
-                GeneralFacade.Game.ThisPlayerPhysics.Accelerestate = LocalPlayerPhysics.AccelerationState.Still;
-                GeneralFacade.Game.ThisPlayerPhysics.timer_gravity = 0f;
-                GeneralFacade.Game.ThisPlayerPhysics.initial_velocity = 0f;
+                GameplayFacade.ThisPlayerPhysics.acceleration = Vector3.Zero;
+                GameplayFacade.ThisPlayerPhysics.GravityState = LocalPlayerPhysics.PhysicalState.Walking;
+                GameplayFacade.ThisPlayerPhysics.Accelerestate = LocalPlayerPhysics.AccelerationState.Still;
+                GameplayFacade.ThisPlayerPhysics.timer_gravity = 0f;
+                GameplayFacade.ThisPlayerPhysics.initial_velocity = 0f;
 
-                GeneralFacade.Game.ThisPlayerDisplay.UnloadAllWeapons();
+                GameplayFacade.ThisPlayerDisplay.UnloadAllWeapons();
 
                 SprintTimer = 0f;
 
@@ -158,7 +158,7 @@ namespace Deimos
                         SprintCooldown = GeneralFacade.Game.Constants.SprintCooldownSoldier;
                         MaxSprintTime = GeneralFacade.Game.Constants.MaxSprintSoldier;
 
-                        GeneralFacade.Game.ThisPlayerPhysics.JumpVelocity = GeneralFacade.Game.Constants.JumpSoldier;
+                        GameplayFacade.ThisPlayerPhysics.JumpVelocity = GeneralFacade.Game.Constants.JumpSoldier;
                     }
                     break;
 
@@ -172,7 +172,7 @@ namespace Deimos
                         SprintCooldown = GeneralFacade.Game.Constants.SprintCooldownOverwatch;
                         MaxSprintTime = GeneralFacade.Game.Constants.MaxSprintOverwatch;
 
-                        GeneralFacade.Game.ThisPlayerPhysics.JumpVelocity = 
+                        GameplayFacade.ThisPlayerPhysics.JumpVelocity = 
                             GeneralFacade.Game.Constants.JumpOverwatch;
                     }
                     break;
@@ -187,7 +187,7 @@ namespace Deimos
                         SprintCooldown = GeneralFacade.Game.Constants.SprintCooldownAgent;
                         MaxSprintTime = GeneralFacade.Game.Constants.MaxSprintAgent;
 
-                        GeneralFacade.Game.ThisPlayerPhysics.JumpVelocity = GeneralFacade.Game.Constants.JumpAgent;
+                        GameplayFacade.ThisPlayerPhysics.JumpVelocity = GeneralFacade.Game.Constants.JumpAgent;
                     }
                     break;
 
@@ -203,10 +203,10 @@ namespace Deimos
             // Testing purposes: picking up ammo
             if (ks.IsKeyDown(Keys.O))
             {
-                GeneralFacade.Game.ThisPlayer.ammoPickup = 10;
-                GeneralFacade.Game.ThisPlayer.Inventory.PickupAmmo(GeneralFacade.Game.ThisPlayer.CurrentWeapon.Name);
+                GameplayFacade.ThisPlayer.ammoPickup = 10;
+                GameplayFacade.ThisPlayer.Inventory.PickupAmmo(GameplayFacade.ThisPlayer.CurrentWeapon.Name);
 
-                GeneralFacade.Game.ThisPlayer.Inventory.UpdateAmmo();
+                GameplayFacade.ThisPlayer.Inventory.UpdateAmmo();
             }
 
             if (ks.IsKeyDown(GeneralFacade.Game.Config.ShowDebug))
@@ -226,7 +226,7 @@ namespace Deimos
             PlayerActions.HandleActions(dt);
             PlayerCombat.HandleCombat(dt);
             Stuff(dt);
-            GeneralFacade.Game.ThisPlayerDisplay.DisplayCurrentWeapon(GeneralFacade.Game.ThisPlayer.CurrentWeapon);
+            GameplayFacade.ThisPlayerDisplay.DisplayCurrentWeapon(GameplayFacade.ThisPlayer.CurrentWeapon);
 
             previousScrollValue = CurrentMouseState.ScrollWheelValue;
        }

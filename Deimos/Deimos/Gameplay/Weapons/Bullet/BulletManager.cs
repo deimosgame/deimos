@@ -27,8 +27,8 @@ namespace Deimos
         /// </summary>
         public void SpawnBullet()
         {
-            Vector3 bulletPosition = Game.ThisPlayer.Position - Game.Camera.ViewVector * 10;
-            Bullet FiredBullet = new Bullet(Game, bulletPosition, - Game.Camera.ViewVector);
+            Vector3 bulletPosition = Game.ThisPlayer.Position - DisplayFacade.Camera.ViewVector * 10;
+            Bullet FiredBullet = new Bullet(Game, bulletPosition, -DisplayFacade.Camera.ViewVector);
             string id = "Bullet" + GeneralFacade.Uniqid();
             BulletTab.Add(id, FiredBullet);
 

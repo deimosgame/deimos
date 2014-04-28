@@ -310,7 +310,7 @@ namespace Deimos
 
         public Vector3 CreateMomentum()
         {
-            Vector3 direction = -GeneralFacade.Game.Camera.ViewVector;
+            Vector3 direction = -DisplayFacade.Camera.ViewVector;
             direction.Y = 1;
 
             return (direction);

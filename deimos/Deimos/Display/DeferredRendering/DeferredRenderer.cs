@@ -174,10 +174,10 @@ namespace Deimos
             DirectionalLightEffect.Parameters["Intensity"].SetValue(intensity);
 
             DirectionalLightEffect.Parameters["cameraPosition"].SetValue(
-                MainGame.Camera.Position
+                DisplayFacade.Camera.Position
             );
             DirectionalLightEffect.Parameters["InvertViewProjection"].SetValue(
-                Matrix.Invert(MainGame.Camera.View * MainGame.Camera.Projection)
+                Matrix.Invert(DisplayFacade.Camera.View * DisplayFacade.Camera.Projection)
             );
 
             DirectionalLightEffect.Parameters["halfPixel"].SetValue(HalfPixel);
@@ -200,9 +200,9 @@ namespace Deimos
             Matrix sphereWorldMatrix = Matrix.CreateScale(lightRadius) *
                 Matrix.CreateTranslation(lightPosition);
             PointLightEffect.Parameters["World"].SetValue(sphereWorldMatrix);
-            PointLightEffect.Parameters["View"].SetValue(MainGame.Camera.View);
+            PointLightEffect.Parameters["View"].SetValue(DisplayFacade.Camera.View);
             PointLightEffect.Parameters["Projection"]
-                .SetValue(MainGame.Camera.Projection);
+                .SetValue(DisplayFacade.Camera.Projection);
             // Light position
             PointLightEffect.Parameters["lightPosition"]
                 .SetValue(lightPosition);
@@ -215,15 +215,15 @@ namespace Deimos
 
             // Parameters for specular computations
             PointLightEffect.Parameters["cameraPosition"]
-                .SetValue(MainGame.Camera.Position);
+                .SetValue(DisplayFacade.Camera.Position);
             PointLightEffect.Parameters["InvertViewProjection"].SetValue(
-                Matrix.Invert(MainGame.Camera.View * MainGame.Camera.Projection)
+                Matrix.Invert(DisplayFacade.Camera.View * DisplayFacade.Camera.Projection)
             );
             // Size of a halfpixel, for texture coordinates alignment
             PointLightEffect.Parameters["halfPixel"].SetValue(HalfPixel);
             // Calculate the distance between the camera and light center
             float cameraToCenter = Vector3.Distance(
-                MainGame.Camera.Position,
+                DisplayFacade.Camera.Position,
                 lightPosition
             );
             // If we are inside the light volume, draw the sphere's inside face
@@ -278,9 +278,9 @@ namespace Deimos
                 scaleMatrix *
                 Matrix.CreateTranslation(lightPosition);
             SpotLightEffect.Parameters["World"].SetValue(coneWorldMatrix);
-            SpotLightEffect.Parameters["View"].SetValue(MainGame.Camera.View);
+            SpotLightEffect.Parameters["View"].SetValue(DisplayFacade.Camera.View);
             SpotLightEffect.Parameters["Projection"]
-                .SetValue(MainGame.Camera.Projection);
+                .SetValue(DisplayFacade.Camera.Projection);
             // Light position
             SpotLightEffect.Parameters["lightPosition"]
                 .SetValue(lightPosition);
@@ -297,15 +297,15 @@ namespace Deimos
 
             // Parameters for specular computations
             SpotLightEffect.Parameters["cameraPosition"]
-                .SetValue(MainGame.Camera.Position);
+                .SetValue(DisplayFacade.Camera.Position);
             SpotLightEffect.Parameters["InvertViewProjection"].SetValue(
-                Matrix.Invert(MainGame.Camera.View * MainGame.Camera.Projection)
+                Matrix.Invert(DisplayFacade.Camera.View * DisplayFacade.Camera.Projection)
             );
             // Size of a halfpixel, for texture coordinates alignment
             SpotLightEffect.Parameters["halfPixel"].SetValue(HalfPixel);
             // Calculate the distance between the camera and light center
             float cameraToCenter = Vector3.Distance(
-                MainGame.Camera.Position,
+                DisplayFacade.Camera.Position,
                 lightPosition
             );
             // If we are inside the light volume, draw the sphere's inside face
@@ -343,8 +343,8 @@ namespace Deimos
 
         private void DrawSSAO()
         {
-            SSAOEffect.Parameters["Projection"].SetValue(MainGame.Camera.Projection);
-            SSAOEffect.Parameters["cornerFustrum"].SetValue(MainGame.Camera.Frustum.Far.Normal);
+            SSAOEffect.Parameters["Projection"].SetValue(DisplayFacade.Camera.Projection);
+            SSAOEffect.Parameters["cornerFustrum"].SetValue(DisplayFacade.Camera.Frustum.Far.Normal);
             SSAOEffect.Parameters["sampleRadius"].SetValue(0);
             SSAOEffect.Parameters["distanceScale"].SetValue(0);
             SSAOEffect.Parameters["GBufferTextureSize"].SetValue(new Vector2(SSAORT.Width, SSAORT.Height));
@@ -423,7 +423,7 @@ namespace Deimos
 
             SetGBuffer();
             ClearGBuffer();
-            MainGame.SceneManager.ModelManager.DrawModels(Game, MainGame.Camera);
+            MainGame.SceneManager.ModelManager.DrawModels(Game, DisplayFacade.Camera);
             ResolveGBuffer();
             DrawSSAO();
             DrawLights(gameTime);

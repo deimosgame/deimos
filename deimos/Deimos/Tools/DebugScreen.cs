@@ -467,9 +467,9 @@ namespace Deimos
             );
             GeneralFacade.Game.ScreenElementManager.GetText("View").Text = String.Format(
                 "Camera View x:{0}; y:{1}; z:{2}",
-                (float)GeneralFacade.Game.Camera.ViewVector.X,
-                (float)GeneralFacade.Game.Camera.ViewVector.Y,
-                (float)GeneralFacade.Game.Camera.ViewVector.Z
+                (float)DisplayFacade.Camera.ViewVector.X,
+                (float)DisplayFacade.Camera.ViewVector.Y,
+                (float)DisplayFacade.Camera.ViewVector.Z
             );
             GeneralFacade.Game.ScreenElementManager.GetText("Momentum").Text = String.Format(
                 "Momentum: x:{0}; y:{1}; z:{2}",

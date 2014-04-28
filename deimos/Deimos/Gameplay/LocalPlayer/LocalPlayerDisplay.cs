@@ -117,7 +117,7 @@ namespace Deimos
                 }
             }
 
-            Matrix cameraWorld = Matrix.Invert(GeneralFacade.Game.Camera.View);
+            Matrix cameraWorld = Matrix.Invert(DisplayFacade.Camera.View);
 
             Matrix weaponWorld = cameraWorld;
             weapon.Position = GeneralFacade.Game.ThisPlayer.Position;

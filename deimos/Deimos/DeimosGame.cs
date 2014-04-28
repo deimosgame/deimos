@@ -18,12 +18,6 @@ namespace Deimos
     {
         GraphicsDeviceManager Graphics;
 
-        public Camera Camera
-        {
-            get;
-            private set;
-        }
-
         public DeferredRenderer Renderer
         {
             get;
@@ -366,7 +360,7 @@ namespace Deimos
 
             
 
-            Camera = new Camera(
+            DisplayFacade.Camera = new Camera(
                 new Vector3(0f, 9f, 20f),
                 Vector3.Zero
             );

@@ -253,7 +253,7 @@ namespace Deimos
                         }
                         currentWeapon.State = WeaponState.Firing;
                         // Putting projectile in action through Bullet Manager
-                        GeneralFacade.Game.BulletManager.SpawnBullet();
+                        GameplayFacade.BulletManager.SpawnBullet();
                         GeneralFacade.SceneManager.SoundManager.Play("weaponFire");
                         currentWeapon.c_chamberAmmo--;
                         currentWeapon.FireTimer = 0; // reset the fire timer

@@ -24,12 +24,6 @@ namespace Deimos
             private set;
         }
 
-        internal BulletManager BulletManager
-        {
-            get;
-            set;
-        }
-
         internal DebugScreen DebugScreen
         {
             get;
@@ -248,7 +242,7 @@ namespace Deimos
                         }
                     }
                     GeneralFacade.SceneManager.Update();
-                    BulletManager.Update(gameTime);
+                    GameplayFacade.BulletManager.Update(gameTime);
 
                     TestBindings(gameTime);
                     break;
@@ -303,7 +297,7 @@ namespace Deimos
         private void InitGameplay()
         {
             GameplayFacade.Weapons = new WeaponsList();
-            BulletManager = new BulletManager();
+            GameplayFacade.BulletManager = new BulletManager();
             GameplayFacade.Objects = new ObjectsList();
 
             GameplayFacade.Weapons.Initialise();

@@ -124,7 +124,7 @@ namespace Deimos
             float b_speed, float w_range,
             Type type = Type.Firearm, ActionOnHit effect =  ActionOnHit.Damage)
         {
-            bulletManager = GeneralFacade.Game.BulletManager;
+            bulletManager = GameplayFacade.BulletManager;
 
             Type = type;
             Effect = effect;

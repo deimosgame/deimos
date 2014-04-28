@@ -22,7 +22,7 @@ namespace Deimos
                     break;
 
                 case LocalPlayer.SpeedState.Sprinting:
-                    if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Forward))
+                    if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Forward))
                     {
                         if (GameplayFacade.ThisPlayer.SprintTimer < GameplayFacade.ThisPlayer.MaxSprintTime)
                         {
@@ -54,7 +54,7 @@ namespace Deimos
             // increasing sprint timer if sprinting
             if (GameplayFacade.ThisPlayer.CurrentSpeedState ==
                 LocalPlayer.SpeedState.Sprinting &&
-                GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Forward))
+                GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Forward))
             {
                 GameplayFacade.ThisPlayer.SprintTimer += dt;
             }
@@ -97,7 +97,7 @@ namespace Deimos
                 (GameplayFacade.ThisPlayerPhysics.GravityState ==
                 LocalPlayerPhysics.PhysicalState.Walking) &&
 
-                (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Forward)) &&
+                (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Forward)) &&
 
                 (GameplayFacade.ThisPlayer.CurrentWeapon.State ==
                 WeaponState.AtEase));
@@ -114,20 +114,20 @@ namespace Deimos
         {
             GameplayFacade.ThisPlayer.ks = Keyboard.GetState();
 
-            if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Walk))
+            if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Walk))
             {
                 GameplayFacade.ThisPlayer.CurrentSpeedState = 
                     LocalPlayer.SpeedState.Walking;
             }
 
-            if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Sprint) &&
+            if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Sprint) &&
                 CanSprint())
             {
                 GameplayFacade.ThisPlayer.CurrentSpeedState = 
                     LocalPlayer.SpeedState.Sprinting;
             }
 
-            if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Jump) &&
+            if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Jump) &&
                 CanJump())
             {
                 GameplayFacade.ThisPlayerPhysics.Jump();
@@ -137,9 +137,9 @@ namespace Deimos
         private void CheckReset()
         {
             // Let's handle walkstate resets
-            if (GameplayFacade.ThisPlayer.ks.IsKeyUp(GeneralFacade.Game.Config.Walk) &&
-               (GameplayFacade.ThisPlayer.ks.IsKeyUp(GeneralFacade.Game.Config.Sprint)) &&
-               (GameplayFacade.ThisPlayer.ks.IsKeyUp(GeneralFacade.Game.Config.Crouch)))
+            if (GameplayFacade.ThisPlayer.ks.IsKeyUp(GeneralFacade.Config.Walk) &&
+               (GameplayFacade.ThisPlayer.ks.IsKeyUp(GeneralFacade.Config.Sprint)) &&
+               (GameplayFacade.ThisPlayer.ks.IsKeyUp(GeneralFacade.Config.Crouch)))
             {
                 GameplayFacade.ThisPlayer.CurrentSpeedState = 
                     LocalPlayer.SpeedState.Running;

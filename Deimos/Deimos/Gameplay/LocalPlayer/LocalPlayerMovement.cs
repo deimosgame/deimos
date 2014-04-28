@@ -26,22 +26,22 @@ namespace Deimos
             // Let's handle movement input
             if (GeneralFacade.Game.CurrentPlayingState != DeimosGame.PlayingStates.NoClip)
             {
-                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Forward))
+                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Forward))
                 {
                     GameplayFacade.ThisPlayerPhysics.Accelerate(LocalPlayerPhysics.AccelerationDirection.Z);
                     movementVector += Vector3.Backward;
                 }
-                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Backward))
+                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Backward))
                 {
                     GameplayFacade.ThisPlayerPhysics.Decelerate(LocalPlayerPhysics.AccelerationDirection.Z);
                     movementVector += Vector3.Backward;
                 }
-                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Left))
+                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Left))
                 {
                     GameplayFacade.ThisPlayerPhysics.Accelerate(LocalPlayerPhysics.AccelerationDirection.X);
                     movementVector += Vector3.Right;
                 }
-                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Right))
+                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Right))
                 {
                     GameplayFacade.ThisPlayerPhysics.Decelerate(LocalPlayerPhysics.AccelerationDirection.X);
                     movementVector += Vector3.Right;
@@ -58,13 +58,13 @@ namespace Deimos
                 }
 
                 //&& GameplayFacade.ThisPlayerPhysics.ShouldResetMovement(LocalPlayerPhysics.AccelerationDirection.Z))
-                if (GameplayFacade.ThisPlayer.ks.IsKeyUp(GeneralFacade.Game.Config.Forward)
-                    && GameplayFacade.ThisPlayer.ks.IsKeyUp(GeneralFacade.Game.Config.Backward))
+                if (GameplayFacade.ThisPlayer.ks.IsKeyUp(GeneralFacade.Config.Forward)
+                    && GameplayFacade.ThisPlayer.ks.IsKeyUp(GeneralFacade.Config.Backward))
                 {
                     GameplayFacade.ThisPlayerPhysics.Reset(LocalPlayerPhysics.AccelerationDirection.Z);
                 }
-                if (GameplayFacade.ThisPlayer.ks.IsKeyUp(GeneralFacade.Game.Config.Left)
-                    && GameplayFacade.ThisPlayer.ks.IsKeyUp(GeneralFacade.Game.Config.Right))
+                if (GameplayFacade.ThisPlayer.ks.IsKeyUp(GeneralFacade.Config.Left)
+                    && GameplayFacade.ThisPlayer.ks.IsKeyUp(GeneralFacade.Config.Right))
                 {
                     GameplayFacade.ThisPlayerPhysics.Reset(LocalPlayerPhysics.AccelerationDirection.X);
                 }
@@ -80,27 +80,27 @@ namespace Deimos
             }
             else
             {
-                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Forward))
+                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Forward))
                 {
                     movementVector += Vector3.Backward;
                 }
-                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Backward))
+                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Backward))
                 {
                     movementVector += Vector3.Forward;
                 }
-                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Left))
+                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Left))
                 {
                     movementVector += Vector3.Right;
                 }
-                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Right))
+                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Right))
                 {
                     movementVector += Vector3.Left;
                 }
-                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Jump))
+                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Jump))
                 {
                     movementVector += Vector3.Up;
                 }
-                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Crouch))
+                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Crouch))
                 {
                     movementVector += Vector3.Down;
                 }
@@ -129,9 +129,9 @@ namespace Deimos
            
 
                 GameplayFacade.ThisPlayer.MouseRotationBuffer.X -= 
-                    GeneralFacade.Game.Config.MouseSensivity * deltaX * dt;
+                    GeneralFacade.Config.MouseSensivity * deltaX * dt;
                 GameplayFacade.ThisPlayer.MouseRotationBuffer.Y -= 
-                    GeneralFacade.Game.Config.MouseSensivity * deltaY * dt;
+                    GeneralFacade.Config.MouseSensivity * deltaY * dt;
 
                 // Limit the user so he can't do an unlimited movement with 
                 // his mouse (like a 7683°)
@@ -146,7 +146,7 @@ namespace Deimos
                         (GameplayFacade.ThisPlayer.MouseRotationBuffer.Y - MathHelper.ToRadians(75.0f));
                 }
 
-                float mouseInverted = (GeneralFacade.Game.Config.MouseInverted) ? 1 : -1;
+                float mouseInverted = (GeneralFacade.Config.MouseInverted) ? 1 : -1;
 
                 DisplayFacade.Camera.Rotation = new Vector3(
                     mouseInverted * MathHelper.Clamp(

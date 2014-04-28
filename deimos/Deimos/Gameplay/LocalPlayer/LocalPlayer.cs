@@ -32,7 +32,7 @@ namespace Deimos
             PlayerActions = new LocalPlayerActions();
             PlayerCombat = new LocalPlayerCombat();
 
-            Name = GeneralFacade.Game.Config.PlayerName;
+            Name = GeneralFacade.Config.PlayerName;
             Instance = "main";
         }
 
@@ -108,7 +108,7 @@ namespace Deimos
         {
             if (CurrentLifeState == LifeState.Dead)
             {
-                Name = GeneralFacade.Game.Config.PlayerName;
+                Name = GeneralFacade.Config.PlayerName;
                 Instance = instance;
 
                 CurrentLifeState = LifeState.Alive;
@@ -209,9 +209,9 @@ namespace Deimos
                 GameplayFacade.ThisPlayer.Inventory.UpdateAmmo();
             }
 
-            if (ks.IsKeyDown(GeneralFacade.Game.Config.ShowDebug))
+            if (ks.IsKeyDown(GeneralFacade.Config.ShowDebug))
             {
-                GeneralFacade.Game.Config.DebugScreen = !GeneralFacade.Game.Config.DebugScreen;
+                GeneralFacade.Config.DebugScreen = !GeneralFacade.Config.DebugScreen;
             }
 
         }

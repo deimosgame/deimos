@@ -372,7 +372,7 @@ namespace Deimos
         public void Draw(GameTime gameTime)
         {
             FrameCounter++;
-            if (!GeneralFacade.Game.Config.DebugScreen)
+            if (!GeneralFacade.Config.DebugScreen)
             {
                 Hide();
                 return;

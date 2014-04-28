@@ -81,7 +81,7 @@ namespace Deimos
                 GameplayFacade.ThisPlayer.Inventory.UpdateAmmo();
             }
 
-            if (!firesprint && GameplayFacade.ThisPlayer.ks.IsKeyUp(GeneralFacade.Game.Config.Sprint))
+            if (!firesprint && GameplayFacade.ThisPlayer.ks.IsKeyUp(GeneralFacade.Config.Sprint))
             {
                 firesprint = true;
             }
@@ -166,14 +166,14 @@ namespace Deimos
                 }
             }
 
-            if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Reload) &&
+            if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Reload) &&
                 CanReload())
             {
                 GameplayFacade.ThisPlayer.CurrentWeapon.State =
                     WeaponState.Reloading;
             }
 
-            if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.QuickSwitch) &&
+            if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.QuickSwitch) &&
                 CanQuickSwitch())
             {
                 GameplayFacade.ThisPlayer.CurrentWeapon.State =

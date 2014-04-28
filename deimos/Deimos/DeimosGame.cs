@@ -24,18 +24,6 @@ namespace Deimos
             private set;
         }
 
-        internal DebugScreen DebugScreen
-        {
-            get;
-            set;
-        }
-
-        internal Config Config
-        {
-            get;
-            set;
-        }
-
         internal Constants Constants
         {
             get;
@@ -104,7 +92,7 @@ namespace Deimos
             Components.Add(Renderer);
 
 
-            Config = new Config();
+            GeneralFacade.Config = new Config();
             Constants = new Constants();
         }
 
@@ -138,7 +126,7 @@ namespace Deimos
 
             DisplayFacade.ScreenElementManager = new ScreenElementManager();
 
-            DebugScreen = new DebugScreen();
+            DisplayFacade.DebugScreen = new DebugScreen();
 
             MenuManager = new MenuManager();
 
@@ -248,7 +236,7 @@ namespace Deimos
                     break;
             }
 
-            DebugScreen.Update(gameTime);
+            DisplayFacade.DebugScreen.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -290,7 +278,7 @@ namespace Deimos
                 }
             }
 
-            DebugScreen.Draw(gameTime);
+            DisplayFacade.DebugScreen.Draw(gameTime);
             DisplayFacade.ScreenElementManager.DrawElements(DisplayFacade.SpriteBatch);
         }
 

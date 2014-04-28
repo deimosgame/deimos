@@ -46,13 +46,13 @@ namespace Deimos
             {
                 case Spec.Soldier:
                     {
-                        Inventory.PickupWeapon(GeneralFacade.Game.Weapons.GetWeapon("Pistol"));
+                        Inventory.PickupWeapon(GameplayFacade.Weapons.GetWeapon("Pistol"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
                         Inventory.PickupAmmo("Pistol");
-                        Inventory.PickupWeapon(GeneralFacade.Game.Weapons.GetWeapon("Assault Rifle"));
+                        Inventory.PickupWeapon(GameplayFacade.Weapons.GetWeapon("Assault Rifle"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
                         Inventory.PickupAmmo("Assault Rifle");
-                        Inventory.PickupWeapon(GeneralFacade.Game.Weapons.GetWeapon("Bazooka"));
+                        Inventory.PickupWeapon(GameplayFacade.Weapons.GetWeapon("Bazooka"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
                         Inventory.PickupAmmo("Bazooka");
                     }
@@ -60,23 +60,23 @@ namespace Deimos
 
                 case Spec.Agent:
                     {
-                        Inventory.PickupWeapon(GeneralFacade.Game.Weapons.GetWeapon("Pistol"));
+                        Inventory.PickupWeapon(GameplayFacade.Weapons.GetWeapon("Pistol"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
                         Inventory.PickupAmmo("Pistol");
-                        Inventory.PickupWeapon(GeneralFacade.Game.Weapons.GetWeapon("Assault Rifle"));
+                        Inventory.PickupWeapon(GameplayFacade.Weapons.GetWeapon("Assault Rifle"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
                         Inventory.PickupAmmo("Assault Rifle");
-                        Inventory.PickupWeapon(GeneralFacade.Game.Weapons.GetWeapon("Carver"));
+                        Inventory.PickupWeapon(GameplayFacade.Weapons.GetWeapon("Carver"));
                     }
                     break;
 
                 case Spec.Overwatch:
                     {
-                        Inventory.PickupWeapon(GeneralFacade.Game.Weapons.GetWeapon("Assault Rifle"));
+                        Inventory.PickupWeapon(GameplayFacade.Weapons.GetWeapon("Assault Rifle"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
                         Inventory.PickupAmmo("Assault Rifle");
-                        Inventory.PickupWeapon(GeneralFacade.Game.Weapons.GetWeapon("Arbiter"));
-                        Inventory.PickupWeapon(GeneralFacade.Game.Weapons.GetWeapon("Bazooka"));
+                        Inventory.PickupWeapon(GameplayFacade.Weapons.GetWeapon("Arbiter"));
+                        Inventory.PickupWeapon(GameplayFacade.Weapons.GetWeapon("Bazooka"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
                         Inventory.PickupAmmo("Bazooka");
                     }

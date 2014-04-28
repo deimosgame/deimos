@@ -24,12 +24,6 @@ namespace Deimos
             private set;
         }
 
-        internal WeaponsList Weapons
-        {
-            get;
-            set;
-        }
-
         internal ObjectsList Objects
         {
             get;
@@ -314,11 +308,11 @@ namespace Deimos
 
         private void InitGameplay()
         {
-            Weapons = new WeaponsList();
+            GameplayFacade.Weapons = new WeaponsList();
             BulletManager = new BulletManager();
             Objects = new ObjectsList();
 
-            Weapons.Initialise();
+            GameplayFacade.Weapons.Initialise();
             Objects.Initialize();
 
             GameplayFacade.ThisPlayer = new LocalPlayer();

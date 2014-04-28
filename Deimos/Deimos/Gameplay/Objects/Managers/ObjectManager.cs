@@ -178,10 +178,10 @@ namespace Deimos
         public void TreatWeapon(PickupWeapon w, string token)
         {
             if (GameplayFacade.ThisPlayer.Inventory.Contains(
-                GeneralFacade.Game.Weapons.GetName(w.Represents)))
+                GameplayFacade.Weapons.GetName(w.Represents)))
             {
                 if (GameplayFacade.ThisPlayer.Inventory.IsAtMaxAmmo(
-                    GeneralFacade.Game.Weapons.GetName(w.Represents)))
+                    GameplayFacade.Weapons.GetName(w.Represents)))
                 {
                     return;
                 }
@@ -191,7 +191,7 @@ namespace Deimos
                     GameplayFacade.ThisPlayer.ammoPickup =
                         (uint)w.Ammo;
                     GameplayFacade.ThisPlayer.Inventory.PickupAmmo(
-                        GeneralFacade.Game.Weapons.GetName(w.Represents));
+                        GameplayFacade.Weapons.GetName(w.Represents));
 
                     // let's deactivate the weapon object
                     w.Status = PickupObject.State.Inactive;
@@ -209,14 +209,14 @@ namespace Deimos
                 // if the player does not have the weapon,
                 // we will give it to them
                 GameplayFacade.ThisPlayer.Inventory.PickupWeapon(
-                    GeneralFacade.Game.Weapons.GetWeapon(
-                    GeneralFacade.Game.Weapons.GetName(w.Represents)));
+                    GameplayFacade.Weapons.GetWeapon(
+                    GameplayFacade.Weapons.GetName(w.Represents)));
 
                 // and now the ammo for the new weapon
                 GameplayFacade.ThisPlayer.ammoPickup =
                     (uint)w.Ammo;
                 GameplayFacade.ThisPlayer.Inventory.PickupAmmo(
-                    GeneralFacade.Game.Weapons.GetName(w.Represents));
+                    GameplayFacade.Weapons.GetName(w.Represents));
 
                 // let's now deactivate the weapon object
                 w.Status = PickupObject.State.Inactive;

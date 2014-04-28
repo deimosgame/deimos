@@ -73,7 +73,7 @@ namespace Deimos
                if (GameplayFacade.ThisPlayer.CurrentWeapon == null)
                {
                    SetCurrentWeapon(pickupWeapon.Name);
-                   c_weapon = Array.IndexOf(Order, GeneralFacade.Game.Weapons.GetRep(pickupWeapon.Name));
+                   c_weapon = Array.IndexOf(Order, GameplayFacade.Weapons.GetRep(pickupWeapon.Name));
                }
                else if (GameplayFacade.ThisPlayer.CurrentWeapon != null &&
                    GameplayFacade.ThisPlayer.CurrentWeapon.Importance 
@@ -101,11 +101,11 @@ namespace Deimos
         {
             if (c_weapon + 1 != max_n_weapons)
             {
-                return GeneralFacade.Game.Weapons.GetName(Order[c_weapon + 1]);
+                return GameplayFacade.Weapons.GetName(Order[c_weapon + 1]);
             }
             else
             {
-                return GeneralFacade.Game.Weapons.GetName(Order[FirstIndex()]);
+                return GameplayFacade.Weapons.GetName(Order[FirstIndex()]);
             }
         }
 
@@ -113,11 +113,11 @@ namespace Deimos
         {
             if (c_weapon - 1 != -1 && Order[c_weapon - 1] != '\0')
             {
-                return GeneralFacade.Game.Weapons.GetName(Order[c_weapon - 1]);
+                return GameplayFacade.Weapons.GetName(Order[c_weapon - 1]);
             }
             else
             {
-                return GeneralFacade.Game.Weapons.GetName(Order[max_n_weapons - 1]);
+                return GameplayFacade.Weapons.GetName(Order[max_n_weapons - 1]);
             }
         }
 
@@ -126,12 +126,12 @@ namespace Deimos
             if (c_weapon + 1 != max_n_weapons)
             {
                 c_weapon++;
-                return GeneralFacade.Game.Weapons.GetName(Order[c_weapon]);
+                return GameplayFacade.Weapons.GetName(Order[c_weapon]);
             }
             else
             {
                 c_weapon = FirstIndex();
-                return GeneralFacade.Game.Weapons.GetName(Order[c_weapon]);
+                return GameplayFacade.Weapons.GetName(Order[c_weapon]);
             }
         }
 
@@ -140,12 +140,12 @@ namespace Deimos
             if (c_weapon - 1 != -1 && Order[c_weapon - 1] != '\0')
             {
                 c_weapon--;
-                return GeneralFacade.Game.Weapons.GetName(Order[c_weapon]);
+                return GameplayFacade.Weapons.GetName(Order[c_weapon]);
             }
             else
             {
                 c_weapon = max_n_weapons - 1;
-                return GeneralFacade.Game.Weapons.GetName(Order[c_weapon]);
+                return GameplayFacade.Weapons.GetName(Order[c_weapon]);
             }
         }
 
@@ -159,7 +159,7 @@ namespace Deimos
             if (PlayerInventory.ContainsKey(name))
             {
                 GameplayFacade.ThisPlayer.CurrentWeapon = PlayerInventory[name];
-                c_weapon = Array.IndexOf(Order, GeneralFacade.Game.Weapons.GetRep(name));
+                c_weapon = Array.IndexOf(Order, GameplayFacade.Weapons.GetRep(name));
             }
         }
 
@@ -195,7 +195,7 @@ namespace Deimos
 
                 SetCurrentWeapon(firstWeapon);
                 SetPreviousWeapon(secondWeapon);
-                c_weapon = Array.IndexOf(Order, GeneralFacade.Game.Weapons.GetRep(
+                c_weapon = Array.IndexOf(Order, GameplayFacade.Weapons.GetRep(
                     GameplayFacade.ThisPlayer.CurrentWeapon.Name));
                 GameplayFacade.ThisPlayerDisplay.SetCurrentWeaponModel();
             }
@@ -352,7 +352,7 @@ namespace Deimos
             {
                 SetCurrentWeapon(w_name);
                 SetPreviousWeapon(n_oldweapon);
-                c_weapon = Array.IndexOf(Order, GeneralFacade.Game.Weapons.GetRep(
+                c_weapon = Array.IndexOf(Order, GameplayFacade.Weapons.GetRep(
                 GameplayFacade.ThisPlayer.CurrentWeapon.Name));
                 GameplayFacade.ThisPlayerDisplay.SetCurrentWeaponModel();
             }

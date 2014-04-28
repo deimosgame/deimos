@@ -44,7 +44,7 @@ namespace Deimos
 
 
 
-        GameStates currentGameState = GameStates.IntroStarting;
+        GameStates currentGameState = GameStates.Playing;
         public GameStates CurrentGameState
         {
             get { return currentGameState; }

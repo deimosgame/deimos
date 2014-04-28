@@ -183,8 +183,8 @@ namespace Deimos
             //Graphics.PreferredBackBufferHeight = 1050;
             //Graphics.IsFullScreen = true;
             //Graphics.PreferMultiSampling = true; // Anti aliasing - Useless as custom effects
-            //Graphics.SynchronizeWithVerticalRetrace = false; // VSync
-            IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec
+            Graphics.SynchronizeWithVerticalRetrace = false; // VSync
+            //IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec
             Graphics.ApplyChanges();
 
 

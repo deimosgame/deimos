@@ -40,7 +40,7 @@ namespace Deimos
             SpawnLocations = spawns;
             n_spawn = SpawnLocations.Count;
 
-            MysteryWeapon = GeneralFacade.Game.Objects.GetWeaponObject("MysteryPickup");
+            MysteryWeapon = GameplayFacade.Objects.GetWeaponObject("MysteryPickup");
             MysteryWeapon.Ammo = initial_ammo;
             MysteryWeapon.Rotation = rotation;
             MysteryWeapon.Status = PickupObject.State.Inactive;

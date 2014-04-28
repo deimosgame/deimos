@@ -11,6 +11,7 @@ namespace Deimos
         public static LocalPlayerPhysics ThisPlayerPhysics;
         public static LocalPlayerDisplay ThisPlayerDisplay;
         public static WeaponsList Weapons;
+        public static ObjectsList Objects;
         public static BulletManager BulletManager;
     }
 }

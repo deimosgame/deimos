@@ -60,7 +60,7 @@ namespace Deimos
             n_weapontoken++;
 
             // tweaking the object according to parameters
-            PickupWeapon w = GeneralFacade.Game.Objects.GetWeaponObject(name);
+            PickupWeapon w = GameplayFacade.Objects.GetWeaponObject(name);
             w.Ammo = initial_ammo;
             w.Position = position;
             w.Status = state;
@@ -88,7 +88,7 @@ namespace Deimos
             n_effecttoken++;
 
             // tweaking the desired effect object to parameters
-            PickupEffect e = GeneralFacade.Game.Objects.GetEffectObject(name);
+            PickupEffect e = GameplayFacade.Objects.GetEffectObject(name);
             e.Position = position;
             e.Status = state;
             e.Intensity = intensity;

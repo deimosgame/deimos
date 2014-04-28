@@ -24,12 +24,6 @@ namespace Deimos
             private set;
         }
 
-        internal ObjectsList Objects
-        {
-            get;
-            set;
-        }
-
         internal BulletManager BulletManager
         {
             get;
@@ -310,10 +304,10 @@ namespace Deimos
         {
             GameplayFacade.Weapons = new WeaponsList();
             BulletManager = new BulletManager();
-            Objects = new ObjectsList();
+            GameplayFacade.Objects = new ObjectsList();
 
             GameplayFacade.Weapons.Initialise();
-            Objects.Initialize();
+            GameplayFacade.Objects.Initialize();
 
             GameplayFacade.ThisPlayer = new LocalPlayer();
             GameplayFacade.ThisPlayerPhysics = new LocalPlayerPhysics();

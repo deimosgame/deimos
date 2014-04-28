@@ -19,7 +19,7 @@ namespace Deimos
 
         ~ResourceManager()
         {
-            Content.Unload();
+            //Content.Unload();
         }
 
         public CollidableModel.CollidableModel LoadModel(string name)

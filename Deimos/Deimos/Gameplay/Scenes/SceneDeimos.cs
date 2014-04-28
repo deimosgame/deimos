@@ -91,7 +91,7 @@ namespace Deimos
                2, // Intensity
                Color.LightBlue
             );
-            SoundManager.Play3D("scary", GameplayFacade.ThisPlayer.Position, new Vector3(-127, 6, -64));
+            SoundManager.Play3D("scary", DisplayFacade.Camera.Position, new Vector3(-127, 6, -64));
             //SoundManager.Play("scary");
 
             token_health_pack = Objects.AddEffect("Health Pack",

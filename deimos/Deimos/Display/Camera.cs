@@ -84,6 +84,9 @@ namespace Deimos
         {
             AspectRatio = 1;
 
+            Position = position;
+            Rotation = rotation;
+
             // Setup projection matrix
             AspectRatio = GeneralFacade.Game.GraphicsDevice.Viewport.AspectRatio;
 

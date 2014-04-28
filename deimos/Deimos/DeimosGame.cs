@@ -44,7 +44,7 @@ namespace Deimos
 
 
 
-        GameStates currentGameState = GameStates.Playing;
+        GameStates currentGameState = GameStates.IntroStarting;
         public GameStates CurrentGameState
         {
             get { return currentGameState; }
@@ -99,9 +99,6 @@ namespace Deimos
             //IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec
             Graphics.ApplyChanges();
 
-
-            InitGameplay();
-
             base.Initialize();
         }
 
@@ -118,6 +115,18 @@ namespace Deimos
 
             DisplayFacade.MenuManager = new MenuManager();
 
+            GeneralFacade.SceneManager = new SceneManager(GeneralFacade.TempContent);
+
+            DisplayFacade.Camera = new Camera(
+                new Vector3(-60f, 20f, -8f),
+                Vector3.Zero
+            );
+
+
+            GeneralFacade.SceneManager.SetScene<SceneStartMenu>();
+
+
+
 
             //////////////////////////////////////////////////////
             // Menus
@@ -125,6 +134,7 @@ namespace Deimos
             MenuScreen StartScreen = DisplayFacade.MenuManager.Add("Start");
             StartScreen.AddElement("Play", delegate(ScreenElement el, DeimosGame game)
             {
+                InitGameplay();
                 DisplayFacade.MenuManager.Hide();
                 CurrentGameState = GameStates.Playing;
             });
@@ -283,15 +293,9 @@ namespace Deimos
             GameplayFacade.ThisPlayerPhysics = new Physics();
             GameplayFacade.ThisPlayerDisplay = new Display();
 
-            GeneralFacade.SceneManager = new SceneManager(GeneralFacade.TempContent);
+            
             GeneralFacade.SceneManager.SetScene<SceneDeimos>();
 
-            
-
-            DisplayFacade.Camera = new Camera(
-                new Vector3(0f, 9f, 20f),
-                Vector3.Zero
-            );
 
             GameplayFacade.ThisPlayer.Inventory = new WeaponManager();
             GameplayFacade.ThisPlayer.InitializeInventory(GameplayFacade.ThisPlayer.Class);

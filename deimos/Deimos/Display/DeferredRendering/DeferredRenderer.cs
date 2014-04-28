@@ -418,7 +418,7 @@ namespace Deimos
         {
             if (MainGame.CurrentGameState != DeimosGame.GameStates.Playing)
             {
-                return;
+                //return;
             }
 
             SetGBuffer();

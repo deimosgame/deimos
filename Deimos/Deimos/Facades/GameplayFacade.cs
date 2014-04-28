@@ -8,8 +8,8 @@ namespace Deimos
     static class GameplayFacade
     {
         public static LocalPlayer ThisPlayer;
-        public static LocalPlayerPhysics ThisPlayerPhysics;
-        public static LocalPlayerDisplay ThisPlayerDisplay;
+        public static Physics ThisPlayerPhysics;
+        public static Display ThisPlayerDisplay;
         public static WeaponsList Weapons;
         public static ObjectsList Objects;
         public static BulletManager BulletManager;

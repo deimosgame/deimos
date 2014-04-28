@@ -9,7 +9,7 @@ using CollidableModel;
 
 namespace Deimos
 {
-    class LocalPlayerCollision
+    class Collision
     {
         // Attributes
         public Vector3 PlayerDimension;
@@ -19,7 +19,7 @@ namespace Deimos
 
 
         // Constructor
-        public LocalPlayerCollision(float playerHeight, float playerWidth, float playerDepth)
+        public Collision(float playerHeight, float playerWidth, float playerDepth)
         {
             // These dimensions will be used to check for the camera collision:
             // a player/human isn't a cube but a box; taller than larger

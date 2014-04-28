@@ -36,7 +36,7 @@ namespace Deimos
             private set;
         }
 
-        internal LocalPlayerCollision Collision
+        internal Collision Collision
         {
             get;
             private set;
@@ -73,7 +73,7 @@ namespace Deimos
 
             CurrentScene = (SceneTemplate)Activator.CreateInstance(typeof(T), new object[] { this });
 
-            Collision = new LocalPlayerCollision(
+            Collision = new Collision(
                 CurrentScene.PlayerSize.X,
                 CurrentScene.PlayerSize.Y,
                 CurrentScene.PlayerSize.Z

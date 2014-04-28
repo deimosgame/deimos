@@ -6,13 +6,13 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Deimos
 {
-    class LocalPlayerCombat
+    class Combat
     {
         float w_switch_timer;
         public string target_weapon;
         public bool firesprint = true;
 
-        public LocalPlayerCombat()
+        public Combat()
         {
             w_switch_timer = 0f;
         }

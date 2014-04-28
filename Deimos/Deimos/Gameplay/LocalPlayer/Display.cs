@@ -6,11 +6,11 @@ using Microsoft.Xna.Framework;
 
 namespace Deimos
 {
-    class LocalPlayerDisplay
+    class Display
     {
         LevelModel weapon;
 
-        public LocalPlayerDisplay()
+        public Display()
         {
             //
         }

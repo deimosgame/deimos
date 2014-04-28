@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace Deimos
 {
-    class LocalPlayerPhysics
+    class Physics
     {
         public enum PhysicalState
         {
@@ -54,7 +54,7 @@ namespace Deimos
         public Vector3 momentum;
 
         // Constructor
-        public LocalPlayerPhysics()
+        public Physics()
         {
             //
         }

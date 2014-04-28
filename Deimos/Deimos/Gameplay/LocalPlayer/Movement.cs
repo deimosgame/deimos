@@ -7,13 +7,13 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Deimos
 {
-    class LocalPlayerMovement
+    class Movement
     {
         Vector3 MoveVector;
         Vector3 Acceleration;
         Vector3 LastMoveVector;
 
-        public LocalPlayerMovement()
+        public Movement()
         {
             //
         }
@@ -28,22 +28,22 @@ namespace Deimos
             {
                 if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Forward))
                 {
-                    GameplayFacade.ThisPlayerPhysics.Accelerate(LocalPlayerPhysics.AccelerationDirection.Z);
+                    GameplayFacade.ThisPlayerPhysics.Accelerate(Physics.AccelerationDirection.Z);
                     movementVector += Vector3.Backward;
                 }
                 if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Backward))
                 {
-                    GameplayFacade.ThisPlayerPhysics.Decelerate(LocalPlayerPhysics.AccelerationDirection.Z);
+                    GameplayFacade.ThisPlayerPhysics.Decelerate(Physics.AccelerationDirection.Z);
                     movementVector += Vector3.Backward;
                 }
                 if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Left))
                 {
-                    GameplayFacade.ThisPlayerPhysics.Accelerate(LocalPlayerPhysics.AccelerationDirection.X);
+                    GameplayFacade.ThisPlayerPhysics.Accelerate(Physics.AccelerationDirection.X);
                     movementVector += Vector3.Right;
                 }
                 if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Right))
                 {
-                    GameplayFacade.ThisPlayerPhysics.Decelerate(LocalPlayerPhysics.AccelerationDirection.X);
+                    GameplayFacade.ThisPlayerPhysics.Decelerate(Physics.AccelerationDirection.X);
                     movementVector += Vector3.Right;
                 }
 
@@ -61,12 +61,12 @@ namespace Deimos
                 if (GameplayFacade.ThisPlayer.ks.IsKeyUp(GeneralFacade.Config.Forward)
                     && GameplayFacade.ThisPlayer.ks.IsKeyUp(GeneralFacade.Config.Backward))
                 {
-                    GameplayFacade.ThisPlayerPhysics.Reset(LocalPlayerPhysics.AccelerationDirection.Z);
+                    GameplayFacade.ThisPlayerPhysics.Reset(Physics.AccelerationDirection.Z);
                 }
                 if (GameplayFacade.ThisPlayer.ks.IsKeyUp(GeneralFacade.Config.Left)
                     && GameplayFacade.ThisPlayer.ks.IsKeyUp(GeneralFacade.Config.Right))
                 {
-                    GameplayFacade.ThisPlayerPhysics.Reset(LocalPlayerPhysics.AccelerationDirection.X);
+                    GameplayFacade.ThisPlayerPhysics.Reset(Physics.AccelerationDirection.X);
                 }
 
                     GameplayFacade.ThisPlayerPhysics.ApplyGravity(dt);
@@ -201,7 +201,7 @@ namespace Deimos
             {
                 if (GeneralFacade.SceneManager.Collision.CheckCollision(GameplayFacade.ThisPlayer.Position + movementGravity))
                 {
-                    if (GameplayFacade.ThisPlayerPhysics.GravityState == LocalPlayerPhysics.PhysicalState.Falling)
+                    if (GameplayFacade.ThisPlayerPhysics.GravityState == Physics.PhysicalState.Falling)
                     {
                         movement.Y = -GetNearFloorDistance(GameplayFacade.ThisPlayer.Position + new Vector3(movement.X, 0, movement.Z), 0.1f);
                         if (movement.Y > 0)
@@ -213,7 +213,7 @@ namespace Deimos
                     GameplayFacade.ThisPlayerPhysics.StabilizeGravity();
                     //GameplayFacade.ThisPlayerPhysics.Reset(LocalPlayerPhysics.AccelerationDirection.Y);
                 }
-                else if (GameplayFacade.ThisPlayerPhysics.GravityState == LocalPlayerPhysics.PhysicalState.Walking &&
+                else if (GameplayFacade.ThisPlayerPhysics.GravityState == Physics.PhysicalState.Walking &&
                     !GeneralFacade.SceneManager.Collision.CheckCollision(
                         GameplayFacade.ThisPlayer.Position + new Vector3(movement.X, 2, movement.Z)))
                 {

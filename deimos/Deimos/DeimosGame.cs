@@ -210,7 +210,7 @@ namespace Deimos
                         }
                         if (Keyboard.GetState().IsKeyDown(Keys.NumPad2))
                         {
-                            GameplayFacade.ThisPlayer.Class = Player.Spec.Overwatch; 
+                            GameplayFacade.ThisPlayer.Class = Player.Spec.Overwatch;
                         }
                         if (Keyboard.GetState().IsKeyDown(Keys.NumPad3))
                         {
@@ -280,8 +280,8 @@ namespace Deimos
             GameplayFacade.Objects.Initialize();
 
             GameplayFacade.ThisPlayer = new LocalPlayer();
-            GameplayFacade.ThisPlayerPhysics = new LocalPlayerPhysics();
-            GameplayFacade.ThisPlayerDisplay = new LocalPlayerDisplay();
+            GameplayFacade.ThisPlayerPhysics = new Physics();
+            GameplayFacade.ThisPlayerDisplay = new Display();
 
             GeneralFacade.SceneManager = new SceneManager(GeneralFacade.TempContent);
             GeneralFacade.SceneManager.SetScene<SceneDeimos>();

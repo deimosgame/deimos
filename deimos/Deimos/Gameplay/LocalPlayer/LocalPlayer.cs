@@ -20,17 +20,17 @@ namespace Deimos
 
         public KeyboardState ks;
 
-        LocalPlayerActions PlayerActions;
-        LocalPlayerMovement PlayerMovement;
-        LocalPlayerCombat PlayerCombat;
+        Actions PlayerActions;
+        Movement PlayerMovement;
+        Combat PlayerCombat;
 
         public float dt;
 
         public LocalPlayer()
         {
-            PlayerMovement = new LocalPlayerMovement();
-            PlayerActions = new LocalPlayerActions();
-            PlayerCombat = new LocalPlayerCombat();
+            PlayerMovement = new Movement();
+            PlayerActions = new Actions();
+            PlayerCombat = new Combat();
 
             Name = GeneralFacade.Config.PlayerName;
             Instance = "main";
@@ -129,8 +129,8 @@ namespace Deimos
                 Health = 0;
 
                 GameplayFacade.ThisPlayerPhysics.acceleration = Vector3.Zero;
-                GameplayFacade.ThisPlayerPhysics.GravityState = LocalPlayerPhysics.PhysicalState.Walking;
-                GameplayFacade.ThisPlayerPhysics.Accelerestate = LocalPlayerPhysics.AccelerationState.Still;
+                GameplayFacade.ThisPlayerPhysics.GravityState = Physics.PhysicalState.Walking;
+                GameplayFacade.ThisPlayerPhysics.Accelerestate = Physics.AccelerationState.Still;
                 GameplayFacade.ThisPlayerPhysics.timer_gravity = 0f;
                 GameplayFacade.ThisPlayerPhysics.initial_velocity = 0f;
 

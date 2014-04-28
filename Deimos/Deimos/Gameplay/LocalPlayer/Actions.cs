@@ -6,9 +6,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Deimos
 {
-    public class LocalPlayerActions
+    public class Actions
     {
-        public LocalPlayerActions()
+        public Actions()
         {
             //
         }
@@ -95,7 +95,7 @@ namespace Deimos
                 GameplayFacade.ThisPlayer.SprintCooldown) &&
 
                 (GameplayFacade.ThisPlayerPhysics.GravityState ==
-                LocalPlayerPhysics.PhysicalState.Walking) &&
+                Physics.PhysicalState.Walking) &&
 
                 (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Forward)) &&
 
@@ -106,7 +106,7 @@ namespace Deimos
         private bool CanJump()
         {
             return (GameplayFacade.ThisPlayerPhysics.GravityState ==
-                LocalPlayerPhysics.PhysicalState.Walking);
+                Physics.PhysicalState.Walking);
         }
 
 

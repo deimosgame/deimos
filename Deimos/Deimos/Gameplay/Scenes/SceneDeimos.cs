@@ -24,7 +24,7 @@ namespace Deimos
         // Constructor
         public SceneDeimos(SceneManager sceneManager)
         {
-            PlayerSize = new Vector3(20, 0.2f, 0.2f);
+            PlayerSize = new Vector3(20, 1, 1);
             SceneManager = sceneManager;
             ModelManager = SceneManager.ModelManager;
             LightManager = SceneManager.LightManager;
@@ -46,10 +46,11 @@ namespace Deimos
                  "ourMap",
                  "Models/Map/hl/hl", // Model
                  new Vector3(10, 0, 0), // Location
-                 Vector3.Zero
+                 Vector3.Zero,
+                 1.5f
             );
             SoundManager.AddSoundEffect("scary", "Sounds/ScaryMusic");
-            SceneManager.Collision.AddCollisionBox(
+            SceneManager.CollisionManager.AddCollisionBox(
                 new Vector3(-1000, -80, -1000),
                 new Vector3(1000, -81, 1000),
                 delegate(CollisionElement element, DeimosGame game)

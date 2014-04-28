@@ -36,11 +36,18 @@ namespace Deimos
             private set;
         }
 
-        internal Collision Collision
+        internal CollisionManager CollisionManager
         {
             get;
             private set;
         }
+
+        internal PlayerCollision PlayerCollision
+        {
+            get;
+            private set;
+        }
+
         SceneTemplate CurrentScene;
 
         ContentManager Content;
@@ -64,16 +71,18 @@ namespace Deimos
             ModelManager = null;
             LightManager = null;
             SoundManager = null;
-            Collision    = null;
+            CollisionManager = null;
+            PlayerCollision = null;
 
             ResourceManager = new ResourceManager(Content);
             ModelManager = new ModelManager();
             LightManager = new LightManager();
             SoundManager = new SoundManager(Content);
+            CollisionManager = new CollisionManager();
 
             CurrentScene = (SceneTemplate)Activator.CreateInstance(typeof(T), new object[] { this });
 
-            Collision = new Collision(
+            PlayerCollision = new PlayerCollision(
                 CurrentScene.PlayerSize.X,
                 CurrentScene.PlayerSize.Y,
                 CurrentScene.PlayerSize.Z

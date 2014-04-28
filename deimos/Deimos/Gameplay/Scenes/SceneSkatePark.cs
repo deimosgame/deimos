@@ -37,7 +37,7 @@ namespace Deimos
                  new Vector3(10, 0, 0), // Location
                  Vector3.Zero
             );
-            SceneManager.Collision.AddCollisionBox(
+            SceneManager.CollisionManager.AddCollisionBox(
                 new Vector3(-1000, -80, -1000),
                 new Vector3(1000, -81, 1000),
                 delegate(CollisionElement element, DeimosGame game)

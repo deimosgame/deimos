@@ -197,9 +197,9 @@ namespace Deimos
             // Return the value of camera position + movement vector
 
             // Testing for the UPCOMING position
-            if (GeneralFacade.SceneManager.Collision.CheckCollision(GameplayFacade.ThisPlayer.Position + movement))
+            if (GeneralFacade.SceneManager.PlayerCollision.CheckCollision(GameplayFacade.ThisPlayer.Position + movement))
             {
-                if (GeneralFacade.SceneManager.Collision.CheckCollision(GameplayFacade.ThisPlayer.Position + movementGravity))
+                if (GeneralFacade.SceneManager.PlayerCollision.CheckCollision(GameplayFacade.ThisPlayer.Position + movementGravity))
                 {
                     if (GameplayFacade.ThisPlayerPhysics.GravityState == Physics.PhysicalState.Falling)
                     {
@@ -214,7 +214,7 @@ namespace Deimos
                     //GameplayFacade.ThisPlayerPhysics.Reset(LocalPlayerPhysics.AccelerationDirection.Y);
                 }
                 else if (GameplayFacade.ThisPlayerPhysics.GravityState == Physics.PhysicalState.Walking &&
-                    !GeneralFacade.SceneManager.Collision.CheckCollision(
+                    !GeneralFacade.SceneManager.PlayerCollision.CheckCollision(
                         GameplayFacade.ThisPlayer.Position + new Vector3(movement.X, 2, movement.Z)))
                 {
                     movement.Y = GetNearFloorDistance(GameplayFacade.ThisPlayer.Position + new Vector3(movement.X, 2, movement.Z), 0.1f);
@@ -222,15 +222,15 @@ namespace Deimos
                 // Creating the new movement vector, which will make us 
                 // able to have a smooth collision: being able to "slide" on 
                 // the wall while colliding
-                movement.X = GeneralFacade.SceneManager.Collision.CheckCollision(
+                movement.X = GeneralFacade.SceneManager.PlayerCollision.CheckCollision(
                                     GameplayFacade.ThisPlayer.Position +
                                     new Vector3(movement.X, 0, 0)
                                 ) ? 0 : movement.X;
-                movement.Y = GeneralFacade.SceneManager.Collision.CheckCollision(
+                movement.Y = GeneralFacade.SceneManager.PlayerCollision.CheckCollision(
                                     GameplayFacade.ThisPlayer.Position +
                                     new Vector3(0, movement.Y, 0)
                                 ) ? 0 : movement.Y;
-                movement.Z = GeneralFacade.SceneManager.Collision.CheckCollision(
+                movement.Z = GeneralFacade.SceneManager.PlayerCollision.CheckCollision(
                                     GameplayFacade.ThisPlayer.Position +
                                     new Vector3(0, 0, movement.Z)
                              ) ? 0 : movement.Z;
@@ -261,7 +261,7 @@ namespace Deimos
 
         private float GetNearFloor(Vector3 pos, float increment)
         {
-            while (!GeneralFacade.SceneManager.Collision.CheckCollision(pos))
+            while (!GeneralFacade.SceneManager.PlayerCollision.CheckCollision(pos))
             {
                 pos.Y -= increment;
             }

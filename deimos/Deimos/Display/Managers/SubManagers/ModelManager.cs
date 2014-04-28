@@ -53,7 +53,7 @@ namespace Deimos
             thisLevelModel.CollisionDetection = collisionType;
             thisLevelModel.CollisionModel = thisModelCollision;
             LoadedLevelModels.Add(modelName, thisLevelModel);
-            GeneralFacade.SceneManager.Collision.AddLevelModel(
+            GeneralFacade.SceneManager.CollisionManager.AddLevelModel(
                 thisLevelModel,
                 delegate(CollisionElement el, DeimosGame game) { }
             );
@@ -83,7 +83,7 @@ namespace Deimos
             thisLevelModel.CollisionDetection = collisionType;
             thisLevelModel.CollisionModel = thisModelCollision;
             LoadedPrivateModels.Add(modelName, thisLevelModel);
-            GeneralFacade.SceneManager.Collision.AddLevelModel(
+            GeneralFacade.SceneManager.CollisionManager.AddLevelModel(
                 thisLevelModel,
                 delegate(CollisionElement el, DeimosGame game) { }
             );

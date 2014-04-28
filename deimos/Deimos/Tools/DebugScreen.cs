@@ -22,7 +22,7 @@ namespace Deimos
             float coeff = 0.15f;
             float MapWidth = GeneralFacade.Game.Renderer.NormalRT.Width * coeff;
             float MapHeight = GeneralFacade.Game.Renderer.NormalRT.Height * coeff;
-            GeneralFacade.Game.ScreenElementManager.AddImage(
+            DisplayFacade.ScreenElementManager.AddImage(
                 "NormalMap",
                 0,
                 0,
@@ -30,7 +30,7 @@ namespace Deimos
                 0,
                 (Texture2D)GeneralFacade.Game.Renderer.NormalRT
             );
-            GeneralFacade.Game.ScreenElementManager.AddImage(
+            DisplayFacade.ScreenElementManager.AddImage(
                 "DepthMap",
                 (int)MapWidth,
                 0,
@@ -38,7 +38,7 @@ namespace Deimos
                 0,
                 (Texture2D)GeneralFacade.Game.Renderer.DepthRT
             );
-            GeneralFacade.Game.ScreenElementManager.AddImage(
+            DisplayFacade.ScreenElementManager.AddImage(
                 "LightMap",
                 (int)MapWidth * 2,
                 0,
@@ -46,7 +46,7 @@ namespace Deimos
                 0,
                 (Texture2D)GeneralFacade.Game.Renderer.LightRT
             );
-            GeneralFacade.Game.ScreenElementManager.AddImage(
+            DisplayFacade.ScreenElementManager.AddImage(
                 "SSAOMap",
                 (int)MapWidth * 3,
                 0,
@@ -55,7 +55,7 @@ namespace Deimos
                 (Texture2D)GeneralFacade.Game.Renderer.SSAORT
             );
 
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "Location",
                 0,
                 (int)MapHeight + 10,
@@ -64,7 +64,7 @@ namespace Deimos
                 "Location: ",
                 Color.LightBlue
             );
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "FPS",
                 0,
                 (int)MapHeight + 50,
@@ -73,7 +73,7 @@ namespace Deimos
                 "FPS: ",
                 Color.White
             );
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "Ticks",
                 0,
                 (int)MapHeight + 70,
@@ -82,7 +82,7 @@ namespace Deimos
                 "Ticks per sec: ",
                 Color.White
             );
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "JumpState",
                 0,
                 (int)MapHeight + 90,
@@ -91,7 +91,7 @@ namespace Deimos
                 "JumpState: ",
                 Color.LightGreen
             );
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "WeaponState",
                 0,
                 (int)MapHeight + 110,
@@ -100,7 +100,7 @@ namespace Deimos
                 "Weapon State: ",
                 Color.LightCoral
             );
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "CurrentWeapon",
                 0,
                 (int)MapHeight + 130,
@@ -109,7 +109,7 @@ namespace Deimos
                 "CurrentWeapon:",
                 Color.LightCoral
             );
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "CurrentChamberAmmo",
                 0,
                 (int)MapHeight + 150,
@@ -118,7 +118,7 @@ namespace Deimos
                 "CurrentChamberAmmo:",
                 Color.LightCoral
             );
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "CurrentReservoirAmmo",
                 0,
                 (int)MapHeight + 170,
@@ -127,7 +127,7 @@ namespace Deimos
                 "CurrentReservoirAmmo:",
                 Color.LightCoral
             );
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "Rotation",
                 0,
                 (int)MapHeight + 30,
@@ -136,7 +136,7 @@ namespace Deimos
                 "Rotation: ",
                 Color.LightBlue
             );
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "SpeedState",
                 0,
                 (int)MapHeight + 190,
@@ -145,7 +145,7 @@ namespace Deimos
                 "Speed State: ",
                 Color.LightSalmon
             );
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "SprintTimer",
                 0,
                 (int)MapHeight + 210,
@@ -154,7 +154,7 @@ namespace Deimos
                 "Sprint Timer: ",
                 Color.LightSalmon
             );
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "CooldownTimer",
                 0,
                 (int)MapHeight + 230,
@@ -163,7 +163,7 @@ namespace Deimos
                 "Cooldown Timer: ",
                 Color.LightSalmon
             );
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "DebugConsole",
                 (int)(MapWidth/coeff)-400,
                 10,
@@ -172,7 +172,7 @@ namespace Deimos
                 "Console",
                 Color.LightSalmon
             );
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "PlayingState",
                 0,
                 (int)MapHeight + 250,
@@ -181,7 +181,7 @@ namespace Deimos
                 "Playing State:",
                 Color.DeepPink
             );
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "LifeState",
                 0,
                 (int)MapHeight + 270,
@@ -190,7 +190,7 @@ namespace Deimos
                 "Life State:",
                 Color.DeepPink
             );
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "Health",
                 0,
                 (int)MapHeight + 290,
@@ -199,7 +199,7 @@ namespace Deimos
                 "Health:",
                 Color.DeepPink
             );
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "Acceleration",
                 0,
                 (int)MapHeight + 310,
@@ -208,7 +208,7 @@ namespace Deimos
                 "Acceleration:",
                 Color.Yellow
             );
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "G-Time",
                 0,
                 (int)MapHeight + 330,
@@ -217,7 +217,7 @@ namespace Deimos
                 "G-Time:",
                 Color.Blue
             );
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "InitialVelocity",
                 0,
                 (int)MapHeight + 350,
@@ -226,7 +226,7 @@ namespace Deimos
                 "InitialVelocity:",
                 Color.Blue
             );
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "Class",
                 0,
                 (int)MapHeight + 390,
@@ -235,7 +235,7 @@ namespace Deimos
                 "Player Class:",
                 Color.Red
             );
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "Name",
                 0,
                 (int)MapHeight + 370,
@@ -244,7 +244,7 @@ namespace Deimos
                 "Player Name:",
                 Color.Red
             );
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "Instance",
                 0,
                 (int)MapHeight + 410,
@@ -253,7 +253,7 @@ namespace Deimos
                 "Spawn Instance:",
                 Color.Red
             );
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "View",
                 0,
                 (int)MapHeight + 430,
@@ -262,7 +262,7 @@ namespace Deimos
                 "Camera View:",
                 Color.Yellow
             );
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "Momentum",
                 0,
                 (int)MapHeight + 450,
@@ -271,7 +271,7 @@ namespace Deimos
                 "Momentum:",
                 Color.Yellow
             );
-            GeneralFacade.Game.ScreenElementManager.AddText(
+            DisplayFacade.ScreenElementManager.AddText(
                 "Scroll",
                 0,
                 (int)MapHeight + 470,
@@ -286,67 +286,67 @@ namespace Deimos
 
         private void Show()
         {
-            GeneralFacade.Game.ScreenElementManager.GetImage("NormalMap").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetImage("DepthMap").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetImage("LightMap").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetImage("SSAOMap").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("Location").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("FPS").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("Ticks").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("JumpState").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("CurrentWeapon").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("CurrentChamberAmmo").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("CurrentReservoirAmmo").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("Rotation").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("SpeedState").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("SprintTimer").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("CooldownTimer").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("PlayingState").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("LifeState").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("Health").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("Acceleration").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("G-Time").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("InitialVelocity").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("DebugConsole").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("Class").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("Name").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("Instance").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("View").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("Momentum").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("Scroll").Show = true;
-            GeneralFacade.Game.ScreenElementManager.GetText("WeaponState").Show = true;
+            DisplayFacade.ScreenElementManager.GetImage("NormalMap").Show = true;
+            DisplayFacade.ScreenElementManager.GetImage("DepthMap").Show = true;
+            DisplayFacade.ScreenElementManager.GetImage("LightMap").Show = true;
+            DisplayFacade.ScreenElementManager.GetImage("SSAOMap").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("Location").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("FPS").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("Ticks").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("JumpState").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("CurrentWeapon").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("CurrentChamberAmmo").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("CurrentReservoirAmmo").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("Rotation").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("SpeedState").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("SprintTimer").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("CooldownTimer").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("PlayingState").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("LifeState").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("Health").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("Acceleration").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("G-Time").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("InitialVelocity").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("DebugConsole").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("Class").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("Name").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("Instance").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("View").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("Momentum").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("Scroll").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("WeaponState").Show = true;
         }
         private void Hide()
         {
-            GeneralFacade.Game.ScreenElementManager.GetImage("NormalMap").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetImage("DepthMap").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetImage("LightMap").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetImage("SSAOMap").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("Location").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("FPS").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("Ticks").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("JumpState").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("CurrentWeapon").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("CurrentChamberAmmo").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("CurrentReservoirAmmo").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("Rotation").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("SpeedState").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("SprintTimer").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("CooldownTimer").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("PlayingState").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("LifeState").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("Health").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("Acceleration").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("G-Time").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("InitialVelocity").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("DebugConsole").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("Class").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("Name").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("Instance").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("View").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("Momentum").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("Scroll").Show = false;
-            GeneralFacade.Game.ScreenElementManager.GetText("WeaponState").Show = false;
+            DisplayFacade.ScreenElementManager.GetImage("NormalMap").Show = false;
+            DisplayFacade.ScreenElementManager.GetImage("DepthMap").Show = false;
+            DisplayFacade.ScreenElementManager.GetImage("LightMap").Show = false;
+            DisplayFacade.ScreenElementManager.GetImage("SSAOMap").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("Location").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("FPS").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("Ticks").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("JumpState").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("CurrentWeapon").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("CurrentChamberAmmo").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("CurrentReservoirAmmo").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("Rotation").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("SpeedState").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("SprintTimer").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("CooldownTimer").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("PlayingState").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("LifeState").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("Health").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("Acceleration").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("G-Time").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("InitialVelocity").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("DebugConsole").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("Class").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("Name").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("Instance").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("View").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("Momentum").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("Scroll").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("WeaponState").Show = false;
         }
 
         public void Debug(string text)
@@ -379,109 +379,109 @@ namespace Deimos
             }
             Show();
 
-            GeneralFacade.Game.ScreenElementManager.GetText("Location").Text = String.Format(
+            DisplayFacade.ScreenElementManager.GetText("Location").Text = String.Format(
                 "Location: x:{0}; y:{1}; z:{2}",
                 (int)GameplayFacade.ThisPlayer.Position.X,
                 (int)GameplayFacade.ThisPlayer.Position.Y,
                 (int)GameplayFacade.ThisPlayer.Position.Z
             );
-            GeneralFacade.Game.ScreenElementManager.GetText("FPS").Text = String.Format(
+            DisplayFacade.ScreenElementManager.GetText("FPS").Text = String.Format(
                 "FPS: {0}",
                 FrameRate
             );
-            GeneralFacade.Game.ScreenElementManager.GetText("Ticks").Text = String.Format(
+            DisplayFacade.ScreenElementManager.GetText("Ticks").Text = String.Format(
                 "Ticks per sec: {0}",
                 UpdateRate
             );
-            GeneralFacade.Game.ScreenElementManager.GetText("JumpState").Text = String.Format(
+            DisplayFacade.ScreenElementManager.GetText("JumpState").Text = String.Format(
                 "JumpState: {0}",
                 GameplayFacade.ThisPlayerPhysics.GravityState
             );
-            GeneralFacade.Game.ScreenElementManager.GetText("CurrentWeapon").Text = String.Format(
+            DisplayFacade.ScreenElementManager.GetText("CurrentWeapon").Text = String.Format(
                 "CurrentWeapon: {0}",
                 GameplayFacade.ThisPlayer.CurrentWeapon.Name
             );
-            GeneralFacade.Game.ScreenElementManager.GetText("CurrentChamberAmmo").Text = String.Format(
+            DisplayFacade.ScreenElementManager.GetText("CurrentChamberAmmo").Text = String.Format(
                 "CurrentChamberAmmo: {0}",
                 GameplayFacade.ThisPlayer.CurrentWeapon.c_chamberAmmo
             );
-            GeneralFacade.Game.ScreenElementManager.GetText("CurrentReservoirAmmo").Text = String.Format(
+            DisplayFacade.ScreenElementManager.GetText("CurrentReservoirAmmo").Text = String.Format(
                 "CurrentReservoirAmmo: {0}",
                 GameplayFacade.ThisPlayer.CurrentWeapon.c_reservoirAmmo
             );
-            GeneralFacade.Game.ScreenElementManager.GetText("Rotation").Text = String.Format(
+            DisplayFacade.ScreenElementManager.GetText("Rotation").Text = String.Format(
                 "Rotation: x:{0}; y:{1}; z:{2}",
                 (float)GameplayFacade.ThisPlayer.Rotation.X,
                 (float)GameplayFacade.ThisPlayer.Rotation.Y,
                 (float)GameplayFacade.ThisPlayer.Rotation.Z
             );
-            GeneralFacade.Game.ScreenElementManager.GetText("SpeedState").Text = String.Format(
+            DisplayFacade.ScreenElementManager.GetText("SpeedState").Text = String.Format(
                 "Speed State: {0}",
                 GameplayFacade.ThisPlayer.CurrentSpeedState
             );
-            GeneralFacade.Game.ScreenElementManager.GetText("SprintTimer").Text = String.Format(
+            DisplayFacade.ScreenElementManager.GetText("SprintTimer").Text = String.Format(
                 "Sprint Timer: {0}",
                 GameplayFacade.ThisPlayer.SprintTimer
             );
-            GeneralFacade.Game.ScreenElementManager.GetText("CooldownTimer").Text = String.Format(
+            DisplayFacade.ScreenElementManager.GetText("CooldownTimer").Text = String.Format(
                 "CooldownTimer: {0}",
                 GameplayFacade.ThisPlayer.CooldownTimer
             );
-            GeneralFacade.Game.ScreenElementManager.GetText("PlayingState").Text = String.Format(
+            DisplayFacade.ScreenElementManager.GetText("PlayingState").Text = String.Format(
                 "Playing State: {0}",
                 GeneralFacade.Game.CurrentPlayingState
             );
-            GeneralFacade.Game.ScreenElementManager.GetText("LifeState").Text = String.Format(
+            DisplayFacade.ScreenElementManager.GetText("LifeState").Text = String.Format(
                 "Life State: {0}",
                 GameplayFacade.ThisPlayer.CurrentLifeState
             );
-            GeneralFacade.Game.ScreenElementManager.GetText("Health").Text = String.Format(
+            DisplayFacade.ScreenElementManager.GetText("Health").Text = String.Format(
                 "Health: {0}",
                 GameplayFacade.ThisPlayer.Health
             );
-            GeneralFacade.Game.ScreenElementManager.GetText("Acceleration").Text = String.Format(
+            DisplayFacade.ScreenElementManager.GetText("Acceleration").Text = String.Format(
                 "Acceleration: x:{0}; y:{1}; z:{2}",
                 (float)GameplayFacade.ThisPlayerPhysics.GetAcceleration().X,
                 (float)GameplayFacade.ThisPlayerPhysics.GetAcceleration().Y,
                 (float)GameplayFacade.ThisPlayerPhysics.GetAcceleration().Z
             );
-            GeneralFacade.Game.ScreenElementManager.GetText("G-Time").Text = String.Format(
+            DisplayFacade.ScreenElementManager.GetText("G-Time").Text = String.Format(
                 "G-Time: {0}",
                 GameplayFacade.ThisPlayerPhysics.timer_gravity
             );
-            GeneralFacade.Game.ScreenElementManager.GetText("InitialVelocity").Text = String.Format(
+            DisplayFacade.ScreenElementManager.GetText("InitialVelocity").Text = String.Format(
                 "InitialVelocity: {0}",
                 GameplayFacade.ThisPlayerPhysics.initial_velocity
             );
-            GeneralFacade.Game.ScreenElementManager.GetText("Class").Text = String.Format(
+            DisplayFacade.ScreenElementManager.GetText("Class").Text = String.Format(
                 "Player Class: {0}",
                 GameplayFacade.ThisPlayer.Class
             );
-            GeneralFacade.Game.ScreenElementManager.GetText("Name").Text = String.Format(
+            DisplayFacade.ScreenElementManager.GetText("Name").Text = String.Format(
                 "Player Name: {0}",
                 GameplayFacade.ThisPlayer.Name
             );
-            GeneralFacade.Game.ScreenElementManager.GetText("Instance").Text = String.Format(
+            DisplayFacade.ScreenElementManager.GetText("Instance").Text = String.Format(
                 "Spawn Instance: {0}",
                 GameplayFacade.ThisPlayer.Instance
             );
-            GeneralFacade.Game.ScreenElementManager.GetText("View").Text = String.Format(
+            DisplayFacade.ScreenElementManager.GetText("View").Text = String.Format(
                 "Camera View x:{0}; y:{1}; z:{2}",
                 (float)DisplayFacade.Camera.ViewVector.X,
                 (float)DisplayFacade.Camera.ViewVector.Y,
                 (float)DisplayFacade.Camera.ViewVector.Z
             );
-            GeneralFacade.Game.ScreenElementManager.GetText("Momentum").Text = String.Format(
+            DisplayFacade.ScreenElementManager.GetText("Momentum").Text = String.Format(
                 "Momentum: x:{0}; y:{1}; z:{2}",
                 (float)GameplayFacade.ThisPlayerPhysics.momentum.X,
                 (float)GameplayFacade.ThisPlayerPhysics.momentum.Y,
                 (float)GameplayFacade.ThisPlayerPhysics.momentum.Z
             );
-            GeneralFacade.Game.ScreenElementManager.GetText("Scroll").Text = String.Format(
+            DisplayFacade.ScreenElementManager.GetText("Scroll").Text = String.Format(
                 "Scroll: {0}",
                 GameplayFacade.ThisPlayer.previousScrollValue
             );
-            GeneralFacade.Game.ScreenElementManager.GetText("WeaponState").Text = String.Format(
+            DisplayFacade.ScreenElementManager.GetText("WeaponState").Text = String.Format(
                 "Weapon State: {0}",
                 GameplayFacade.ThisPlayer.CurrentWeapon.State
             );
@@ -496,7 +496,7 @@ namespace Deimos
             {
                 finalDebug += DebugConsole[i] + "\n";
             }
-            GeneralFacade.Game.ScreenElementManager.GetText("DebugConsole").Text = finalDebug;
+            DisplayFacade.ScreenElementManager.GetText("DebugConsole").Text = finalDebug;
         }
     }
 }

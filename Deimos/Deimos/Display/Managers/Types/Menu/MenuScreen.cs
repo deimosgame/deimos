@@ -37,7 +37,7 @@ namespace Deimos
             foreach (var item in MenuElements)
             {
                 lastHeight += 50;
-                GeneralFacade.Game.ScreenElementManager.AddText(
+                DisplayFacade.ScreenElementManager.AddText(
                     "MenuElementText" + Name + item.Title,
                     50,
                     lastHeight,
@@ -46,7 +46,7 @@ namespace Deimos
                     item.Title,
                     Color.White
                 );
-                GeneralFacade.Game.ScreenElementManager.AddRectangle(
+                DisplayFacade.ScreenElementManager.AddRectangle(
                     "MenuElementHitbox" + Name + item.Title,
                     50,
                     lastHeight,
@@ -62,8 +62,8 @@ namespace Deimos
         {
             foreach (var item in MenuElements)
             {
-                GeneralFacade.Game.ScreenElementManager.RemoveText("MenuElementText" + Name + item.Title);
-                GeneralFacade.Game.ScreenElementManager.RemoveRectangle("MenuElementHitbox" + Name + item.Title);
+                DisplayFacade.ScreenElementManager.RemoveText("MenuElementText" + Name + item.Title);
+                DisplayFacade.ScreenElementManager.RemoveRectangle("MenuElementHitbox" + Name + item.Title);
             }
         }
     }

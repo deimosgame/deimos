@@ -24,12 +24,6 @@ namespace Deimos
             private set;
         }
 
-        internal ScreenElementManager ScreenElementManager
-        {
-            get;
-            set;
-        }
-
         internal WeaponsList Weapons
         {
             get;
@@ -160,7 +154,7 @@ namespace Deimos
 
             DisplayFacade.SpriteBatch = new SpriteBatch(GraphicsDevice);
 
-            ScreenElementManager = new ScreenElementManager();
+            DisplayFacade.ScreenElementManager = new ScreenElementManager();
 
             DebugScreen = new DebugScreen();
 
@@ -220,7 +214,7 @@ namespace Deimos
             {
                 VideoPlayer.Play(IntroVideo);
                 CurrentGameState = GameStates.Intro;
-                ScreenElementManager.AddImage("Intro", 0, 0, 1, 1, 1, null);
+                DisplayFacade.ScreenElementManager.AddImage("Intro", 0, 0, 1, 1, 1, null);
             }
 
             switch (CurrentGameState)
@@ -230,7 +224,7 @@ namespace Deimos
                     {
                         VideoPlayer.Play(IntroVideo);
                         CurrentGameState = GameStates.Intro;
-                        ScreenElementManager.AddImage("Intro", 0, 0, 1, 1, 1, null);
+                        DisplayFacade.ScreenElementManager.AddImage("Intro", 0, 0, 1, 1, 1, null);
                     }
                     break;
                 case GameStates.Intro:
@@ -240,7 +234,7 @@ namespace Deimos
                 case GameStates.Pause:
                 case GameStates.GraphicOptions:
                     IsMouseVisible = true;
-                    ScreenElementManager.HandleMouse();
+                    DisplayFacade.ScreenElementManager.HandleMouse();
                     break;
                 case GameStates.Playing:
                 default:
@@ -295,7 +289,7 @@ namespace Deimos
                 // Draw the video, if we have a texture to draw.
                 if (videoTexture != null)
                 {
-                    ScreenImage sImage = ScreenElementManager.GetImage("Intro");
+                    ScreenImage sImage = DisplayFacade.ScreenElementManager.GetImage("Intro");
                     sImage.Image = videoTexture;
                     float height = GraphicsDevice.Viewport.Height;
                     float width = GraphicsDevice.Viewport.Width;
@@ -308,14 +302,14 @@ namespace Deimos
                 {
                     CurrentGameState = GameStates.StartMenu;
                     VideoPlayer.Dispose();
-                    ScreenElementManager.RemoveImage("Intro");
+                    DisplayFacade.ScreenElementManager.RemoveImage("Intro");
 
                     MenuManager.Set("Start");
                 }
             }
 
             DebugScreen.Draw(gameTime);
-            ScreenElementManager.DrawElements(DisplayFacade.SpriteBatch);
+            DisplayFacade.ScreenElementManager.DrawElements(DisplayFacade.SpriteBatch);
         }
 
         private void InitGameplay()

@@ -24,12 +24,6 @@ namespace Deimos
             private set;
         }
 
-        internal MenuManager MenuManager
-        {
-            get;
-            set;
-        }
-
 
 
         public enum GameStates
@@ -122,16 +116,16 @@ namespace Deimos
 
             DisplayFacade.DebugScreen = new DebugScreen();
 
-            MenuManager = new MenuManager();
+            DisplayFacade.MenuManager = new MenuManager();
 
 
             //////////////////////////////////////////////////////
             // Menus
             /////////////////////////////////////////////////////
-            MenuScreen StartScreen = MenuManager.Add("Start");
+            MenuScreen StartScreen = DisplayFacade.MenuManager.Add("Start");
             StartScreen.AddElement("Play", delegate(ScreenElement el, DeimosGame game)
             {
-                MenuManager.Hide();
+                DisplayFacade.MenuManager.Hide();
                 CurrentGameState = GameStates.Playing;
             });
             StartScreen.AddElement("Exit", delegate(ScreenElement el, DeimosGame game)
@@ -139,7 +133,7 @@ namespace Deimos
                 this.Exit();
             });
 
-            MenuScreen PauseScreen = MenuManager.Add("Pause");
+            MenuScreen PauseScreen = DisplayFacade.MenuManager.Add("Pause");
             PauseScreen.AddElement("Resume", delegate(ScreenElement el, DeimosGame game)
             {
                 // Making sure the mouse is in the center of the screen:
@@ -147,7 +141,7 @@ namespace Deimos
                 // pause screen.
                 Mouse.SetPosition(GraphicsDevice.Viewport.Width / 2,
                 GraphicsDevice.Viewport.Height / 2);
-                MenuManager.Hide();
+                DisplayFacade.MenuManager.Hide();
                 game.CurrentGameState = GameStates.Playing;
             });
             PauseScreen.AddElement("Exit", delegate(ScreenElement el, DeimosGame game)
@@ -169,7 +163,7 @@ namespace Deimos
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
-                MenuManager.Set("Pause");
+                DisplayFacade.MenuManager.Set("Pause");
                 CurrentGameState = GameStates.Pause;
             }
 
@@ -268,7 +262,7 @@ namespace Deimos
                     VideoPlayer.Dispose();
                     DisplayFacade.ScreenElementManager.RemoveImage("Intro");
 
-                    MenuManager.Set("Start");
+                    DisplayFacade.MenuManager.Set("Start");
                 }
             }
 

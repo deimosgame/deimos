@@ -10,8 +10,8 @@ namespace Deimos
     {
         public static SpriteBatch SpriteBatch;
         public static Camera Camera;
-        public static DeferredRenderer Renderer;
         public static DebugScreen DebugScreen;
         public static ScreenElementManager ScreenElementManager;
+        public static MenuManager MenuManager;
     }
 }

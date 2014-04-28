@@ -36,6 +36,8 @@ namespace Deimos
             );
         }
 
+
+
         private bool PreCollisionBypass()
         {
             if (GeneralFacade.Game.CurrentPlayingState == DeimosGame.PlayingStates.NoClip)
@@ -44,6 +46,11 @@ namespace Deimos
             }
 
             return false;
+        }
+
+        private void CollisionEvent(CollisionElement element)
+        {
+            //
         }
 
 
@@ -108,7 +115,7 @@ namespace Deimos
                 if (isCollision)
                 {
                     thisElement.Event(thisElement, GeneralFacade.Game);
-                    DisplayFacade.DebugScreen.Debug("             collision");
+                    CollisionEvent(thisElement);
                     return true;
                 }
             }

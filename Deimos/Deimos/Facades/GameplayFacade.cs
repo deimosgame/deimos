@@ -13,5 +13,6 @@ namespace Deimos
         public static WeaponsList Weapons;
         public static ObjectsList Objects;
         public static BulletManager BulletManager;
+        public static Constants Constants;
     }
 }

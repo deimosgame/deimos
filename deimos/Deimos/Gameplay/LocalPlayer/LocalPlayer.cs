@@ -151,43 +151,43 @@ namespace Deimos
                 case Spec.Soldier:
                     {
                         Name = "Unknown Soldier";
-                        m_health = GeneralFacade.Game.Constants.HealthSoldier;
+                        m_health = GameplayFacade.Constants.HealthSoldier;
                         Health = (int)m_health;
 
-                        Speed = GeneralFacade.Game.Constants.SpeedSoldier;
-                        SprintCooldown = GeneralFacade.Game.Constants.SprintCooldownSoldier;
-                        MaxSprintTime = GeneralFacade.Game.Constants.MaxSprintSoldier;
+                        Speed = GameplayFacade.Constants.SpeedSoldier;
+                        SprintCooldown = GameplayFacade.Constants.SprintCooldownSoldier;
+                        MaxSprintTime = GameplayFacade.Constants.MaxSprintSoldier;
 
-                        GameplayFacade.ThisPlayerPhysics.JumpVelocity = GeneralFacade.Game.Constants.JumpSoldier;
+                        GameplayFacade.ThisPlayerPhysics.JumpVelocity = GameplayFacade.Constants.JumpSoldier;
                     }
                     break;
 
                 case Spec.Overwatch:
                     {
                         Name = "Gabe";
-                        m_health = GeneralFacade.Game.Constants.HealthOverwatch;
+                        m_health = GameplayFacade.Constants.HealthOverwatch;
                         Health = (int)m_health;
 
-                        Speed = GeneralFacade.Game.Constants.SpeedOverwatch;
-                        SprintCooldown = GeneralFacade.Game.Constants.SprintCooldownOverwatch;
-                        MaxSprintTime = GeneralFacade.Game.Constants.MaxSprintOverwatch;
+                        Speed = GameplayFacade.Constants.SpeedOverwatch;
+                        SprintCooldown = GameplayFacade.Constants.SprintCooldownOverwatch;
+                        MaxSprintTime = GameplayFacade.Constants.MaxSprintOverwatch;
 
-                        GameplayFacade.ThisPlayerPhysics.JumpVelocity = 
-                            GeneralFacade.Game.Constants.JumpOverwatch;
+                        GameplayFacade.ThisPlayerPhysics.JumpVelocity =
+                            GameplayFacade.Constants.JumpOverwatch;
                     }
                     break;
 
                 case Spec.Agent:
                     {
                         Name = "Varidar";
-                        m_health = GeneralFacade.Game.Constants.HealthAgent;
+                        m_health = GameplayFacade.Constants.HealthAgent;
                         Health = (int)m_health;
 
-                        Speed = GeneralFacade.Game.Constants.SpeedAgent;
-                        SprintCooldown = GeneralFacade.Game.Constants.SprintCooldownAgent;
-                        MaxSprintTime = GeneralFacade.Game.Constants.MaxSprintAgent;
+                        Speed = GameplayFacade.Constants.SpeedAgent;
+                        SprintCooldown = GameplayFacade.Constants.SprintCooldownAgent;
+                        MaxSprintTime = GameplayFacade.Constants.MaxSprintAgent;
 
-                        GameplayFacade.ThisPlayerPhysics.JumpVelocity = GeneralFacade.Game.Constants.JumpAgent;
+                        GameplayFacade.ThisPlayerPhysics.JumpVelocity = GameplayFacade.Constants.JumpAgent;
                     }
                     break;
 
@@ -229,7 +229,7 @@ namespace Deimos
             GameplayFacade.ThisPlayerDisplay.DisplayCurrentWeapon(GameplayFacade.ThisPlayer.CurrentWeapon);
 
             previousScrollValue = CurrentMouseState.ScrollWheelValue;
-       }
+        }
 
         public bool FireSprint()
         {

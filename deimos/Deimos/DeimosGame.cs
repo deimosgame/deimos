@@ -24,12 +24,6 @@ namespace Deimos
             private set;
         }
 
-        internal Constants Constants
-        {
-            get;
-            set;
-        }
-
         internal MenuManager MenuManager
         {
             get;
@@ -93,7 +87,7 @@ namespace Deimos
 
 
             GeneralFacade.Config = new Config();
-            Constants = new Constants();
+            GameplayFacade.Constants = new Constants();
         }
 
         protected override void Initialize()

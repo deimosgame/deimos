@@ -12,8 +12,6 @@ namespace Deimos
     class LocalPlayerCollision
     {
         // Attributes
-        private DeimosGame MainGame;
-
         public Vector3 PlayerDimension;
 
         List<CollisionElement> CollisionElements =
@@ -21,16 +19,13 @@ namespace Deimos
 
 
         // Constructor
-        public LocalPlayerCollision(float playerHeight, float playerWidth, float playerDepth,
-            DeimosGame game)
+        public LocalPlayerCollision(float playerHeight, float playerWidth, float playerDepth)
         {
             // These dimensions will be used to check for the camera collision:
             // a player/human isn't a cube but a box; taller than larger
             PlayerDimension.X = playerWidth;
             PlayerDimension.Y = playerHeight;
             PlayerDimension.Z = playerDepth;
-
-            MainGame = game;
         }
 
 
@@ -89,7 +84,7 @@ namespace Deimos
 
         public Boolean CheckCollision(Vector3 cameraPosition)
         {
-            if (MainGame.CurrentPlayingState == DeimosGame.PlayingStates.NoClip)
+            if (GeneralFacade.Game.CurrentPlayingState == DeimosGame.PlayingStates.NoClip)
             {
                 return false;
             }
@@ -157,7 +152,7 @@ namespace Deimos
                 }
                 if (isCollision)
                 {
-                    thisElement.Event(thisElement, MainGame);
+                    thisElement.Event(thisElement, GeneralFacade.Game);
                     return true;
                 }
             }

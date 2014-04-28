@@ -8,19 +8,18 @@ namespace Deimos
 {
     class MenuManager
     {
-        private DeimosGame Game;
         private Dictionary<string, MenuScreen> MenuElements = new Dictionary<string, MenuScreen>();
         private MenuScreen Current;
 
 
-        public MenuManager(DeimosGame game)
+        public MenuManager()
         {
-            Game = game;
+            //
         }
 
         public MenuScreen Add(string name)
         {
-            MenuScreen nScreen = new MenuScreen(Game, name);
+            MenuScreen nScreen = new MenuScreen(name);
             MenuElements.Add(name, nScreen);
             return nScreen;
         }

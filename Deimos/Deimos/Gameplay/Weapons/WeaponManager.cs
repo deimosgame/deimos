@@ -36,8 +36,6 @@ namespace Deimos
 
     public class WeaponManager
     {
-        DeimosGame Game;
-
         // This is the player's dynamic Weapon Inventory
         private Dictionary<string, Weapon> PlayerInventory =
             new Dictionary<string, Weapon>();
@@ -47,10 +45,8 @@ namespace Deimos
         int c_weapon = 0;
 
         // Constructor
-        public WeaponManager(DeimosGame game)
+        public WeaponManager()
         {
-            Game = game;
-
             Order = new char[max_n_weapons];
         }
         
@@ -74,17 +70,17 @@ namespace Deimos
                 // we equip it
                 // Oldschool FTW!
                 // The current weapon may not be set at the beginning.
-               if (Game.ThisPlayer.CurrentWeapon == null)
+               if (GeneralFacade.Game.ThisPlayer.CurrentWeapon == null)
                {
                    SetCurrentWeapon(pickupWeapon.Name);
-                   c_weapon = Array.IndexOf(Order, Game.Weapons.GetRep(pickupWeapon.Name));
+                   c_weapon = Array.IndexOf(Order, GeneralFacade.Game.Weapons.GetRep(pickupWeapon.Name));
                }
-               else if (Game.ThisPlayer.CurrentWeapon != null && 
-                   Game.ThisPlayer.CurrentWeapon.Importance 
+               else if (GeneralFacade.Game.ThisPlayer.CurrentWeapon != null &&
+                   GeneralFacade.Game.ThisPlayer.CurrentWeapon.Importance 
                    < pickupWeapon.Importance)
                {
-                   Game.ThisPlayer.SetTargetWeapon(pickupWeapon.Name);
-                   Game.ThisPlayer.CurrentWeapon.State = WeaponState.Switching;
+                   GeneralFacade.Game.ThisPlayer.SetTargetWeapon(pickupWeapon.Name);
+                   GeneralFacade.Game.ThisPlayer.CurrentWeapon.State = WeaponState.Switching;
                }
             }
         }
@@ -105,11 +101,11 @@ namespace Deimos
         {
             if (c_weapon + 1 != max_n_weapons)
             {
-                return Game.Weapons.GetName(Order[c_weapon + 1]);
+                return GeneralFacade.Game.Weapons.GetName(Order[c_weapon + 1]);
             }
             else
             {
-                return Game.Weapons.GetName(Order[FirstIndex()]);
+                return GeneralFacade.Game.Weapons.GetName(Order[FirstIndex()]);
             }
         }
 
@@ -117,11 +113,11 @@ namespace Deimos
         {
             if (c_weapon - 1 != -1 && Order[c_weapon - 1] != '\0')
             {
-                return Game.Weapons.GetName(Order[c_weapon - 1]);
+                return GeneralFacade.Game.Weapons.GetName(Order[c_weapon - 1]);
             }
             else
             {
-                return Game.Weapons.GetName(Order[max_n_weapons - 1]);
+                return GeneralFacade.Game.Weapons.GetName(Order[max_n_weapons - 1]);
             }
         }
 
@@ -130,12 +126,12 @@ namespace Deimos
             if (c_weapon + 1 != max_n_weapons)
             {
                 c_weapon++;
-                return Game.Weapons.GetName(Order[c_weapon]);
+                return GeneralFacade.Game.Weapons.GetName(Order[c_weapon]);
             }
             else
             {
                 c_weapon = FirstIndex();
-                return Game.Weapons.GetName(Order[c_weapon]);
+                return GeneralFacade.Game.Weapons.GetName(Order[c_weapon]);
             }
         }
 
@@ -144,12 +140,12 @@ namespace Deimos
             if (c_weapon - 1 != -1 && Order[c_weapon - 1] != '\0')
             {
                 c_weapon--;
-                return Game.Weapons.GetName(Order[c_weapon]);
+                return GeneralFacade.Game.Weapons.GetName(Order[c_weapon]);
             }
             else
             {
                 c_weapon = max_n_weapons - 1;
-                return Game.Weapons.GetName(Order[c_weapon]);
+                return GeneralFacade.Game.Weapons.GetName(Order[c_weapon]);
             }
         }
 
@@ -162,24 +158,24 @@ namespace Deimos
         {
             if (PlayerInventory.ContainsKey(name))
             {
-                Game.ThisPlayer.CurrentWeapon = PlayerInventory[name];
-                c_weapon = Array.IndexOf(Order, Game.Weapons.GetRep(name));
+                GeneralFacade.Game.ThisPlayer.CurrentWeapon = PlayerInventory[name];
+                c_weapon = Array.IndexOf(Order, GeneralFacade.Game.Weapons.GetRep(name));
             }
         }
 
         public void SetPreviousWeapon(string name)
         {
             if ((PlayerInventory.ContainsKey(name))
-                 && !(Game.ThisPlayer.PreviousWeapon == 
+                 && !(GeneralFacade.Game.ThisPlayer.PreviousWeapon == 
                 PlayerInventory[name]))
             {
-                Game.ThisPlayer.PreviousWeapon = PlayerInventory[name];
+                GeneralFacade.Game.ThisPlayer.PreviousWeapon = PlayerInventory[name];
             }
         }
 
         public float GetSwitchTime(string w_name)
         {
-            if (Game.ThisPlayer.Inventory.Contains(w_name))
+            if (GeneralFacade.Game.ThisPlayer.Inventory.Contains(w_name))
             {
                 return PlayerInventory[w_name].TimeToReload / 5f;
             }
@@ -199,12 +195,12 @@ namespace Deimos
 
                 SetCurrentWeapon(firstWeapon);
                 SetPreviousWeapon(secondWeapon);
-                c_weapon = Array.IndexOf(Order, Game.Weapons.GetRep(
-                    Game.ThisPlayer.CurrentWeapon.Name));
-                Game.ThisPlayerDisplay.SetCurrentWeaponModel();
+                c_weapon = Array.IndexOf(Order, GeneralFacade.Game.Weapons.GetRep(
+                    GeneralFacade.Game.ThisPlayer.CurrentWeapon.Name));
+                GeneralFacade.Game.ThisPlayerDisplay.SetCurrentWeaponModel();
             }
 
-            Game.ThisPlayer.CurrentWeapon.State = WeaponState.AtEase;
+            GeneralFacade.Game.ThisPlayer.CurrentWeapon.State = WeaponState.AtEase;
 
             UpdateAmmo();
 
@@ -217,7 +213,7 @@ namespace Deimos
             if (PlayerInventory[name].c_reservoirAmmo < 
                 PlayerInventory[name].m_reservoirAmmo)
             {
-                if (Game.ThisPlayer.ammoPickup + 
+                if (GeneralFacade.Game.ThisPlayer.ammoPickup + 
                     PlayerInventory[name].c_reservoirAmmo 
                     >= PlayerInventory[name].m_reservoirAmmo)
                 {
@@ -227,11 +223,11 @@ namespace Deimos
                 else
                 {
                     PlayerInventory[name].c_reservoirAmmo += 
-                        Game.ThisPlayer.ammoPickup;
+                        GeneralFacade.Game.ThisPlayer.ammoPickup;
                 }
             }
 
-            if (Game.ThisPlayer.CurrentWeapon.Name == name)
+            if (GeneralFacade.Game.ThisPlayer.CurrentWeapon.Name == name)
             {
                 UpdateAmmo();
             }
@@ -245,7 +241,7 @@ namespace Deimos
 
         public void Fire()
         {
-            Weapon currentWeapon = Game.ThisPlayer.CurrentWeapon;
+            Weapon currentWeapon = GeneralFacade.Game.ThisPlayer.CurrentWeapon;
 
             switch (currentWeapon.Type)
             {
@@ -257,8 +253,8 @@ namespace Deimos
                         }
                         currentWeapon.State = WeaponState.Firing;
                         // Putting projectile in action through Bullet Manager
-                        Game.BulletManager.SpawnBullet();
-                        Game.SceneManager.SoundManager.Play("weaponFire");
+                        GeneralFacade.Game.BulletManager.SpawnBullet();
+                        GeneralFacade.Game.SceneManager.SoundManager.Play("weaponFire");
                         currentWeapon.c_chamberAmmo--;
                         currentWeapon.FireTimer = 0; // reset the fire timer
                         currentWeapon.State = WeaponState.AtEase;
@@ -276,30 +272,30 @@ namespace Deimos
 
         public void Reload()
         {
-            uint t = Game.ThisPlayer.CurrentWeapon.m_chamberAmmo -
-                Game.ThisPlayer.CurrentWeapon.c_chamberAmmo;
+            uint t = GeneralFacade.Game.ThisPlayer.CurrentWeapon.m_chamberAmmo -
+                GeneralFacade.Game.ThisPlayer.CurrentWeapon.c_chamberAmmo;
 
-            if (t > Game.ThisPlayer.CurrentWeapon.c_reservoirAmmo)
+            if (t > GeneralFacade.Game.ThisPlayer.CurrentWeapon.c_reservoirAmmo)
             {
-                t = Game.ThisPlayer.CurrentWeapon.c_reservoirAmmo;
+                t = GeneralFacade.Game.ThisPlayer.CurrentWeapon.c_reservoirAmmo;
             }
 
-            Game.ThisPlayer.CurrentWeapon.c_chamberAmmo += t;
-            Game.ThisPlayer.CurrentWeapon.c_reservoirAmmo -= t;
+            GeneralFacade.Game.ThisPlayer.CurrentWeapon.c_chamberAmmo += t;
+            GeneralFacade.Game.ThisPlayer.CurrentWeapon.c_reservoirAmmo -= t;
                 
 
-            Game.ThisPlayer.CurrentWeapon.ReloadTimer = 0;
-            Game.ThisPlayer.CurrentWeapon.State = WeaponState.AtEase;
+            GeneralFacade.Game.ThisPlayer.CurrentWeapon.ReloadTimer = 0;
+            GeneralFacade.Game.ThisPlayer.CurrentWeapon.State = WeaponState.AtEase;
         }
 
         // this method reloads the weapon automatically if the current chamber 
         // ammo is null
         public void UpdateAmmo()
         {
-            if (!Game.ThisPlayer.CurrentWeapon.HasAmmo() &&
-                            Game.ThisPlayer.CurrentWeapon.IsReloadable())
+            if (!GeneralFacade.Game.ThisPlayer.CurrentWeapon.HasAmmo() &&
+                            GeneralFacade.Game.ThisPlayer.CurrentWeapon.IsReloadable())
             {
-                Game.ThisPlayer.CurrentWeapon.State =
+                GeneralFacade.Game.ThisPlayer.CurrentWeapon.State =
                     WeaponState.Reloading;
             }
         }
@@ -317,10 +313,10 @@ namespace Deimos
         // Weapon-dropping
         //public void DropWeapon()
         //{
-        //    if (PlayerInventory.ContainsKey(Game.ThisPlayer.CurrentWeapon.Name))
+        //    if (PlayerInventory.ContainsKey(GeneralFacade.Game.ThisPlayer.CurrentWeapon.Name))
         //    {
-        //        PlayerInventory.Remove(Game.ThisPlayer.CurrentWeapon.Name);
-        //        RemoveFromOrder(Game.ThisPlayer.CurrentWeapon.representative);
+        //        PlayerInventory.Remove(GeneralFacade.Game.ThisPlayer.CurrentWeapon.Name);
+        //        RemoveFromOrder(GeneralFacade.Game.ThisPlayer.CurrentWeapon.representative);
         //    }
 
         //    Sort();
@@ -350,18 +346,18 @@ namespace Deimos
 
         public void Switch(string w_name)
         {
-            string n_oldweapon = Game.ThisPlayer.CurrentWeapon.Name;
+            string n_oldweapon = GeneralFacade.Game.ThisPlayer.CurrentWeapon.Name;
 
             if (w_name != n_oldweapon && PlayerInventory.ContainsKey(w_name))
             {
                 SetCurrentWeapon(w_name);
                 SetPreviousWeapon(n_oldweapon);
-                c_weapon = Array.IndexOf(Order, Game.Weapons.GetRep(
-                Game.ThisPlayer.CurrentWeapon.Name));
-                Game.ThisPlayerDisplay.SetCurrentWeaponModel();
+                c_weapon = Array.IndexOf(Order, GeneralFacade.Game.Weapons.GetRep(
+                GeneralFacade.Game.ThisPlayer.CurrentWeapon.Name));
+                GeneralFacade.Game.ThisPlayerDisplay.SetCurrentWeaponModel();
             }
 
-            Game.ThisPlayer.CurrentWeapon.State = WeaponState.AtEase;
+            GeneralFacade.Game.ThisPlayer.CurrentWeapon.State = WeaponState.AtEase;
 
             UpdateAmmo();
         }

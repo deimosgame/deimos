@@ -8,8 +8,6 @@ namespace Deimos
 {
     class LocalPlayerPhysics
     {
-        DeimosGame Game;
-
         public enum PhysicalState
         {
             Jumping,
@@ -56,9 +54,9 @@ namespace Deimos
         public Vector3 momentum;
 
         // Constructor
-        public LocalPlayerPhysics(DeimosGame game)
+        public LocalPlayerPhysics()
         {
-            Game = game;
+            //
         }
 
         // Methods
@@ -199,7 +197,7 @@ namespace Deimos
         {
             float primal_speed;
 
-            switch (Game.ThisPlayer.CurrentSpeedState)
+            switch (GeneralFacade.Game.ThisPlayer.CurrentSpeedState)
             {
                 case Player.SpeedState.Running:
                     primal_speed = 1f;
@@ -279,9 +277,9 @@ namespace Deimos
         public void Jump()
         {
             // Interrupting player sprint
-            if (Game.ThisPlayer.CurrentSpeedState == Player.SpeedState.Sprinting)
+            if (GeneralFacade.Game.ThisPlayer.CurrentSpeedState == Player.SpeedState.Sprinting)
             {
-                Game.ThisPlayer.CurrentSpeedState = Player.SpeedState.Running;
+                GeneralFacade.Game.ThisPlayer.CurrentSpeedState = Player.SpeedState.Running;
             }
 
             // creating the potential momentum
@@ -312,7 +310,7 @@ namespace Deimos
 
         public Vector3 CreateMomentum()
         {
-            Vector3 direction = -Game.Camera.ViewVector;
+            Vector3 direction = -GeneralFacade.Game.Camera.ViewVector;
             direction.Y = 1;
 
             return (direction);

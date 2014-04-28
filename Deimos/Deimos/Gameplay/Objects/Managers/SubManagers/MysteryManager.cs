@@ -10,9 +10,6 @@ namespace Deimos
     {
         // ATTRIBUTES
 
-            // The link to the game
-        DeimosGame Game;
-
             // The world object for the mystery weapon
         public PickupWeapon MysteryWeapon;
 
@@ -36,15 +33,14 @@ namespace Deimos
 
         // CONSTRUCTOR
 
-        public MysteryManager(DeimosGame game, List<Vector3> spawns,
+        public MysteryManager(List<Vector3> spawns,
             int minimumspawn, int maximumspawn,
             int initial_ammo, Vector3 rotation)
         {
-            Game = game;
             SpawnLocations = spawns;
             n_spawn = SpawnLocations.Count;
 
-            MysteryWeapon = Game.Objects.GetWeaponObject("MysteryPickup");
+            MysteryWeapon = GeneralFacade.Game.Objects.GetWeaponObject("MysteryPickup");
             MysteryWeapon.Ammo = initial_ammo;
             MysteryWeapon.Rotation = rotation;
             MysteryWeapon.Status = PickupObject.State.Inactive;
@@ -54,7 +50,7 @@ namespace Deimos
 
             SetRespawn();
 
-            Game.SceneManager.ModelManager.LoadModel(
+            GeneralFacade.Game.SceneManager.ModelManager.LoadModel(
                 MysteryWeapon.Name,
                 MysteryWeapon.Model,
                 MysteryWeapon.Position,
@@ -62,7 +58,7 @@ namespace Deimos
                 MysteryWeapon.Scale,
                 LevelModel.CollisionType.None
             );
-            Game.SceneManager.ModelManager.GetLevelModel(
+            GeneralFacade.Game.SceneManager.ModelManager.GetLevelModel(
                 MysteryWeapon.Name).show = false;
         }
 
@@ -97,9 +93,9 @@ namespace Deimos
             respawn_t = 0;
 
             // showing once again the now active object
-            Game.SceneManager.ModelManager.GetLevelModel(
+            GeneralFacade.Game.SceneManager.ModelManager.GetLevelModel(
                 MysteryWeapon.Name).Position = MysteryWeapon.Position;
-            Game.SceneManager.ModelManager.GetLevelModel(
+            GeneralFacade.Game.SceneManager.ModelManager.GetLevelModel(
                 MysteryWeapon.Name).show = true;
         }
 

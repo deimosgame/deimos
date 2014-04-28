@@ -10,17 +10,15 @@ namespace Deimos
     class MenuScreen
     {
         private int lastHeight;
-        private DeimosGame Game;
         private string Name;
         private List<MenuElement> MenuElements = new List<MenuElement>();
         private SpriteFont Font;
 
-        public MenuScreen(DeimosGame game, string name)
+        public MenuScreen(string name)
         {
-            Game = game;
             Name = name;
 
-            Font = Game.Content.Load<SpriteFont>("Fonts/debug");
+            Font = GeneralFacade.Game.Content.Load<SpriteFont>("Fonts/debug");
         }
 
         public void AddElement(string title, Action<ScreenElement, DeimosGame> thisEvent)
@@ -39,7 +37,7 @@ namespace Deimos
             foreach (var item in MenuElements)
             {
                 lastHeight += 50;
-                Game.ScreenElementManager.AddText(
+                GeneralFacade.Game.ScreenElementManager.AddText(
                     "MenuElementText" + Name + item.Title,
                     50,
                     lastHeight,
@@ -48,7 +46,7 @@ namespace Deimos
                     item.Title,
                     Color.White
                 );
-                Game.ScreenElementManager.AddRectangle(
+                GeneralFacade.Game.ScreenElementManager.AddRectangle(
                     "MenuElementHitbox" + Name + item.Title,
                     50,
                     lastHeight,
@@ -64,8 +62,8 @@ namespace Deimos
         {
             foreach (var item in MenuElements)
             {
-                Game.ScreenElementManager.RemoveText("MenuElementText" + Name + item.Title);
-                Game.ScreenElementManager.RemoveRectangle("MenuElementHitbox" + Name + item.Title);
+                GeneralFacade.Game.ScreenElementManager.RemoveText("MenuElementText" + Name + item.Title);
+                GeneralFacade.Game.ScreenElementManager.RemoveRectangle("MenuElementHitbox" + Name + item.Title);
             }
         }
     }

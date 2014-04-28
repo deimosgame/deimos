@@ -43,19 +43,12 @@ namespace Deimos
         }
         SceneTemplate CurrentScene;
 
-        public DeimosGame Game
-        {
-            get;
-            private set;
-        }
-
         ContentManager Content;
 
 
         // Constructor
-        public SceneManager(DeimosGame game, ContentManager content)
+        public SceneManager(ContentManager content)
         {
-            Game = game;
             Content = content;
         }
 
@@ -74,7 +67,7 @@ namespace Deimos
             Collision    = null;
 
             ResourceManager = new ResourceManager(Content);
-            ModelManager = new ModelManager(Game);
+            ModelManager = new ModelManager();
             LightManager = new LightManager();
             SoundManager = new SoundManager(Content);
 
@@ -83,8 +76,7 @@ namespace Deimos
             Collision = new LocalPlayerCollision(
                 CurrentScene.PlayerSize.X,
                 CurrentScene.PlayerSize.Y,
-                CurrentScene.PlayerSize.Z, 
-                Game
+                CurrentScene.PlayerSize.Z
             );
 
             // Let's load our default files

@@ -18,18 +18,6 @@ namespace Deimos
     {
         GraphicsDeviceManager Graphics;
 
-        public SpriteBatch SpriteBatch
-        {
-            get;
-            set;
-        }
-
-        public ContentManager TempContent
-        {
-            get;
-            private set;
-        }
-
         public Camera Camera
         {
             get;
@@ -134,7 +122,7 @@ namespace Deimos
 
 
 
-        GameStates currentGameState = GameStates.IntroStarting;
+        GameStates currentGameState = GameStates.Playing;
         public GameStates CurrentGameState
         {
             get { return currentGameState; }
@@ -154,7 +142,9 @@ namespace Deimos
 
         public DeimosGame()
         {
-            TempContent = new ContentManager(Services);
+            GeneralFacade.Game = this;
+
+            GeneralFacade.TempContent = new ContentManager(Services);
 
             Graphics = new GraphicsDeviceManager(this);
 
@@ -162,7 +152,7 @@ namespace Deimos
 
 
             Content.RootDirectory = "Content";
-            TempContent.RootDirectory = "Content";
+            GeneralFacade.TempContent.RootDirectory = "Content";
 
             Renderer = new DeferredRenderer(this);
             Components.Add(Renderer);
@@ -188,6 +178,8 @@ namespace Deimos
             Graphics.ApplyChanges();
 
 
+            InitGameplay();
+
             base.Initialize();
         }
 
@@ -196,13 +188,13 @@ namespace Deimos
         {
             IntroVideo = Content.Load<Video>("Videos/Intro");
 
-            SpriteBatch = new SpriteBatch(GraphicsDevice);
+            DisplayFacade.SpriteBatch = new SpriteBatch(GraphicsDevice);
 
-            ScreenElementManager = new ScreenElementManager(this);
+            ScreenElementManager = new ScreenElementManager();
 
-            DebugScreen = new DebugScreen(this);
+            DebugScreen = new DebugScreen();
 
-            MenuManager = new MenuManager(this);
+            MenuManager = new MenuManager();
 
 
             //////////////////////////////////////////////////////
@@ -212,8 +204,7 @@ namespace Deimos
             StartScreen.AddElement("Play", delegate(ScreenElement el, DeimosGame game)
             {
                 MenuManager.Hide();
-                game.CurrentGameState = GameStates.Playing;
-                game.InitGameplay();
+                CurrentGameState = GameStates.Playing;
             });
             StartScreen.AddElement("Exit", delegate(ScreenElement el, DeimosGame game)
             {
@@ -354,7 +345,7 @@ namespace Deimos
             }
 
             DebugScreen.Draw(gameTime);
-            ScreenElementManager.DrawElements(SpriteBatch);
+            ScreenElementManager.DrawElements(DisplayFacade.SpriteBatch);
         }
 
         private void InitGameplay()
@@ -366,22 +357,21 @@ namespace Deimos
             Weapons.Initialise();
             Objects.Initialize();
 
-            ThisPlayer = new LocalPlayer(this);
-            ThisPlayerPhysics = new LocalPlayerPhysics(this);
-            ThisPlayerDisplay = new LocalPlayerDisplay(this);
+            ThisPlayer = new LocalPlayer();
+            ThisPlayerPhysics = new LocalPlayerPhysics();
+            ThisPlayerDisplay = new LocalPlayerDisplay();
 
-            SceneManager = new SceneManager(this, TempContent);
+            SceneManager = new SceneManager(GeneralFacade.TempContent);
             SceneManager.SetScene<SceneDeimos>();
 
             
 
             Camera = new Camera(
-                this,
                 new Vector3(0f, 9f, 20f),
                 Vector3.Zero
             );
 
-            ThisPlayer.Inventory = new WeaponManager(this);
+            ThisPlayer.Inventory = new WeaponManager();
             ThisPlayer.InitializeInventory(ThisPlayer.Class);
             ThisPlayer.PlayerSpawn(new Vector3(-60f, 20f, -8f), Vector3.Zero);
         }

@@ -8,54 +8,52 @@ namespace Deimos
 {
     class LocalPlayerCombat
     {
-        DeimosGame Game;
         float w_switch_timer;
         public string target_weapon;
         public bool firesprint = true;
 
-        public LocalPlayerCombat(DeimosGame game)
+        public LocalPlayerCombat()
         {
-            Game = game;
             w_switch_timer = 0f;
         }
 
         private void HandleTimers(float dt)
         {
             // let's update firing timer if necessary
-            if (Game.ThisPlayer.CurrentWeapon.FireTimer <
-                Game.ThisPlayer.CurrentWeapon.FiringRate)
+            if (GeneralFacade.Game.ThisPlayer.CurrentWeapon.FireTimer <
+                GeneralFacade.Game.ThisPlayer.CurrentWeapon.FiringRate)
             {
-                Game.ThisPlayer.CurrentWeapon.FireTimer += dt;
+                GeneralFacade.Game.ThisPlayer.CurrentWeapon.FireTimer += dt;
             }
 
             // let's increment the reloading timer if reloading
-            if (Game.ThisPlayer.CurrentWeapon.State ==
+            if (GeneralFacade.Game.ThisPlayer.CurrentWeapon.State ==
                 WeaponState.Reloading)
             {
-                if (Game.ThisPlayer.CurrentWeapon.ReloadTimer <
-                    Game.ThisPlayer.CurrentWeapon.TimeToReload)
+                if (GeneralFacade.Game.ThisPlayer.CurrentWeapon.ReloadTimer <
+                    GeneralFacade.Game.ThisPlayer.CurrentWeapon.TimeToReload)
                 {
-                    Game.ThisPlayer.CurrentWeapon.ReloadTimer += dt;
+                    GeneralFacade.Game.ThisPlayer.CurrentWeapon.ReloadTimer += dt;
                 }
                 else
                 {
-                    Game.ThisPlayer.Inventory.Reload();
-                    Game.ThisPlayerDisplay.ShowWeapon();
+                    GeneralFacade.Game.ThisPlayer.Inventory.Reload();
+                    GeneralFacade.Game.ThisPlayerDisplay.ShowWeapon();
                 }
             }
 
               // let's increase weapon switch timer if switching
-            if (Game.ThisPlayer.CurrentWeapon.State == 
+            if (GeneralFacade.Game.ThisPlayer.CurrentWeapon.State == 
                 WeaponState.Switching)
             {
-                if (w_switch_timer < Game.ThisPlayer.Inventory.GetSwitchTime(target_weapon))
+                if (w_switch_timer < GeneralFacade.Game.ThisPlayer.Inventory.GetSwitchTime(target_weapon))
                 {
                     w_switch_timer += dt;
                 }
                 else
                 {
-                    Game.ThisPlayer.Inventory.Switch(target_weapon);
-                    Game.ThisPlayerDisplay.ShowWeapon();
+                    GeneralFacade.Game.ThisPlayer.Inventory.Switch(target_weapon);
+                    GeneralFacade.Game.ThisPlayerDisplay.ShowWeapon();
 
                     w_switch_timer = 0f;
                 }
@@ -64,160 +62,160 @@ namespace Deimos
 
         private void CheckCombat()
         {
-            Game.ThisPlayer.ks = Keyboard.GetState();
-            Game.ThisPlayer.CurrentMouseState = Mouse.GetState();
+            GeneralFacade.Game.ThisPlayer.ks = Keyboard.GetState();
+            GeneralFacade.Game.ThisPlayer.CurrentMouseState = Mouse.GetState();
 
-            if (Game.ThisPlayer.CurrentMouseState.LeftButton ==
+            if (GeneralFacade.Game.ThisPlayer.CurrentMouseState.LeftButton ==
                 ButtonState.Pressed &&
                 CanFire())
             {
-                if (Game.ThisPlayer.CurrentSpeedState ==
+                if (GeneralFacade.Game.ThisPlayer.CurrentSpeedState ==
                     Player.SpeedState.Sprinting)
                 {
-                    Game.ThisPlayer.CurrentSpeedState = Player.SpeedState.Running;
+                    GeneralFacade.Game.ThisPlayer.CurrentSpeedState = Player.SpeedState.Running;
                     firesprint = false;
                 }
-                Game.ThisPlayer.Inventory.Fire();
+                GeneralFacade.Game.ThisPlayer.Inventory.Fire();
 
                 // reloading if no bullet left after shot
-                Game.ThisPlayer.Inventory.UpdateAmmo();
+                GeneralFacade.Game.ThisPlayer.Inventory.UpdateAmmo();
             }
 
-            if (!firesprint && Game.ThisPlayer.ks.IsKeyUp(Game.Config.Sprint))
+            if (!firesprint && GeneralFacade.Game.ThisPlayer.ks.IsKeyUp(GeneralFacade.Game.Config.Sprint))
             {
                 firesprint = true;
             }
 
             // mousewheeling for next/previous weapon
-            if (Game.ThisPlayer.CurrentMouseState.ScrollWheelValue >
-                Game.ThisPlayer.previousScrollValue &&
-                CanSwitch(Game.ThisPlayer.Inventory.GetNext()))
+            if (GeneralFacade.Game.ThisPlayer.CurrentMouseState.ScrollWheelValue >
+                GeneralFacade.Game.ThisPlayer.previousScrollValue &&
+                CanSwitch(GeneralFacade.Game.ThisPlayer.Inventory.GetNext()))
             {
-                Game.ThisPlayer.CurrentWeapon.State =
+                GeneralFacade.Game.ThisPlayer.CurrentWeapon.State =
                     WeaponState.Switching;
-                target_weapon = Game.ThisPlayer.Inventory.SetNext();
+                target_weapon = GeneralFacade.Game.ThisPlayer.Inventory.SetNext();
             }
-            else if (Game.ThisPlayer.CurrentMouseState.ScrollWheelValue <
-                Game.ThisPlayer.previousScrollValue &&
-                CanSwitch(Game.ThisPlayer.Inventory.GetPrevious()))
+            else if (GeneralFacade.Game.ThisPlayer.CurrentMouseState.ScrollWheelValue <
+                GeneralFacade.Game.ThisPlayer.previousScrollValue &&
+                CanSwitch(GeneralFacade.Game.ThisPlayer.Inventory.GetPrevious()))
             {
-                Game.ThisPlayer.CurrentWeapon.State =
+                GeneralFacade.Game.ThisPlayer.CurrentWeapon.State =
                     WeaponState.Switching;
-                target_weapon = Game.ThisPlayer.Inventory.SetPrevious();
+                target_weapon = GeneralFacade.Game.ThisPlayer.Inventory.SetPrevious();
             }
 
             // switching weapons
-            if (Game.ThisPlayer.ks.IsKeyDown(Keys.D1) &&
+            if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(Keys.D1) &&
                 CanSwitch("Pistol"))
             {
-                if (Game.ThisPlayer.Inventory.Contains("Pistol"))
+                if (GeneralFacade.Game.ThisPlayer.Inventory.Contains("Pistol"))
                 {
-                Game.ThisPlayer.CurrentWeapon.State =
+                GeneralFacade.Game.ThisPlayer.CurrentWeapon.State =
                     WeaponState.Switching;
                 target_weapon = "Pistol";
                 }
             }
-            if (Game.ThisPlayer.ks.IsKeyDown(Keys.D2) &&
+            if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(Keys.D2) &&
                 CanSwitch("Assault Rifle"))
             {
-                if (Game.ThisPlayer.Inventory.Contains("Assault Rifle"))
+                if (GeneralFacade.Game.ThisPlayer.Inventory.Contains("Assault Rifle"))
                 {
-                    Game.ThisPlayer.CurrentWeapon.State =
+                    GeneralFacade.Game.ThisPlayer.CurrentWeapon.State =
                         WeaponState.Switching;
                     target_weapon = "Assault Rifle";
                 }
             }
-            if (Game.ThisPlayer.ks.IsKeyDown(Keys.D3) &&
+            if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(Keys.D3) &&
                 CanSwitch("Bazooka"))
             {
-                if (Game.ThisPlayer.Inventory.Contains("Bazooka"))
+                if (GeneralFacade.Game.ThisPlayer.Inventory.Contains("Bazooka"))
                 {
-                    Game.ThisPlayer.CurrentWeapon.State =
+                    GeneralFacade.Game.ThisPlayer.CurrentWeapon.State =
                         WeaponState.Switching;
                     target_weapon = "Bazooka";
                 }
             }
-            if (Game.ThisPlayer.ks.IsKeyDown(Keys.D4) &&
+            if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(Keys.D4) &&
                 CanSwitch("Arbiter"))
             {
-                if (Game.ThisPlayer.Inventory.Contains("Arbiter"))
+                if (GeneralFacade.Game.ThisPlayer.Inventory.Contains("Arbiter"))
                 {
-                    Game.ThisPlayer.CurrentWeapon.State =
+                    GeneralFacade.Game.ThisPlayer.CurrentWeapon.State =
                         WeaponState.Switching;
                     target_weapon = "Arbiter";
                 }
             }
-            if (Game.ThisPlayer.ks.IsKeyDown(Keys.D5) &&
+            if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(Keys.D5) &&
                 CanSwitch("Carver"))
             {
-                if (Game.ThisPlayer.Inventory.Contains("Carver"))
+                if (GeneralFacade.Game.ThisPlayer.Inventory.Contains("Carver"))
                 {
-                    Game.ThisPlayer.CurrentWeapon.State =
+                    GeneralFacade.Game.ThisPlayer.CurrentWeapon.State =
                         WeaponState.Switching;
                     target_weapon = "Carver";
                 }
             }
-            if (Game.ThisPlayer.ks.IsKeyDown(Keys.T) &&
+            if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(Keys.T) &&
                 CanSwitch("Essence of Phobia"))
             {
-                if (Game.ThisPlayer.Inventory.Contains("Essence of Phobia"))
+                if (GeneralFacade.Game.ThisPlayer.Inventory.Contains("Essence of Phobia"))
                 {
-                    Game.ThisPlayer.CurrentWeapon.State =
+                    GeneralFacade.Game.ThisPlayer.CurrentWeapon.State =
                         WeaponState.Switching;
                     target_weapon = "Essence of Phobia";
                 }
             }
 
-            if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Reload) &&
+            if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Reload) &&
                 CanReload())
             {
-                Game.ThisPlayer.CurrentWeapon.State =
+                GeneralFacade.Game.ThisPlayer.CurrentWeapon.State =
                     WeaponState.Reloading;
             }
 
-            if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.QuickSwitch) &&
+            if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.QuickSwitch) &&
                 CanQuickSwitch())
             {
-                Game.ThisPlayer.CurrentWeapon.State =
+                GeneralFacade.Game.ThisPlayer.CurrentWeapon.State =
                     WeaponState.Switching;
-                target_weapon = Game.ThisPlayer.PreviousWeapon.Name;
+                target_weapon = GeneralFacade.Game.ThisPlayer.PreviousWeapon.Name;
             }
 
-            if (Game.ThisPlayer.CurrentMouseState.RightButton ==
+            if (GeneralFacade.Game.ThisPlayer.CurrentMouseState.RightButton ==
                 ButtonState.Pressed && CanAim())
             {
-                Game.ThisPlayer.CurrentWeapon.AimState = AimState.True;
+                GeneralFacade.Game.ThisPlayer.CurrentWeapon.AimState = AimState.True;
             }
             else
-            { Game.ThisPlayer.CurrentWeapon.AimState = AimState.False; }
+            { GeneralFacade.Game.ThisPlayer.CurrentWeapon.AimState = AimState.False; }
         }
 
         private bool CanAim()
         {
             return (
-                //(Game.ThisPlayer.CurrentWeapon.AimState == AimState.False)
-                 (Game.ThisPlayer.CurrentWeapon.State == WeaponState.AtEase)
-                && (Game.ThisPlayer.CurrentSpeedState != Player.SpeedState.Sprinting)
+                //(GeneralFacade.Game.ThisPlayer.CurrentWeapon.AimState == AimState.False)
+                 (GeneralFacade.Game.ThisPlayer.CurrentWeapon.State == WeaponState.AtEase)
+                && (GeneralFacade.Game.ThisPlayer.CurrentSpeedState != Player.SpeedState.Sprinting)
                 );
         }
 
         private bool CanFire()
         {
-            return ((Game.ThisPlayer.CurrentWeapon.State ==
+            return ((GeneralFacade.Game.ThisPlayer.CurrentWeapon.State ==
                 WeaponState.AtEase) &&
                 
-                (Game.ThisPlayer.CurrentWeapon.FireTimer ==
-                Game.ThisPlayer.CurrentWeapon.FiringRate));
+                (GeneralFacade.Game.ThisPlayer.CurrentWeapon.FireTimer ==
+                GeneralFacade.Game.ThisPlayer.CurrentWeapon.FiringRate));
         }
 
         private bool CanReload()
         {
-            return (Game.ThisPlayer.CurrentWeapon.IsReloadable() &&
+            return (GeneralFacade.Game.ThisPlayer.CurrentWeapon.IsReloadable() &&
 
-                (Game.ThisPlayer.CurrentWeapon.State ==
+                (GeneralFacade.Game.ThisPlayer.CurrentWeapon.State ==
                 WeaponState.AtEase) &&
 
-                (Game.ThisPlayer.CurrentSpeedState !=
+                (GeneralFacade.Game.ThisPlayer.CurrentSpeedState !=
                 LocalPlayer.SpeedState.Sprinting));
         }
 
@@ -225,22 +223,22 @@ namespace Deimos
         {
             return (
 
-                (Game.ThisPlayer.CurrentWeapon.Name != s) &&
+                (GeneralFacade.Game.ThisPlayer.CurrentWeapon.Name != s) &&
 
-                (Game.ThisPlayer.CurrentWeapon.State ==
+                (GeneralFacade.Game.ThisPlayer.CurrentWeapon.State ==
                 WeaponState.AtEase) &&
 
-                (Game.ThisPlayer.CurrentSpeedState !=
+                (GeneralFacade.Game.ThisPlayer.CurrentSpeedState !=
                 LocalPlayer.SpeedState.Sprinting));
         }
 
         private bool CanQuickSwitch()
         {
-            return (Game.ThisPlayer.CurrentWeapon != null &&
+            return (GeneralFacade.Game.ThisPlayer.CurrentWeapon != null &&
 
-                Game.ThisPlayer.PreviousWeapon != null &&
+                GeneralFacade.Game.ThisPlayer.PreviousWeapon != null &&
 
-                CanSwitch(Game.ThisPlayer.PreviousWeapon.Name));
+                CanSwitch(GeneralFacade.Game.ThisPlayer.PreviousWeapon.Name));
         }
 
         public void HandleCombat(float dt)

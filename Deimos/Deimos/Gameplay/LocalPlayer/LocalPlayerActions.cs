@@ -8,39 +8,37 @@ namespace Deimos
 {
     public class LocalPlayerActions
     {
-        DeimosGame Game;
-
-        public LocalPlayerActions(DeimosGame game)
+        public LocalPlayerActions()
         {
-            Game = game;
+            //
         }
 
         private void HandleSpeed()
         {
-            switch (Game.ThisPlayer.CurrentSpeedState)
+            switch (GeneralFacade.Game.ThisPlayer.CurrentSpeedState)
             {
                 case LocalPlayer.SpeedState.Running:
                     //Game.ThisPlayer.Speed = Game.ThisPlayer.RunSpeed;
                     break;
 
                 case LocalPlayer.SpeedState.Sprinting:
-                    if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Forward))
+                    if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Forward))
                     {
-                        if (Game.ThisPlayer.SprintTimer < Game.ThisPlayer.MaxSprintTime)
+                        if (GeneralFacade.Game.ThisPlayer.SprintTimer < GeneralFacade.Game.ThisPlayer.MaxSprintTime)
                         {
                             //Game.ThisPlayer.Speed = Game.ThisPlayer.SprintSpeed;
                         }
                         else
                         {
-                            Game.ThisPlayer.CurrentSpeedState = LocalPlayer.SpeedState.Running;
+                            GeneralFacade.Game.ThisPlayer.CurrentSpeedState = LocalPlayer.SpeedState.Running;
                             //Game.ThisPlayer.Speed = Game.ThisPlayer.RunSpeed;
-                            Game.ThisPlayer.SprintTimer = 0f;
-                            Game.ThisPlayer.CooldownTimer = 0f;
+                            GeneralFacade.Game.ThisPlayer.SprintTimer = 0f;
+                            GeneralFacade.Game.ThisPlayer.CooldownTimer = 0f;
                         }
                     }
                     else
                     {
-                        Game.ThisPlayer.CurrentSpeedState = LocalPlayer.SpeedState.Running;
+                        GeneralFacade.Game.ThisPlayer.CurrentSpeedState = LocalPlayer.SpeedState.Running;
                         //Game.ThisPlayer.Speed = Game.ThisPlayer.RunSpeed;
                     }
                     break;
@@ -54,95 +52,96 @@ namespace Deimos
         private void HandleTimers(float dt)
         {
             // increasing sprint timer if sprinting
-            if (Game.ThisPlayer.CurrentSpeedState ==
-                LocalPlayer.SpeedState.Sprinting && 
-                Game.ThisPlayer.ks.IsKeyDown(Game.Config.Forward))
+            if (GeneralFacade.Game.ThisPlayer.CurrentSpeedState ==
+                LocalPlayer.SpeedState.Sprinting &&
+                GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Forward))
             {
-                Game.ThisPlayer.SprintTimer += dt;
+                GeneralFacade.Game.ThisPlayer.SprintTimer += dt;
             }
 
             else
             {
                 // cooling down sprint if not already
-                if (Game.ThisPlayer.CooldownTimer < Game.ThisPlayer.SprintCooldown)
+                if (GeneralFacade.Game.ThisPlayer.CooldownTimer < 
+                    GeneralFacade.Game.ThisPlayer.SprintCooldown)
                 {
-                    Game.ThisPlayer.CooldownTimer += dt;
+                    GeneralFacade.Game.ThisPlayer.CooldownTimer += dt;
                 }
 
                 // setting the sprint timer
-                if (Game.ThisPlayer.SprintTimer > 0f)
+                if (GeneralFacade.Game.ThisPlayer.SprintTimer > 0f)
                 {
                     float cd = 0f;
 
-                    if (Game.ThisPlayer.CurrentSpeedState == LocalPlayer.SpeedState.Running)
+                    if (GeneralFacade.Game.ThisPlayer.CurrentSpeedState == LocalPlayer.SpeedState.Running)
                     {
                         cd = dt / 2f;
                     }
-                    else if (Game.ThisPlayer.CurrentSpeedState == LocalPlayer.SpeedState.Walking)
+                    else if (GeneralFacade.Game.ThisPlayer.CurrentSpeedState == LocalPlayer.SpeedState.Walking)
                     {
                         cd = dt;
                     }
 
-                    Game.ThisPlayer.SprintTimer -= cd;
+                    GeneralFacade.Game.ThisPlayer.SprintTimer -= cd;
                 }
             }
         }
 
         private bool CanSprint()
         {
-            return (Game.ThisPlayer.FireSprint() &&
-                
-                (Game.ThisPlayer.CooldownTimer >=
-                Game.ThisPlayer.SprintCooldown) &&
+            return (GeneralFacade.Game.ThisPlayer.FireSprint() &&
 
-                (Game.ThisPlayerPhysics.GravityState ==
+                (GeneralFacade.Game.ThisPlayer.CooldownTimer >=
+                GeneralFacade.Game.ThisPlayer.SprintCooldown) &&
+
+                (GeneralFacade.Game.ThisPlayerPhysics.GravityState ==
                 LocalPlayerPhysics.PhysicalState.Walking) &&
 
-                (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Forward)) &&
+                (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Forward)) &&
 
-                (Game.ThisPlayer.CurrentWeapon.State ==
+                (GeneralFacade.Game.ThisPlayer.CurrentWeapon.State ==
                 WeaponState.AtEase));
         }
 
         private bool CanJump()
         {
-            return (Game.ThisPlayerPhysics.GravityState ==
+            return (GeneralFacade.Game.ThisPlayerPhysics.GravityState ==
                 LocalPlayerPhysics.PhysicalState.Walking);
         }
 
 
         private void CheckActions()
         {
-            Game.ThisPlayer.ks = Keyboard.GetState();
+            GeneralFacade.Game.ThisPlayer.ks = Keyboard.GetState();
 
-            if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Walk))
+            if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Walk))
             {
-                Game.ThisPlayer.CurrentSpeedState = 
+                GeneralFacade.Game.ThisPlayer.CurrentSpeedState = 
                     LocalPlayer.SpeedState.Walking;
             }
 
-            if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Sprint) &&
+            if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Sprint) &&
                 CanSprint())
             {
-                Game.ThisPlayer.CurrentSpeedState = 
+                GeneralFacade.Game.ThisPlayer.CurrentSpeedState = 
                     LocalPlayer.SpeedState.Sprinting;
             }
 
-            if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Jump) &&
+            if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Jump) &&
                 CanJump())
             {
-                Game.ThisPlayerPhysics.Jump();
+                GeneralFacade.Game.ThisPlayerPhysics.Jump();
             }
         }
 
         private void CheckReset()
         {
             // Let's handle walkstate resets
-            if (Game.ThisPlayer.ks.IsKeyUp(Game.Config.Walk) &&
-               (Game.ThisPlayer.ks.IsKeyUp(Game.Config.Sprint)) &&
-               (Game.ThisPlayer.ks.IsKeyUp(Game.Config.Crouch)))
+            if (GeneralFacade.Game.ThisPlayer.ks.IsKeyUp(GeneralFacade.Game.Config.Walk) &&
+               (GeneralFacade.Game.ThisPlayer.ks.IsKeyUp(GeneralFacade.Game.Config.Sprint)) &&
+               (GeneralFacade.Game.ThisPlayer.ks.IsKeyUp(GeneralFacade.Game.Config.Crouch)))
             {
-                Game.ThisPlayer.CurrentSpeedState = 
+                GeneralFacade.Game.ThisPlayer.CurrentSpeedState = 
                     LocalPlayer.SpeedState.Running;
             }
         }

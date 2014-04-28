@@ -10,8 +10,6 @@ namespace Deimos
     {
         // Attributes
 
-            // Link to game:
-        DeimosGame Game;
             // Lists to manage:
         private Dictionary<string, PickupWeapon> PickupWeapons =
             new Dictionary<string, PickupWeapon>();
@@ -29,9 +27,9 @@ namespace Deimos
 
         // Constructor
 
-        public ObjectManager(DeimosGame game)
+        public ObjectManager()
         {
-            Game = game;
+            //
         }
 
 
@@ -62,7 +60,7 @@ namespace Deimos
             n_weapontoken++;
 
             // tweaking the object according to parameters
-            PickupWeapon w = Game.Objects.GetWeaponObject(name);
+            PickupWeapon w = GeneralFacade.Game.Objects.GetWeaponObject(name);
             w.Ammo = initial_ammo;
             w.Position = position;
             w.Status = state;
@@ -71,7 +69,7 @@ namespace Deimos
 
             PickupWeapons.Add(t, w);
 
-            Game.SceneManager.ModelManager.LoadModel(t, w.Model,
+            GeneralFacade.Game.SceneManager.ModelManager.LoadModel(t, w.Model,
                 position, rotation, w.Scale, LevelModel.CollisionType.None);
 
             return t;
@@ -90,7 +88,7 @@ namespace Deimos
             n_effecttoken++;
 
             // tweaking the desired effect object to parameters
-            PickupEffect e = Game.Objects.GetEffectObject(name);
+            PickupEffect e = GeneralFacade.Game.Objects.GetEffectObject(name);
             e.Position = position;
             e.Status = state;
             e.Intensity = intensity;
@@ -100,7 +98,7 @@ namespace Deimos
 
             PickupEffects.Add(t, e);
 
-            Game.SceneManager.ModelManager.LoadModel(t, e.Model,
+            GeneralFacade.Game.SceneManager.ModelManager.LoadModel(t, e.Model,
                 position, rotation, e.Scale, LevelModel.CollisionType.None);
 
             return t;
@@ -129,7 +127,7 @@ namespace Deimos
                 n_weapontoken--;
 
                 // unloading the models
-                Game.SceneManager.ModelManager.RemoveLevelModel(token);
+                GeneralFacade.Game.SceneManager.ModelManager.RemoveLevelModel(token);
             }
         }
 
@@ -142,7 +140,7 @@ namespace Deimos
                 n_effecttoken--;
 
                 //unloading the models
-                Game.SceneManager.ModelManager.RemoveLevelModel(token);
+                GeneralFacade.Game.SceneManager.ModelManager.RemoveLevelModel(token);
             }
         }
 
@@ -179,21 +177,21 @@ namespace Deimos
             // Treating the effects of a weapon pickup object
         public void TreatWeapon(PickupWeapon w, string token)
         {
-            if (Game.ThisPlayer.Inventory.Contains(
-                Game.Weapons.GetName(w.Represents)))
+            if (GeneralFacade.Game.ThisPlayer.Inventory.Contains(
+                GeneralFacade.Game.Weapons.GetName(w.Represents)))
             {
-                if (Game.ThisPlayer.Inventory.IsAtMaxAmmo(
-                    Game.Weapons.GetName(w.Represents)))
+                if (GeneralFacade.Game.ThisPlayer.Inventory.IsAtMaxAmmo(
+                    GeneralFacade.Game.Weapons.GetName(w.Represents)))
                 {
                     return;
                 }
                 else
                 {
                     // let's give the ammo to the player
-                    Game.ThisPlayer.ammoPickup =
+                    GeneralFacade.Game.ThisPlayer.ammoPickup =
                         (uint)w.Ammo;
-                    Game.ThisPlayer.Inventory.PickupAmmo(
-                        Game.Weapons.GetName(w.Represents));
+                    GeneralFacade.Game.ThisPlayer.Inventory.PickupAmmo(
+                        GeneralFacade.Game.Weapons.GetName(w.Represents));
 
                     // let's deactivate the weapon object
                     w.Status = PickupObject.State.Inactive;
@@ -202,7 +200,7 @@ namespace Deimos
                     w.respawn_timer = 0;
 
                     // hiding the inactive object from the world
-                    Game.SceneManager.ModelManager.GetLevelModel(
+                    GeneralFacade.Game.SceneManager.ModelManager.GetLevelModel(
                         token).show = false;
                 }
             }
@@ -210,15 +208,15 @@ namespace Deimos
             {
                 // if the player does not have the weapon,
                 // we will give it to them
-                Game.ThisPlayer.Inventory.PickupWeapon(
-                    Game.Weapons.GetWeapon(
-                    Game.Weapons.GetName(w.Represents)));
+                GeneralFacade.Game.ThisPlayer.Inventory.PickupWeapon(
+                    GeneralFacade.Game.Weapons.GetWeapon(
+                    GeneralFacade.Game.Weapons.GetName(w.Represents)));
 
                 // and now the ammo for the new weapon
-                Game.ThisPlayer.ammoPickup =
+                GeneralFacade.Game.ThisPlayer.ammoPickup =
                     (uint)w.Ammo;
-                Game.ThisPlayer.Inventory.PickupAmmo(
-                    Game.Weapons.GetName(w.Represents));
+                GeneralFacade.Game.ThisPlayer.Inventory.PickupAmmo(
+                    GeneralFacade.Game.Weapons.GetName(w.Represents));
 
                 // let's now deactivate the weapon object
                 w.Status = PickupObject.State.Inactive;
@@ -227,7 +225,7 @@ namespace Deimos
                 w.respawn_timer = 0;
 
                 // hiding the inactive object from the world
-                Game.SceneManager.ModelManager.GetLevelModel(
+                GeneralFacade.Game.SceneManager.ModelManager.GetLevelModel(
                     token).show = false;
             }
         }
@@ -239,30 +237,30 @@ namespace Deimos
             {
                 case PickupEffect.Effect.Health:
                     {
-                        if (Game.ThisPlayer.IsAtMaxHealth())
+                        if (GeneralFacade.Game.ThisPlayer.IsAtMaxHealth())
                         {
                             return;
                         }
                         else
                         {
-                            int addup = Game.ThisPlayer.Health +
+                            int addup = GeneralFacade.Game.ThisPlayer.Health +
                                 (int)e.Intensity;
 
-                            if (addup >= Game.ThisPlayer.M_Health)
+                            if (addup >= GeneralFacade.Game.ThisPlayer.M_Health)
                             {
-                                Game.ThisPlayer.Health =
-                                    (int)Game.ThisPlayer.M_Health;
+                                GeneralFacade.Game.ThisPlayer.Health =
+                                    (int)GeneralFacade.Game.ThisPlayer.M_Health;
                             }
                             else
                             {
-                                Game.ThisPlayer.Health = addup;
+                                GeneralFacade.Game.ThisPlayer.Health = addup;
                             }
 
                             e.Status = PickupObject.State.Inactive;
                             e.respawn_timer = 0;
 
                             // hiding the inactive object from the world
-                            Game.SceneManager.ModelManager.GetLevelModel(
+                            GeneralFacade.Game.SceneManager.ModelManager.GetLevelModel(
                                 token).show = false;
                         }
                     }
@@ -270,14 +268,14 @@ namespace Deimos
 
                 case PickupEffect.Effect.Speed:
                     {
-                        if (Game.ThisPlayer.Speedboosted)
+                        if (GeneralFacade.Game.ThisPlayer.Speedboosted)
                         {
                             return;
                         }
                         else
                         {
                             // Let's update the player's boolean
-                            Game.ThisPlayer.Speedboosted = true;
+                            GeneralFacade.Game.ThisPlayer.Speedboosted = true;
 
                             // Let's add the effect to active effects list
                             ActiveEffects.Add(e);
@@ -287,24 +285,24 @@ namespace Deimos
                             e.respawn_timer = 0;
 
                             // hiding the inactive object from the world
-                            Game.SceneManager.ModelManager.GetLevelModel(
+                            GeneralFacade.Game.SceneManager.ModelManager.GetLevelModel(
                                 token).show = false;
 
                             // let's give the boost to the player!
-                            Game.ThisPlayer.Speed += e.Intensity;
+                            GeneralFacade.Game.ThisPlayer.Speed += e.Intensity;
                         }
                     }
                     break;
 
                 case PickupEffect.Effect.Gravity:
-                    if (Game.ThisPlayer.Gravityboosted)
+                    if (GeneralFacade.Game.ThisPlayer.Gravityboosted)
                     {
                         return;
                     }
                     else
                     {
                         // Let's update the player's boolean
-                        Game.ThisPlayer.Gravityboosted = true;
+                        GeneralFacade.Game.ThisPlayer.Gravityboosted = true;
 
                         // Let's add the effect to the active effects list
                         ActiveEffects.Add(e);
@@ -314,11 +312,11 @@ namespace Deimos
                         e.respawn_timer = 0;
 
                         // hiding the inactive object from the world
-                        Game.SceneManager.ModelManager.GetLevelModel(
+                        GeneralFacade.Game.SceneManager.ModelManager.GetLevelModel(
                             token).show = false;
 
                         // let's boost the player!
-                        Game.ThisPlayerPhysics.JumpVelocity += e.Intensity;
+                        GeneralFacade.Game.ThisPlayerPhysics.JumpVelocity += e.Intensity;
                     }
                     break;
 
@@ -346,7 +344,7 @@ namespace Deimos
                         thisWeapon.Value.Status = PickupObject.State.Active;
                         
                         // showing once again the now active object
-                        Game.SceneManager.ModelManager.GetLevelModel(
+                        GeneralFacade.Game.SceneManager.ModelManager.GetLevelModel(
                             thisWeapon.Key).show = true;
 
                         // resetting its respawn timer
@@ -375,7 +373,7 @@ namespace Deimos
                         thisEffect.Value.Status = PickupObject.State.Active;
 
                         // showing once again the now active object
-                        Game.SceneManager.ModelManager.GetLevelModel(
+                        GeneralFacade.Game.SceneManager.ModelManager.GetLevelModel(
                             thisEffect.Key).show = true;
 
                         // resetting its respawn timer
@@ -410,14 +408,14 @@ namespace Deimos
                                 effect.t_effect = 0;
 
                                 // we reset the player's speed
-                                Game.ThisPlayer.Speed -= effect.Intensity;
+                                GeneralFacade.Game.ThisPlayer.Speed -= effect.Intensity;
                                 
                                 // since the effect is no longer active,
                                 // we will remove it
                                 toBeRemoved.Add(effect);
 
                                 // and we set the player's boolean
-                                Game.ThisPlayer.Speedboosted = false;
+                                GeneralFacade.Game.ThisPlayer.Speedboosted = false;
                             }
                             else
                             {
@@ -436,13 +434,13 @@ namespace Deimos
                                 effect.t_effect = 0;
 
                                 // resetting the player's gravity
-                                Game.ThisPlayerPhysics.JumpVelocity -= effect.Intensity;
+                                GeneralFacade.Game.ThisPlayerPhysics.JumpVelocity -= effect.Intensity;
 
                                 // we remove the effect since its gone
                                 toBeRemoved.Add(effect);
 
                                 // Resetting the player's boolean
-                                Game.ThisPlayer.Gravityboosted = false;
+                                GeneralFacade.Game.ThisPlayer.Gravityboosted = false;
                             }
                             else
                             {
@@ -471,7 +469,7 @@ namespace Deimos
         public void CreateMystery(List<Vector3> spawns, int t_min, int t_max,
             int initial_ammo, Vector3 rotation = default(Vector3))
         {
-            Mystery = new MysteryManager(Game, spawns,
+            Mystery = new MysteryManager(spawns,
                 t_min, t_max, initial_ammo, rotation);
         }
 

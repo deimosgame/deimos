@@ -9,42 +9,41 @@ namespace Deimos
 {
     class LocalPlayerMovement
     {
-        DeimosGame Game;
         Vector3 MoveVector;
         Vector3 Acceleration;
         Vector3 LastMoveVector;
 
-        public LocalPlayerMovement(DeimosGame game)
+        public LocalPlayerMovement()
         {
-            Game = game;
+            //
         }
 
         public Vector3 GetMovementVector(float dt)
         {
-            Game.ThisPlayer.ks = Keyboard.GetState();
+            GeneralFacade.Game.ThisPlayer.ks = Keyboard.GetState();
             Vector3 movementVector = Vector3.Zero;
 
             // Let's handle movement input
-            if (Game.CurrentPlayingState != DeimosGame.PlayingStates.NoClip)
+            if (GeneralFacade.Game.CurrentPlayingState != DeimosGame.PlayingStates.NoClip)
             {
-                if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Forward))
+                if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Forward))
                 {
-                    Game.ThisPlayerPhysics.Accelerate(LocalPlayerPhysics.AccelerationDirection.Z);
+                    GeneralFacade.Game.ThisPlayerPhysics.Accelerate(LocalPlayerPhysics.AccelerationDirection.Z);
                     movementVector += Vector3.Backward;
                 }
-                if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Backward))
+                if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Backward))
                 {
-                    Game.ThisPlayerPhysics.Decelerate(LocalPlayerPhysics.AccelerationDirection.Z);
+                    GeneralFacade.Game.ThisPlayerPhysics.Decelerate(LocalPlayerPhysics.AccelerationDirection.Z);
                     movementVector += Vector3.Backward;
                 }
-                if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Left))
+                if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Left))
                 {
-                    Game.ThisPlayerPhysics.Accelerate(LocalPlayerPhysics.AccelerationDirection.X);
+                    GeneralFacade.Game.ThisPlayerPhysics.Accelerate(LocalPlayerPhysics.AccelerationDirection.X);
                     movementVector += Vector3.Right;
                 }
-                if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Right))
+                if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Right))
                 {
-                    Game.ThisPlayerPhysics.Decelerate(LocalPlayerPhysics.AccelerationDirection.X);
+                    GeneralFacade.Game.ThisPlayerPhysics.Decelerate(LocalPlayerPhysics.AccelerationDirection.X);
                     movementVector += Vector3.Right;
                 }
 
@@ -58,50 +57,50 @@ namespace Deimos
                     movementVector = LastMoveVector;
                 }
 
-                //&& Game.ThisPlayerPhysics.ShouldResetMovement(LocalPlayerPhysics.AccelerationDirection.Z))
-                if (Game.ThisPlayer.ks.IsKeyUp(Game.Config.Forward)
-                    && Game.ThisPlayer.ks.IsKeyUp(Game.Config.Backward))
+                //&& GeneralFacade.Game.ThisPlayerPhysics.ShouldResetMovement(LocalPlayerPhysics.AccelerationDirection.Z))
+                if (GeneralFacade.Game.ThisPlayer.ks.IsKeyUp(GeneralFacade.Game.Config.Forward)
+                    && GeneralFacade.Game.ThisPlayer.ks.IsKeyUp(GeneralFacade.Game.Config.Backward))
                 {
-                    Game.ThisPlayerPhysics.Reset(LocalPlayerPhysics.AccelerationDirection.Z);
+                    GeneralFacade.Game.ThisPlayerPhysics.Reset(LocalPlayerPhysics.AccelerationDirection.Z);
                 }
-                if (Game.ThisPlayer.ks.IsKeyUp(Game.Config.Left)
-                    && Game.ThisPlayer.ks.IsKeyUp(Game.Config.Right))
+                if (GeneralFacade.Game.ThisPlayer.ks.IsKeyUp(GeneralFacade.Game.Config.Left)
+                    && GeneralFacade.Game.ThisPlayer.ks.IsKeyUp(GeneralFacade.Game.Config.Right))
                 {
-                    Game.ThisPlayerPhysics.Reset(LocalPlayerPhysics.AccelerationDirection.X);
+                    GeneralFacade.Game.ThisPlayerPhysics.Reset(LocalPlayerPhysics.AccelerationDirection.X);
                 }
 
-                    Game.ThisPlayerPhysics.ApplyGravity(dt);
+                    GeneralFacade.Game.ThisPlayerPhysics.ApplyGravity(dt);
                     movementVector.Y = 1;
 
                 LastMoveVector = movementVector;
 
-                // * Game.ThisPlayerPhysics.GetMomentum()
+                // * GeneralFacade.Game.ThisPlayerPhysics.GetMomentum()
                 return (movementVector * 
-                    Game.ThisPlayerPhysics.GetAcceleration());
+                    GeneralFacade.Game.ThisPlayerPhysics.GetAcceleration());
             }
             else
             {
-                if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Forward))
+                if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Forward))
                 {
                     movementVector += Vector3.Backward;
                 }
-                if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Backward))
+                if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Backward))
                 {
                     movementVector += Vector3.Forward;
                 }
-                if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Left))
+                if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Left))
                 {
                     movementVector += Vector3.Right;
                 }
-                if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Right))
+                if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Right))
                 {
                     movementVector += Vector3.Left;
                 }
-                if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Jump))
+                if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Jump))
                 {
                     movementVector += Vector3.Up;
                 }
-                if (Game.ThisPlayer.ks.IsKeyDown(Game.Config.Crouch))
+                if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(GeneralFacade.Game.Config.Crouch))
                 {
                     movementVector += Vector3.Down;
                 }
@@ -114,48 +113,48 @@ namespace Deimos
 
         public void GetMouseMovement(float dt)
         {
-            Game.ThisPlayer.CurrentMouseState = Mouse.GetState();
+            GeneralFacade.Game.ThisPlayer.CurrentMouseState = Mouse.GetState();
 
             // Handle mouse movement
             float deltaX;
             float deltaY;
-            if (Game.ThisPlayer.CurrentMouseState != Game.ThisPlayer.PreviousMouseState)
+            if (GeneralFacade.Game.ThisPlayer.CurrentMouseState != GeneralFacade.Game.ThisPlayer.PreviousMouseState)
             {
                 // Cache mouse location
                 // We devide by 2 because mouse will be in the center
-                deltaX = Game.ThisPlayer.CurrentMouseState.X
-                    - (Game.GraphicsDevice.Viewport.Width / 2);
-                deltaY = Game.ThisPlayer.CurrentMouseState.Y
-                    - (Game.GraphicsDevice.Viewport.Height / 2);
+                deltaX = GeneralFacade.Game.ThisPlayer.CurrentMouseState.X
+                    - (GeneralFacade.Game.GraphicsDevice.Viewport.Width / 2);
+                deltaY = GeneralFacade.Game.ThisPlayer.CurrentMouseState.Y
+                    - (GeneralFacade.Game.GraphicsDevice.Viewport.Height / 2);
            
 
-                Game.ThisPlayer.MouseRotationBuffer.X -= 
-                    Game.Config.MouseSensivity * deltaX * dt;
-                Game.ThisPlayer.MouseRotationBuffer.Y -= 
-                    Game.Config.MouseSensivity * deltaY * dt;
+                GeneralFacade.Game.ThisPlayer.MouseRotationBuffer.X -= 
+                    GeneralFacade.Game.Config.MouseSensivity * deltaX * dt;
+                GeneralFacade.Game.ThisPlayer.MouseRotationBuffer.Y -= 
+                    GeneralFacade.Game.Config.MouseSensivity * deltaY * dt;
 
                 // Limit the user so he can't do an unlimited movement with 
                 // his mouse (like a 7683°)
-                if (Game.ThisPlayer.MouseRotationBuffer.Y < MathHelper.ToRadians(-75.0f))
+                if (GeneralFacade.Game.ThisPlayer.MouseRotationBuffer.Y < MathHelper.ToRadians(-75.0f))
                 {
-                    Game.ThisPlayer.MouseRotationBuffer.Y = Game.ThisPlayer.MouseRotationBuffer.Y -
-                        (Game.ThisPlayer.MouseRotationBuffer.Y - MathHelper.ToRadians(-75.0f));
+                    GeneralFacade.Game.ThisPlayer.MouseRotationBuffer.Y = GeneralFacade.Game.ThisPlayer.MouseRotationBuffer.Y -
+                        (GeneralFacade.Game.ThisPlayer.MouseRotationBuffer.Y - MathHelper.ToRadians(-75.0f));
                 }
-                if (Game.ThisPlayer.MouseRotationBuffer.Y > MathHelper.ToRadians(75.0f))
+                if (GeneralFacade.Game.ThisPlayer.MouseRotationBuffer.Y > MathHelper.ToRadians(75.0f))
                 {
-                    Game.ThisPlayer.MouseRotationBuffer.Y = Game.ThisPlayer.MouseRotationBuffer.Y -
-                        (Game.ThisPlayer.MouseRotationBuffer.Y - MathHelper.ToRadians(75.0f));
+                    GeneralFacade.Game.ThisPlayer.MouseRotationBuffer.Y = GeneralFacade.Game.ThisPlayer.MouseRotationBuffer.Y -
+                        (GeneralFacade.Game.ThisPlayer.MouseRotationBuffer.Y - MathHelper.ToRadians(75.0f));
                 }
 
-                float mouseInverted = (Game.Config.MouseInverted) ? 1 : -1;
+                float mouseInverted = (GeneralFacade.Game.Config.MouseInverted) ? 1 : -1;
 
-                Game.Camera.Rotation = new Vector3(
+                GeneralFacade.Game.Camera.Rotation = new Vector3(
                     mouseInverted * MathHelper.Clamp(
-                        Game.ThisPlayer.MouseRotationBuffer.Y,
+                        GeneralFacade.Game.ThisPlayer.MouseRotationBuffer.Y,
                         MathHelper.ToRadians(-75.0f),
                         MathHelper.ToRadians(75.0f)
                     ),
-                    MathHelper.WrapAngle(Game.ThisPlayer.MouseRotationBuffer.X), // This is so 
+                    MathHelper.WrapAngle(GeneralFacade.Game.ThisPlayer.MouseRotationBuffer.X), // This is so 
                     // the camera isn't going really fast after some time 
                     // (as we are increasing the speed with time)
                     0
@@ -168,10 +167,10 @@ namespace Deimos
             }
 
             // Putting the cursor in the middle of the screen
-            Mouse.SetPosition(Game.GraphicsDevice.Viewport.Width / 2,
-                Game.GraphicsDevice.Viewport.Height / 2);
+            Mouse.SetPosition(GeneralFacade.Game.GraphicsDevice.Viewport.Width / 2,
+                GeneralFacade.Game.GraphicsDevice.Viewport.Height / 2);
 
-            Game.ThisPlayer.PreviousMouseState = Game.ThisPlayer.CurrentMouseState;
+            GeneralFacade.Game.ThisPlayer.PreviousMouseState = GeneralFacade.Game.ThisPlayer.CurrentMouseState;
         }
 
         // Set camera position and rotation
@@ -180,17 +179,17 @@ namespace Deimos
             // Thanks to the properties set at the beginning, setting up these 
             // values will execute the code inside the property (i.e update our
             // vectors)
-            Game.ThisPlayer.CameraOldPosition = Game.ThisPlayer.Position;
+            GeneralFacade.Game.ThisPlayer.CameraOldPosition = GeneralFacade.Game.ThisPlayer.Position;
 
-            Game.Camera.Position = position;
-            Game.Camera.Rotation = rotation;
+            GeneralFacade.Game.Camera.Position = position;
+            GeneralFacade.Game.Camera.Rotation = rotation;
         }
 
         // Methods that simulate movement
         private Vector3 PreviewMove(Vector3 movement, float dt)
         {
             // Create a rotate matrix
-            Matrix rotate = Matrix.CreateRotationY(Game.ThisPlayer.Rotation.Y);
+            Matrix rotate = Matrix.CreateRotationY(GeneralFacade.Game.ThisPlayer.Rotation.Y);
             // Create a movement vector
             Vector3 movementGravity = new Vector3(0, movement.Y, 0);
             movement = Vector3.Transform(movement, rotate);
@@ -198,56 +197,56 @@ namespace Deimos
             // Return the value of camera position + movement vector
 
             // Testing for the UPCOMING position
-            if (Game.SceneManager.Collision.CheckCollision(Game.ThisPlayer.Position + movement))
+            if (GeneralFacade.Game.SceneManager.Collision.CheckCollision(GeneralFacade.Game.ThisPlayer.Position + movement))
             {
-                if (Game.SceneManager.Collision.CheckCollision(Game.ThisPlayer.Position + movementGravity))
+                if (GeneralFacade.Game.SceneManager.Collision.CheckCollision(GeneralFacade.Game.ThisPlayer.Position + movementGravity))
                 {
-                    if (Game.ThisPlayerPhysics.GravityState == LocalPlayerPhysics.PhysicalState.Falling)
+                    if (GeneralFacade.Game.ThisPlayerPhysics.GravityState == LocalPlayerPhysics.PhysicalState.Falling)
                     {
-                        movement.Y = -GetNearFloorDistance(Game.ThisPlayer.Position + new Vector3(movement.X, 0, movement.Z), 0.1f);
+                        movement.Y = -GetNearFloorDistance(GeneralFacade.Game.ThisPlayer.Position + new Vector3(movement.X, 0, movement.Z), 0.1f);
                         if (movement.Y > 0)
                         {
                             movement.Y = 0;
                         }
                     }
                     // Hit floor or ceiling
-                    Game.ThisPlayerPhysics.StabilizeGravity();
-                    //Game.ThisPlayerPhysics.Reset(LocalPlayerPhysics.AccelerationDirection.Y);
+                    GeneralFacade.Game.ThisPlayerPhysics.StabilizeGravity();
+                    //GeneralFacade.Game.ThisPlayerPhysics.Reset(LocalPlayerPhysics.AccelerationDirection.Y);
                 }
-                else if (Game.ThisPlayerPhysics.GravityState == LocalPlayerPhysics.PhysicalState.Walking &&
-                    !Game.SceneManager.Collision.CheckCollision(
-                        Game.ThisPlayer.Position + new Vector3(movement.X, 2, movement.Z)))
+                else if (GeneralFacade.Game.ThisPlayerPhysics.GravityState == LocalPlayerPhysics.PhysicalState.Walking &&
+                    !GeneralFacade.Game.SceneManager.Collision.CheckCollision(
+                        GeneralFacade.Game.ThisPlayer.Position + new Vector3(movement.X, 2, movement.Z)))
                 {
-                    movement.Y = GetNearFloorDistance(Game.ThisPlayer.Position + new Vector3(movement.X, 2, movement.Z), 0.1f);
+                    movement.Y = GetNearFloorDistance(GeneralFacade.Game.ThisPlayer.Position + new Vector3(movement.X, 2, movement.Z), 0.1f);
                 }
                 // Creating the new movement vector, which will make us 
                 // able to have a smooth collision: being able to "slide" on 
                 // the wall while colliding
-                movement.X = Game.SceneManager.Collision.CheckCollision(
-                                    Game.ThisPlayer.Position +
+                movement.X = GeneralFacade.Game.SceneManager.Collision.CheckCollision(
+                                    GeneralFacade.Game.ThisPlayer.Position +
                                     new Vector3(movement.X, 0, 0)
                                 ) ? 0 : movement.X;
-                movement.Y = Game.SceneManager.Collision.CheckCollision(
-                                    Game.ThisPlayer.Position +
+                movement.Y = GeneralFacade.Game.SceneManager.Collision.CheckCollision(
+                                    GeneralFacade.Game.ThisPlayer.Position +
                                     new Vector3(0, movement.Y, 0)
                                 ) ? 0 : movement.Y;
-                movement.Z = Game.SceneManager.Collision.CheckCollision(
-                                    Game.ThisPlayer.Position +
+                movement.Z = GeneralFacade.Game.SceneManager.Collision.CheckCollision(
+                                    GeneralFacade.Game.ThisPlayer.Position +
                                     new Vector3(0, 0, movement.Z)
                              ) ? 0 : movement.Z;
-                return Game.ThisPlayer.Position + movement;
+                return GeneralFacade.Game.ThisPlayer.Position + movement;
             }
             else
             {
                 // There isn't any collision, so we just move the user with 
                 // the movement he wanted to do
-                return Game.ThisPlayer.Position + movement;
+                return GeneralFacade.Game.ThisPlayer.Position + movement;
             }
         }
 
         public void Move(Vector3 scale, float dt)
         {
-            MoveTo(PreviewMove(scale, dt), Game.ThisPlayer.Rotation);
+            MoveTo(PreviewMove(scale, dt), GeneralFacade.Game.ThisPlayer.Rotation);
         }
 
         // Movement handling
@@ -256,13 +255,13 @@ namespace Deimos
             GetMouseMovement(dt);
 
             Acceleration = GetMovementVector(dt);
-            MoveVector = Acceleration * dt * Game.ThisPlayer.Speed;
+            MoveVector = Acceleration * dt * GeneralFacade.Game.ThisPlayer.Speed;
             Move(MoveVector, dt);
         }
 
         private float GetNearFloor(Vector3 pos, float increment)
         {
-            while (!Game.SceneManager.Collision.CheckCollision(pos))
+            while (!GeneralFacade.Game.SceneManager.Collision.CheckCollision(pos))
             {
                 pos.Y -= increment;
             }

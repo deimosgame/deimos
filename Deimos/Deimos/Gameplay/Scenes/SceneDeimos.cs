@@ -30,7 +30,7 @@ namespace Deimos
             LightManager = SceneManager.LightManager;
             SoundManager = SceneManager.SoundManager;
 
-            Objects = new ObjectManager(SceneManager.Game);
+            Objects = new ObjectManager();
         }
 
         // Destructor
@@ -90,7 +90,7 @@ namespace Deimos
                2, // Intensity
                Color.LightBlue
             );
-            SoundManager.Play3D("scary", SceneManager.Game.ThisPlayer.Position, new Vector3(-127, 6, -64));
+            SoundManager.Play3D("scary", GeneralFacade.Game.ThisPlayer.Position, new Vector3(-127, 6, -64));
             //SoundManager.Play("scary");
 
             token_health_pack = Objects.AddEffect("Health Pack",
@@ -144,7 +144,7 @@ namespace Deimos
         // Update our things at each ticks
         public override void Update()
         {
-            SoundManager.SetListener("scary", SceneManager.Game.ThisPlayer.Position);
+            SoundManager.SetListener("scary", GeneralFacade.Game.ThisPlayer.Position);
 
             //SceneManager.Game.DebugScreen.Debug("debugconsole");
 
@@ -170,40 +170,40 @@ namespace Deimos
             //i++;
 
 
-            if (SceneManager.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.G)
+            if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.G)
                 && (Objects.GetEffect(token_gravity_boost).Status == PickupObject.State.Active))
             {
                 Objects.TreatEffect(Objects.GetEffect(token_gravity_boost), token_gravity_boost);
             }
-            if (SceneManager.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.F)
+            if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.F)
                 && (Objects.GetEffect(token_speed_boost).Status == PickupObject.State.Active))
             {
                 Objects.TreatEffect(Objects.GetEffect(token_speed_boost), token_speed_boost);
             }
-            if (SceneManager.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.H)
+            if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.H)
                 && (Objects.GetEffect(token_health_pack).Status == PickupObject.State.Active))
             {
                 Objects.TreatEffect(Objects.GetEffect(token_health_pack), token_health_pack);
             }
-            if (SceneManager.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.C)
+            if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.C)
                 && (Objects.GetWeapon(token_arbiter).Status == PickupObject.State.Active))
             {
                 Objects.TreatWeapon(Objects.GetWeapon(token_arbiter), token_arbiter);
             }
-            if (SceneManager.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.V)
+            if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.V)
                 && (Objects.GetWeapon(token_pistol).Status == PickupObject.State.Active))
             {
                 Objects.TreatWeapon(Objects.GetWeapon(token_pistol), token_pistol);
             }
-            if (SceneManager.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.U)
+            if (GeneralFacade.Game.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.U)
                 && (Objects.GetMysteryPickup().Status == PickupObject.State.Active))
             {
                 Objects.TreatWeapon(Objects.GetMysteryPickup(), Objects.GetMysteryPickup().Name);
                 Objects.SetMysteryRespawn();
             }
-            
 
-            Objects.Update(SceneManager.Game.ThisPlayer.dt);
+
+            Objects.Update(GeneralFacade.Game.ThisPlayer.dt);
         }
     }
 }

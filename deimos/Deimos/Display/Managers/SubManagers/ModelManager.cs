@@ -17,13 +17,12 @@ namespace Deimos
             new Dictionary<string, LevelModel>();
         private Dictionary<string, LevelModel> LoadedPrivateModels =
             new Dictionary<string, LevelModel>();
-        DeimosGame Game;
  
 
         // Constructor
-        public ModelManager(DeimosGame game)
+        public ModelManager()
         {
-            Game = game;
+            //
         }
 
 
@@ -45,7 +44,7 @@ namespace Deimos
             // Adding the model to our List/array as well as its location
             // & texture
             CollidableModel.CollidableModel thisModelCollision =
-                    Game.SceneManager.ResourceManager.LoadModel(model);
+                    GeneralFacade.Game.SceneManager.ResourceManager.LoadModel(model);
             Model thisModel = thisModelCollision.model;
             LevelModel thisLevelModel = new LevelModel();
             thisLevelModel.Position = position;
@@ -54,7 +53,7 @@ namespace Deimos
             thisLevelModel.CollisionDetection = collisionType;
             thisLevelModel.CollisionModel = thisModelCollision;
             LoadedLevelModels.Add(modelName, thisLevelModel);
-            Game.SceneManager.Collision.AddLevelModel(
+            GeneralFacade.Game.SceneManager.Collision.AddLevelModel(
                 thisLevelModel,
                 delegate(CollisionElement el, DeimosGame game) { }
             );
@@ -75,7 +74,7 @@ namespace Deimos
             // Adding the model to our List/array as well as its location
             // & texture
             CollidableModel.CollidableModel thisModelCollision =
-                    Game.SceneManager.ResourceManager.LoadModel(model);
+                    GeneralFacade.Game.SceneManager.ResourceManager.LoadModel(model);
             Model thisModel = thisModelCollision.model;
             LevelModel thisLevelModel = new LevelModel();
             thisLevelModel.Position = position;
@@ -84,7 +83,7 @@ namespace Deimos
             thisLevelModel.CollisionDetection = collisionType;
             thisLevelModel.CollisionModel = thisModelCollision;
             LoadedPrivateModels.Add(modelName, thisLevelModel);
-            Game.SceneManager.Collision.AddLevelModel(
+            GeneralFacade.Game.SceneManager.Collision.AddLevelModel(
                 thisLevelModel,
                 delegate(CollisionElement el, DeimosGame game) { }
             );

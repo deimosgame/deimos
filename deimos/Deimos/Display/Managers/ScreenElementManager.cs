@@ -22,13 +22,10 @@ namespace Deimos
 
         private Texture2D DummyTexture;
 
-        private DeimosGame Game;
-
         // Constructor
-        public ScreenElementManager(DeimosGame game)
+        public ScreenElementManager()
         {
-            Game = game;
-            DummyTexture = new Texture2D(game.GraphicsDevice, 1, 1);
+            DummyTexture = new Texture2D(GeneralFacade.Game.GraphicsDevice, 1, 1);
             DummyTexture.SetData(new Color[] { Color.White });
         }
 
@@ -144,13 +141,13 @@ namespace Deimos
             {
                 if (el.LastState != ScreenElement.ElState.Hover)
                 {
-                    el.OnHover(el, Game);
+                    el.OnHover(el, GeneralFacade.Game);
                     el.LastState = ScreenElement.ElState.Hover;
                 }
                 if (mouseState.LeftButton == ButtonState.Pressed
                     && el.LastState != ScreenElement.ElState.Click)
                 {
-                    el.OnClick(el, Game);
+                    el.OnClick(el, GeneralFacade.Game);
                     el.LastState = ScreenElement.ElState.Click;
                 }
             }
@@ -158,7 +155,7 @@ namespace Deimos
             {
                 if (el.LastState != ScreenElement.ElState.Out)
                 {
-                    el.OnOut(el, Game);
+                    el.OnOut(el, GeneralFacade.Game);
                     el.LastState = ScreenElement.ElState.Out;
                 }
             }

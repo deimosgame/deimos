@@ -9,8 +9,6 @@ namespace Deimos
 {
     public class LocalPlayer : Player
     {
-        DeimosGame Game;
-
         public WeaponManager Inventory;
 
         public MouseState CurrentMouseState;
@@ -28,35 +26,33 @@ namespace Deimos
 
         public float dt;
 
-        public LocalPlayer(DeimosGame game)
+        public LocalPlayer()
         {
-            Game = game;
+            PlayerMovement = new LocalPlayerMovement();
+            PlayerActions = new LocalPlayerActions();
+            PlayerCombat = new LocalPlayerCombat();
 
-            PlayerMovement = new LocalPlayerMovement(game);
-            PlayerActions = new LocalPlayerActions(game);
-            PlayerCombat = new LocalPlayerCombat(game);
-
-            Name = Game.Config.PlayerName;
+            Name = GeneralFacade.Game.Config.PlayerName;
             Instance = "main";
         }
 
         public void InitializeInventory(Player.Spec spec)
         {
-            Inventory = new WeaponManager(Game);
-            Game.ThisPlayer.CurrentWeapon = null;
-            Game.ThisPlayer.PreviousWeapon = null;
+            Inventory = new WeaponManager();
+            GeneralFacade.Game.ThisPlayer.CurrentWeapon = null;
+            GeneralFacade.Game.ThisPlayer.PreviousWeapon = null;
 
             switch (spec)
             {
                 case Spec.Soldier:
                     {
-                        Inventory.PickupWeapon(Game.Weapons.GetWeapon("Pistol"));
+                        Inventory.PickupWeapon(GeneralFacade.Game.Weapons.GetWeapon("Pistol"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
                         Inventory.PickupAmmo("Pistol");
-                        Inventory.PickupWeapon(Game.Weapons.GetWeapon("Assault Rifle"));
+                        Inventory.PickupWeapon(GeneralFacade.Game.Weapons.GetWeapon("Assault Rifle"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
                         Inventory.PickupAmmo("Assault Rifle");
-                        Inventory.PickupWeapon(Game.Weapons.GetWeapon("Bazooka"));
+                        Inventory.PickupWeapon(GeneralFacade.Game.Weapons.GetWeapon("Bazooka"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
                         Inventory.PickupAmmo("Bazooka");
                     }
@@ -64,23 +60,23 @@ namespace Deimos
 
                 case Spec.Agent:
                     {
-                        Inventory.PickupWeapon(Game.Weapons.GetWeapon("Pistol"));
+                        Inventory.PickupWeapon(GeneralFacade.Game.Weapons.GetWeapon("Pistol"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
                         Inventory.PickupAmmo("Pistol");
-                        Inventory.PickupWeapon(Game.Weapons.GetWeapon("Assault Rifle"));
+                        Inventory.PickupWeapon(GeneralFacade.Game.Weapons.GetWeapon("Assault Rifle"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
                         Inventory.PickupAmmo("Assault Rifle");
-                        Inventory.PickupWeapon(Game.Weapons.GetWeapon("Carver"));
+                        Inventory.PickupWeapon(GeneralFacade.Game.Weapons.GetWeapon("Carver"));
                     }
                     break;
 
                 case Spec.Overwatch:
                     {
-                        Inventory.PickupWeapon(Game.Weapons.GetWeapon("Assault Rifle"));
+                        Inventory.PickupWeapon(GeneralFacade.Game.Weapons.GetWeapon("Assault Rifle"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
                         Inventory.PickupAmmo("Assault Rifle");
-                        Inventory.PickupWeapon(Game.Weapons.GetWeapon("Arbiter"));
-                        Inventory.PickupWeapon(Game.Weapons.GetWeapon("Bazooka"));
+                        Inventory.PickupWeapon(GeneralFacade.Game.Weapons.GetWeapon("Arbiter"));
+                        Inventory.PickupWeapon(GeneralFacade.Game.Weapons.GetWeapon("Bazooka"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
                         Inventory.PickupAmmo("Bazooka");
                     }
@@ -93,7 +89,7 @@ namespace Deimos
             ammoPickup = CurrentWeapon.m_reservoirAmmo;
             Inventory.PickupAmmo(CurrentWeapon.Name);
 
-            Game.ThisPlayerDisplay.LoadCurrentWeaponModel();
+            GeneralFacade.Game.ThisPlayerDisplay.LoadCurrentWeaponModel();
         }
 
         public void PlayerSpawn(Vector3 spawnpoint, Vector3 angle)
@@ -112,7 +108,7 @@ namespace Deimos
         {
             if (CurrentLifeState == LifeState.Dead)
             {
-                Name = Game.Config.PlayerName;
+                Name = GeneralFacade.Game.Config.PlayerName;
                 Instance = instance;
 
                 CurrentLifeState = LifeState.Alive;
@@ -132,13 +128,13 @@ namespace Deimos
             {
                 Health = 0;
 
-                Game.ThisPlayerPhysics.acceleration = Vector3.Zero;
-                Game.ThisPlayerPhysics.GravityState = LocalPlayerPhysics.PhysicalState.Walking;
-                Game.ThisPlayerPhysics.Accelerestate = LocalPlayerPhysics.AccelerationState.Still;
-                Game.ThisPlayerPhysics.timer_gravity = 0f;
-                Game.ThisPlayerPhysics.initial_velocity = 0f;
+                GeneralFacade.Game.ThisPlayerPhysics.acceleration = Vector3.Zero;
+                GeneralFacade.Game.ThisPlayerPhysics.GravityState = LocalPlayerPhysics.PhysicalState.Walking;
+                GeneralFacade.Game.ThisPlayerPhysics.Accelerestate = LocalPlayerPhysics.AccelerationState.Still;
+                GeneralFacade.Game.ThisPlayerPhysics.timer_gravity = 0f;
+                GeneralFacade.Game.ThisPlayerPhysics.initial_velocity = 0f;
 
-                Game.ThisPlayerDisplay.UnloadAllWeapons();
+                GeneralFacade.Game.ThisPlayerDisplay.UnloadAllWeapons();
 
                 SprintTimer = 0f;
 
@@ -155,42 +151,43 @@ namespace Deimos
                 case Spec.Soldier:
                     {
                         Name = "Unknown Soldier";
-                        m_health = Game.Constants.HealthSoldier;
+                        m_health = GeneralFacade.Game.Constants.HealthSoldier;
                         Health = (int)m_health;
 
-                        Speed = Game.Constants.SpeedSoldier;
-                        SprintCooldown = Game.Constants.SprintCooldownSoldier;
-                        MaxSprintTime = Game.Constants.MaxSprintSoldier;
+                        Speed = GeneralFacade.Game.Constants.SpeedSoldier;
+                        SprintCooldown = GeneralFacade.Game.Constants.SprintCooldownSoldier;
+                        MaxSprintTime = GeneralFacade.Game.Constants.MaxSprintSoldier;
 
-                        Game.ThisPlayerPhysics.JumpVelocity = Game.Constants.JumpSoldier;
+                        GeneralFacade.Game.ThisPlayerPhysics.JumpVelocity = GeneralFacade.Game.Constants.JumpSoldier;
                     }
                     break;
 
                 case Spec.Overwatch:
                     {
                         Name = "Gabe";
-                        m_health = Game.Constants.HealthOverwatch;
+                        m_health = GeneralFacade.Game.Constants.HealthOverwatch;
                         Health = (int)m_health;
 
-                        Speed = Game.Constants.SpeedOverwatch;
-                        SprintCooldown = Game.Constants.SprintCooldownOverwatch;
-                        MaxSprintTime = Game.Constants.MaxSprintOverwatch;
+                        Speed = GeneralFacade.Game.Constants.SpeedOverwatch;
+                        SprintCooldown = GeneralFacade.Game.Constants.SprintCooldownOverwatch;
+                        MaxSprintTime = GeneralFacade.Game.Constants.MaxSprintOverwatch;
 
-                        Game.ThisPlayerPhysics.JumpVelocity = Game.Constants.JumpOverwatch;
+                        GeneralFacade.Game.ThisPlayerPhysics.JumpVelocity = 
+                            GeneralFacade.Game.Constants.JumpOverwatch;
                     }
                     break;
 
                 case Spec.Agent:
                     {
                         Name = "Varidar";
-                        m_health = Game.Constants.HealthAgent;
+                        m_health = GeneralFacade.Game.Constants.HealthAgent;
                         Health = (int)m_health;
 
-                        Speed = Game.Constants.SpeedAgent;
-                        SprintCooldown = Game.Constants.SprintCooldownAgent;
-                        MaxSprintTime = Game.Constants.MaxSprintAgent;
+                        Speed = GeneralFacade.Game.Constants.SpeedAgent;
+                        SprintCooldown = GeneralFacade.Game.Constants.SprintCooldownAgent;
+                        MaxSprintTime = GeneralFacade.Game.Constants.MaxSprintAgent;
 
-                        Game.ThisPlayerPhysics.JumpVelocity = Game.Constants.JumpAgent;
+                        GeneralFacade.Game.ThisPlayerPhysics.JumpVelocity = GeneralFacade.Game.Constants.JumpAgent;
                     }
                     break;
 
@@ -206,15 +203,15 @@ namespace Deimos
             // Testing purposes: picking up ammo
             if (ks.IsKeyDown(Keys.O))
             {
-                Game.ThisPlayer.ammoPickup = 10;
-                Game.ThisPlayer.Inventory.PickupAmmo(Game.ThisPlayer.CurrentWeapon.Name);
+                GeneralFacade.Game.ThisPlayer.ammoPickup = 10;
+                GeneralFacade.Game.ThisPlayer.Inventory.PickupAmmo(GeneralFacade.Game.ThisPlayer.CurrentWeapon.Name);
 
-                Game.ThisPlayer.Inventory.UpdateAmmo();
+                GeneralFacade.Game.ThisPlayer.Inventory.UpdateAmmo();
             }
 
-            if (ks.IsKeyDown(Game.Config.ShowDebug))
+            if (ks.IsKeyDown(GeneralFacade.Game.Config.ShowDebug))
             {
-                Game.Config.DebugScreen = !Game.Config.DebugScreen;
+                GeneralFacade.Game.Config.DebugScreen = !GeneralFacade.Game.Config.DebugScreen;
             }
 
         }
@@ -229,7 +226,7 @@ namespace Deimos
             PlayerActions.HandleActions(dt);
             PlayerCombat.HandleCombat(dt);
             Stuff(dt);
-            Game.ThisPlayerDisplay.DisplayCurrentWeapon(Game.ThisPlayer.CurrentWeapon);
+            GeneralFacade.Game.ThisPlayerDisplay.DisplayCurrentWeapon(GeneralFacade.Game.ThisPlayer.CurrentWeapon);
 
             previousScrollValue = CurrentMouseState.ScrollWheelValue;
        }

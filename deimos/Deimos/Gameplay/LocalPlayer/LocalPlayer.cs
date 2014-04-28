@@ -24,6 +24,21 @@ namespace Deimos
         Movement PlayerMovement;
         Combat PlayerCombat;
 
+        private Vector3 position;
+        public Vector3 Position
+        {
+            get { return position; }
+            set { position = value; DisplayFacade.Camera.Position = value; }
+        }
+
+        public Vector3 rotation;
+        public Vector3 Rotation
+        {
+            get { return rotation; }
+            set { rotation = value; DisplayFacade.Camera.Rotation = value; }
+        }
+        
+
         public float dt;
 
         public LocalPlayer()

@@ -18,22 +18,26 @@ namespace Deimos
 
 
         // Properties
+        private Vector3 position;
         public Vector3 Position
         {
-            get { return GameplayFacade.ThisPlayer.Position; }
+            get { return position; }
             set
             {
-                GameplayFacade.ThisPlayer.Position = value;
+                position = value;
+                //GameplayFacade.ThisPlayer.Position = value;
                 UpdateLookAt();
             }
         }
 
+        private Vector3 rotation;
         public Vector3 Rotation
         {
-            get { return GameplayFacade.ThisPlayer.Rotation; }
+            get { return rotation; }
             set
             {
-                GameplayFacade.ThisPlayer.Rotation = value;
+                rotation = value;
+                //GameplayFacade.ThisPlayer.Rotation = value;
                 UpdateLookAt();
             }
         }
@@ -49,7 +53,7 @@ namespace Deimos
             get
             {
                 return Matrix.CreateLookAt(
-                    GameplayFacade.ThisPlayer.Position, 
+                    Position, 
                     CameraLookAt, 
                     Vector3.Up
                 );
@@ -61,7 +65,7 @@ namespace Deimos
             get
             {
                 Vector3 viewVector = Vector3.Transform(
-                    GameplayFacade.ThisPlayer.Position - CameraLookAt, 
+                    Position - CameraLookAt, 
                     Matrix.CreateRotationY(0)
                 );
                 viewVector.Normalize();
@@ -95,15 +99,15 @@ namespace Deimos
         public void UpdateLookAt()
         {
             // Build a rotation matrix
-            Matrix rotationMatrix = Matrix.CreateRotationX(GameplayFacade.ThisPlayer.Rotation.X) *
-                                    Matrix.CreateRotationY(GameplayFacade.ThisPlayer.Rotation.Y);
+            Matrix rotationMatrix = Matrix.CreateRotationX(Rotation.X) *
+                                    Matrix.CreateRotationY(Rotation.Y);
             // Build look at offset vector
             Vector3 lookAtOffset = Vector3.Transform(
                 Vector3.UnitZ, 
                 rotationMatrix
             );
             // Update our camera's look at vector
-            CameraLookAt = GameplayFacade.ThisPlayer.Position + lookAtOffset;
+            CameraLookAt = Position + lookAtOffset;
         }
     }
 }

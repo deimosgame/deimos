@@ -148,7 +148,7 @@ namespace Deimos
 
                 float mouseInverted = (GeneralFacade.Config.MouseInverted) ? 1 : -1;
 
-                DisplayFacade.Camera.Rotation = new Vector3(
+                GameplayFacade.ThisPlayer.Rotation = new Vector3(
                     mouseInverted * MathHelper.Clamp(
                         GameplayFacade.ThisPlayer.MouseRotationBuffer.Y,
                         MathHelper.ToRadians(-75.0f),
@@ -181,8 +181,8 @@ namespace Deimos
             // vectors)
             GameplayFacade.ThisPlayer.CameraOldPosition = GameplayFacade.ThisPlayer.Position;
 
-            DisplayFacade.Camera.Position = position;
-            DisplayFacade.Camera.Rotation = rotation;
+            GameplayFacade.ThisPlayer.Position = position;
+            GameplayFacade.ThisPlayer.Rotation = rotation;
         }
 
         // Methods that simulate movement

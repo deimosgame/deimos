@@ -36,7 +36,7 @@ namespace Deimos
             get;
             set;
         }
-        public BoundingBox Box
+        public virtual BoundingBox Box
         {
             get;
             set;
@@ -92,6 +92,11 @@ namespace Deimos
         public virtual void CollisionEvent(CollisionElement element)
         {
             return;
+        }
+
+        public virtual bool FilterCollisionElement(CollisionElement element)
+        {
+            return false;
         }
 
 
@@ -155,9 +160,14 @@ namespace Deimos
                 }
                 if (isCollision)
                 {
-                    thisElement.Event(thisElement, GeneralFacade.Game);
-                    thisElement.CollisionEvent(thisElement);
-                    CollisionEvent(thisElement);
+                    if (this.FilterCollisionElement(thisElement) || thisElement.FilterCollisionElement(this))
+                    {
+                        continue;
+                    }
+
+                    thisElement.Event(this, GeneralFacade.Game);
+                    thisElement.CollisionEvent(this);
+                    this.CollisionEvent(thisElement);
                     return true;
                 }
             }

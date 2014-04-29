@@ -11,6 +11,12 @@ namespace Deimos
 {
     class PlayerCollision : CollisionElement
     {
+        // Attributes
+        public override BoundingBox Box
+        {
+            get { return GenerateBox(DisplayFacade.Camera.Position, DisplayFacade.Camera.Rotation); }
+        }
+
         // Constructor
         public PlayerCollision(float playerHeight, float playerWidth, float playerDepth)
             : base(new Vector3(playerWidth, playerHeight, playerDepth))
@@ -39,6 +45,16 @@ namespace Deimos
         public override void CollisionEvent(CollisionElement element)
         {
             return;
+        }
+
+        public override bool FilterCollisionElement(CollisionElement element)
+        {
+            if (element == this)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public override bool PreCollisionBypass()

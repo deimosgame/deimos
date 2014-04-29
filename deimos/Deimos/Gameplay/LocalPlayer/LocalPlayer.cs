@@ -31,7 +31,7 @@ namespace Deimos
             set { position = value; DisplayFacade.Camera.Position = value; }
         }
 
-        public Vector3 rotation;
+        private Vector3 rotation;
         public Vector3 Rotation
         {
             get { return rotation; }

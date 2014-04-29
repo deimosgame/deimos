@@ -62,6 +62,11 @@ namespace Deimos
             CollisionElements.Add(element);
         }
 
+        public void AddElementDirectly(CollisionElement element)
+        {
+            CollisionElements.Add(element);
+        }
+
         public List<CollisionElement> GetElements()
         {
             return CollisionElements;

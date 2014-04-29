@@ -88,6 +88,13 @@ namespace Deimos
                 CurrentScene.PlayerSize.Z
             );
 
+            PlayerCollision.ElementType = CollisionElement.CollisionType.Box;
+
+            // Adding the player in the collision elements
+            CollisionManager.AddElementDirectly(PlayerCollision);
+
+
+
             DisplayFacade.Camera.Position = CurrentScene.SpawnLocations[0].Location;
             DisplayFacade.Camera.Rotation = CurrentScene.SpawnLocations[0].Rotation;
 

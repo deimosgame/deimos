@@ -62,6 +62,9 @@ namespace Deimos
             Renderer = new DeferredRenderer(this);
             Components.Add(Renderer);
 
+            DisplayFacade.ParticleManager = new Tranquillity.ParticleManager(this);
+            DisplayFacade.ParticleManager.Visible = true;
+            Components.Add(DisplayFacade.ParticleManager);
 
             GeneralFacade.Config = new Config();
             GameplayFacade.Constants = new Constants();
@@ -210,6 +213,7 @@ namespace Deimos
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
+
             base.Draw(gameTime);
 
             if (GeneralFacade.GameStateManager.CurrentGameState == GameStates.Intro)

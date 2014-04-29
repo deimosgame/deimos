@@ -280,7 +280,15 @@ namespace Deimos
                 "Scroll:",
                 Color.White
             );
-            
+            DisplayFacade.ScreenElementManager.AddText(
+                "NumberParticles",
+                0,
+                (int)MapHeight + 490,
+                0,
+                Font,
+                "Particles: ",
+                Color.White
+            );
 
         }
 
@@ -315,6 +323,7 @@ namespace Deimos
             DisplayFacade.ScreenElementManager.GetText("Momentum").Show = true;
             DisplayFacade.ScreenElementManager.GetText("Scroll").Show = true;
             DisplayFacade.ScreenElementManager.GetText("WeaponState").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("NumberParticles").Show = true;
         }
         private void Hide()
         {
@@ -347,6 +356,7 @@ namespace Deimos
             DisplayFacade.ScreenElementManager.GetText("Momentum").Show = false;
             DisplayFacade.ScreenElementManager.GetText("Scroll").Show = false;
             DisplayFacade.ScreenElementManager.GetText("WeaponState").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("NumberParticles").Show = false;
         }
 
         public void Debug(string text)
@@ -484,6 +494,10 @@ namespace Deimos
             DisplayFacade.ScreenElementManager.GetText("WeaponState").Text = String.Format(
                 "Weapon State: {0}",
                 GameplayFacade.ThisPlayer.CurrentWeapon.State
+            );
+            DisplayFacade.ScreenElementManager.GetText("NumberParticles").Text = String.Format(
+                "Particles: {0}",
+                DisplayFacade.ParticleManager.ParticleCount
             );
 
             string finalDebug = "";

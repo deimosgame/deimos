@@ -39,13 +39,18 @@ namespace Deimos
                 rotation = value;
                 //GameplayFacade.ThisPlayer.Rotation = value;
                 UpdateLookAt();
+                DisplayFacade.ParticleManager.SetMatrices(View, Projection);
             }
         }
 
+        private Matrix projection;
         public Matrix Projection
         {
-            get;
-            protected set;
+            get { return projection; }
+            protected set { 
+                projection = value;
+                DisplayFacade.ParticleManager.SetMatrices(View, value);
+            }
         }
 
         public Matrix View

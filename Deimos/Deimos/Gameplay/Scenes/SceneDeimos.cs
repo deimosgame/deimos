@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Tranquillity;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Deimos
 {
@@ -20,6 +22,9 @@ namespace Deimos
 
         string token_arbiter;
         string token_pistol;
+
+        DynamicParticleSystem ParticleSystem;
+        SmokeParticleEmitter ParticleEmitter;
 
         // Constructor
         public SceneDeimos(SceneManager sceneManager)
@@ -116,6 +121,15 @@ namespace Deimos
             //mysterspawns.Add(new Vector3(-110, 5, -40));
             //mysterspawns.Add(new Vector3(-70, 8, -40));
             //Objects.CreateMystery(mysterspawns, 10, 20, 1, default(Vector3));
+
+
+            Texture2D pixel = new Texture2D(GeneralFacade.Game.GraphicsDevice, 1, 1);
+            pixel.SetData<Color>(new Color[1] { Color.White });
+
+            ParticleSystem = new DynamicParticleSystem(1000, pixel);
+            ParticleEmitter = new SmokeParticleEmitter(new Vector3(-120, 10, -60));
+            ParticleSystem.AddEmitter(ParticleEmitter);
+            DisplayFacade.ParticleManager.AddParticleSystem(ParticleSystem);
         }
 
         public float x = -1f;
@@ -150,6 +164,8 @@ namespace Deimos
             //}
 
             //i++;
+
+            ParticleEmitter.Emit(100);
 
             Objects.Update(GameplayFacade.ThisPlayer.dt);
         }

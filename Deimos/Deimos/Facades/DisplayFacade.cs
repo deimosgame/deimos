@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Tranquillity;
 
 namespace Deimos
 {
@@ -13,5 +14,6 @@ namespace Deimos
         public static DebugScreen DebugScreen;
         public static ScreenElementManager ScreenElementManager;
         public static MenuManager MenuManager;
+        public static ParticleManager ParticleManager;
     }
 }

@@ -14,7 +14,7 @@ namespace Deimos
 
         public override void PreSet()
         {
-            //
+            GeneralFacade.Game.VideoPlayer.Play(GeneralFacade.Game.IntroVideo);
         }
 
         public override void PostUnset()

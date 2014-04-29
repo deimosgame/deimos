@@ -14,7 +14,7 @@ namespace Deimos
 
         public override void PreSet()
         {
-            GeneralFacade.Game.IsMouseVisible = false;
+            GeneralFacade.Game.IsMouseVisible = true;
             DisplayFacade.ScreenElementManager.HandleMouse();
 
             DisplayFacade.ScreenElementManager.RemoveImage("Intro");

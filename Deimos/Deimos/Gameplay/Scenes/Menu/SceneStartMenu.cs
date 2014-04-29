@@ -64,14 +64,31 @@ namespace Deimos
         // Update our things at each ticks
         public override void Update(float dt)
         {
-            CurrentAngle += dt;
-            Vector2 temp = Rotate(CurrentAngle, 300, Vector2.Zero);
-            DisplayFacade.Camera.Position = new Vector3(temp.X, DisplayFacade.Camera.Position.Y, temp.Y);
+            CurrentAngle += dt * 0.05f;
+            if (DisplayFacade.Camera.Position.Z < 50)
+            {
+                CurrentAngle += dt;
+            }
+            else
+            {
+                CurrentAngle += dt * 0.1f;
+            }
+            DisplayFacade.Camera.Position = ReCreateViewMatrix(CurrentAngle, DisplayFacade.Camera.Position);
+            DisplayFacade.Camera.CameraLookAt = new Vector3(0, -40, 0);
         }
 
-        private Vector2 Rotate(float angle, float distance, Vector2 centre)
+        private Vector3 ReCreateViewMatrix(float angle, Vector3 position)
         {
-            return new Vector2((float)(distance * Math.Cos(angle)), (float)(distance * Math.Sin(angle))) + centre;
+            //Calculate the relative position of the camera
+            position = Vector3.Transform(Vector3.Backward, Matrix.CreateFromYawPitchRoll(angle, 0, 0));
+            //Convert the relative position to the absolute position
+            position *= 300;
+            position += new Vector3(0, -40, 0);
+
+            //Calculate a new viewmatrix
+            //viewMatrix = Matrix.CreateLookAt(position, lookAt, Vector3.Up);
+
+            return position;
         }
     }
 }

@@ -42,7 +42,7 @@ namespace Deimos
         }
 
         public VideoPlayer VideoPlayer;
-        private Video IntroVideo;
+        public Video IntroVideo;
 
 
         public DeimosGame()
@@ -158,25 +158,22 @@ namespace Deimos
             switch (GeneralFacade.GameStateManager.CurrentGameState)
             {
                 case GameStates.IntroStarting:
-                    if(VideoPlayer.State == MediaState.Stopped)
-                    {
-                        VideoPlayer.Play(IntroVideo);
-                        GeneralFacade.GameStateManager.Set<Intro>();
-                    }
+                    GeneralFacade.GameStateManager.Set<Intro>();
                     break;
+
                 case GameStates.Intro:
                     //
                     break;
+
                 case GameStates.StartMenu:
                 case GameStates.Pause:
                 case GameStates.GraphicOptions:
-                    IsMouseVisible = true;
                     DisplayFacade.ScreenElementManager.HandleMouse();
+                    GeneralFacade.SceneManager.Update((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000);
                     break;
+
                 case GameStates.Playing:
                 default:
-                    IsMouseVisible = false;
-
                     if (GameplayFacade.ThisPlayer.IsAlive())
                     {
                         GameplayFacade.ThisPlayer.HandleInput(gameTime);
@@ -196,7 +193,7 @@ namespace Deimos
                             GameplayFacade.ThisPlayer.Class = Player.Spec.Agent; 
                         }
                     }
-                    GeneralFacade.SceneManager.Update(gameTime.ElapsedGameTime.Milliseconds / 1000);
+                    GeneralFacade.SceneManager.Update((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000);
                     GameplayFacade.BulletManager.Update(gameTime);
 
                     TestBindings(gameTime);

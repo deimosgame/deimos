@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Deimos
 {
-    class LevelModel
+    public class LevelModel
     {
         private Vector3 position;
         public Vector3 Position

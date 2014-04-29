@@ -40,6 +40,8 @@ namespace Deimos
             range = GameplayFacade.ThisPlayer.CurrentWeapon.Range;
             minimumDmg = GameplayFacade.ThisPlayer.CurrentWeapon.minDmg;
             maximumDmg = GameplayFacade.ThisPlayer.CurrentWeapon.maxDmg;
+
+            Nature = ElementNature.Bullet;
         }
 
         // Destructor
@@ -51,9 +53,21 @@ namespace Deimos
         // Methods
         public override void CollisionEvent(CollisionElement element)
         {
-            Collided = true;
+            if (element.GetNature() != ElementNature.Object
+                && element.GetNature() != ElementNature.Bullet)
+            {
+                Collided = true;
+            }
 
-            base.CollisionEvent(element);
+            switch (element.Nature)
+            {
+                case ElementNature.World:
+                    break;
+                case ElementNature.Player:
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

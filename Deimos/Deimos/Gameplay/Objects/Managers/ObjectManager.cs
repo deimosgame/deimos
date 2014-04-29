@@ -61,11 +61,13 @@ namespace Deimos
 
             // tweaking the object according to parameters
             PickupWeapon w = GameplayFacade.Objects.GetWeaponObject(name);
+            w.Manager = this;
             w.Ammo = initial_ammo;
             w.Position = position;
             w.Status = state;
             w.T_Respawn = respawn;
             w.Rotation = rotation;
+            w.Token = t;
 
             PickupWeapons.Add(t, w);
 
@@ -89,12 +91,14 @@ namespace Deimos
 
             // tweaking the desired effect object to parameters
             PickupEffect e = GameplayFacade.Objects.GetEffectObject(name);
+            e.Manager = this;
             e.Position = position;
             e.Status = state;
             e.Intensity = intensity;
             e.T_Respawn = respawn;
             e.Rotation = rotation;
             e.E_Duration = duration;
+            e.Token = t;
 
             PickupEffects.Add(t, e);
 
@@ -334,7 +338,7 @@ namespace Deimos
             {
                 if (thisWeapon.Value.Status == PickupObject.State.Active)
                 {
-
+                    thisWeapon.Value.CheckCollision(thisWeapon.Value.Position);
                 }
                 else
                 {
@@ -363,7 +367,7 @@ namespace Deimos
             {
                 if (thisEffect.Value.Status == PickupObject.State.Active)
                 {
-
+                    thisEffect.Value.CheckCollision(thisEffect.Value.Position);
                 }
                 else
                 {

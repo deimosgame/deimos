@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Deimos
 {
-    class CollisionElement
+    public class CollisionElement
     {
         protected Vector3 Dimensions;
 
@@ -17,11 +17,20 @@ namespace Deimos
             Sphere,
             Box
         }
+        public enum ElementNature
+        {
+            Player,
+            Bullet,
+            Object,
+            World
+        }
         public CollisionType ElementType
         {
             get;
             set;
         }
+        public ElementNature Nature = ElementNature.World;
+
         public LevelModel Model
         {
             get;
@@ -155,6 +164,11 @@ namespace Deimos
 
             // If we're here, then no collision has been matched
             return false;
+        }
+
+        public ElementNature GetNature()
+        {
+            return Nature;
         }
     }
 }

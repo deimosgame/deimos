@@ -15,7 +15,7 @@ namespace Deimos
         public PlayerCollision(float playerHeight, float playerWidth, float playerDepth)
             : base(new Vector3(playerWidth, playerHeight, playerDepth))
         {
-            //
+            Nature = ElementNature.Player;
         }
 
         public override BoundingBox GenerateBox(Vector3 position, Vector3 dimension)

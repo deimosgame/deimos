@@ -18,5 +18,7 @@ namespace Deimos
         public Vector3 PlayerSize;
 
         public ObjectManager Objects;
+
+        public SpawnLocation[] SpawnLocations;
     }
 }

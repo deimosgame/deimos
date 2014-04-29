@@ -25,6 +25,10 @@ namespace Deimos
         public SceneDeimos(SceneManager sceneManager)
         {
             PlayerSize = new Vector3(20,5, 5);
+            SpawnLocations = new SpawnLocation[] {
+                new SpawnLocation(new Vector3(-60f, 20f, -8f), Vector3.Zero)
+            };
+
             SceneManager = sceneManager;
             ModelManager = SceneManager.ModelManager;
             LightManager = SceneManager.LightManager;

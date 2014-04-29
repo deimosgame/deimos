@@ -137,6 +137,7 @@
     <Compile Include="Gameplay\Objects\Type\PickupEffect.cs" />
     <Compile Include="Gameplay\Objects\Managers\SubManagers\MysteryManager.cs" />
     <Compile Include="Gameplay\Scenes\Menu\SceneStartMenu.cs" />
+    <Compile Include="Gameplay\Scenes\Types\SpawnLocation.cs" />
     <Compile Include="Gameplay\Weapons\Bullet\BulletManager.cs" />
     <Compile Include="Display\Managers\MenuManager.cs" />
     <Compile Include="Display\Managers\ResourceManager.cs" />

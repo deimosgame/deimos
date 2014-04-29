@@ -118,7 +118,7 @@ namespace Deimos
             GeneralFacade.SceneManager = new SceneManager(GeneralFacade.TempContent);
 
             DisplayFacade.Camera = new Camera(
-                new Vector3(-60f, 20f, -8f),
+                Vector3.Zero,
                 Vector3.Zero
             );
 

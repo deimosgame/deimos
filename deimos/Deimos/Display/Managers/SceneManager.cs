@@ -88,6 +88,9 @@ namespace Deimos
                 CurrentScene.PlayerSize.Z
             );
 
+            DisplayFacade.Camera.Position = CurrentScene.SpawnLocations[0].Location;
+            DisplayFacade.Camera.Rotation = CurrentScene.SpawnLocations[0].Rotation;
+
             // Let's load our default files
             LoadDefault();
 

@@ -479,7 +479,10 @@ namespace Deimos
 
         public void UpdateMystery(float dt)
         {
-            Mystery.Update(dt);
+            if (Mystery != null)
+            {
+                Mystery.Update(dt);
+            }
         }
 
         public PickupWeapon GetMysteryPickup()

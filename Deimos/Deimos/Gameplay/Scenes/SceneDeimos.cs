@@ -95,46 +95,23 @@ namespace Deimos
             //SoundManager.Play("scary");
 
             token_health_pack = Objects.AddEffect("Health Pack",
-                new Vector3(-90f, 1f, -49f),
+                new Vector3(-90, 6, -50),
                 PickupObject.State.Active,
-                50,
-                5
-            );
-
-            token_speed_boost = Objects.AddEffect("Speed Boost",
-                new Vector3(-70, 3, -49f),
-                PickupObject.State.Active,
-                20,
                 10,
-                5
-            );
-
-            token_gravity_boost = Objects.AddEffect("Gravity Boost",
-                new Vector3(-110, 2, -49),
-                PickupObject.State.Active,
-                3,
-                10,
-                5
+                3
             );
 
             token_arbiter = Objects.AddWeapon("ArbiterPickup",
                 0,
-                new Vector3(-100, 2, -55),
+                new Vector3(-60, 6, -50),
                 PickupObject.State.Active,
-                10
+                3
             );
 
-            token_pistol = Objects.AddWeapon("PistolPickup",
-                20,
-                new Vector3(-70, 2, -55),
-                PickupObject.State.Active,
-                10
-            );
-
-            List<Vector3> mysterspawns = new List<Vector3>();
-            mysterspawns.Add(new Vector3(-110, 5, -40));
-            mysterspawns.Add(new Vector3(-70, 8, -40));
-            Objects.CreateMystery(mysterspawns, 10, 20, 1, default(Vector3));
+            //List<Vector3> mysterspawns = new List<Vector3>();
+            //mysterspawns.Add(new Vector3(-110, 5, -40));
+            //mysterspawns.Add(new Vector3(-70, 8, -40));
+            //Objects.CreateMystery(mysterspawns, 10, 20, 1, default(Vector3));
         }
 
         public float x = -1f;
@@ -169,40 +146,6 @@ namespace Deimos
             //}
 
             //i++;
-
-
-            if (GameplayFacade.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.G)
-                && (Objects.GetEffect(token_gravity_boost).Status == PickupObject.State.Active))
-            {
-                Objects.TreatEffect(Objects.GetEffect(token_gravity_boost), token_gravity_boost);
-            }
-            if (GameplayFacade.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.F)
-                && (Objects.GetEffect(token_speed_boost).Status == PickupObject.State.Active))
-            {
-                Objects.TreatEffect(Objects.GetEffect(token_speed_boost), token_speed_boost);
-            }
-            if (GameplayFacade.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.H)
-                && (Objects.GetEffect(token_health_pack).Status == PickupObject.State.Active))
-            {
-                Objects.TreatEffect(Objects.GetEffect(token_health_pack), token_health_pack);
-            }
-            if (GameplayFacade.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.C)
-                && (Objects.GetWeapon(token_arbiter).Status == PickupObject.State.Active))
-            {
-                Objects.TreatWeapon(Objects.GetWeapon(token_arbiter), token_arbiter);
-            }
-            if (GameplayFacade.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.V)
-                && (Objects.GetWeapon(token_pistol).Status == PickupObject.State.Active))
-            {
-                Objects.TreatWeapon(Objects.GetWeapon(token_pistol), token_pistol);
-            }
-            if (GameplayFacade.ThisPlayer.ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.U)
-                && (Objects.GetMysteryPickup().Status == PickupObject.State.Active))
-            {
-                Objects.TreatWeapon(Objects.GetMysteryPickup(), Objects.GetMysteryPickup().Name);
-                Objects.SetMysteryRespawn();
-            }
-
 
             Objects.Update(GameplayFacade.ThisPlayer.dt);
         }

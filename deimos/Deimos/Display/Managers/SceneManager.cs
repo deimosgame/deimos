@@ -52,6 +52,8 @@ namespace Deimos
 
         ContentManager Content;
 
+        float CurrentAmbiantLight = 0.3f;
+
 
         // Constructor
         public SceneManager(ContentManager content)
@@ -81,6 +83,8 @@ namespace Deimos
             CollisionManager = new CollisionManager();
 
             CurrentScene = (SceneTemplate)Activator.CreateInstance(typeof(T), new object[] { this });
+
+            CurrentAmbiantLight = CurrentScene.AmbiantLight;
 
             PlayerCollision = new PlayerCollision(
                 CurrentScene.PlayerSize.X,
@@ -115,10 +119,15 @@ namespace Deimos
             SoundManager.AddSoundEffect("weaponFire", "Sounds/GunFire");
         }
 
-        public void Update()
+        public void Update(float dt)
         {
-            CurrentScene.Update();
+            CurrentScene.Update(dt);
             SoundManager.Update();
+        }
+
+        public float GetCurrentAmbiantLight()
+        {
+            return CurrentAmbiantLight;
         }
     }
 }

@@ -364,7 +364,7 @@ namespace Deimos
             DrawDirectionalLight(
                 Vector3.Zero,
                 Color.White,
-                0.3f
+                GeneralFacade.SceneManager.GetCurrentAmbiantLight()
             );
             foreach (KeyValuePair<string, DirectionalLight> thisLight in
                 GeneralFacade.SceneManager.LightManager.GetDirectionalLights())
@@ -416,11 +416,6 @@ namespace Deimos
 
         public override void Draw(GameTime gameTime)
         {
-            if (MainGame.CurrentGameState != DeimosGame.GameStates.Playing)
-            {
-                //return;
-            }
-
             SetGBuffer();
             ClearGBuffer();
             GeneralFacade.SceneManager.ModelManager.DrawModels(Game, DisplayFacade.Camera);

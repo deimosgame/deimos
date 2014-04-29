@@ -13,12 +13,19 @@ namespace Deimos
         LightManager LightManager;
         SoundManager SoundManager;
 
+        float CurrentAngle = 0;
+
+        public override float AmbiantLight
+        {
+            get { return 0.05f; }
+        }
+
         // Constructor
         public SceneStartMenu(SceneManager sceneManager)
         {
             PlayerSize = new Vector3(20, 1, 1);
             SpawnLocations = new SpawnLocation[] {
-                new SpawnLocation(new Vector3(-60f, 20f, -8f), Vector3.Zero)
+                new SpawnLocation(new Vector3(0, -40f, 340f), new Vector3(0, (float)Math.PI, 0))
             };
 
             SceneManager = sceneManager;
@@ -41,7 +48,7 @@ namespace Deimos
                  "Models/Map/Main/DeimosMain", // Model
                  new Vector3(10, 0, 0), // Location
                  Vector3.Zero,
-                 0.5f
+                 0.25f
             );
             SoundManager.AddSoundEffect("scary", "Sounds/ScaryMusic");
         }
@@ -49,43 +56,22 @@ namespace Deimos
         // Initialize our lights and such
         public override void Initialize()
         {
-            LightManager.AddPointLight(
-               "Front",
-               new Vector3(-85, 6, -45), // Location
-               50, // Radius
-               2, // Intensity
-               Color.White
-            );
-            LightManager.AddPointLight(
-               "Back",
-               new Vector3(-21, 8, 110), // Location
-               18, // Radius
-               1, // Intensity
-               Color.White
-            );
-            LightManager.AddPointLight(
-               "Left",
-               new Vector3(88, 6, 110), // Location
-               18, // Radius
-               1, // Intensity
-               Color.White
-            );
-            LightManager.AddPointLight(
-               "Right",
-               new Vector3(37, -6, 200), // Location
-               50, // Radius
-               2, // Intensity
-               Color.White
-            );
+            LightManager.AddPointLight("mainLight", new Vector3(20, -30, 100), 380, 1, Color.White);
 
-            SoundManager.Play3D("scary", DisplayFacade.Camera.Position, new Vector3(0, 0, 0));
-            //SoundManager.Play("scary");
+            SoundManager.Play("scary");
         }
 
         // Update our things at each ticks
-        public override void Update()
+        public override void Update(float dt)
         {
-            SoundManager.SetListener("scary", GameplayFacade.ThisPlayer.Position);
+            CurrentAngle += dt;
+            Vector2 temp = Rotate(CurrentAngle, 300, Vector2.Zero);
+            DisplayFacade.Camera.Position = new Vector3(temp.X, DisplayFacade.Camera.Position.Y, temp.Y);
+        }
+
+        private Vector2 Rotate(float angle, float distance, Vector2 centre)
+        {
+            return new Vector2((float)(distance * Math.Cos(angle)), (float)(distance * Math.Sin(angle))) + centre;
         }
     }
 }

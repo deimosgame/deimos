@@ -124,7 +124,7 @@ namespace Deimos
         public int r = 0;
 
         // Update our things at each ticks
-        public override void Update()
+        public override void Update(float dt)
         {
             SoundManager.SetListener("scary", GameplayFacade.ThisPlayer.Position);
 

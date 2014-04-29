@@ -132,6 +132,15 @@
   <ItemGroup>
     <Compile Include="Display\Camera.cs" />
     <Compile Include="Display\Managers\CollisionManager.cs" />
+    <Compile Include="Display\Managers\GameStateManager.cs" />
+    <Compile Include="Display\Managers\Types\GameStates\GameStateObj.cs" />
+    <Compile Include="Gameplay\GameStates\GraphicOptionsGS.cs" />
+    <Compile Include="Gameplay\GameStates\IntroGS.cs" />
+    <Compile Include="Gameplay\GameStates\IntroStartingGS.cs" />
+    <Compile Include="Gameplay\GameStates\PauseGS.cs" />
+    <Compile Include="Gameplay\GameStates\PlayingGS.cs" />
+    <Compile Include="Gameplay\GameStates\SpawningGS.cs" />
+    <Compile Include="Gameplay\GameStates\StartMenuGS.cs" />
     <Compile Include="Gameplay\Objects\Managers\ObjectManager.cs" />
     <Compile Include="Gameplay\Objects\ObjectsList.cs" />
     <Compile Include="Gameplay\Objects\Type\PickupEffect.cs" />

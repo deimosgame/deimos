@@ -13,7 +13,15 @@ namespace Deimos
 
         abstract public void Initialize();
 
-        abstract public void Update();
+        abstract public void Update(float dt);
+
+        virtual public float AmbiantLight
+        {
+            get
+            {
+                return 0.3f;
+            }
+        }
 
         public Vector3 PlayerSize;
 

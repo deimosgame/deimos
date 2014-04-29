@@ -12,6 +12,7 @@ namespace Deimos
         public static DeimosGame Game;
         public static ContentManager TempContent;
         public static SceneManager SceneManager;
+        public static GameStateManager GameStateManager;
         public static Config Config;
 
         public static string Uniqid()

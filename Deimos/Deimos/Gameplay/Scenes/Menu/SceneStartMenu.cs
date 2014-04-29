@@ -33,11 +33,11 @@ namespace Deimos
         public override void Load()
         {
             ModelManager.LoadModel(
-                 "ourMap",
-                 "Models/Map/hl/hl", // Model
+                 "DeimosMain",
+                 "Models/Map/Main/DeimosMain", // Model
                  new Vector3(10, 0, 0), // Location
                  Vector3.Zero,
-                 1.5f
+                 0.5f
             );
             SoundManager.AddSoundEffect("scary", "Sounds/ScaryMusic");
         }
@@ -46,34 +46,35 @@ namespace Deimos
         public override void Initialize()
         {
             LightManager.AddPointLight(
-               "Main",
+               "Front",
                new Vector3(-85, 6, -45), // Location
                50, // Radius
                2, // Intensity
                Color.White
             );
             LightManager.AddPointLight(
-               "Corridor1",
+               "Back",
                new Vector3(-21, 8, 110), // Location
                18, // Radius
                1, // Intensity
-               Color.Red
+               Color.White
             );
             LightManager.AddPointLight(
-               "Corridor2",
+               "Left",
                new Vector3(88, 6, 110), // Location
                18, // Radius
                1, // Intensity
-               Color.Red
+               Color.White
             );
             LightManager.AddPointLight(
-               "Scary",
+               "Right",
                new Vector3(37, -6, 200), // Location
                50, // Radius
                2, // Intensity
-               Color.LightBlue
+               Color.White
             );
-            SoundManager.Play3D("scary", DisplayFacade.Camera.Position, new Vector3(-127, 6, -64));
+
+            SoundManager.Play3D("scary", DisplayFacade.Camera.Position, new Vector3(0, 0, 0));
             //SoundManager.Play("scary");
         }
 

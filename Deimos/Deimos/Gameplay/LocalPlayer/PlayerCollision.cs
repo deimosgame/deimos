@@ -28,12 +28,12 @@ namespace Deimos
         {
             Vector3 bbTop = new Vector3(
                 position.X + (dimension.X / 2),
-                position.Y + (dimension.Y / 5) * 3,
+                position.Y + (dimension.Y / 5) * 2,
                 position.Z + (dimension.Z / 2)
             );
             Vector3 bbBottom = new Vector3(
                 position.X - (dimension.X / 2),
-                position.Y - (dimension.Y / 5) * 2,
+                position.Y - (dimension.Y / 5) * 3,
                 position.Z - (dimension.Z / 2)
             );
             return new BoundingBox(

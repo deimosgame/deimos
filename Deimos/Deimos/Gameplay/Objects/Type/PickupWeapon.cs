@@ -15,7 +15,7 @@ namespace Deimos
         // Constructor
         public PickupWeapon(string name, string path, float scale,
             char weaponToken)
-            : base(new Vector3(10, 10f, 10f))
+            : base(new Vector3(10, 20, 10))
         {
             Name = name;
             Model = path;
@@ -25,12 +25,14 @@ namespace Deimos
             Nature = ElementNature.Object;
         }
 
+        public override bool FilterCollisionElement(CollisionElement element)
+        {
+            return (element.GetNature() != ElementNature.Player);
+        }
+
         public override void CollisionEvent(CollisionElement element)
         {
-            if (element.GetNature() == ElementNature.Player)
-            {
-                Manager.TreatWeapon(this, Token);
-            }
+            Manager.TreatWeapon(this, Token);
         }
     }
 }

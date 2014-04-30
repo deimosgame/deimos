@@ -53,6 +53,7 @@ namespace Deimos
 
             Graphics = new GraphicsDeviceManager(this);
 
+
             VideoPlayer = new VideoPlayer();
 
 
@@ -122,7 +123,8 @@ namespace Deimos
 
         protected override void Update(GameTime gameTime)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape)
+                && GeneralFacade.GameStateManager.CurrentGameState == GameStates.Playing)
             {
                 GeneralFacade.GameStateManager.Set<PauseGS>();
             }
@@ -134,7 +136,10 @@ namespace Deimos
                     break;
 
                 case GameStates.Intro:
-                    //
+                    if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+                    {
+                        VideoPlayer.Stop();
+                    }
                     break;
 
                 case GameStates.StartMenu:

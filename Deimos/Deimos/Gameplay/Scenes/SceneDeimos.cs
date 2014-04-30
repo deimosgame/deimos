@@ -132,6 +132,8 @@ namespace Deimos
             ParticleEmitter = new SmokeParticleEmitter(new Vector3(-120, 10, -60));
             ParticleSystem.AddEmitter(ParticleEmitter);
             DisplayFacade.ParticleManager.AddParticleSystem(ParticleSystem);
+
+            DisplayFacade.ModelAnimationManager.Add("main", ModelManager.GetLevelModel("ourMap"), 2000, new Vector3(10, 0, 0), Vector3.Zero, Vector3.Zero, Vector3.Zero, AnimationLoop.Back);
         }
 
         public float x = -1f;

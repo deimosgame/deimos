@@ -13,7 +13,7 @@ namespace Deimos
         public AnimatedModel Add(string name, LevelModel model, int milliseconds,
                             Vector3 startPos, Vector3 endPos,
                             Vector3 startRotation, Vector3 endRotation,
-                            bool loop = false)
+                            AnimationLoop loop = AnimationLoop.None)
         {
             AnimatedModel tAnimation = new AnimatedModel();
             tAnimation.Model = model;
@@ -66,22 +66,26 @@ namespace Deimos
 
                 if (tAnimation.RemainingMilliseconds <= 0)
                 {
-                    if (tAnimation.Loop)
+                    switch (tAnimation.Loop)
                     {
-                        Vector3 temp = tAnimation.StartPosition;
-                        tAnimation.StartPosition = tAnimation.EndPosition;
-                        tAnimation.EndPosition = temp;
+                        case AnimationLoop.Back:
+                            Vector3 temp = tAnimation.StartPosition;
+                            tAnimation.StartPosition = tAnimation.EndPosition;
+                            tAnimation.EndPosition = temp;
 
-                        temp = tAnimation.StartRotation;
-                        tAnimation.StartRotation = tAnimation.EndRotation;
-                        tAnimation.EndRotation = temp;
+                            temp = tAnimation.StartRotation;
+                            tAnimation.StartRotation = tAnimation.EndRotation;
+                            tAnimation.EndRotation = temp;
 
-                        tAnimation.RemainingMilliseconds = tAnimation.Milliseconds;
-
-                        // prevent from adding it to the delete list
-                        continue;
+                            tAnimation.RemainingMilliseconds = tAnimation.Milliseconds;
+                        break;
+                        case AnimationLoop.Loop:
+                            tAnimation.RemainingMilliseconds = tAnimation.Milliseconds;
+                        break;
+                        default:
+                            elementsToDelete.Add(item.Key);
+                        break;
                     }
-                    elementsToDelete.Add(item.Key);
                 }
             }
 

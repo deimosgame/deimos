@@ -6,6 +6,13 @@ using System.Text;
 
 namespace Deimos
 {
+    enum AnimationLoop
+    {
+        None,
+        Loop,
+        Back
+    }
+
     class AnimatedModel
     {
         public LevelModel Model;
@@ -18,6 +25,6 @@ namespace Deimos
         public Vector3 StartRotation;
         public Vector3 EndRotation;
 
-        public bool Loop;
+        public AnimationLoop Loop;
     }
 }

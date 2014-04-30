@@ -72,6 +72,7 @@ namespace Deimos
         {
             DisplayFacade.ScreenElementManager.RemoveRectangle("StartScreenMenuPlay");
             DisplayFacade.ScreenElementManager.RemoveRectangle("StartScreenMenuExit");
+            DisplayFacade.ScreenElementManager.RemoveImage("applelogo");
         }
     }
 }

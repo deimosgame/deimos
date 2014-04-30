@@ -163,6 +163,7 @@ Content\Models\Weapons\Knife\t_hunter_knife_n.xnb
 Content\Models\Weapons\Knife\t_hunter_knife_s.xnb
 Content\Models\Map\Main\Deimos2_material_0.xnb
 Content\Models\Map\Main\Deimos2_material_1.xnb
+Content\Images\Menu\apple.xnb
 Content\Models\Characters\Ana_Model.xnb
 Content\Models\Map\coucou.xnb
 Content\Models\DeferredRendering\cone.xnb
@@ -317,7 +318,6 @@ Content\RPG_MainTex_0.xnb
 Content\Models\Weapons\Knife\t_hunter_knife_d_0.xnb
 Content\Models\Map\Main\Deimos2_material_0_0.xnb
 Content\Models\Map\Main\Deimos2_material_1_0.xnb
-Content\Images\Menu\apple.xnb
 Content\Videos\Intro.wmv
 Content\Fonts\debug.spritefont
 Content\Fonts\menuTitle.spritefont

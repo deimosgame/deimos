@@ -14,5 +14,6 @@ namespace Deimos
         public static DebugScreen DebugScreen;
         public static ScreenElementManager ScreenElementManager;
         public static ParticleManager ParticleManager;
+        public static ModelAnimationManager ModelAnimationManager;
     }
 }

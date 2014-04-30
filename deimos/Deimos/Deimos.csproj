@@ -137,7 +137,9 @@
     <Compile Include="Display\Camera.cs" />
     <Compile Include="Display\Managers\CollisionManager.cs" />
     <Compile Include="Display\Managers\GameStateManager.cs" />
+    <Compile Include="Display\Managers\SubManagers\ModelAnimationManager.cs" />
     <Compile Include="Display\Managers\Types\GameStates\GameStateObj.cs" />
+    <Compile Include="Display\Managers\Types\Models\AnimatedModel.cs" />
     <Compile Include="Display\ParticleEmitters\SmokeParticleEmitter.cs" />
     <Compile Include="Gameplay\GameStates\GraphicOptionsGS.cs" />
     <Compile Include="Gameplay\GameStates\IntroGS.cs" />

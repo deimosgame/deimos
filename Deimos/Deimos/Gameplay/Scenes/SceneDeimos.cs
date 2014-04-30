@@ -14,6 +14,7 @@ namespace Deimos
         ModelManager ModelManager;
         LightManager LightManager;
         SoundManager SoundManager;
+        ModelAnimationManager ModelAnimationManager;
 
         // tokens
         string token_health_pack;
@@ -38,6 +39,7 @@ namespace Deimos
             ModelManager = SceneManager.ModelManager;
             LightManager = SceneManager.LightManager;
             SoundManager = SceneManager.SoundManager;
+            ModelAnimationManager = DisplayFacade.ModelAnimationManager;
 
             Objects = new ObjectManager();
         }

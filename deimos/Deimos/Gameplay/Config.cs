@@ -29,5 +29,10 @@ namespace Deimos
         public bool MouseInverted = false;
 
         public bool DebugScreen = false;
+
+        public Config()
+        {
+            
+        }
     }
 }

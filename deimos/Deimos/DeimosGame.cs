@@ -105,6 +105,8 @@ namespace Deimos
 
             GeneralFacade.SceneManager = new SceneManager(GeneralFacade.TempContent);
 
+            DisplayFacade.ModelAnimationManager = new ModelAnimationManager();
+
             DisplayFacade.Camera = new Camera(
                 Vector3.Zero,
                 Vector3.Zero
@@ -145,6 +147,7 @@ namespace Deimos
                 case GameStates.StartMenu:
                 case GameStates.Pause:
                 case GameStates.GraphicOptions:
+                    DisplayFacade.ModelAnimationManager.Animate((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000);
                     DisplayFacade.ScreenElementManager.HandleMouse();
                     GeneralFacade.SceneManager.Update((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000);
                     break;
@@ -170,6 +173,7 @@ namespace Deimos
                             GameplayFacade.ThisPlayer.Class = Player.Spec.Agent; 
                         }
                     }
+                    DisplayFacade.ModelAnimationManager.Animate((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000);
                     GeneralFacade.SceneManager.Update((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000);
                     GameplayFacade.BulletManager.Update(gameTime);
 

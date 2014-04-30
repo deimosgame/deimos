@@ -21,8 +21,6 @@ namespace Deimos
 
             Mouse.SetPosition(GeneralFacade.Game.GraphicsDevice.Viewport.Width / 2,
                     GeneralFacade.Game.GraphicsDevice.Viewport.Height / 2);
-
-            DisplayFacade.MenuManager.Hide();
         }
 
         public override void PostUnset()

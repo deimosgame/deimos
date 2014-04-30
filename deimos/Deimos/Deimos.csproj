@@ -153,10 +153,7 @@
     <Compile Include="Gameplay\Scenes\Menu\SceneStartMenu.cs" />
     <Compile Include="Gameplay\Scenes\Types\SpawnLocation.cs" />
     <Compile Include="Gameplay\Weapons\Bullet\BulletManager.cs" />
-    <Compile Include="Display\Managers\MenuManager.cs" />
     <Compile Include="Display\Managers\ResourceManager.cs" />
-    <Compile Include="Display\Managers\Types\Menu\MenuElement.cs" />
-    <Compile Include="Display\Managers\Types\Menu\MenuScreen.cs" />
     <Compile Include="Gameplay\Weapons\WeaponManager.cs" />
     <Compile Include="Facades\DisplayFacade.cs" />
     <Compile Include="Facades\GameplayFacade.cs" />

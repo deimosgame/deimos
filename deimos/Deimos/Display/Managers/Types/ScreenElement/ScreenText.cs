@@ -12,7 +12,7 @@ namespace Deimos
         public SpriteFont Font
         {
             get;
-            private set;
+            set;
         }
         public string Text
         {

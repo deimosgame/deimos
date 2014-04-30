@@ -32,11 +32,15 @@ namespace Deimos
         // Methods
         public ScreenRectangle AddRectangle(string name, int posX, int posY,
             int zIndex, int width, int height, Color color,
-            Action<ScreenElement, DeimosGame> onClick)
+            Action<ScreenElement, DeimosGame> onClick = null, 
+            Action<ScreenElement, DeimosGame> onHover = null, 
+            Action<ScreenElement, DeimosGame> onOut = null)
         {
             ScreenRectangle element =
                 new ScreenRectangle(posX, posY, zIndex, width, height, color);
             element.OnClick = onClick;
+            element.OnOut = onOut;
+            element.OnHover = onHover;
             ElementsRectangle.Add(
                 name,
                 element
@@ -60,10 +64,16 @@ namespace Deimos
         }
 
         public ScreenImage AddImage(string name, int posX, int posY, float scaleX,
-           float scaleY, int zIndex, Texture2D image)
+           float scaleY, int zIndex, Texture2D image,
+            Action<ScreenElement, DeimosGame> onClick = null,
+            Action<ScreenElement, DeimosGame> onHover = null,
+            Action<ScreenElement, DeimosGame> onOut = null)
         {
             ScreenImage element =
                 new ScreenImage(posX, posY, scaleX, scaleY, zIndex, image);
+            element.OnClick = onClick;
+            element.OnOut = onOut;
+            element.OnHover = onHover;
             ElementsImage.Add(
                 name,
                 element

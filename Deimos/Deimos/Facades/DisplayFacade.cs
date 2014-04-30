@@ -13,7 +13,6 @@ namespace Deimos
         public static Camera Camera;
         public static DebugScreen DebugScreen;
         public static ScreenElementManager ScreenElementManager;
-        public static MenuManager MenuManager;
         public static ParticleManager ParticleManager;
     }
 }

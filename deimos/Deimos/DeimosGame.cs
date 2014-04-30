@@ -102,8 +102,6 @@ namespace Deimos
 
             DisplayFacade.DebugScreen = new DebugScreen();
 
-            DisplayFacade.MenuManager = new MenuManager();
-
             GeneralFacade.SceneManager = new SceneManager(GeneralFacade.TempContent);
 
             DisplayFacade.Camera = new Camera(
@@ -113,35 +111,6 @@ namespace Deimos
 
 
             GeneralFacade.SceneManager.SetScene<SceneStartMenu>();
-
-
-
-
-            //////////////////////////////////////////////////////
-            // Menus
-            /////////////////////////////////////////////////////
-            MenuScreen StartScreen = DisplayFacade.MenuManager.Add("Start");
-            StartScreen.AddElement("Play", delegate(ScreenElement el, DeimosGame game)
-            {
-                GeneralFacade.GameStateManager.Set<SpawningGS>();
-                GeneralFacade.GameStateManager.Set<PlayingGS>();
-            });
-            StartScreen.AddElement("Exit", delegate(ScreenElement el, DeimosGame game)
-            {
-                this.Exit();
-            });
-
-            MenuScreen PauseScreen = DisplayFacade.MenuManager.Add("Pause");
-            PauseScreen.AddElement("Resume", delegate(ScreenElement el, DeimosGame game)
-            {
-                GeneralFacade.GameStateManager.Set<PlayingGS>();
-            });
-            PauseScreen.AddElement("Exit", delegate(ScreenElement el, DeimosGame game)
-            {
-                this.Exit();
-            });
-            /////////////////////////////////////////////////////
-            /////////////////////////////////////////////////////
         }
 
          
@@ -238,11 +207,8 @@ namespace Deimos
                 }
                 else
                 {
-                    GeneralFacade.GameStateManager.Set<StartMenuGS>();
                     VideoPlayer.Dispose();
-                    DisplayFacade.ScreenElementManager.RemoveImage("Intro");
-
-                    DisplayFacade.MenuManager.Set("Start");
+                    GeneralFacade.GameStateManager.Set<StartMenuGS>();
                 }
             }
 

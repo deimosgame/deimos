@@ -85,7 +85,7 @@ PixelShaderOutput PixelShaderFunction(VertexShaderOutput input)
 {
     PixelShaderOutput output;
     output.Color = tex2D(diffuseSampler, input.TexCoord);
-    
+
     float4 specularAttributes = tex2D(specularSampler, input.TexCoord);
     //specular Intensity
     output.Color.a = specularAttributes.r;

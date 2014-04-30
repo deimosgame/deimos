@@ -11,17 +11,17 @@ namespace Deimos
         public int Width
         {
             get;
-            private set;
+            set;
         }
         public int Height
         {
             get;
-            private set;
+            set;
         }
         public Color Color
         {
             get;
-            private set;
+            set;
         }
 
         public ScreenRectangle(int posX, int posY, int zIndex, 

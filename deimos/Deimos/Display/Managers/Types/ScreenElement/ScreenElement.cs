@@ -11,12 +11,12 @@ namespace Deimos
         public Vector2 Pos
         {
             get;
-            protected set;
+            set;
         }
         public int ZIndex
         {
             get;
-            protected set;
+            set;
         }
 
         public bool Show
@@ -25,20 +25,41 @@ namespace Deimos
             set;
         }
 
+        private Action<ScreenElement, DeimosGame> onHover;
         public Action<ScreenElement, DeimosGame> OnHover
         {
-            get;
-            set;
+            get { return onHover; }
+            set
+            {
+                if (value != null)
+                {
+                    onHover = value;
+                }
+            }
         }
+        private Action<ScreenElement, DeimosGame> onOut;
         public Action<ScreenElement, DeimosGame> OnOut
         {
-            get;
-            set;
+            get { return onOut; }
+            set
+            {
+                if (value != null)
+                {
+                    onOut = value;
+                }
+            }
         }
+        private Action<ScreenElement, DeimosGame> onClick;
         public Action<ScreenElement, DeimosGame> OnClick
         {
-            get;
-            set;
+            get { return onClick; }
+            set
+            {
+                if (value != null)
+                {
+                    onClick = value;
+                }
+            }
         }
 
         public enum ElState

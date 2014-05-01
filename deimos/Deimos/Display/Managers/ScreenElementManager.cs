@@ -19,6 +19,8 @@ namespace Deimos
         private Dictionary<string, ScreenText> ElementsText =
             new Dictionary<string, ScreenText>();
         private List<string> ElementsTextList = new List<string>();
+        private Dictionary<string, ScreenLine> ElementsLine =
+            new Dictionary<string, ScreenLine>();
 
         private Texture2D DummyTexture;
 
@@ -115,6 +117,23 @@ namespace Deimos
         public void RemoveText(string name)
         {
             ElementsText.Remove(name);
+        }
+
+        public ScreenLine AddLine(string name, Vector2 start, Vector2 end, 
+            int zIndex, Color color)
+        {
+            ScreenLine element =
+                new ScreenLine(start, end, zIndex, color);
+            ElementsLine.Add(name, element);
+            return element;
+        }
+        public ScreenLine GetLine(string name)
+        {
+            return ElementsLine[name];
+        }
+        public void RemoveLine(string name)
+        {
+            ElementsLine.Remove(name);
         }
 
         public void HandleMouse()
@@ -227,6 +246,33 @@ namespace Deimos
                     element.Pos,
                     element.Color
                 );
+            }
+            foreach (KeyValuePair<string, ScreenLine> elementKeyVal in 
+                ElementsLine)
+            {
+                ScreenLine element = elementKeyVal.Value;
+                if (!element.Show)
+                {
+                    continue;
+                }
+                Vector2 edge = element.End - element.Start;
+                // calculate angle to rotate line
+                float angle =
+                    (float)Math.Atan2(edge.Y, edge.X);
+
+
+                spriteBatch.Draw(DummyTexture,
+                    new Rectangle(// rectangle defines shape of line and position of start of line
+                        (int)element.Start.X,
+                        (int)element.Start.Y,
+                        (int)edge.Length(), //sb will strech the texture to fill this rectangle
+                        1), //width of line, change this to make thicker line
+                    null,
+                    element.Color, //colour of line
+                    angle,     //angle of line (calulated above)
+                    new Vector2(0, 0), // point in line about which to rotate
+                    SpriteEffects.None,
+                    0);
             }
 
             spriteBatch.End();

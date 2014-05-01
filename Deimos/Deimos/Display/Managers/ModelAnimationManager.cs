@@ -42,23 +42,15 @@ namespace Deimos
             {
                 AnimatedModel tAnimation = item.Value;
 
-                float coeffPX = (tAnimation.EndPosition.X - tAnimation.StartPosition.X) / tAnimation.Milliseconds;
-                float coeffPY = (tAnimation.EndPosition.Y - tAnimation.StartPosition.Y) / tAnimation.Milliseconds;
-                float coeffPZ = (tAnimation.EndPosition.Z - tAnimation.StartPosition.Z) / tAnimation.Milliseconds;
-
-                float coeffRX = (tAnimation.EndRotation.X - tAnimation.StartRotation.X) / tAnimation.Milliseconds;
-                float coeffRY = (tAnimation.EndRotation.Y - tAnimation.StartRotation.Y) / tAnimation.Milliseconds;
-                float coeffRZ = (tAnimation.EndRotation.Z - tAnimation.StartRotation.Z) / tAnimation.Milliseconds;
-
                 tAnimation.Model.Position = new Vector3(
-                    tAnimation.Model.Position.X + coeffPX,
-                    tAnimation.Model.Position.Y + coeffPY,
-                    tAnimation.Model.Position.Z + coeffPZ
+                    tAnimation.Model.Position.X + tAnimation.CoeffPX,
+                    tAnimation.Model.Position.Y + tAnimation.CoeffPY,
+                    tAnimation.Model.Position.Z + tAnimation.CoeffPZ
                 );
                 tAnimation.Model.Rotation = new Vector3(
-                    tAnimation.Model.Rotation.X + coeffRX,
-                    tAnimation.Model.Rotation.Y + coeffRY,
-                    tAnimation.Model.Rotation.Z + coeffRZ
+                    tAnimation.Model.Rotation.X + tAnimation.CoeffRX,
+                    tAnimation.Model.Rotation.Y + tAnimation.CoeffRY,
+                    tAnimation.Model.Rotation.Z + tAnimation.CoeffRZ
                 );
 
 

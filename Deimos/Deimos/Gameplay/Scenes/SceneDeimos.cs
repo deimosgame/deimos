@@ -133,7 +133,6 @@ namespace Deimos
             ParticleSystem.AddEmitter(ParticleEmitter);
             DisplayFacade.ParticleManager.AddParticleSystem(ParticleSystem);
 
-            DisplayFacade.ModelAnimationManager.Add("main", ModelManager.GetLevelModel("ourMap"), 2000, new Vector3(10, 0, 0), Vector3.Zero, Vector3.Zero, Vector3.Zero, AnimationLoop.Back);
         }
 
         public float x = -1f;
@@ -146,7 +145,6 @@ namespace Deimos
         {
             SoundManager.SetListener("scary", GameplayFacade.ThisPlayer.Position);
 
-            //SceneManager.Game.DebugScreen.Debug("debugconsole");
 
             //PointLight light1 = LightManager.GetPointLight("Corridor1");
             //PointLight light2 = LightManager.GetPointLight("Corridor2");
@@ -169,7 +167,7 @@ namespace Deimos
 
             //i++;
 
-            ParticleEmitter.Emit(100);
+            ParticleEmitter.Emit(10);
 
             Objects.Update(GameplayFacade.ThisPlayer.dt);
         }

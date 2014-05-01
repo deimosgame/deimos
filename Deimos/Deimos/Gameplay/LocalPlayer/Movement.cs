@@ -233,7 +233,36 @@ namespace Deimos
                 movement.Z = GeneralFacade.SceneManager.PlayerCollision.CheckCollision(
                                     GameplayFacade.ThisPlayer.Position +
                                     new Vector3(0, 0, movement.Z)
-                             ) ? 0 : movement.Z;
+                                ) ? 0 : movement.Z;
+                if (GeneralFacade.SceneManager.PlayerCollision.CheckCollision(
+                                    GameplayFacade.ThisPlayer.Position + movement))
+                {
+                    // Here, the collision is if we go sideway.
+
+                    if (GeneralFacade.SceneManager.PlayerCollision.CheckCollision(
+                            GameplayFacade.ThisPlayer.Position +
+                            new Vector3(movement.X, movement.Y, movement.Z)
+                       ))
+                    {
+                        movement.X = 0; movement.Z = 0;
+                    }
+
+                    if (GeneralFacade.SceneManager.PlayerCollision.CheckCollision(
+                            GameplayFacade.ThisPlayer.Position +
+                            new Vector3(movement.X, movement.Y, 0)
+                       ))
+                    {
+                        movement.X = 0;
+                    }
+
+                    if (GeneralFacade.SceneManager.PlayerCollision.CheckCollision(
+                            GameplayFacade.ThisPlayer.Position +
+                            new Vector3(0, movement.Y, movement.Z)
+                       ))
+                    {
+                        movement.Z = 0;
+                    }
+                }
                 return GameplayFacade.ThisPlayer.Position + movement;
             }
             else

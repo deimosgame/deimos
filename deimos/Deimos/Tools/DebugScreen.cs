@@ -289,6 +289,15 @@ namespace Deimos
                 "Particles: ",
                 Color.White
             );
+            DisplayFacade.ScreenElementManager.AddText(
+                "CollisionState",
+                0,
+                (int)MapHeight + 510,
+                0,
+                Font,
+                "Collision: ",
+                Color.White
+            );
 
         }
 
@@ -324,6 +333,7 @@ namespace Deimos
             DisplayFacade.ScreenElementManager.GetText("Scroll").Show = true;
             DisplayFacade.ScreenElementManager.GetText("WeaponState").Show = true;
             DisplayFacade.ScreenElementManager.GetText("NumberParticles").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("CollisionState").Show = true;
         }
         private void Hide()
         {
@@ -357,6 +367,7 @@ namespace Deimos
             DisplayFacade.ScreenElementManager.GetText("Scroll").Show = false;
             DisplayFacade.ScreenElementManager.GetText("WeaponState").Show = false;
             DisplayFacade.ScreenElementManager.GetText("NumberParticles").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("CollisionState").Show = false;
         }
 
         public void Debug(string text)
@@ -498,6 +509,10 @@ namespace Deimos
             DisplayFacade.ScreenElementManager.GetText("NumberParticles").Text = String.Format(
                 "Particles: {0}",
                 DisplayFacade.ParticleManager.ParticleCount
+            );
+            DisplayFacade.ScreenElementManager.GetText("CollisionState").Text = String.Format(
+                "Collision: {0}",
+                GeneralFacade.SceneManager.PlayerCollision.CheckCollision(GameplayFacade.ThisPlayer.Position)
             );
 
             string finalDebug = "";

@@ -29,7 +29,7 @@ namespace Deimos
             GameplayFacade.ThisPlayerDisplay = new Display();
 
 
-            GeneralFacade.SceneManager.SetScene<SceneDeimos>();
+            GeneralFacade.SceneManager.SetScene<SceneCompound>();
 
 
             GameplayFacade.ThisPlayer.Inventory = new WeaponManager();

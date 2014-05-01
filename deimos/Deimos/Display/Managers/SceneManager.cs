@@ -52,7 +52,7 @@ namespace Deimos
 
         ContentManager Content;
 
-        float CurrentAmbiantLight = 0.3f;
+        float CurrentAmbiantLight = 0.1f;
 
 
         // Constructor

@@ -19,7 +19,7 @@ namespace Deimos
         {
             get
             {
-                return 0.3f;
+                return 0.25f;
             }
         }
 

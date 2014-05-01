@@ -1103,6 +1103,166 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_0.tga">
+      <Name>DeimosCompoundA_material_0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_1.tga">
+      <Name>DeimosCompoundA_material_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_10.tga">
+      <Name>DeimosCompoundA_material_10</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_11.tga">
+      <Name>DeimosCompoundA_material_11</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_12.tga">
+      <Name>DeimosCompoundA_material_12</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_13.tga">
+      <Name>DeimosCompoundA_material_13</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_14.tga">
+      <Name>DeimosCompoundA_material_14</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_15.tga">
+      <Name>DeimosCompoundA_material_15</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_16.tga">
+      <Name>DeimosCompoundA_material_16</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_17.tga">
+      <Name>DeimosCompoundA_material_17</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_18.tga">
+      <Name>DeimosCompoundA_material_18</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_19.tga">
+      <Name>DeimosCompoundA_material_19</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_2.tga">
+      <Name>DeimosCompoundA_material_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_20.tga">
+      <Name>DeimosCompoundA_material_20</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_21.tga">
+      <Name>DeimosCompoundA_material_21</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_22.tga">
+      <Name>DeimosCompoundA_material_22</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_23.tga">
+      <Name>DeimosCompoundA_material_23</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_24.tga">
+      <Name>DeimosCompoundA_material_24</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_25.tga">
+      <Name>DeimosCompoundA_material_25</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_26.tga">
+      <Name>DeimosCompoundA_material_26</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_27.tga">
+      <Name>DeimosCompoundA_material_27</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_28.tga">
+      <Name>DeimosCompoundA_material_28</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_29.tga">
+      <Name>DeimosCompoundA_material_29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_3.tga">
+      <Name>DeimosCompoundA_material_3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_4.tga">
+      <Name>DeimosCompoundA_material_4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_5.tga">
+      <Name>DeimosCompoundA_material_5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_6.tga">
+      <Name>DeimosCompoundA_material_6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_7.tga">
+      <Name>DeimosCompoundA_material_7</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_8.tga">
+      <Name>DeimosCompoundA_material_8</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\Compound\DeimosCompoundA_material_9.tga">
+      <Name>DeimosCompoundA_material_9</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Map\Compound\DeimosCompound.fbx">
+      <Name>DeimosCompound</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CollidableModelProcessor</Processor>
+      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
+    </Compile>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

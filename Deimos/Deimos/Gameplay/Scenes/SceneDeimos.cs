@@ -30,7 +30,9 @@ namespace Deimos
         // Constructor
         public SceneDeimos(SceneManager sceneManager)
         {
-            PlayerSize = new Vector3(20,5, 5);
+            PlayerSize = new Vector3(10, 1, 1);
+
+
             SpawnLocations = new SpawnLocation[] {
                 new SpawnLocation(new Vector3(-60f, 20f, -8f), Vector3.Zero)
             };
@@ -58,7 +60,7 @@ namespace Deimos
                  "Models/Map/hl/hl", // Model
                  new Vector3(10, 0, 0), // Location
                  Vector3.Zero,
-                 1.5f
+                 0.75f
             );
             SoundManager.AddSoundEffect("scary", "Sounds/ScaryMusic");
             SceneManager.CollisionManager.AddCollisionBox(

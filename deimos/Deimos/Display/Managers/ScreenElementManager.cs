@@ -175,7 +175,7 @@ namespace Deimos
         {
             spriteBatch.Begin(
                 SpriteSortMode.Immediate,
-                BlendState.Opaque,
+                BlendState.AlphaBlend,
                 SamplerState.PointWrap,
                 DepthStencilState.DepthRead,
                 RasterizerState.CullNone

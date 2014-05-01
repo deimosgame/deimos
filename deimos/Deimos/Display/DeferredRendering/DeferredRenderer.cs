@@ -155,6 +155,7 @@ namespace Deimos
         private void ClearGBuffer()
         {
             ClearBufferEffect.Techniques[0].Passes[0].Apply();
+            GeneralFacade.Game.GraphicsDevice.BlendState = BlendState.Opaque;
             QuadRenderer.Render(Vector2.One * -1, Vector2.One);
         }
 

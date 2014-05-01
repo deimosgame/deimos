@@ -60,12 +60,12 @@ namespace Deimos
             Content.RootDirectory = "Content";
             GeneralFacade.TempContent.RootDirectory = "Content";
 
-            Renderer = new DeferredRenderer(this);
-            Components.Add(Renderer);
-
             DisplayFacade.ParticleManager = new Tranquillity.ParticleManager(this);
             DisplayFacade.ParticleManager.Visible = true;
             Components.Add(DisplayFacade.ParticleManager);
+
+            Renderer = new DeferredRenderer(this);
+            Components.Add(Renderer);
 
             GeneralFacade.Config = new Config();
             GameplayFacade.Constants = new Constants();

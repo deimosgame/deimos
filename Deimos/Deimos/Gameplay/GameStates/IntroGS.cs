@@ -19,7 +19,7 @@ namespace Deimos
 
         public override void PostUnset()
         {
-            //
+            DisplayFacade.ScreenElementManager.RemoveImage("Intro");
         }
     }
 }

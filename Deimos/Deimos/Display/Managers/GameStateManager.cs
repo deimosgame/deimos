@@ -10,6 +10,7 @@ namespace Deimos
         IntroStarting,
         Intro,
         StartMenu,
+        ServerListMenu,
         Pause,
         GraphicOptions,
         Spawning,

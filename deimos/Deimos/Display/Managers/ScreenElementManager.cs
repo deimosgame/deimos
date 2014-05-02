@@ -21,8 +21,13 @@ namespace Deimos
         private List<string> ElementsTextList = new List<string>();
         private Dictionary<string, ScreenLine> ElementsLine =
             new Dictionary<string, ScreenLine>();
+        private Dictionary<string, ScreenTable> ElementsTable =
+            new Dictionary<string, ScreenTable>();
 
-        private Texture2D DummyTexture;
+        public Texture2D DummyTexture;
+
+        private int CooldownMilliseconds = 500;
+        private int CooldownTimer = 0;
 
         // Constructor
         public ScreenElementManager()
@@ -136,8 +141,34 @@ namespace Deimos
             ElementsLine.Remove(name);
         }
 
-        public void HandleMouse()
+        public ScreenTable AddTable(string name, int posX, int posY, int zIndex, 
+            Color bgColor, Color borderHeaderColor, Color borderColor, Color headerFontColor,
+            Color fontColor, SpriteFont font, int columnSize, int padding,
+            List<string> headers, List<TableRow> content)
         {
+            ScreenTable element = new ScreenTable(posX, posY, zIndex, bgColor,
+                borderHeaderColor, borderColor, headerFontColor, fontColor, 
+                font, columnSize, padding, headers, content);
+
+            ElementsTable.Add(name, element);
+
+            return element;
+        }
+        public ScreenTable GetTable(string name)
+        {
+            return ElementsTable[name];
+        }
+        public void RemoveTable(string name)
+        {
+            ElementsTable.Remove(name);
+        }
+
+        public void HandleMouse(float dt)
+        {
+            if (CooldownTimer > 0)
+            {
+                CooldownTimer -= (int)(dt * 1000);
+            }
             MouseState mouseState = Mouse.GetState();
             Rectangle mouseRectangle = new Rectangle(mouseState.X, mouseState.Y, 1, 1);
             for (int i = 0; i < ElementsRectangleList.Count; i++)
@@ -146,8 +177,8 @@ namespace Deimos
                 Rectangle rectangle = new Rectangle(
                     (int)thisRectangle.Pos.X,
                     (int)thisRectangle.Pos.Y,
-                    thisRectangle.Height,
-                    thisRectangle.Width
+                    thisRectangle.Width,
+                    thisRectangle.Height
                 );
                 HandleEvent(thisRectangle, mouseRectangle, rectangle, mouseState);
             }
@@ -157,8 +188,8 @@ namespace Deimos
                 Rectangle rectangle = new Rectangle(
                     (int)thisRectangle.Pos.X,
                     (int)thisRectangle.Pos.Y,
-                    thisRectangle.Image.Height,
-                    thisRectangle.Image.Width
+                    thisRectangle.Image.Width,
+                    thisRectangle.Image.Height
                 );
                 HandleEvent(thisRectangle, mouseRectangle, rectangle, mouseState);
             }
@@ -174,10 +205,12 @@ namespace Deimos
                     el.LastState = ScreenElement.ElState.Hover;
                 }
                 if (mouseState.LeftButton == ButtonState.Pressed
-                    && el.LastState != ScreenElement.ElState.Click)
+                    && el.LastState != ScreenElement.ElState.Click
+                    && CooldownTimer <= 0)
                 {
                     el.OnClick(el, GeneralFacade.Game);
                     el.LastState = ScreenElement.ElState.Click;
+                    CooldownTimer = CooldownMilliseconds;
                 }
             }
             else
@@ -199,80 +232,30 @@ namespace Deimos
                 DepthStencilState.DepthRead,
                 RasterizerState.CullNone
             );
+            foreach (KeyValuePair<string, ScreenTable> elementKeyVal in
+                ElementsTable)
+            {
+                elementKeyVal.Value.Draw(spriteBatch);
+            }
             foreach (KeyValuePair<string, ScreenRectangle> elementKeyVal in
                 ElementsRectangle)
             {
-                ScreenRectangle element = elementKeyVal.Value;
-                if (!element.Show)
-                {
-                    continue;
-                }
-                spriteBatch.Draw(
-                    DummyTexture,
-                    new Rectangle((int)element.Pos.X, (int)element.Pos.Y, element.Height, element.Width), element.Color
-                );
+                elementKeyVal.Value.Draw(spriteBatch);
             }
             foreach (KeyValuePair<string, ScreenImage> elementKeyVal in
                 ElementsImage)
             {
-                ScreenImage element = elementKeyVal.Value;
-                if (!element.Show)
-                {
-                    continue;
-                }
-                spriteBatch.Draw(
-                    element.Image,
-                    element.Pos,
-                    null,
-                    Color.White,
-                    0,
-                    Vector2.Zero,
-                    new Vector2(element.ScaleX, element.ScaleY),
-                    SpriteEffects.None,
-                    0f
-                );
+                elementKeyVal.Value.Draw(spriteBatch);
             }
             foreach (KeyValuePair<string, ScreenText> elementKeyVal in
                 ElementsText)
             {
-                ScreenText element = elementKeyVal.Value;
-                if (!element.Show)
-                {
-                    continue;
-                }
-                spriteBatch.DrawString(
-                    element.Font,
-                    element.Text,
-                    element.Pos,
-                    element.Color
-                );
+                elementKeyVal.Value.Draw(spriteBatch);
             }
             foreach (KeyValuePair<string, ScreenLine> elementKeyVal in 
                 ElementsLine)
             {
-                ScreenLine element = elementKeyVal.Value;
-                if (!element.Show)
-                {
-                    continue;
-                }
-                Vector2 edge = element.End - element.Start;
-                // calculate angle to rotate line
-                float angle =
-                    (float)Math.Atan2(edge.Y, edge.X);
-
-
-                spriteBatch.Draw(DummyTexture,
-                    new Rectangle(// rectangle defines shape of line and position of start of line
-                        (int)element.Start.X,
-                        (int)element.Start.Y,
-                        (int)edge.Length(), //sb will strech the texture to fill this rectangle
-                        1), //width of line, change this to make thicker line
-                    null,
-                    element.Color, //colour of line
-                    angle,     //angle of line (calulated above)
-                    new Vector2(0, 0), // point in line about which to rotate
-                    SpriteEffects.None,
-                    0);
+                elementKeyVal.Value.Draw(spriteBatch);
             }
 
             spriteBatch.End();

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace Deimos
             set;
         }
 
-        public bool Show
+        public bool Visible
         {
             get;
             set;
@@ -76,10 +77,12 @@ namespace Deimos
 
         protected ScreenElement()
         {
-            Show = true; // Default value
+            Visible = true; // Default value
             OnHover = delegate(ScreenElement el, DeimosGame g) { };
             OnOut = delegate(ScreenElement el, DeimosGame g) { };
             OnClick = delegate(ScreenElement el, DeimosGame g) { };
         }
+
+        public abstract void Draw(SpriteBatch spriteBatch);
     }
 }

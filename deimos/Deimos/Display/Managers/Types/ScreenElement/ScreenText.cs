@@ -34,5 +34,19 @@ namespace Deimos
             Text = text;
             Color = color;
         }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            if (!Visible)
+            {
+                return;
+            }
+            spriteBatch.DrawString(
+                Font,
+                Text,
+                Pos,
+                Color
+            );
+        }
     }
 }

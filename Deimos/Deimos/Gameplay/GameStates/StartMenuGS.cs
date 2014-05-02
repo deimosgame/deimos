@@ -19,20 +19,14 @@ namespace Deimos
             //On veut afficher la souris
             GeneralFacade.Game.IsMouseVisible = true;
 
-            // On veut qu'elle soit handle par les screen elements (pour qu'on puisse cliquer)
-            DisplayFacade.ScreenElementManager.HandleMouse();
-
-            // On retire la derniere image de l'intro
-            DisplayFacade.ScreenElementManager.RemoveImage("Intro");
-
             // On affiche les éléments du menu
             DisplayFacade.ScreenElementManager.AddRectangle(
                 "StartScreenMenuPlay",
                 50,
                 200,
                 1,
-                30,
                 200,
+                30,
                 Color.Red,
                 delegate(ScreenElement el, DeimosGame game)
                 {
@@ -52,12 +46,25 @@ namespace Deimos
                 }
             );
             DisplayFacade.ScreenElementManager.AddRectangle(
-                "StartScreenMenuExit",
+                "StartScreenMenuServerList",
                 50,
                 250,
                 1,
-                30,
                 200,
+                30,
+                Color.Blue,
+                delegate(ScreenElement el, DeimosGame game)
+                {
+                    GeneralFacade.GameStateManager.Set(new ServerListMenuGS());
+                }
+            );
+            DisplayFacade.ScreenElementManager.AddRectangle(
+                "StartScreenMenuExit",
+                50,
+                300,
+                1,
+                200,
+                30,
                 Color.Green,
                 delegate(ScreenElement el, DeimosGame game)
                 {
@@ -65,13 +72,12 @@ namespace Deimos
                 }
             );
             //DisplayFacade.ScreenElementManager.AddImage("applelogo", 500, 500, 1, 1, GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/apple"));
-
-
         }
 
         public override void PostUnset()
         {
             DisplayFacade.ScreenElementManager.RemoveRectangle("StartScreenMenuPlay");
+            DisplayFacade.ScreenElementManager.RemoveRectangle("StartScreenMenuServerList");
             DisplayFacade.ScreenElementManager.RemoveRectangle("StartScreenMenuExit");
         }
     }

@@ -141,6 +141,8 @@
     <Compile Include="Display\Managers\Types\GameStates\GameStateObj.cs" />
     <Compile Include="Display\Managers\Types\Models\AnimatedModel.cs" />
     <Compile Include="Display\Managers\Types\ScreenElement\ScreenLine.cs" />
+    <Compile Include="Display\Managers\Types\ScreenElement\ScreenTable.cs" />
+    <Compile Include="Display\Managers\Types\ScreenElement\TableRow.cs" />
     <Compile Include="Display\ParticleEmitters\SmokeParticleEmitter.cs" />
     <Compile Include="Gameplay\GameStates\GraphicOptionsGS.cs" />
     <Compile Include="Gameplay\GameStates\IntroGS.cs" />
@@ -148,6 +150,7 @@
     <Compile Include="Gameplay\GameStates\LoadingLevelGS.cs" />
     <Compile Include="Gameplay\GameStates\PauseGS.cs" />
     <Compile Include="Gameplay\GameStates\PlayingGS.cs" />
+    <Compile Include="Gameplay\GameStates\ServerListMenuGS.cs" />
     <Compile Include="Gameplay\GameStates\SpawningGS.cs" />
     <Compile Include="Gameplay\GameStates\StartMenuGS.cs" />
     <Compile Include="Gameplay\Objects\Managers\ObjectManager.cs" />

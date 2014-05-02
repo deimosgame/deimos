@@ -22,5 +22,24 @@ namespace Deimos
             ZIndex = zIndex;
             Image = image;
         }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            if (!Visible)
+            {
+                return;
+            }
+            spriteBatch.Draw(
+                Image,
+                Pos,
+                null,
+                Color.White,
+                0,
+                Vector2.Zero,
+                new Vector2(ScaleX, ScaleY),
+                SpriteEffects.None,
+                0f
+            );
+        }
     }
 }

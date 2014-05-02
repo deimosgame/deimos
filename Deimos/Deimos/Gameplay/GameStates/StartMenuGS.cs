@@ -36,8 +36,9 @@ namespace Deimos
                 Color.Red,
                 delegate(ScreenElement el, DeimosGame game)
                 {
-                    GeneralFacade.GameStateManager.Set<SpawningGS>();
-                    GeneralFacade.GameStateManager.Set<PlayingGS>();
+                    GeneralFacade.GameStateManager.Set(new LoadingLevelGS<SceneCompound>());
+                    GeneralFacade.GameStateManager.Set(new SpawningGS());
+                    GeneralFacade.GameStateManager.Set(new PlayingGS());
                 },
                 delegate(ScreenElement el, DeimosGame game)
                 {
@@ -72,7 +73,6 @@ namespace Deimos
         {
             DisplayFacade.ScreenElementManager.RemoveRectangle("StartScreenMenuPlay");
             DisplayFacade.ScreenElementManager.RemoveRectangle("StartScreenMenuExit");
-            DisplayFacade.ScreenElementManager.RemoveImage("applelogo");
         }
     }
 }

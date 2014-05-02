@@ -10,7 +10,7 @@ namespace Deimos
 {
     class DebugScreen
     {
-        SpriteFont Font;
+        public SpriteFont Font;
 
         int FrameRate, FrameCounter, UpdateRate, UpdateCounter;
         TimeSpan ElapsedTime = TimeSpan.Zero;

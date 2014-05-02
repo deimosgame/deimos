@@ -31,15 +31,15 @@ namespace Deimos
             CurrentGameState = GameStates.IntroStarting;
         }
 
-        public void Set<T>()
+        public void Set(GameStateObj gs)
         {
             if (CurrentGameStateObj != null)
             {
                 CurrentGameStateObj.PostUnset();
             }
 
-            CurrentGameStateObj = (GameStateObj)Activator.CreateInstance(typeof(T), new object[] {  });
-            CurrentGameState = CurrentGameStateObj.GameState;
+            CurrentGameStateObj = gs;
+            CurrentGameState = gs.GameState;
 
             CurrentGameStateObj.PreSet();
         }

@@ -28,7 +28,7 @@ namespace Deimos
                 Color.Red,
                 delegate(ScreenElement el, DeimosGame game)
                 {
-                    GeneralFacade.GameStateManager.Set<PlayingGS>();
+                    GeneralFacade.GameStateManager.Set(new PlayingGS());
                 }
             );
             DisplayFacade.ScreenElementManager.AddRectangle(

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Deimos
 {
-    class Intro : GameStateObj
+    class IntroGS : GameStateObj
     {
         public override GameStates GameState
         {

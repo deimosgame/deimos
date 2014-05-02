@@ -29,9 +29,6 @@ namespace Deimos
             GameplayFacade.ThisPlayerDisplay = new Display();
 
 
-            GeneralFacade.SceneManager.SetScene<SceneCompound>();
-
-
             GameplayFacade.ThisPlayer.Inventory = new WeaponManager();
             GameplayFacade.ThisPlayer.InitializeInventory(GameplayFacade.ThisPlayer.Class);
             GameplayFacade.ThisPlayer.PlayerSpawn(new Vector3(-60f, 20f, -8f), Vector3.Zero);

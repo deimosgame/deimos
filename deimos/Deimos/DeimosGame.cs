@@ -97,7 +97,7 @@ namespace Deimos
             DisplayFacade.SpriteBatch = new SpriteBatch(GraphicsDevice);
 
             GeneralFacade.GameStateManager = new GameStateManager();
-            GeneralFacade.GameStateManager.Set<IntroStartingGS>();
+            GeneralFacade.GameStateManager.Set(new IntroStartingGS());
 
             DisplayFacade.ScreenElementManager = new ScreenElementManager();
 
@@ -128,13 +128,13 @@ namespace Deimos
             if (Keyboard.GetState().IsKeyDown(Keys.Escape)
                 && GeneralFacade.GameStateManager.CurrentGameState == GameStates.Playing)
             {
-                GeneralFacade.GameStateManager.Set<PauseGS>();
+                GeneralFacade.GameStateManager.Set(new PauseGS());
             }
 
             switch (GeneralFacade.GameStateManager.CurrentGameState)
             {
                 case GameStates.IntroStarting:
-                    GeneralFacade.GameStateManager.Set<Intro>();
+                    GeneralFacade.GameStateManager.Set(new IntroGS());
                     break;
 
                 case GameStates.Intro:
@@ -217,34 +217,12 @@ namespace Deimos
                 else
                 {
                     VideoPlayer.Dispose();
-                    GeneralFacade.GameStateManager.Set<StartMenuGS>();
+                    GeneralFacade.GameStateManager.Set(new StartMenuGS());
                 }
             }
 
             DisplayFacade.DebugScreen.Draw(gameTime);
             DisplayFacade.ScreenElementManager.DrawElements(DisplayFacade.SpriteBatch);
-        }
-
-        private void InitGameplay()
-        {
-            GameplayFacade.Weapons = new WeaponsList();
-            GameplayFacade.BulletManager = new BulletManager();
-            GameplayFacade.Objects = new ObjectsList();
-
-            GameplayFacade.Weapons.Initialise();
-            GameplayFacade.Objects.Initialize();
-
-            GameplayFacade.ThisPlayer = new LocalPlayer();
-            GameplayFacade.ThisPlayerPhysics = new Physics();
-            GameplayFacade.ThisPlayerDisplay = new Display();
-
-            
-            GeneralFacade.SceneManager.SetScene<SceneCompound>();
-
-
-            GameplayFacade.ThisPlayer.Inventory = new WeaponManager();
-            GameplayFacade.ThisPlayer.InitializeInventory(GameplayFacade.ThisPlayer.Class);
-            GameplayFacade.ThisPlayer.PlayerSpawn(new Vector3(-60f, 20f, -8f), Vector3.Zero);
         }
 
         private void TestBindings(GameTime gameTime)

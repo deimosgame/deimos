@@ -6,7 +6,7 @@ namespace Deimos
     static class Program
     {
         public static string PlayerEmail = "test@mail.com";
-        public static string PlayerToken = "aklsjhuyerkajnslqwe";
+        public static string PlayerToken = "23601116db467d50c6d8722dffb378b9";
 
         /// <summary>
         /// The main entry point for the application.
@@ -22,7 +22,7 @@ namespace Deimos
             {
                 // This is because it hasn't been executed with enough parameters
                 // Exiting
-                return;
+                //return;
             }
 
             using (DeimosGame game = new DeimosGame())

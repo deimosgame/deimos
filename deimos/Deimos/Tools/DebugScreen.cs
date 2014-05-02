@@ -298,6 +298,15 @@ namespace Deimos
                 "Collision: ",
                 Color.White
             );
+            DisplayFacade.ScreenElementManager.AddText(
+                "MultiUser",
+                0,
+                (int)MapHeight + 530,
+                0,
+                Font,
+                "User: " + Program.PlayerEmail + " " + Program.PlayerToken,
+                Color.White
+            );
 
         }
 
@@ -334,6 +343,7 @@ namespace Deimos
             DisplayFacade.ScreenElementManager.GetText("WeaponState").Show = true;
             DisplayFacade.ScreenElementManager.GetText("NumberParticles").Show = true;
             DisplayFacade.ScreenElementManager.GetText("CollisionState").Show = true;
+            DisplayFacade.ScreenElementManager.GetText("MultiUser").Show = true;
         }
         private void Hide()
         {
@@ -368,6 +378,7 @@ namespace Deimos
             DisplayFacade.ScreenElementManager.GetText("WeaponState").Show = false;
             DisplayFacade.ScreenElementManager.GetText("NumberParticles").Show = false;
             DisplayFacade.ScreenElementManager.GetText("CollisionState").Show = false;
+            DisplayFacade.ScreenElementManager.GetText("MultiUser").Show = false;
         }
 
         public void Debug(string text)

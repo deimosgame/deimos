@@ -144,6 +144,7 @@
     <Compile Include="Display\Managers\Types\ScreenElement\ScreenTable.cs" />
     <Compile Include="Display\Managers\Types\ScreenElement\TableRow.cs" />
     <Compile Include="Display\ParticleEmitters\SmokeParticleEmitter.cs" />
+    <Compile Include="Facades\NetworkFacade.cs" />
     <Compile Include="Gameplay\GameStates\GraphicOptionsGS.cs" />
     <Compile Include="Gameplay\GameStates\IntroGS.cs" />
     <Compile Include="Gameplay\GameStates\IntroStartingGS.cs" />
@@ -198,6 +199,19 @@
     <Compile Include="Gameplay\Scenes\Template\SceneTemplate.cs" />
     <Compile Include="Gameplay\Weapons\Weapon.cs" />
     <Compile Include="Gameplay\Weapons\WeaponsList.cs" />
+    <Compile Include="Network\Handlers\DataHandler.cs" />
+    <Compile Include="Network\Handlers\MainHandler.cs" />
+    <Compile Include="Network\Handlers\NetworkHandler.cs" />
+    <Compile Include="Network\Handlers\Subhandlers\Broadcast.cs" />
+    <Compile Include="Network\Handlers\Subhandlers\Chat.cs" />
+    <Compile Include="Network\Handlers\Subhandlers\Connection.cs" />
+    <Compile Include="Network\Handlers\Subhandlers\Disconnection.cs" />
+    <Compile Include="Network\Handlers\Subhandlers\Handshake.cs" />
+    <Compile Include="Network\Handlers\Subhandlers\Move.cs" />
+    <Compile Include="Network\Handlers\Subhandlers\PlayerList.cs" />
+    <Compile Include="Network\Types\Data.cs" />
+    <Compile Include="Network\Types\Packet.cs" />
+    <Compile Include="Network\Types\Subhandler.cs" />
     <Compile Include="Sounds\SongObject.cs" />
     <Compile Include="Sounds\SoundEffectObject.cs" />
     <Compile Include="Sounds\SoundManager.cs" />

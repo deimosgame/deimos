@@ -15,8 +15,8 @@ namespace Deimos
                 0,
                 0,
                 1,
-                GeneralFacade.Game.GraphicsDevice.Viewport.Width,
                 GeneralFacade.Game.GraphicsDevice.Viewport.Height,
+                GeneralFacade.Game.GraphicsDevice.Viewport.Width,
                 Color.Black
             );
             DisplayFacade.ScreenElementManager.AddText(

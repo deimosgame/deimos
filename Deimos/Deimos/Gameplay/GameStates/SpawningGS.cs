@@ -31,7 +31,7 @@ namespace Deimos
 
 
             NetworkFacade.World.Start();
-            //NetworkFacade.MovePacket.Start();
+            NetworkFacade.MovePacket.Start();
         }
 
         public override void PostUnset()

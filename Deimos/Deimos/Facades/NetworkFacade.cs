@@ -60,12 +60,14 @@ namespace Deimos.Facades
         {
             while (true)
             {
-                if (NetworkFacade.Receiving.Count != 0
-                    && (byte[])NetworkFacade.Receiving.Peek() != null)
+                if (NetworkFacade.Receiving.Count != 0)
                 {
-                    NetworkFacade.MainHandling.Distribute(
-                        (byte[])NetworkFacade.Receiving.Dequeue()
-                    );
+                    byte[] b = (byte[])Receiving.Dequeue();
+
+                    if (b != null)
+                    {
+                        MainHandling.Distribute(b);
+                    }
                 }
 
                 NetworkFacade.MainHandling.Process();

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using Microsoft.Xna.Framework;
 
 namespace Deimos.Facades
 {
@@ -29,6 +30,7 @@ namespace Deimos.Facades
         static public Thread Incoming = new Thread(new ThreadStart(HandleReceive));
         static public Thread Interpret = new Thread(new ThreadStart(Process));
         static public Thread World = new Thread(new ThreadStart(UpdateWorld));
+        static public Thread MovePacket = new Thread(new ThreadStart(SendMovePacket));
 
         static void HandleSend()
         {
@@ -78,6 +80,23 @@ namespace Deimos.Facades
             while (true)
             {
                 NetworkFacade.DataHandling.Process();
+            }
+        }
+
+        static void SendMovePacket()
+        {
+            Vector3 OldPos = Vector3.Zero;
+
+            while (true)
+            {
+                if (OldPos != GameplayFacade.ThisPlayer.Position)
+                {
+                    Sending.Enqueue(MainHandling.Moves.Create());
+                }
+
+                OldPos = GameplayFacade.ThisPlayer.Position;
+
+                Thread.Sleep(1000);
             }
         }
     }

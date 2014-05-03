@@ -33,7 +33,7 @@ namespace Deimos
             {
                 NetworkFacade.DataHandling.Handle(datapack);
 
-                int i = datapack.end_index + 2;
+                int i = datapack.end_index + 1;
 
                 while (i < p.Encoded_buffer.Length && p.Encoded_buffer[i] != 0x00)
                 {
@@ -41,7 +41,7 @@ namespace Deimos
                     if (new_data != null)
                     {
                         NetworkFacade.DataHandling.Handle(new_data);
-                        i = new_data.end_index + 2;
+                        i = new_data.end_index + 1;
                     }
                 }
 

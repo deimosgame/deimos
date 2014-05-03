@@ -14,6 +14,7 @@ namespace Deimos
         public Socket socket;
 
         public IPAddress server_address;
+        public IPAddress local_address;
 
         public int server_port;
 
@@ -34,12 +35,13 @@ namespace Deimos
             socket = new Socket(AddressFamily.InterNetwork,
                 SocketType.Dgram, ProtocolType.Udp);
 
-            server_address = IPAddress.Parse("127.0.0.1");
+            server_address = IPAddress.Parse("192.168.0.206");
+            local_address = IPAddress.Parse("192.168.137.156");
 
             server_port = 1518;
 
             server_endpoint = new IPEndPoint(server_address, server_port);
-            ip_endpoint = new IPEndPoint(server_address, 8461);
+            ip_endpoint = new IPEndPoint(local_address, 8461);
             end_point = (EndPoint)ip_endpoint;
 
             // Binding the port

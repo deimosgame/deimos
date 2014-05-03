@@ -50,8 +50,6 @@ namespace Deimos
                     Interpret(p.Next);
                 }
             }
-
-            ConfirmReceipt(p.Unique_ID);
         }
 
         // This method processes all ongoing packet information

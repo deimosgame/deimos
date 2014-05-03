@@ -72,6 +72,27 @@ namespace Deimos
             //    0.4f
             //    );
 
+
+            if (NetworkFacade.IsMultiplayer)
+            {
+                // Loading player models
+
+                foreach (KeyValuePair<byte, Player> p in NetworkFacade.Players)
+                {
+                    ModelManager.LoadModel(
+                        p.Value.Name,
+                        p.Value.GetModelName(),
+                        p.Value.Position,
+                        p.Value.Rotation,
+                        5,
+                        LevelModel.CollisionType.None
+                        );
+
+                    ModelManager.GetLevelModel(p.Value.Name).show = false;
+                }
+
+            }
+
             SoundManager.AddSoundEffect("scary", "Sounds/ScaryMusic");
         }
 
@@ -143,24 +164,6 @@ namespace Deimos
                 Color.White
                 );
 
-            if (NetworkFacade.IsMultiplayer)
-            {
-                // Loading player models
-
-                foreach (KeyValuePair<byte, Player> p in NetworkFacade.Players)
-                {
-                    ModelManager.LoadModel(
-                        p.Value.Name,
-                        p.Value.GetModelName(),
-                        p.Value.Position,
-                        p.Value.Rotation,
-                        5,
-                        LevelModel.CollisionType.None
-                        );
-                }
-
-            }
-
 
             SoundManager.Play3D("scary", DisplayFacade.Camera.Position, 
                 new Vector3(0, 0, -0));
@@ -177,6 +180,8 @@ namespace Deimos
                 {
                     if (ModelManager.LevelModelExists(p.Value.Name))
                     {
+                        ModelManager.GetLevelModel(p.Value.Name).show = true;
+
                         ModelManager.GetLevelModel(p.Value.Name).Position =
                             p.Value.Position;
 

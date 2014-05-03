@@ -55,8 +55,16 @@ namespace Deimos
                 (Texture2D)GeneralFacade.Game.Renderer.SSAORT
             );
             DisplayFacade.ScreenElementManager.AddImage(
-                "SceneMap",
+                "BlurredMap",
                 (int)MapWidth * 4,
+                0,
+                coeff,
+                0,
+                (Texture2D)GeneralFacade.Game.Renderer.BlurredRT
+            );
+            DisplayFacade.ScreenElementManager.AddImage(
+                "SceneMap",
+                (int)MapWidth * 5,
                 0,
                 coeff,
                 0,
@@ -324,6 +332,7 @@ namespace Deimos
             DisplayFacade.ScreenElementManager.GetImage("DepthMap").Visible = true;
             DisplayFacade.ScreenElementManager.GetImage("LightMap").Visible = true;
             DisplayFacade.ScreenElementManager.GetImage("SSAOMap").Visible = true;
+            DisplayFacade.ScreenElementManager.GetImage("BlurredMap").Visible = true;
             DisplayFacade.ScreenElementManager.GetImage("SceneMap").Visible = true;
             DisplayFacade.ScreenElementManager.GetText("Location").Visible = true;
             DisplayFacade.ScreenElementManager.GetText("FPS").Visible = true;
@@ -360,6 +369,7 @@ namespace Deimos
             DisplayFacade.ScreenElementManager.GetImage("DepthMap").Visible = false;
             DisplayFacade.ScreenElementManager.GetImage("LightMap").Visible = false;
             DisplayFacade.ScreenElementManager.GetImage("SSAOMap").Visible = false;
+            DisplayFacade.ScreenElementManager.GetImage("BlurredMap").Visible = false;
             DisplayFacade.ScreenElementManager.GetImage("SceneMap").Visible = false;
             DisplayFacade.ScreenElementManager.GetText("Location").Visible = false;
             DisplayFacade.ScreenElementManager.GetText("FPS").Visible = false;

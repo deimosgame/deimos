@@ -109,8 +109,6 @@ namespace Deimos
                 NetworkFacade.Outgoing.Start();
                 NetworkFacade.Incoming.Start();
                 NetworkFacade.Interpret.Start();
-                NetworkFacade.World.Start();
-                NetworkFacade.MovePacket.Start();
             }
 
             base.Initialize();

@@ -91,7 +91,9 @@ namespace Deimos.Facades
             {
                 if (OldPos != GameplayFacade.ThisPlayer.Position)
                 {
-                    Sending.Enqueue(MainHandling.Moves.Create());
+                    MainHandling.Moves.Send(
+                        MainHandling.Moves.Create()
+                        );
                 }
 
                 OldPos = GameplayFacade.ThisPlayer.Position;

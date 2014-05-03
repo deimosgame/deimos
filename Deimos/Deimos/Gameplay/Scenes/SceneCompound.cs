@@ -47,6 +47,28 @@ namespace Deimos
                  0.2f
             );
 
+            ModelManager.LoadModel(
+                "vanquish",
+                "Models/Characters/Vanquish/vanquish",
+                new Vector3(-45, -5, 24),
+                Vector3.Zero,
+                5
+                );
+            ModelManager.LoadModel(
+                "glados",
+                "Models/Characters/glados/1",
+                new Vector3(-45, -5, 40),
+                Vector3.Zero,
+                0.075f    
+                );
+            ModelManager.LoadModel(
+                "corvo",
+                "Models/Characters/corvo/corv",
+                new Vector3(-25, -5, 40),
+                Vector3.Zero,
+                0.4f
+                );
+
             SoundManager.AddSoundEffect("scary", "Sounds/ScaryMusic");
         }
 

@@ -62,9 +62,9 @@ namespace Deimos.Facades
                     );
                 }
 
-                NetworkFacade.MainHandling.Process();
-
                 Thread.Sleep(5);
+
+                NetworkFacade.MainHandling.Process();
             }
         }
 

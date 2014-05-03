@@ -69,39 +69,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Characters\Alexandra\Ana_dif.png">
-      <Name>Ana_dif</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Models\Characters\Ana_Model.fbx">
-      <Name>Ana_Model</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>CollidableModelProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Models\Characters\Alexandra\Ana_cspec.png">
-      <Name>Ana_cspec</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Models\Characters\Alexandra\Ana_norm.png">
-      <Name>Ana_norm</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Models\Map\coucou.fbx">
       <Name>coucou</Name>
       <Importer>FbxImporter</Importer>
@@ -1258,6 +1225,176 @@
   <ItemGroup>
     <Compile Include="Models\Map\Compound\DeimosCompound.fbx">
       <Name>DeimosCompound</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CollidableModelProcessor</Processor>
+      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Characters\Vanquish\dirtyinnersuit_d.tga">
+      <Name>dirtyinnersuit_d</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\Vanquish\dirtyoutersuitlower_d.tga">
+      <Name>dirtyoutersuitlower_d</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\Vanquish\dirtyoutersuitlower_n.tga">
+      <Name>dirtyoutersuitlower_n</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\Vanquish\dirtyoutersuitupper_d.tga">
+      <Name>dirtyoutersuitupper_d</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\Vanquish\dirtyoutersuitupper_n.tga">
+      <Name>dirtyoutersuitupper_n</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\Vanquish\dirt_null.tga">
+      <Name>dirt_null</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\Vanquish\Innersuit_d.tga">
+      <Name>Innersuit_d</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\Vanquish\Innersuit_n.tga">
+      <Name>Innersuit_n</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\Vanquish\norm_null.tga">
+      <Name>norm_null</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\Vanquish\Outersuitlower_d.tga">
+      <Name>Outersuitlower_d</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\Vanquish\Outersuitlower_n.tga">
+      <Name>Outersuitlower_n</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\Vanquish\Outersuitupper_d.tga">
+      <Name>Outersuitupper_d</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\Vanquish\Outersuitupper_n.tga">
+      <Name>Outersuitupper_n</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\Vanquish\vanquish.fbx">
+      <Name>vanquish</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CollidableModelProcessor</Processor>
+      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Characters\Vanquish\Visor.tga">
+      <Name>Visor</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Characters\glados\135b7478.tga">
+      <Name>135b7478</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\glados\421249f9.tga">
+      <Name>421249f9</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\glados\72c40a8a.tga">
+      <Name>72c40a8a</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\glados\alicew_eye_dm.tga">
+      <Name>alicew_eye_dm</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\glados\caf160b2.tga">
+      <Name>caf160b2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\glados\flat2.tga">
+      <Name>flat2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Characters\glados\1.FBX">
+      <Name>1</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CollidableModelProcessor</Processor>
+      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Characters\corvo\Corvo_Body_d.tga">
+      <Name>Corvo_Body_d</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\corvo\Corvo_Body_n.tga">
+      <Name>Corvo_Body_n</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\corvo\Corvo_Body_s.tga">
+      <Name>Corvo_Body_s</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\corvo\Corvo_Hair_d.tga">
+      <Name>Corvo_Hair_d</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\corvo\Corvo_Hair_n.tga">
+      <Name>Corvo_Hair_n</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\corvo\Corvo_Head_d.tga">
+      <Name>Corvo_Head_d</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\corvo\Corvo_Head_n.tga">
+      <Name>Corvo_Head_n</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\corvo\Corvo_Head_s.tga">
+      <Name>Corvo_Head_s</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Characters\corvo\corv.fbx">
+      <Name>corv</Name>
       <Importer>FbxImporter</Importer>
       <Processor>CollidableModelProcessor</Processor>
       <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>

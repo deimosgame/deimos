@@ -62,6 +62,7 @@ namespace Deimos
                  Vector3.Zero,
                  0.75f
             );
+
             SoundManager.AddSoundEffect("scary", "Sounds/ScaryMusic");
             SceneManager.CollisionManager.AddCollisionBox(
                 new Vector3(-1000, -80, -1000),

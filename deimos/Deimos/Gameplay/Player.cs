@@ -10,6 +10,8 @@ namespace Deimos
     {
         public string Name;
 
+        public string Model;
+
         public string Instance;
 
         public Vector3 Position;

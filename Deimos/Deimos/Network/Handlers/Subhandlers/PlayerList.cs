@@ -12,12 +12,12 @@ namespace Deimos
 
         public void Interpret(byte[] buf)
         {
-            N_Players = buf[4];
+            NetworkFacade.Players.Clear();
 
             int n = 0;
             int i = 5;
 
-            while (n < N_Players)
+            while (buf[i+1] != 0x00)
             {
                 byte uid = buf[i];
                 string name = ExtractString(buf, i + 1);
@@ -29,6 +29,8 @@ namespace Deimos
 
                 NetworkFacade.Players.Add(uid, playa);
             }
+
+            N_Players = (uint)n;
         }
     }
 }

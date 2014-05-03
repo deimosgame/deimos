@@ -27,12 +27,14 @@ namespace Deimos
         public RenderTarget2D LightRT; //lighting
         public RenderTarget2D SSAORT; //lighting
         public RenderTarget2D SceneRT; //scene
+        public RenderTarget2D BlurredRT; //blurredscene
 
         private Effect ClearBufferEffect;
         private Effect DirectionalLightEffect;
         private Effect PointLightEffect;
         private Effect SpotLightEffect;
         private Effect SSAOEffect;
+        private Effect BlurEffect;
         private Effect FinalCombineEffect;
 
         private Model SphereModel; //point ligt volume
@@ -121,6 +123,14 @@ namespace Deimos
                 SurfaceFormat.Color,
                 DepthFormat.None
             );
+            BlurredRT = new RenderTarget2D(
+                GraphicsDevice,
+                backbufferWidth,
+                backbufferHeight,
+                false,
+                SurfaceFormat.Color,
+                DepthFormat.None
+            );
 
 
             ClearBufferEffect = Game.Content.Load<Effect>(
@@ -140,6 +150,9 @@ namespace Deimos
             );
             SSAOEffect = Game.Content.Load<Effect>(
                 @"Shaders\SSAO\Simple"
+            );
+            BlurEffect = Game.Content.Load<Effect>(
+                @"Shaders\MISC\Blur"
             );
             SphereModel = Game.Content.Load<Model>(
                 @"Models\DeferredRendering\sphere"
@@ -374,6 +387,19 @@ namespace Deimos
             GraphicsDevice.SetRenderTarget(null);
         }
 
+        private void DrawBlurred()
+        {
+            GraphicsDevice.SetRenderTarget(BlurredRT);
+
+            BlurEffect.Parameters["SceneTexture"].SetValue(SceneRT);
+            BlurEffect.Parameters["halfPixel"].SetValue(HalfPixel);
+            BlurEffect.CurrentTechnique.Passes[0].Apply();
+
+            QuadRenderer.Render(Vector2.One * -1, Vector2.One, true);
+
+            GraphicsDevice.SetRenderTarget(null);
+        }
+
         private void DrawLights(GameTime gameTime)
         {
             GraphicsDevice.SetRenderTarget(LightRT);
@@ -445,6 +471,7 @@ namespace Deimos
             ResolveGBuffer();
             DrawLights(gameTime);
             DrawSSAO();
+            DrawBlurred();
 
             // Draw the final image
             GraphicsDevice.SetRenderTarget(null);

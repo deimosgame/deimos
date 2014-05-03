@@ -95,10 +95,6 @@ namespace Deimos
         // Initialize our lights and such
         public override void Initialize()
         {
-            if (NetworkFacade.IsMultiplayer)
-            {
-                NetworkFacade.MainHandling.PlayerInfoUpdate.Update();
-            }
 
             LightManager.AddPointLight(
                "Main",

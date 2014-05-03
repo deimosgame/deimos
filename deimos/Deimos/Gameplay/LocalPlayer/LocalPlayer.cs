@@ -118,6 +118,8 @@ namespace Deimos
             CooldownTimer = SprintCooldown;
 
             SetStats();
+
+            NetworkFacade.MainHandling.PlayerInfoUpdate.Update();
         }
 
         public void PlayerRespawn(Vector3 respawnlocation, Vector3 angle, string instance)
@@ -135,6 +137,8 @@ namespace Deimos
                 CooldownTimer = SprintCooldown;
 
                 SetStats();
+
+                NetworkFacade.MainHandling.PlayerInfoUpdate.Update();
             }
         }
 

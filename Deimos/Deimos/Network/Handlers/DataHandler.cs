@@ -28,7 +28,8 @@ namespace Deimos
 
         public void InterpretPlayer(Data data)
         {
-            if (NetworkFacade.Players.ContainsKey(data.PropertyOf))
+            if (data.PropertyOf != null
+                && NetworkFacade.Players.ContainsKey(data.PropertyOf))
             {
                 switch (data.Data_Type)
                 {
@@ -75,28 +76,24 @@ namespace Deimos
 
         public void Process()
         {
-                // Making copies of the two lists to avoid thread mixup
-            List<Data> PlayerCopy = PlayerData;
-            List<Data> EntityCopy = EntityData;
-
                 // Allocating remove list
             List<Data> ToBeRemoved = new List<Data>();
 
 
                 // We process all current player data and add to remove list
-            foreach (Data d in PlayerCopy)
+            for (int i = 0; i < PlayerData.Count; i++)
             {
-                InterpretPlayer(d);
-
-                ToBeRemoved.Add(d);
+                Data player = PlayerData.ElementAt(i);
+                InterpretPlayer(player);
+                ToBeRemoved.Add(player);
             }
 
-                // We process all current entity data and add to remove list
-            foreach (Data d in EntityCopy)
+            // We process all current entity data and add to remove list
+            for (int i = 0; i < EntityData.Count; i++)
             {
-                InterpretEntity(d);
-
-                ToBeRemoved.Add(d);
+                Data entity = EntityData.ElementAt(i);
+                InterpretEntity(entity);
+                ToBeRemoved.Add(entity);
             }
 
 

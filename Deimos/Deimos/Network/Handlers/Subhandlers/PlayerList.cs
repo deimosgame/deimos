@@ -10,8 +10,13 @@ namespace Deimos
     {
         public uint N_Players;
 
+        private Dictionary<byte, Player> OldPList =
+            new Dictionary<byte, Player>();
+
         public void Interpret(byte[] buf)
         {
+            OldPList = new Dictionary<byte, Player>(NetworkFacade.Players);
+
             NetworkFacade.Players.Clear();
 
             int n = 0;
@@ -34,6 +39,27 @@ namespace Deimos
             }
 
             N_Players = (uint)n;
+
+            HandleRenew();
+        }
+
+        public void HandleRenew()
+        {
+            List<Player> ToBeRemoved = new List<Player>();
+
+            foreach (KeyValuePair<byte, Player> p in OldPList)
+            {
+                if (!NetworkFacade.Players.ContainsKey(p.Key))
+                {
+                    ToBeRemoved.Add(p.Value);
+                }
+            }
+
+            foreach (Player p in ToBeRemoved)
+            {
+                GeneralFacade.SceneManager.ModelManager.RemoveLevelModel
+                    (p.Name);
+            }
         }
     }
 }

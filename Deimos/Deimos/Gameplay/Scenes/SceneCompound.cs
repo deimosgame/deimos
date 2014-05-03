@@ -178,7 +178,8 @@ namespace Deimos
             {
                 foreach (KeyValuePair<byte, Player> p in NetworkFacade.Players)
                 {
-                    if (ModelManager.LevelModelExists(p.Value.Name))
+                    if (ModelManager.LevelModelExists(p.Value.Name)
+                        && p.Value.IsAlive())
                     {
                         ModelManager.GetLevelModel(p.Value.Name).show = true;
 

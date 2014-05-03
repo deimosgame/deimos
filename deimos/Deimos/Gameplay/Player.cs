@@ -65,7 +65,7 @@ namespace Deimos
         public Weapon CurrentWeapon;
         public Weapon PreviousWeapon; // for quick-switch purposes
 
-        private int health;
+        private int health = 1;
         public int Health
         {
             get { return health; }

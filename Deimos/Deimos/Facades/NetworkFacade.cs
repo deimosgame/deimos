@@ -13,7 +13,7 @@ namespace Deimos.Facades
         static public bool IsMultiplayer = true;
         ////////         /////          //////
 
-        static public string Username = "Vomuseind";
+        static public string Username = "insert name here";
 
         static public MainHandler MainHandling = new MainHandler();
         static public DataHandler DataHandling = new DataHandler();

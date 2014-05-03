@@ -52,21 +52,24 @@ namespace Deimos
                 "Models/Characters/Vanquish/vanquish",
                 new Vector3(-45, -5, 24),
                 Vector3.Zero,
-                5
+                5,
+                LevelModel.CollisionType.None
                 );
             ModelManager.LoadModel(
                 "glados",
                 "Models/Characters/glados/1",
                 new Vector3(-45, -5, 40),
                 Vector3.Zero,
-                0.075f    
+                0.075f,
+                LevelModel.CollisionType.None 
                 );
             ModelManager.LoadModel(
                 "corvo",
                 "Models/Characters/corvo/corv",
                 new Vector3(-25, -5, 40),
                 Vector3.Zero,
-                0.4f
+                0.4f,
+                LevelModel.CollisionType.None
                 );
 
             SoundManager.AddSoundEffect("scary", "Sounds/ScaryMusic");

@@ -217,7 +217,7 @@ namespace Deimos
                     !GeneralFacade.SceneManager.PlayerCollision.CheckCollision(
                         GameplayFacade.ThisPlayer.Position + new Vector3(movement.X, 2, movement.Z)))
                 {
-                    movement.Y = GetNearFloorDistance(GameplayFacade.ThisPlayer.Position + new Vector3(movement.X, 2, movement.Z), 0.1f);
+                    //movement.Y = GetNearFloorDistance(GameplayFacade.ThisPlayer.Position + new Vector3(movement.X, 2, movement.Z), 0.1f);
                 }
                 // Creating the new movement vector, which will make us 
                 // able to have a smooth collision: being able to "slide" on 

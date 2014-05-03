@@ -10,8 +10,10 @@ namespace Deimos.Facades
     static class NetworkFacade
     {
         // FOR DEVELOPMENT PURPOSES ONLY //
-        static public bool IsMultiplayer = false;
+        static public bool IsMultiplayer = true;
         ////////         /////          //////
+
+        static public string Username = "Vomuseind";
 
         static public MainHandler MainHandling = new MainHandler();
         static public DataHandler DataHandling = new DataHandler();
@@ -32,14 +34,15 @@ namespace Deimos.Facades
         {
             while (true)
             {
-                if (NetworkFacade.Sending.Count != 0)
+                if (NetworkFacade.Sending.Count != 0
+                    && (Packet)NetworkFacade.Sending.Peek() != null)
                 {
                     NetworkFacade.NetworkHandling.Send(
                         (Packet)NetworkFacade.Sending.Dequeue()
                     );
                 }
 
-                Thread.Sleep(10);
+                Thread.Sleep(25);
             }
         }
 
@@ -55,16 +58,17 @@ namespace Deimos.Facades
         {
             while (true)
             {
-                if (NetworkFacade.Receiving.Count != 0)
+                if (NetworkFacade.Receiving.Count != 0
+                    && (byte[])NetworkFacade.Receiving.Peek() != null)
                 {
                     NetworkFacade.MainHandling.Distribute(
                         (byte[])NetworkFacade.Receiving.Dequeue()
                     );
                 }
 
-                Thread.Sleep(5);
-
                 NetworkFacade.MainHandling.Process();
+
+                Thread.Sleep(25);
             }
         }
 
@@ -73,7 +77,7 @@ namespace Deimos.Facades
         {
             while (true)
             {
-
+                NetworkFacade.DataHandling.Process();
             }
         }
     }

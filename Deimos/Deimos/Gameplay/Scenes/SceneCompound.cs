@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Deimos.Facades;
 
 namespace Deimos
 {
@@ -39,6 +40,8 @@ namespace Deimos
 
         public override void Load()
         {
+
+                // Loading the map
             ModelManager.LoadModel(
                  "ourMap",
                  "Models/Map/Compound/DeimosCompound", // Model
@@ -52,25 +55,64 @@ namespace Deimos
                 "Models/Characters/Vanquish/vanquish",
                 new Vector3(-45, -5, 24),
                 Vector3.Zero,
-                5,
-                LevelModel.CollisionType.None
+                5
                 );
             ModelManager.LoadModel(
                 "glados",
                 "Models/Characters/glados/1",
                 new Vector3(-45, -5, 40),
                 Vector3.Zero,
-                0.075f,
-                LevelModel.CollisionType.None 
+                0.075f
                 );
             ModelManager.LoadModel(
                 "corvo",
                 "Models/Characters/corvo/corv",
                 new Vector3(-25, -5, 40),
                 Vector3.Zero,
-                0.4f,
-                LevelModel.CollisionType.None
+                0.4f
                 );
+            //ModelManager.LoadModel(
+            //    "vanquish",
+            //    "Models/Characters/Vanquish/vanquish",
+            //    new Vector3(-45, -5, 24),
+            //    Vector3.Zero,
+            //    5
+            //    );
+            //ModelManager.LoadModel(
+            //    "glados",
+            //    "Models/Characters/glados/1",
+            //    new Vector3(-45, -5, 40),
+            //    Vector3.Zero,
+            //    0.075f    
+            //    );
+            //ModelManager.LoadModel(
+            //    "corvo",
+            //    "Models/Characters/corvo/corv",
+            //    new Vector3(-25, -5, 40),
+            //    Vector3.Zero,
+            //    0.4f
+            //    );
+
+
+            if (NetworkFacade.IsMultiplayer)
+            {
+                // Loading player models
+
+                foreach (KeyValuePair<byte, Player> p in NetworkFacade.Players)
+                {
+                    ModelManager.LoadModel(
+                        p.Value.Name,
+                        p.Value.GetModelName(),
+                        p.Value.Position,
+                        p.Value.Rotation,
+                        5,
+                        LevelModel.CollisionType.None
+                        );
+
+                    ModelManager.GetLevelModel(p.Value.Name).show = false;
+                }
+
+            }
 
             SoundManager.AddSoundEffect("scary", "Sounds/ScaryMusic");
         }
@@ -78,6 +120,7 @@ namespace Deimos
         // Initialize our lights and such
         public override void Initialize()
         {
+
             LightManager.AddPointLight(
                "Main",
                new Vector3(18, 10, 90), // Location
@@ -151,6 +194,24 @@ namespace Deimos
         public override void Update(float dt)
         {
             SoundManager.SetListener("scary", GameplayFacade.ThisPlayer.Position);
+
+            if (NetworkFacade.IsMultiplayer)
+            {
+                foreach (KeyValuePair<byte, Player> p in NetworkFacade.Players)
+                {
+                    if (ModelManager.LevelModelExists(p.Value.Name)
+                        && p.Value.IsAlive())
+                    {
+                        ModelManager.GetLevelModel(p.Value.Name).show = true;
+
+                        ModelManager.GetLevelModel(p.Value.Name).Position =
+                            p.Value.Position;
+
+                        ModelManager.GetLevelModel(p.Value.Name).Rotation =
+                            p.Value.Rotation;
+                    }
+                }
+            }
 
             Objects.Update(GameplayFacade.ThisPlayer.dt);
         }

@@ -212,6 +212,7 @@
     <Compile Include="Network\Handlers\Subhandlers\Handshake.cs" />
     <Compile Include="Network\Handlers\Subhandlers\Move.cs" />
     <Compile Include="Network\Handlers\Subhandlers\PlayerList.cs" />
+    <Compile Include="Network\Handlers\Subhandlers\UpdateInfo.cs" />
     <Compile Include="Network\Types\Data.cs" />
     <Compile Include="Network\Types\Packet.cs" />
     <Compile Include="Network\Types\Subhandler.cs" />

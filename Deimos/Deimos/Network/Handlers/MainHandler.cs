@@ -16,6 +16,7 @@ namespace Deimos
         public Broadcast Broadcasts = new Broadcast();
         public Move Moves = new Move();
         public PlayerList Players = new PlayerList();
+        public UpdateInfo PlayerInfoUpdate = new UpdateInfo();
 
         // METHODS
         public void Distribute(byte[] buf)

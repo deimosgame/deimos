@@ -159,6 +159,11 @@ namespace Deimos
                 ExtractPrefix(buf, init))
                 );
 
+            if (data.ID_Type == Data.Nature.Corrupt)
+            {
+                return null;
+            }
+
             data.PropertyOf = buf[init + 1];
 
             data.Data_Type = IdentifyDataTypeFromPrefix(

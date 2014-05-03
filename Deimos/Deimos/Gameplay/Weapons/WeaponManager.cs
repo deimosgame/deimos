@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Deimos.Facades;
 using Microsoft.Xna.Framework;
 
 namespace Deimos
@@ -160,6 +161,12 @@ namespace Deimos
             {
                 GameplayFacade.ThisPlayer.CurrentWeapon = PlayerInventory[name];
                 c_weapon = Array.IndexOf(Order, GameplayFacade.Weapons.GetRep(name));
+
+                if (NetworkFacade.IsMultiplayer)
+                {
+                    GameplayFacade.ThisPlayer.WeaponModel = ToByte(name);
+                    NetworkFacade.MainHandling.PlayerInfoUpdate.Update();
+                }
             }
         }
 
@@ -373,6 +380,25 @@ namespace Deimos
             Order = new char[max_n_weapons];
             n_weapons = 0;
             c_weapon = 0;
+        }
+
+        public byte ToByte(string s)
+        {
+            switch (s)
+            {
+                case "Carver":
+                    return 0x00;
+                case "Arbiter":
+                    return 0x01;
+                case "Pistol":
+                    return 0x02;
+                case "Assault Rifle":
+                    return 0x03;
+                case "Bazooka":
+                    return 0x04;
+                default:
+                    return 0x00;
+            }
         }
     }
 }

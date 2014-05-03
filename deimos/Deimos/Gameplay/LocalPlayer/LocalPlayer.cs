@@ -25,6 +25,8 @@ namespace Deimos
         Movement PlayerMovement;
         Combat PlayerCombat;
 
+        float lastmovesent = 0;
+
         private Vector3 position;
         public Vector3 Position
         {
@@ -118,6 +120,8 @@ namespace Deimos
             CooldownTimer = SprintCooldown;
 
             SetStats();
+
+            NetworkFacade.MainHandling.PlayerInfoUpdate.Update();
         }
 
         public void PlayerRespawn(Vector3 respawnlocation, Vector3 angle, string instance)
@@ -135,6 +139,8 @@ namespace Deimos
                 CooldownTimer = SprintCooldown;
 
                 SetStats();
+
+                NetworkFacade.MainHandling.PlayerInfoUpdate.Update();
             }
         }
 
@@ -246,10 +252,12 @@ namespace Deimos
 
             if (NetworkFacade.IsMultiplayer 
                 && GameplayFacade.ThisPlayerPhysics.GetMoveState() == 
-                Physics.MoveState.Moving)
+                Physics.MoveState.Moving
+                && dt - lastmovesent > 15)
             {
                 NetworkFacade.MainHandling.Moves.Send(
                     NetworkFacade.MainHandling.Moves.Create());
+                lastmovesent = dt;
             }
 
             previousScrollValue = CurrentMouseState.ScrollWheelValue;

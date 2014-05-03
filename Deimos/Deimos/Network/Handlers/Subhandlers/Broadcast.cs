@@ -28,21 +28,27 @@ namespace Deimos
         // This is the method that interprets the whole packet
         public void Interpret(Packet p)
         {
-            Data datapack = ExtractData(p.Encoded_buffer, 4);
-            NetworkFacade.DataHandling.Handle(datapack);
-
-            int i = datapack.end_index + 1;
-
-            while (i < p.Encoded_buffer.Length && p.Encoded_buffer[i] != 0x00)
+            Data datapack = ExtractData(p.Encoded_buffer, 8);
+            if (datapack != null)
             {
-                Data new_data = ExtractData(p.Encoded_buffer, i);
-                NetworkFacade.DataHandling.Handle(new_data);
-                i = new_data.end_index + 1;
-            }
+                NetworkFacade.DataHandling.Handle(datapack);
 
-            if (p.Split && p.Index < p.Total_Packets)
-            {
-                Interpret(p.Next);
+                int i = datapack.end_index + 2;
+
+                while (i < p.Encoded_buffer.Length && p.Encoded_buffer[i] != 0x00)
+                {
+                    Data new_data = ExtractData(p.Encoded_buffer, i);
+                    if (new_data != null)
+                    {
+                        NetworkFacade.DataHandling.Handle(new_data);
+                        i = new_data.end_index + 2;
+                    }
+                }
+
+                if (p.Split && p.Index < p.Total_Packets)
+                {
+                    Interpret(p.Next);
+                }
             }
 
             ConfirmReceipt(p.Unique_ID);

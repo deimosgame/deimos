@@ -10,7 +10,9 @@ namespace Deimos
     {
         public string Name;
 
-        public string Model;
+        public byte Model = 0x00;
+
+        public byte WeaponModel;
 
         public string Instance;
 
@@ -63,7 +65,7 @@ namespace Deimos
         public Weapon CurrentWeapon;
         public Weapon PreviousWeapon; // for quick-switch purposes
 
-        private int health;
+        private int health = 1;
         public int Health
         {
             get { return health; }
@@ -136,6 +138,36 @@ namespace Deimos
         public bool IsAtMaxHealth()
         {
             return (Health == (int)m_health);
+        }
+
+        public string GetWeaponName()
+        {
+            switch (WeaponModel)
+            {
+                case 0x00:
+                    return "Carver";
+                case 0x01:
+                    return "Arbiter";
+                case 0x02:
+                    return "Pistol";
+                case 0x03:
+                    return "Assault Rifle";
+                case 0x04:
+                    return "Bazooka";
+                default:
+                    return null;
+            }
+        }
+
+        public string GetModelName()
+        {
+            switch (Model)
+            {
+                case 0x00:
+                    return "Models/Characters/Vanquish/vanquish";
+                default:
+                    return "Models/Characters/Vanquish/vanquish";
+            }
         }
     }
 }

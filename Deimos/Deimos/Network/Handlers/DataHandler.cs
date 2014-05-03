@@ -28,7 +28,8 @@ namespace Deimos
 
         public void InterpretPlayer(Data data)
         {
-            if (NetworkFacade.Players.ContainsKey(data.PropertyOf))
+            if (data != null
+                && NetworkFacade.Players.ContainsKey(data.PropertyOf))
             {
                 switch (data.Data_Type)
                 {
@@ -38,7 +39,7 @@ namespace Deimos
                         break;
                     case Data.WorldDataType.Y:
                         NetworkFacade.Players[data.PropertyOf].Position.Y =
-                            data.Float32_Data;
+                            data.Float32_Data - 6;
                         break;
                     case Data.WorldDataType.Z:
                         NetworkFacade.Players[data.PropertyOf].Position.Z =
@@ -49,8 +50,8 @@ namespace Deimos
                             data.Byte_Data;
                         break;
                     case Data.WorldDataType.CurrentWeapon:
-                        NetworkFacade.Players[data.PropertyOf].CurrentWeapon.Path =
-                            data.Str_Data;
+                        NetworkFacade.Players[data.PropertyOf].WeaponModel =
+                            data.Byte_Data;
                         break;
                     case Data.WorldDataType.Name:
                         NetworkFacade.Players[data.PropertyOf].Name =
@@ -62,7 +63,7 @@ namespace Deimos
                         break;
                     case Data.WorldDataType.ModelID:
                         NetworkFacade.Players[data.PropertyOf].Model =
-                            data.Str_Data;
+                            data.Byte_Data;
                         break;
                 }
             }
@@ -75,39 +76,36 @@ namespace Deimos
 
         public void Process()
         {
-                // Making copies of the two lists to avoid thread mixup
-            List<Data> PlayerCopy = PlayerData;
-            List<Data> EntityCopy = EntityData;
-
                 // Allocating remove list
             List<Data> ToBeRemoved = new List<Data>();
 
 
                 // We process all current player data and add to remove list
-            foreach (Data d in PlayerCopy)
+            for (int i = 0; i < PlayerData.Count; i++)
             {
-                InterpretPlayer(d);
-
-                ToBeRemoved.Add(d);
+                Data player = PlayerData.ElementAt(i);
+                InterpretPlayer(player);
+                ToBeRemoved.Add(player);
             }
 
-                // We process all current entity data and add to remove list
-            foreach (Data d in EntityCopy)
+            // We process all current entity data and add to remove list
+            for (int i = 0; i < EntityData.Count; i++)
             {
-                InterpretEntity(d);
-
-                ToBeRemoved.Add(d);
+                Data entity = EntityData.ElementAt(i);
+                InterpretEntity(entity);
+                ToBeRemoved.Add(entity);
             }
 
 
                 // Removing data that has been treated
             foreach (Data d in ToBeRemoved)
             {
-                if (d.ID_Type == Data.Nature.Player)
+                if (d != null
+                    && d.ID_Type == Data.Nature.Player)
                 {
                     PlayerData.Remove(d);
                 }
-                else
+                else if (d != null)
                 {
                     EntityData.Remove(d);
                 }

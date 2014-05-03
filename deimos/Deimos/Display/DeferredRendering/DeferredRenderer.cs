@@ -28,6 +28,7 @@ namespace Deimos
         public RenderTarget2D SSAORT; //lighting
         public RenderTarget2D SceneRT; //scene
         public RenderTarget2D BlurredRT; //blurredscene
+        public RenderTarget2D DepthOfFieldRT; //depthoffield
 
         private Effect ClearBufferEffect;
         private Effect DirectionalLightEffect;
@@ -35,6 +36,7 @@ namespace Deimos
         private Effect SpotLightEffect;
         private Effect SSAOEffect;
         private Effect BlurEffect;
+        private Effect DepthOfFieldEffect;
         private Effect FinalCombineEffect;
 
         private Model SphereModel; //point ligt volume
@@ -131,6 +133,14 @@ namespace Deimos
                 SurfaceFormat.Color,
                 DepthFormat.None
             );
+            DepthOfFieldRT = new RenderTarget2D(
+                GraphicsDevice,
+                backbufferWidth,
+                backbufferHeight,
+                false,
+                SurfaceFormat.Color,
+                DepthFormat.None
+            );
 
 
             ClearBufferEffect = Game.Content.Load<Effect>(
@@ -153,6 +163,9 @@ namespace Deimos
             );
             BlurEffect = Game.Content.Load<Effect>(
                 @"Shaders\MISC\Blur"
+            );
+            DepthOfFieldEffect = Game.Content.Load<Effect>(
+                @"Shaders\DepthOfField\Simple"
             );
             SphereModel = Game.Content.Load<Model>(
                 @"Models\DeferredRendering\sphere"
@@ -394,6 +407,23 @@ namespace Deimos
             BlurEffect.Parameters["SceneTexture"].SetValue(SceneRT);
             BlurEffect.Parameters["halfPixel"].SetValue(HalfPixel);
             BlurEffect.CurrentTechnique.Passes[0].Apply();
+
+            QuadRenderer.Render(Vector2.One * -1, Vector2.One, true);
+
+            GraphicsDevice.SetRenderTarget(null);
+        }
+
+        private void DrawDepthOfField()
+        {
+            GraphicsDevice.SetRenderTarget(DepthOfFieldRT);
+
+            Color[,] depthColors = new Color[DepthRT.Width, DepthRT.Height];
+
+            DepthOfFieldEffect.Parameters["DepthTexture"].SetValue(DepthRT);
+            DepthOfFieldEffect.Parameters["BlurredTexture"].SetValue(BlurredRT);
+            DepthOfFieldEffect.Parameters["SceneTexture"].SetValue(SceneRT);
+            //DepthOfFieldEffect.Parameters["CenterDepth"].SetValue(depthColors[DepthRT.Width / 2, DepthRT.Height / 2]);
+            DepthOfFieldEffect.CurrentTechnique.Passes[0].Apply();
 
             QuadRenderer.Render(Vector2.One * -1, Vector2.One, true);
 

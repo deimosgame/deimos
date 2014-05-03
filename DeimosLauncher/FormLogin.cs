@@ -50,34 +50,22 @@ namespace DeimosLauncher
 
             string deimos_url = "https://deimos-ga.me";
 
-            var request =
-                WebRequest.Create(deimos_url
+            string responseContent = FileGetContents(deimos_url
                 + "/api/get-token/"
                 + user_email + "/"
-                + pw) as HttpWebRequest;
+                + pw);
 
-            request.Method = "GET";
-            request.ContentType = "application/json";
-            request.Timeout = 20000;
-
-            string responseContent;
-            using (var response = request.GetResponse() as HttpWebResponse)
+            if (responseContent == "")
             {
-                using (var reader =
-                    new StreamReader(response.GetResponseStream()))
-                {
-                    responseContent = reader.ReadToEnd();
-                    // Prevent memory leak
-                    reader.Dispose();
-                    request = null;
-                }
+                MessageBox.Show("Network error.");
+                return;
             }
 
-            JObject json = JObject.Parse(responseContent);
+            JObject loginJson = JObject.Parse(responseContent);
 
-            if (!json.Value<bool>("success"))
+            if (!loginJson.Value<bool>("success"))
             {
-                MessageBox.Show("Please verify your email or password." + json.Value<string>("refresh-token"));
+                MessageBox.Show("Please verify your email or password." + loginJson.Value<string>("refresh-token"));
                 return;
             }
 
@@ -87,13 +75,24 @@ namespace DeimosLauncher
             Properties.Settings.Default.password = textboxPassword.Text;
             Properties.Settings.Default.Save();
 
-            // Starting deimos
+            // Getting the user name
+            string responseName = FileGetContents(deimos_url
+                + "/api/get-name/"
+                + user_email);
+            JObject userJson = JObject.Parse(responseName);
 
+            if (!userJson.Value<bool>("success"))
+            {
+                MessageBox.Show("An error occured, please try again later.");
+                return;
+            }
+
+            // Starting deimos
             try
             {
                 Process p = new Process();
                 p.StartInfo.FileName = "Deimos.exe";
-                p.StartInfo.Arguments = user_email + " " + json.Value<string>("token") + " " + json.Value<string>("refresh-token");
+                p.StartInfo.Arguments = user_email + " " + loginJson.Value<string>("token") + " " + loginJson.Value<string>("refresh-token") + " " + userJson.Value<string>("name");
                 p.Start();
             }
             catch (Exception)
@@ -114,6 +113,37 @@ namespace DeimosLauncher
         private void linkRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://deimos-ga.me/register");
+        }
+
+        private string FileGetContents(string url)
+        {
+            try
+            {
+                var request =
+                WebRequest.Create(url) as HttpWebRequest;
+
+                request.Method = "GET";
+                request.ContentType = "application/json";
+                request.Timeout = 20000;
+
+                string responseContent = null;
+                using (var response = request.GetResponse() as HttpWebResponse)
+                {
+                    using (var reader =
+                        new StreamReader(response.GetResponseStream()))
+                    {
+                        responseContent = reader.ReadToEnd();
+                        // Prevent memory leak
+                        reader.Dispose();
+                        request = null;
+                    }
+                }
+                return responseContent;
+            }
+            catch (Exception)
+            {
+                return "";
+            }
         }
     }
 }

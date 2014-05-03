@@ -108,11 +108,11 @@
             // 
             // buttonPlay
             // 
-            this.buttonPlay.Location = new System.Drawing.Point(356, 161);
+            this.buttonPlay.Location = new System.Drawing.Point(360, 161);
             this.buttonPlay.Name = "buttonPlay";
-            this.buttonPlay.Size = new System.Drawing.Size(96, 28);
+            this.buttonPlay.Size = new System.Drawing.Size(92, 28);
             this.buttonPlay.TabIndex = 5;
-            this.buttonPlay.Text = "     Play!";
+            this.buttonPlay.Text = "Play!";
             this.buttonPlay.Click += new System.EventHandler(this.buttonPlay_Click);
             // 
             // nsSeperator1

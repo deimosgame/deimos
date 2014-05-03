@@ -244,7 +244,8 @@ namespace Deimos
             Stuff(dt);
             GameplayFacade.ThisPlayerDisplay.DisplayCurrentWeapon(GameplayFacade.ThisPlayer.CurrentWeapon);
 
-            if (GameplayFacade.ThisPlayerPhysics.GetMoveState() == 
+            if (NetworkFacade.IsMultiplayer 
+                && GameplayFacade.ThisPlayerPhysics.GetMoveState() == 
                 Physics.MoveState.Moving)
             {
                 NetworkFacade.MainHandling.Moves.Send(

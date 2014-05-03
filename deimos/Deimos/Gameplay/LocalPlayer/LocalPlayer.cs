@@ -25,6 +25,8 @@ namespace Deimos
         Movement PlayerMovement;
         Combat PlayerCombat;
 
+        float lastmovesent = 0;
+
         private Vector3 position;
         public Vector3 Position
         {
@@ -250,10 +252,12 @@ namespace Deimos
 
             if (NetworkFacade.IsMultiplayer 
                 && GameplayFacade.ThisPlayerPhysics.GetMoveState() == 
-                Physics.MoveState.Moving)
+                Physics.MoveState.Moving
+                && dt - lastmovesent > 15)
             {
                 NetworkFacade.MainHandling.Moves.Send(
                     NetworkFacade.MainHandling.Moves.Create());
+                lastmovesent = dt;
             }
 
             previousScrollValue = CurrentMouseState.ScrollWheelValue;

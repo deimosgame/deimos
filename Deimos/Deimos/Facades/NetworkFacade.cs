@@ -45,8 +45,6 @@ namespace Deimos.Facades
                         NetworkHandling.Send(p);
                     }
                 }
-
-                Thread.Sleep(25);
             }
         }
 
@@ -71,8 +69,6 @@ namespace Deimos.Facades
                 }
 
                 NetworkFacade.MainHandling.Process();
-
-                Thread.Sleep(25);
             }
         }
 
@@ -100,7 +96,7 @@ namespace Deimos.Facades
 
                 OldPos = GameplayFacade.ThisPlayer.Position;
 
-                Thread.Sleep(1000);
+                Thread.Sleep(15);
             }
         }
     }

@@ -15,7 +15,7 @@ namespace Deimos
             NetworkFacade.Players.Clear();
 
             int n = 0;
-            int i = 5;
+            int i = 4;
 
             while (buf[i+1] != 0x00)
             {

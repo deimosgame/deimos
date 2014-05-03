@@ -32,7 +32,8 @@ namespace Deimos.Facades
         {
             while (true)
             {
-                if (NetworkFacade.Sending.Count != 0)
+                if (NetworkFacade.Sending.Count != 0
+                    && (Packet)NetworkFacade.Sending.Peek() != null)
                 {
                     NetworkFacade.NetworkHandling.Send(
                         (Packet)NetworkFacade.Sending.Dequeue()
@@ -55,7 +56,8 @@ namespace Deimos.Facades
         {
             while (true)
             {
-                if (NetworkFacade.Receiving.Count != 0)
+                if (NetworkFacade.Receiving.Count != 0
+                    && (byte[])NetworkFacade.Receiving.Peek() != null)
                 {
                     NetworkFacade.MainHandling.Distribute(
                         (byte[])NetworkFacade.Receiving.Dequeue()

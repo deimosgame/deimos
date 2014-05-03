@@ -174,11 +174,14 @@ namespace Deimos
             {
                 foreach (KeyValuePair<byte, Player> p in NetworkFacade.Players)
                 {
-                    ModelManager.GetLevelModel(p.Value.Name).Position =
-                        p.Value.Position;
+                    if (ModelManager.LevelModelExists(p.Value.Name))
+                    {
+                        ModelManager.GetLevelModel(p.Value.Name).Position =
+                            p.Value.Position;
 
-                    ModelManager.GetLevelModel(p.Value.Name).Rotation =
-                        p.Value.Rotation;
+                        ModelManager.GetLevelModel(p.Value.Name).Rotation =
+                            p.Value.Rotation;
+                    }
                 }
             }
 

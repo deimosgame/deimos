@@ -28,7 +28,7 @@ namespace Deimos
 
         public void InterpretPlayer(Data data)
         {
-            if (data.PropertyOf != null
+            if (data != null
                 && NetworkFacade.Players.ContainsKey(data.PropertyOf))
             {
                 switch (data.Data_Type)
@@ -39,7 +39,7 @@ namespace Deimos
                         break;
                     case Data.WorldDataType.Y:
                         NetworkFacade.Players[data.PropertyOf].Position.Y =
-                            data.Float32_Data;
+                            data.Float32_Data - 6;
                         break;
                     case Data.WorldDataType.Z:
                         NetworkFacade.Players[data.PropertyOf].Position.Z =
@@ -100,11 +100,12 @@ namespace Deimos
                 // Removing data that has been treated
             foreach (Data d in ToBeRemoved)
             {
-                if (d.ID_Type == Data.Nature.Player)
+                if (d != null
+                    && d.ID_Type == Data.Nature.Player)
                 {
                     PlayerData.Remove(d);
                 }
-                else
+                else if (d != null)
                 {
                     EntityData.Remove(d);
                 }

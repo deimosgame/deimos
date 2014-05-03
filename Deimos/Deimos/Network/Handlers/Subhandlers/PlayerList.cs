@@ -24,10 +24,13 @@ namespace Deimos
                 n++;
                 i += name.Length + 2;
 
-                Player playa = new Player();
-                playa.Name = name;
+                if (name != NetworkFacade.Username)
+                {
+                    Player playa = new Player();
+                    playa.Name = name;
 
-                NetworkFacade.Players.Add(uid, playa);
+                    NetworkFacade.Players.Add(uid, playa);
+                }
             }
 
             N_Players = (uint)n;

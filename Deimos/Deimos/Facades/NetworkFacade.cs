@@ -13,6 +13,8 @@ namespace Deimos.Facades
         static public bool IsMultiplayer = true;
         ////////         /////          //////
 
+        static public string Username = "insert name here";
+
         static public MainHandler MainHandling = new MainHandler();
         static public DataHandler DataHandling = new DataHandler();
         static public NetworkHandler NetworkHandling = new NetworkHandler();
@@ -40,7 +42,7 @@ namespace Deimos.Facades
                     );
                 }
 
-                Thread.Sleep(10);
+                Thread.Sleep(25);
             }
         }
 
@@ -64,9 +66,9 @@ namespace Deimos.Facades
                     );
                 }
 
-                Thread.Sleep(5);
-
                 NetworkFacade.MainHandling.Process();
+
+                Thread.Sleep(25);
             }
         }
 

@@ -154,7 +154,8 @@ namespace Deimos
                         p.Value.GetModelName(),
                         p.Value.Position,
                         p.Value.Rotation,
-                        5
+                        5,
+                        LevelModel.CollisionType.None
                         );
                 }
 

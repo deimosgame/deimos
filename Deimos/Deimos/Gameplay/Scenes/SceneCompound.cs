@@ -58,7 +58,7 @@ namespace Deimos
                 {
                     ModelManager.LoadModel(
                         p.Value.Name,
-                        "Models/Characters/Vanquish/vanquish",
+                        p.Value.GetModelName(),
                         p.Value.Position,
                         p.Value.Rotation,
                         5
@@ -95,6 +95,11 @@ namespace Deimos
         // Initialize our lights and such
         public override void Initialize()
         {
+            if (NetworkFacade.IsMultiplayer)
+            {
+                NetworkFacade.MainHandling.PlayerInfoUpdate.Update();
+            }
+
             LightManager.AddPointLight(
                "Main",
                new Vector3(18, 10, 90), // Location

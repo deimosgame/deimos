@@ -17,6 +17,7 @@ namespace Deimos
             Broadcast,
             Move,
             PlayerList,
+            UpdateInfo,
             Corrupt
         }
 

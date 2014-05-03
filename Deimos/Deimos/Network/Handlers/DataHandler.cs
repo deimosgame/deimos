@@ -49,8 +49,8 @@ namespace Deimos
                             data.Byte_Data;
                         break;
                     case Data.WorldDataType.CurrentWeapon:
-                        NetworkFacade.Players[data.PropertyOf].CurrentWeapon.Path =
-                            data.Str_Data;
+                        NetworkFacade.Players[data.PropertyOf].WeaponModel =
+                            data.Byte_Data;
                         break;
                     case Data.WorldDataType.Name:
                         NetworkFacade.Players[data.PropertyOf].Name =
@@ -62,7 +62,7 @@ namespace Deimos
                         break;
                     case Data.WorldDataType.ModelID:
                         NetworkFacade.Players[data.PropertyOf].Model =
-                            data.Str_Data;
+                            data.Byte_Data;
                         break;
                 }
             }

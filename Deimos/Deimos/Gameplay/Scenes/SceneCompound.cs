@@ -50,6 +50,7 @@ namespace Deimos
                  0.2f
             );
 
+            //ModelManager.LoadModel("follow", "Models/Characters/Vanquish/vanquish", Vector3.Zero, Vector3.Zero, 5, LevelModel.CollisionType.None);
 
             if (NetworkFacade.IsMultiplayer)
             {
@@ -142,7 +143,6 @@ namespace Deimos
                 Color.White
                 );
 
-
             SoundManager.Play3D("scary", DisplayFacade.Camera.Position, 
                 new Vector3(0, 0, -0));
         }
@@ -171,6 +171,9 @@ namespace Deimos
             }
 
             Objects.Update(GameplayFacade.ThisPlayer.dt);
+
+            //ModelManager.GetLevelModel("follow").Position = GameplayFacade.ThisPlayer.Position + new Vector3(3, 1, 3);
+            //ModelManager.GetLevelModel("follow").Rotation += new Vector3(0,GameplayFacade.ThisPlayer.Rotation.X, 0);
         }
     }
 }

@@ -86,10 +86,12 @@ namespace Deimos.Facades
         static void SendMovePacket()
         {
             Vector3 OldPos = Vector3.Zero;
+            Vector3 OldRot = Vector3.Zero;
 
             while (true)
             {
-                if (OldPos != GameplayFacade.ThisPlayer.Position)
+                if (OldPos != GameplayFacade.ThisPlayer.Position
+                    || OldRot != GameplayFacade.ThisPlayer.Rotation)
                 {
                     MainHandling.Moves.Send(
                         MainHandling.Moves.Create()
@@ -97,6 +99,7 @@ namespace Deimos.Facades
                 }
 
                 OldPos = GameplayFacade.ThisPlayer.Position;
+                OldRot = GameplayFacade.ThisPlayer.Rotation;
 
                 Thread.Sleep(15);
             }

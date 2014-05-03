@@ -470,8 +470,8 @@ namespace Deimos
             GeneralFacade.SceneManager.ModelManager.DrawModels(Game, DisplayFacade.Camera);
             ResolveGBuffer();
             DrawLights(gameTime);
-            DrawSSAO();
-            DrawBlurred();
+            //DrawSSAO();
+            //DrawBlurred();
 
             // Draw the final image
             GraphicsDevice.SetRenderTarget(null);

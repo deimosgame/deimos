@@ -259,7 +259,7 @@ namespace Deimos
             {
                 case Data.Contains.Byte:
                     d.Byte_Data = buf[init];
-                    d.end_index = init;
+                    d.end_index = init + 1;
                     break;
                 case Data.Contains.Int32:
                     d.Int32_Data = ExtractInt32(buf, init);

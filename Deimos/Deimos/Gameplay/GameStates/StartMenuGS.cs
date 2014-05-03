@@ -32,7 +32,13 @@ namespace Deimos
                 delegate(ScreenElement el, DeimosGame game)
                 {
                     if (!NetworkFacade.IsMultiplayer)
-                    {   
+                    {
+                        GameplayFacade.Objects = new ObjectsList();
+
+                        GameplayFacade.Weapons = new WeaponsList();
+                        GameplayFacade.Weapons.Initialise();
+                        GameplayFacade.Objects.Initialize();
+
                         GeneralFacade.GameStateManager.Set(
                                     new LoadingLevelGS<SceneCompound>()
                                     );
@@ -53,6 +59,11 @@ namespace Deimos
 
                             if (NetworkFacade.NetworkHandling.ServerConnected)
                             {
+                                GameplayFacade.Objects = new ObjectsList();
+                                GameplayFacade.Weapons = new WeaponsList();
+                                GameplayFacade.Weapons.Initialise();
+                                GameplayFacade.Objects.Initialize();
+
                                 switch (NetworkFacade.MainHandling.Connections.CurrentMap)
                                 {
                                     case "coolmap":

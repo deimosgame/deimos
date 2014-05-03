@@ -18,12 +18,7 @@ namespace Deimos
 
         public override void PreSet()
         {
-            GameplayFacade.Weapons = new WeaponsList();
             GameplayFacade.BulletManager = new BulletManager();
-            GameplayFacade.Objects = new ObjectsList();
-
-            GameplayFacade.Weapons.Initialise();
-            GameplayFacade.Objects.Initialize();
 
             GameplayFacade.ThisPlayer = new LocalPlayer();
             GameplayFacade.ThisPlayerPhysics = new Physics();
@@ -36,7 +31,7 @@ namespace Deimos
 
 
             NetworkFacade.World.Start();
-            NetworkFacade.MovePacket.Start();
+            //NetworkFacade.MovePacket.Start();
         }
 
         public override void PostUnset()

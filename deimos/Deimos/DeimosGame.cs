@@ -100,9 +100,6 @@ namespace Deimos
                 // World updating thread
             NetworkFacade.World.Name = "world";
             NetworkFacade.World.IsBackground = true;
-                // Move Update thread
-            NetworkFacade.MovePacket.Name = "move";
-            NetworkFacade.MovePacket.IsBackground = true;
 
             if (NetworkFacade.IsMultiplayer)
             {

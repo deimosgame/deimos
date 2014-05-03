@@ -10,7 +10,7 @@ namespace Deimos.Facades
     static class NetworkFacade
     {
         // FOR DEVELOPMENT PURPOSES ONLY //
-        static public bool IsMultiplayer = true;
+        static public bool IsMultiplayer = false;
         ////////         /////          //////
 
         static public MainHandler MainHandling = new MainHandler();

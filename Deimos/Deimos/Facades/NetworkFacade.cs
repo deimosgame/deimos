@@ -11,10 +11,8 @@ namespace Deimos.Facades
     static class NetworkFacade
     {
         // FOR DEVELOPMENT PURPOSES ONLY //
-        static public bool IsMultiplayer = true;
+        static public bool IsMultiplayer = false;
         ////////         /////          //////
-
-        static public string Username = "Vomuseind";
 
         static public MainHandler MainHandling = new MainHandler();
         static public DataHandler DataHandling = new DataHandler();
@@ -80,6 +78,24 @@ namespace Deimos.Facades
             while (true)
             {
                 NetworkFacade.DataHandling.Process();
+
+                if (IsMultiplayer)
+                {
+                    foreach (KeyValuePair<byte, Player> p in Players)
+                    {
+                        if (GeneralFacade.SceneManager.ModelManager.LevelModelExists(p.Value.Name)
+                            && p.Value.IsAlive())
+                        {
+                            GeneralFacade.SceneManager.ModelManager.GetLevelModel(p.Value.Name).show = true;
+
+                            GeneralFacade.SceneManager.ModelManager.GetLevelModel(p.Value.Name).Position =
+                                p.Value.Position;
+
+                            GeneralFacade.SceneManager.ModelManager.GetLevelModel(p.Value.Name).Rotation =
+                                p.Value.Rotation;
+                        }
+                    }
+                }
             }
         }
 

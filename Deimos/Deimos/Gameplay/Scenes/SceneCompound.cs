@@ -152,24 +152,6 @@ namespace Deimos
         {
             SoundManager.SetListener("scary", GameplayFacade.ThisPlayer.Position);
 
-            if (NetworkFacade.IsMultiplayer)
-            {
-                foreach (KeyValuePair<byte, Player> p in NetworkFacade.Players)
-                {
-                    if (ModelManager.LevelModelExists(p.Value.Name)
-                        && p.Value.IsAlive())
-                    {
-                        ModelManager.GetLevelModel(p.Value.Name).show = true;
-
-                        ModelManager.GetLevelModel(p.Value.Name).Position =
-                            p.Value.Position;
-
-                        ModelManager.GetLevelModel(p.Value.Name).Rotation =
-                            p.Value.Rotation;
-                    }
-                }
-            }
-
             Objects.Update(GameplayFacade.ThisPlayer.dt);
 
             //ModelManager.GetLevelModel("follow").Position = GameplayFacade.ThisPlayer.Position + new Vector3(3, 1, 3);

@@ -14,7 +14,7 @@ namespace Deimos
         // METHODS PROPER TO HANDLING CONNECTION DATAGRAMS
 
         // This method creates and return a new connection datagram
-        public Packet CreateCN(string email, string token)
+        public Packet Create(string email, string token)
         {
             Packet New = new Packet(Packet.PacketType.Connection);
 
@@ -30,7 +30,7 @@ namespace Deimos
         // This method interprets a received connection datagram
         // and if connection was succesfull, sets the map name
         // also returns a boolean for connection establishing
-        public bool InterpretCN(byte[] buf)
+        public void Interpret(byte[] buf)
         {
             if (buf[4] == 0x01)
             {
@@ -39,16 +39,10 @@ namespace Deimos
                 Connect.Encoded_buffer = buf;
 
                 // Succesful connection
-                Console.WriteLine("Connected to server");
+                NetworkFacade.NetworkHandling.ServerConnected = true;
                 // Extracting server map name
                 CurrentMap = ExtractString(Connect.Encoded_buffer, 5);
-                Console.WriteLine(CurrentMap);
-                return true;
             }
-
-            // Unsuccesful connection
-            Console.WriteLine("Connection to server failed");
-            return false;
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Deimos
         // METHODS PROPER FOR CHAT DATAGRAM HANDLING
 
         // This method is to send a chat datagram
-        public void SendCH(string message)
+        public void Send(string message)
         {
             Packet M = new Packet(Packet.PacketType.Chat);
 
@@ -24,7 +24,7 @@ namespace Deimos
         }
 
         // This method is to interpret a received chat datagran
-        public string InterpretCH(Packet m)
+        public string Interpret(Packet m)
         {
             if (m.Encoded_buffer[4] != 0x00)
             {
@@ -36,11 +36,11 @@ namespace Deimos
         }
 
         // This method process all ongoing chat datagrams and interprets them
-        public void ProcessCH()
+        public void Process()
         {
             foreach (Packet p in Ongoing)
             {
-                InterpretCH(p);
+                Interpret(p);
             }
 
             Ongoing.Clear();

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Deimos.Facades;
 
 namespace Deimos
 {
@@ -242,6 +243,13 @@ namespace Deimos
             PlayerCombat.HandleCombat(dt);
             Stuff(dt);
             GameplayFacade.ThisPlayerDisplay.DisplayCurrentWeapon(GameplayFacade.ThisPlayer.CurrentWeapon);
+
+            if (GameplayFacade.ThisPlayerPhysics.GetMoveState() == 
+                Physics.MoveState.Moving)
+            {
+                NetworkFacade.MainHandling.Moves.Send(
+                    NetworkFacade.MainHandling.Moves.Create());
+            }
 
             previousScrollValue = CurrentMouseState.ScrollWheelValue;
         }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Deimos.Facades;
 
 namespace Deimos
 {
@@ -30,9 +31,47 @@ namespace Deimos
                 Color.Red,
                 delegate(ScreenElement el, DeimosGame game)
                 {
-                    GeneralFacade.GameStateManager.Set(new LoadingLevelGS<SceneCompound>());
-                    GeneralFacade.GameStateManager.Set(new SpawningGS());
-                    GeneralFacade.GameStateManager.Set(new PlayingGS());
+                    if (!NetworkFacade.IsMultiplayer)
+                    {   
+                        GeneralFacade.GameStateManager.Set(
+                                    new LoadingLevelGS<SceneCompound>()
+                                    );
+                        GeneralFacade.GameStateManager.Set(new SpawningGS());
+                        GeneralFacade.GameStateManager.Set(new PlayingGS());
+                    }
+                    else
+                    {
+                        NetworkFacade.NetworkHandling.ShakeHands();
+
+                        System.Threading.Thread.Sleep(2000);
+
+                        if (NetworkFacade.NetworkHandling.Handshook)
+                        {
+                            NetworkFacade.NetworkHandling.Connect();
+
+                            System.Threading.Thread.Sleep(3000);
+
+                            if (NetworkFacade.NetworkHandling.ServerConnected)
+                            {
+                                switch (NetworkFacade.MainHandling.Connections.CurrentMap)
+                                {
+                                    case "coolmap":
+                                        GeneralFacade.GameStateManager.Set(
+                                            new LoadingLevelGS<SceneCompound>()
+                                            );
+                                        break;
+                                    default:
+                                        GeneralFacade.GameStateManager.Set(
+                                            new LoadingLevelGS<SceneDeimos>()
+                                            );
+                                        break;
+                                }
+
+                                GeneralFacade.GameStateManager.Set(new SpawningGS());
+                                GeneralFacade.GameStateManager.Set(new PlayingGS());
+                            }
+                        }
+                    }
                 },
                 delegate(ScreenElement el, DeimosGame game)
                 {

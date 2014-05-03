@@ -23,6 +23,9 @@ namespace Deimos
 
         public byte[] receive_buffer;
 
+        public bool Handshook = false;
+        public bool ServerConnected = false;
+
         // CONSTRUCTOR
         public NetworkHandler()
         {
@@ -43,7 +46,21 @@ namespace Deimos
             socket.Bind(end_point);
         }
 
-        // METHODS
+        // METHODS FOR HANDHSAKING AND SERVER CONNECTION
+        public void ShakeHands()
+        {
+            Packet Handshake = NetworkFacade.MainHandling.Handshakes.Create();
+            NetworkFacade.Sending.Enqueue(Handshake);
+        }
+
+        public void Connect()
+        {
+            Packet Connection = NetworkFacade.MainHandling.Connections.Create(
+                Program.PlayerEmail, Program.PlayerToken);
+            NetworkFacade.Sending.Enqueue(Connection);
+        }
+
+        // METHODS FOR DGRAMS
 
         // Sending our datagrams to the server
         public void Send(Packet pack)

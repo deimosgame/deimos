@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 
 namespace Deimos
 {
@@ -13,6 +14,8 @@ namespace Deimos
         /// </summary>
         static void Main(string[] args)
         {
+            Thread.CurrentThread.Name = "main";
+
             try
             {
                 PlayerEmail = args[0];

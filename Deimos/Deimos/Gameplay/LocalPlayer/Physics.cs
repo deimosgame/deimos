@@ -22,6 +22,12 @@ namespace Deimos
             Z
         }
 
+        public enum MoveState
+        {
+            Standing,
+            Moving
+        }
+
         public enum AccelerationState
         {
             Still,
@@ -38,6 +44,7 @@ namespace Deimos
         public float JumpVelocity;
 
         public AccelerationState Accelerestate = AccelerationState.Still;
+        public MoveState MovingState = MoveState.Standing;
         public Vector3 dv = new Vector3(0.09f, 0.09f, 0.09f);
         public Vector3 acceleration;
         public Vector3 Acceleration
@@ -74,6 +81,18 @@ namespace Deimos
             else
             {
                 return momentum;
+            }
+        }
+
+        public MoveState GetMoveState()
+        {
+            if (acceleration != Vector3.Zero)
+            {
+                return MoveState.Moving;
+            }
+            else
+            {
+                return MoveState.Standing;
             }
         }
 

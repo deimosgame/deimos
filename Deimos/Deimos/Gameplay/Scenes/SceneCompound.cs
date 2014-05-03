@@ -19,7 +19,7 @@ namespace Deimos
             PlayerSize = new Vector3(30, 1, 1);
 
             SpawnLocations = new SpawnLocation[] {
-                new SpawnLocation(new Vector3(-60f, 20f, -8f), Vector3.Zero)
+                new SpawnLocation(new Vector3(18, 10, 90), Vector3.Zero)
             };
 
             SceneManager = sceneManager;

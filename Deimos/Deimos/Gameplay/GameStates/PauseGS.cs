@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Deimos.Facades;
 
 namespace Deimos
 {
@@ -40,7 +41,15 @@ namespace Deimos
                 Color.Green,
                 delegate(ScreenElement el, DeimosGame game)
                 {
-                    GeneralFacade.Game.Exit();
+                    if (!NetworkFacade.IsMultiplayer)
+                    {
+                        GeneralFacade.Game.Exit();
+                    }
+                    else
+                    {
+                        NetworkFacade.MainHandling.Disconnections.Disco();
+                        GeneralFacade.Game.Exit();
+                    }
                 }
             );
         }

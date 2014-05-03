@@ -26,7 +26,7 @@ namespace Deimos
         }
 
         // This is the method that interprets the whole packet
-        public void InterpretBC(Packet p)
+        public void Interpret(Packet p)
         {
             Data datapack = ExtractData(p.Encoded_buffer, 4);
             NetworkFacade.DataHandling.Handle(datapack);
@@ -42,7 +42,7 @@ namespace Deimos
 
             if (p.Split && p.Index < p.Total_Packets)
             {
-                InterpretBC(p.Next);
+                Interpret(p.Next);
             }
 
             ConfirmReceipt(p.Unique_ID);
@@ -50,11 +50,11 @@ namespace Deimos
 
         // This method processes all ongoing packet information
         // and tries to assemble any split packets
-        public void ProcessBC()
+        public void Process()
         {
             foreach (Packet p in Ongoing)
             {
-                InterpretBC(p);
+                Interpret(p);
             }
 
             Ongoing.Clear();

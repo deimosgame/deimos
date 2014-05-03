@@ -11,8 +11,29 @@ namespace Deimos
 
         // METHODS FOR PROPER MOVE DGRAM HANDLING
 
+            // This method creates a float array of size 10
+            // containing current player information
+            // and will return the array for it to be easily sent
+        public float[] Create()
+        {
+            float[] data = new float[10];
+
+            data[0] = GameplayFacade.ThisPlayer.Position.X;
+            data[1] = GameplayFacade.ThisPlayer.Position.Y;
+            data[2] = GameplayFacade.ThisPlayer.Position.Z;
+            data[3] = GameplayFacade.ThisPlayer.Rotation.X;
+            data[4] = GameplayFacade.ThisPlayer.Rotation.Y;
+            data[5] = 0;
+            data[6] = 0;
+            data[7] = 0;
+            data[8] = 0;
+            data[9] = 0;
+
+            return data;
+        }
+
         // This method creates and sends an updated move dgram
-        public void SendMV(float[] player_data)
+        public void Send(float[] player_data)
         {
             if (player_data.Length == 10)
             {

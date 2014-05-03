@@ -23,19 +23,22 @@ namespace Deimos
             switch (buf[1])
             {
                 case 0x00:
-                    Handshakes.InterpretHS(buf);
+                    Handshakes.Interpret(buf);
                     break;
                 case 0x01:
-                    Connections.InterpretCN(buf);
+                    Connections.Interpret(buf);
                     break;
                 case 0x02:
-                    Disconnections.InterpretDC(buf);
+                    Disconnections.Interpret(buf);
                     break;
                 case 0x03:
                     Chats.Handle(buf);
                     break;
                 case 0x04:
                     Broadcasts.Handle(buf);
+                    break;
+                case 0x06:
+                    Players.Interpret(buf);
                     break;
                 default:
                     return;
@@ -44,8 +47,8 @@ namespace Deimos
 
         public void Process()
         {
-            Broadcasts.ProcessBC();
-            Chats.ProcessCH();
+            Broadcasts.Process();
+            Chats.Process();
         }
     }
 }

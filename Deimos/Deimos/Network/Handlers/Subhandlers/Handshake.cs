@@ -12,7 +12,7 @@ namespace Deimos
         // METHODS PROPER TO HANDSHAKE PACKET HANDLING
 
         // This method creates and returns a handshaking packet
-        public Packet CreateHS()
+        public Packet Create()
         {
             Packet New = new Packet(Packet.PacketType.Handshake);
 
@@ -24,18 +24,12 @@ namespace Deimos
         }
 
         // This method interprets a received handshaking packet
-        public bool InterpretHS(byte[] buf)
+        public void Interpret(byte[] buf)
         {
             if (buf[4] == 0x01)
             {
-                // Succesful handshake
-                Console.WriteLine("Handshake succesful");
-                return true;
+                NetworkFacade.NetworkHandling.Handshook = true;
             }
-
-            // Unsuccessful handshake
-            Console.WriteLine("Handshake failed");
-            return false;
         }
     }
 }

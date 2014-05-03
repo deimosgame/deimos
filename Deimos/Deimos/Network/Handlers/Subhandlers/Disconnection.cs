@@ -25,7 +25,7 @@ namespace Deimos
         }
 
         // This method interprets disconnect datagrams
-        public void InterpretDC(byte[] buf)
+        public void Interpret(byte[] buf)
         {
             Packet Disco = new Packet(Packet.PacketType.Disconnection);
             Disco.Encoded_buffer = buf;
@@ -33,7 +33,8 @@ namespace Deimos
             Reason = ExtractString(Disco.Encoded_buffer, 4);
 
             // Player disconnection
-            Console.WriteLine("Disconnected. Reason: " + Reason);
+            NetworkFacade.NetworkHandling.ServerConnected = false;
+            GeneralFacade.GameStateManager.Set(new StartMenuGS());
         }
     }
 }

@@ -50,23 +50,6 @@ namespace Deimos
                  0.2f
             );
 
-            if (NetworkFacade.IsMultiplayer)
-            {
-                // Loading player models
-
-                foreach (KeyValuePair<byte, Player> p in NetworkFacade.Players)
-                {
-                    ModelManager.LoadModel(
-                        p.Value.Name,
-                        p.Value.GetModelName(),
-                        p.Value.Position,
-                        p.Value.Rotation,
-                        5
-                        );
-                }
-
-            }
-
             //ModelManager.LoadModel(
             //    "vanquish",
             //    "Models/Characters/Vanquish/vanquish",
@@ -159,6 +142,23 @@ namespace Deimos
                 2,
                 Color.White
                 );
+
+            if (NetworkFacade.IsMultiplayer)
+            {
+                // Loading player models
+
+                foreach (KeyValuePair<byte, Player> p in NetworkFacade.Players)
+                {
+                    ModelManager.LoadModel(
+                        p.Value.Name,
+                        p.Value.GetModelName(),
+                        p.Value.Position,
+                        p.Value.Rotation,
+                        5
+                        );
+                }
+
+            }
 
 
             SoundManager.Play3D("scary", DisplayFacade.Camera.Position, 

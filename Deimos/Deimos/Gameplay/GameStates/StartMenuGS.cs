@@ -41,9 +41,13 @@ namespace Deimos
                     }
                     else
                     {
+                        NetworkFacade.NetworkHandling.ShakeHands();
+
+                        System.Threading.Thread.Sleep(2000);
+
                         if (NetworkFacade.NetworkHandling.Handshook)
                         {
-                            NetworkFacade.NetworkHandling.Connect();
+                        NetworkFacade.NetworkHandling.Connect();
 
                             System.Threading.Thread.Sleep(3000);
 
@@ -66,6 +70,7 @@ namespace Deimos
                                 GeneralFacade.GameStateManager.Set(new SpawningGS());
                                 GeneralFacade.GameStateManager.Set(new PlayingGS());
                             }
+                        
                         }
                     }
                 },

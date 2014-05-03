@@ -75,7 +75,7 @@ namespace Deimos.Facades
         {
             while (true)
             {
-
+                NetworkFacade.DataHandling.Process();
             }
         }
     }

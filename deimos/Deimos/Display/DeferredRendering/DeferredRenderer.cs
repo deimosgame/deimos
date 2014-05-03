@@ -26,6 +26,7 @@ namespace Deimos
         public RenderTarget2D DepthRT; //depth
         public RenderTarget2D LightRT; //lighting
         public RenderTarget2D SSAORT; //lighting
+        public RenderTarget2D SceneRT; //scene
 
         private Effect ClearBufferEffect;
         private Effect DirectionalLightEffect;
@@ -105,6 +106,14 @@ namespace Deimos
                 DepthFormat.None
             );
             SSAORT = new RenderTarget2D(
+                GraphicsDevice,
+                backbufferWidth,
+                backbufferHeight,
+                false,
+                SurfaceFormat.Color,
+                DepthFormat.None
+            );
+            SceneRT = new RenderTarget2D(
                 GraphicsDevice,
                 backbufferWidth,
                 backbufferHeight,
@@ -344,14 +353,25 @@ namespace Deimos
 
         private void DrawSSAO()
         {
+            GraphicsDevice.SetRenderTarget(SSAORT);
+
+            Vector3 cornerFrustum = Vector3.Zero;
+            cornerFrustum.Y = (float)Math.Tan(Math.PI / 3.0 / 2.0) * 0.1f;
+            cornerFrustum.X = cornerFrustum.Y * DisplayFacade.Camera.AspectRatio;
+            cornerFrustum.Z = 0.1f;
+
             SSAOEffect.Parameters["Projection"].SetValue(DisplayFacade.Camera.Projection);
-            SSAOEffect.Parameters["cornerFustrum"].SetValue(DisplayFacade.Camera.Frustum.Far.Normal);
+            SSAOEffect.Parameters["cornerFustrum"].SetValue(cornerFrustum);
             SSAOEffect.Parameters["sampleRadius"].SetValue(0);
             SSAOEffect.Parameters["distanceScale"].SetValue(0);
             SSAOEffect.Parameters["GBufferTextureSize"].SetValue(new Vector2(SSAORT.Width, SSAORT.Height));
+            GeneralFacade.Game.GraphicsDevice.Textures[0] = NormalRT;
+            GeneralFacade.Game.GraphicsDevice.Textures[1] = DepthRT;
             SSAOEffect.CurrentTechnique.Passes[0].Apply();
 
+            QuadRenderer.Render(Vector2.One * -1, Vector2.One, true);
 
+            GraphicsDevice.SetRenderTarget(null);
         }
 
         private void DrawLights(GameTime gameTime)
@@ -403,7 +423,7 @@ namespace Deimos
             GraphicsDevice.RasterizerState = 
                 RasterizerState.CullCounterClockwise;
 
-            GraphicsDevice.SetRenderTarget(null);
+            GraphicsDevice.SetRenderTarget(SceneRT);
 
             //Combine everything
             FinalCombineEffect.Parameters["colorMap"].SetValue(ColorRT);
@@ -412,6 +432,8 @@ namespace Deimos
 
             FinalCombineEffect.Techniques[0].Passes[0].Apply();
             QuadRenderer.Render(Vector2.One * -1, Vector2.One);
+
+            GraphicsDevice.SetRenderTarget(null);
         }
 
 
@@ -421,11 +443,26 @@ namespace Deimos
             ClearGBuffer();
             GeneralFacade.SceneManager.ModelManager.DrawModels(Game, DisplayFacade.Camera);
             ResolveGBuffer();
-            DrawSSAO();
             DrawLights(gameTime);
+            DrawSSAO();
 
-            Texture2D dummyTexture = new Texture2D(GraphicsDevice, 1, 1);
-            dummyTexture.SetData(new Color[] { Color.White });
+            // Draw the final image
+            GraphicsDevice.SetRenderTarget(null);
+            DisplayFacade.SpriteBatch.Begin();
+
+            DisplayFacade.SpriteBatch.Draw(
+                SceneRT,
+                Vector2.Zero,
+                null,
+                Color.White,
+                0,
+                Vector2.Zero,
+                new Vector2(1, 1),
+                SpriteEffects.None,
+                0f
+            );
+
+            DisplayFacade.SpriteBatch.End();
 
             base.Draw(gameTime);
         }

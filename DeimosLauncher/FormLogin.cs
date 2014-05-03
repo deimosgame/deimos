@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -72,27 +73,11 @@ namespace DeimosLauncher
                 }
             }
 
-            bool success;
-            string successget;
-            string token;
-            successget = responseContent.Substring(11, 5);
+            JObject json = JObject.Parse(responseContent);
 
-            switch (successget)
+            if (!json.Value<bool>("success"))
             {
-                case "true,":
-                    success = true;
-                    token = responseContent.Substring(25, 32);
-                    break;
-                case "false":
-                default:
-                    success = false;
-                    token = null;
-                    break;
-            }
-
-            if (!success || token == null)
-            {
-                MessageBox.Show("Please verify your email or password.");
+                MessageBox.Show("Please verify your email or password." + json.Value<string>("refresh-token"));
                 return;
             }
 
@@ -108,7 +93,7 @@ namespace DeimosLauncher
             {
                 Process p = new Process();
                 p.StartInfo.FileName = "Deimos.exe";
-                p.StartInfo.Arguments = user_email + " " + token;
+                p.StartInfo.Arguments = user_email + " " + json.Value<string>("token") + " " + json.Value<string>("refresh-token");
                 p.Start();
             }
             catch (Exception)

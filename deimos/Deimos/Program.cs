@@ -8,6 +8,7 @@ namespace Deimos
     {
         public static string PlayerEmail = "test@mail.com";
         public static string PlayerToken = "23601116db467d50c6d8722dffb378b9";
+        public static string PlayerTokenRefresh = "q9weiuashd";
 
         /// <summary>
         /// The main entry point for the application.
@@ -20,6 +21,7 @@ namespace Deimos
             {
                 PlayerEmail = args[0];
                 PlayerToken = args[1];
+                PlayerTokenRefresh = args[2];
             }
             catch (Exception)
             {

@@ -45,9 +45,15 @@ namespace Deimos
 
         }
 
-        public void Render(Vector2 v1, Vector2 v2)
+        public void Render(Vector2 v1, Vector2 v2, bool ssao = false)
         {
             GraphicsDevice device = GeneralFacade.Game.GraphicsDevice;
+
+            if (ssao)
+            {
+                device.SamplerStates[0] = SamplerState.PointClamp;
+                device.SamplerStates[1] = SamplerState.PointClamp;
+            }
             
 
             verts[0].Position.X = v2.X;

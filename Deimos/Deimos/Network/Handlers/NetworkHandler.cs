@@ -43,11 +43,11 @@ namespace Deimos
             server_port = 1518;
 
             server_endpoint = new IPEndPoint(server_address, server_port);
-            ip_endpoint = new IPEndPoint(local_address, 8461);
+            ip_endpoint = new IPEndPoint(local_address, localport);
             end_point = (EndPoint)ip_endpoint;
 
             // Binding the port
-            socket.Bind(end_point);
+            //socket.Bind(end_point);
         }
 
         // METHODS FOR HANDHSAKING AND SERVER CONNECTION

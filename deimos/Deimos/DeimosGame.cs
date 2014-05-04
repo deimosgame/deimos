@@ -124,9 +124,11 @@ namespace Deimos
                 NetworkFacade.World.Name = "world";
                 NetworkFacade.World.IsBackground = true;
 
-                NetworkFacade.Outgoing.Start();
-                NetworkFacade.Incoming.Start();
-                NetworkFacade.Interpret.Start();
+                if (NetworkFacade.ServerIsLocal)
+                {
+                    NetworkFacade.NetworkHandling.SetConnectivity(
+                        " ", " ", 0000);
+                }
             }
 
             base.Initialize();

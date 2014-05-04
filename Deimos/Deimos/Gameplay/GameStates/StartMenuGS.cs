@@ -22,6 +22,8 @@ namespace Deimos
             float coeffY = GeneralFacade.Game.GraphicsDevice.Viewport.Height / DisplayFacade.BackgroundMenu.Height;
             int imageWidth = DisplayFacade.MenuImages["StartMenuPlay"].Width;
 
+            GeneralFacade.SceneManager.SetScene<SceneStartMenu>();
+
             DisplayFacade.BlurredScene = true;
 
             DisplayFacade.ScreenElementManager.AddImage(

@@ -86,7 +86,7 @@ namespace DeimosLauncher
             }
 
             JObject userJson = JObject.Parse(userContent);
-            if (userJson.Value<bool>("success"))
+            if (!userJson.Value<bool>("success"))
             {
                 MessageBox.Show("An error occured, please try again later.");
                 return;

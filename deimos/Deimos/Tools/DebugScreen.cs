@@ -10,15 +10,12 @@ namespace Deimos
 {
     class DebugScreen
     {
-        public SpriteFont Font;
-
         int FrameRate, FrameCounter, UpdateRate, UpdateCounter;
         TimeSpan ElapsedTime = TimeSpan.Zero;
         List<string> DebugConsole = new List<string>();
 
         public DebugScreen()
         {
-            Font = GeneralFacade.Game.Content.Load<SpriteFont>("Fonts/debug");
             float coeff = 0.15f;
             float MapWidth = GeneralFacade.Game.Renderer.NormalRT.Width * coeff;
             float MapHeight = GeneralFacade.Game.Renderer.NormalRT.Height * coeff;
@@ -76,7 +73,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 10,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "Location: ",
                 Color.LightBlue
             );
@@ -85,7 +82,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 50,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "FPS: ",
                 Color.White
             );
@@ -94,7 +91,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 70,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "Ticks per sec: ",
                 Color.White
             );
@@ -103,7 +100,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 90,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "JumpState: ",
                 Color.LightGreen
             );
@@ -112,7 +109,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 110,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "Weapon State: ",
                 Color.LightCoral
             );
@@ -121,7 +118,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 130,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "CurrentWeapon:",
                 Color.LightCoral
             );
@@ -130,7 +127,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 150,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "CurrentChamberAmmo:",
                 Color.LightCoral
             );
@@ -139,7 +136,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 170,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "CurrentReservoirAmmo:",
                 Color.LightCoral
             );
@@ -148,7 +145,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 30,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "Rotation: ",
                 Color.LightBlue
             );
@@ -157,7 +154,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 190,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "Speed State: ",
                 Color.LightSalmon
             );
@@ -166,7 +163,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 210,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "Sprint Timer: ",
                 Color.LightSalmon
             );
@@ -175,7 +172,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 230,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "Cooldown Timer: ",
                 Color.LightSalmon
             );
@@ -184,7 +181,7 @@ namespace Deimos
                 (int)(MapWidth/coeff)-400,
                 10,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "Console",
                 Color.LightSalmon
             );
@@ -193,7 +190,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 250,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "Playing State:",
                 Color.DeepPink
             );
@@ -202,7 +199,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 270,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "Life State:",
                 Color.DeepPink
             );
@@ -211,7 +208,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 290,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "Health:",
                 Color.DeepPink
             );
@@ -220,7 +217,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 310,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "Acceleration:",
                 Color.Yellow
             );
@@ -229,7 +226,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 330,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "G-Time:",
                 Color.Blue
             );
@@ -238,7 +235,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 350,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "InitialVelocity:",
                 Color.Blue
             );
@@ -247,7 +244,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 390,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "Player Class:",
                 Color.Red
             );
@@ -256,7 +253,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 370,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "Player Name:",
                 Color.Red
             );
@@ -265,7 +262,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 410,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "Spawn Instance:",
                 Color.Red
             );
@@ -274,7 +271,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 430,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "Camera View:",
                 Color.Yellow
             );
@@ -283,7 +280,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 450,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "Momentum:",
                 Color.Yellow
             );
@@ -292,7 +289,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 470,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "Scroll:",
                 Color.White
             );
@@ -301,7 +298,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 490,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "Particles: ",
                 Color.White
             );
@@ -310,7 +307,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 510,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "Collision: ",
                 Color.White
             );
@@ -319,7 +316,7 @@ namespace Deimos
                 0,
                 (int)MapHeight + 530,
                 0,
-                Font,
+                DisplayFacade.DebugFont,
                 "User: " + Program.PlayerEmail + " " + Program.PlayerToken + " " + Program.PlayerTokenRefresh,
                 Color.White
             );

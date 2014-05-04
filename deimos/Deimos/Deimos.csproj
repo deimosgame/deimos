@@ -147,6 +147,7 @@
     <Compile Include="Display\Managers\Types\ScreenElement\ScreenTable.cs" />
     <Compile Include="Display\Managers\Types\ScreenElement\TableRow.cs" />
     <Compile Include="Display\ParticleEmitters\SmokeParticleEmitter.cs" />
+    <Compile Include="Facades\HelperFacade.cs" />
     <Compile Include="Facades\NetworkFacade.cs" />
     <Compile Include="Gameplay\GameStates\GraphicOptionsGS.cs" />
     <Compile Include="Gameplay\GameStates\IntroGS.cs" />
@@ -225,6 +226,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="DeimosGame.cs" />
+    <Compile Include="Tools\Helpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Tranquillity.dll" />

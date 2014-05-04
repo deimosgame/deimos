@@ -24,7 +24,7 @@ namespace Deimos
                 300,
                 GeneralFacade.Game.GraphicsDevice.Viewport.Height / 2,
                 1,
-                DisplayFacade.DebugScreen.Font,
+                DisplayFacade.DebugFont,
                 "Loading...",
                 Color.White
             );

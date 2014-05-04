@@ -52,6 +52,18 @@ namespace Deimos
                 return;
             }
 
+            if (Content.Count() == 0)
+            {
+                TableRow row = new TableRow();
+                foreach (var item in Headers)
+                {
+                    row.Content.Add("-");
+                }
+                Content.Add(row);
+            }
+
+            int fontWidth = (int)SpriteFont.MeasureString("a").X;
+
             int rowHeight = (int)SpriteFont.MeasureString("bq").Y + Padding * 2;
             int tableHeight = rowHeight * (Content.Count() + 1);
 
@@ -104,8 +116,9 @@ namespace Deimos
             ScreenText text = new ScreenText(0, 0, 1, SpriteFont, "", HeaderFontColor);
             for (int i = 0; i < Content[0].Content.Count(); i++)
             {
-
                 string t = Headers[i];
+                // If the text is too long, we'll need to truncate it
+                t = HelperFacade.Helpers.Truncate(t, (int)(ColumnSize / fontWidth), "...");
                 text.Pos = new Vector2(Pos.X + Padding + (rowWidth * i), Pos.Y + Padding);
                 text.Text = t;
                 text.Draw(spriteBatch);
@@ -122,6 +135,8 @@ namespace Deimos
                 for (int y = 0; y < row.Content.Count(); y++)
                 {
                     string t = row.Content[y];
+                    // If the text is too long, we'll need to truncate it
+                    t = HelperFacade.Helpers.Truncate(t, (int)(ColumnSize / fontWidth), "...");
                     text.Pos = new Vector2(Pos.X + Padding + (rowWidth * y), Pos.Y + Padding + (rowHeight * (x + 1)));
                     text.Text = t;
                     text.Draw(spriteBatch);

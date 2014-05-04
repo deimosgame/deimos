@@ -387,11 +387,11 @@ namespace Deimos
             GraphicsDevice.SetRenderTarget(null);
         }
 
-        private void DrawBlurred()
+        private void DrawBlurred(Texture2D texture, RenderTarget2D target)
         {
-            GraphicsDevice.SetRenderTarget(BlurredRT);
+            GraphicsDevice.SetRenderTarget(target);
 
-            BlurEffect.Parameters["SceneTexture"].SetValue(SceneRT);
+            BlurEffect.Parameters["SceneTexture"].SetValue(texture);
             BlurEffect.Parameters["halfPixel"].SetValue(HalfPixel);
             BlurEffect.CurrentTechnique.Passes[0].Apply();
 
@@ -471,14 +471,21 @@ namespace Deimos
             ResolveGBuffer();
             DrawLights(gameTime);
             //DrawSSAO();
-            //DrawBlurred();
+            RenderTarget2D renderToUse = SceneRT;
+            if (DisplayFacade.BlurredScene)
+            {
+                //DrawBlurred(SceneRT, BlurredRT);
+                //DrawBlurred(BlurredRT, SceneRT);
+                //renderToUse = SceneRT;
+            }
+            
 
             // Draw the final image
             GraphicsDevice.SetRenderTarget(null);
             DisplayFacade.SpriteBatch.Begin();
 
             DisplayFacade.SpriteBatch.Draw(
-                SceneRT,
+                renderToUse,
                 Vector2.Zero,
                 null,
                 Color.White,

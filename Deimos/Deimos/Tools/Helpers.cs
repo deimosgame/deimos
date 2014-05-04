@@ -38,5 +38,15 @@ namespace Deimos
                 return "";
             }
         }
+
+        public string Truncate(string str, int maxlength, string end = "")
+        {
+            if (str.Length > maxlength)
+            {
+                str = str.Substring(0, maxlength - end.Length) + end;
+            }
+
+            return str;
+        }
     }
 }

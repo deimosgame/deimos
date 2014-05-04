@@ -137,6 +137,9 @@ namespace Deimos
         {
             IntroVideo = Content.Load<Video>("Videos/Intro");
 
+            DisplayFacade.DebugFont = GeneralFacade.Game.Content.Load<SpriteFont>("Fonts/debug");
+            DisplayFacade.TableFont = GeneralFacade.Game.Content.Load<SpriteFont>("Fonts/table");
+
             DisplayFacade.SpriteBatch = new SpriteBatch(GraphicsDevice);
 
             GeneralFacade.GameStateManager = new GameStateManager();

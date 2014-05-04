@@ -19,6 +19,8 @@ namespace Deimos
             //On veut afficher la souris
             GeneralFacade.Game.IsMouseVisible = true;
 
+            DisplayFacade.BlurredScene = true;
+
             // On affiche les éléments du menu
             DisplayFacade.ScreenElementManager.AddRectangle(
                 "StartScreenMenuPlay",
@@ -126,6 +128,7 @@ namespace Deimos
 
         public override void PostUnset()
         {
+            DisplayFacade.BlurredScene = false;
             DisplayFacade.ScreenElementManager.RemoveRectangle("StartScreenMenuPlay");
             DisplayFacade.ScreenElementManager.RemoveRectangle("StartScreenMenuServerList");
             DisplayFacade.ScreenElementManager.RemoveRectangle("StartScreenMenuExit");

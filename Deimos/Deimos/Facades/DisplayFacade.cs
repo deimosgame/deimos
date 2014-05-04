@@ -15,5 +15,12 @@ namespace Deimos
         public static ScreenElementManager ScreenElementManager;
         public static ParticleManager ParticleManager;
         public static ModelAnimationManager ModelAnimationManager;
+
+        // Fonts
+        public static SpriteFont DebugFont;
+        public static SpriteFont TableFont;
+
+        // Effects
+        public static bool BlurredScene = false;
     }
 }

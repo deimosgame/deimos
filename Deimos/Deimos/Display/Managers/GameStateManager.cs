@@ -14,7 +14,8 @@ namespace Deimos
         Pause,
         GraphicOptions,
         Spawning,
-        Playing
+        Playing,
+        ErrorScreen
     }
 
     class GameStateManager

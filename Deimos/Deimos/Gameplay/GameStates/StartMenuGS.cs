@@ -16,13 +16,13 @@ namespace Deimos
 
         public override void PreSet()
         {
+            GeneralFacade.SceneManager.SetScene<SceneStartMenu>();
+
             //On veut afficher la souris
             GeneralFacade.Game.IsMouseVisible = true;
             float coeffX = (float)GeneralFacade.Game.GraphicsDevice.Viewport.Width / (float)DisplayFacade.BackgroundMenu.Width;
             float coeffY = (float)GeneralFacade.Game.GraphicsDevice.Viewport.Height / (float)DisplayFacade.BackgroundMenu.Height;
             int imageWidth = DisplayFacade.MenuImages["StartMenuPlay"].Width;
-
-            GeneralFacade.SceneManager.SetScene<SceneStartMenu>();
 
             DisplayFacade.BlurredScene = true;
 

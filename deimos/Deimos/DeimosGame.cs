@@ -210,6 +210,7 @@ namespace Deimos
                 case GameStates.Pause:
                 case GameStates.ServerListMenu:
                 case GameStates.GraphicOptions:
+                case GameStates.ErrorScreen:
                     DisplayFacade.ModelAnimationManager.Animate((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000);
                     DisplayFacade.ScreenElementManager.HandleMouse((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000);
                     GeneralFacade.SceneManager.Update((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000);

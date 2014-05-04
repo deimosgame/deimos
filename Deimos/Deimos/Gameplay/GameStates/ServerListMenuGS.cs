@@ -17,6 +17,8 @@ namespace Deimos
 
         public override void PreSet()
         {
+            GeneralFacade.SceneManager.SetScene<SceneStartMenu>();
+
             GeneralFacade.Game.IsMouseVisible = true;
             float coeffX = (float)GeneralFacade.Game.GraphicsDevice.Viewport.Width / (float)DisplayFacade.BackgroundMenu.Width;
             float coeffY = (float)GeneralFacade.Game.GraphicsDevice.Viewport.Height / (float)DisplayFacade.BackgroundMenu.Height;
@@ -53,7 +55,7 @@ namespace Deimos
                 DisplayFacade.MenuImages["PauseMenuMain"],
                 delegate(ScreenElement el, DeimosGame game)
                 {
-                    GeneralFacade.GameStateManager.Set(new StartMenuGS());
+                    GeneralFacade.GameStateManager.Set(new ErrorScreenGS("BOUYA THIS IS AN ERROR."));
                 },
                 delegate(ScreenElement el, DeimosGame game)
                 {

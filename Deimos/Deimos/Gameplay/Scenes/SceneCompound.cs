@@ -50,49 +50,7 @@ namespace Deimos
                  0.2f
             );
 
-            ModelManager.LoadModel(
-                "vanquish",
-                "Models/Characters/Vanquish/vanquish",
-                new Vector3(-45, -5, 24),
-                Vector3.Zero,
-                5
-                );
-            ModelManager.LoadModel(
-                "glados",
-                "Models/Characters/glados/1",
-                new Vector3(-45, -5, 40),
-                Vector3.Zero,
-                0.075f
-                );
-            ModelManager.LoadModel(
-                "corvo",
-                "Models/Characters/corvo/corv",
-                new Vector3(-25, -5, 40),
-                Vector3.Zero,
-                0.4f
-                );
-            //ModelManager.LoadModel(
-            //    "vanquish",
-            //    "Models/Characters/Vanquish/vanquish",
-            //    new Vector3(-45, -5, 24),
-            //    Vector3.Zero,
-            //    5
-            //    );
-            //ModelManager.LoadModel(
-            //    "glados",
-            //    "Models/Characters/glados/1",
-            //    new Vector3(-45, -5, 40),
-            //    Vector3.Zero,
-            //    0.075f    
-            //    );
-            //ModelManager.LoadModel(
-            //    "corvo",
-            //    "Models/Characters/corvo/corv",
-            //    new Vector3(-25, -5, 40),
-            //    Vector3.Zero,
-            //    0.4f
-            //    );
-
+            //ModelManager.LoadModel("follow", "Models/Characters/Vanquish/vanquish", Vector3.Zero, Vector3.Zero, 5, LevelModel.CollisionType.None);
 
             if (NetworkFacade.IsMultiplayer)
             {
@@ -185,7 +143,6 @@ namespace Deimos
                 Color.White
                 );
 
-
             SoundManager.Play3D("scary", DisplayFacade.Camera.Position, 
                 new Vector3(0, 0, -0));
         }
@@ -195,25 +152,10 @@ namespace Deimos
         {
             SoundManager.SetListener("scary", GameplayFacade.ThisPlayer.Position);
 
-            if (NetworkFacade.IsMultiplayer)
-            {
-                foreach (KeyValuePair<byte, Player> p in NetworkFacade.Players)
-                {
-                    if (ModelManager.LevelModelExists(p.Value.Name)
-                        && p.Value.IsAlive())
-                    {
-                        ModelManager.GetLevelModel(p.Value.Name).show = true;
-
-                        ModelManager.GetLevelModel(p.Value.Name).Position =
-                            p.Value.Position;
-
-                        ModelManager.GetLevelModel(p.Value.Name).Rotation =
-                            p.Value.Rotation;
-                    }
-                }
-            }
-
             Objects.Update(GameplayFacade.ThisPlayer.dt);
+
+            //ModelManager.GetLevelModel("follow").Position = GameplayFacade.ThisPlayer.Position + new Vector3(3, 1, 3);
+            //ModelManager.GetLevelModel("follow").Rotation += new Vector3(0,GameplayFacade.ThisPlayer.Rotation.X, 0);
         }
     }
 }

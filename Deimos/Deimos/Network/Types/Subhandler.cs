@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Deimos.Facades;
 
 namespace Deimos
 {
@@ -33,6 +34,7 @@ namespace Deimos
             if (Received.Type == Packet.PacketType.Broadcast)
             {
                 Received.Unique_ID = ExtractInt32(buf, 4);
+                NetworkFacade.MainHandling.Broadcasts.ConfirmReceipt(Received.Unique_ID);
             }
 
             // Copying the buffer into the packet
@@ -257,7 +259,7 @@ namespace Deimos
             {
                 case Data.Contains.Byte:
                     d.Byte_Data = buf[init];
-                    d.end_index = init;
+                    d.end_index = init + 1;
                     break;
                 case Data.Contains.Int32:
                     d.Int32_Data = ExtractInt32(buf, init);

@@ -33,7 +33,7 @@ namespace Deimos
             {
                 NetworkFacade.DataHandling.Handle(datapack);
 
-                int i = datapack.end_index + 1;
+                int i = datapack.end_index;
 
                 while (i < p.Encoded_buffer.Length && p.Encoded_buffer[i] != 0x00)
                 {
@@ -41,7 +41,7 @@ namespace Deimos
                     if (new_data != null)
                     {
                         NetworkFacade.DataHandling.Handle(new_data);
-                        i = new_data.end_index + 1;
+                        i = new_data.end_index;
                     }
                 }
 
@@ -50,8 +50,6 @@ namespace Deimos
                     Interpret(p.Next);
                 }
             }
-
-            ConfirmReceipt(p.Unique_ID);
         }
 
         // This method processes all ongoing packet information

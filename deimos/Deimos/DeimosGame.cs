@@ -87,25 +87,22 @@ namespace Deimos
             //IsFixedTimeStep = false; // Call the UPDATE method all the time instead of x time per sec
             Graphics.ApplyChanges();
 
-            // Thread optimization
-                // Sending thread
-            NetworkFacade.Outgoing.Name = "out";
-            NetworkFacade.Outgoing.IsBackground = true;
-                // Receiving thread
-            NetworkFacade.Incoming.Name = "in";
-            NetworkFacade.Incoming.IsBackground = true;
-                // Interpreting thread
-            NetworkFacade.Interpret.Name = "proc";
-            NetworkFacade.Interpret.IsBackground = true;
-                // World updating thread
-            NetworkFacade.World.Name = "world";
-            NetworkFacade.World.IsBackground = true;
-                // Move Update thread
-            NetworkFacade.MovePacket.Name = "move";
-            NetworkFacade.MovePacket.IsBackground = true;
-
             if (NetworkFacade.IsMultiplayer)
             {
+                // Thread optimization
+                // Sending thread
+                NetworkFacade.Outgoing.Name = "out";
+                NetworkFacade.Outgoing.IsBackground = true;
+                // Receiving thread
+                NetworkFacade.Incoming.Name = "in";
+                NetworkFacade.Incoming.IsBackground = true;
+                // Interpreting thread
+                NetworkFacade.Interpret.Name = "proc";
+                NetworkFacade.Interpret.IsBackground = true;
+                // World updating thread
+                NetworkFacade.World.Name = "world";
+                NetworkFacade.World.IsBackground = true;
+
                 NetworkFacade.Outgoing.Start();
                 NetworkFacade.Incoming.Start();
                 NetworkFacade.Interpret.Start();

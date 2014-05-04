@@ -298,6 +298,8 @@ namespace Deimos
 
             GameplayFacade.ThisPlayer.CurrentWeapon.ReloadTimer = 0;
             GameplayFacade.ThisPlayer.CurrentWeapon.State = WeaponState.AtEase;
+
+            GeneralFacade.SceneManager.SoundManager.Play("w_sel2");
         }
 
         // this method reloads the weapon automatically if the current chamber 

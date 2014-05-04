@@ -61,23 +61,23 @@ namespace Deimos
                 && element.GetNature() != ElementNature.Bullet)
             {
                 Collided = true;
-            }
 
-            if (WeaponRep == 'E')
-            {
-                Explode(element.Model.Position);
-            }
-
-            else
-            {
-                switch (element.Nature)
+                if (WeaponRep == 'E')
                 {
-                    case ElementNature.World:
-                        break;
-                    case ElementNature.Player:
-                        break;
-                    default:
-                        break;
+                    Explode(element.Model.Position);
+                }
+
+                else
+                {
+                    switch (element.Nature)
+                    {
+                        case ElementNature.World:
+                            break;
+                        case ElementNature.Player:
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
         }

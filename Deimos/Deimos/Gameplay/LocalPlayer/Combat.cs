@@ -171,6 +171,8 @@ namespace Deimos
             {
                 GameplayFacade.ThisPlayer.CurrentWeapon.State =
                     WeaponState.Reloading;
+
+                GeneralFacade.SceneManager.SoundManager.Play("w_c");
             }
 
             if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.QuickSwitch) &&

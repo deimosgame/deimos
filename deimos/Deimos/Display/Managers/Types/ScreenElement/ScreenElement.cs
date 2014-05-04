@@ -86,7 +86,7 @@ namespace Deimos
 
         public abstract void Draw(SpriteBatch spriteBatch);
 
-        public virtual bool HandleEvent(Rectangle mouse, MouseState mouseState, float dt)
+        public virtual bool HandleEvent(Rectangle mouse, MouseState mouseState)
         {
             return false;
         }

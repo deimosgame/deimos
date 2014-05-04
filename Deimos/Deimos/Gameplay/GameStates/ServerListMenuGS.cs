@@ -55,9 +55,10 @@ namespace Deimos
                     players.Split(',').Count() + "/" + (string)item["max_players"]
                 };
                 // Erenus, edit below so we can connect to a server
-                row.OnClick = delegate(ScreenElement el, DeimosGame g) 
+                row.OnClick = delegate(ScreenElement el, DeimosGame g)
                 {
                     // Add connection code here
+                    throw new Exception((string)item["ip"]);
                 };
                 serverList.Add(row);
             }

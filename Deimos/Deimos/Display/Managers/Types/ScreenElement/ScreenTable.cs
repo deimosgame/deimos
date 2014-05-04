@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -127,10 +128,16 @@ namespace Deimos
 
             // Drawing the content along with the setting the events
             text.Color = FontColor;
+            MouseState mouseState = Mouse.GetState();
+            Rectangle mouseRectangle = new Rectangle(mouseState.X, mouseState.Y, 1, 1);
+            ScreenRectangle eventBox = new ScreenRectangle((int)Pos.X, 0, 1, tableWidth, rowHeight, Color.Transparent);
             for (int x = 0; x < Content.Count(); x++)
             {
                 TableRow row = Content[x];
 
+                eventBox.OnClick = row.OnClick;
+                eventBox.Pos = new Vector2(Pos.X, Pos.Y + (rowHeight * (x + 1)));
+                eventBox.HandleEvent(mouseRectangle, mouseState);
 
                 for (int y = 0; y < row.Content.Count(); y++)
                 {

@@ -65,12 +65,12 @@ namespace Deimos
                 {
                     if (!NetworkFacade.IsMultiplayer)
                     {
-                        GeneralFacade.Game.Exit();
+                        GeneralFacade.GameStateManager.Set(new StartMenuGS());
                     }
                     else
                     {
                         NetworkFacade.MainHandling.Disconnections.Disco();
-                        GeneralFacade.Game.Exit();
+                        GeneralFacade.GameStateManager.Set(new StartMenuGS());
                     }
                 },
                 delegate(ScreenElement el, DeimosGame game)

@@ -30,7 +30,7 @@ namespace Deimos
                 0,
                 coeffX,
                 coeffY, 
-                1,
+                0,
                 DisplayFacade.BackgroundMenu
             );
 
@@ -158,7 +158,6 @@ namespace Deimos
                     t.Image = DisplayFacade.MenuImages["StartMenuQuit"];
                 }
             );
-            //DisplayFacade.ScreenElementManager.AddImage("applelogo", 500, 500, 1, 1, GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/apple"));
         }
 
         public override void PostUnset()

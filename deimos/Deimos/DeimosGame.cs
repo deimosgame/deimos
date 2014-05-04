@@ -137,12 +137,18 @@ namespace Deimos
         {
             IntroVideo = Content.Load<Video>("Videos/Intro");
             DisplayFacade.BackgroundMenu = GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/backgroundMenu");
+
             DisplayFacade.MenuImages.Add("StartMenuPlay", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/StartMenu/play"));
             DisplayFacade.MenuImages.Add("StartMenuPlayHover", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/StartMenu/playHover"));
             DisplayFacade.MenuImages.Add("StartMenuServers", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/StartMenu/servers"));
             DisplayFacade.MenuImages.Add("StartMenuServersHover", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/StartMenu/serversHover"));
             DisplayFacade.MenuImages.Add("StartMenuQuit", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/StartMenu/quit"));
             DisplayFacade.MenuImages.Add("StartMenuQuitHover", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/StartMenu/quitHover"));
+
+            DisplayFacade.MenuImages.Add("PauseMenuResume", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/PauseMenu/resume"));
+            DisplayFacade.MenuImages.Add("PauseMenuResumeHover", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/PauseMenu/resumeHover"));
+            DisplayFacade.MenuImages.Add("PauseMenuMain", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/PauseMenu/main"));
+            DisplayFacade.MenuImages.Add("PauseMenuMainHover", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/PauseMenu/mainHover"));
 
             DisplayFacade.DebugFont = GeneralFacade.Game.Content.Load<SpriteFont>("Fonts/debug");
             DisplayFacade.TableFont = GeneralFacade.Game.Content.Load<SpriteFont>("Fonts/table");

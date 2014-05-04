@@ -453,6 +453,10 @@ Content\Images\Menu\StartMenu\serversHover.xnb
 Content\Sounds\weapons\fire_gun.xnb
 Content\Sounds\weapons\explode.xnb
 Content\Sounds\fx\hit_wall.xnb
+Content\Images\Menu\PauseMenu\main.xnb
+Content\Images\Menu\PauseMenu\mainHover.xnb
+Content\Images\Menu\PauseMenu\resume.xnb
+Content\Images\Menu\PauseMenu\resumeHover.xnb
 Content\Videos\Intro.wmv
 Content\Fonts\debug.spritefont
 Content\Fonts\menuTitle.spritefont

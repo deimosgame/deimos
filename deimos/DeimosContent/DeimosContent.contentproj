@@ -1585,8 +1585,30 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sounds\weapons\fire_gun.wav">
-      <Name>fire_gun</Name>
+    <Compile Include="Images\Menu\PauseMenu\main.png">
+      <Name>main</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\Menu\PauseMenu\mainHover.png">
+      <Name>mainHover</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\Menu\PauseMenu\resume.png">
+      <Name>resume</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\Menu\PauseMenu\resumeHover.png">
+      <Name>resumeHover</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sounds\fx\hit_wall.wav">
+      <Name>hit_wall</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
@@ -1597,10 +1619,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Sounds\fx\hit_wall.wav">
-      <Name>hit_wall</Name>
+    <Compile Include="Sounds\weapons\fire_gun.wav">
+      <Name>fire_gun</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>

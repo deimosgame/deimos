@@ -208,8 +208,9 @@ namespace Deimos
                 DepthStencilState.DepthRead,
                 RasterizerState.CullNone
             );
-            foreach (KeyValuePair<string, ScreenTable> elementKeyVal in
-                ElementsTable)
+
+            foreach (KeyValuePair<string, ScreenImage> elementKeyVal in
+                ElementsImage)
             {
                 elementKeyVal.Value.Draw(spriteBatch);
             }
@@ -218,8 +219,8 @@ namespace Deimos
             {
                 elementKeyVal.Value.Draw(spriteBatch);
             }
-            foreach (KeyValuePair<string, ScreenImage> elementKeyVal in
-                ElementsImage)
+            foreach (KeyValuePair<string, ScreenLine> elementKeyVal in
+                ElementsLine)
             {
                 elementKeyVal.Value.Draw(spriteBatch);
             }
@@ -228,8 +229,8 @@ namespace Deimos
             {
                 elementKeyVal.Value.Draw(spriteBatch);
             }
-            foreach (KeyValuePair<string, ScreenLine> elementKeyVal in 
-                ElementsLine)
+            foreach (KeyValuePair<string, ScreenTable> elementKeyVal in
+                ElementsTable)
             {
                 elementKeyVal.Value.Draw(spriteBatch);
             }

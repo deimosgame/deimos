@@ -136,6 +136,13 @@ namespace Deimos
         protected override void LoadContent()
         {
             IntroVideo = Content.Load<Video>("Videos/Intro");
+            DisplayFacade.BackgroundMenu = GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/backgroundMenu");
+            DisplayFacade.MenuImages.Add("StartMenuPlay", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/StartMenu/play"));
+            DisplayFacade.MenuImages.Add("StartMenuPlayHover", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/StartMenu/playHover"));
+            DisplayFacade.MenuImages.Add("StartMenuServers", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/StartMenu/servers"));
+            DisplayFacade.MenuImages.Add("StartMenuServersHover", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/StartMenu/serversHover"));
+            DisplayFacade.MenuImages.Add("StartMenuQuit", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/StartMenu/quit"));
+            DisplayFacade.MenuImages.Add("StartMenuQuitHover", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/StartMenu/quitHover"));
 
             DisplayFacade.DebugFont = GeneralFacade.Game.Content.Load<SpriteFont>("Fonts/debug");
             DisplayFacade.TableFont = GeneralFacade.Game.Content.Load<SpriteFont>("Fonts/table");

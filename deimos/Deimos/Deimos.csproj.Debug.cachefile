@@ -174,7 +174,6 @@ Content\Models\Weapons\Knife\t_hunter_knife_n.xnb
 Content\Models\Weapons\Knife\t_hunter_knife_s.xnb
 Content\Models\Map\Main\Deimos2_material_0.xnb
 Content\Models\Map\Main\Deimos2_material_1.xnb
-Content\Images\Menu\apple.xnb
 Content\Models\Map\Compound\DeimosCompoundA_material_0.xnb
 Content\Models\Map\Compound\DeimosCompoundA_material_1.xnb
 Content\Models\Map\Compound\DeimosCompoundA_material_10.xnb
@@ -439,6 +438,13 @@ Content\Sounds\weapons\select(2).xnb
 Content\Sounds\weapons\select(3).xnb
 Content\Sounds\weapons\select(4).xnb
 Content\Sounds\weapons\select.xnb
+Content\Images\Menu\backgroundMenu.xnb
+Content\Images\Menu\StartMenu\play.xnb
+Content\Images\Menu\StartMenu\playHover.xnb
+Content\Images\Menu\StartMenu\quit.xnb
+Content\Images\Menu\StartMenu\quitHover.xnb
+Content\Images\Menu\StartMenu\servers.xnb
+Content\Images\Menu\StartMenu\serversHover.xnb
 Content\Videos\Intro.wmv
 Content\Fonts\debug.spritefont
 Content\Fonts\menuTitle.spritefont

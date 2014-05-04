@@ -21,15 +21,26 @@ namespace Deimos
 
             DisplayFacade.BlurredScene = true;
 
+            DisplayFacade.ScreenElementManager.AddImage(
+                "StartScreenMenuBackground", 
+                0, 
+                0,
+                GeneralFacade.Game.GraphicsDevice.Viewport.Width / DisplayFacade.BackgroundMenu.Width,
+                GeneralFacade.Game.GraphicsDevice.Viewport.Height / DisplayFacade.BackgroundMenu.Height, 
+                1,
+                DisplayFacade.BackgroundMenu
+            );
+
             // On affiche les éléments du menu
-            DisplayFacade.ScreenElementManager.AddRectangle(
+
+            DisplayFacade.ScreenElementManager.AddImage(
                 "StartScreenMenuPlay",
                 50,
                 200,
                 1,
-                200,
-                30,
-                Color.Red,
+                1,
+                1,
+                DisplayFacade.MenuImages["StartMenuPlay"],
                 delegate(ScreenElement el, DeimosGame game)
                 {
                     if (!NetworkFacade.IsMultiplayer)
@@ -54,7 +65,7 @@ namespace Deimos
 
                         if (NetworkFacade.NetworkHandling.Handshook)
                         {
-                        NetworkFacade.NetworkHandling.Connect();
+                            NetworkFacade.NetworkHandling.Connect();
 
                             System.Threading.Thread.Sleep(3000);
 
@@ -82,45 +93,66 @@ namespace Deimos
                                 GeneralFacade.GameStateManager.Set(new SpawningGS());
                                 GeneralFacade.GameStateManager.Set(new PlayingGS());
                             }
-                        
+
                         }
                     }
                 },
                 delegate(ScreenElement el, DeimosGame game)
                 {
-                    ScreenRectangle t = DisplayFacade.ScreenElementManager.GetRectangle("StartScreenMenuPlay");
-                    t.Color = Color.Purple;
+                    ScreenImage t = DisplayFacade.ScreenElementManager.GetImage("StartScreenMenuPlay");
+                    t.Image = DisplayFacade.MenuImages["StartMenuPlayHover"];
                 },
                 delegate(ScreenElement el, DeimosGame game)
                 {
-                    ScreenRectangle t = DisplayFacade.ScreenElementManager.GetRectangle("StartScreenMenuPlay");
-                    t.Color = Color.Red;
+                    ScreenImage t = DisplayFacade.ScreenElementManager.GetImage("StartScreenMenuPlay");
+                    t.Image = DisplayFacade.MenuImages["StartMenuPlay"];
                 }
             );
-            DisplayFacade.ScreenElementManager.AddRectangle(
-                "StartScreenMenuServerList",
+
+            DisplayFacade.ScreenElementManager.AddImage(
+                "StartScreenMenuServers",
                 50,
                 250,
                 1,
-                200,
-                30,
-                Color.Blue,
+                1,
+                1,
+                DisplayFacade.MenuImages["StartMenuServers"],
                 delegate(ScreenElement el, DeimosGame game)
                 {
                     GeneralFacade.GameStateManager.Set(new ServerListMenuGS());
+                },
+                delegate(ScreenElement el, DeimosGame game)
+                {
+                    ScreenImage t = DisplayFacade.ScreenElementManager.GetImage("StartScreenMenuServers");
+                    t.Image = DisplayFacade.MenuImages["StartMenuServersHover"];
+                },
+                delegate(ScreenElement el, DeimosGame game)
+                {
+                    ScreenImage t = DisplayFacade.ScreenElementManager.GetImage("StartScreenMenuServers");
+                    t.Image = DisplayFacade.MenuImages["StartMenuServers"];
                 }
             );
-            DisplayFacade.ScreenElementManager.AddRectangle(
-                "StartScreenMenuExit",
+            DisplayFacade.ScreenElementManager.AddImage(
+                "StartScreenMenuQuit",
                 50,
                 300,
                 1,
-                200,
-                30,
-                Color.Green,
+                1,
+                1,
+                DisplayFacade.MenuImages["StartMenuQuit"],
                 delegate(ScreenElement el, DeimosGame game)
                 {
                     GeneralFacade.Game.Exit();
+                },
+                delegate(ScreenElement el, DeimosGame game)
+                {
+                    ScreenImage t = DisplayFacade.ScreenElementManager.GetImage("StartScreenMenuQuit");
+                    t.Image = DisplayFacade.MenuImages["StartMenuQuitHover"];
+                },
+                delegate(ScreenElement el, DeimosGame game)
+                {
+                    ScreenImage t = DisplayFacade.ScreenElementManager.GetImage("StartScreenMenuQuit");
+                    t.Image = DisplayFacade.MenuImages["StartMenuQuit"];
                 }
             );
             //DisplayFacade.ScreenElementManager.AddImage("applelogo", 500, 500, 1, 1, GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/apple"));
@@ -129,9 +161,10 @@ namespace Deimos
         public override void PostUnset()
         {
             DisplayFacade.BlurredScene = false;
-            DisplayFacade.ScreenElementManager.RemoveRectangle("StartScreenMenuPlay");
-            DisplayFacade.ScreenElementManager.RemoveRectangle("StartScreenMenuServerList");
-            DisplayFacade.ScreenElementManager.RemoveRectangle("StartScreenMenuExit");
+            DisplayFacade.ScreenElementManager.RemoveImage("StartScreenMenuBackground");
+            DisplayFacade.ScreenElementManager.RemoveImage("StartScreenMenuPlay");
+            DisplayFacade.ScreenElementManager.RemoveImage("StartScreenMenuServers");
+            DisplayFacade.ScreenElementManager.RemoveImage("StartScreenMenuQuit");
         }
     }
 }

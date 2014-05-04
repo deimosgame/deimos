@@ -35,19 +35,17 @@ namespace Deimos
                 SocketType.Dgram, ProtocolType.Udp);
         }
 
-        public void SetConnectivity(string server, string local, int localport)
+        public void SetConnectivity(string server, int serverPort, string local, int localPort)
         {
             server_address = IPAddress.Parse(server);
             local_address = IPAddress.Parse(local);
 
-            server_port = 1518;
-
-            server_endpoint = new IPEndPoint(server_address, server_port);
-            ip_endpoint = new IPEndPoint(local_address, localport);
+            server_endpoint = new IPEndPoint(server_address, serverPort);
+            ip_endpoint = new IPEndPoint(local_address, localPort);
             end_point = (EndPoint)ip_endpoint;
 
             // Binding the port
-            //socket.Bind(end_point);
+            socket.Bind(end_point);
         }
 
         // METHODS FOR HANDHSAKING AND SERVER CONNECTION

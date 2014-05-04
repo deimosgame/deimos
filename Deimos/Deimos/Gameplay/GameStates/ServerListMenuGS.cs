@@ -90,12 +90,11 @@ namespace Deimos
                     (string)item["map"],
                     players.Split(',').Count() + "/" + (string)item["max_players"]
                 };
-                // Erenus, edit below so we can connect to a server
-                row.OnClick = delegate(ScreenElement el, DeimosGame g)
+	            JToken item1 = item;
+	            row.OnClick = delegate(ScreenElement el, DeimosGame g)
                 {
-                    // Add connection code here
                     NetworkFacade.NetworkHandling.SetConnectivity(
-                        (string)item["ip"], "192.168.0.206", 8462);
+						(string)item1["ip"], (int)item1["port"], "192.168.0.206", 8462);
 
                     NetworkFacade.Outgoing.Start();
                     NetworkFacade.Incoming.Start();

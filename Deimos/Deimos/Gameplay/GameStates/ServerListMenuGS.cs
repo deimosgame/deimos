@@ -95,7 +95,49 @@ namespace Deimos
                     NetworkFacade.NetworkHandling.SetConnectivity(
                         (string)item["ip"], " ", 0000);
 
-                    //throw new Exception((string)item["ip"]);
+                    NetworkFacade.Outgoing.Start();
+                    NetworkFacade.Incoming.Start();
+                    NetworkFacade.Interpret.Start();
+
+                    NetworkFacade.NetworkHandling.ShakeHands();
+                    System.Threading.Thread.Sleep(2000);
+
+                    if (NetworkFacade.NetworkHandling.Handshook)
+                    {
+                        NetworkFacade.NetworkHandling.Connect();
+
+                        System.Threading.Thread.Sleep(3000);
+
+                        if (NetworkFacade.NetworkHandling.ServerConnected)
+                        {
+                            GameplayFacade.Objects = new ObjectsList();
+                            GameplayFacade.Weapons = new WeaponsList();
+                            GameplayFacade.Weapons.Initialise();
+                            GameplayFacade.Objects.Initialize();
+
+                            switch (NetworkFacade.MainHandling.Connections.CurrentMap)
+                            {
+                                case "coolmap":
+                                    GeneralFacade.GameStateManager.Set(
+                                        new LoadingLevelGS<SceneCompound>()
+                                        );
+                                    break;
+                                default:
+                                    GeneralFacade.GameStateManager.Set(
+                                        new LoadingLevelGS<SceneDeimos>()
+                                        );
+                                    break;
+                            }
+
+                            GeneralFacade.GameStateManager.Set(new SpawningGS());
+                            GeneralFacade.GameStateManager.Set(new PlayingGS());
+                        }
+
+                    }
+                    else
+                    {
+                        throw new Exception("Could not connect");
+                    }
                 };
                 serverList.Add(row);
             }

@@ -80,10 +80,10 @@ namespace Deimos
             IsMouseVisible = false;
 
             // Game settings
-            Graphics.PreferredBackBufferWidth = 1980;
-            Graphics.PreferredBackBufferHeight = 1024;
-            //Graphics.PreferredBackBufferWidth = 1400;
-            //Graphics.PreferredBackBufferHeight = 1050;
+            //Graphics.PreferredBackBufferWidth = 1980;
+            //Graphics.PreferredBackBufferHeight = 1024;
+            Graphics.PreferredBackBufferWidth = 1400;
+            Graphics.PreferredBackBufferHeight = 900;
             //Graphics.IsFullScreen = true;
             //Graphics.PreferMultiSampling = true; // Anti aliasing - Useless as custom effects
             Graphics.SynchronizeWithVerticalRetrace = false; // VSync

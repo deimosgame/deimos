@@ -16,8 +16,8 @@ namespace Deimos
         public override void PreSet()
         {
             GeneralFacade.Game.IsMouseVisible = true;
-            float coeffX = GeneralFacade.Game.GraphicsDevice.Viewport.Width / DisplayFacade.BackgroundMenu.Width;
-            float coeffY = GeneralFacade.Game.GraphicsDevice.Viewport.Height / DisplayFacade.BackgroundMenu.Height;
+            float coeffX = (float)GeneralFacade.Game.GraphicsDevice.Viewport.Width / (float)DisplayFacade.BackgroundMenu.Width;
+            float coeffY = (float)GeneralFacade.Game.GraphicsDevice.Viewport.Height / (float)DisplayFacade.BackgroundMenu.Height;
             int imageWidth = DisplayFacade.MenuImages["StartMenuPlay"].Width;
 
             DisplayFacade.ScreenElementManager.AddImage(
@@ -35,8 +35,8 @@ namespace Deimos
                 "PauseMenuResume",
                 (int)((520 - imageWidth) * coeffX),
                 320,
-                1,
-                1,
+                coeffX,
+                coeffY,
                 1,
                 DisplayFacade.MenuImages["PauseMenuResume"],
                 delegate(ScreenElement el, DeimosGame game)
@@ -58,8 +58,8 @@ namespace Deimos
                 "PauseMenuMain",
                 (int)((510 - imageWidth) * coeffX),
                 390,
-                1,
-                1,
+                coeffX,
+                coeffY,
                 1,
                 DisplayFacade.MenuImages["PauseMenuMain"],
                 delegate(ScreenElement el, DeimosGame game)

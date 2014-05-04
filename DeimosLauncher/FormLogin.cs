@@ -49,19 +49,18 @@ namespace DeimosLauncher
             string pw = textboxPassword.Text;
 
             string deimos_url = "https://deimos-ga.me";
-
-            string responseContent = FileGetContents(deimos_url
+            string loginContent = FileGetContents(deimos_url
                 + "/api/get-token/"
                 + user_email + "/"
                 + pw);
 
-            if (responseContent == "")
+            if (loginContent == "")
             {
                 MessageBox.Show("Network error.");
                 return;
             }
 
-            JObject loginJson = JObject.Parse(responseContent);
+            JObject loginJson = JObject.Parse(loginContent);
 
             if (!loginJson.Value<bool>("success"))
             {
@@ -75,19 +74,26 @@ namespace DeimosLauncher
             Properties.Settings.Default.password = textboxPassword.Text;
             Properties.Settings.Default.Save();
 
-            // Getting the user name
-            string responseName = FileGetContents(deimos_url
+            // Getting user name
+            string userContent = FileGetContents(deimos_url
                 + "/api/get-name/"
                 + user_email);
-            JObject userJson = JObject.Parse(responseName);
 
-            if (!userJson.Value<bool>("success"))
+            if (userContent == "")
+            {
+                MessageBox.Show("Network error.");
+                return;
+            }
+
+            JObject userJson = JObject.Parse(userContent);
+            if (userJson.Value<bool>("success"))
             {
                 MessageBox.Show("An error occured, please try again later.");
                 return;
             }
 
             // Starting deimos
+
             try
             {
                 Process p = new Process();
@@ -119,14 +125,13 @@ namespace DeimosLauncher
         {
             try
             {
-                var request =
-                WebRequest.Create(url) as HttpWebRequest;
+                WebRequest request = WebRequest.Create(url) as HttpWebRequest;
 
                 request.Method = "GET";
                 request.ContentType = "application/json";
                 request.Timeout = 20000;
 
-                string responseContent = null;
+                string responseContent = "";
                 using (var response = request.GetResponse() as HttpWebResponse)
                 {
                     using (var reader =

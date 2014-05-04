@@ -8,7 +8,8 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
-using Deimos.Facades;
+using System.Threading;
+using System.Collections;
 
 namespace Deimos
 {
@@ -25,7 +26,7 @@ namespace Deimos
             private set;
         }
 
-
+       
 
         public enum PlayingStates
         {
@@ -89,6 +90,24 @@ namespace Deimos
 
             if (NetworkFacade.IsMultiplayer)
             {
+                // Initialization
+                NetworkFacade.Network = new NetworkManager();
+
+                NetworkFacade.MainHandling = new MainHandler();
+                NetworkFacade.NetworkHandling = new NetworkHandler();
+                NetworkFacade.DataHandling = new DataHandler();
+
+                NetworkFacade.Sending = new Queue();
+                NetworkFacade.Receiving = new Queue();
+
+                NetworkFacade.Outgoing = new Thread(NetworkFacade.Network.HandleSend);
+                NetworkFacade.Incoming = new Thread(NetworkFacade.Network.HandleReceive);
+                NetworkFacade.Interpret = new Thread(NetworkFacade.Network.Process);
+                NetworkFacade.World = new Thread(NetworkFacade.Network.UpdateWorld);
+                NetworkFacade.MovePacket = new Thread(NetworkFacade.Network.SendMovePacket);
+
+                NetworkFacade.Players = new Dictionary<byte, Player>();
+
                 // Thread optimization
                 // Sending thread
                 NetworkFacade.Outgoing.Name = "out";

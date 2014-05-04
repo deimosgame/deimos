@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using Deimos.Facades;
 
 namespace Deimos
 {
@@ -119,7 +118,10 @@ namespace Deimos
 
             SetStats();
 
-            NetworkFacade.MainHandling.PlayerInfoUpdate.Update();
+            if (NetworkFacade.IsMultiplayer)
+            {
+                NetworkFacade.MainHandling.PlayerInfoUpdate.Update();
+            }
         }
 
         public void PlayerRespawn(Vector3 respawnlocation, Vector3 angle, string instance)
@@ -138,7 +140,10 @@ namespace Deimos
 
                 SetStats();
 
-                NetworkFacade.MainHandling.PlayerInfoUpdate.Update();
+                if (NetworkFacade.IsMultiplayer)
+                {
+                    NetworkFacade.MainHandling.PlayerInfoUpdate.Update();
+                }
             }
         }
 

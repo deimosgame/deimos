@@ -152,6 +152,7 @@ namespace Deimos
 
             DisplayFacade.DebugFont = GeneralFacade.Game.Content.Load<SpriteFont>("Fonts/debug");
             DisplayFacade.TableFont = GeneralFacade.Game.Content.Load<SpriteFont>("Fonts/table");
+            DisplayFacade.TitleFont = GeneralFacade.Game.Content.Load<SpriteFont>("Fonts/title");
 
             DisplayFacade.SpriteBatch = new SpriteBatch(GraphicsDevice);
 

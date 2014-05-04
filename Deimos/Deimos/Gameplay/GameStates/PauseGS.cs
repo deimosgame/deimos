@@ -16,28 +16,51 @@ namespace Deimos
         public override void PreSet()
         {
             GeneralFacade.Game.IsMouseVisible = true;
+            float coeffX = GeneralFacade.Game.GraphicsDevice.Viewport.Width / DisplayFacade.BackgroundMenu.Width;
+            float coeffY = GeneralFacade.Game.GraphicsDevice.Viewport.Height / DisplayFacade.BackgroundMenu.Height;
+            int imageWidth = DisplayFacade.MenuImages["StartMenuPlay"].Width;
 
-            DisplayFacade.ScreenElementManager.AddRectangle(
-                "PauseMenuPlay",
-                50,
-                200,
+            DisplayFacade.ScreenElementManager.AddImage(
+                "PauseMenuBackground",
+                0,
+                0,
+                coeffX,
+                coeffY,
+                0,
+                DisplayFacade.BackgroundMenu
+            );
+
+            DisplayFacade.ScreenElementManager.AddImage(
+                "PauseMenuResume",
+                (int)((520 - imageWidth) * coeffX),
+                320,
                 1,
-                200,
-                30,
-                Color.Red,
+                1,
+                1,
+                DisplayFacade.MenuImages["PauseMenuResume"],
                 delegate(ScreenElement el, DeimosGame game)
                 {
                     GeneralFacade.GameStateManager.Set(new PlayingGS());
+                },
+                delegate(ScreenElement el, DeimosGame game)
+                {
+                    ScreenImage t = DisplayFacade.ScreenElementManager.GetImage("PauseMenuResume");
+                    t.Image = DisplayFacade.MenuImages["PauseMenuResumeHover"];
+                },
+                delegate(ScreenElement el, DeimosGame game)
+                {
+                    ScreenImage t = DisplayFacade.ScreenElementManager.GetImage("PauseMenuResume");
+                    t.Image = DisplayFacade.MenuImages["PauseMenuResume"];
                 }
             );
-            DisplayFacade.ScreenElementManager.AddRectangle(
-                "PauseMenuExit",
-                50,
-                250,
+            DisplayFacade.ScreenElementManager.AddImage(
+                "PauseMenuMain",
+                (int)((510 - imageWidth) * coeffX),
+                390,
                 1,
-                200,
-                30,
-                Color.Green,
+                1,
+                1,
+                DisplayFacade.MenuImages["PauseMenuMain"],
                 delegate(ScreenElement el, DeimosGame game)
                 {
                     if (!NetworkFacade.IsMultiplayer)
@@ -49,14 +72,25 @@ namespace Deimos
                         NetworkFacade.MainHandling.Disconnections.Disco();
                         GeneralFacade.Game.Exit();
                     }
+                },
+                delegate(ScreenElement el, DeimosGame game)
+                {
+                    ScreenImage t = DisplayFacade.ScreenElementManager.GetImage("PauseMenuMain");
+                    t.Image = DisplayFacade.MenuImages["PauseMenuMainHover"];
+                },
+                delegate(ScreenElement el, DeimosGame game)
+                {
+                    ScreenImage t = DisplayFacade.ScreenElementManager.GetImage("PauseMenuMain");
+                    t.Image = DisplayFacade.MenuImages["PauseMenuMain"];
                 }
             );
         }
 
         public override void PostUnset()
         {
-            DisplayFacade.ScreenElementManager.RemoveRectangle("PauseMenuPlay");
-            DisplayFacade.ScreenElementManager.RemoveRectangle("PauseMenuExit");
+            DisplayFacade.ScreenElementManager.RemoveImage("PauseMenuBackground");
+            DisplayFacade.ScreenElementManager.RemoveImage("PauseMenuResume");
+            DisplayFacade.ScreenElementManager.RemoveImage("PauseMenuMain");
         }
     }
 }

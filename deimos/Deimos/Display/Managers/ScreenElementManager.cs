@@ -54,6 +54,7 @@ namespace Deimos
                 element
             );
             ElementsRectangleList.Add(name);
+
             return element;
         }
         public ScreenRectangle AddRectangle(string name, int posX, int posY,
@@ -88,6 +89,8 @@ namespace Deimos
             );
             ElementsImageList.Add(name);
 
+            ElementsImage = ElementsImage.OrderBy(kvp => kvp.Value.ZIndex).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+
             return element;
         }
         public ScreenImage AddImage(string name, int posX, int posY, float scale,
@@ -114,6 +117,9 @@ namespace Deimos
                 name,
                 element
             );
+
+            ElementsText = ElementsText.OrderBy(kvp => kvp.Value.ZIndex).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+
             return element;
         }
         public ScreenText GetText(string name)

@@ -450,6 +450,10 @@ Content\Sounds\fx\heal.xnb
 Content\Sounds\fx\speed.xnb
 Content\Sounds\fx\jumpbuild.xnb
 Content\Sounds\fx\eoff.xnb
+Content\Images\Menu\PauseMenu\main.xnb
+Content\Images\Menu\PauseMenu\mainHover.xnb
+Content\Images\Menu\PauseMenu\resume.xnb
+Content\Images\Menu\PauseMenu\resumeHover.xnb
 Content\Videos\Intro.wmv
 Content\Fonts\debug.spritefont
 Content\Fonts\menuTitle.spritefont

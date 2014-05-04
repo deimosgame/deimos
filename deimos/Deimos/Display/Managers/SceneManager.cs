@@ -132,6 +132,8 @@ namespace Deimos
             SoundManager.AddSoundEffect("w_sw4", "Sounds/weapons/swing4");
                 // Firearm firing
             SoundManager.AddSoundEffect("weaponFire", "Sounds/GunFire");
+                // No ammo
+            SoundManager.AddSoundEffect("noammo", "Sounds/weapons/noammo");
                 // Weapon switching
             SoundManager.AddSoundEffect("w_c", "Sounds/weapons/change");
             //SoundManager.AddSoundEffect("w_c_m", "Sounds/weapons/select(5)");
@@ -143,6 +145,17 @@ namespace Deimos
             SoundManager.AddSoundEffect("w_sel6", "Sounds/weapons/select");
                 // Picking up a weapon
             SoundManager.AddSoundEffect("w_pu", "Sounds/weapons/w_pkup");
+
+            // Sound Effects
+                // Speed boost pickup
+            SoundManager.AddSoundEffect("speed", "Sounds/fx/speed");
+                // Gravity boost pickup
+            SoundManager.AddSoundEffect("gravity", "Sounds/fx/jumpbuild");
+                // Health pack pickup
+            SoundManager.AddSoundEffect("heal", "Sounds/fx/heal");
+
+                // Effect fade
+            SoundManager.AddSoundEffect("effectoff", "Sounds/fx/eoff");
         }
 
         public void Update(float dt)

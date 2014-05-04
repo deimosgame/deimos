@@ -257,6 +257,8 @@ namespace Deimos
                     {
                         if (!currentWeapon.IsFirable())
                         {
+                            GeneralFacade.SceneManager.SoundManager.Play("noammo");
+                            currentWeapon.FireTimer = 0;
                             return;
                         }
                         currentWeapon.State = WeaponState.Firing;
@@ -270,7 +272,9 @@ namespace Deimos
                     break;
 
                 case Type.Melee:
-                    break;
+                    currentWeapon.FireTimer = 0;
+                    PlayMeleeSound();
+                    return;
 
                 case Type.Grenade:
                     break;
@@ -436,6 +440,28 @@ namespace Deimos
             else
             {
                     GeneralFacade.SceneManager.SoundManager.Play("w_c");
+            }
+        }
+
+        public void PlayMeleeSound()
+        {
+            Random rng = new Random();
+            int w = rng.Next(0, 4);
+
+            switch (w)
+            {
+                case 0:
+                    GeneralFacade.SceneManager.SoundManager.Play("w_sw1");
+                    return;
+                case 1:
+                    GeneralFacade.SceneManager.SoundManager.Play("w_sw2");
+                    return;
+                case 2:
+                    GeneralFacade.SceneManager.SoundManager.Play("w_sw3");
+                    return;
+                case 3:
+                    GeneralFacade.SceneManager.SoundManager.Play("w_sw4");
+                    return;
             }
         }
     }

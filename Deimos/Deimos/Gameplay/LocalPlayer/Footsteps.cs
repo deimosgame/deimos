@@ -19,7 +19,8 @@ namespace Deimos
                 && GameplayFacade.ThisPlayerPhysics.GravityState ==
                 Physics.PhysicalState.Walking)
             {
-                timer = GameplayFacade.ThisPlayer.Speed / 100;
+                float factor = GameplayFacade.ThisPlayer.Speed / 8;
+                timer = 1 / factor;
 
                 if (GameplayFacade.ThisPlayer.CurrentSpeedState ==
                     Player.SpeedState.Sprinting)

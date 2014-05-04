@@ -197,6 +197,8 @@ namespace Deimos
                     GameplayFacade.ThisPlayer.Inventory.PickupAmmo(
                         GameplayFacade.Weapons.GetName(w.Represents));
 
+                    GeneralFacade.SceneManager.SoundManager.Play("w_pu");
+
                     // let's deactivate the weapon object
                     w.Status = PickupObject.State.Inactive;
 
@@ -221,6 +223,8 @@ namespace Deimos
                     (uint)w.Ammo;
                 GameplayFacade.ThisPlayer.Inventory.PickupAmmo(
                     GameplayFacade.Weapons.GetName(w.Represents));
+
+                GeneralFacade.SceneManager.SoundManager.Play("w_pu");
 
                 // let's now deactivate the weapon object
                 w.Status = PickupObject.State.Inactive;
@@ -260,6 +264,8 @@ namespace Deimos
                                 GameplayFacade.ThisPlayer.Health = addup;
                             }
 
+                            GeneralFacade.SceneManager.SoundManager.Play("heal");
+
                             e.Status = PickupObject.State.Inactive;
                             e.respawn_timer = 0;
 
@@ -284,6 +290,8 @@ namespace Deimos
                             // Let's add the effect to active effects list
                             ActiveEffects.Add(e);
 
+                            GeneralFacade.SceneManager.SoundManager.Play("speed");
+
                             // let's deactivate the world object
                             e.Status = PickupObject.State.Inactive;
                             e.respawn_timer = 0;
@@ -307,6 +315,8 @@ namespace Deimos
                     {
                         // Let's update the player's boolean
                         GameplayFacade.ThisPlayer.Gravityboosted = true;
+
+                        GeneralFacade.SceneManager.SoundManager.Play("gravity");
 
                         // Let's add the effect to the active effects list
                         ActiveEffects.Add(e);
@@ -420,6 +430,8 @@ namespace Deimos
 
                                 // and we set the player's boolean
                                 GameplayFacade.ThisPlayer.Speedboosted = false;
+
+                                GeneralFacade.SceneManager.SoundManager.Play("effectoff");
                             }
                             else
                             {
@@ -445,6 +457,8 @@ namespace Deimos
 
                                 // Resetting the player's boolean
                                 GameplayFacade.ThisPlayer.Gravityboosted = false;
+
+                                GeneralFacade.SceneManager.SoundManager.Play("effectoff");
                             }
                             else
                             {

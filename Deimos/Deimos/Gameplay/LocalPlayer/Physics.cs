@@ -60,6 +60,9 @@ namespace Deimos
 
         public Vector3 momentum;
 
+            // for sound playing purposes:
+        bool land = true;
+
         // Constructor
         public Physics()
         {
@@ -283,6 +286,13 @@ namespace Deimos
                 GravityState = PhysicalState.Walking;
                 acceleration.Y = 0f;
                 momentum.Y = 0;
+
+                if (land)
+                {
+                    GeneralFacade.SceneManager.SoundManager.Play("l2");
+                }
+
+                land = false;
             }
 
             if (GravityState == PhysicalState.Jumping)
@@ -301,6 +311,8 @@ namespace Deimos
                 GameplayFacade.ThisPlayer.CurrentSpeedState = Player.SpeedState.Running;
             }
 
+            land = true;
+
             // creating the potential momentum
             momentum = CreateMomentum();
 
@@ -308,6 +320,8 @@ namespace Deimos
             initial_velocity = JumpVelocity;
             timer_gravity = 0f;
             GravityState = PhysicalState.Jumping;
+
+            GeneralFacade.SceneManager.SoundManager.Play("l1");
         }
 
         // hard-coded momentum for display purposes

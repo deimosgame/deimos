@@ -166,6 +166,8 @@ namespace Deimos
                     GameplayFacade.ThisPlayer.WeaponModel = ToByte(name);
                     NetworkFacade.MainHandling.PlayerInfoUpdate.Update();
                 }
+
+                PlaySelectSound();
             }
         }
 
@@ -397,6 +399,43 @@ namespace Deimos
                     return 0x04;
                 default:
                     return 0x00;
+            }
+        }
+
+        public void PlaySelectSound()
+        {
+            Random rng = new Random();
+
+            if (GameplayFacade.ThisPlayer.CurrentWeapon.Type ==
+                Type.Firearm)
+            {
+                int w = rng.Next(1, 7);
+
+                switch (w)
+                {
+                    case 1:
+                        GeneralFacade.SceneManager.SoundManager.Play("w_sel1");
+                        return;
+                    case 2:
+                        GeneralFacade.SceneManager.SoundManager.Play("w_sel2");
+                        return;
+                    case 3:
+                        GeneralFacade.SceneManager.SoundManager.Play("w_sel3");
+                        return;
+                    case 4:
+                        GeneralFacade.SceneManager.SoundManager.Play("w_sel4");
+                        return;
+                    case 5:
+                        GeneralFacade.SceneManager.SoundManager.Play("w_sel5");
+                        return;
+                    case 6:
+                        GeneralFacade.SceneManager.SoundManager.Play("w_sel6");
+                        return;
+                }
+            }
+            else
+            {
+                    GeneralFacade.SceneManager.SoundManager.Play("w_c");
             }
         }
     }

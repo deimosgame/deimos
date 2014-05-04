@@ -23,6 +23,7 @@ namespace Deimos
         Actions PlayerActions;
         Movement PlayerMovement;
         Combat PlayerCombat;
+        Footsteps PlayerSteps;
 
         private Vector3 position;
         public Vector3 Position
@@ -46,6 +47,7 @@ namespace Deimos
             PlayerMovement = new Movement();
             PlayerActions = new Actions();
             PlayerCombat = new Combat();
+            PlayerSteps = new Footsteps();
 
             Name = GeneralFacade.Config.PlayerName;
             Instance = "main";
@@ -250,6 +252,7 @@ namespace Deimos
             PlayerMovement.HandleMovement(dt);
             PlayerActions.HandleActions(dt);
             PlayerCombat.HandleCombat(dt);
+            PlayerSteps.HandleFootsteps(dt);
             Stuff(dt);
             GameplayFacade.ThisPlayerDisplay.DisplayCurrentWeapon(GameplayFacade.ThisPlayer.CurrentWeapon);
 

@@ -116,7 +116,33 @@ namespace Deimos
 
         public void LoadDefault()
         {
+            // Footstepping
+            SoundManager.AddSoundEffect("s1", "Sounds/steps/boot1");
+            SoundManager.AddSoundEffect("s2", "Sounds/steps/boot2");
+            SoundManager.AddSoundEffect("s3", "Sounds/steps/boot3");
+            SoundManager.AddSoundEffect("s4", "Sounds/steps/boot4");
+            SoundManager.AddSoundEffect("l1", "Sounds/steps/wood_walk2");
+            SoundManager.AddSoundEffect("l2", "Sounds/steps/wood_walk3");
+
+            // Weapons
+                // Melee swinging
+            SoundManager.AddSoundEffect("w_sw1", "Sounds/weapons/swing1");
+            SoundManager.AddSoundEffect("w_sw2", "Sounds/weapons/swing2");
+            SoundManager.AddSoundEffect("w_sw3", "Sounds/weapons/swing3");
+            SoundManager.AddSoundEffect("w_sw4", "Sounds/weapons/swing4");
+                // Firearm firing
             SoundManager.AddSoundEffect("weaponFire", "Sounds/GunFire");
+                // Weapon switching
+            SoundManager.AddSoundEffect("w_c", "Sounds/weapons/change");
+            //SoundManager.AddSoundEffect("w_c_m", "Sounds/weapons/select(5)");
+            SoundManager.AddSoundEffect("w_sel1", "Sounds/weapons/select(1)");
+            SoundManager.AddSoundEffect("w_sel2", "Sounds/weapons/select(2)");
+            SoundManager.AddSoundEffect("w_sel3", "Sounds/weapons/select(3)");
+            SoundManager.AddSoundEffect("w_sel4", "Sounds/weapons/select(4)");
+            SoundManager.AddSoundEffect("w_sel5", "Sounds/weapons/select(6)");
+            SoundManager.AddSoundEffect("w_sel6", "Sounds/weapons/select");
+                // Picking up a weapon
+            SoundManager.AddSoundEffect("w_pu", "Sounds/weapons/w_pkup");
         }
 
         public void Update(float dt)

@@ -158,6 +158,7 @@
     <Compile Include="Gameplay\GameStates\ServerListMenuGS.cs" />
     <Compile Include="Gameplay\GameStates\SpawningGS.cs" />
     <Compile Include="Gameplay\GameStates\StartMenuGS.cs" />
+    <Compile Include="Gameplay\LocalPlayer\Footsteps.cs" />
     <Compile Include="Gameplay\Objects\Managers\ObjectManager.cs" />
     <Compile Include="Gameplay\Objects\ObjectsList.cs" />
     <Compile Include="Gameplay\Objects\Type\PickupEffect.cs" />

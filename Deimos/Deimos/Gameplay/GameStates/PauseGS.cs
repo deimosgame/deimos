@@ -27,7 +27,8 @@ namespace Deimos
                 coeffX,
                 coeffY,
                 0,
-                DisplayFacade.BackgroundMenu
+                DisplayFacade.BackgroundMenu,
+                null, null, null
             );
 
             DisplayFacade.ScreenElementManager.AddImage(

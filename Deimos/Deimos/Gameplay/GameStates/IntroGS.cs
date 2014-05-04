@@ -14,7 +14,7 @@ namespace Deimos
 
         public override void PreSet()
         {
-            DisplayFacade.ScreenElementManager.AddImage("Intro", 0, 0, 1, 1, 1, null);
+            DisplayFacade.ScreenElementManager.AddImage("Intro", 0, 0, 1, 1, null);
         }
 
         public override void PostUnset()

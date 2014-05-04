@@ -33,7 +33,8 @@ namespace Deimos
                 coeffX,
                 coeffY, 
                 0,
-                DisplayFacade.BackgroundMenu
+                DisplayFacade.BackgroundMenu,
+                null, null, null
             );
 
             // On affiche les éléments du menu

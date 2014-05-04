@@ -17,9 +17,9 @@ namespace Deimos
             Content = content;
         }
 
-        ~ResourceManager()
+        public void Unload()
         {
-            //Content.Unload();
+            Content.Unload();
         }
 
         public CollidableModel.CollidableModel LoadModel(string name)

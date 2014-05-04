@@ -69,6 +69,11 @@ namespace Deimos
             // of the Scene
             CurrentScene = null;
 
+            if (ResourceManager != null)
+            {
+                ResourceManager.Unload();
+            }
+
             ResourceManager = null;
             ModelManager = null;
             LightManager = null;

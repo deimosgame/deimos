@@ -18,18 +18,42 @@ namespace Deimos
         public override void PreSet()
         {
             GeneralFacade.Game.IsMouseVisible = true;
+            float coeffX = GeneralFacade.Game.GraphicsDevice.Viewport.Width / DisplayFacade.BackgroundMenu.Width;
+            float coeffY = GeneralFacade.Game.GraphicsDevice.Viewport.Height / DisplayFacade.BackgroundMenu.Height;
+            int imageWidth = DisplayFacade.MenuImages["StartMenuPlay"].Width;
 
-            DisplayFacade.ScreenElementManager.AddRectangle(
-                "ServerListMenuBack",
-                50,
-                250,
+            DisplayFacade.ScreenElementManager.AddImage(
+                "StartScreenMenuBackground",
+                0,
+                0,
+                coeffX,
+                coeffY,
+                0,
+                DisplayFacade.BackgroundMenu,
+                null, null, null
+            );
+
+            DisplayFacade.ScreenElementManager.AddImage(
+                "ServerListMenuMain",
+                (int)((510 - imageWidth) * coeffX),
+                390,
                 1,
-                200,
-                30,
-                Color.Green,
+                1,
+                1,
+                DisplayFacade.MenuImages["PauseMenuMain"],
                 delegate(ScreenElement el, DeimosGame game)
                 {
                     GeneralFacade.GameStateManager.Set(new StartMenuGS());
+                },
+                delegate(ScreenElement el, DeimosGame game)
+                {
+                    ScreenImage t = DisplayFacade.ScreenElementManager.GetImage("ServerListMenuMain");
+                    t.Image = DisplayFacade.MenuImages["PauseMenuMainHover"];
+                },
+                delegate(ScreenElement el, DeimosGame game)
+                {
+                    ScreenImage t = DisplayFacade.ScreenElementManager.GetImage("ServerListMenuMain");
+                    t.Image = DisplayFacade.MenuImages["PauseMenuMain"];
                 }
             );
 
@@ -72,7 +96,8 @@ namespace Deimos
         public override void PostUnset()
         {
             DisplayFacade.ScreenElementManager.RemoveTable("ServerListMenuTable");
-            DisplayFacade.ScreenElementManager.RemoveRectangle("ServerListMenuBack");
+            DisplayFacade.ScreenElementManager.RemoveImage("ServerListMenuMain");
+            DisplayFacade.ScreenElementManager.RemoveImage("StartScreenMenuBackground");
         }
     }
 }

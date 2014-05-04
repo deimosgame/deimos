@@ -15,13 +15,23 @@ namespace Deimos
         public float ScaleY;
 
         public ScreenImage(int posX, int posY, float scaleX, float scaleY, int zIndex,
-            Texture2D image)
+            Texture2D image,
+            Action<ScreenElement, DeimosGame> onClick = null,
+            Action<ScreenElement, DeimosGame> onHover = null,
+            Action<ScreenElement, DeimosGame> onOut = null)
         {
             Pos = new Vector2(posX, posY);
             ScaleX = scaleX;
             ScaleY = scaleY;
             ZIndex = zIndex;
             Image = image;
+            OnClick = onClick;
+            OnHover = onHover;
+            OnOut = onOut;
+            if (OnHover != null || OnClick != null || OnOut != null)
+            {
+                NoEvent = false;
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -45,6 +55,10 @@ namespace Deimos
 
         public override bool HandleEvent(Rectangle mouse, MouseState mouseState)
         {
+            if (NoEvent)
+            {
+                return false;
+            }
             Rectangle rectangle = new Rectangle(
                 (int)Pos.X,
                 (int)Pos.Y,
@@ -56,13 +70,21 @@ namespace Deimos
                 if (LastState != ScreenElement.ElState.Hover
                     && LastState != ScreenElement.ElState.Click)
                 {
-                    OnHover(this, GeneralFacade.Game);
+                    if (OnHover != null)
+                    {
+                        OnHover(this, GeneralFacade.Game);
+                    }
+
                     LastState = ScreenElement.ElState.Hover;
                 }
                 if (mouseState.LeftButton == ButtonState.Pressed
                     && LastState != ScreenElement.ElState.Click)
                 {
-                    OnClick(this, GeneralFacade.Game);
+                    if (OnClick != null)
+                    {
+                        OnClick(this, GeneralFacade.Game);
+                    }
+
                     LastState = ScreenElement.ElState.Click;
                     return true;
                 }
@@ -71,7 +93,11 @@ namespace Deimos
             {
                 if (LastState != ScreenElement.ElState.Out)
                 {
-                    OnOut(this, GeneralFacade.Game);
+                    if (OnOut != null)
+                    {
+                        OnOut(this, GeneralFacade.Game);
+                    }
+
                     LastState = ScreenElement.ElState.Out;
                 }
             }

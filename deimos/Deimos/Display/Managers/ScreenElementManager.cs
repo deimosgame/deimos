@@ -40,15 +40,12 @@ namespace Deimos
         // Methods
         public ScreenRectangle AddRectangle(string name, int posX, int posY,
             int zIndex, int width, int height, Color color,
-            Action<ScreenElement, DeimosGame> onClick = null, 
-            Action<ScreenElement, DeimosGame> onHover = null, 
-            Action<ScreenElement, DeimosGame> onOut = null)
+            Action<ScreenElement, DeimosGame> onClick, 
+            Action<ScreenElement, DeimosGame> onHover, 
+            Action<ScreenElement, DeimosGame> onOut)
         {
             ScreenRectangle element =
-                new ScreenRectangle(posX, posY, zIndex, width, height, color);
-            element.OnClick = onClick;
-            element.OnOut = onOut;
-            element.OnHover = onHover;
+                new ScreenRectangle(posX, posY, zIndex, width, height, color, onClick, onHover, onOut);
             ElementsRectangle.Add(
                 name,
                 element
@@ -60,7 +57,7 @@ namespace Deimos
         public ScreenRectangle AddRectangle(string name, int posX, int posY,
             int zIndex, int width, int height, Color color)
         {
-            return AddRectangle(name, posX, posY, zIndex, width, height, color, null);
+            return AddRectangle(name, posX, posY, zIndex, width, height, color, null, null, null);
         }
         public ScreenRectangle GetRectangle(string name)
         {
@@ -74,15 +71,12 @@ namespace Deimos
 
         public ScreenImage AddImage(string name, int posX, int posY, float scaleX,
            float scaleY, int zIndex, Texture2D image,
-            Action<ScreenElement, DeimosGame> onClick = null,
-            Action<ScreenElement, DeimosGame> onHover = null,
-            Action<ScreenElement, DeimosGame> onOut = null)
+            Action<ScreenElement, DeimosGame> onClick,
+            Action<ScreenElement, DeimosGame> onHover,
+            Action<ScreenElement, DeimosGame> onOut)
         {
             ScreenImage element =
-                new ScreenImage(posX, posY, scaleX, scaleY, zIndex, image);
-            element.OnClick = onClick;
-            element.OnOut = onOut;
-            element.OnHover = onHover;
+                new ScreenImage(posX, posY, scaleX, scaleY, zIndex, image, onClick, onHover, onOut);
             ElementsImage.Add(
                 name,
                 element
@@ -96,7 +90,7 @@ namespace Deimos
         public ScreenImage AddImage(string name, int posX, int posY, float scale,
             int zIndex, Texture2D image)
         {
-            return AddImage(name, posX, posY, scale, scale, zIndex, image);
+            return AddImage(name, posX, posY, scale, scale, zIndex, image, null, null, null);
         }
         public ScreenImage GetImage(string name)
         {

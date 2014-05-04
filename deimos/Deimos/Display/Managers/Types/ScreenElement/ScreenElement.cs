@@ -64,6 +64,8 @@ namespace Deimos
             }
         }
 
+        protected bool NoEvent = true;
+
         public enum ElState
         {
             Hover,
@@ -79,9 +81,6 @@ namespace Deimos
         protected ScreenElement()
         {
             Visible = true; // Default value
-            OnHover = delegate(ScreenElement el, DeimosGame g) { };
-            OnOut = delegate(ScreenElement el, DeimosGame g) { };
-            OnClick = delegate(ScreenElement el, DeimosGame g) { };
         }
 
         public abstract void Draw(SpriteBatch spriteBatch);

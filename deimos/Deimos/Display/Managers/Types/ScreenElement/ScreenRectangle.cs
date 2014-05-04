@@ -26,14 +26,20 @@ namespace Deimos
             set;
         }
 
-        public ScreenRectangle(int posX, int posY, int zIndex, 
-            int width, int height, Color color)
+        public ScreenRectangle(int posX, int posY, int zIndex,
+            int width, int height, Color color,
+            Action<ScreenElement, DeimosGame> onClick = null,
+            Action<ScreenElement, DeimosGame> onHover = null,
+            Action<ScreenElement, DeimosGame> onOut = null)
         {
             Pos = new Vector2(posX, posY);
             ZIndex = zIndex;
             Width = width;
             Height = height;
             Color = color;
+            OnClick = onClick;
+            OnHover = onHover;
+            OnOut = onOut;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -62,13 +68,21 @@ namespace Deimos
                 if (LastState != ScreenElement.ElState.Hover
                     && LastState != ScreenElement.ElState.Click)
                 {
-                    OnHover(this, GeneralFacade.Game);
+                    if (OnHover != null)
+                    {
+                        OnHover(this, GeneralFacade.Game);
+                    }
+                    
                     LastState = ScreenElement.ElState.Hover;
                 }
                 if (mouseState.LeftButton == ButtonState.Pressed
                     && LastState != ScreenElement.ElState.Click)
                 {
-                    OnClick(this, GeneralFacade.Game);
+                    if (OnClick != null)
+                    {
+                        OnClick(this, GeneralFacade.Game);
+                    }
+                    
                     LastState = ScreenElement.ElState.Click;
                     return true;
                 }
@@ -77,7 +91,11 @@ namespace Deimos
             {
                 if (LastState != ScreenElement.ElState.Out)
                 {
-                    OnOut(this, GeneralFacade.Game);
+                    if (OnOut != null)
+                    {
+                        OnOut(this, GeneralFacade.Game);
+                    }
+                    
                     LastState = ScreenElement.ElState.Out;
                 }
             }

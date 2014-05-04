@@ -65,6 +65,14 @@ namespace Deimos
         // Methods
         public void SetScene<T>()
         {
+            if(!(CurrentScene is T))
+            {
+                SetSceneForce<T>();
+            }
+        }
+
+        public void SetSceneForce<T>()
+        {
             // Setting it to null makes the GarbageCollector call the destructor
             // of the Scene
             CurrentScene = null;

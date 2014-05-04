@@ -9,8 +9,7 @@ namespace Deimos
     enum AnimationLoop
     {
         None,
-        Loop,
-        Back
+        Loop
     }
 
     class AnimatedModel
@@ -29,16 +28,6 @@ namespace Deimos
         }
         public int RemainingMilliseconds;
 
-        private Vector3 startPosition;
-        public Vector3 StartPosition
-        {
-            get { return startPosition; }
-            set
-            {
-                startPosition = value;
-                UpdateCoeffs();
-            }
-        }
         private Vector3 endPosition;
         public Vector3 EndPosition
         {
@@ -50,16 +39,6 @@ namespace Deimos
             }
         }
 
-        public Vector3 startRotation;
-        public Vector3 StartRotation
-        {
-            get { return startRotation; }
-            set
-            {
-                startRotation = value;
-                UpdateCoeffs();
-            }
-        }
         public Vector3 endRotation;
         public Vector3 EndRotation
         {
@@ -83,13 +62,13 @@ namespace Deimos
 
         private void UpdateCoeffs()
         {
-            CoeffPX = (EndPosition.X - StartPosition.X) / Milliseconds;
-            CoeffPY = (EndPosition.Y - StartPosition.Y) / Milliseconds;
-            CoeffPZ = (EndPosition.Z - StartPosition.Z) / Milliseconds;
+            CoeffPX = (EndPosition.X - Model.Position.X) / Milliseconds;
+            CoeffPY = (EndPosition.Y - Model.Position.Y) / Milliseconds;
+            CoeffPZ = (EndPosition.Z - Model.Position.Z) / Milliseconds;
 
-            CoeffRX = (EndRotation.X - StartRotation.X) / Milliseconds;
-            CoeffRY = (EndRotation.Y - StartRotation.Y) / Milliseconds;
-            CoeffRZ = (EndRotation.Z - StartRotation.Z) / Milliseconds;
+            CoeffRX = (EndRotation.X - Model.Rotation.X) / Milliseconds;
+            CoeffRY = (EndRotation.Y - Model.Rotation.Y) / Milliseconds;
+            CoeffRZ = (EndRotation.Z - Model.Rotation.Z) / Milliseconds;
         }
     }
 }

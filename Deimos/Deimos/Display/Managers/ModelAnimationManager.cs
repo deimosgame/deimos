@@ -10,18 +10,15 @@ namespace Deimos
     {
         protected Dictionary<string, AnimatedModel> AnimatedModels = new Dictionary<string, AnimatedModel>();
 
-        public AnimatedModel Add(string name, LevelModel model, int milliseconds,
-                            Vector3 startPos, Vector3 endPos,
-                            Vector3 startRotation, Vector3 endRotation,
+        public AnimatedModel Add(string name, LevelModel model, int milliseconds, 
+                            Vector3 endPos, Vector3 endRotation,
                             AnimationLoop loop = AnimationLoop.None)
         {
             AnimatedModel tAnimation = new AnimatedModel();
             tAnimation.Model = model;
             tAnimation.Milliseconds = milliseconds;
             tAnimation.RemainingMilliseconds = milliseconds;
-            tAnimation.StartPosition = startPos;
             tAnimation.EndPosition = endPos;
-            tAnimation.StartRotation = startRotation;
             tAnimation.EndRotation = endRotation;
             tAnimation.Loop = loop;
 
@@ -60,17 +57,6 @@ namespace Deimos
                 {
                     switch (tAnimation.Loop)
                     {
-                        case AnimationLoop.Back:
-                            Vector3 temp = tAnimation.StartPosition;
-                            tAnimation.StartPosition = tAnimation.EndPosition;
-                            tAnimation.EndPosition = temp;
-
-                            temp = tAnimation.StartRotation;
-                            tAnimation.StartRotation = tAnimation.EndRotation;
-                            tAnimation.EndRotation = temp;
-
-                            tAnimation.RemainingMilliseconds = tAnimation.Milliseconds;
-                        break;
                         case AnimationLoop.Loop:
                             tAnimation.RemainingMilliseconds = tAnimation.Milliseconds;
                         break;

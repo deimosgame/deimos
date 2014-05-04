@@ -38,12 +38,12 @@ namespace DeimosLauncher.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string password {
+        public string refresh_token {
             get {
-                return ((string)(this["password"]));
+                return ((string)(this["refresh_token"]));
             }
             set {
-                this["password"] = value;
+                this["refresh_token"] = value;
             }
         }
     }

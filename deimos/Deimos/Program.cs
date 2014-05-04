@@ -22,9 +22,8 @@ namespace Deimos
             try
             {
                 PlayerEmail = args[0];
-                PlayerToken = args[1];
-                PlayerTokenRefresh = args[2];
-                Username = args[3];
+                PlayerTokenRefresh = args[1];
+                Username = args[2];
                 NetworkFacade.IsMultiplayer = true;
             }
             catch (Exception)

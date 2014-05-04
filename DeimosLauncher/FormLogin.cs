@@ -16,6 +16,9 @@ namespace DeimosLauncher
 {
     public partial class FormLogin : Form
     {
+        public string DeimosURL = "https://deimos-ga.me";
+        public bool LoginWithToken = false;
+
         public FormLogin()
         {
             InitializeComponent();
@@ -23,12 +26,32 @@ namespace DeimosLauncher
             // Make sure we get these settings retreived
             Properties.Settings.Default.Reload();
 
-            // Put them in our textboxes
-            if (Properties.Settings.Default.email != ""
-                && Properties.Settings.Default.password != "")
+            textboxEmail.Text = Properties.Settings.Default.email;
+
+            if (Properties.Settings.Default.email == "" ||
+                Properties.Settings.Default.refresh_token == "")
             {
-                textboxEmail.Text = Properties.Settings.Default.email;
-                textboxPassword.Text = Properties.Settings.Default.password;
+                return;
+            }
+
+            // Check if they are still valid
+            string loginContent = FileGetContents(DeimosURL
+                + "/api/refresh-token/"
+                + Properties.Settings.Default.email + "/"
+                + Properties.Settings.Default.refresh_token);
+
+            if (loginContent == "")
+            {
+                MessageBox.Show("Network error.");
+                return;
+            }
+
+            JObject loginJson = JObject.Parse(loginContent);
+            if (loginJson.Value<bool>("success"))
+            {
+                LoginWithToken = true;
+                textboxEmail.Enabled = false;
+                textboxPassword.Enabled = false;
             }
         }
 
@@ -39,45 +62,15 @@ namespace DeimosLauncher
 
         private void buttonPlay_Click(object sender, EventArgs e)
         {
-            if (textboxEmail.Text == "" || textboxPassword.Text == "")
+            if (!LoginWithToken && !LoginWithDetails())
             {
-                MessageBox.Show("Please make sure to input a correct email and password.");
                 return;
             }
-
-            string user_email = textboxEmail.Text;
-            string pw = textboxPassword.Text;
-
-            string deimos_url = "https://deimos-ga.me";
-            string loginContent = FileGetContents(deimos_url
-                + "/api/get-token/"
-                + user_email + "/"
-                + pw);
-
-            if (loginContent == "")
-            {
-                MessageBox.Show("Network error.");
-                return;
-            }
-
-            JObject loginJson = JObject.Parse(loginContent);
-
-            if (!loginJson.Value<bool>("success"))
-            {
-                MessageBox.Show("Please verify your email or password." + loginJson.Value<string>("refresh-token"));
-                return;
-            }
-
-            // Client logged in
-            // Store its details for future game launch
-            Properties.Settings.Default.email = user_email;
-            Properties.Settings.Default.password = textboxPassword.Text;
-            Properties.Settings.Default.Save();
 
             // Getting user name
-            string userContent = FileGetContents(deimos_url
+            string userContent = FileGetContents(DeimosURL
                 + "/api/get-name/"
-                + user_email);
+                + Properties.Settings.Default.email);
 
             if (userContent == "")
             {
@@ -93,22 +86,62 @@ namespace DeimosLauncher
             }
 
             // Starting deimos
-
             try
             {
                 Process p = new Process();
                 p.StartInfo.FileName = "Deimos.exe";
-                p.StartInfo.Arguments = user_email + " " + loginJson.Value<string>("token") + " " + loginJson.Value<string>("refresh-token") + " " + userJson.Value<string>("name");
-                p.Start();
+                p.StartInfo.Arguments = textboxEmail.Text + " " +
+                    Properties.Settings.Default.refresh_token + " " + 
+                    userJson.Value<string>("name");
+                if (!p.Start())
+                {
+                    MessageBox.Show("Game is already launched.");
+                }
             }
             catch (Exception)
             {
                 MessageBox.Show("An error occured while trying to launch Deimos.");
                 return;
             }
+        }
 
-            // It's ok, we can quit
-            Application.Exit();
+        private bool LoginWithDetails()
+        {
+            if (textboxEmail.Text == "" || textboxPassword.Text == "")
+            {
+                MessageBox.Show("Please make sure to input a correct email and password.");
+                return false;
+            }
+
+            string user_email = textboxEmail.Text;
+            string pw = textboxPassword.Text;
+
+            string loginContent = FileGetContents(DeimosURL
+                + "/api/get-token/"
+                + user_email + "/"
+                + pw);
+
+            if (loginContent == "")
+            {
+                MessageBox.Show("Network error.");
+                return false;
+            }
+
+            JObject loginJson = JObject.Parse(loginContent);
+
+            if (!loginJson.Value<bool>("success"))
+            {
+                MessageBox.Show("Please verify your email or password.");
+                return false;
+            }
+
+            // Client logged in
+            // Store its details for future game launch
+            Properties.Settings.Default.email = user_email;
+            Properties.Settings.Default.refresh_token = loginJson.Value<string>("refresh-token");
+            Properties.Settings.Default.Save();
+
+            return true;
         }
 
         private void textboxPassword_TextChanged(object sender, EventArgs e)

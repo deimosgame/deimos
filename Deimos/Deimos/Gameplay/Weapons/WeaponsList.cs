@@ -41,8 +41,8 @@ namespace Deimos
                 )
             );
             SetWeapon(new Weapon(
-                new Vector3(4f, 1.2f, 1.6f),
-                new Vector3(3.5f, 1.5f, 0f), 0.0035f, (float)((Math.PI) / -2),
+                new Vector3(1.38f, 0.4f, 0.4f),
+                new Vector3(1.4f, 0.35f, 0f), 0.001f, (float)((Math.PI) / -2),
                 "Models/Weapons/M9/Handgun", "Pistol", 1, 'B',
                 0.2f,
                 7, 56, 14,

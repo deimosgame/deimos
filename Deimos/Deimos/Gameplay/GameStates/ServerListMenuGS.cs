@@ -31,18 +31,18 @@ namespace Deimos
                 }
             );
 
-            TableRow row1 = new TableRow();
-            row1.Content = new List<string> { "Hello", "World" };
+            List<TableRow> serverList = new List<TableRow>();
 
-            DisplayFacade.ScreenElementManager.AddTable("serverList", 500, 200, 1,
+
+            DisplayFacade.ScreenElementManager.AddTable("ServerListMenuTable", 500, 200, 1,
                 Color.Yellow, Color.Red, Color.Gray, Color.Black, Color.Black, DisplayFacade.DebugScreen.Font,
-                200, 10, new List<string> { "Column 1", "Column 2" },
-                new List<TableRow> { row1, row1, row1, row1, row1, row1, row1, row1, row1, row1, row1, row1 });
+                200, 10, new List<string> { "Name", "IP", "Map", "Slots" },
+                serverList);
         }
 
         public override void PostUnset()
         {
-            DisplayFacade.ScreenElementManager.RemoveTable("serverList");
+            DisplayFacade.ScreenElementManager.RemoveTable("ServerListMenuTable");
             DisplayFacade.ScreenElementManager.RemoveRectangle("ServerListMenuBack");
         }
     }

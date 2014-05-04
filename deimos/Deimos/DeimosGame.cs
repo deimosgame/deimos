@@ -49,6 +49,8 @@ namespace Deimos
 
         public DeimosGame()
         {
+            HelperFacade.Helpers = new Helpers();
+
             GeneralFacade.Game = this;
 
             GeneralFacade.TempContent = new ContentManager(Services);

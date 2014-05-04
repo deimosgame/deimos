@@ -43,7 +43,7 @@ namespace Deimos
             );
         }
 
-        public override bool HandleEvent(Rectangle mouse, MouseState mouseState, float dt)
+        public override bool HandleEvent(Rectangle mouse, MouseState mouseState)
         {
             Rectangle rectangle = new Rectangle(
                 (int)Pos.X,
@@ -53,7 +53,8 @@ namespace Deimos
             );
             if (mouse.Intersects(rectangle))
             {
-                if (LastState != ScreenElement.ElState.Hover)
+                if (LastState != ScreenElement.ElState.Hover
+                    && LastState != ScreenElement.ElState.Click)
                 {
                     OnHover(this, GeneralFacade.Game);
                     LastState = ScreenElement.ElState.Hover;

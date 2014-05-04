@@ -177,7 +177,11 @@ namespace Deimos
             for (int i = 0; i < ElementsRectangleList.Count; i++)
             {
                 ScreenRectangle thisRectangle = ElementsRectangle[ElementsRectangleList[i]];
-                if (thisRectangle.HandleEvent(mouseRectangle, mouseState, dt))
+                if (CooldownTimer > 0)
+                {
+                    continue;
+                }
+                if (thisRectangle.HandleEvent(mouseRectangle, mouseState))
                 {
                     CooldownTimer = CooldownMilliseconds;
                 }
@@ -185,7 +189,11 @@ namespace Deimos
             for (int i = 0; i < ElementsImageList.Count; i++)
             {
                 ScreenImage thisRectangle = ElementsImage[ElementsImageList[i]];
-                if (thisRectangle.HandleEvent(mouseRectangle, mouseState, dt))
+                if (CooldownTimer > 0)
+                {
+                    continue;
+                }
+                if (thisRectangle.HandleEvent(mouseRectangle, mouseState))
                 {
                     CooldownTimer = CooldownMilliseconds;
                 }

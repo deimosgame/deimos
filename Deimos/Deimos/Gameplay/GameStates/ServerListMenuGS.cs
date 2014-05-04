@@ -75,7 +75,7 @@ namespace Deimos
             );
             if(serverListRequest == "")
             {
-                // network error
+                GeneralFacade.GameStateManager.Set(new ErrorScreenGS("Could not retrieve server list"));
                 return;
             }
             JArray serverJson = JArray.Parse(serverListRequest);
@@ -93,12 +93,20 @@ namespace Deimos
 	            JToken item1 = item;
 	            row.OnClick = delegate(ScreenElement el, DeimosGame g)
                 {
-                    NetworkFacade.NetworkHandling.SetConnectivity(
-						(string)item1["ip"], (int)item1["port"], "192.168.0.206", 8462);
+                    if (!NetworkFacade.ServerIsLocal)
+                    {
+                        NetworkFacade.NetworkHandling.SetConnectivity(
+                            (string)item1["ip"], (int)item1["port"], "192.168.137.156", 8462);
+                    }
 
-                    NetworkFacade.Outgoing.Start();
-                    NetworkFacade.Incoming.Start();
-                    NetworkFacade.Interpret.Start();
+                    if (!NetworkFacade.ThreadStart1)
+                    {
+                        NetworkFacade.Outgoing.Start();
+                        NetworkFacade.Incoming.Start();
+                        NetworkFacade.Interpret.Start();
+
+                        NetworkFacade.ThreadStart1 = true;
+                    }
 
                     NetworkFacade.NetworkHandling.ShakeHands();
                     System.Threading.Thread.Sleep(5000);
@@ -137,7 +145,7 @@ namespace Deimos
                     }
                     else
                     {
-                        throw new Exception("Could not connect");
+                        GeneralFacade.GameStateManager.Set(new ErrorScreenGS("Could not connect"));
                     }
                 };
                 serverList.Add(row);

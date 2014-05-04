@@ -28,10 +28,12 @@ namespace Deimos
             GameplayFacade.ThisPlayer.InitializeInventory(GameplayFacade.ThisPlayer.Class);
             GameplayFacade.ThisPlayer.PlayerSpawn(new Vector3(-60f, 20f, -8f), Vector3.Zero);
 
-            if (NetworkFacade.IsMultiplayer)
+            if (NetworkFacade.IsMultiplayer && NetworkFacade.ThreadStart2)
             {
                 NetworkFacade.World.Start();
                 NetworkFacade.MovePacket.Start();
+
+                NetworkFacade.ThreadStart2 = true;
             }
         }
 

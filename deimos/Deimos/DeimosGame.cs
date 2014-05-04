@@ -127,7 +127,7 @@ namespace Deimos
                 if (NetworkFacade.ServerIsLocal)
                 {
                     NetworkFacade.NetworkHandling.SetConnectivity(
-                        "127.0.0.1", 1518, "127.0.0.1", 1564);
+                        "192.168.0.206", 1518, "192.168.137.156", 1564);
                 }
             }
 

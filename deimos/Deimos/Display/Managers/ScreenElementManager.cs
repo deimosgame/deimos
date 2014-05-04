@@ -209,31 +209,57 @@ namespace Deimos
                 RasterizerState.CullNone
             );
 
-            foreach (KeyValuePair<string, ScreenImage> elementKeyVal in
-                ElementsImage)
+
+            for (int i = 0; i < ElementsImage.Count; i++)
             {
-                elementKeyVal.Value.Draw(spriteBatch);
+                KeyValuePair<string, ScreenImage> keyValuePair = ElementsImage.ElementAt(i);
+                keyValuePair.Value.Draw(spriteBatch);
             }
-            foreach (KeyValuePair<string, ScreenRectangle> elementKeyVal in
-                ElementsRectangle)
+            //foreach (KeyValuePair<string, ScreenImage> elementKeyVal in
+            //    ElementsImage)
+            //{
+            //    elementKeyVal.Value.Draw(spriteBatch);
+            //}
+            for (int i = 0; i < ElementsRectangle.Count; i++)
             {
-                elementKeyVal.Value.Draw(spriteBatch);
+                KeyValuePair<string, ScreenRectangle> keyValuePair = ElementsRectangle.ElementAt(i);
+                keyValuePair.Value.Draw(spriteBatch);
             }
-            foreach (KeyValuePair<string, ScreenLine> elementKeyVal in
-                ElementsLine)
+            //foreach (KeyValuePair<string, ScreenRectangle> elementKeyVal in
+            //    ElementsRectangle)
+            //{
+            //    elementKeyVal.Value.Draw(spriteBatch);
+            //}
+            for (int i = 0; i < ElementsLine.Count; i++)
             {
-                elementKeyVal.Value.Draw(spriteBatch);
+                KeyValuePair<string, ScreenLine> keyValuePair = ElementsLine.ElementAt(i);
+                keyValuePair.Value.Draw(spriteBatch);
             }
-            foreach (KeyValuePair<string, ScreenText> elementKeyVal in
-                ElementsText)
+            //foreach (KeyValuePair<string, ScreenLine> elementKeyVal in
+            //    ElementsLine)
+            //{
+            //    elementKeyVal.Value.Draw(spriteBatch);
+            //}
+            for (int i = 0; i < ElementsText.Count; i++)
             {
-                elementKeyVal.Value.Draw(spriteBatch);
+                KeyValuePair<string, ScreenText> keyValuePair = ElementsText.ElementAt(i);
+                keyValuePair.Value.Draw(spriteBatch);
             }
-            foreach (KeyValuePair<string, ScreenTable> elementKeyVal in
-                ElementsTable)
+            //foreach (KeyValuePair<string, ScreenText> elementKeyVal in
+            //    ElementsText)
+            //{
+            //    elementKeyVal.Value.Draw(spriteBatch);
+            //}
+            for (int i = 0; i < ElementsTable.Count; i++)
             {
-                elementKeyVal.Value.Draw(spriteBatch);
+                KeyValuePair<string, ScreenTable> keyValuePair = ElementsTable.ElementAt(i);
+                keyValuePair.Value.Draw(spriteBatch);
             }
+            //foreach (KeyValuePair<string, ScreenTable> elementKeyVal in
+            //    ElementsTable)
+            //{
+            //    elementKeyVal.Value.Draw(spriteBatch);
+            //}
 
             spriteBatch.End();
         }

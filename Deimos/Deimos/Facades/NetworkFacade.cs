@@ -11,7 +11,7 @@ namespace Deimos
     static class NetworkFacade
     {
         // FOR DEVELOPMENT PURPOSES ONLY //
-        static public bool IsMultiplayer;
+        static public bool IsMultiplayer = false;
         ////////         /////          //////
 
         static public NetworkManager Network;

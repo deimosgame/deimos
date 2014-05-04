@@ -47,7 +47,7 @@ namespace Deimos
                 0.2f,
                 7, 56, 14,
                 1.2f, 5, 15,
-                30f, 300f
+                300f, 300f
                 )
             );
             SetWeapon(new Weapon(

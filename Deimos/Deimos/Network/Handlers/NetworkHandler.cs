@@ -34,17 +34,20 @@ namespace Deimos
             socket = new Socket(AddressFamily.InterNetwork,
                 SocketType.Dgram, ProtocolType.Udp);
 
-            server_address = IPAddress.Parse("192.168.0.206");
-            local_address = IPAddress.Parse("192.168.137.156");
+            // Binding the port
+            socket.Bind(end_point);
+        }
+
+        public void SetConnectivity(string server, string local, int localport)
+        {
+            server_address = IPAddress.Parse(server);
+            local_address = IPAddress.Parse(local);
 
             server_port = 1518;
 
             server_endpoint = new IPEndPoint(server_address, server_port);
             ip_endpoint = new IPEndPoint(local_address, 8461);
             end_point = (EndPoint)ip_endpoint;
-
-            // Binding the port
-            socket.Bind(end_point);
         }
 
         // METHODS FOR HANDHSAKING AND SERVER CONNECTION

@@ -25,6 +25,9 @@ namespace Deimos
         public float maximumDmg;
         public float lifeSpan = 5;
 
+        // for range purposes
+        public float DistanceTraveled = 0;
+
         public char WeaponRep;
 
         // Constructor

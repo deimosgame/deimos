@@ -82,7 +82,10 @@ namespace Deimos
                 row.OnClick = delegate(ScreenElement el, DeimosGame g)
                 {
                     // Add connection code here
-                    throw new Exception((string)item["ip"]);
+                    NetworkFacade.NetworkHandling.SetConnectivity(
+                        (string)item["ip"], " ", 0000);
+
+                    //throw new Exception((string)item["ip"]);
                 };
                 serverList.Add(row);
             }

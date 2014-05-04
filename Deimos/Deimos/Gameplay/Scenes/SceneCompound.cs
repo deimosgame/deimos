@@ -21,7 +21,7 @@ namespace Deimos
 
         public SceneCompound(SceneManager sceneManager)
         {
-            PlayerSize = new Vector3(30, 1, 1);
+            PlayerSize = new Vector3(30, 0.5f, 0.5f);
 
             SpawnLocations = new SpawnLocation[] {
                 new SpawnLocation(new Vector3(18, 10, 90), Vector3.Zero)

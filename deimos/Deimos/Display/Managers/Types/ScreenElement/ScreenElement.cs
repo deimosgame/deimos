@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -84,5 +85,10 @@ namespace Deimos
         }
 
         public abstract void Draw(SpriteBatch spriteBatch);
+
+        public virtual bool HandleEvent(Rectangle mouse, MouseState mouseState, float dt)
+        {
+            return false;
+        }
     }
 }

@@ -131,7 +131,7 @@ namespace Deimos
             {
                 TableRow row = Content[x];
 
-                // Set the event here
+
                 for (int y = 0; y < row.Content.Count(); y++)
                 {
                     string t = row.Content[y];

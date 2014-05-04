@@ -26,8 +26,9 @@ namespace Deimos
 
         public Texture2D DummyTexture;
 
-        private int CooldownMilliseconds = 500;
-        private int CooldownTimer = 0;
+        protected int CooldownMilliseconds = 500;
+        protected int CooldownTimer = 0;
+
 
         // Constructor
         public ScreenElementManager()
@@ -168,61 +169,28 @@ namespace Deimos
             if (CooldownTimer > 0)
             {
                 CooldownTimer -= (int)(dt * 1000);
+                return;
             }
+
             MouseState mouseState = Mouse.GetState();
             Rectangle mouseRectangle = new Rectangle(mouseState.X, mouseState.Y, 1, 1);
             for (int i = 0; i < ElementsRectangleList.Count; i++)
             {
                 ScreenRectangle thisRectangle = ElementsRectangle[ElementsRectangleList[i]];
-                Rectangle rectangle = new Rectangle(
-                    (int)thisRectangle.Pos.X,
-                    (int)thisRectangle.Pos.Y,
-                    thisRectangle.Width,
-                    thisRectangle.Height
-                );
-                HandleEvent(thisRectangle, mouseRectangle, rectangle, mouseState);
+                if (thisRectangle.HandleEvent(mouseRectangle, mouseState, dt))
+                {
+                    CooldownTimer = CooldownMilliseconds;
+                }
             }
             for (int i = 0; i < ElementsImageList.Count; i++)
             {
                 ScreenImage thisRectangle = ElementsImage[ElementsImageList[i]];
-                Rectangle rectangle = new Rectangle(
-                    (int)thisRectangle.Pos.X,
-                    (int)thisRectangle.Pos.Y,
-                    thisRectangle.Image.Width,
-                    thisRectangle.Image.Height
-                );
-                HandleEvent(thisRectangle, mouseRectangle, rectangle, mouseState);
-            }
-        }
-        private void HandleEvent(ScreenElement el, Rectangle mouse, Rectangle elRect,
-            MouseState mouseState)
-        {
-            if (mouse.Intersects(elRect))
-            {
-                if (el.LastState != ScreenElement.ElState.Hover)
+                if (thisRectangle.HandleEvent(mouseRectangle, mouseState, dt))
                 {
-                    el.OnHover(el, GeneralFacade.Game);
-                    el.LastState = ScreenElement.ElState.Hover;
-                }
-                if (mouseState.LeftButton == ButtonState.Pressed
-                    && el.LastState != ScreenElement.ElState.Click
-                    && CooldownTimer <= 0)
-                {
-                    el.OnClick(el, GeneralFacade.Game);
-                    el.LastState = ScreenElement.ElState.Click;
                     CooldownTimer = CooldownMilliseconds;
                 }
             }
-            else
-            {
-                if (el.LastState != ScreenElement.ElState.Out)
-                {
-                    el.OnOut(el, GeneralFacade.Game);
-                    el.LastState = ScreenElement.ElState.Out;
-                }
-            }
         }
-
         public void DrawElements(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin(

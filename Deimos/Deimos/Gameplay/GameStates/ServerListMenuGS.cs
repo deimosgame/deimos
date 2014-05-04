@@ -54,6 +54,11 @@ namespace Deimos
                     (string)item["map"],
                     players.Split(',').Count() + "/" + (string)item["max_players"]
                 };
+                // Erenus, edit below so we can connect to a server
+                row.OnClick = delegate(ScreenElement el, DeimosGame g) 
+                {
+                    // Add connection code here
+                };
                 serverList.Add(row);
             }
 

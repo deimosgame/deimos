@@ -49,8 +49,6 @@ namespace Deimos
                 DisplayFacade.MenuImages["StartMenuPlay"],
                 delegate(ScreenElement el, DeimosGame game)
                 {
-                    if (!NetworkFacade.IsMultiplayer)
-                    {
                         GameplayFacade.Objects = new ObjectsList();
 
                         GameplayFacade.Weapons = new WeaponsList();
@@ -62,46 +60,8 @@ namespace Deimos
                                     );
                         GeneralFacade.GameStateManager.Set(new SpawningGS());
                         GeneralFacade.GameStateManager.Set(new PlayingGS());
-                    }
-                    else
-                    {
-                        NetworkFacade.NetworkHandling.ShakeHands();
-
-                        System.Threading.Thread.Sleep(2000);
-
-                        if (NetworkFacade.NetworkHandling.Handshook)
-                        {
-                            NetworkFacade.NetworkHandling.Connect();
-
-                            System.Threading.Thread.Sleep(3000);
-
-                            if (NetworkFacade.NetworkHandling.ServerConnected)
-                            {
-                                GameplayFacade.Objects = new ObjectsList();
-                                GameplayFacade.Weapons = new WeaponsList();
-                                GameplayFacade.Weapons.Initialise();
-                                GameplayFacade.Objects.Initialize();
-
-                                switch (NetworkFacade.MainHandling.Connections.CurrentMap)
-                                {
-                                    case "coolmap":
-                                        GeneralFacade.GameStateManager.Set(
-                                            new LoadingLevelGS<SceneCompound>()
-                                            );
-                                        break;
-                                    default:
-                                        GeneralFacade.GameStateManager.Set(
-                                            new LoadingLevelGS<SceneDeimos>()
-                                            );
-                                        break;
-                                }
-
-                                GeneralFacade.GameStateManager.Set(new SpawningGS());
-                                GeneralFacade.GameStateManager.Set(new PlayingGS());
-                            }
-
-                        }
-                    }
+                       
+                    
                 },
                 delegate(ScreenElement el, DeimosGame game)
                 {

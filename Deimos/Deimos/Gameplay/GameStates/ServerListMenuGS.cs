@@ -93,20 +93,20 @@ namespace Deimos
                 {
                     // Add connection code here
                     NetworkFacade.NetworkHandling.SetConnectivity(
-                        (string)item["ip"], " ", 0000);
+                        (string)item["ip"], "192.168.0.206", 8462);
 
                     NetworkFacade.Outgoing.Start();
                     NetworkFacade.Incoming.Start();
                     NetworkFacade.Interpret.Start();
 
                     NetworkFacade.NetworkHandling.ShakeHands();
-                    System.Threading.Thread.Sleep(2000);
+                    System.Threading.Thread.Sleep(5000);
 
                     if (NetworkFacade.NetworkHandling.Handshook)
                     {
                         NetworkFacade.NetworkHandling.Connect();
 
-                        System.Threading.Thread.Sleep(3000);
+                        System.Threading.Thread.Sleep(5000);
 
                         if (NetworkFacade.NetworkHandling.ServerConnected)
                         {

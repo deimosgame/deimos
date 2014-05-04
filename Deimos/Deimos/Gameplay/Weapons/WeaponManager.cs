@@ -263,8 +263,8 @@ namespace Deimos
                         }
                         currentWeapon.State = WeaponState.Firing;
                         // Putting projectile in action through Bullet Manager
-                        GameplayFacade.BulletManager.SpawnBullet();
-                        GeneralFacade.SceneManager.SoundManager.Play("weaponFire");
+                        GameplayFacade.BulletManager.SpawnBullet(currentWeapon.representative);
+                        PlayFirearmSound();
                         currentWeapon.c_chamberAmmo--;
                         currentWeapon.FireTimer = 0; // reset the fire timer
                         currentWeapon.State = WeaponState.AtEase;
@@ -461,6 +461,24 @@ namespace Deimos
                     return;
                 case 3:
                     GeneralFacade.SceneManager.SoundManager.Play("w_sw4");
+                    return;
+            }
+        }
+
+        public void PlayFirearmSound()
+        {
+            switch (GameplayFacade.ThisPlayer.CurrentWeapon.Name)
+            {
+                case "Pistol":
+                    GeneralFacade.SceneManager.SoundManager.Play("gun");
+                    return;
+                case "Assault Rifle":
+                    GeneralFacade.SceneManager.SoundManager.Play("rifle");
+                    return;
+                case "Bazooka":
+                    GeneralFacade.SceneManager.SoundManager.Play("rocket");
+                    return;
+                default:
                     return;
             }
         }

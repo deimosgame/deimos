@@ -25,8 +25,10 @@ namespace Deimos
         public float maximumDmg;
         public float lifeSpan = 5;
 
+        public char WeaponRep;
+
         // Constructor
-        public Bullet(Vector3 pos, Vector3 dir)
+        public Bullet(Vector3 pos, Vector3 dir, char rep)
             : base(new Vector3(1f, 1f, 1f))
         {
             // Setting initial bullet spawn location
@@ -42,6 +44,8 @@ namespace Deimos
             maximumDmg = GameplayFacade.ThisPlayer.CurrentWeapon.maxDmg;
 
             Nature = ElementNature.Bullet;
+
+            WeaponRep = rep;
         }
 
         // Destructor
@@ -59,15 +63,36 @@ namespace Deimos
                 Collided = true;
             }
 
-            switch (element.Nature)
+            if (WeaponRep == 'E')
             {
-                case ElementNature.World:
-                    break;
-                case ElementNature.Player:
-                    break;
-                default:
-                    break;
+                Explode(element.Model.Position);
             }
+
+            else
+            {
+                switch (element.Nature)
+                {
+                    case ElementNature.World:
+                        break;
+                    case ElementNature.Player:
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        public void Hurt()
+        {
+
+        }
+
+        public void Explode(Vector3 pos)
+        {
+            GeneralFacade.SceneManager.SoundManager.Play3D("explosion",
+                GameplayFacade.ThisPlayer.Position,
+                pos
+                );
         }
     }
 }

@@ -438,6 +438,11 @@ Content\Sounds\weapons\select(2).xnb
 Content\Sounds\weapons\select(3).xnb
 Content\Sounds\weapons\select(4).xnb
 Content\Sounds\weapons\select.xnb
+Content\Sounds\weapons\noammo.xnb
+Content\Sounds\fx\heal.xnb
+Content\Sounds\fx\speed.xnb
+Content\Sounds\fx\jumpbuild.xnb
+Content\Sounds\fx\eoff.xnb
 Content\Images\Menu\backgroundMenu.xnb
 Content\Images\Menu\StartMenu\play.xnb
 Content\Images\Menu\StartMenu\playHover.xnb
@@ -445,11 +450,9 @@ Content\Images\Menu\StartMenu\quit.xnb
 Content\Images\Menu\StartMenu\quitHover.xnb
 Content\Images\Menu\StartMenu\servers.xnb
 Content\Images\Menu\StartMenu\serversHover.xnb
-Content\Sounds\weapons\noammo.xnb
-Content\Sounds\fx\heal.xnb
-Content\Sounds\fx\speed.xnb
-Content\Sounds\fx\jumpbuild.xnb
-Content\Sounds\fx\eoff.xnb
+Content\Sounds\weapons\fire_gun.xnb
+Content\Sounds\weapons\explode.xnb
+Content\Sounds\fx\hit_wall.xnb
 Content\Videos\Intro.wmv
 Content\Fonts\debug.spritefont
 Content\Fonts\menuTitle.spritefont

@@ -131,7 +131,9 @@ namespace Deimos
             SoundManager.AddSoundEffect("w_sw3", "Sounds/weapons/swing3");
             SoundManager.AddSoundEffect("w_sw4", "Sounds/weapons/swing4");
                 // Firearm firing
-            SoundManager.AddSoundEffect("weaponFire", "Sounds/GunFire");
+            SoundManager.AddSoundEffect("gun", "Sounds/GunFire");
+            SoundManager.AddSoundEffect("rifle", "Sounds/weapons/fire_gun");
+            SoundManager.AddSoundEffect("rocket", "Sounds/weapons/explode");
                 // No ammo
             SoundManager.AddSoundEffect("noammo", "Sounds/weapons/noammo");
                 // Weapon switching
@@ -156,6 +158,9 @@ namespace Deimos
 
                 // Effect fade
             SoundManager.AddSoundEffect("effectoff", "Sounds/fx/eoff");
+
+                // Rocket explosion
+            SoundManager.AddSoundEffect("explosion", "Sounds/fx/hit_wall");
         }
 
         public void Update(float dt)

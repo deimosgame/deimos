@@ -22,10 +22,10 @@ namespace Deimos
         /// <summary>
         /// Add a new bullet to our world.
         /// </summary>
-        public void SpawnBullet()
+        public void SpawnBullet(char rep)
         {
-            Vector3 bulletPosition = GameplayFacade.ThisPlayer.Position - DisplayFacade.Camera.ViewVector * 10;
-            Bullet FiredBullet = new Bullet(bulletPosition, -DisplayFacade.Camera.ViewVector);
+            Vector3 bulletPosition = GameplayFacade.ThisPlayer.Position - DisplayFacade.Camera.ViewVector * 5;
+            Bullet FiredBullet = new Bullet(bulletPosition, -DisplayFacade.Camera.ViewVector, rep);
             string id = "Bullet" + GeneralFacade.Uniqid();
             BulletTab.Add(id, FiredBullet);
 

@@ -14,6 +14,11 @@ namespace Deimos
         SoundManager SoundManager;
         ModelAnimationManager ModelAnimationManager;
 
+        string token_w;
+        string token_gravity;
+        string token_speed;
+        string token_health;
+
         public SceneCompound(SceneManager sceneManager)
         {
             PlayerSize = new Vector3(30, 1, 1);
@@ -70,6 +75,36 @@ namespace Deimos
                 }
 
             }
+
+            token_w = Objects.AddWeapon("CarverPickup",
+                0,
+                new Vector3(18, -6, 110),
+                PickupObject.State.Active,
+                5
+                );
+
+            token_health = Objects.AddEffect("Health Pack",
+                new Vector3(-1, -6, 46),
+                PickupObject.State.Active,
+                25,
+                5
+                );
+
+            token_speed = Objects.AddEffect("Speed Boost",
+                new Vector3(-40, 1, 26),
+                PickupObject.State.Active,
+                20,
+                5,
+                4
+                );
+
+            token_gravity = Objects.AddEffect("Gravity Boost",
+                new Vector3(-40, -5, 71),
+                PickupObject.State.Active,
+                5,
+                6,
+                4
+                );
 
             SoundManager.AddSoundEffect("scary", "Sounds/ScaryMusic");
         }

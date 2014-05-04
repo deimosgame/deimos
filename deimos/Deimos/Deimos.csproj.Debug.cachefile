@@ -439,6 +439,11 @@ Content\Sounds\weapons\select(2).xnb
 Content\Sounds\weapons\select(3).xnb
 Content\Sounds\weapons\select(4).xnb
 Content\Sounds\weapons\select.xnb
+Content\Sounds\weapons\noammo.xnb
+Content\Sounds\fx\heal.xnb
+Content\Sounds\fx\speed.xnb
+Content\Sounds\fx\jumpbuild.xnb
+Content\Sounds\fx\eoff.xnb
 Content\Videos\Intro.wmv
 Content\Fonts\debug.spritefont
 Content\Fonts\menuTitle.spritefont

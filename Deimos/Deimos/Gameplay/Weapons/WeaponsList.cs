@@ -33,7 +33,7 @@ namespace Deimos
                 new Vector3(1.5f, 0.8f, 0.4f),
                 new Vector3(1.5f, 0.8f, 0.4f), 0.1f, -1.2f,
                 "Models/Weapons/Knife/knife", "Carver", 0, 'A',
-                0.2f,
+                0.4f,
                 0, 0, 0,
                 1, 30, 50,
                 0, 15,

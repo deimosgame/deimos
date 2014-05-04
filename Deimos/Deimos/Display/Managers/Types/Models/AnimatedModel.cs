@@ -62,13 +62,28 @@ namespace Deimos
 
         private void UpdateCoeffs()
         {
-            CoeffPX = (EndPosition.X - Model.Position.X) / Milliseconds;
-            CoeffPY = (EndPosition.Y - Model.Position.Y) / Milliseconds;
-            CoeffPZ = (EndPosition.Z - Model.Position.Z) / Milliseconds;
+            if (EndPosition != null)
+            {
+                CoeffPX = (EndPosition.X - Model.Position.X) / Milliseconds;
+                CoeffPY = (EndPosition.Y - Model.Position.Y) / Milliseconds;
+                CoeffPZ = (EndPosition.Z - Model.Position.Z) / Milliseconds;
+            }
+            else
+            {
+                CoeffPX = 0; CoeffPY = 0; CoeffPZ = 0;
+            }
 
-            CoeffRX = (EndRotation.X - Model.Rotation.X) / Milliseconds;
-            CoeffRY = (EndRotation.Y - Model.Rotation.Y) / Milliseconds;
-            CoeffRZ = (EndRotation.Z - Model.Rotation.Z) / Milliseconds;
+            if (EndRotation != null)
+            {
+                CoeffRX = (EndRotation.X - Model.Rotation.X) / Milliseconds;
+                CoeffRY = (EndRotation.Y - Model.Rotation.Y) / Milliseconds;
+                CoeffRZ = (EndRotation.Z - Model.Rotation.Z) / Milliseconds;
+            }
+            else
+            {
+                CoeffRX = 0; CoeffRY = 0; CoeffRZ = 0;
+            }
+            
         }
     }
 }

@@ -18,8 +18,8 @@ namespace Deimos
         {
             //On veut afficher la souris
             GeneralFacade.Game.IsMouseVisible = true;
-            float coeffX = GeneralFacade.Game.GraphicsDevice.Viewport.Width / DisplayFacade.BackgroundMenu.Width;
-            float coeffY = GeneralFacade.Game.GraphicsDevice.Viewport.Height / DisplayFacade.BackgroundMenu.Height;
+            float coeffX = (float)GeneralFacade.Game.GraphicsDevice.Viewport.Width / (float)DisplayFacade.BackgroundMenu.Width;
+            float coeffY = (float)GeneralFacade.Game.GraphicsDevice.Viewport.Height / (float)DisplayFacade.BackgroundMenu.Height;
             int imageWidth = DisplayFacade.MenuImages["StartMenuPlay"].Width;
 
             GeneralFacade.SceneManager.SetScene<SceneStartMenu>();
@@ -43,8 +43,8 @@ namespace Deimos
                 "StartScreenMenuPlay",
                 (int)((530 - imageWidth) * coeffX),
                 250,
-                1,
-                1,
+                coeffX,
+                coeffY,
                 1,
                 DisplayFacade.MenuImages["StartMenuPlay"],
                 delegate(ScreenElement el, DeimosGame game)
@@ -119,8 +119,8 @@ namespace Deimos
                 "StartScreenMenuServers",
                 (int)((520 - imageWidth) * coeffX),
                 320,
-                1,
-                1,
+                coeffX,
+                coeffY,
                 1,
                 DisplayFacade.MenuImages["StartMenuServers"],
                 delegate(ScreenElement el, DeimosGame game)
@@ -142,8 +142,8 @@ namespace Deimos
                 "StartScreenMenuQuit",
                 (int)((510 - imageWidth) * coeffX),
                 390,
-                1,
-                1,
+                coeffX,
+                coeffY,
                 1,
                 DisplayFacade.MenuImages["StartMenuQuit"],
                 delegate(ScreenElement el, DeimosGame game)

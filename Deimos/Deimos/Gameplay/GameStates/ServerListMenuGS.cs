@@ -18,12 +18,22 @@ namespace Deimos
         public override void PreSet()
         {
             GeneralFacade.Game.IsMouseVisible = true;
-            float coeffX = GeneralFacade.Game.GraphicsDevice.Viewport.Width / DisplayFacade.BackgroundMenu.Width;
-            float coeffY = GeneralFacade.Game.GraphicsDevice.Viewport.Height / DisplayFacade.BackgroundMenu.Height;
+            float coeffX = (float)GeneralFacade.Game.GraphicsDevice.Viewport.Width / (float)DisplayFacade.BackgroundMenu.Width;
+            float coeffY = (float)GeneralFacade.Game.GraphicsDevice.Viewport.Height / (float)DisplayFacade.BackgroundMenu.Height;
             int imageWidth = DisplayFacade.MenuImages["StartMenuPlay"].Width;
 
+            DisplayFacade.ScreenElementManager.AddText(
+                "ServerListMenuTitle", 
+                (int)((540 + 20) * coeffX), 
+                100, 
+                1, 
+                DisplayFacade.TitleFont, 
+                "Server list",
+                Color.White
+            );
+
             DisplayFacade.ScreenElementManager.AddImage(
-                "StartScreenMenuBackground",
+                "ServerListMenuBackground",
                 0,
                 0,
                 coeffX,
@@ -37,8 +47,8 @@ namespace Deimos
                 "ServerListMenuMain",
                 (int)((510 - imageWidth) * coeffX),
                 390,
-                1,
-                1,
+                coeffX,
+                coeffY,
                 1,
                 DisplayFacade.MenuImages["PauseMenuMain"],
                 delegate(ScreenElement el, DeimosGame game)
@@ -90,17 +100,30 @@ namespace Deimos
                 serverList.Add(row);
             }
 
-            DisplayFacade.ScreenElementManager.AddTable("ServerListMenuTable", 500, 200, 1,
-                Color.Black, Color.DarkGray, Color.DarkGray, Color.White, Color.LightGray, DisplayFacade.TableFont,
-                250, 10, new List<string> { "Name", "Map", "Slots" },
-                serverList);
+            DisplayFacade.ScreenElementManager.AddTable(
+                "ServerListMenuTable",
+                (int)((540 + 20) * coeffX), 
+                150, 
+                1,
+                Color.Black, 
+                Color.DarkGray,
+                Color.DarkGray, 
+                Color.White, 
+                Color.LightGray, 
+                DisplayFacade.TableFont,
+                (int)(GeneralFacade.Game.GraphicsDevice.Viewport.Width - ((540 + 20) * coeffX) - 20 - (10 * 6)) / 3, 
+                10, 
+                new List<string> { "Name", "Map", "Slots" },
+                serverList
+            );
         }
 
         public override void PostUnset()
         {
             DisplayFacade.ScreenElementManager.RemoveTable("ServerListMenuTable");
             DisplayFacade.ScreenElementManager.RemoveImage("ServerListMenuMain");
-            DisplayFacade.ScreenElementManager.RemoveImage("StartScreenMenuBackground");
+            DisplayFacade.ScreenElementManager.RemoveImage("ServerListMenuBackground");
+            DisplayFacade.ScreenElementManager.RemoveText("ServerListMenuTitle");
         }
     }
 }

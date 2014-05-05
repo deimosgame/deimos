@@ -29,5 +29,8 @@ namespace Deimos
 
         // Effects
         public static bool BlurredScene = false;
+
+        // Particles
+        public static ExplosionParticleSystem ExplosionParticleSystem;
     }
 }

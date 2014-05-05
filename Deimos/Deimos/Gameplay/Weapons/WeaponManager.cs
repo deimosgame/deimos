@@ -265,6 +265,9 @@ namespace Deimos
                         // Putting projectile in action through Bullet Manager
                         GameplayFacade.BulletManager.SpawnBullet(currentWeapon.representative);
                         PlayFirearmSound();
+                        ExplosionParticleEmitter emitter = new ExplosionParticleEmitter(new Vector3(15, 3, -32));
+                        DisplayFacade.ExplosionParticleSystem.AddEmitter(emitter);
+                        emitter.Emit(100);
                         currentWeapon.c_chamberAmmo--;
                         currentWeapon.FireTimer = 0; // reset the fire timer
                         currentWeapon.State = WeaponState.AtEase;

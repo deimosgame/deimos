@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -47,6 +48,47 @@ namespace Deimos
             }
 
             return str;
+        }
+
+        public Color ColorBetween(Color min, Color max)
+        {
+            return Microsoft.Xna.Framework.Color.Lerp(min, max, Float());
+        }
+
+        public Color ColorWithAlpha()
+        {
+            return new Color(Float(), Float(), Float(), Float());
+        }
+
+        public Color Color()
+        {
+            return new Color(Float(), Float(), Float());
+        }
+
+        static Random random = new Random();
+        public Random Random
+        {
+            get { return random; }
+        }
+
+        public float Float()
+        {
+            return (float)Random.NextDouble();
+        }
+
+        public float FloatBetween(float min, float max)
+        {
+            return min + (float)(Random.NextDouble() * (max - min));
+        }
+
+        public int IntBetween(int min, int max)
+        {
+            return min + (int)(Random.NextDouble() * (max - min));
+        }
+
+        public bool Boolean()
+        {
+            return Random.Next(2) == 0;
         }
     }
 }

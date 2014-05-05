@@ -64,12 +64,13 @@ namespace Deimos
             Content.RootDirectory = "Content";
             GeneralFacade.TempContent.RootDirectory = "Content";
 
-            DisplayFacade.ParticleManager = new Tranquillity.ParticleManager(this);
-            DisplayFacade.ParticleManager.Visible = true;
-            Components.Add(DisplayFacade.ParticleManager);
 
             Renderer = new DeferredRenderer(this);
             Components.Add(Renderer);
+
+            DisplayFacade.ParticleManager = new Tranquillity.ParticleManager(this);
+            DisplayFacade.ParticleManager.Visible = true;
+            Components.Add(DisplayFacade.ParticleManager);
 
             GeneralFacade.Config = new Config();
             GameplayFacade.Constants = new Constants();
@@ -138,31 +139,35 @@ namespace Deimos
         protected override void LoadContent()
         {
             IntroVideo = Content.Load<Video>("Videos/Intro");
-            DisplayFacade.BackgroundMenu = GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/backgroundMenu");
+            DisplayFacade.BackgroundMenu = Content.Load<Texture2D>("Images/Menu/backgroundMenu");
 
-            DisplayFacade.MenuImages.Add("StartMenuPlay", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/StartMenu/play"));
-            DisplayFacade.MenuImages.Add("StartMenuPlayHover", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/StartMenu/playHover"));
-            DisplayFacade.MenuImages.Add("StartMenuServers", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/StartMenu/servers"));
-            DisplayFacade.MenuImages.Add("StartMenuServersHover", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/StartMenu/serversHover"));
-            DisplayFacade.MenuImages.Add("StartMenuQuit", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/StartMenu/quit"));
-            DisplayFacade.MenuImages.Add("StartMenuQuitHover", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/StartMenu/quitHover"));
+            DisplayFacade.MenuImages.Add("StartMenuPlay", Content.Load<Texture2D>("Images/Menu/StartMenu/play"));
+            DisplayFacade.MenuImages.Add("StartMenuPlayHover", Content.Load<Texture2D>("Images/Menu/StartMenu/playHover"));
+            DisplayFacade.MenuImages.Add("StartMenuServers", Content.Load<Texture2D>("Images/Menu/StartMenu/servers"));
+            DisplayFacade.MenuImages.Add("StartMenuServersHover", Content.Load<Texture2D>("Images/Menu/StartMenu/serversHover"));
+            DisplayFacade.MenuImages.Add("StartMenuQuit", Content.Load<Texture2D>("Images/Menu/StartMenu/quit"));
+            DisplayFacade.MenuImages.Add("StartMenuQuitHover", Content.Load<Texture2D>("Images/Menu/StartMenu/quitHover"));
 
-            DisplayFacade.MenuImages.Add("PauseMenuResume", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/PauseMenu/resume"));
-            DisplayFacade.MenuImages.Add("PauseMenuResumeHover", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/PauseMenu/resumeHover"));
-            DisplayFacade.MenuImages.Add("PauseMenuMain", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/PauseMenu/main"));
-            DisplayFacade.MenuImages.Add("PauseMenuMainHover", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/PauseMenu/mainHover"));
+            DisplayFacade.MenuImages.Add("PauseMenuResume", Content.Load<Texture2D>("Images/Menu/PauseMenu/resume"));
+            DisplayFacade.MenuImages.Add("PauseMenuResumeHover", Content.Load<Texture2D>("Images/Menu/PauseMenu/resumeHover"));
+            DisplayFacade.MenuImages.Add("PauseMenuMain", Content.Load<Texture2D>("Images/Menu/PauseMenu/main"));
+            DisplayFacade.MenuImages.Add("PauseMenuMainHover", Content.Load<Texture2D>("Images/Menu/PauseMenu/mainHover"));
 
-            DisplayFacade.ButtonsImages.Add("DeadScreenGood", GeneralFacade.Game.Content.Load<Texture2D>("Images/Buttons/DeadScreen/good"));
-            DisplayFacade.ButtonsImages.Add("DeadScreenGoodHover", GeneralFacade.Game.Content.Load<Texture2D>("Images/Buttons/DeadScreen/goodHover"));
-            DisplayFacade.ButtonsImages.Add("DeadScreenBad", GeneralFacade.Game.Content.Load<Texture2D>("Images/Buttons/DeadScreen/bad"));
-            DisplayFacade.ButtonsImages.Add("DeadScreenBadHover", GeneralFacade.Game.Content.Load<Texture2D>("Images/Buttons/DeadScreen/badHover"));
-            DisplayFacade.ButtonsImages.Add("DeadScreenUgly", GeneralFacade.Game.Content.Load<Texture2D>("Images/Buttons/DeadScreen/ugly"));
-            DisplayFacade.ButtonsImages.Add("DeadScreenUglyHover", GeneralFacade.Game.Content.Load<Texture2D>("Images/Buttons/DeadScreen/uglyHover"));
+            DisplayFacade.ButtonsImages.Add("DeadScreenGood", Content.Load<Texture2D>("Images/Buttons/DeadScreen/good"));
+            DisplayFacade.ButtonsImages.Add("DeadScreenGoodHover", Content.Load<Texture2D>("Images/Buttons/DeadScreen/goodHover"));
+            DisplayFacade.ButtonsImages.Add("DeadScreenBad", Content.Load<Texture2D>("Images/Buttons/DeadScreen/bad"));
+            DisplayFacade.ButtonsImages.Add("DeadScreenBadHover", Content.Load<Texture2D>("Images/Buttons/DeadScreen/badHover"));
+            DisplayFacade.ButtonsImages.Add("DeadScreenUgly", Content.Load<Texture2D>("Images/Buttons/DeadScreen/ugly"));
+            DisplayFacade.ButtonsImages.Add("DeadScreenUglyHover", Content.Load<Texture2D>("Images/Buttons/DeadScreen/uglyHover"));
 
-            DisplayFacade.DebugFont = GeneralFacade.Game.Content.Load<SpriteFont>("Fonts/debug");
-            DisplayFacade.TableFont = GeneralFacade.Game.Content.Load<SpriteFont>("Fonts/table");
-            DisplayFacade.TitleFont = GeneralFacade.Game.Content.Load<SpriteFont>("Fonts/title");
-            DisplayFacade.UIFont = GeneralFacade.Game.Content.Load<SpriteFont>("Fonts/ui");
+            DisplayFacade.DebugFont = Content.Load<SpriteFont>("Fonts/debug");
+            DisplayFacade.TableFont = Content.Load<SpriteFont>("Fonts/table");
+            DisplayFacade.TitleFont = Content.Load<SpriteFont>("Fonts/title");
+            DisplayFacade.UIFont = Content.Load<SpriteFont>("Fonts/ui");
+
+            DisplayFacade.ExplosionParticleSystem = new ExplosionParticleSystem(100, Content.Load<Texture2D>("Textures/Particles/explosion"));
+            DisplayFacade.ExplosionParticleSystem.AddAffector(new VelocityAffector(Vector3.Down));
+            DisplayFacade.ParticleManager.AddParticleSystem(DisplayFacade.ExplosionParticleSystem, BlendState.Additive);
 
             DisplayFacade.SpriteBatch = new SpriteBatch(GraphicsDevice);
 

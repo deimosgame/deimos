@@ -157,6 +157,7 @@
     <Compile Include="Gameplay\GameStates\LoadingLevelGS.cs" />
     <Compile Include="Gameplay\GameStates\PauseGS.cs" />
     <Compile Include="Gameplay\GameStates\PlayingGS.cs" />
+    <Compile Include="Gameplay\GameStates\RespawnGS.cs" />
     <Compile Include="Gameplay\GameStates\ServerListMenuGS.cs" />
     <Compile Include="Gameplay\GameStates\SpawningGS.cs" />
     <Compile Include="Gameplay\GameStates\StartMenuGS.cs" />

@@ -14,6 +14,7 @@ namespace Deimos
         Pause,
         GraphicOptions,
         Spawning,
+        Respawning,
         Playing,
         ErrorScreen,
         DeadScreen,

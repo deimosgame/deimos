@@ -55,7 +55,7 @@ namespace Deimos
                 DisplayFacade.MenuImages["PauseMenuMain"],
                 delegate(ScreenElement el, DeimosGame game)
                 {
-                    GeneralFacade.GameStateManager.Set(new ErrorScreenGS("BOUYA THIS IS AN ERROR."));
+                    GeneralFacade.GameStateManager.Set(new StartMenuGS());
                 },
                 delegate(ScreenElement el, DeimosGame game)
                 {

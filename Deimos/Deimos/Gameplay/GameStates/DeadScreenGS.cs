@@ -66,7 +66,9 @@ namespace Deimos
                 DisplayFacade.ButtonsImages["DeadScreenGood"],
                 delegate(ScreenElement el, DeimosGame game)
                 {
-                    //
+                    GameplayFacade.ThisPlayer.Class = Player.Spec.Soldier;
+                    GeneralFacade.GameStateManager.Set(new RespawnGS());
+                    GeneralFacade.GameStateManager.Set(new PlayingGS());
                 },
                 delegate(ScreenElement el, DeimosGame game)
                 {
@@ -89,7 +91,9 @@ namespace Deimos
                 DisplayFacade.ButtonsImages["DeadScreenBad"],
                 delegate(ScreenElement el, DeimosGame game)
                 {
-                    //
+                    GameplayFacade.ThisPlayer.Class = Player.Spec.Agent;
+                    GeneralFacade.GameStateManager.Set(new RespawnGS());
+                    GeneralFacade.GameStateManager.Set(new PlayingGS());
                 },
                 delegate(ScreenElement el, DeimosGame game)
                 {
@@ -112,7 +116,9 @@ namespace Deimos
                 DisplayFacade.ButtonsImages["DeadScreenUgly"],
                 delegate(ScreenElement el, DeimosGame game)
                 {
-                    //
+                    GameplayFacade.ThisPlayer.Class = Player.Spec.Overwatch;
+                    GeneralFacade.GameStateManager.Set(new RespawnGS());
+                    GeneralFacade.GameStateManager.Set(new PlayingGS());
                 },
                 delegate(ScreenElement el, DeimosGame game)
                 {

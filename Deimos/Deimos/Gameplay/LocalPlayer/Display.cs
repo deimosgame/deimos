@@ -149,7 +149,8 @@ namespace Deimos
             DisplayFacade.ScreenElementManager.GetText("ammo").Text = 
                 GameplayFacade.ThisPlayer.CurrentWeapon.c_chamberAmmo + "/" 
                 + GameplayFacade.ThisPlayer.CurrentWeapon.c_reservoirAmmo;
-            DisplayFacade.ScreenElementManager.GetText("current-class").Text = "machin";
+            DisplayFacade.ScreenElementManager.GetText("current-class").Text =
+                GameplayFacade.ThisPlayer.GetClassName();
         }
     }
 }

@@ -168,6 +168,8 @@ namespace Deimos
                 CurrentLifeState = LifeState.Dead;
 
                 Score--;
+
+                GeneralFacade.GameStateManager.Set(new DeadScreenGS());
             }
         }
 

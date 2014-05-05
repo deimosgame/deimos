@@ -169,5 +169,20 @@ namespace Deimos
                     return "Models/Characters/Vanquish/vanquish";
             }
         }
+
+        public string GetClassName()
+        {
+            switch (Class)
+            {
+                case Spec.Soldier:
+                    return "The Good";
+                case Spec.Agent:
+                    return "The Bad";
+                case Spec.Overwatch:
+                    return "The Ugly";
+                default:
+                    return "The Other";
+            }
+        }
     }
 }

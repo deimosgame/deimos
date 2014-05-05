@@ -90,60 +90,67 @@ namespace Deimos
                     (string)item["map"],
                     players.Split(',').Count() + "/" + (string)item["max_players"]
                 };
-	            JToken item1 = item;
-	            row.OnClick = delegate(ScreenElement el, DeimosGame g)
+                JToken item1 = item;
+                row.OnClick = delegate(ScreenElement el, DeimosGame g)
                 {
-                    if (!NetworkFacade.ServerIsLocal)
+                    try
                     {
-                        NetworkFacade.NetworkHandling.SetConnectivity(
-                            (string)item1["ip"], (int)item1["port"], "192.168.137.156", 8462);
-                    }
-
-                    if (!NetworkFacade.ThreadStart1)
-                    {
-                        NetworkFacade.Outgoing.Start();
-                        NetworkFacade.Incoming.Start();
-                        NetworkFacade.Interpret.Start();
-
-                        NetworkFacade.ThreadStart1 = true;
-                    }
-
-                    NetworkFacade.NetworkHandling.ShakeHands();
-                    System.Threading.Thread.Sleep(5000);
-
-                    if (NetworkFacade.NetworkHandling.Handshook)
-                    {
-                        NetworkFacade.NetworkHandling.Connect();
-
-                        System.Threading.Thread.Sleep(5000);
-
-                        if (NetworkFacade.NetworkHandling.ServerConnected)
+                        if (!NetworkFacade.ServerIsLocal)
                         {
-                            GameplayFacade.Objects = new ObjectsList();
-                            GameplayFacade.Weapons = new WeaponsList();
-                            GameplayFacade.Weapons.Initialise();
-                            GameplayFacade.Objects.Initialize();
-
-                            switch (NetworkFacade.MainHandling.Connections.CurrentMap)
-                            {
-                                case "coolmap":
-                                    GeneralFacade.GameStateManager.Set(
-                                        new LoadingLevelGS<SceneCompound>()
-                                        );
-                                    break;
-                                default:
-                                    GeneralFacade.GameStateManager.Set(
-                                        new LoadingLevelGS<SceneDeimos>()
-                                        );
-                                    break;
-                            }
-
-                            GeneralFacade.GameStateManager.Set(new SpawningGS());
-                            GeneralFacade.GameStateManager.Set(new PlayingGS());
+                            NetworkFacade.NetworkHandling.SetConnectivity(
+                                (string)item1["ip"], (int)item1["port"], "192.168.137.156", 8462);
                         }
 
+                        if (!NetworkFacade.ThreadStart1)
+                        {
+                            NetworkFacade.Outgoing.Start();
+                            NetworkFacade.Incoming.Start();
+                            NetworkFacade.Interpret.Start();
+
+                            NetworkFacade.ThreadStart1 = true;
+                        }
+
+                        NetworkFacade.NetworkHandling.ShakeHands();
+                        System.Threading.Thread.Sleep(5000);
+
+                        if (NetworkFacade.NetworkHandling.Handshook)
+                        {
+                            NetworkFacade.NetworkHandling.Connect();
+
+                            System.Threading.Thread.Sleep(5000);
+
+                            if (NetworkFacade.NetworkHandling.ServerConnected)
+                            {
+                                GameplayFacade.Objects = new ObjectsList();
+                                GameplayFacade.Weapons = new WeaponsList();
+                                GameplayFacade.Weapons.Initialise();
+                                GameplayFacade.Objects.Initialize();
+
+                                switch (NetworkFacade.MainHandling.Connections.CurrentMap)
+                                {
+                                    case "coolmap":
+                                        GeneralFacade.GameStateManager.Set(
+                                            new LoadingLevelGS<SceneCompound>()
+                                            );
+                                        break;
+                                    default:
+                                        GeneralFacade.GameStateManager.Set(
+                                            new LoadingLevelGS<SceneDeimos>()
+                                            );
+                                        break;
+                                }
+
+                                GeneralFacade.GameStateManager.Set(new SpawningGS());
+                                GeneralFacade.GameStateManager.Set(new PlayingGS());
+                            }
+
+                        }
+                        else
+                        {
+                            throw new Exception();
+                        }
                     }
-                    else
+                    catch (Exception)
                     {
                         GeneralFacade.GameStateManager.Set(new ErrorScreenGS("Could not connect"));
                     }

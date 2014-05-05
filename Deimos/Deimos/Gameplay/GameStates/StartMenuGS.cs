@@ -108,7 +108,7 @@ namespace Deimos
                 DisplayFacade.MenuImages["StartMenuQuit"],
                 delegate(ScreenElement el, DeimosGame game)
                 {
-                    GeneralFacade.Game.Exit();
+                    Environment.Exit(0);
                 },
                 delegate(ScreenElement el, DeimosGame game)
                 {

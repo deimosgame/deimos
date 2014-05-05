@@ -152,6 +152,13 @@ namespace Deimos
             DisplayFacade.MenuImages.Add("PauseMenuMain", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/PauseMenu/main"));
             DisplayFacade.MenuImages.Add("PauseMenuMainHover", GeneralFacade.Game.Content.Load<Texture2D>("Images/Menu/PauseMenu/mainHover"));
 
+            DisplayFacade.ButtonsImages.Add("DeadScreenGood", GeneralFacade.Game.Content.Load<Texture2D>("Images/Buttons/DeadScreen/good"));
+            DisplayFacade.ButtonsImages.Add("DeadScreenGoodHover", GeneralFacade.Game.Content.Load<Texture2D>("Images/Buttons/DeadScreen/goodHover"));
+            DisplayFacade.ButtonsImages.Add("DeadScreenBad", GeneralFacade.Game.Content.Load<Texture2D>("Images/Buttons/DeadScreen/bad"));
+            DisplayFacade.ButtonsImages.Add("DeadScreenBadHover", GeneralFacade.Game.Content.Load<Texture2D>("Images/Buttons/DeadScreen/badHover"));
+            DisplayFacade.ButtonsImages.Add("DeadScreenUgly", GeneralFacade.Game.Content.Load<Texture2D>("Images/Buttons/DeadScreen/ugly"));
+            DisplayFacade.ButtonsImages.Add("DeadScreenUglyHover", GeneralFacade.Game.Content.Load<Texture2D>("Images/Buttons/DeadScreen/uglyHover"));
+
             DisplayFacade.DebugFont = GeneralFacade.Game.Content.Load<SpriteFont>("Fonts/debug");
             DisplayFacade.TableFont = GeneralFacade.Game.Content.Load<SpriteFont>("Fonts/table");
             DisplayFacade.TitleFont = GeneralFacade.Game.Content.Load<SpriteFont>("Fonts/title");
@@ -212,6 +219,7 @@ namespace Deimos
                 case GameStates.ServerListMenu:
                 case GameStates.GraphicOptions:
                 case GameStates.ErrorScreen:
+                case GameStates.DeadScreen:
                     DisplayFacade.ModelAnimationManager.Animate((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000);
                     DisplayFacade.ScreenElementManager.HandleMouse((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000);
                     GeneralFacade.SceneManager.Update((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000);

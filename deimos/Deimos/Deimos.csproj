@@ -149,6 +149,7 @@
     <Compile Include="Display\ParticleEmitters\SmokeParticleEmitter.cs" />
     <Compile Include="Facades\HelperFacade.cs" />
     <Compile Include="Facades\NetworkFacade.cs" />
+    <Compile Include="Gameplay\GameStates\DeadScreenGS.cs" />
     <Compile Include="Gameplay\GameStates\ErrorScreenGS.cs" />
     <Compile Include="Gameplay\GameStates\GraphicOptionsGS.cs" />
     <Compile Include="Gameplay\GameStates\IntroGS.cs" />

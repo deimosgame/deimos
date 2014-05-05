@@ -141,5 +141,10 @@ namespace Deimos
         {
             weapon.show = true;
         }
+
+        public void UpdateDisplay()
+        {
+            DisplayFacade.ScreenElementManager.GetText("life").Text = GameplayFacade.ThisPlayer.Health + "/100";
+        }
     }
 }

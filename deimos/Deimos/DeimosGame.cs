@@ -155,6 +155,7 @@ namespace Deimos
             DisplayFacade.DebugFont = GeneralFacade.Game.Content.Load<SpriteFont>("Fonts/debug");
             DisplayFacade.TableFont = GeneralFacade.Game.Content.Load<SpriteFont>("Fonts/table");
             DisplayFacade.TitleFont = GeneralFacade.Game.Content.Load<SpriteFont>("Fonts/title");
+            DisplayFacade.UIFont = GeneralFacade.Game.Content.Load<SpriteFont>("Fonts/ui");
 
             DisplayFacade.SpriteBatch = new SpriteBatch(GraphicsDevice);
 
@@ -221,6 +222,7 @@ namespace Deimos
                     if (GameplayFacade.ThisPlayer.IsAlive())
                     {
                         GameplayFacade.ThisPlayer.HandleInput(gameTime);
+                        GameplayFacade.ThisPlayerDisplay.UpdateDisplay();
                     }
                     else
                     {

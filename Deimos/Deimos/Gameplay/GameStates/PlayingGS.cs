@@ -42,12 +42,22 @@ namespace Deimos
                 1,
                 Color.White
             );
+            DisplayFacade.ScreenElementManager.AddText(
+                "life",
+                (int)(GeneralFacade.Game.GraphicsDevice.Viewport.Width - DisplayFacade.UIFont.MeasureString("100/100").X - 20),
+                (int)(GeneralFacade.Game.GraphicsDevice.Viewport.Height - DisplayFacade.UIFont.MeasureString("100/100").Y - 20),
+                1,
+                DisplayFacade.UIFont,
+                "100/100",
+                Color.White
+            );
         }
 
         public override void PostUnset()
         {
             DisplayFacade.ScreenElementManager.RemoveLine("crosshairx");
             DisplayFacade.ScreenElementManager.RemoveLine("crosshairy");
+            DisplayFacade.ScreenElementManager.RemoveText("life");
         }
     }
 }

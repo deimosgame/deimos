@@ -24,6 +24,7 @@ namespace Deimos
         public static SpriteFont DebugFont;
         public static SpriteFont TableFont;
         public static SpriteFont TitleFont;
+        public static SpriteFont UIFont;
 
         // Effects
         public static bool BlurredScene = false;

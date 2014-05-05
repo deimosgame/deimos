@@ -24,7 +24,7 @@ namespace Deimos
         /// </summary>
         public void SpawnBullet(char rep)
         {
-            Vector3 bulletPosition = GameplayFacade.ThisPlayer.Position - DisplayFacade.Camera.ViewVector * 5;
+            Vector3 bulletPosition = GameplayFacade.ThisPlayer.Position - DisplayFacade.Camera.ViewVector * 1;
             Bullet FiredBullet = new Bullet(bulletPosition, -DisplayFacade.Camera.ViewVector, rep);
             string id = "Bullet" + GeneralFacade.Uniqid();
             BulletTab.Add(id, FiredBullet);
@@ -61,8 +61,15 @@ namespace Deimos
             {
                 return;
             }
-            bullet.CheckCollision(bullet.Position);
-            bullet.Position += bullet.Direction * bullet.speed * dt;
+            Vector3 oldPos = bullet.Position;
+            for (float i = dt / 10; i < dt; i += dt / 10)
+            {
+                bullet.Position = oldPos + (bullet.Direction * bullet.speed * i);
+                if (bullet.CheckCollision(bullet.Position))
+                {
+                    break;
+                }
+            }
             GeneralFacade.SceneManager.ModelManager.GetPrivateModel(key).Position = 
                 bullet.Position;
         }

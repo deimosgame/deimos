@@ -51,6 +51,15 @@ namespace Deimos
                 "100/100",
                 Color.White
             );
+            DisplayFacade.ScreenElementManager.AddText(
+                "ammo",
+                20,
+                (int)(GeneralFacade.Game.GraphicsDevice.Viewport.Height - DisplayFacade.UIFont.MeasureString("100/100").Y - 20),
+                1,
+                DisplayFacade.UIFont,
+                "0/0",
+                Color.White
+            );
         }
 
         public override void PostUnset()
@@ -58,6 +67,7 @@ namespace Deimos
             DisplayFacade.ScreenElementManager.RemoveLine("crosshairx");
             DisplayFacade.ScreenElementManager.RemoveLine("crosshairy");
             DisplayFacade.ScreenElementManager.RemoveText("life");
+            DisplayFacade.ScreenElementManager.RemoveText("ammo");
         }
     }
 }

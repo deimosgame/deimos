@@ -95,7 +95,7 @@ namespace Deimos
                 OldPos = GameplayFacade.ThisPlayer.Position;
                 OldRot = GameplayFacade.ThisPlayer.Rotation;
 
-                System.Threading.Thread.Sleep(15);
+                System.Threading.Thread.Sleep(20);
             }
         }
     }

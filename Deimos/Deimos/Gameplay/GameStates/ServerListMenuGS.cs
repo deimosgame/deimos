@@ -96,7 +96,7 @@ namespace Deimos
                     if (!NetworkFacade.ServerIsLocal)
                     {
                         NetworkFacade.NetworkHandling.SetConnectivity(
-                            (string)item1["ip"], (int)item1["port"], "192.168.137.156", 8462);
+                            "127.0.0.1", (int)item1["port"], "127.0.0.1", 8462);
                     }
 
                     if (!NetworkFacade.ThreadStart1)

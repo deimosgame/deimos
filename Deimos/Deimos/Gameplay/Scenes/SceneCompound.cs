@@ -21,10 +21,6 @@ namespace Deimos
         string token_speed;
         string token_health;
 
-
-        DynamicParticleSystem ParticleSystem;
-        SmokeParticleEmitter ParticleEmitter;
-
         public SceneCompound(SceneManager sceneManager)
         {
             PlayerSize = new Vector3(30, 0.5f, 0.5f);
@@ -185,22 +181,11 @@ namespace Deimos
 
             SoundManager.Play3D("scary", DisplayFacade.Camera.Position,
                 new Vector3(0, 0, -0));
-
-
-            Texture2D pixel = new Texture2D(GeneralFacade.Game.GraphicsDevice, 1, 1);
-            pixel.SetData<Color>(new Color[1] { Color.White });
-
-            ParticleSystem = new DynamicParticleSystem(1000, pixel);
-            ParticleEmitter = new SmokeParticleEmitter(new Vector3(15, 3, -32));
-            ParticleSystem.AddEmitter(ParticleEmitter);
-            DisplayFacade.ParticleManager.AddParticleSystem(ParticleSystem);
         }
 
         // Update our things at each ticks
         public override void Update(float dt)
         {
-            ParticleEmitter.Emit(10);
-
             SoundManager.SetListener("scary", GameplayFacade.ThisPlayer.Position);
 
             Objects.Update(GameplayFacade.ThisPlayer.dt);

@@ -72,6 +72,8 @@ namespace Deimos
             DisplayFacade.ParticleManager.Visible = true;
             Components.Add(DisplayFacade.ParticleManager);
 
+
+
             GeneralFacade.Config = new Config();
             GameplayFacade.Constants = new Constants();
         }
@@ -168,6 +170,10 @@ namespace Deimos
             DisplayFacade.ExplosionParticleSystem = new ExplosionParticleSystem(100, Content.Load<Texture2D>("Textures/Particles/explosion"));
             DisplayFacade.ExplosionParticleSystem.AddAffector(new VelocityAffector(Vector3.Down));
             DisplayFacade.ParticleManager.AddParticleSystem(DisplayFacade.ExplosionParticleSystem, BlendState.Additive);
+
+            DisplayFacade.SmokeParticleSystem = new SmokeParticleSystem(100, Content.Load<Texture2D>("Textures/Particles/smoke"));
+            DisplayFacade.SmokeParticleSystem.AddAffector(new VelocityAffector(Vector3.Down));
+            DisplayFacade.ParticleManager.AddParticleSystem(DisplayFacade.SmokeParticleSystem, BlendState.Additive);
 
             DisplayFacade.SpriteBatch = new SpriteBatch(GraphicsDevice);
 

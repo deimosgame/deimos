@@ -32,5 +32,6 @@ namespace Deimos
 
         // Particles
         public static ExplosionParticleSystem ExplosionParticleSystem;
+        public static SmokeParticleSystem SmokeParticleSystem;
     }
 }

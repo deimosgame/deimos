@@ -67,7 +67,7 @@ namespace Deimos
 
                 if (WeaponRep == 'E')
                 {
-                    Explode(element.Model.Position);
+                    Explode(Position);
                 }
 
                 else
@@ -96,6 +96,14 @@ namespace Deimos
                 GameplayFacade.ThisPlayer.Position,
                 pos
                 );
+            PlayFireParticle(pos);
+        }
+
+        public void PlayFireParticle(Vector3 pos)
+        {
+            ExplosionParticleEmitter emitter = new ExplosionParticleEmitter(pos);
+            DisplayFacade.ExplosionParticleSystem.AddEmitter(emitter);
+            emitter.Emit(10);
         }
     }
 }

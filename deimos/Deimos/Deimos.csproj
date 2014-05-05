@@ -150,6 +150,7 @@
     <Compile Include="Display\Particles\Emitters\ExplosionParticleEmitter.cs" />
     <Compile Include="Display\Particles\Emitters\SmokeParticleEmitter.cs" />
     <Compile Include="Display\Particles\Systems\ExplosionParticleSystem.cs" />
+    <Compile Include="Display\Particles\Systems\SmokeParticleSystem.cs" />
     <Compile Include="Facades\HelperFacade.cs" />
     <Compile Include="Facades\NetworkFacade.cs" />
     <Compile Include="Gameplay\GameStates\DeadScreenGS.cs" />

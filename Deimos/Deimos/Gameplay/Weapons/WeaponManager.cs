@@ -265,9 +265,8 @@ namespace Deimos
                         // Putting projectile in action through Bullet Manager
                         GameplayFacade.BulletManager.SpawnBullet(currentWeapon.representative);
                         PlayFirearmSound();
-                        ExplosionParticleEmitter emitter = new ExplosionParticleEmitter(new Vector3(15, 3, -32));
-                        DisplayFacade.ExplosionParticleSystem.AddEmitter(emitter);
-                        emitter.Emit(100);
+                        PlaySmokeParticle();
+                        
                         currentWeapon.c_chamberAmmo--;
                         currentWeapon.FireTimer = 0; // reset the fire timer
                         currentWeapon.State = WeaponState.AtEase;
@@ -486,6 +485,13 @@ namespace Deimos
                 default:
                     return;
             }
+        }
+
+        public void PlaySmokeParticle()
+        {
+            SmokeParticleEmitter emitter = new SmokeParticleEmitter(DisplayFacade.Camera.Position - DisplayFacade.Camera.ViewVector * 4);
+            DisplayFacade.SmokeParticleSystem.AddEmitter(emitter);
+            emitter.Emit(10);
         }
     }
 }

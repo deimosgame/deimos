@@ -26,12 +26,14 @@ namespace Deimos
                 ParticleSystem.AddParticle(
                         Position,
                         HelperFacade.Helpers.ColorBetween(Color.DarkGray, Color.Gray),
-                        velocity * 0.01f + new Vector3(HelperFacade.Helpers.FloatBetween(-30, 30), HelperFacade.Helpers.FloatBetween(30, -10), HelperFacade.Helpers.FloatBetween(-30, 30)) * 0.05f,
+                        (velocity * 0.01f + new Vector3(HelperFacade.Helpers.FloatBetween(-30, 30), 
+                            HelperFacade.Helpers.FloatBetween(30, -10), 
+                            HelperFacade.Helpers.FloatBetween(-30, 30)) * 0.05f) * 0.01f,
                         HelperFacade.Helpers.FloatBetween(-0.01f, 0.01f),
                         TimeSpan.FromSeconds(HelperFacade.Helpers.IntBetween(1, 2)),
                         true,
                         HelperFacade.Helpers.FloatBetween(0.0f, MathHelper.Pi),
-                        0.1f);
+                        0.001f);
             }
         }
 

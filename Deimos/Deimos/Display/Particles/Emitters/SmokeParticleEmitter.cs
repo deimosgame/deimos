@@ -1,40 +1,41 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Tranquillity;
 
 namespace Deimos
 {
     class SmokeParticleEmitter : IParticleEmitter
     {
-
         protected Vector3 Position;
 
-        public DynamicParticleSystem ParticleSystem
+        public DynamicParticleSystem ParticleSystem { get; set; }
+
+        public SmokeParticleEmitter(Vector3 pos)
         {
-            get;
-            set;
+            Position = pos;
         }
 
-        public SmokeParticleEmitter(Vector3 position)
+        public void Emit(int n)
         {
-            Position = position;
-        }
-
-
-        public void Emit(int particlesToEmit)
-        {
-            //throw new NotImplementedException();
-            for (int i = 0; i < particlesToEmit; i++)
+            for (int i = 0; i < n; i++)
             {
-                ParticleSystem.AddParticle(Position, Color.White, Vector3.Up, null, new TimeSpan(0, 0, 5));
+                Vector3 velocity;
+                velocity.X = (float)(HelperFacade.Helpers.Random.NextDouble() - 0.5) * 60;
+                velocity.Y = (float)(HelperFacade.Helpers.Random.NextDouble() + 0.5) * 40;
+                velocity.Z = (float)(HelperFacade.Helpers.Random.NextDouble() - 0.5) * 60;
+                ParticleSystem.AddParticle(
+                        Position,
+                        HelperFacade.Helpers.ColorBetween(Color.DarkGray, Color.Gray),
+                        (velocity * 0.01f + new Vector3(HelperFacade.Helpers.FloatBetween(-30, 30), HelperFacade.Helpers.FloatBetween(30, -10), HelperFacade.Helpers.FloatBetween(-30, 30)) * 0.05f) * 0.1f,
+                        HelperFacade.Helpers.FloatBetween(-0.01f, 0.01f),
+                        TimeSpan.FromSeconds(HelperFacade.Helpers.IntBetween(1, 2)),
+                        true,
+                        HelperFacade.Helpers.FloatBetween(0.0f, MathHelper.Pi),
+                        0.01f);
             }
         }
 
-        public void Update(Microsoft.Xna.Framework.GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             //
         }

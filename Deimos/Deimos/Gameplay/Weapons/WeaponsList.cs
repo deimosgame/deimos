@@ -57,7 +57,7 @@ namespace Deimos
                 0.1f,
                 31, 147, 60,
                 2.2f, 10, 25,
-                30f, 500f
+                300, 500f
                 )
             );
             SetWeapon(new Weapon(
@@ -78,7 +78,7 @@ namespace Deimos
                 3f,
                 1, 5, 1,
                 3f, 40, 60,
-                20f, 200f
+                150f, 200f
                 )
             );
 

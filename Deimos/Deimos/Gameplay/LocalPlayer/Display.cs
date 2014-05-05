@@ -145,7 +145,7 @@ namespace Deimos
         public void UpdateDisplay()
         {
             DisplayFacade.ScreenElementManager.GetText("life").Text = 
-                GameplayFacade.ThisPlayer.Health + "/100";
+                GameplayFacade.ThisPlayer.Health + "/" + GameplayFacade.ThisPlayer.M_Health.ToString();
             DisplayFacade.ScreenElementManager.GetText("ammo").Text = 
                 GameplayFacade.ThisPlayer.CurrentWeapon.c_chamberAmmo + "/" 
                 + GameplayFacade.ThisPlayer.CurrentWeapon.c_reservoirAmmo;

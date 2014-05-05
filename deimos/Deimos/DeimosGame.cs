@@ -214,6 +214,10 @@ namespace Deimos
                     }
                     break;
 
+                case GameStates.LoadingLevel:
+                    //
+                    break;
+
                 case GameStates.StartMenu:
                 case GameStates.Pause:
                 case GameStates.ServerListMenu:

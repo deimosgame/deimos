@@ -130,12 +130,12 @@ namespace Deimos
                                 {
                                     case "coolmap":
                                         GeneralFacade.GameStateManager.Set(
-                                            new LoadingLevelGS<SceneCompound>()
+                                            new LoadingLevelGS<SceneCompound>(delegate() { })
                                             );
                                         break;
                                     default:
                                         GeneralFacade.GameStateManager.Set(
-                                            new LoadingLevelGS<SceneDeimos>()
+                                            new LoadingLevelGS<SceneDeimos>(delegate() { })
                                             );
                                         break;
                                 }

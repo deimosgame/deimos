@@ -1,16 +1,25 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace Deimos
 {
     class LoadingLevelGS<T> : GameStateObj
     {
+        Action PostLoadingEvent;
+
         public override GameStates GameState
         {
             get { return GameStates.LoadingLevel; }
+        }
+
+        public LoadingLevelGS(Action myEvent)
+        {
+            PostLoadingEvent = myEvent;
         }
 
         public override void PreSet()
@@ -33,8 +42,19 @@ namespace Deimos
                 "Loading...",
                 Color.White
             );
+            BackgroundWorker bw = new BackgroundWorker();
+            bw.DoWork += new DoWorkEventHandler((sender, e) =>
+            {
+                GeneralFacade.SceneManager.SetScene<T>();
+            });
+            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler((sender, e) =>
+            {
+                //System.Threading.Thread.Sleep(1000);
+                PostLoadingEvent();
+            });
 
-            GeneralFacade.SceneManager.SetScene<T>();
+
+            bw.RunWorkerAsync();
         }
 
         public override void PostUnset()

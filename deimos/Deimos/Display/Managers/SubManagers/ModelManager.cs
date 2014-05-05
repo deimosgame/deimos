@@ -200,9 +200,14 @@ namespace Deimos
         public void IterateModels(Game game, Camera camera, 
             Dictionary<string, LevelModel> models)
         {
-            foreach (KeyValuePair<string, LevelModel> thisLevelModel in
-                    models)
+            for (int i = 0; i < models.Count; i++)
             {
+                if (GeneralFacade.GameStateManager.CurrentGameState == GameStates.LoadingLevel)
+                {
+                    return;
+                }
+                KeyValuePair<string, LevelModel> thisLevelModel = models.ElementAt(i);
+
                 if (thisLevelModel.Value.show)
                 {
                     // Loading the model
@@ -213,11 +218,21 @@ namespace Deimos
 
                     foreach (ModelMesh mesh in levelModel.CollisionModel.model.Meshes)
                     {
+                        if (GeneralFacade.GameStateManager.CurrentGameState == GameStates.LoadingLevel)
+                        {
+                            return;
+                        }
+
                         Matrix meshPosition = transforms[mesh.ParentBone.Index];
                         Matrix meshWorld = meshPosition * thisLevelModel.Value.WorldMatrix;
 
                         foreach (Effect effect in mesh.Effects)
                         {
+                            if (GeneralFacade.GameStateManager.CurrentGameState == GameStates.LoadingLevel)
+                            {
+                                return;
+                            }
+
                             effect.Parameters["World"]
                                 .SetValue(meshWorld);
                             effect.Parameters["View"]

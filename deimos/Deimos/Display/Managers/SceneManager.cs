@@ -178,6 +178,10 @@ namespace Deimos
 
         public void Update(float dt)
         {
+            if (GeneralFacade.GameStateManager.CurrentGameState == GameStates.LoadingLevel)
+            {
+                return;
+            }
             CurrentScene.Update(dt);
             SoundManager.Update();
         }

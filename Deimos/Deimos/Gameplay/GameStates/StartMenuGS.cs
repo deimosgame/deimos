@@ -49,19 +49,19 @@ namespace Deimos
                 DisplayFacade.MenuImages["StartMenuPlay"],
                 delegate(ScreenElement el, DeimosGame game)
                 {
-                        GameplayFacade.Objects = new ObjectsList();
+                    GameplayFacade.Objects = new ObjectsList();
 
-                        GameplayFacade.Weapons = new WeaponsList();
-                        GameplayFacade.Weapons.Initialise();
-                        GameplayFacade.Objects.Initialize();
+                    GameplayFacade.Weapons = new WeaponsList();
+                    GameplayFacade.Weapons.Initialise();
+                    GameplayFacade.Objects.Initialize();
 
-                        GeneralFacade.GameStateManager.Set(
-                                    new LoadingLevelGS<SceneCompound>()
-                                    );
-                        GeneralFacade.GameStateManager.Set(new SpawningGS());
-                        GeneralFacade.GameStateManager.Set(new PlayingGS());
-                       
-                    
+                    GeneralFacade.GameStateManager.Set(
+                        new LoadingLevelGS<SceneCompound>(delegate() 
+                        {
+                            GeneralFacade.GameStateManager.Set(new SpawningGS());
+                            GeneralFacade.GameStateManager.Set(new PlayingGS());
+                        })
+                    );
                 },
                 delegate(ScreenElement el, DeimosGame game)
                 {

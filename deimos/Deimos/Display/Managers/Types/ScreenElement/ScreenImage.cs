@@ -62,21 +62,11 @@ namespace Deimos
             Rectangle rectangle = new Rectangle(
                 (int)Pos.X,
                 (int)Pos.Y,
-                Image.Width,
-                Image.Height
+                (int)(Image.Width * ScaleX),
+                (int)(Image.Height * ScaleY)
             );
             if (mouse.Intersects(rectangle))
             {
-                if (LastState != ScreenElement.ElState.Hover
-                    && LastState != ScreenElement.ElState.Click)
-                {
-                    if (OnHover != null)
-                    {
-                        OnHover(this, GeneralFacade.Game);
-                    }
-
-                    LastState = ScreenElement.ElState.Hover;
-                }
                 if (mouseState.LeftButton == ButtonState.Pressed
                     && LastState != ScreenElement.ElState.Click)
                 {
@@ -88,18 +78,24 @@ namespace Deimos
                     LastState = ScreenElement.ElState.Click;
                     return true;
                 }
+                else
+                {
+                    if (OnHover != null)
+                    {
+                        OnHover(this, GeneralFacade.Game);
+                    }
+
+                    LastState = ScreenElement.ElState.Hover;
+                }
             }
             else
             {
-                if (LastState != ScreenElement.ElState.Out)
+                if (OnOut != null)
                 {
-                    if (OnOut != null)
-                    {
-                        OnOut(this, GeneralFacade.Game);
-                    }
-
-                    LastState = ScreenElement.ElState.Out;
+                    OnOut(this, GeneralFacade.Game);
                 }
+
+                LastState = ScreenElement.ElState.Out;
             }
             return false;
         }

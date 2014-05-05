@@ -137,6 +137,7 @@ namespace Deimos
         {
             DisplayFacade.ScreenElementManager.RemoveImage("DeadScreenBackground");
             DisplayFacade.ScreenElementManager.RemoveText("DeadScreenTitle");
+            DisplayFacade.ScreenElementManager.RemoveText("DeadScreenSubTitle");
             DisplayFacade.ScreenElementManager.RemoveImage("DeadScreenGood");
             DisplayFacade.ScreenElementManager.RemoveImage("DeadScreenBad");
             DisplayFacade.ScreenElementManager.RemoveImage("DeadScreenUgly");

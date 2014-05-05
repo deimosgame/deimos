@@ -16,18 +16,18 @@ namespace Deimos
         public override void PreSet()
         {
             DisplayFacade.ScreenElementManager.AddRectangle(
-                "blackScreen",
+                "LoadingScreenBackground",
                 0,
                 0,
                 1,
-                GeneralFacade.Game.GraphicsDevice.Viewport.Height,
                 GeneralFacade.Game.GraphicsDevice.Viewport.Width,
+                GeneralFacade.Game.GraphicsDevice.Viewport.Height,
                 Color.Black
             );
             DisplayFacade.ScreenElementManager.AddText(
-                "stringLoading",
-                300,
-                GeneralFacade.Game.GraphicsDevice.Viewport.Height / 2,
+                "LoadingScreenTitle",
+                20,
+                GeneralFacade.Game.GraphicsDevice.Viewport.Height - 20,
                 1,
                 DisplayFacade.DebugFont,
                 "Loading...",
@@ -39,8 +39,8 @@ namespace Deimos
 
         public override void PostUnset()
         {
-            DisplayFacade.ScreenElementManager.RemoveRectangle("blackScreen");
-            DisplayFacade.ScreenElementManager.RemoveText("stringLoading");
+            DisplayFacade.ScreenElementManager.RemoveRectangle("LoadingScreenBackground");
+            DisplayFacade.ScreenElementManager.RemoveText("LoadingScreenTitle");
         }
     }
 }

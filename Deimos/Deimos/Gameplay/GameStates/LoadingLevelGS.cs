@@ -8,6 +8,11 @@ namespace Deimos
 {
     class LoadingLevelGS<T> : GameStateObj
     {
+        public override GameStates GameState
+        {
+            get { return GameStates.LoadingLevel; }
+        }
+
         public override void PreSet()
         {
             DisplayFacade.ScreenElementManager.AddRectangle(

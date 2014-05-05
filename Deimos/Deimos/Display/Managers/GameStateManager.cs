@@ -15,7 +15,9 @@ namespace Deimos
         GraphicOptions,
         Spawning,
         Playing,
-        ErrorScreen
+        ErrorScreen,
+        DeadScreen,
+        LoadingLevel
     }
 
     class GameStateManager

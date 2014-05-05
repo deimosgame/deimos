@@ -16,7 +16,7 @@ namespace Deimos
         ////////         /////          //////
 
         static public bool ThreadStart1 = false;
-        static public bool ThreadStart2 = true;
+        static public bool ThreadStart2 = false;
 
         static public NetworkManager Network;
 

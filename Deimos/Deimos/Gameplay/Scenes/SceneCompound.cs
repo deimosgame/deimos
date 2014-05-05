@@ -80,30 +80,30 @@ namespace Deimos
                 0,
                 new Vector3(18, -6, 110),
                 PickupObject.State.Active,
-                5
+                30
                 );
 
             token_health = Objects.AddEffect("Health Pack",
                 new Vector3(-1, -6, 46),
                 PickupObject.State.Active,
-                25,
-                5
+                50,
+                15
                 );
 
             token_speed = Objects.AddEffect("Speed Boost",
                 new Vector3(-40, 1, 26),
                 PickupObject.State.Active,
-                20,
-                5,
-                4
+                15,
+                60,
+                20
                 );
 
             token_gravity = Objects.AddEffect("Gravity Boost",
                 new Vector3(-40, -5, 71),
                 PickupObject.State.Active,
-                5,
-                6,
-                4
+                2,
+                60,
+                20
                 );
 
             SoundManager.AddSoundEffect("scary", "Sounds/ScaryMusic");

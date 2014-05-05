@@ -59,18 +59,21 @@ namespace Deimos
 
                 if (NetworkFacade.IsMultiplayer)
                 {
-                    foreach (KeyValuePair<byte, Player> p in NetworkFacade.Players)
+                    for (int i = 0; i < NetworkFacade.Players.Count; i++)
                     {
-                        if (GeneralFacade.SceneManager.ModelManager.LevelModelExists(p.Value.Name)
-                            && p.Value.IsAlive())
+                        KeyValuePair<byte, Player> pair = NetworkFacade.Players.ElementAt(i);
+
+                        if (pair.Value != null
+                            && GeneralFacade.SceneManager.ModelManager.LevelModelExists(pair.Value.Name)
+                            && pair.Value.IsAlive())
                         {
-                            GeneralFacade.SceneManager.ModelManager.GetLevelModel(p.Value.Name).show = true;
+                            GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).show = true;
 
-                            GeneralFacade.SceneManager.ModelManager.GetLevelModel(p.Value.Name).Position =
-                                p.Value.Position;
+                            GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).Position =
+                                pair.Value.Position;
 
-                            GeneralFacade.SceneManager.ModelManager.GetLevelModel(p.Value.Name).Rotation =
-                                p.Value.Rotation;
+                            GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).Rotation =
+                                pair.Value.Rotation;
                         }
                     }
                 }
@@ -95,7 +98,7 @@ namespace Deimos
                 OldPos = GameplayFacade.ThisPlayer.Position;
                 OldRot = GameplayFacade.ThisPlayer.Rotation;
 
-                System.Threading.Thread.Sleep(20);
+                System.Threading.Thread.Sleep(30);
             }
         }
     }

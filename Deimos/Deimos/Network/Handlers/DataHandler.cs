@@ -40,7 +40,7 @@ namespace Deimos
                     case Data.WorldDataType.Y:
                         DisplayFacade.DebugScreen.Debug("y?" + data.Float32_Data.ToString());
                         NetworkFacade.Players[data.PropertyOf].Position.Y =
-                            data.Float32_Data - 6;
+                            data.Float32_Data - 6f;
                         break;
                     case Data.WorldDataType.Z:
                         DisplayFacade.DebugScreen.Debug("z?" + data.Float32_Data.ToString());

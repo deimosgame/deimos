@@ -303,7 +303,7 @@ namespace Deimos
                     land = true;
                 }
 
-                if (fall_distance > 5)
+                if (fall_distance > GetMaxSafefall() && !GameplayFacade.ThisPlayer.Gravityboosted)
                 {
                     GameplayFacade.ThisPlayer.Hurt(GetFallDamage(fall_distance));
                     GeneralFacade.SceneManager.SoundManager.Play("fall");
@@ -324,6 +324,21 @@ namespace Deimos
                 initial_velocity = 0;
                 timer_gravity = 0;
                 GravityState = PhysicalState.Falling;
+            }
+        }
+
+        public float GetMaxSafefall()
+        {
+            switch (GameplayFacade.ThisPlayer.Class)
+            {
+                case Player.Spec.Soldier:
+                    return 5;
+                case Player.Spec.Agent:
+                    return 6;
+                case Player.Spec.Overwatch:
+                    return 4;
+                default:
+                    return 5;
             }
         }
 

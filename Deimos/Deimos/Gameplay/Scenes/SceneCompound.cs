@@ -78,6 +78,23 @@ namespace Deimos
 
             }
 
+            //ModelManager.LoadModel(
+            //            "dummy",
+            //            "Models/Characters/Vanquish/vanquish",
+            //            Vector3.Zero,
+            //            Vector3.Zero,
+            //            5,
+            //            LevelModel.CollisionType.None
+            //            );
+
+            //ModelManager.LoadModel(
+            //    "player",
+            //    "Models/Characters/Vanquish/vanquish",
+            //    Vector3.Zero,
+            //    Vector3.Zero,
+            //    5,
+            //    LevelModel.CollisionType.None);
+
             token_rl = Objects.AddWeapon("BazookaPickup",
                 2,
                 new Vector3(17, -6, 110),

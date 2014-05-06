@@ -82,7 +82,7 @@ namespace Deimos
                 if (!NetworkFacade.ServerIsLocal)
                 {
                     NetworkFacade.NetworkHandling.SetConnectivity(
-                            "169.254.216.38", 1518, "169.254.56.103", 8000);
+                            "169.254.216.38", 1518, "169.254.216.38", 8000);
                 }
 
                     if (!NetworkFacade.ThreadStart1)

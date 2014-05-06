@@ -137,6 +137,9 @@ namespace Deimos
             SoundManager.AddSoundEffect("l1", "Sounds/steps/wood_walk2");
             SoundManager.AddSoundEffect("l2", "Sounds/steps/wood_walk3");
 
+            // fall damage
+            SoundManager.AddSoundEffect("fall", "Sounds/steps/fallsplat");
+
             // Weapons
                 // Melee swinging
             SoundManager.AddSoundEffect("w_sw1", "Sounds/weapons/swing1");

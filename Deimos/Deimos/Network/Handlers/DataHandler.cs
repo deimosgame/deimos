@@ -18,7 +18,6 @@ namespace Deimos
             if (d.ID_Type == Data.Nature.Player)
             {
                 PlayerData.Add(d);
-                DisplayFacade.DebugScreen.Debug("addeddata");
             }
             else if (d.ID_Type == Data.Nature.Entity)
             {
@@ -28,6 +27,9 @@ namespace Deimos
 
         public void InterpretPlayer(Data data)
         {
+            if (data != null
+                && NetworkFacade.Players.ContainsKey(data.PropertyOf))
+            {
                 switch (data.Data_Type)
                 {
                     case Data.WorldDataType.X:
@@ -70,6 +72,7 @@ namespace Deimos
                             data.Byte_Data;
                         break;
                 }
+            }
         }
 
         public void InterpretEntity(Data data)

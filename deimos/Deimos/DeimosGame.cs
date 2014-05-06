@@ -121,11 +121,11 @@ namespace Deimos
                 NetworkFacade.Incoming.Name = "in";
                 NetworkFacade.Incoming.IsBackground = true;
                 // Interpreting thread
-                //NetworkFacade.Interpret.Name = "proc";
-                //NetworkFacade.Interpret.IsBackground = true;
+                NetworkFacade.Interpret.Name = "proc";
+                NetworkFacade.Interpret.IsBackground = true;
                 // World updating thread
-                //NetworkFacade.World.Name = "world";
-                //NetworkFacade.World.IsBackground = true;
+                NetworkFacade.World.Name = "world";
+                NetworkFacade.World.IsBackground = true;
 
                 NetworkFacade.MovePacket.Name = "move";
                 NetworkFacade.MovePacket.IsBackground = true;

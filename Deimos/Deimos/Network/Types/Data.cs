@@ -12,21 +12,25 @@ namespace Deimos
 
         public enum Nature
         {
+            Unknown,
             Player,
             Entity,
             Corrupt
+            
         }
 
         public enum EntityType
         {
-            Bullet,
-            Weapon,
+            Unknown,
             Effect,
+            Weapon,
+            Bullet,
             Corrupt
         }
 
         public enum EntityState
         {
+            Unknown,
             Active,
             Inactive,
             Corrupt
@@ -34,8 +38,9 @@ namespace Deimos
 
         public enum WorldDataType
         {
-            Name,
+            Unknown,
             Score,
+            Name,
             Instance,
             Health,
             X,
@@ -87,24 +92,24 @@ namespace Deimos
             ID_Type = nature;
         }
 
-        public Data Clone()
-        {
-            Data new_data = new Data(ID_Type);
-            new_data.Entity_Type = Entity_Type;
-            new_data.Entity_State = Entity_State;
-            new_data.Data_Type = Data_Type;
-            new_data.Contained = Contained;
+        //public Data Clone()
+        //{
+        //    Data new_data = new Data(ID_Type);
+        //    new_data.Entity_Type = Entity_Type;
+        //    new_data.Entity_State = Entity_State;
+        //    new_data.Data_Type = Data_Type;
+        //    new_data.Contained = Contained;
 
-            new_data.PropertyOf = PropertyOf;
+        //    new_data.PropertyOf = PropertyOf;
 
-            new_data.Str_Data = Str_Data;
-            new_data.Int32_Data = Int32_Data;
-            new_data.Float32_Data = Float32_Data;
-            new_data.Byte_Data = Byte_Data;
+        //    new_data.Str_Data = Str_Data;
+        //    new_data.Int32_Data = Int32_Data;
+        //    new_data.Float32_Data = Float32_Data;
+        //    new_data.Byte_Data = Byte_Data;
 
-            new_data.end_index = end_index;
+        //    new_data.end_index = end_index;
 
-            return new_data;
-        }
+        //    return new_data;
+        //}
     }
 }

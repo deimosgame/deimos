@@ -47,7 +47,6 @@ namespace Deimos
             }
 
             Ongoing.Add(Received);
-            DisplayFacade.DebugScreen.Debug("addedtoongoing");
         }
 
         // This method return the PacketType from a byte
@@ -190,7 +189,6 @@ namespace Deimos
             switch (prefix)
             {
                 case "A":
-                    DisplayFacade.DebugScreen.Debug("received player packet");
                     return Data.Nature.Player;
                 case "B":
                     return Data.Nature.Entity;
@@ -203,7 +201,6 @@ namespace Deimos
         // and sets the 'contained' filed appropriately
         public Data.WorldDataType IdentifyDataTypeFromPrefix(string prefix, Data d)
         {
-            DisplayFacade.DebugScreen.Debug("determined packet type " + prefix);
             switch (prefix)
             {
                 case "N":

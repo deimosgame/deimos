@@ -89,17 +89,17 @@ namespace Deimos
                     {
                         NetworkFacade.Outgoing.Start();
                         NetworkFacade.Incoming.Start();
-                        //NetworkFacade.Interpret.Start();
+                        NetworkFacade.Interpret.Start();
 
                         NetworkFacade.ThreadStart1 = true;
                     }
 
-                    while (!NetworkFacade.NetworkHandling.Handshook)
-                    {
+                    
                     NetworkFacade.NetworkHandling.ShakeHands();
                     System.Threading.Thread.Sleep(2000);
 
-                    
+                    if (NetworkFacade.NetworkHandling.Handshook)
+                    {
                         NetworkFacade.NetworkHandling.Connect();
 
                         System.Threading.Thread.Sleep(2000);
@@ -130,11 +130,10 @@ namespace Deimos
                         }
 
                     }
-            
-                    //else
-                    //{
-                    //    GeneralFacade.GameStateManager.Set(new ErrorScreenGS("Could not connect"));
-                    //}
+                    else
+                    {
+                        GeneralFacade.GameStateManager.Set(new ErrorScreenGS("Could not connect"));
+                    }
 
             };
             serverList.Add(testRow);

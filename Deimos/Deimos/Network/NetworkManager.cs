@@ -8,6 +8,8 @@ namespace Deimos
 {
     class NetworkManager
     {
+        public bool d = true;
+
         public void HandleSend()
         {
             while (true)
@@ -31,42 +33,40 @@ namespace Deimos
             {
                 NetworkFacade.NetworkHandling.Receive();
                 System.Threading.Thread.Sleep(1);
+            }
+        }
+
+        public void Process()
+        {
+            while (true)
+            {
+
+                if (NetworkFacade.Receiving.Count != 0)
+                {
+                    d = false;
+                    byte[] b = (byte[])NetworkFacade.Receiving.Dequeue();
+                    d = true;
+                    if (b != null)
+                    {
+                        NetworkFacade.MainHandling.Distribute(b);
+                    }
+                }
+
                 NetworkFacade.MainHandling.Process();
-                NetworkFacade.DataHandling.Process();
+
                 System.Threading.Thread.Sleep(1);
             }
         }
 
-        //public void Process()
-        //{
-        //    while (true)
-        //    {
-        //        if (NetworkFacade.Receiving.Count != 0)
-        //        {
-        //            byte[] b = (byte[])NetworkFacade.Receiving.Dequeue();
 
-        //            if (b != null)
-        //            {
-        //                NetworkFacade.MainHandling.Distribute(b);
-        //            }
-        //        }
-
-        //        NetworkFacade.MainHandling.Process();
-
-        //        System.Threading.Thread.Sleep(1);
-        //    }
-        //}
-
-
-        //public void UpdateWorld()
-        //{
-        //    while (true)
-        //    {
-        //        NetworkFacade.MainHandling.Process();
-        //        NetworkFacade.DataHandling.Process();
-        //        System.Threading.Thread.Sleep(1);
-        //    }
-        //}
+        public void UpdateWorld()
+        {
+            while (true)
+            {
+                NetworkFacade.DataHandling.Process();
+                System.Threading.Thread.Sleep(1);
+            }
+        }
 
         public void SendMovePacket()
         {

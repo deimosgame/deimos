@@ -85,7 +85,6 @@ namespace Deimos
             // once the packet received, handing it over to the
             // interpretation network thread
             NetworkFacade.MainHandling.Distribute(receive_buffer);
-            DisplayFacade.DebugScreen.Debug("rp" + receive_buffer[1].ToString());
 
         }
     }

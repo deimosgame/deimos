@@ -26,11 +26,11 @@ namespace Deimos
 
             GameplayFacade.ThisPlayer.Inventory = new WeaponManager();
             GameplayFacade.ThisPlayer.InitializeInventory(GameplayFacade.ThisPlayer.Class);
-            GameplayFacade.ThisPlayer.PlayerSpawn(new Vector3(2f, 0f, -20f), Vector3.Zero);
+            GameplayFacade.ThisPlayer.PlayerSpawn(new Vector3(15f, 0f, -38f), Vector3.Zero);
 
             if (NetworkFacade.IsMultiplayer && !NetworkFacade.ThreadStart2)
             {
-                NetworkFacade.World.Start();
+                //NetworkFacade.World.Start();
                 NetworkFacade.MovePacket.Start();
 
                 NetworkFacade.ThreadStart2 = true;

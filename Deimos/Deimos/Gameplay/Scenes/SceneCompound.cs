@@ -16,7 +16,7 @@ namespace Deimos
         SoundManager SoundManager;
         ModelAnimationManager ModelAnimationManager;
 
-        string token_w;
+        string token_rl;
         string token_gravity;
         string token_speed;
         string token_health;
@@ -78,34 +78,34 @@ namespace Deimos
 
             }
 
-            token_w = Objects.AddWeapon("CarverPickup",
-                0,
-                new Vector3(18, -6, 110),
+            token_rl = Objects.AddWeapon("BazookaPickup",
+                2,
+                new Vector3(17, -6, 110),
                 PickupObject.State.Active,
                 30
                 );
 
             token_health = Objects.AddEffect("Health Pack",
-                new Vector3(-1, -6, 46),
+                new Vector3(1, -6, 96),
                 PickupObject.State.Active,
                 50,
                 15
                 );
 
             token_speed = Objects.AddEffect("Speed Boost",
-                new Vector3(-40, 1, 26),
+                new Vector3(32, -6, 87),
                 PickupObject.State.Active,
                 15,
-                60,
-                20
+                10,
+                5
                 );
 
             token_gravity = Objects.AddEffect("Gravity Boost",
-                new Vector3(-40, -5, 71),
+                new Vector3(32, -5, 106),
                 PickupObject.State.Active,
-                2,
-                60,
-                20
+                1,
+                10,
+                5
                 );
 
             SoundManager.AddSoundEffect("scary", "Sounds/ScaryMusic");
@@ -114,7 +114,6 @@ namespace Deimos
         // Initialize our lights and such
         public override void Initialize()
         {
-
             LightManager.AddPointLight(
                "Main",
                new Vector3(18, 10, 90), // Location
@@ -127,14 +126,14 @@ namespace Deimos
                 new Vector3(-40, 7, 26),
                 25,
                 2,
-                Color.DarkBlue
+                Color.DarkRed
                 );
             LightManager.AddPointLight(
                 "blue2",
                 new Vector3(-40, 3, 71),
                 25,
                 2,
-                Color.DarkBlue
+                Color.DarkRed
                 );
             LightManager.AddPointLight(
                 "white1",
@@ -152,8 +151,8 @@ namespace Deimos
                 );
             LightManager.AddPointLight(
                 "white3",
-                new Vector3(20, 0, 17),
-                20,
+                new Vector3(20, 0, 14),
+                13,
                 2,
                 Color.White
                 );

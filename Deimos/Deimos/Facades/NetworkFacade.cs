@@ -32,7 +32,7 @@ namespace Deimos
         static public Thread Outgoing = new Thread(NetworkFacade.Network.HandleSend);
         static public Thread Incoming = new Thread(NetworkFacade.Network.HandleReceive);
         //static public Thread Interpret = new Thread(NetworkFacade.Network.Process);
-        static public Thread World = new Thread(NetworkFacade.Network.UpdateWorld);
+        //static public Thread World = new Thread(NetworkFacade.Network.UpdateWorld);
         static public Thread MovePacket = new Thread(NetworkFacade.Network.SendMovePacket);
     }
 }

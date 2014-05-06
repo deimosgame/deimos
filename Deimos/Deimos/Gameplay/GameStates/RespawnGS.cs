@@ -16,8 +16,16 @@ namespace Deimos
         public override void PreSet()
         {
             GameplayFacade.ThisPlayer.InitializeInventory(GameplayFacade.ThisPlayer.Class);
-            GameplayFacade.ThisPlayer.PlayerRespawn(new Vector3(2f, 0f, -20f),
-                        Vector3.Zero, "main");
+            if (GameplayFacade.ThisPlayer.Class != Player.Spec.Agent)
+            {
+                GameplayFacade.ThisPlayer.PlayerRespawn(new Vector3(15f, 0f, -38f),
+                            Vector3.Zero, "main");
+            }
+            else
+            {
+                GameplayFacade.ThisPlayer.PlayerRespawn(new Vector3(17, 0, 88),
+                    Vector3.Zero, "main");
+            }
         }
 
         public override void PostUnset()

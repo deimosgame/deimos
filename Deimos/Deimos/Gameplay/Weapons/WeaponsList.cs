@@ -72,8 +72,8 @@ namespace Deimos
                 )
             );
             SetWeapon(new Weapon(
-                new Vector3(0.6f, 1.3f, 0.5f),
-                new Vector3(0.6f, 1.3f, 0.5f), 0.0025f, (float)((Math.PI) / -2),
+                new Vector3(0.5f, 4.8f, 0.5f),
+                new Vector3(0.5f, 4.8f, 0.5f), 0.01f, (float)((Math.PI) / -2),
                 "Models/Weapons/RPG/RPG", "Bazooka", 4 , 'E',
                 3f,
                 1, 5, 1,

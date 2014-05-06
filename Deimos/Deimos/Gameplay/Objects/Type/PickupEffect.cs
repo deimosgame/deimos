@@ -24,7 +24,7 @@ namespace Deimos
 
         // Constructor
         public PickupEffect(string name, string path, float scale, Effect effect)
-            : base(new Vector3(10f, 10f, 10f))
+            : base(new Vector3(15f, 15f, 15f))
         {
             Name = name;
             Model = path;

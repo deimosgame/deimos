@@ -62,7 +62,7 @@ namespace Deimos
             // Preset Effect Objects to be picked up
             SetEffectObj(new PickupEffect("Health Pack",
                 "Models/Weapons/Knife/knife",
-                1.5f,
+                0.5f,
                 PickupEffect.Effect.Health)
             );
             SetEffectObj(new PickupEffect("Gravity Boost",
@@ -72,7 +72,7 @@ namespace Deimos
             );
             SetEffectObj(new PickupEffect("Speed Boost",
                 "Models/Weapons/PP19/PP19Model",
-                0.4f,
+                0.1f,
                 PickupEffect.Effect.Speed)
             );
 

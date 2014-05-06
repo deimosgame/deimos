@@ -47,6 +47,7 @@ namespace Deimos
             }
 
             Ongoing.Add(Received);
+            DisplayFacade.DebugScreen.Debug("addedtoongoing");
         }
 
         // This method return the PacketType from a byte

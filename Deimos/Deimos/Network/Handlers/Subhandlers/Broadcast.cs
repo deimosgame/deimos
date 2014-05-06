@@ -27,9 +27,11 @@ namespace Deimos
         // This is the method that interprets the whole packet
         public void Interpret(Packet p)
         {
+            DisplayFacade.DebugScreen.Debug("sip");
             Data datapack = ExtractData(p.Encoded_buffer, 8);
             if (datapack != null)
             {
+                DisplayFacade.DebugScreen.Debug("dp nn");
                 NetworkFacade.DataHandling.Handle(datapack);
 
                 int i = datapack.end_index;
@@ -49,18 +51,23 @@ namespace Deimos
                     Interpret(p.Next);
                 }
             }
+            else
+            {
+                DisplayFacade.DebugScreen.Debug("dp n");
+            }
         }
 
         // This method processes all ongoing packet information
         // and tries to assemble any split packets
         public void Process()
         {
-            foreach (Packet p in Ongoing)
+            for (int i = 0; i < Ongoing.Count; i++)
             {
-                Interpret(p);
-            }
+                Packet p = Ongoing.ElementAt(i);
 
-            Ongoing.Clear();
+                Interpret(p);
+                Ongoing.RemoveAt(i);
+            }
         }
     }
 }

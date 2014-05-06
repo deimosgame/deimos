@@ -31,6 +31,9 @@ namespace Deimos
             {
                 NetworkFacade.NetworkHandling.Receive();
                 System.Threading.Thread.Sleep(1);
+                NetworkFacade.MainHandling.Process();
+                NetworkFacade.DataHandling.Process();
+                System.Threading.Thread.Sleep(1);
             }
         }
 
@@ -55,15 +58,15 @@ namespace Deimos
         //}
 
 
-        public void UpdateWorld()
-        {
-            while (true)
-            {
-                NetworkFacade.MainHandling.Process();
-                NetworkFacade.DataHandling.Process();
-                System.Threading.Thread.Sleep(1);
-            }
-        }
+        //public void UpdateWorld()
+        //{
+        //    while (true)
+        //    {
+        //        NetworkFacade.MainHandling.Process();
+        //        NetworkFacade.DataHandling.Process();
+        //        System.Threading.Thread.Sleep(1);
+        //    }
+        //}
 
         public void SendMovePacket()
         {

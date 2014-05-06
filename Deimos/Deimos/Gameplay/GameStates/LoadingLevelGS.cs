@@ -45,16 +45,17 @@ namespace Deimos
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler((sender, e) =>
             {
-                GeneralFacade.SceneManager.SetScene<T>();
+                
             });
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler((sender, e) =>
             {
                 //System.Threading.Thread.Sleep(1000);
-                PostLoadingEvent();
+                
             });
 
-
-            bw.RunWorkerAsync();
+            GeneralFacade.SceneManager.SetScene<T>(); 
+            PostLoadingEvent();
+            //bw.RunWorkerAsync();
         }
 
         public override void PostUnset()

@@ -51,7 +51,7 @@ namespace Deimos
         }
         public void SetListener(string name, Vector3 pos)
         {
-            SoundEffect[name].SetListener(pos);
+                SoundEffect[name].SetListener(pos);
         }
 
 

@@ -70,93 +70,73 @@ namespace Deimos
             );
 
             List<TableRow> serverList = new List<TableRow>();
-            string serverListRequest = HelperFacade.Helpers.FileGetContents(
-                "https://akadok.deimos-ga.me"  
-            );
-            if(serverListRequest == "")
-            {
-                GeneralFacade.GameStateManager.Set(new ErrorScreenGS("Could not retrieve server list"));
-                return;
-            }
-            JArray serverJson = JArray.Parse(serverListRequest);
 
-            foreach (JToken item in serverJson)
+            TableRow testRow = new TableRow();
+            testRow.Content = new List<string>() {
+                    "Deimos test server",
+                    "compound",
+                    "0/16"
+            };
+            testRow.OnClick = delegate(ScreenElement el, DeimosGame g)
             {
-                var i = item;
-                TableRow row = new TableRow();
-                string players = (string)item["players"];
-                row.Content = new List<string>() {
-                    (string)item["name"],
-                    (string)item["map"],
-                    players.Split(',').Count() + "/" + (string)item["max_players"]
-                };
-                JToken item1 = item;
-                row.OnClick = delegate(ScreenElement el, DeimosGame g)
+                if (!NetworkFacade.ServerIsLocal)
                 {
-                    try
+                    NetworkFacade.NetworkHandling.SetConnectivity(
+                            "169.254.216.38", 1518, "169.254.56.103", 8462);
+                }
+
+                    if (!NetworkFacade.ThreadStart1)
                     {
-                        if (!NetworkFacade.ServerIsLocal)
-                        {
-                            NetworkFacade.NetworkHandling.SetConnectivity(
-                                (string)item1["ip"], (int)item1["port"], "192.168.137.156", 8462);
-                        }
+                        NetworkFacade.Outgoing.Start();
+                        NetworkFacade.Incoming.Start();
+                        //NetworkFacade.Interpret.Start();
 
-                        if (!NetworkFacade.ThreadStart1)
-                        {
-                            NetworkFacade.Outgoing.Start();
-                            NetworkFacade.Incoming.Start();
-                            NetworkFacade.Interpret.Start();
+                        NetworkFacade.ThreadStart1 = true;
+                    }
 
-                            NetworkFacade.ThreadStart1 = true;
-                        }
+                    NetworkFacade.NetworkHandling.ShakeHands();
+                    System.Threading.Thread.Sleep(5000);
 
-                        NetworkFacade.NetworkHandling.ShakeHands();
+                    if (NetworkFacade.NetworkHandling.Handshook)
+                    {
+                        NetworkFacade.NetworkHandling.Connect();
+
                         System.Threading.Thread.Sleep(5000);
 
-                        if (NetworkFacade.NetworkHandling.Handshook)
+                        if (NetworkFacade.NetworkHandling.ServerConnected)
                         {
-                            NetworkFacade.NetworkHandling.Connect();
+                            GameplayFacade.Objects = new ObjectsList();
+                            GameplayFacade.Weapons = new WeaponsList();
+                            GameplayFacade.Weapons.Initialise();
+                            GameplayFacade.Objects.Initialize();
 
-                            System.Threading.Thread.Sleep(5000);
-
-                            if (NetworkFacade.NetworkHandling.ServerConnected)
+                            switch (NetworkFacade.MainHandling.Connections.CurrentMap)
                             {
-                                GameplayFacade.Objects = new ObjectsList();
-                                GameplayFacade.Weapons = new WeaponsList();
-                                GameplayFacade.Weapons.Initialise();
-                                GameplayFacade.Objects.Initialize();
-
-                                switch (NetworkFacade.MainHandling.Connections.CurrentMap)
-                                {
-                                    case "coolmap":
-                                        GeneralFacade.GameStateManager.Set(
-                                            new LoadingLevelGS<SceneCompound>(delegate() { })
-                                            );
-                                        break;
-                                    default:
-                                        GeneralFacade.GameStateManager.Set(
-                                            new LoadingLevelGS<SceneDeimos>(delegate() { })
-                                            );
-                                        break;
-                                }
-
-                                GeneralFacade.GameStateManager.Set(new SpawningGS());
-                                GeneralFacade.GameStateManager.Set(new PlayingGS());
+                                case "coolmap":
+                                    GeneralFacade.GameStateManager.Set(
+                                        new LoadingLevelGS<SceneCompound>(delegate() { })
+                                        );
+                                    break;
+                                default:
+                                    GeneralFacade.GameStateManager.Set(
+                                        new LoadingLevelGS<SceneDeimos>(delegate() { })
+                                        );
+                                    break;
                             }
 
+                            GeneralFacade.GameStateManager.Set(new SpawningGS());
+                            GeneralFacade.GameStateManager.Set(new PlayingGS());
                         }
-                        else
-                        {
-                            throw new Exception();
-                        }
-                    }
-                    catch (Exception)
+
+                    } 
+                    else
                     {
                         GeneralFacade.GameStateManager.Set(new ErrorScreenGS("Could not connect"));
                     }
-                };
-                serverList.Add(row);
-            }
+
+            };
+            serverList.Add(testRow);
+
 
             DisplayFacade.ScreenElementManager.AddTable(
                 "ServerListMenuTable",

@@ -73,7 +73,7 @@ namespace Deimos
                         LevelModel.CollisionType.None
                         );
 
-                    ModelManager.GetLevelModel(p.Value.Name).show = false;
+                    ModelManager.GetLevelModel(p.Value.Name).show = true;
                 }
 
             }
@@ -181,6 +181,20 @@ namespace Deimos
 
             SoundManager.Play3D("scary", DisplayFacade.Camera.Position,
                 new Vector3(0, 0, -0));
+
+            //foreach (KeyValuePair<byte, Player> p in NetworkFacade.Players)
+            //{
+            //    ModelManager.LoadModel(
+            //        p.Value.Name,
+            //        p.Value.GetModelName(),
+            //        p.Value.Position,
+            //        p.Value.Rotation,
+            //        5,
+            //        LevelModel.CollisionType.None
+            //        );
+
+            //    ModelManager.GetLevelModel(p.Value.Name).show = true;
+            //}
         }
 
         // Update our things at each ticks
@@ -189,6 +203,29 @@ namespace Deimos
             SoundManager.SetListener("scary", GameplayFacade.ThisPlayer.Position);
 
             Objects.Update(GameplayFacade.ThisPlayer.dt);
+
+
+
+            if (NetworkFacade.IsMultiplayer)
+            {
+                for (int i = 0; i < NetworkFacade.Players.Count; i++)
+                {
+                    KeyValuePair<byte, Player> pair = NetworkFacade.Players.ElementAt(i);
+
+                    if (pair.Value != null
+                        && GeneralFacade.SceneManager.ModelManager.LevelModelExists(pair.Value.Name)
+                        && pair.Value.IsAlive())
+                    {
+                        GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).show = true;
+
+                        GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).Position =
+                            pair.Value.Position;
+
+                        GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).Rotation =
+                            pair.Value.Rotation;
+                    }
+                }
+            }
 
             //ModelManager.GetLevelModel("follow").Position = GameplayFacade.ThisPlayer.Position + new Vector3(3, 1, 3);
             //ModelManager.GetLevelModel("follow").Rotation += new Vector3(0,GameplayFacade.ThisPlayer.Rotation.X, 0);

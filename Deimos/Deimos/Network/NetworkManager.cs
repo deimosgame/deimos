@@ -21,6 +21,7 @@ namespace Deimos
                         NetworkFacade.NetworkHandling.Send(p);
                     }
                 }
+                System.Threading.Thread.Sleep(1);
             }
         }
 
@@ -29,54 +30,38 @@ namespace Deimos
             while (true)
             {
                 NetworkFacade.NetworkHandling.Receive();
+                System.Threading.Thread.Sleep(1);
             }
         }
 
-        public void Process()
-        {
-            while (true)
-            {
-                if (NetworkFacade.Receiving.Count != 0)
-                {
-                    byte[] b = (byte[])NetworkFacade.Receiving.Dequeue();
+        //public void Process()
+        //{
+        //    while (true)
+        //    {
+        //        if (NetworkFacade.Receiving.Count != 0)
+        //        {
+        //            byte[] b = (byte[])NetworkFacade.Receiving.Dequeue();
 
-                    if (b != null)
-                    {
-                        NetworkFacade.MainHandling.Distribute(b);
-                    }
-                }
+        //            if (b != null)
+        //            {
+        //                NetworkFacade.MainHandling.Distribute(b);
+        //            }
+        //        }
 
-                NetworkFacade.MainHandling.Process();
-            }
-        }
+        //        NetworkFacade.MainHandling.Process();
+
+        //        System.Threading.Thread.Sleep(1);
+        //    }
+        //}
 
 
         public void UpdateWorld()
         {
             while (true)
             {
+                NetworkFacade.MainHandling.Process();
                 NetworkFacade.DataHandling.Process();
-
-                if (NetworkFacade.IsMultiplayer)
-                {
-                    for (int i = 0; i < NetworkFacade.Players.Count; i++)
-                    {
-                        KeyValuePair<byte, Player> pair = NetworkFacade.Players.ElementAt(i);
-
-                        if (pair.Value != null
-                            && GeneralFacade.SceneManager.ModelManager.LevelModelExists(pair.Value.Name)
-                            && pair.Value.IsAlive())
-                        {
-                            GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).show = true;
-
-                            GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).Position =
-                                pair.Value.Position;
-
-                            GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).Rotation =
-                                pair.Value.Rotation;
-                        }
-                    }
-                }
+                System.Threading.Thread.Sleep(1);
             }
         }
 

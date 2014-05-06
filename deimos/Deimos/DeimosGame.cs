@@ -83,10 +83,10 @@ namespace Deimos
             IsMouseVisible = false;
 
             // Game settings
-            //Graphics.PreferredBackBufferWidth = 1980;
-            //Graphics.PreferredBackBufferHeight = 1024;
-            Graphics.PreferredBackBufferWidth = 1400;
-            Graphics.PreferredBackBufferHeight = 900;
+            Graphics.PreferredBackBufferWidth = 1980;
+            Graphics.PreferredBackBufferHeight = 1024;
+            //Graphics.PreferredBackBufferWidth = 1400;
+            //Graphics.PreferredBackBufferHeight = 900;
             //Graphics.IsFullScreen = true;
             //Graphics.PreferMultiSampling = true; // Anti aliasing - Useless as custom effects
             Graphics.SynchronizeWithVerticalRetrace = false; // VSync
@@ -96,22 +96,22 @@ namespace Deimos
             if (NetworkFacade.IsMultiplayer)
             {
                 // Initialization
-                NetworkFacade.Network = new NetworkManager();
+                //NetworkFacade.Network = new NetworkManager();
 
-                NetworkFacade.MainHandling = new MainHandler();
-                NetworkFacade.NetworkHandling = new NetworkHandler();
-                NetworkFacade.DataHandling = new DataHandler();
+                //NetworkFacade.MainHandling = new MainHandler();
+                //NetworkFacade.NetworkHandling = new NetworkHandler();
+                //NetworkFacade.DataHandling = new DataHandler();
 
-                NetworkFacade.Sending = new Queue();
-                NetworkFacade.Receiving = new Queue();
+                //NetworkFacade.Sending = new Queue();
+                //NetworkFacade.Receiving = new Queue();
 
-                NetworkFacade.Outgoing = new Thread(NetworkFacade.Network.HandleSend);
-                NetworkFacade.Incoming = new Thread(NetworkFacade.Network.HandleReceive);
-                NetworkFacade.Interpret = new Thread(NetworkFacade.Network.Process);
-                NetworkFacade.World = new Thread(NetworkFacade.Network.UpdateWorld);
-                NetworkFacade.MovePacket = new Thread(NetworkFacade.Network.SendMovePacket);
+                //NetworkFacade.Outgoing = new Thread(NetworkFacade.Network.HandleSend);
+                //NetworkFacade.Incoming = new Thread(NetworkFacade.Network.HandleReceive);
+                //NetworkFacade.Interpret = new Thread(NetworkFacade.Network.Process);
+                //NetworkFacade.World = new Thread(NetworkFacade.Network.UpdateWorld);
+                //NetworkFacade.MovePacket = new Thread(NetworkFacade.Network.SendMovePacket);
 
-                NetworkFacade.Players = new Dictionary<byte, Player>();
+                //NetworkFacade.Players = new Dictionary<byte, Player>();
 
                 // Thread optimization
                 // Sending thread
@@ -121,11 +121,14 @@ namespace Deimos
                 NetworkFacade.Incoming.Name = "in";
                 NetworkFacade.Incoming.IsBackground = true;
                 // Interpreting thread
-                NetworkFacade.Interpret.Name = "proc";
-                NetworkFacade.Interpret.IsBackground = true;
+                //NetworkFacade.Interpret.Name = "proc";
+                //NetworkFacade.Interpret.IsBackground = true;
                 // World updating thread
                 NetworkFacade.World.Name = "world";
                 NetworkFacade.World.IsBackground = true;
+
+                NetworkFacade.MovePacket.Name = "move";
+                NetworkFacade.MovePacket.IsBackground = true;
 
                 if (NetworkFacade.ServerIsLocal)
                 {

@@ -44,9 +44,16 @@ namespace Deimos
 
         public void Play()
         {
-            SoundEffectInstance nSound = MySong.CreateInstance();
-            SoundInstances.Add(nSound);
-            nSound.Play();
+            try
+            {
+                SoundEffectInstance nSound = MySong.CreateInstance();
+                SoundInstances.Add(nSound);
+                nSound.Play();
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         public void SetEmiter(Vector3 pos)

@@ -250,9 +250,6 @@ Content\Images\Buttons\DeadScreen\good.xnb
 Content\Images\Buttons\DeadScreen\goodHover.xnb
 Content\Images\Buttons\DeadScreen\ugly.xnb
 Content\Images\Buttons\DeadScreen\uglyHover.xnb
-Content\Textures\Particles\explosion.xnb
-Content\Textures\Particles\fire.xnb
-Content\Textures\Particles\smoke.xnb
 Content\Shaders\DeferredRendering\ClearGBuffer.xnb
 Content\Shaders\DeferredRendering\CombineFinal.xnb
 Content\Shaders\Lights\DirectionalLight.xnb
@@ -466,6 +463,9 @@ Content\Models\Characters\glados\caf160b2_0.xnb
 Content\Models\Characters\corvo\Corvo_Body_d_0.xnb
 Content\Models\Characters\corvo\Corvo_Hair_d_0.xnb
 Content\Models\Characters\corvo\Corvo_Head_d_0.xnb
+Content\Textures\Particles\explosion.xnb
+Content\Textures\Particles\fire.xnb
+Content\Textures\Particles\smoke.xnb
 Content\Videos\Intro.wmv
 Content\Fonts\debug.spritefont
 Content\Models\Map\coucou.fbx

@@ -8,6 +8,9 @@ namespace Deimos
 {
     public class Actions
     {
+
+        bool canjump = true;
+
         public Actions()
         {
             //
@@ -106,7 +109,8 @@ namespace Deimos
         private bool CanJump()
         {
             return (GameplayFacade.ThisPlayerPhysics.GravityState ==
-                Physics.PhysicalState.Walking);
+                Physics.PhysicalState.Walking
+                && canjump);
         }
 
 
@@ -131,6 +135,7 @@ namespace Deimos
                 CanJump())
             {
                 GameplayFacade.ThisPlayerPhysics.Jump();
+                canjump = false;
             }
         }
 
@@ -143,6 +148,12 @@ namespace Deimos
             {
                 GameplayFacade.ThisPlayer.CurrentSpeedState = 
                     LocalPlayer.SpeedState.Running;
+            }
+
+            // and jump resets
+            if (GameplayFacade.ThisPlayer.ks.IsKeyUp(GeneralFacade.Config.Jump))
+            {
+                canjump = true;
             }
         }
  

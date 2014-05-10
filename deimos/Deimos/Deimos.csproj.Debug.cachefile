@@ -467,6 +467,9 @@ Content\Textures\Particles\explosion.xnb
 Content\Textures\Particles\fire.xnb
 Content\Textures\Particles\smoke.xnb
 Content\Sounds\steps\fallsplat.xnb
+Content\Models\SecretWalls\Brick\SecretWallBrick.xnb
+Content\Models\SecretWalls\Brick\SecretWallBrick_material_0.xnb
+Content\Models\SecretWalls\Brick\SecretWallBrick_material_0_0.xnb
 Content\Videos\Intro.wmv
 Content\Fonts\debug.spritefont
 Content\Models\Map\coucou.fbx

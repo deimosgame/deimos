@@ -20,6 +20,7 @@ namespace Deimos
         string token_gravity;
         string token_speed;
         string token_health;
+        string token_secret;
 
         public SceneCompound(SceneManager sceneManager)
         {
@@ -36,6 +37,7 @@ namespace Deimos
             ModelAnimationManager = DisplayFacade.ModelAnimationManager;
 
             Objects = new ObjectManager();
+            Secrets = new SecretsManager();
         }
 
         // Destructor
@@ -124,6 +126,12 @@ namespace Deimos
                 10,
                 5
                 );
+
+            token_secret = Secrets.AddWall("Bricks", "Models/SecretWalls/Brick/SecretWallBrick",
+                new Vector3(12, 29, 12), SecretObject.State.Undiscovered,
+                3,
+                new Vector3(10,30,10),
+                1);
 
             SoundManager.AddSoundEffect("scary", "Sounds/ScaryMusic");
         }
@@ -219,7 +227,7 @@ namespace Deimos
             SoundManager.SetListener("scary", GameplayFacade.ThisPlayer.Position);
 
             Objects.Update(GameplayFacade.ThisPlayer.dt);
-
+            Secrets.Update(GameplayFacade.ThisPlayer.dt);
 
 
             if (NetworkFacade.IsMultiplayer)

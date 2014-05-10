@@ -296,8 +296,6 @@ namespace Deimos
                 acceleration.Y = 0f;
                 momentum.Y = 0;
 
-                DisplayFacade.DebugScreen.Debug(fall_distance.ToString());
-
                 if (fall_distance > 1)
                 {
                     land = true;

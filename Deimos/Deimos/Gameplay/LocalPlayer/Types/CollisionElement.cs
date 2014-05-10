@@ -22,7 +22,8 @@ namespace Deimos
             Player,
             Bullet,
             Object,
-            World
+            World,
+            SecretWall
         }
         public CollisionType ElementType
         {

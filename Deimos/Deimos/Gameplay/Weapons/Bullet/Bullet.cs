@@ -97,6 +97,33 @@ namespace Deimos
                 pos
                 );
             PlayFireParticle(pos);
+
+            //BoundingSphere explosion = new BoundingSphere();
+            //explosion.Center = pos;
+            //explosion.Radius = 30;
+            //bool touch = false;
+            //bool playert = false;
+            //CollisionElement test = new CollisionElement(new Vector3(20, 20, 20));
+            //test.Model = GeneralFacade.SceneManager.ModelManager.GetLevelModel("dummy");
+            //test.Model.Position = new Vector3(17, 0, -9);
+            //test.Nature = ElementNature.Player;
+            //BoundingBox box = test.Box;
+            //explosion.Intersects(ref box, out touch);
+            //CollisionElement player = new CollisionElement(new Vector3(20,20,20));
+            //player.Model = GeneralFacade.SceneManager.ModelManager.GetLevelModel("player");
+            //player.Model.Position = GameplayFacade.ThisPlayer.Position - new Vector3(0, 6, 0);
+            //player.Model.show = false;
+            //player.Nature = ElementNature.Player;
+            //BoundingBox playbox = player.Box;
+            
+            //explosion.Intersects(ref playbox, out playert);
+
+            //DisplayFacade.DebugScreen.Debug(touch.ToString());
+
+            //if (playert)
+            //{
+            //    GameplayFacade.ThisPlayer.Hurt((int)(GameplayFacade.Weapons.GetWeapon(GameplayFacade.Weapons.GetName(WeaponRep)).minDmg));
+            //}
         }
 
         public void PlayFireParticle(Vector3 pos)

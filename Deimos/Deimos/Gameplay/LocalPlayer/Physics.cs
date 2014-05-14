@@ -43,6 +43,9 @@ namespace Deimos
         public float initial_velocity;
         public float JumpVelocity;
 
+        // fall damage 
+        public float fall_distance = 0;
+
         public AccelerationState Accelerestate = AccelerationState.Still;
         public MoveState MovingState = MoveState.Standing;
         public Vector3 dv = new Vector3(0.09f, 0.09f, 0.09f);
@@ -268,10 +271,16 @@ namespace Deimos
         {
             float vy = (initial_velocity * timer_gravity) - ((float)Math.Pow(timer_gravity, 2) * c_gravity);
             acceleration.Y = vy;
-            
+
+            if (GravityState == PhysicalState.Jumping)
+            {
+                fall_distance += 0.1f;
+            }
+
             if (vy < 0f)
             { 
                 GravityState = PhysicalState.Falling;
+                fall_distance += 0.1f;
             }
 
             timer_gravity += dt;
@@ -287,6 +296,19 @@ namespace Deimos
                 acceleration.Y = 0f;
                 momentum.Y = 0;
 
+                if (fall_distance > 1)
+                {
+                    land = true;
+                }
+
+                if (fall_distance > GetMaxSafefall() && !GameplayFacade.ThisPlayer.Gravityboosted)
+                {
+                    GameplayFacade.ThisPlayer.Hurt(GetFallDamage(fall_distance));
+                    GeneralFacade.SceneManager.SoundManager.Play("fall");
+                }
+
+                fall_distance = 0;
+
                 if (land)
                 {
                     GeneralFacade.SceneManager.SoundManager.Play("l2");
@@ -301,6 +323,39 @@ namespace Deimos
                 timer_gravity = 0;
                 GravityState = PhysicalState.Falling;
             }
+        }
+
+        public float GetMaxSafefall()
+        {
+            switch (GameplayFacade.ThisPlayer.Class)
+            {
+                case Player.Spec.Soldier:
+                    return 5;
+                case Player.Spec.Agent:
+                    return 6;
+                case Player.Spec.Overwatch:
+                    return 4;
+                default:
+                    return 5;
+            }
+        }
+
+        public int GetFallDamage(float fall)
+        {
+            int factor = (int)fall;
+
+            factor *= 4;
+
+            if (GameplayFacade.ThisPlayer.Class == Player.Spec.Overwatch)
+            {
+                factor = (int)(factor * 1.2f);
+            }
+            else if (GameplayFacade.ThisPlayer.Class == Player.Spec.Agent)
+            {
+                factor = (int)(factor * 0.8f);
+            }
+
+            return factor;
         }
 
         public void Jump()

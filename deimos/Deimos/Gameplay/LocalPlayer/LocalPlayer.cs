@@ -272,5 +272,17 @@ namespace Deimos
         {
             PlayerCombat.target_weapon = name;
         }
+
+        public void Hurt(int dmg)
+        {
+            if (Health - dmg <= 0)
+            {
+                PlayerKill();
+            }
+            else
+            {
+                Health -= dmg;
+            }
+        }
    }
 }

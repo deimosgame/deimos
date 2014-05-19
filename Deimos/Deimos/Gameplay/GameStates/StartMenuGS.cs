@@ -50,7 +50,7 @@ namespace Deimos
                 delegate(ScreenElement el, DeimosGame game)
                 {
                     GameplayFacade.Objects = new ObjectsList();
-
+                    GameplayFacade.Minigames = new MinigameManager();
                     GameplayFacade.Weapons = new WeaponsList();
                     GameplayFacade.Weapons.Initialise();
                     GameplayFacade.Objects.Initialize();
@@ -58,7 +58,7 @@ namespace Deimos
                     GeneralFacade.GameStateManager.Set(
                         new LoadingLevelGS<SceneCompound>(delegate() 
                         {
-                            GeneralFacade.GameStateManager.Set(new SpawningGS());
+                            GeneralFacade.GameStateManager.Set(new SpawningGS("main"));
                             GeneralFacade.GameStateManager.Set(new PlayingGS());
                         })
                     );

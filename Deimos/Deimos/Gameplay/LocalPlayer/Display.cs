@@ -153,6 +153,8 @@ namespace Deimos
                     + GameplayFacade.ThisPlayer.CurrentWeapon.c_reservoirAmmo;
                 DisplayFacade.ScreenElementManager.GetText("current-class").Text =
                     GameplayFacade.ThisPlayer.GetClassName();
+                DisplayFacade.ScreenElementManager.GetText("time").Text =
+                    GameplayFacade.Minigames.GetRemaining().ToString();
             }
         }
     }

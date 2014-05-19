@@ -96,6 +96,12 @@ namespace Deimos
                     }
                     break;
 
+                case Spec.Cutthroat:
+                    {
+                        Inventory.PickupWeapon(GameplayFacade.Weapons.GetWeapon("Carver"));
+                    }
+                    break;
+
                 default:
                     break;
             }
@@ -214,6 +220,19 @@ namespace Deimos
                         MaxSprintTime = GameplayFacade.Constants.MaxSprintAgent;
 
                         GameplayFacade.ThisPlayerPhysics.JumpVelocity = GameplayFacade.Constants.JumpAgent;
+                    }
+                    break;
+
+                case Spec.Cutthroat:
+                    {
+                        m_health = GameplayFacade.Constants.HealthCT;
+                        Health = (int)m_health;
+
+                        Speed = GameplayFacade.Constants.SpeedCT;
+                        SprintCooldown = GameplayFacade.Constants.SprintCooldownCT;
+                        MaxSprintTime = GameplayFacade.Constants.MaxSprintCT;
+
+                        GameplayFacade.ThisPlayerPhysics.JumpVelocity = GameplayFacade.Constants.JumpCT;
                     }
                     break;
 

@@ -108,6 +108,7 @@ namespace Deimos
                         {
                             GameplayFacade.Objects = new ObjectsList();
                             GameplayFacade.Weapons = new WeaponsList();
+                            GameplayFacade.Minigames = new MinigameManager();
                             GameplayFacade.Weapons.Initialise();
                             GameplayFacade.Objects.Initialize();
 
@@ -125,7 +126,7 @@ namespace Deimos
                                     break;
                             }
 
-                            GeneralFacade.GameStateManager.Set(new SpawningGS());
+                            GeneralFacade.GameStateManager.Set(new SpawningGS(GameplayFacade.ThisPlayer.NextInstance));
                             GeneralFacade.GameStateManager.Set(new PlayingGS());
                         }
 

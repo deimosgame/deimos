@@ -250,21 +250,6 @@ namespace Deimos
                         GameplayFacade.ThisPlayer.HandleInput(gameTime);
                         GameplayFacade.ThisPlayerDisplay.UpdateDisplay();
                     }
-                    else
-                    {
-                        if (Keyboard.GetState().IsKeyDown(Keys.NumPad1))
-                        {
-                            GameplayFacade.ThisPlayer.Class = Player.Spec.Soldier;
-                        }
-                        if (Keyboard.GetState().IsKeyDown(Keys.NumPad2))
-                        {
-                            GameplayFacade.ThisPlayer.Class = Player.Spec.Overwatch;
-                        }
-                        if (Keyboard.GetState().IsKeyDown(Keys.NumPad3))
-                        {
-                            GameplayFacade.ThisPlayer.Class = Player.Spec.Agent; 
-                        }
-                    }
                     DisplayFacade.ModelAnimationManager.Animate((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000);
                     GeneralFacade.SceneManager.Update((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000);
                     GameplayFacade.BulletManager.Update(gameTime);
@@ -355,6 +340,18 @@ namespace Deimos
                 {
                     GameplayFacade.ThisPlayer.PlayerKill();
                 }
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.U))
+            {
+                GameplayFacade.ThisPlayer.IsMG = true;
+                GameplayFacade.ThisPlayer.MGNumber = 0x00;
+                GameplayFacade.ThisPlayer.Class = Player.Spec.Cutthroat;
+                GameplayFacade.Minigames.knife.Load();
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.I))
+            {
+                GameplayFacade.Minigames.knife.Terminate();
             }
         }
     }

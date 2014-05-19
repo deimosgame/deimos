@@ -12,6 +12,7 @@ namespace Deimos
         public uint HealthSoldier = 100;
         public uint HealthOverwatch = 120;
         public uint HealthAgent = 80;
+        public uint HealthCT = 200;
           // Sprinting
         public float MaxSprintSoldier = 5;
         public float SprintCooldownSoldier = 3.5f;
@@ -19,13 +20,17 @@ namespace Deimos
         public float SprintCooldownOverwatch = 5;
         public float MaxSprintAgent = 7;
         public float SprintCooldownAgent = 2.5f;
+        public float MaxSprintCT = 3;
+        public float SprintCooldownCT = 2;
           // Speed
         public float SpeedSoldier = 28.5f;
         public float SpeedOverwatch = 20.5f;
         public float SpeedAgent = 30f;
+        public float SpeedCT = 35;
           // Propulsion Power
         public float JumpSoldier = 4.5f;
         public float JumpOverwatch = 3f;
         public float JumpAgent = 5.3f;
+        public float JumpCT = 5;
     }
 }

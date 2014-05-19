@@ -15,6 +15,9 @@ namespace Deimos
         public byte WeaponModel;
 
         public string Instance;
+        public string NextInstance = "main";
+        public byte MGNumber;
+        public bool IsMG = false;
 
         public Vector3 Position;
 
@@ -28,7 +31,8 @@ namespace Deimos
         {
             Overwatch,
             Agent,
-            Soldier
+            Soldier,
+            Cutthroat
         }
 
         public enum Teams

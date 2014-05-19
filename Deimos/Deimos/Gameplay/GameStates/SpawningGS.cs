@@ -10,6 +10,13 @@ namespace Deimos
 {
     class SpawningGS : GameStateObj
     {
+        string Instance;
+
+        public SpawningGS(string instance)
+        {
+            Instance = instance;
+        }
+
         public override GameStates GameState
         {
             get { return GameStates.Spawning; }

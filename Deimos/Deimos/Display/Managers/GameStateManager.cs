@@ -15,6 +15,7 @@ namespace Deimos
         GraphicOptions,
         Spawning,
         Respawning,
+        MinigameSpawning,
         Playing,
         ErrorScreen,
         DeadScreen,

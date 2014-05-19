@@ -10,6 +10,7 @@ namespace Deimos
         public static LocalPlayer ThisPlayer;
         public static Physics ThisPlayerPhysics;
         public static Display ThisPlayerDisplay;
+        public static MinigameManager Minigames;
         public static WeaponsList Weapons;
         public static ObjectsList Objects;
         public static BulletManager BulletManager;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace Deimos
 {
@@ -12,10 +13,12 @@ namespace Deimos
         float timer = 0;
         float time = 0;
 
+        Vector3 previous = default(Vector3);
+
         public void HandleFootsteps(float dt)
         {
-            if (GameplayFacade.ThisPlayerPhysics.GetMoveState()
-                == Physics.MoveState.Moving
+            if (GameplayFacade.ThisPlayer.Position !=
+                previous
                 && GameplayFacade.ThisPlayerPhysics.GravityState ==
                 Physics.PhysicalState.Walking)
             {
@@ -69,6 +72,8 @@ namespace Deimos
                 {
                     time += dt;
                 }
+
+                previous = GameplayFacade.ThisPlayer.Position;
             }
         }
     }

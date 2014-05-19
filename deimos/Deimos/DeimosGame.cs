@@ -346,7 +346,6 @@ namespace Deimos
             {
                 GameplayFacade.ThisPlayer.IsMG = true;
                 GameplayFacade.ThisPlayer.MGNumber = 0x00;
-                GameplayFacade.ThisPlayer.Class = Player.Spec.Cutthroat;
                 GameplayFacade.Minigames.knife.Load();
             }
             if (Keyboard.GetState().IsKeyDown(Keys.I))

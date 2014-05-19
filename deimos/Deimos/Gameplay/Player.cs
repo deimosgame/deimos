@@ -14,8 +14,9 @@ namespace Deimos
 
         public byte WeaponModel;
 
-        public string Instance;
+        public string CurrentInstance = "main";
         public string NextInstance = "main";
+        public string MainInstance = "main";
         public byte MGNumber;
         public bool IsMG = false;
 
@@ -59,6 +60,7 @@ namespace Deimos
         public bool Gravityboosted = false;
 
         public Spec Class = Spec.Soldier;
+        public Spec MainClass = Spec.Soldier;
 
         public Teams Team = Teams.Humans;
 

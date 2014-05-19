@@ -32,6 +32,8 @@ namespace Deimos
 
             Objects = new ObjectManager();
             Secrets = new SecretsManager();
+
+            TimeLimit = GameplayFacade.Minigames.knife.TimeLimit;
         }
 
         // Destructor
@@ -79,7 +81,7 @@ namespace Deimos
             }
             else
             {
-                // respawn in main instance
+                GameplayFacade.Minigames.knife.Terminate();
             }
         }
     }

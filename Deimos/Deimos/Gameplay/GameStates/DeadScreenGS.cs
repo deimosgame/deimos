@@ -67,7 +67,7 @@ namespace Deimos
                 delegate(ScreenElement el, DeimosGame game)
                 {
                     GameplayFacade.ThisPlayer.Class = Player.Spec.Soldier;
-                    GeneralFacade.GameStateManager.Set(new RespawnGS(GameplayFacade.ThisPlayer.NextInstance));
+                    GeneralFacade.GameStateManager.Set(new RespawnGS(GameplayFacade.ThisPlayer.NextInstance, false));
                     GeneralFacade.GameStateManager.Set(new PlayingGS());
                 },
                 delegate(ScreenElement el, DeimosGame game)
@@ -92,7 +92,7 @@ namespace Deimos
                 delegate(ScreenElement el, DeimosGame game)
                 {
                     GameplayFacade.ThisPlayer.Class = Player.Spec.Agent;
-                    GeneralFacade.GameStateManager.Set(new RespawnGS(GameplayFacade.ThisPlayer.NextInstance));
+                    GeneralFacade.GameStateManager.Set(new RespawnGS(GameplayFacade.ThisPlayer.NextInstance, false));
                     GeneralFacade.GameStateManager.Set(new PlayingGS());
                 },
                 delegate(ScreenElement el, DeimosGame game)
@@ -117,7 +117,7 @@ namespace Deimos
                 delegate(ScreenElement el, DeimosGame game)
                 {
                     GameplayFacade.ThisPlayer.Class = Player.Spec.Overwatch;
-                    GeneralFacade.GameStateManager.Set(new RespawnGS(GameplayFacade.ThisPlayer.NextInstance));
+                    GeneralFacade.GameStateManager.Set(new RespawnGS(GameplayFacade.ThisPlayer.NextInstance, false));
                     GeneralFacade.GameStateManager.Set(new PlayingGS());
                 },
                 delegate(ScreenElement el, DeimosGame game)

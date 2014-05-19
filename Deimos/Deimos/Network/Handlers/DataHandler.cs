@@ -64,7 +64,7 @@ namespace Deimos
                             data.Str_Data;
                         break;
                     case Data.WorldDataType.Instance:
-                        NetworkFacade.Players[data.PropertyOf].Instance =
+                        NetworkFacade.Players[data.PropertyOf].CurrentInstance =
                             data.Str_Data;
                         break;
                     case Data.WorldDataType.ModelID:

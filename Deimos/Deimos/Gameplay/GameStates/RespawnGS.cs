@@ -9,10 +9,12 @@ namespace Deimos
     class RespawnGS : GameStateObj
     {
         string Instance;
+        bool Returning;
 
-        public RespawnGS(string instance)
+        public RespawnGS(string instance, bool returning)
         {
             Instance = instance;
+            Returning = returning;
         }
 
         public override GameStates GameState
@@ -22,6 +24,13 @@ namespace Deimos
 
         public override void PreSet()
         {
+            if (Returning)
+            {
+                GameplayFacade.BulletManager = new BulletManager();
+
+                GameplayFacade.ThisPlayer.Inventory = new WeaponManager();
+            }
+
             GameplayFacade.ThisPlayer.InitializeInventory(GameplayFacade.ThisPlayer.Class);
                 GameplayFacade.ThisPlayer.PlayerRespawn(new Vector3(17, 0, 88),
                     Vector3.Zero, Instance);

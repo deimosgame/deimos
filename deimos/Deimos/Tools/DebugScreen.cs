@@ -512,7 +512,7 @@ namespace Deimos
             );
             DisplayFacade.ScreenElementManager.GetText("Instance").Text = String.Format(
                 "Spawn Instance: {0}",
-                GameplayFacade.ThisPlayer.Instance
+                GameplayFacade.ThisPlayer.CurrentInstance
             );
             DisplayFacade.ScreenElementManager.GetText("View").Text = String.Format(
                 "Camera View x:{0}; y:{1}; z:{2}",

@@ -50,7 +50,7 @@ namespace Deimos
             PlayerSteps = new Footsteps();
 
             Name = GeneralFacade.Config.PlayerName;
-            Instance = "main";
+            CurrentInstance = "main";
         }
 
         public void InitializeInventory(Player.Spec spec)
@@ -134,7 +134,7 @@ namespace Deimos
             if (CurrentLifeState == LifeState.Dead)
             {
                 Name = GeneralFacade.Config.PlayerName;
-                Instance = instance;
+                CurrentInstance = instance;
 
                 CurrentLifeState = LifeState.Alive;
 
@@ -163,6 +163,7 @@ namespace Deimos
                 GameplayFacade.ThisPlayerPhysics.Accelerestate = Physics.AccelerationState.Still;
                 GameplayFacade.ThisPlayerPhysics.timer_gravity = 0f;
                 GameplayFacade.ThisPlayerPhysics.initial_velocity = 0f;
+                GameplayFacade.ThisPlayerPhysics.fall_distance = 0;
 
                 GameplayFacade.ThisPlayerDisplay.UnloadAllWeapons();
 

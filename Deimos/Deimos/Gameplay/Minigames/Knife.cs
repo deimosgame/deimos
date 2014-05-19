@@ -26,23 +26,34 @@ namespace Deimos
 
             // Player 1 spawn location
             // note: access with key '0'
-            Spawns.Add(0x00, new SpawnLocation(new Vector3(10, 8, 10), Vector3.Zero));
+            Spawns.Add(0x00, new SpawnLocation(new Vector3(-75, 5, -42), Vector3.Zero));
 
             // Player 2 spawn location
             // note: access with key '1'
-            Spawns.Add(0x01, new SpawnLocation(new Vector3(20, 8, 20), Vector3.Zero));
+            Spawns.Add(0x01, new SpawnLocation(new Vector3(-80, 5, -42), Vector3.Zero));
         }
 
         public void Load()
         {
+            GameplayFacade.ThisPlayer.NextInstance = "knife";
+            GameplayFacade.ThisPlayer.MainClass = GameplayFacade.ThisPlayer.Class;
+            GameplayFacade.ThisPlayer.Class = Player.Spec.Cutthroat;
+
             GeneralFacade.GameStateManager.Set(new LoadingLevelGS<SceneKnifeMG>(delegate() { } ));
-            GeneralFacade.GameStateManager.Set(new MGSpawningGS("knife"));
+            GeneralFacade.GameStateManager.Set(new MGSpawningGS(GameplayFacade.ThisPlayer.NextInstance));
             GeneralFacade.GameStateManager.Set(new PlayingGS());
         }
-
+        
         public void Terminate()
         {
+            GameplayFacade.ThisPlayer.PlayerKill();
 
+            GameplayFacade.ThisPlayer.NextInstance = "main";
+            GameplayFacade.ThisPlayer.Class = GameplayFacade.ThisPlayer.MainClass;
+
+            GeneralFacade.GameStateManager.Set(new LoadingLevelGS<SceneCompound>(delegate() { }));
+            GeneralFacade.GameStateManager.Set(new RespawnGS(GameplayFacade.ThisPlayer.NextInstance, true));
+            GeneralFacade.GameStateManager.Set(new PlayingGS());
         }
 
         public void Update(float dt)

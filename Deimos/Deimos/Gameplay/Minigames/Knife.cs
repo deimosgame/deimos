@@ -12,7 +12,7 @@ namespace Deimos
         {
             Type = MinigameType.Knife;
             Name = "knife";
-            Map = "Models/Map/hl/hl";
+            Map = "Models/Map/Minigames/Knife/KnifeFight";
             TimeLimit = 180000;
             LinearJump = true;
             Falldamage = false;
@@ -26,11 +26,11 @@ namespace Deimos
 
             // Player 1 spawn location
             // note: access with key '0'
-            Spawns.Add(0x00, new SpawnLocation(new Vector3(-75, 5, -42), Vector3.Zero));
+            Spawns.Add(0x00, new SpawnLocation(new Vector3(-35, 4, -25), new Vector3(-0.02f, 0.7f, 0)));
 
             // Player 2 spawn location
             // note: access with key '1'
-            Spawns.Add(0x01, new SpawnLocation(new Vector3(-80, 5, -42), Vector3.Zero));
+            Spawns.Add(0x01, new SpawnLocation(new Vector3(20, 4, 40), new Vector3(0.02f, -2.3f, 0)));
         }
 
         public void Load()

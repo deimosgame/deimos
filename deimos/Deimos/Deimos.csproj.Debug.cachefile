@@ -16,6 +16,7 @@ Content\Models\Map\Compound\DeimosCompound.xnb
 Content\Models\Characters\Vanquish\vanquish.xnb
 Content\Models\Characters\glados\1.xnb
 Content\Models\Characters\corvo\corv.xnb
+Content\Models\SecretWalls\Brick\SecretWallBrick.xnb
 Content\Models\Map\Grid.xnb
 Content\Textures\DeferredRendering\null_normal.xnb
 Content\Textures\DeferredRendering\null_specular.xnb
@@ -253,6 +254,10 @@ Content\Images\Buttons\DeadScreen\uglyHover.xnb
 Content\Textures\Particles\explosion.xnb
 Content\Textures\Particles\fire.xnb
 Content\Textures\Particles\smoke.xnb
+<<<<<<< HEAD
+=======
+Content\Models\SecretWalls\Brick\SecretWallBrick_material_0.xnb
+>>>>>>> 524a3105fcac593628e8adf21e84256b2e5dddb6
 Content\Shaders\DeferredRendering\ClearGBuffer.xnb
 Content\Shaders\DeferredRendering\CombineFinal.xnb
 Content\Shaders\Lights\DirectionalLight.xnb
@@ -291,6 +296,7 @@ Content\Sounds\fx\eoff.xnb
 Content\Sounds\fx\hit_wall.xnb
 Content\Sounds\weapons\explode.xnb
 Content\Sounds\weapons\fire_gun.xnb
+Content\Sounds\steps\fallsplat.xnb
 Content\Sounds\GunFire.xnb
 Content\Models\Map\Grid_0.xnb
 Content\Textures\DeferredRendering\null_normal_0.xnb
@@ -466,10 +472,24 @@ Content\Models\Characters\glados\caf160b2_0.xnb
 Content\Models\Characters\corvo\Corvo_Body_d_0.xnb
 Content\Models\Characters\corvo\Corvo_Hair_d_0.xnb
 Content\Models\Characters\corvo\Corvo_Head_d_0.xnb
+<<<<<<< HEAD
 Content\Models\SecretWalls\Brick\SecretWallBrick.xnb
 Content\Models\SecretWalls\Brick\SecretWallBrick_material_0.xnb
 Content\Sounds\steps\fallsplat.xnb
+=======
+>>>>>>> 524a3105fcac593628e8adf21e84256b2e5dddb6
 Content\Models\SecretWalls\Brick\SecretWallBrick_material_0_0.xnb
+Content\Models\Map\Minigames\Knife\KnifeFight.xnb
+Content\Models\Map\Minigames\Knife\KnifeFight_material_0.xnb
+Content\Models\Map\Minigames\Knife\KnifeFight_material_1.xnb
+Content\Models\Map\Minigames\Knife\KnifeFight_material_2.xnb
+Content\Models\Map\Minigames\Knife\KnifeFight_material_3.xnb
+Content\Models\Map\Minigames\Knife\KnifeFight_material_4.xnb
+Content\Models\Map\Minigames\Knife\KnifeFight_material_2_0.xnb
+Content\Models\Map\Minigames\Knife\KnifeFight_material_1_0.xnb
+Content\Models\Map\Minigames\Knife\KnifeFight_material_3_0.xnb
+Content\Models\Map\Minigames\Knife\KnifeFight_material_4_0.xnb
+Content\Models\Map\Minigames\Knife\KnifeFight_material_0_0.xnb
 Content\Videos\Intro.wmv
 Content\Fonts\debug.spritefont
 Content\Models\Map\coucou.fbx

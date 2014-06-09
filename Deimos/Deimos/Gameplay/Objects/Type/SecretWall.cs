@@ -19,9 +19,13 @@ namespace Deimos
 
         public override void CollisionEvent(CollisionElement element)
         {
-            if (element.GetNature() == ElementNature.Bullet)
+            if (element.GetNature() == ElementNature.Player)
             {
-                Manager.HandleWallDiscovery(Token);
+                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(
+                    GeneralFacade.Config.Use))
+                {
+                    Manager.HandleWallDiscovery(Token);
+                }
             }
         }
     }

@@ -69,6 +69,15 @@ namespace Deimos
                 "",
                 Color.White
             );
+            DisplayFacade.ScreenElementManager.AddText(
+                "time",
+                (int)((GeneralFacade.Game.GraphicsDevice.Viewport.Width - DisplayFacade.UIFont.MeasureString("100/100").X) / 2),
+                (int)(GeneralFacade.Game.GraphicsDevice.Viewport.Height - DisplayFacade.UIFont.MeasureString("100/100").Y - 50),
+                1,
+                DisplayFacade.UIFont,
+                "",
+                Color.White
+            );
         }
 
         public override void PostUnset()
@@ -78,6 +87,7 @@ namespace Deimos
             DisplayFacade.ScreenElementManager.RemoveText("life");
             DisplayFacade.ScreenElementManager.RemoveText("ammo");
             DisplayFacade.ScreenElementManager.RemoveText("current-class");
+            DisplayFacade.ScreenElementManager.RemoveText("time");
         }
     }
 }

@@ -95,7 +95,7 @@ namespace Deimos
                     if (wall.Value.respawn_timer >= wall.Value.T_Respawn)
                     {
                         // activating the respawned object
-                        wall.Value.Status = SecretObject.State.Inactive;
+                        wall.Value.Status = SecretObject.State.Undiscovered;
 
                         // showing once again the now active object
                         GeneralFacade.SceneManager.ModelManager.GetLevelModel(

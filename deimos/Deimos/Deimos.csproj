@@ -159,6 +159,7 @@
     <Compile Include="Gameplay\GameStates\IntroGS.cs" />
     <Compile Include="Gameplay\GameStates\IntroStartingGS.cs" />
     <Compile Include="Gameplay\GameStates\LoadingLevelGS.cs" />
+    <Compile Include="Gameplay\GameStates\MGSpawningGS.cs" />
     <Compile Include="Gameplay\GameStates\PauseGS.cs" />
     <Compile Include="Gameplay\GameStates\PlayingGS.cs" />
     <Compile Include="Gameplay\GameStates\RespawnGS.cs" />
@@ -169,6 +170,7 @@
     <Compile Include="Gameplay\LocalPlayer\Interaction.cs" />
     <Compile Include="Gameplay\Minigames\Knife.cs" />
     <Compile Include="Gameplay\Minigames\Minigame.cs" />
+    <Compile Include="Gameplay\Minigames\MinigameManager.cs" />
     <Compile Include="Gameplay\Objects\Managers\ObjectManager.cs" />
     <Compile Include="Gameplay\Objects\Managers\SecretsManager.cs" />
     <Compile Include="Gameplay\Objects\ObjectsList.cs" />
@@ -180,6 +182,7 @@
     <Compile Include="Gameplay\Objects\Type\SecretWall.cs" />
     <Compile Include="Gameplay\Scenes\Menu\SceneStartMenu.cs" />
     <Compile Include="Gameplay\Scenes\SceneCompound.cs" />
+    <Compile Include="Gameplay\Scenes\SceneKnifeMG.cs" />
     <Compile Include="Gameplay\Scenes\Types\SpawnLocation.cs" />
     <Compile Include="Gameplay\Weapons\Bullet\BulletManager.cs" />
     <Compile Include="Display\Managers\ResourceManager.cs" />

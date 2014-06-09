@@ -12,7 +12,7 @@ namespace Deimos
         abstract public void Load();
 
         abstract public void Initialize();
-
+     
         abstract public void Update(float dt);
 
         virtual public float AmbiantLight
@@ -24,6 +24,9 @@ namespace Deimos
         }
 
         public Vector3 PlayerSize;
+
+        public float TimeLimit;
+        public float Elapsed = 0;
 
         public ObjectManager Objects;
         public SecretsManager Secrets;

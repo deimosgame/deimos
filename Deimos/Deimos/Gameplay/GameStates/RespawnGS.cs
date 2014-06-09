@@ -8,6 +8,15 @@ namespace Deimos
 {
     class RespawnGS : GameStateObj
     {
+        string Instance;
+        bool Returning;
+
+        public RespawnGS(string instance, bool returning)
+        {
+            Instance = instance;
+            Returning = returning;
+        }
+
         public override GameStates GameState
         {
             get { return GameStates.Respawning; }
@@ -15,17 +24,16 @@ namespace Deimos
 
         public override void PreSet()
         {
+            if (Returning)
+            {
+                GameplayFacade.BulletManager = new BulletManager();
+
+                GameplayFacade.ThisPlayer.Inventory = new WeaponManager();
+            }
+
             GameplayFacade.ThisPlayer.InitializeInventory(GameplayFacade.ThisPlayer.Class);
-            if (GameplayFacade.ThisPlayer.Class != Player.Spec.Agent)
-            {
-                GameplayFacade.ThisPlayer.PlayerRespawn(new Vector3(15f, 0f, -38f),
-                            Vector3.Zero, "main");
-            }
-            else
-            {
                 GameplayFacade.ThisPlayer.PlayerRespawn(new Vector3(17, 0, 88),
-                    Vector3.Zero, "main");
-            }
+                    Vector3.Zero, Instance);
         }
 
         public override void PostUnset()

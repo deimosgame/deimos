@@ -15,6 +15,8 @@ namespace Deimos
         public Keys Left = Keys.A;
         public Keys Right = Keys.D;
 
+        public Keys Use = Keys.E;
+
         public Keys Sprint = Keys.LeftShift;
         public Keys Walk = Keys.LeftAlt;
         public Keys Jump = Keys.Space;

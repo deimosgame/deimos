@@ -251,6 +251,12 @@ namespace Deimos
                 }
             }
 
+            if (Elapsed < TimeLimit)
+            {
+                Elapsed += dt;
+            }
+
+
             //ModelManager.GetLevelModel("follow").Position = GameplayFacade.ThisPlayer.Position + new Vector3(3, 1, 3);
             //ModelManager.GetLevelModel("follow").Rotation += new Vector3(0,GameplayFacade.ThisPlayer.Rotation.X, 0);
         }

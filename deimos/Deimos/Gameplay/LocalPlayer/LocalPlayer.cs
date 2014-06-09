@@ -50,7 +50,7 @@ namespace Deimos
             PlayerSteps = new Footsteps();
 
             Name = GeneralFacade.Config.PlayerName;
-            Instance = "main";
+            CurrentInstance = "main";
         }
 
         public void InitializeInventory(Player.Spec spec)
@@ -96,6 +96,12 @@ namespace Deimos
                     }
                     break;
 
+                case Spec.Cutthroat:
+                    {
+                        Inventory.PickupWeapon(GameplayFacade.Weapons.GetWeapon("Carver"));
+                    }
+                    break;
+
                 default:
                     break;
             }
@@ -128,7 +134,7 @@ namespace Deimos
             if (CurrentLifeState == LifeState.Dead)
             {
                 Name = GeneralFacade.Config.PlayerName;
-                Instance = instance;
+                CurrentInstance = instance;
 
                 CurrentLifeState = LifeState.Alive;
 
@@ -157,6 +163,7 @@ namespace Deimos
                 GameplayFacade.ThisPlayerPhysics.Accelerestate = Physics.AccelerationState.Still;
                 GameplayFacade.ThisPlayerPhysics.timer_gravity = 0f;
                 GameplayFacade.ThisPlayerPhysics.initial_velocity = 0f;
+                GameplayFacade.ThisPlayerPhysics.fall_distance = 0;
 
                 GameplayFacade.ThisPlayerDisplay.UnloadAllWeapons();
 
@@ -214,6 +221,19 @@ namespace Deimos
                         MaxSprintTime = GameplayFacade.Constants.MaxSprintAgent;
 
                         GameplayFacade.ThisPlayerPhysics.JumpVelocity = GameplayFacade.Constants.JumpAgent;
+                    }
+                    break;
+
+                case Spec.Cutthroat:
+                    {
+                        m_health = GameplayFacade.Constants.HealthCT;
+                        Health = (int)m_health;
+
+                        Speed = GameplayFacade.Constants.SpeedCT;
+                        SprintCooldown = GameplayFacade.Constants.SprintCooldownCT;
+                        MaxSprintTime = GameplayFacade.Constants.MaxSprintCT;
+
+                        GameplayFacade.ThisPlayerPhysics.JumpVelocity = GameplayFacade.Constants.JumpCT;
                     }
                     break;
 

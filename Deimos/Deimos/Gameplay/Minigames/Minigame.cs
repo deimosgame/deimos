@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace Deimos
 {
@@ -26,15 +27,11 @@ namespace Deimos
         public bool Falldamage;
         public bool LinearJump;
 
-        // General Methods
-        public void Load()
-        {
+        // Spawn related
+        public Dictionary<byte, SpawnLocation> Spawns;  
 
-        }
-        
-        public void Terminate()
-        {
-
-        }
+        // Player properties
+        public Player.Spec PlayerOneClass;
+        public Player.Spec PlayerTwoClass;
     }
 }

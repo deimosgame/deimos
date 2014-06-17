@@ -17,6 +17,7 @@ Content\Models\Characters\Vanquish\vanquish.xnb
 Content\Models\Characters\glados\1.xnb
 Content\Models\Characters\corvo\corv.xnb
 Content\Models\SecretWalls\Brick\SecretWallBrick.xnb
+Content\Models\Map\Minigames\Knife\KnifeFight.xnb
 Content\Models\Map\Grid.xnb
 Content\Textures\DeferredRendering\null_normal.xnb
 Content\Textures\DeferredRendering\null_specular.xnb
@@ -255,6 +256,11 @@ Content\Textures\Particles\explosion.xnb
 Content\Textures\Particles\fire.xnb
 Content\Textures\Particles\smoke.xnb
 Content\Models\SecretWalls\Brick\SecretWallBrick_material_0.xnb
+Content\Models\Map\Minigames\Knife\KnifeFight_material_0.xnb
+Content\Models\Map\Minigames\Knife\KnifeFight_material_1.xnb
+Content\Models\Map\Minigames\Knife\KnifeFight_material_2.xnb
+Content\Models\Map\Minigames\Knife\KnifeFight_material_3.xnb
+Content\Models\Map\Minigames\Knife\KnifeFight_material_4.xnb
 Content\Shaders\DeferredRendering\ClearGBuffer.xnb
 Content\Shaders\DeferredRendering\CombineFinal.xnb
 Content\Shaders\Lights\DirectionalLight.xnb
@@ -470,12 +476,6 @@ Content\Models\Characters\corvo\Corvo_Body_d_0.xnb
 Content\Models\Characters\corvo\Corvo_Hair_d_0.xnb
 Content\Models\Characters\corvo\Corvo_Head_d_0.xnb
 Content\Models\SecretWalls\Brick\SecretWallBrick_material_0_0.xnb
-Content\Models\Map\Minigames\Knife\KnifeFight.xnb
-Content\Models\Map\Minigames\Knife\KnifeFight_material_0.xnb
-Content\Models\Map\Minigames\Knife\KnifeFight_material_1.xnb
-Content\Models\Map\Minigames\Knife\KnifeFight_material_2.xnb
-Content\Models\Map\Minigames\Knife\KnifeFight_material_3.xnb
-Content\Models\Map\Minigames\Knife\KnifeFight_material_4.xnb
 Content\Models\Map\Minigames\Knife\KnifeFight_material_2_0.xnb
 Content\Models\Map\Minigames\Knife\KnifeFight_material_1_0.xnb
 Content\Models\Map\Minigames\Knife\KnifeFight_material_3_0.xnb

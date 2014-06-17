@@ -22,9 +22,9 @@ namespace Deimos
             data[2] = GameplayFacade.ThisPlayer.Position.Z;
             data[3] = GameplayFacade.ThisPlayer.Rotation.X;
             data[4] = GameplayFacade.ThisPlayer.Rotation.Y;
-            data[5] = 0;
-            data[6] = 0;
-            data[7] = 0;
+            data[5] = GameplayFacade.ThisPlayer.Velocity.X;
+            data[6] = GameplayFacade.ThisPlayer.Velocity.Y;
+            data[7] = GameplayFacade.ThisPlayer.Velocity.Z;
             data[8] = 0;
             data[9] = 0;
 

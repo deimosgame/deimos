@@ -22,6 +22,13 @@ namespace Deimos
 
         Actions PlayerActions;
         Movement PlayerMovement;
+        // for extrapolation
+        Vector3 velocity;
+        public Vector3 Velocity
+        {
+            get { return PlayerMovement.MoveVector; }
+        }
+
         Combat PlayerCombat;
         Footsteps PlayerSteps;
 

@@ -58,8 +58,6 @@ namespace Deimos
                  0.2f
             );
 
-            //ModelManager.LoadModel("follow", "Models/Characters/Vanquish/vanquish", Vector3.Zero, Vector3.Zero, 5, LevelModel.CollisionType.None);
-
             if (NetworkFacade.IsMultiplayer)
             {
                 // Loading player models
@@ -237,16 +235,26 @@ namespace Deimos
                     KeyValuePair<byte, Player> pair = NetworkFacade.Players.ElementAt(i);
 
                     if (pair.Value != null
-                        && GeneralFacade.SceneManager.ModelManager.LevelModelExists(pair.Value.Name)
-                        && pair.Value.IsAlive())
+                        && GeneralFacade.SceneManager.ModelManager.LevelModelExists(pair.Value.Name))
                     {
-                        GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).show = true;
+                        if (pair.Value.IsAlive())
+                        {
+                            GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).show = true;
+                        }
+                        else
+                        {
+                            GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).show = false;
+                        }
 
                         GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).Position =
                             pair.Value.Position;
 
                         GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).Rotation =
                             pair.Value.Rotation;
+                    }
+                    else
+                    {
+                        GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).show = false;
                     }
                 }
             }
@@ -255,10 +263,6 @@ namespace Deimos
             {
                 Elapsed += dt;
             }
-
-
-            //ModelManager.GetLevelModel("follow").Position = GameplayFacade.ThisPlayer.Position + new Vector3(3, 1, 3);
-            //ModelManager.GetLevelModel("follow").Rotation += new Vector3(0,GameplayFacade.ThisPlayer.Rotation.X, 0);
         }
     }
 }

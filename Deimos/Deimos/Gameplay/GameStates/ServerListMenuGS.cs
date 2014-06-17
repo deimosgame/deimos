@@ -114,14 +114,19 @@ namespace Deimos
 
                             switch (NetworkFacade.MainHandling.Connections.CurrentMap)
                             {
-                                case "coolmap":
+                                case "d_compound":
                                     GeneralFacade.GameStateManager.Set(
                                         new LoadingLevelGS<SceneCompound>(delegate() { })
                                         );
                                     break;
-                                default:
+                                case "hl_bootcamp":
                                     GeneralFacade.GameStateManager.Set(
                                         new LoadingLevelGS<SceneDeimos>(delegate() { })
+                                        );
+                                    break;
+                                default:
+                                    GeneralFacade.GameStateManager.Set(
+                                        new LoadingLevelGS<SceneCompound>(delegate() { })
                                         );
                                     break;
                             }

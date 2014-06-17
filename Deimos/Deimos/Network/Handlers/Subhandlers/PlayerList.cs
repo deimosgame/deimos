@@ -34,6 +34,14 @@ namespace Deimos
                     playa.Name = name;
 
                     NetworkFacade.Players.Add(uid, playa);
+
+                    DisplayFacade.DebugScreen.Debug("Player UID: " + uid);
+                    DisplayFacade.DebugScreen.Debug("Player Name: " + playa.Name);
+                }
+                else
+                {
+                    DisplayFacade.DebugScreen.Debug("Tried to add self with UID: ");
+                    DisplayFacade.DebugScreen.Debug(uid.ToString());
                 }
             }
 

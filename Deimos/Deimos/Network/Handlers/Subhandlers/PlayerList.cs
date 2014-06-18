@@ -28,19 +28,12 @@ namespace Deimos
                 n++;
                 i += name.Length + 2;
 
-                DisplayFacade.DebugScreen.Debug("Tried: " + name);
-
                 if (name != Program.Username)
                 {
                     Player playa = new Player();
                     playa.Name = name;
 
                     NetworkFacade.Players.Add(uid, playa);
-                    DisplayFacade.DebugScreen.Debug(uid.ToString() + " " + playa.Name);
-                }
-                else
-                {
-                    DisplayFacade.DebugScreen.Debug("Tried to add self");
                 }
             }
 

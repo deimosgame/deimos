@@ -55,7 +55,7 @@ namespace Deimos
         public bool ChecksumCorrect(byte[] buf)
         {
             byte supposed = buf[0];
-            int computed = 0;
+            byte computed = 0;
 
             for (int i = 1; i < 576; i++)
             {
@@ -63,12 +63,12 @@ namespace Deimos
 
                 for (int j = 0; current > 0; j++)
                 {
-                    computed += (j % 2 + 1) * (current % 2);
+                    computed += (byte)((j % 2 + 1) * (current % 2));
                     current = (byte)(current >> 1);
                 }
             }
 
-            return (supposed == ((byte)(computed % 256)));
+            return (supposed == computed);
         }
 
         public void Process()

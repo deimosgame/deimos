@@ -173,6 +173,11 @@ namespace Deimos
                     WeaponState.Reloading;
 
                 GeneralFacade.SceneManager.SoundManager.Play("w_c");
+                if (NetworkFacade.IsMultiplayer)
+                {
+                    NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("w_c"),
+                        GameplayFacade.ThisPlayer.Position);
+                }
             }
 
             if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.QuickSwitch) &&

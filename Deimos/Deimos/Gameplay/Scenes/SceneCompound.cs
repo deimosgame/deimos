@@ -58,43 +58,6 @@ namespace Deimos
                  0.2f
             );
 
-            if (NetworkFacade.IsMultiplayer)
-            {
-                // Loading player models
-
-                foreach (KeyValuePair<byte, Player> p in NetworkFacade.Players)
-                {
-                    ModelManager.LoadModel(
-                        p.Value.Name,
-                        p.Value.GetModelName(),
-                        p.Value.Position,
-                        p.Value.Rotation,
-                        5,
-                        LevelModel.CollisionType.None
-                        );
-
-                    ModelManager.GetLevelModel(p.Value.Name).show = true;
-                }
-
-            }
-
-            //ModelManager.LoadModel(
-            //            "dummy",
-            //            "Models/Characters/Vanquish/vanquish",
-            //            Vector3.Zero,
-            //            Vector3.Zero,
-            //            5,
-            //            LevelModel.CollisionType.None
-            //            );
-
-            //ModelManager.LoadModel(
-            //    "player",
-            //    "Models/Characters/Vanquish/vanquish",
-            //    Vector3.Zero,
-            //    Vector3.Zero,
-            //    5,
-            //    LevelModel.CollisionType.None);
-
             token_rl = Objects.AddWeapon("BazookaPickup",
                 2,
                 new Vector3(17, -6, 110),
@@ -251,10 +214,6 @@ namespace Deimos
 
                         GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).Rotation =
                             pair.Value.Rotation;
-                    }
-                    else
-                    {
-                        GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).show = false;
                     }
                 }
             }

@@ -16,6 +16,7 @@ namespace Deimos
         public Move Moves = new Move();
         public PlayerList Players = new PlayerList();
         public UpdateInfo PlayerInfoUpdate = new UpdateInfo();
+        public Sound Sounds = new Sound();
 
         // METHODS
         public void Distribute(byte[] buf)
@@ -39,6 +40,9 @@ namespace Deimos
                     break;
                 case 0x06:
                     Players.Interpret(buf);
+                    break;
+                case 0x08:
+                    Sounds.Interpret(buf);
                     break;
                 default:
                     return;

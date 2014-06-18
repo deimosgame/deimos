@@ -34,20 +34,13 @@ namespace Deimos
                     playa.Name = name;
 
                     NetworkFacade.Players.Add(uid, playa);
-
-                    DisplayFacade.DebugScreen.Debug("Player UID: " + uid);
-                    DisplayFacade.DebugScreen.Debug("Player Name: " + playa.Name);
-                }
-                else
-                {
-                    DisplayFacade.DebugScreen.Debug("Tried to add self with UID: ");
-                    DisplayFacade.DebugScreen.Debug(uid.ToString());
                 }
             }
 
             N_Players = (uint)n;
 
             HandleRenew();
+            HandleModels();
         }
 
         public void HandleRenew()
@@ -68,5 +61,34 @@ namespace Deimos
                     (p.Name);
             }
         }
+
+        public void HandleModels()
+        {
+                foreach (KeyValuePair<byte, Player> p in NetworkFacade.Players)
+                {
+                    if (!GeneralFacade.SceneManager.ModelManager.LevelModelExists(p.Value.Name))
+                    {
+                    GeneralFacade.SceneManager.ModelManager.LoadModel(
+                        p.Value.Name,
+                        p.Value.GetModelName(),
+                        p.Value.Position,
+                        p.Value.Rotation,
+                        5,
+                        LevelModel.CollisionType.None
+                        );
+
+                    if (p.Value.Alive == 0x01)
+                    {
+                        GeneralFacade.SceneManager.ModelManager.GetLevelModel(p.Value.Name).show = true;
+                    }
+                    else
+                    {
+                        GeneralFacade.SceneManager.ModelManager.GetLevelModel(p.Value.Name).show = false;
+                    }
+                    }
+                }
+
+        }
+        
     }
 }

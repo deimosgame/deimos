@@ -23,7 +23,6 @@ namespace Deimos
                         NetworkFacade.NetworkHandling.Send(p);
                     }
                 }
-                System.Threading.Thread.Sleep(1);
             }
         }
 
@@ -32,7 +31,6 @@ namespace Deimos
             while (true)
             {
                 NetworkFacade.NetworkHandling.Receive();
-                System.Threading.Thread.Sleep(1);
             }
         }
 
@@ -86,7 +84,7 @@ namespace Deimos
                 OldPos = GameplayFacade.ThisPlayer.Position;
                 OldRot = GameplayFacade.ThisPlayer.Rotation;
 
-                System.Threading.Thread.Sleep(30);
+                System.Threading.Thread.Sleep(15);
             }
         }
     }

@@ -95,28 +95,12 @@ namespace Deimos
 
             if (NetworkFacade.IsMultiplayer)
             {
-                // Initialization
-                //NetworkFacade.Network = new NetworkManager();
-
-                //NetworkFacade.MainHandling = new MainHandler();
-                //NetworkFacade.NetworkHandling = new NetworkHandler();
-                //NetworkFacade.DataHandling = new DataHandler();
-
-                //NetworkFacade.Sending = new Queue();
-                //NetworkFacade.Receiving = new Queue();
-
-                //NetworkFacade.Outgoing = new Thread(NetworkFacade.Network.HandleSend);
-                //NetworkFacade.Incoming = new Thread(NetworkFacade.Network.HandleReceive);
-                //NetworkFacade.Interpret = new Thread(NetworkFacade.Network.Process);
-                //NetworkFacade.World = new Thread(NetworkFacade.Network.UpdateWorld);
-                //NetworkFacade.MovePacket = new Thread(NetworkFacade.Network.SendMovePacket);
-
-                //NetworkFacade.Players = new Dictionary<byte, Player>();
 
                 // Thread optimization
                 // Sending thread
                 NetworkFacade.Outgoing.Name = "out";
                 NetworkFacade.Outgoing.IsBackground = true;
+                NetworkFacade.Outgoing.Priority = ThreadPriority.BelowNormal;
                 // Receiving thread
                 NetworkFacade.Incoming.Name = "in";
                 NetworkFacade.Incoming.IsBackground = true;
@@ -133,7 +117,7 @@ namespace Deimos
                 if (NetworkFacade.ServerIsLocal)
                 {
                     NetworkFacade.NetworkHandling.SetConnectivity(
-                        "192.168.0.206", 1518, "192.168.137.156", 1564);
+                        "127.0.0.1", 1518, "127.0.0.1", 1564);
                 }
             }
 

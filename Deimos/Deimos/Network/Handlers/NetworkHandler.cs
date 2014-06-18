@@ -44,8 +44,15 @@ namespace Deimos
             ip_endpoint = new IPEndPoint(local_address, localPort);
             end_point = (EndPoint)ip_endpoint;
 
-            // Binding the port
-            socket.Bind(end_point);
+            try
+            {
+                // Binding the port
+                socket.Bind(end_point);
+            }
+            catch
+            {
+                GeneralFacade.GameStateManager.Set(new ErrorScreenGS("Socket bind error"));
+            }
         }
 
         // METHODS FOR HANDHSAKING AND SERVER CONNECTION

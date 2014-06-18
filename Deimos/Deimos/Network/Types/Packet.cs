@@ -18,6 +18,7 @@ namespace Deimos
             Move,
             PlayerList,
             UpdateInfo,
+            Sound,
             Corrupt
         }
 

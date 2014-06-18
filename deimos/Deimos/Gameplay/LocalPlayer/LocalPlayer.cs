@@ -132,6 +132,7 @@ namespace Deimos
 
             if (NetworkFacade.IsMultiplayer)
             {
+                Alive = 0x01;
                 NetworkFacade.MainHandling.PlayerInfoUpdate.Update();
             }
         }
@@ -154,6 +155,7 @@ namespace Deimos
 
                 if (NetworkFacade.IsMultiplayer)
                 {
+                    Alive = 0x01;
                     NetworkFacade.MainHandling.PlayerInfoUpdate.Update();
                 }
             }
@@ -181,6 +183,12 @@ namespace Deimos
                 Score--;
 
                 GeneralFacade.GameStateManager.Set(new DeadScreenGS());
+
+                if (NetworkFacade.IsMultiplayer)
+                {
+                    Alive = 0x00;
+                    NetworkFacade.MainHandling.PlayerInfoUpdate.Update();
+                }
             }
         }
 

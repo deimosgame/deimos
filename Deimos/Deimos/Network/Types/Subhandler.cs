@@ -203,6 +203,9 @@ namespace Deimos
         {
             switch (prefix)
             {
+                case "A":
+                    d.Contained = Data.Contains.Byte;
+                    return Data.WorldDataType.Active;
                 case "N":
                     d.Contained = Data.Contains.String;
                     return Data.WorldDataType.Name;

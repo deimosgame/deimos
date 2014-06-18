@@ -20,7 +20,7 @@ namespace Deimos
         public byte MGNumber;
         public bool IsMG = false;
 
-        public byte Alive;
+        public byte Alive = 0x01;
 
         public Vector3 Position;
 

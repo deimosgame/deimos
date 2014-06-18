@@ -82,7 +82,7 @@ namespace Deimos
                 if (!NetworkFacade.ServerIsLocal)
                 {
                     NetworkFacade.NetworkHandling.SetConnectivity(
-                            "169.254.216.38", 1518, "169.254.216.38", 8000);
+                            "192.168.75.1", 1518, "192.168.75.51", 8000);
                 }
 
                     if (!NetworkFacade.ThreadStart1)
@@ -114,19 +114,24 @@ namespace Deimos
 
                             switch (NetworkFacade.MainHandling.Connections.CurrentMap)
                             {
-                                case "coolmap":
+                                case "d_compound":
                                     GeneralFacade.GameStateManager.Set(
                                         new LoadingLevelGS<SceneCompound>(delegate() { })
                                         );
                                     break;
-                                default:
+                                case "hl_bootcamp":
                                     GeneralFacade.GameStateManager.Set(
                                         new LoadingLevelGS<SceneDeimos>(delegate() { })
                                         );
                                     break;
+                                default:
+                                    GeneralFacade.GameStateManager.Set(
+                                        new LoadingLevelGS<SceneCompound>(delegate() { })
+                                        );
+                                    break;
                             }
 
-                            GeneralFacade.GameStateManager.Set(new SpawningGS(GameplayFacade.ThisPlayer.NextInstance));
+                            GeneralFacade.GameStateManager.Set(new SpawningGS("main"));
                             GeneralFacade.GameStateManager.Set(new PlayingGS());
                         }
 

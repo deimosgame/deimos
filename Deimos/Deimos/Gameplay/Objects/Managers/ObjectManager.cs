@@ -198,6 +198,11 @@ namespace Deimos
                         GameplayFacade.Weapons.GetName(w.Represents));
 
                     GeneralFacade.SceneManager.SoundManager.Play("w_pu");
+                    if (NetworkFacade.IsMultiplayer)
+                    {
+                        NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("w_pu"),
+                            GameplayFacade.ThisPlayer.Position);
+                    }
 
                     // let's deactivate the weapon object
                     w.Status = PickupObject.State.Inactive;
@@ -225,6 +230,11 @@ namespace Deimos
                     GameplayFacade.Weapons.GetName(w.Represents));
 
                 GeneralFacade.SceneManager.SoundManager.Play("w_pu");
+                if (NetworkFacade.IsMultiplayer)
+                {
+                    NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("w_pu"),
+                        GameplayFacade.ThisPlayer.Position);
+                }
 
                 // let's now deactivate the weapon object
                 w.Status = PickupObject.State.Inactive;
@@ -265,6 +275,11 @@ namespace Deimos
                             }
 
                             GeneralFacade.SceneManager.SoundManager.Play("heal");
+                            if (NetworkFacade.IsMultiplayer)
+                            {
+                                NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("heal"),
+                                    GameplayFacade.ThisPlayer.Position);
+                            }
 
                             e.Status = PickupObject.State.Inactive;
                             e.respawn_timer = 0;
@@ -291,6 +306,11 @@ namespace Deimos
                             ActiveEffects.Add(e);
 
                             GeneralFacade.SceneManager.SoundManager.Play("speed");
+                            if (NetworkFacade.IsMultiplayer)
+                            {
+                                NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("speed"),
+                                    GameplayFacade.ThisPlayer.Position);
+                            }
 
                             // let's deactivate the world object
                             e.Status = PickupObject.State.Inactive;
@@ -317,6 +337,11 @@ namespace Deimos
                         GameplayFacade.ThisPlayer.Gravityboosted = true;
 
                         GeneralFacade.SceneManager.SoundManager.Play("gravity");
+                        if (NetworkFacade.IsMultiplayer)
+                        {
+                            NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("gravity"),
+                                GameplayFacade.ThisPlayer.Position);
+                        }
 
                         // Let's add the effect to the active effects list
                         ActiveEffects.Add(e);
@@ -432,6 +457,11 @@ namespace Deimos
                                 GameplayFacade.ThisPlayer.Speedboosted = false;
 
                                 GeneralFacade.SceneManager.SoundManager.Play("effectoff");
+                                if (NetworkFacade.IsMultiplayer)
+                                {
+                                    NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("effectoff"),
+                                        GameplayFacade.ThisPlayer.Position);
+                                }
                             }
                             else
                             {
@@ -459,6 +489,11 @@ namespace Deimos
                                 GameplayFacade.ThisPlayer.Gravityboosted = false;
 
                                 GeneralFacade.SceneManager.SoundManager.Play("effectoff");
+                                if (NetworkFacade.IsMultiplayer)
+                                {
+                                    NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("effectoff"),
+                                        GameplayFacade.ThisPlayer.Position);
+                                }
                             }
                             else
                             {

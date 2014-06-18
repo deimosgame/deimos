@@ -58,45 +58,6 @@ namespace Deimos
                  0.2f
             );
 
-            //ModelManager.LoadModel("follow", "Models/Characters/Vanquish/vanquish", Vector3.Zero, Vector3.Zero, 5, LevelModel.CollisionType.None);
-
-            if (NetworkFacade.IsMultiplayer)
-            {
-                // Loading player models
-
-                foreach (KeyValuePair<byte, Player> p in NetworkFacade.Players)
-                {
-                    ModelManager.LoadModel(
-                        p.Value.Name,
-                        p.Value.GetModelName(),
-                        p.Value.Position,
-                        p.Value.Rotation,
-                        5,
-                        LevelModel.CollisionType.None
-                        );
-
-                    ModelManager.GetLevelModel(p.Value.Name).show = true;
-                }
-
-            }
-
-            //ModelManager.LoadModel(
-            //            "dummy",
-            //            "Models/Characters/Vanquish/vanquish",
-            //            Vector3.Zero,
-            //            Vector3.Zero,
-            //            5,
-            //            LevelModel.CollisionType.None
-            //            );
-
-            //ModelManager.LoadModel(
-            //    "player",
-            //    "Models/Characters/Vanquish/vanquish",
-            //    Vector3.Zero,
-            //    Vector3.Zero,
-            //    5,
-            //    LevelModel.CollisionType.None);
-
             token_rl = Objects.AddWeapon("BazookaPickup",
                 2,
                 new Vector3(17, -6, 110),
@@ -237,10 +198,16 @@ namespace Deimos
                     KeyValuePair<byte, Player> pair = NetworkFacade.Players.ElementAt(i);
 
                     if (pair.Value != null
-                        && GeneralFacade.SceneManager.ModelManager.LevelModelExists(pair.Value.Name)
-                        && pair.Value.IsAlive())
+                        && GeneralFacade.SceneManager.ModelManager.LevelModelExists(pair.Value.Name))
                     {
-                        GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).show = true;
+                        if (pair.Value.IsAlive())
+                        {
+                            GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).show = true;
+                        }
+                        else
+                        {
+                            GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).show = false;
+                        }
 
                         GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).Position =
                             pair.Value.Position;
@@ -255,12 +222,15 @@ namespace Deimos
             {
                 Elapsed += dt;
             }
+<<<<<<< HEAD
 
             
 
 
             //ModelManager.GetLevelModel("follow").Position = GameplayFacade.ThisPlayer.Position + new Vector3(3, 1, 3);
             //ModelManager.GetLevelModel("follow").Rotation += new Vector3(0,GameplayFacade.ThisPlayer.Rotation.X, 0);
+=======
+>>>>>>> 72ea7041207a255c97ccd85bd6a70afff0059df8
         }
     }
 }

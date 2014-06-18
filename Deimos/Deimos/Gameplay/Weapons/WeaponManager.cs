@@ -258,6 +258,11 @@ namespace Deimos
                         if (!currentWeapon.IsFirable())
                         {
                             GeneralFacade.SceneManager.SoundManager.Play("noammo");
+                            if (NetworkFacade.IsMultiplayer)
+                            {
+                                NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("noammo"),
+                                    GameplayFacade.ThisPlayer.Position);
+                            }
                             currentWeapon.FireTimer = 0;
                             return;
                         }
@@ -302,6 +307,11 @@ namespace Deimos
             GameplayFacade.ThisPlayer.CurrentWeapon.State = WeaponState.AtEase;
 
             GeneralFacade.SceneManager.SoundManager.Play("w_sel2");
+            if (NetworkFacade.IsMultiplayer)
+            {
+                NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("w_sel2"),
+                    GameplayFacade.ThisPlayer.Position);
+            }
         }
 
         // this method reloads the weapon automatically if the current chamber 
@@ -423,27 +433,62 @@ namespace Deimos
                 {
                     case 1:
                         GeneralFacade.SceneManager.SoundManager.Play("w_sel1");
+                        if (NetworkFacade.IsMultiplayer)
+                        {
+                            NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("w_sel1"),
+                                GameplayFacade.ThisPlayer.Position);
+                        }
                         return;
                     case 2:
                         GeneralFacade.SceneManager.SoundManager.Play("w_sel2");
+                        if (NetworkFacade.IsMultiplayer)
+                        {
+                            NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("w_sel2"),
+                                GameplayFacade.ThisPlayer.Position);
+                        }
                         return;
                     case 3:
                         GeneralFacade.SceneManager.SoundManager.Play("w_sel3");
+                        if (NetworkFacade.IsMultiplayer)
+                        {
+                            NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("w_sel3"),
+                                GameplayFacade.ThisPlayer.Position);
+                        }
                         return;
                     case 4:
                         GeneralFacade.SceneManager.SoundManager.Play("w_sel4");
+                        if (NetworkFacade.IsMultiplayer)
+                        {
+                            NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("w_sel4"),
+                                GameplayFacade.ThisPlayer.Position);
+                        }
                         return;
                     case 5:
                         GeneralFacade.SceneManager.SoundManager.Play("w_sel5");
+                        if (NetworkFacade.IsMultiplayer)
+                        {
+                            NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("w_sel5"),
+                                GameplayFacade.ThisPlayer.Position);
+                        }
                         return;
                     case 6:
                         GeneralFacade.SceneManager.SoundManager.Play("w_sel6");
+                        if (NetworkFacade.IsMultiplayer)
+                        {
+                            NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("w_sel7"),
+                                GameplayFacade.ThisPlayer.Position);
+                        }
                         return;
                 }
             }
             else
             {
                     GeneralFacade.SceneManager.SoundManager.Play("w_c");
+                    if (NetworkFacade.IsMultiplayer)
+                    {
+                        NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("w_c"),
+                            GameplayFacade.ThisPlayer.Position);
+                    }
             }
         }
 
@@ -456,15 +501,35 @@ namespace Deimos
             {
                 case 0:
                     GeneralFacade.SceneManager.SoundManager.Play("w_sw1");
+                    if (NetworkFacade.IsMultiplayer)
+                    {
+                        NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("w_sw1"),
+                            GameplayFacade.ThisPlayer.Position);
+                    }
                     return;
                 case 1:
                     GeneralFacade.SceneManager.SoundManager.Play("w_sw2");
+                    if (NetworkFacade.IsMultiplayer)
+                    {
+                        NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("w_sw2"),
+                            GameplayFacade.ThisPlayer.Position);
+                    }
                     return;
                 case 2:
                     GeneralFacade.SceneManager.SoundManager.Play("w_sw3");
+                    if (NetworkFacade.IsMultiplayer)
+                    {
+                        NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("w_sw3"),
+                            GameplayFacade.ThisPlayer.Position);
+                    }
                     return;
                 case 3:
                     GeneralFacade.SceneManager.SoundManager.Play("w_sw4");
+                    if (NetworkFacade.IsMultiplayer)
+                    {
+                        NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("w_sw4"),
+                            GameplayFacade.ThisPlayer.Position);
+                    }
                     return;
             }
         }
@@ -475,12 +540,27 @@ namespace Deimos
             {
                 case "Pistol":
                     GeneralFacade.SceneManager.SoundManager.Play("gun");
+                    if (NetworkFacade.IsMultiplayer)
+                    {
+                        NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("gun"),
+                            GameplayFacade.ThisPlayer.Position);
+                    }
                     return;
                 case "Assault Rifle":
                     GeneralFacade.SceneManager.SoundManager.Play("rifle");
+                    if (NetworkFacade.IsMultiplayer)
+                    {
+                        NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("rifle"),
+                            GameplayFacade.ThisPlayer.Position);
+                    }
                     return;
                 case "Bazooka":
                     GeneralFacade.SceneManager.SoundManager.Play("rocket");
+                    if (NetworkFacade.IsMultiplayer)
+                    {
+                        NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("rocket"),
+                            GameplayFacade.ThisPlayer.Position);
+                    }
                     return;
                 default:
                     return;

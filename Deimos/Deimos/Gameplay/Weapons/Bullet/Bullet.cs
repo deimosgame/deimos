@@ -96,6 +96,11 @@ namespace Deimos
                 GameplayFacade.ThisPlayer.Position,
                 pos
                 );
+            if (NetworkFacade.IsMultiplayer)
+            {
+                NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("explosion"),
+                    pos);
+            }
             PlayFireParticle(pos);
 
             //BoundingSphere explosion = new BoundingSphere();

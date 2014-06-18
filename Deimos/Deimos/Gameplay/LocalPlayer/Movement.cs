@@ -9,7 +9,7 @@ namespace Deimos
 {
     class Movement
     {
-        Vector3 MoveVector;
+        public Vector3 MoveVector;
         Vector3 Acceleration;
         Vector3 LastMoveVector;
 

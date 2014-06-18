@@ -22,6 +22,13 @@ namespace Deimos
 
         Actions PlayerActions;
         Movement PlayerMovement;
+        // for extrapolation
+        Vector3 velocity;
+        public Vector3 Velocity
+        {
+            get { return PlayerMovement.MoveVector; }
+        }
+
         Combat PlayerCombat;
         Footsteps PlayerSteps;
 
@@ -125,6 +132,7 @@ namespace Deimos
 
             if (NetworkFacade.IsMultiplayer)
             {
+                Alive = 0x01;
                 NetworkFacade.MainHandling.PlayerInfoUpdate.Update();
             }
         }
@@ -147,6 +155,7 @@ namespace Deimos
 
                 if (NetworkFacade.IsMultiplayer)
                 {
+                    Alive = 0x01;
                     NetworkFacade.MainHandling.PlayerInfoUpdate.Update();
                 }
             }
@@ -172,6 +181,12 @@ namespace Deimos
                 CurrentLifeState = LifeState.Dead;
 
                 Score--;
+
+                if (NetworkFacade.IsMultiplayer)
+                {
+                    Alive = 0x00;
+                    NetworkFacade.MainHandling.PlayerInfoUpdate.Update();
+                }
 
                 GeneralFacade.GameStateManager.Set(new DeadScreenGS());
             }

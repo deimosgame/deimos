@@ -18,6 +18,7 @@ namespace Deimos
             Move,
             PlayerList,
             UpdateInfo,
+            Sound,
             Corrupt
         }
 
@@ -26,7 +27,7 @@ namespace Deimos
         public PacketType Type;
         public bool Split = false; // this is the default value for this attribute
 
-        public byte Checksum = 0x04;
+        public byte Checksum = 0x00;
         public byte Packet_ID;
         public byte Index = 0; // this is the default value for this attribute
         public byte Total_Packets = 1; // this is the default value for this attribute
@@ -34,6 +35,10 @@ namespace Deimos
         // Optional for world broadcast packets //
         public int Unique_ID;
         // Optional for world broadcast packets //
+
+        // May be needed
+        public byte Sum = 0x00;
+        // May be needed
 
         MemoryStream Data = new MemoryStream();
         private int current_index = 4; // default value
@@ -63,7 +68,7 @@ namespace Deimos
         // WARNING: Needs to be initiated at first index dgram
         public int GetTotalSum()
         {
-            return (int)Checksum + (int)Next.GetTotalSum();
+            return (int)Sum + (int)Next.GetTotalSum();
         }
 
         // Manually write a byte to the packet
@@ -73,7 +78,7 @@ namespace Deimos
         {
             Data.WriteByte(b);
             current_index++;
-            Checksum++;
+            Sum++;
         }
 
         // Manually write data to the packet
@@ -85,7 +90,7 @@ namespace Deimos
             {
                 Data.WriteByte(buf[i]);
                 current_index++;
-                Checksum++;
+                Sum++;
             }
         }
 
@@ -96,7 +101,7 @@ namespace Deimos
         {
             Data.WriteByte(b);
             current_index++;
-            Checksum++;
+            Sum++;
         }
 
         // This AddData overload is the most generic and easy to use:
@@ -124,7 +129,7 @@ namespace Deimos
                     {
                         Data.WriteByte(buf[i]);
                         current_index++;
-                        Checksum++;
+                        Sum++;
                         i++;
                     }
 
@@ -133,7 +138,7 @@ namespace Deimos
                     {
                         Next.Data.WriteByte(buf[i]);
                         Next.current_index++;
-                        Next.Checksum++;
+                        Next.Sum++;
                         i++;
                     }
                 }
@@ -147,7 +152,7 @@ namespace Deimos
                     // Inscribing the bytes from the buffer to the stream
                     Data.WriteByte(buf[i]);
                     current_index++;
-                    Checksum++;
+                    Sum++;
                 }
             }
         }
@@ -218,6 +223,8 @@ namespace Deimos
         // with respect to the Louis-Paul Protocol
         public byte[] Encode()
         {
+            ComputeChecksum();
+
             Data.Position = 0;
             Data.WriteByte(Checksum);
             Data.Position = 1;
@@ -233,10 +240,36 @@ namespace Deimos
             return Encoded_buffer;
         }
 
-        // FOR RECEIVED BROADCAST PACKETS ONLY:
-        public bool IsEnd(byte[] buf)
+        public byte GetByteChecksum(byte b)
         {
-            return false;
+            byte computed = 0;
+
+            for (int j = 0; b > 0x00; j++)
+            {
+                computed += (byte)((j % 2 + 1) * (b % 2));
+                b = (byte)(b >> 1);
+            }
+
+            return computed;
+        }
+
+        public void ComputeChecksum()
+        {
+            byte totalsum = GetByteChecksum(Packet_ID);
+            totalsum += GetByteChecksum(Index);
+            totalsum += GetByteChecksum(Total_Packets);
+
+            Data.Position = 4;
+
+            int next_read = Data.ReadByte();
+
+            while (next_read != -1)
+            {
+                totalsum += GetByteChecksum((byte)(next_read));
+                next_read = Data.ReadByte();
+            }
+
+            Checksum = totalsum;
         }
     }
 }

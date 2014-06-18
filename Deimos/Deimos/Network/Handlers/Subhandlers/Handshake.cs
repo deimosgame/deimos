@@ -29,6 +29,10 @@ namespace Deimos
             {
                 NetworkFacade.NetworkHandling.Handshook = true;
             }
+            else
+            {
+                
+            }
         }
     }
 }

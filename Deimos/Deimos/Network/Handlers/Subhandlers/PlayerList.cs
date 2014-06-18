@@ -34,6 +34,11 @@ namespace Deimos
                     playa.Name = name;
 
                     NetworkFacade.Players.Add(uid, playa);
+                    DisplayFacade.DebugScreen.Debug(uid.ToString() + " " + playa.Name);
+                }
+                else
+                {
+                    DisplayFacade.DebugScreen.Debug("Tried to add self");
                 }
             }
 
@@ -76,15 +81,6 @@ namespace Deimos
                         5,
                         LevelModel.CollisionType.None
                         );
-
-                    if (p.Value.Alive == 0x01)
-                    {
-                        GeneralFacade.SceneManager.ModelManager.GetLevelModel(p.Value.Name).show = true;
-                    }
-                    else
-                    {
-                        GeneralFacade.SceneManager.ModelManager.GetLevelModel(p.Value.Name).show = false;
-                    }
                     }
                 }
 

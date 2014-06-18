@@ -182,13 +182,13 @@ namespace Deimos
 
                 Score--;
 
-                GeneralFacade.GameStateManager.Set(new DeadScreenGS());
-
                 if (NetworkFacade.IsMultiplayer)
                 {
                     Alive = 0x00;
                     NetworkFacade.MainHandling.PlayerInfoUpdate.Update();
                 }
+
+                GeneralFacade.GameStateManager.Set(new DeadScreenGS());
             }
         }
 

@@ -135,6 +135,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Desktop\Tranquillity.dll</HintPath>
     </Reference>
+    <Reference Include="XNAnimation">
+      <HintPath>.\XNAnimation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Display\Camera.cs" />

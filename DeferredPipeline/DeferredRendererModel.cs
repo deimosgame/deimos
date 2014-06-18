@@ -46,6 +46,7 @@ namespace DeferredPipeline
             }
             directory = Path.GetDirectoryName(input.Identity.SourceFilename);
             LookUpTextures(input);
+            OpaqueDataDictionary processorParameters = new OpaqueDataDictionary();
             return base.Process(input, context);
         }
 

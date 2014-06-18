@@ -1,22 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
-    <ProjectGuid>{0656B47B-F22B-435F-8879-56EA5C1D1F41}</ProjectGuid>
+    <ProjectGuid>{AE62AD81-FE76-41E3-947D-E02A0F69BD1C}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DeferredPipeline</RootNamespace>
-    <AssemblyName>DeferredPipeline</AssemblyName>
+    <RootNamespace>CollidableModelProcessor</RootNamespace>
+    <AssemblyName>CollidableModelProcessor</AssemblyName>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\x86\Debug</OutputPath>
+    <OutputPath>..\..\Bounce\Bounce2\ContentProcessors\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -48,12 +47,13 @@
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="XNAnimationPipeline">
-      <HintPath>..\Deimos\Deimos\XNAnimationPipeline.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DeferredRendererModel.cs" />
+    <Compile Include="BspTreeContent.cs" />
+    <Compile Include="CollidableModelContent.cs" />
+    <Compile Include="CollidableModelProcessor.cs" />
+    <Compile Include="CollidableModelSerialization.cs" />
+    <Compile Include="ModelGeometryContent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

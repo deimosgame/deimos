@@ -200,7 +200,7 @@ namespace Deimos
                     if (pair.Value != null
                         && GeneralFacade.SceneManager.ModelManager.LevelModelExists(pair.Value.Name))
                     {
-                        if (pair.Value.IsAlive())
+                        if (pair.Value.Alive == 0x01)
                         {
                             GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).show = true;
                         }

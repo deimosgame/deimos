@@ -28,6 +28,8 @@ namespace Deimos
                 n++;
                 i += name.Length + 2;
 
+                DisplayFacade.DebugScreen.Debug("Tried: " + name);
+
                 if (name != Program.Username)
                 {
                     Player playa = new Player();

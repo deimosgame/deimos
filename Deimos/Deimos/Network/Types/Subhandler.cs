@@ -25,7 +25,7 @@ namespace Deimos
             // Converting the byte buffer to a new packet of its type
             Packet Received = new Packet(GetTypeFromID(buf[1]));
 
-            Received.Checksum = buf[0];
+            Received.Sum = buf[0];
             Received.Packet_ID = buf[1];
             Received.Index = buf[2];
             Received.Total_Packets = buf[3];

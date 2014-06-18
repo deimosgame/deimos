@@ -51,6 +51,9 @@ namespace Deimos
                         NetworkFacade.Players[data.PropertyOf].Rotation.Y =
                             data.Float32_Data;
                         break;
+                    case Data.WorldDataType.Active:
+                        NetworkFacade.Players[data.PropertyOf].Alive = data.Byte_Data;
+                        break;
                     case Data.WorldDataType.Score:
                         NetworkFacade.Players[data.PropertyOf].Score =
                             data.Byte_Data;

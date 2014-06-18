@@ -21,32 +21,54 @@ namespace Deimos
         // METHODS
         public void Distribute(byte[] buf)
         {
-            switch (buf[1])
+            if (ChecksumCorrect(buf))
             {
-                case 0x00:
-                    Handshakes.Interpret(buf);
-                    break;
-                case 0x01:
-                    Connections.Interpret(buf);
-                    break;
-                case 0x02:
-                    Disconnections.Interpret(buf);
-                    break;
-                case 0x03:
-                    Chats.Handle(buf);
-                    break;
-                case 0x04:
-                    Broadcasts.Handle(buf);
-                    break;
-                case 0x06:
-                    Players.Interpret(buf);
-                    break;
-                case 0x08:
-                    Sounds.Interpret(buf);
-                    break;
-                default:
-                    return;
+                switch (buf[1])
+                {
+                    case 0x00:
+                        Handshakes.Interpret(buf);
+                        break;
+                    case 0x01:
+                        Connections.Interpret(buf);
+                        break;
+                    case 0x02:
+                        Disconnections.Interpret(buf);
+                        break;
+                    case 0x03:
+                        Chats.Handle(buf);
+                        break;
+                    case 0x04:
+                        Broadcasts.Handle(buf);
+                        break;
+                    case 0x06:
+                        Players.Interpret(buf);
+                        break;
+                    case 0x08:
+                        Sounds.Interpret(buf);
+                        break;
+                    default:
+                        return;
+                }
             }
+        }
+
+        public bool ChecksumCorrect(byte[] buf)
+        {
+            byte supposed = buf[0];
+            int computed = 0;
+
+            for (int i = 1; i < 576; i++)
+            {
+                byte current = buf[i];
+
+                for (int j = 0; current > 0; j++)
+                {
+                    computed += (j % 2 + 1) * (current % 2);
+                    current = (byte)(current >> 1);
+                }
+            }
+
+            return (supposed == ((byte)(computed % 256)));
         }
 
         public void Process()

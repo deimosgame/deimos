@@ -6,7 +6,7 @@ namespace Deimos
 #if WINDOWS
     static class Program
     {
-        public static string PlayerEmail = "tesddt@mail.com";
+        public static string PlayerEmail = "erenus@mail.com";
         public static string PlayerToken = "23601a116dbd467d50c6d8722dffb378b8";
         public static string PlayerTokenRefresh = "q9weiduadhd";
         public static string Username = "vom";

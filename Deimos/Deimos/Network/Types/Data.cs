@@ -39,6 +39,7 @@ namespace Deimos
         public enum WorldDataType
         {
             Unknown,
+            Active,
             Score,
             Name,
             Instance,

@@ -58,6 +58,24 @@ namespace Deimos
                  0.2f
             );
 
+            if (NetworkFacade.IsMultiplayer)
+            {
+                foreach (KeyValuePair<byte, Player> p in NetworkFacade.Players)
+                {
+                    if (!GeneralFacade.SceneManager.ModelManager.LevelModelExists(p.Value.Name))
+                    {
+                        GeneralFacade.SceneManager.ModelManager.LoadModel(
+                            p.Value.Name,
+                            p.Value.GetModelName(),
+                            p.Value.Position,
+                            p.Value.Rotation,
+                            5,
+                            LevelModel.CollisionType.None
+                            );
+                    }
+                }
+            }
+
             token_rl = Objects.AddWeapon("BazookaPickup",
                 2,
                 new Vector3(17, -6, 110),
@@ -200,7 +218,7 @@ namespace Deimos
                     if (pair.Value != null
                         && GeneralFacade.SceneManager.ModelManager.LevelModelExists(pair.Value.Name))
                     {
-                        if (pair.Value.IsAlive())
+                        if (pair.Value.Alive == 0x01)
                         {
                             GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).show = true;
                         }

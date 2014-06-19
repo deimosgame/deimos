@@ -34,6 +34,7 @@ namespace Deimos
             // Player disconnection
             NetworkFacade.NetworkHandling.ServerConnected = false;
             GeneralFacade.GameStateManager.Set(new StartMenuGS());
+            GeneralFacade.GameStateManager.Set(new ErrorScreenGS("Disconnected: " + Reason));
         }
     }
 }

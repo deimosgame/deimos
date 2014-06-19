@@ -18,13 +18,13 @@ namespace Deimos
         }
 
         // Constructor
-        public PlayerCollision(float playerHeight, float playerWidth, float playerDepth)
-            : base(new Vector3(playerWidth, playerHeight, playerDepth))
+        public PlayerCollision(float playerHeight, float playerWidth)
+            : base(new Vector2(playerWidth, playerHeight))
         {
             Nature = ElementNature.Player;
         }
 
-        public override BoundingBox GenerateBox(Vector3 position, Vector3 dimension)
+        private BoundingBox GenerateBox(Vector3 position, Vector3 dimension)
         {
             Vector3 bbTop = new Vector3(
                 position.X + (dimension.X / 2),
@@ -40,6 +40,37 @@ namespace Deimos
                 bbBottom,
                 bbTop
             );
+        }
+
+        public override List<BoundingSphere> GenerateSphere(Vector3 position, Vector2 dimension)
+        {
+            List<BoundingSphere> l = new List<BoundingSphere>();
+
+            float height = dimension.Y;
+            float width = dimension.X;
+
+            l.Add(new BoundingSphere(
+                new Vector3(position.X, position.Y - (height / 5), position.Z),
+                width / 2
+            ));
+            l.Add(new BoundingSphere(
+                new Vector3(position.X, position.Y - 2 * (height / 5), position.Z),
+                width / 2
+            ));
+            l.Add(new BoundingSphere(
+                new Vector3(position.X, position.Y - 3 * (height / 5), position.Z),
+                width / 2
+            ));
+            l.Add(new BoundingSphere(
+                new Vector3(position.X, position.Y - 4 * (height / 5), position.Z),
+                width / 2
+            ));
+            l.Add(new BoundingSphere(
+                new Vector3(position.X, position.Y + (height / 5), position.Z),
+                width / 2
+            ));
+
+            return l;
         }
 
         public override void CollisionEvent(CollisionElement element)

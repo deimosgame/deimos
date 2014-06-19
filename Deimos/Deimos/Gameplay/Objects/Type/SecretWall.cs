@@ -8,7 +8,7 @@ namespace Deimos
 {
     class SecretWall : SecretObject
     {
-        public SecretWall(Vector3 dimensions, string path, float scale)
+        public SecretWall(Vector2 dimensions, string path, float scale)
             : base(dimensions)
         {
             Model = path;

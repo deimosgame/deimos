@@ -28,7 +28,7 @@ namespace Deimos
 
         public string AddWall(string texture, string path, Vector3 position,
             SecretObject.State state,
-            float respawn, Vector3 dimensions, float scale,
+            float respawn, Vector2 dimensions, float scale,
             Vector3 rotation = default(Vector3))
         {
             SecretWall wall = new SecretWall(dimensions, path, scale);

@@ -22,7 +22,7 @@ namespace Deimos
         // Constructor
         public SceneKnifeMG(SceneManager sceneManager)
         {
-            PlayerSize = new Vector3(10, 1, 1);
+            PlayerSize = new Vector2(1, 10);
 
             SceneManager = sceneManager;
             ModelManager = SceneManager.ModelManager;

@@ -24,7 +24,7 @@ namespace Deimos
 
         public SceneCompound(SceneManager sceneManager)
         {
-            PlayerSize = new Vector3(30, 0.5f, 0.5f);
+            PlayerSize = new Vector2(6, 3);
 
             SpawnLocations = new SpawnLocation[] {
                 new SpawnLocation(new Vector3(18, 10, 90), Vector3.Zero)
@@ -91,7 +91,7 @@ namespace Deimos
             token_secret = Secrets.AddWall("Bricks", "Models/SecretWalls/Brick/SecretWallBrick",
                 new Vector3(12, 29, 12), SecretObject.State.Undiscovered,
                 3,
-                new Vector3(10,30,10),
+                new Vector2(10,30),
                 1);
 
             SoundManager.AddSoundEffect("scary", "Sounds/ScaryMusic");

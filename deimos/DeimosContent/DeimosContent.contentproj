@@ -22,9 +22,6 @@
     <RootNamespace>DeimosContent</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CollidableModelProcessor">
-      <HintPath>..\Deimos\CollidableModelProcessor.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.EffectImporter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL">
       <Private>False</Private>
     </Reference>
@@ -159,6 +156,10 @@
     <Folder Include="References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CollidableModelProcessor\CollidableModelProcessor.csproj">
+      <Project>{ae62ad81-fe76-41e3-947d-e02a0f69bd1c}</Project>
+      <Name>CollidableModelProcessor</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\DeferredPipeline\DeferredPipeline.csproj">
       <Project>{0656b47b-f22b-435f-8879-56ea5c1d1f41}</Project>
       <Name>DeferredPipeline</Name>

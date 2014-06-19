@@ -215,51 +215,26 @@ namespace Deimos
                 KeyValuePair<string, ScreenImage> keyValuePair = ElementsImage.ElementAt(i);
                 keyValuePair.Value.Draw(spriteBatch);
             }
-            //foreach (KeyValuePair<string, ScreenImage> elementKeyVal in
-            //    ElementsImage)
-            //{
-            //    elementKeyVal.Value.Draw(spriteBatch);
-            //}
             for (int i = 0; i < ElementsRectangle.Count; i++)
             {
                 KeyValuePair<string, ScreenRectangle> keyValuePair = ElementsRectangle.ElementAt(i);
                 keyValuePair.Value.Draw(spriteBatch);
             }
-            //foreach (KeyValuePair<string, ScreenRectangle> elementKeyVal in
-            //    ElementsRectangle)
-            //{
-            //    elementKeyVal.Value.Draw(spriteBatch);
-            //}
             for (int i = 0; i < ElementsLine.Count; i++)
             {
                 KeyValuePair<string, ScreenLine> keyValuePair = ElementsLine.ElementAt(i);
                 keyValuePair.Value.Draw(spriteBatch);
             }
-            //foreach (KeyValuePair<string, ScreenLine> elementKeyVal in
-            //    ElementsLine)
-            //{
-            //    elementKeyVal.Value.Draw(spriteBatch);
-            //}
             for (int i = 0; i < ElementsText.Count; i++)
             {
                 KeyValuePair<string, ScreenText> keyValuePair = ElementsText.ElementAt(i);
                 keyValuePair.Value.Draw(spriteBatch);
             }
-            //foreach (KeyValuePair<string, ScreenText> elementKeyVal in
-            //    ElementsText)
-            //{
-            //    elementKeyVal.Value.Draw(spriteBatch);
-            //}
             for (int i = 0; i < ElementsTable.Count; i++)
             {
                 KeyValuePair<string, ScreenTable> keyValuePair = ElementsTable.ElementAt(i);
                 keyValuePair.Value.Draw(spriteBatch);
             }
-            //foreach (KeyValuePair<string, ScreenTable> elementKeyVal in
-            //    ElementsTable)
-            //{
-            //    elementKeyVal.Value.Draw(spriteBatch);
-            //}
 
             spriteBatch.End();
         }

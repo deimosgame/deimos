@@ -48,9 +48,6 @@
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="XNAnimationPipeline">
-      <HintPath>..\Deimos\Deimos\XNAnimationPipeline.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeferredRendererModel.cs" />

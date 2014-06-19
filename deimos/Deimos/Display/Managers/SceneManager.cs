@@ -101,8 +101,7 @@ namespace Deimos
 
             PlayerCollision = new PlayerCollision(
                 CurrentScene.PlayerSize.X,
-                CurrentScene.PlayerSize.Y,
-                CurrentScene.PlayerSize.Z
+                CurrentScene.PlayerSize.Y
             );
 
             PlayerCollision.ElementType = CollisionElement.CollisionType.Box;

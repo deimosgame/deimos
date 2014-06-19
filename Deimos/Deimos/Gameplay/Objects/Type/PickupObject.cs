@@ -37,7 +37,7 @@ namespace Deimos
 
         // Constructor
 
-        public PickupObject(Vector3 bbox)
+        public PickupObject(Vector2 bbox)
             : base(bbox)
         {
 

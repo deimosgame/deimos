@@ -32,7 +32,7 @@ namespace Deimos
 
         // Constructor
         public Bullet(Vector3 pos, Vector3 dir, char rep)
-            : base(new Vector3(1f, 1f, 1f))
+            : base(new Vector2(1f, 1f))
         {
             // Setting initial bullet spawn location
             Position = pos;

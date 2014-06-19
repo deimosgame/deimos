@@ -23,7 +23,7 @@ namespace Deimos
             }
         }
 
-        public Vector3 PlayerSize;
+        public Vector2 PlayerSize;
 
         public float TimeLimit;
         public float Elapsed = 0;

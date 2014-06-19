@@ -34,7 +34,7 @@ namespace Deimos
         public float respawn_timer = 0;
 
         // Constructor
-        public SecretObject(Vector3 dimensions)
+        public SecretObject(Vector2 dimensions)
             : base(dimensions)
         {
 

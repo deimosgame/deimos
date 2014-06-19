@@ -30,7 +30,7 @@ namespace Deimos
         // Constructor
         public SceneDeimos(SceneManager sceneManager)
         {
-            PlayerSize = new Vector3(10, 1, 1);
+            PlayerSize = new Vector2(1, 10);
 
 
             SpawnLocations = new SpawnLocation[] {

@@ -56,6 +56,12 @@
     <Compile Include="ModelGeometryContent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XNAnimationPipeline\XNAnimationPipeline.csproj">
+      <Project>{863795eb-0753-4461-af43-48f38828d8e0}</Project>
+      <Name>XNAnimationPipeline</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.ContentPipelineExtensions.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

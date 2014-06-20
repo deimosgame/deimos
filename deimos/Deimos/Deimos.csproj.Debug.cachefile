@@ -496,6 +496,3 @@ Content\Textures\DeferredRendering\null_specular.tga
 Content\Models\DeferredRendering\cone.fbx
 Content\Shaders\Lights\SpotLight.fx
 Content\Models\Map\arena.fbx
-CollidableModelProcessor.dll
-CollidableModel_Windows.dll
-GeometryHelper.dll

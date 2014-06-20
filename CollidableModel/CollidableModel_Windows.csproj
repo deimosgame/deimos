@@ -98,6 +98,12 @@
     <Compile Include="ModelGeometry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XNAnimation\XNAnimation.csproj">
+      <Project>{2a857645-a225-4177-99bd-c8f6d22b72fa}</Project>
+      <Name>XNAnimation</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

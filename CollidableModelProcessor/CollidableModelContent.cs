@@ -18,6 +18,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Content.Pipeline.Processors;
 using Microsoft.Xna.Framework.Content.Pipeline.Graphics;
 using Microsoft.Xna.Framework.Content.Pipeline;
+using XNAnimationPipeline;
 
 namespace CollidableModelProcessor
 {
@@ -29,17 +30,24 @@ namespace CollidableModelProcessor
             get { return mModel; }
         }
 
+        private SkinnedModelContent sModel;
+        public SkinnedModelContent skinnedModel
+        {
+            get { return sModel; }
+        }
+
         private BspTreeContent mCollisionData;
         public BspTreeContent collisionData
         {
             get { return mCollisionData; }
         }
-	
-	
 
-        public CollidableModelContent(ModelContent model, BspTreeContent bspTree )
+
+
+        public CollidableModelContent(ModelContent model, SkinnedModelContent skinnedModel, BspTreeContent bspTree)
         {
             mModel = model;
+            sModel = skinnedModel;
             mCollisionData = bspTree;
         }
     }

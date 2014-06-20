@@ -17,6 +17,7 @@ using System.Text;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using XNAnimation;
 
 
 namespace CollidableModel
@@ -29,13 +30,19 @@ namespace CollidableModel
             get { return mModel; }
         }
 
+        private SkinnedModel sModel;
+        public SkinnedModel skinnedModel
+        {
+            get { return sModel; }
+        }
+
         private BspTree mCollisionData;
         public BspTree collisionData
         {
             get { return mCollisionData; }
         }
 
-        public CollidableModel(Model xnaModel, BspTree tree )
+        public CollidableModel(Model xnaModel, SkinnedModel skinnedModel, BspTree tree )
         {
             mModel = xnaModel;
             mCollisionData = tree;

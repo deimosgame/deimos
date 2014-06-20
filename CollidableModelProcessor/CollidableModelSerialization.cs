@@ -26,6 +26,7 @@ using Microsoft.Xna.Framework.Content.Pipeline;
 using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Compiler;
 using System.IO;
 using System.ComponentModel;
+using XNAnimationPipeline;
 
 namespace CollidableModelProcessor
 {
@@ -36,6 +37,9 @@ namespace CollidableModelProcessor
         {
            // just write the original model
             output.WriteObject<ModelContent>(value.model);
+
+            // write the xna animation one
+            output.WriteObject<SkinnedModelContent>(value.skinnedModel);
 
             // write collision data
             output.WriteObject<BspTreeContent>( value.collisionData );

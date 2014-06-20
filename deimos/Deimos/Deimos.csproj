@@ -246,17 +246,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Tranquillity.dll" />
-    <None Include="CollidableModelProcessor.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="CollidableModel_Windows.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
-    <None Include="GeometryHelper.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

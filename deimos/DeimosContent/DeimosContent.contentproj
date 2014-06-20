@@ -40,9 +40,6 @@
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.VideoImporters, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL">
       <Private>False</Private>
     </Reference>
-    <Reference Include="XNAnimationPipeline">
-      <HintPath>..\Deimos\XNAnimationPipeline.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Fonts\debug.spritefont">
@@ -163,6 +160,10 @@
     <ProjectReference Include="..\..\DeferredPipeline\DeferredPipeline.csproj">
       <Project>{0656b47b-f22b-435f-8879-56ea5c1d1f41}</Project>
       <Name>DeferredPipeline</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\XNAnimationPipeline\XNAnimationPipeline.csproj">
+      <Project>{863795eb-0753-4461-af43-48f38828d8e0}</Project>
+      <Name>XNAnimationPipeline</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -23,6 +23,7 @@ using Microsoft.Xna.Framework.Content;
 using System.IO;
 using System.ComponentModel;
 using CollidableModel;
+using XNAnimation;
 
 namespace CollidableModel
 {
@@ -31,9 +32,10 @@ namespace CollidableModel
         protected override CollidableModel Read(ContentReader input, CollidableModel existingInstance)
         {
             Model model = input.ReadObject<Model>();
+            SkinnedModel skinnedModel = input.ReadObject<SkinnedModel>();
             BspTree tree = input.ReadObject<BspTree>();
 
-            return new CollidableModel( model, tree );
+            return new CollidableModel( model, skinnedModel, tree );
         }
     }
 

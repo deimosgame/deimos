@@ -24,6 +24,7 @@ using Microsoft.Xna.Framework.Content.Pipeline;
 using System.IO;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
+using XNAnimationPipeline;
 
 using TInput = Microsoft.Xna.Framework.Content.Pipeline.Graphics.NodeContent;
 using TOutput = CollidableModelProcessor.CollidableModelContent;
@@ -49,9 +50,20 @@ namespace CollidableModelProcessor
         {
             // prepare processor parameter. If you want to use your own model processor, prepare your custom parameter here
             OpaqueDataDictionary processorParameters = new OpaqueDataDictionary();
+            OpaqueDataDictionary processorParameters2 = new OpaqueDataDictionary();
             // Convert the model. You can use your own model processor by specifying the processor name in the second parameter
             context.Logger.LogImportantMessage("CollidableModelProcessor: Converting model to XNA model format, using processor '{0}'", mModelProcessor);
             ModelContent convertedModel = context.Convert<NodeContent, ModelContent>(input, mModelProcessor, processorParameters);
+            SkinnedModelContent skinnedModel = null;
+            try
+            {
+                skinnedModel = context.Convert<NodeContent, SkinnedModelContent>(input, "SkinnedModelProcessor", processorParameters2);
+            }
+            catch (Exception)
+            {
+                // This is when XNAnimation can't be used
+            }
+            
             context.Logger.LogImportantMessage("CollidableModelProcessor: Done");
 
             // extract geometry data (optimized for the collision structure)
@@ -87,7 +99,7 @@ namespace CollidableModelProcessor
 
             }
         
-            CollidableModelContent collidableModel = new CollidableModelContent( convertedModel, collisionData );
+            CollidableModelContent collidableModel = new CollidableModelContent( convertedModel, skinnedModel, collisionData );
             return collidableModel;
         }
 

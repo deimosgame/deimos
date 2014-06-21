@@ -21,6 +21,17 @@ namespace Deimos
             Disco.Encode();
 
             NetworkFacade.UDP_Sending.Enqueue(Disco);
+
+            // Player disconnection
+            NetworkFacade.Local = true;
+            NetworkFacade.NetworkHandling.Writer.Flush();
+            NetworkFacade.NetworkHandling.Reader.Flush();
+            NetworkFacade.NetworkHandling.Writer.Close();
+            NetworkFacade.NetworkHandling.Reader.Close();
+            NetworkFacade.NetworkHandling.TCP_Socket.Close();
+            NetworkFacade.NetworkHandling.UDP_Socket.Close();
+            NetworkFacade.NetworkHandling.ServerConnected = false;
+            GeneralFacade.GameStateManager.Set(new StartMenuGS());
         }
 
         // This method interprets disconnect datagrams

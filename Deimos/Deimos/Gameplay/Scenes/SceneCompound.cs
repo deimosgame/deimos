@@ -95,7 +95,7 @@ namespace Deimos
 
             SoundManager.AddSoundEffect("scary", "Sounds/ScaryMusic");
 
-            if (NetworkFacade.IsMultiplayer)
+            if (!NetworkFacade.Local)
             {
                 NetworkFacade.Players.LoadModels();
             }
@@ -175,7 +175,7 @@ namespace Deimos
         // Update our things at each ticks
         public override void Update(float dt)
         {
-            if (NetworkFacade.IsMultiplayer)
+            if (!NetworkFacade.Local)
             {
                 NetworkFacade.Players.Update();
             }

@@ -106,6 +106,7 @@ namespace Deimos
 
                         if (NetworkFacade.NetworkHandling.ServerConnected)
                         {
+                            NetworkFacade.Local = false;
                             GameplayFacade.Objects = new ObjectsList();
                             GameplayFacade.Weapons = new WeaponsList();
                             GameplayFacade.Minigames = new MinigameManager();

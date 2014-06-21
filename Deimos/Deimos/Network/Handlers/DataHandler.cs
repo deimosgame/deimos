@@ -50,8 +50,6 @@ namespace Deimos
                         break;
                     case Data.WorldDataType.Active:
                         NetworkFacade.Players[data.PropertyOf].Alive = data.Byte_Data;
-                        DisplayFacade.DebugScreen.Debug("Updated player life state: "+ 
-                            data.Byte_Data.ToString());
                         break;
                     case Data.WorldDataType.Score:
                         NetworkFacade.Players[data.PropertyOf].Score =

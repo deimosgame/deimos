@@ -15,6 +15,7 @@ namespace Deimos
         public byte WeaponModel;
 
         public string CurrentInstance = "main";
+
         public string NextInstance = "main";
         public string MainInstance = "main";
         public byte MGNumber;

@@ -225,7 +225,9 @@
     <Compile Include="Network\Handlers\Subhandlers\Chat.cs" />
     <Compile Include="Network\Handlers\Subhandlers\Connection.cs" />
     <Compile Include="Network\Handlers\Subhandlers\Disconnection.cs" />
+    <Compile Include="Network\Handlers\Subhandlers\EntityList.cs" />
     <Compile Include="Network\Handlers\Subhandlers\Handshake.cs" />
+    <Compile Include="Network\Handlers\Subhandlers\MinigameTrigger.cs" />
     <Compile Include="Network\Handlers\Subhandlers\Move.cs" />
     <Compile Include="Network\Handlers\Subhandlers\PlayerList.cs" />
     <Compile Include="Network\Handlers\Subhandlers\Sound.cs" />

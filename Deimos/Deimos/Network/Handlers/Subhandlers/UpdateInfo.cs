@@ -23,7 +23,7 @@ namespace Deimos
             update.AddData(buf[3]);
             update.Encode();
 
-            NetworkFacade.UDP_Sending.Enqueue(update);
+            NetworkFacade.TCP_Sending.Enqueue(update);
         }
     }
 }

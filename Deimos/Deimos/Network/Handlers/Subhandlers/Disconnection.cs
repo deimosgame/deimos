@@ -32,6 +32,12 @@ namespace Deimos
             Reason = ExtractString(Disco.Encoded_buffer, 4);
 
             // Player disconnection
+            NetworkFacade.NetworkHandling.Writer.Flush();
+            NetworkFacade.NetworkHandling.Reader.Flush();
+            NetworkFacade.NetworkHandling.Writer.Close();
+            NetworkFacade.NetworkHandling.Reader.Close();
+            NetworkFacade.NetworkHandling.TCP_Socket.Close();
+            NetworkFacade.NetworkHandling.UDP_Socket.Close();
             NetworkFacade.NetworkHandling.ServerConnected = false;
             GeneralFacade.GameStateManager.Set(new StartMenuGS());
             GeneralFacade.GameStateManager.Set(new ErrorScreenGS("Disconnected: " + Reason));

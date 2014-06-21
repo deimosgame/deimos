@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -12,6 +13,9 @@ namespace Deimos
         // Connection handling
         public Socket UDP_Socket;
         public Socket TCP_Socket;
+
+        public NetworkStream Writer;
+        public NetworkStream Reader;
 
         public IPAddress server_address;
         public IPAddress local_address;
@@ -44,6 +48,7 @@ namespace Deimos
         {
             server_address = IPAddress.Parse(server);
             local_address = IPAddress.Parse(local);
+            server_port = serverPort;
 
             server_endpoint = new IPEndPoint(server_address, serverPort);
             ip_endpoint = new IPEndPoint(local_address, localPort);
@@ -52,13 +57,15 @@ namespace Deimos
             try
             {
                 // establishing connection
-                TCP_Socket.Connect(end_point);
+                TCP_Socket.Connect(server_address, server_port);
             }
             catch
             {
                 GeneralFacade.GameStateManager.Set(new ErrorScreenGS("TCP Connection could not be established"));
             }
 
+            Writer = new NetworkStream(TCP_Socket);
+            Reader = new NetworkStream(TCP_Socket);
 
             try
             {
@@ -89,12 +96,34 @@ namespace Deimos
 
         public void TCP_Send(Packet pack)
         {
-
+            if (Writer.CanWrite)
+            {
+                Writer.Write(pack.Encoded_buffer, 0, pack.Encoded_buffer.Length);
+                Writer.Flush();
+            }
         }
 
         public void TCP_Receive()
         {
+            // clearing the byte buffer
+            TCP_RBuf = new byte[576];
 
+            // waiting for receipt
+            if (Reader.CanRead)
+            {
+                Reader.Read(TCP_RBuf, 0, 576);
+                Reader.Flush();
+            }
+
+            // once the packet received, handing it over to the
+            // interpretation network thread
+
+            while (!NetworkFacade.Network.TCPGuard)
+            {
+                System.Threading.Thread.Sleep(1);
+            }
+
+            NetworkFacade.TCP_Receiving.Enqueue(UDP_RBuf);
         }
 
         // Sending our datagrams to the server

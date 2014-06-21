@@ -14,9 +14,9 @@ namespace Deimos
 
         public void Interpret(byte[] buf)
         {
-            OldPList = new Dictionary<byte, Player>(NetworkFacade.Players);
+            OldPList = new Dictionary<byte, Player>(NetworkFacade.Players.List);
 
-            NetworkFacade.Players.Clear();
+            NetworkFacade.Players.List.Clear();
 
             int n = 0;
             int i = 4;
@@ -33,14 +33,14 @@ namespace Deimos
                     Player playa = new Player();
                     playa.Name = name;
 
-                    NetworkFacade.Players.Add(uid, playa);
+                    NetworkFacade.Players.List.Add(uid, playa);
                 }
             }
 
             N_Players = (uint)n;
 
             HandleRenew();
-            HandleModels();
+            NetworkFacade.Players.LoadModels();
         }
 
         public void HandleRenew()
@@ -49,7 +49,7 @@ namespace Deimos
 
             foreach (KeyValuePair<byte, Player> p in OldPList)
             {
-                if (!NetworkFacade.Players.ContainsKey(p.Key))
+                if (!NetworkFacade.Players.List.ContainsKey(p.Key))
                 {
                     ToBeRemoved.Add(p.Value);
                 }
@@ -61,25 +61,5 @@ namespace Deimos
                     (p.Name);
             }
         }
-
-        public void HandleModels()
-        {
-                foreach (KeyValuePair<byte, Player> p in NetworkFacade.Players)
-                {
-                    if (!GeneralFacade.SceneManager.ModelManager.LevelModelExists(p.Value.Name))
-                    {
-                    GeneralFacade.SceneManager.ModelManager.LoadModel(
-                        p.Value.Name,
-                        p.Value.GetModelName(),
-                        p.Value.Position,
-                        p.Value.Rotation,
-                        5,
-                        LevelModel.CollisionType.None
-                        );
-                    }
-                }
-
-        }
-        
     }
 }

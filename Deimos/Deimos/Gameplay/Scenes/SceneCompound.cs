@@ -48,7 +48,6 @@ namespace Deimos
 
         public override void Load()
         {
-
                 // Loading the map
             ModelManager.LoadModel(
                  "ourMap",
@@ -57,24 +56,6 @@ namespace Deimos
                  Vector3.Zero,
                  0.2f
             );
-
-            if (NetworkFacade.IsMultiplayer)
-            {
-                foreach (KeyValuePair<byte, Player> p in NetworkFacade.Players)
-                {
-                    if (!GeneralFacade.SceneManager.ModelManager.LevelModelExists(p.Value.Name))
-                    {
-                        GeneralFacade.SceneManager.ModelManager.LoadModel(
-                            p.Value.Name,
-                            p.Value.GetModelName(),
-                            p.Value.Position,
-                            p.Value.Rotation,
-                            5,
-                            LevelModel.CollisionType.None
-                            );
-                    }
-                }
-            }
 
             token_rl = Objects.AddWeapon("BazookaPickup",
                 2,
@@ -113,6 +94,11 @@ namespace Deimos
                 1);
 
             SoundManager.AddSoundEffect("scary", "Sounds/ScaryMusic");
+
+            if (NetworkFacade.IsMultiplayer)
+            {
+                NetworkFacade.Players.LoadModels();
+            }
         }
 
         // Initialize our lights and such
@@ -184,57 +170,20 @@ namespace Deimos
 
             SoundManager.Play3D("scary", DisplayFacade.Camera.Position,
                 new Vector3(0, 0, -0));
-
-            //foreach (KeyValuePair<byte, Player> p in NetworkFacade.Players)
-            //{
-            //    ModelManager.LoadModel(
-            //        p.Value.Name,
-            //        p.Value.GetModelName(),
-            //        p.Value.Position,
-            //        p.Value.Rotation,
-            //        5,
-            //        LevelModel.CollisionType.None
-            //        );
-
-            //    ModelManager.GetLevelModel(p.Value.Name).show = true;
-            //}
         }
 
         // Update our things at each ticks
         public override void Update(float dt)
         {
+            if (NetworkFacade.IsMultiplayer)
+            {
+                NetworkFacade.Players.Update();
+            }
+
             SoundManager.SetListener("scary", GameplayFacade.ThisPlayer.Position);
 
             Objects.Update(GameplayFacade.ThisPlayer.dt);
             Secrets.Update(GameplayFacade.ThisPlayer.dt);
-
-
-            if (NetworkFacade.IsMultiplayer)
-            {
-                for (int i = 0; i < NetworkFacade.Players.Count; i++)
-                {
-                    KeyValuePair<byte, Player> pair = NetworkFacade.Players.ElementAt(i);
-
-                    if (pair.Value != null
-                        && GeneralFacade.SceneManager.ModelManager.LevelModelExists(pair.Value.Name))
-                    {
-                        if (pair.Value.Alive == 0x01 && (pair.Value.CurrentInstance == GameplayFacade.ThisPlayer.CurrentInstance))
-                        {
-                            GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).show = true;
-                        }
-                        else
-                        {
-                            GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).show = false;
-                        }
-
-                        GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).Position =
-                            pair.Value.Position;
-
-                        GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).Rotation =
-                            pair.Value.Rotation;
-                    }
-                }
-            }
 
             if (Elapsed < TimeLimit)
             {

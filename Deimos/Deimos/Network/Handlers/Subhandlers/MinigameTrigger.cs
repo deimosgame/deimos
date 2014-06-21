@@ -39,7 +39,7 @@ namespace Deimos
             {
                 GameplayFacade.ThisPlayer.IsMG = true;
                 GameplayFacade.ThisPlayer.MGNumber = buf[6];
-                NetworkFacade.Players[buf[7]].CurrentInstance = GetInstanceName(buf[4]);
+                NetworkFacade.Players.List[buf[7]].CurrentInstance = GetInstanceName(buf[4]);
 
                 switch (buf[4])
                 {
@@ -52,7 +52,7 @@ namespace Deimos
             }
             else
             {
-                NetworkFacade.Players[buf[7]].CurrentInstance = "main";
+                NetworkFacade.Players.List[buf[7]].CurrentInstance = "main";
 
                 switch (buf[4])
                 {

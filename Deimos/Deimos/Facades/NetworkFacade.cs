@@ -15,6 +15,8 @@ namespace Deimos
         static public bool ServerIsLocal = false;
         ////////         /////          //////
 
+        static public bool Local = true;
+
         static public bool ThreadStart1 = false;
         static public bool ThreadStart2 = false;
 
@@ -29,7 +31,7 @@ namespace Deimos
         static public Queue UDP_Sending = new Queue();
         static public Queue UDP_Receiving = new Queue();
 
-        static public Dictionary<byte, Player> Players = new Dictionary<byte, Player>();
+        static public PlayerManager Players = new PlayerManager();
 
         static public Thread Outgoing = new Thread(NetworkFacade.Network.HandleSend);
         static public Thread Incoming = new Thread(NetworkFacade.Network.HandleReceive);

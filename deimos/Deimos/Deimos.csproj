@@ -233,6 +233,7 @@
     <Compile Include="Network\Handlers\Subhandlers\Sound.cs" />
     <Compile Include="Network\Handlers\Subhandlers\UpdateInfo.cs" />
     <Compile Include="Network\NetworkManager.cs" />
+    <Compile Include="Network\PlayerManager.cs" />
     <Compile Include="Network\Types\Data.cs" />
     <Compile Include="Network\Types\Packet.cs" />
     <Compile Include="Network\Types\Subhandler.cs" />

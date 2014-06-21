@@ -20,7 +20,7 @@ namespace Deimos
             M.AddData(position.Z);
             M.Encode();
 
-            NetworkFacade.Sending.Enqueue(M);
+            NetworkFacade.UDP_Sending.Enqueue(M);
         }
 
         public void Send(byte sound)
@@ -33,7 +33,7 @@ namespace Deimos
 
             M.Encode();
 
-            NetworkFacade.Sending.Enqueue(M);
+            NetworkFacade.UDP_Sending.Enqueue(M);
         }
 
         public void Interpret(byte[] buf)

@@ -24,8 +24,10 @@ namespace Deimos
         static public DataHandler DataHandling = new DataHandler();
         static public NetworkHandler NetworkHandling = new NetworkHandler();
 
-        static public Queue Sending = new Queue();
-        static public Queue Receiving = new Queue();
+        static public Queue TCP_Sending = new Queue();
+        static public Queue TCP_Receiving = new Queue();
+        static public Queue UDP_Sending = new Queue();
+        static public Queue UDP_Receiving = new Queue();
 
         static public Dictionary<byte, Player> Players = new Dictionary<byte, Player>();
 

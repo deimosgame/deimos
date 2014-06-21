@@ -20,7 +20,7 @@ namespace Deimos
             Disco.Packet_ID = 0x02;
             Disco.Encode();
 
-            NetworkFacade.Sending.Enqueue(Disco);
+            NetworkFacade.UDP_Sending.Enqueue(Disco);
         }
 
         // This method interprets disconnect datagrams

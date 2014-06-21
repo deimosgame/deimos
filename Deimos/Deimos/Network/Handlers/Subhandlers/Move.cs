@@ -54,7 +54,7 @@ namespace Deimos
                 move.Encode();
 
                 // Let us now add the packet to the sending queue
-                NetworkFacade.Sending.Enqueue(move);
+                NetworkFacade.UDP_Sending.Enqueue(move);
             }
             else
             {

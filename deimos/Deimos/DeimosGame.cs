@@ -100,15 +100,14 @@ namespace Deimos
                 NetworkFacade.Outgoing.IsBackground = true;
                 NetworkFacade.Outgoing.Priority = ThreadPriority.BelowNormal;
                 // Receiving thread
-                NetworkFacade.Incoming.Name = "in";
-                NetworkFacade.Incoming.IsBackground = true;
+                NetworkFacade.TCPIncoming.Name = "tcp_in";
+                NetworkFacade.TCPIncoming.IsBackground = true;
+                NetworkFacade.UDPIncoming.Name = "udp_in";
+                NetworkFacade.UDPIncoming.IsBackground = true;
                 // Interpreting thread
                 NetworkFacade.Interpret.Name = "proc";
                 NetworkFacade.Interpret.IsBackground = true;
-                // World updating thread
-                NetworkFacade.World.Name = "world";
-                NetworkFacade.World.IsBackground = true;
-
+                // Move packet sending thread
                 NetworkFacade.MovePacket.Name = "move";
                 NetworkFacade.MovePacket.IsBackground = true;
 

@@ -58,14 +58,14 @@ namespace Deimos
             {
                 // establishing connection
                 TCP_Socket.Connect(server_address, server_port);
+
+                Writer = new NetworkStream(TCP_Socket);
+                Reader = new NetworkStream(TCP_Socket);
             }
             catch
             {
                 GeneralFacade.GameStateManager.Set(new ErrorScreenGS("TCP Connection could not be established"));
             }
-
-            Writer = new NetworkStream(TCP_Socket);
-            Reader = new NetworkStream(TCP_Socket);
 
             try
             {
@@ -96,7 +96,7 @@ namespace Deimos
 
         public void TCP_Send(Packet pack)
         {
-            if (Writer.CanWrite)
+            if (Writer != null && Writer.CanWrite)
             {
                 Writer.Write(pack.Encoded_buffer, 0, pack.Encoded_buffer.Length);
                 Writer.Flush();
@@ -109,21 +109,21 @@ namespace Deimos
             TCP_RBuf = new byte[576];
 
             // waiting for receipt
-            if (Reader.CanRead)
+            if (Reader != null && Reader.CanRead)
             {
                 Reader.Read(TCP_RBuf, 0, 576);
                 Reader.Flush();
+
+                // once the packet received, handing it over to the
+                // interpretation network thread
+
+                while (!NetworkFacade.Network.TCPGuard)
+                {
+                    System.Threading.Thread.Sleep(1);
+                }
+
+                NetworkFacade.TCP_Receiving.Enqueue(TCP_RBuf);
             }
-
-            // once the packet received, handing it over to the
-            // interpretation network thread
-
-            while (!NetworkFacade.Network.TCPGuard)
-            {
-                System.Threading.Thread.Sleep(1);
-            }
-
-            NetworkFacade.TCP_Receiving.Enqueue(UDP_RBuf);
         }
 
         // Sending our datagrams to the server

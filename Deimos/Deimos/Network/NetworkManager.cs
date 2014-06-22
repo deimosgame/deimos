@@ -37,11 +37,18 @@ namespace Deimos
             }
         }
 
-        public void HandleReceive()
+        public void ReceiveTCP()
         {
             while (true)
             {
                 NetworkFacade.NetworkHandling.TCP_Receive();
+            }
+        }
+
+        public void ReceiveUDP()
+        {
+            while (true)
+            {
                 NetworkFacade.NetworkHandling.UDP_Receive();
             }
         }
@@ -73,17 +80,8 @@ namespace Deimos
                 }
 
                 NetworkFacade.MainHandling.Process();
-
-                System.Threading.Thread.Sleep(1);
-            }
-        }
-
-
-        public void UpdateWorld()
-        {
-            while (true)
-            {
                 NetworkFacade.DataHandling.Process();
+
                 System.Threading.Thread.Sleep(1);
             }
         }

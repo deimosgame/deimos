@@ -85,18 +85,21 @@ namespace Deimos
                             "192.168.75.1", 1518, "192.168.75.51", 8000);
                 }
 
-                    if (!NetworkFacade.ThreadStart1)
-                    {
-                        NetworkFacade.Outgoing.Start();
-                        NetworkFacade.Incoming.Start();
-                        NetworkFacade.Interpret.Start();
+                if (!NetworkFacade.ThreadStart1)
+                {
+                    NetworkFacade.Outgoing.Start();
+                    NetworkFacade.TCPIncoming.Start();
+                    NetworkFacade.UDPIncoming.Start();
+                    NetworkFacade.Interpret.Start();
 
-                        NetworkFacade.ThreadStart1 = true;
-                    }
+                    NetworkFacade.ThreadStart1 = true;
+                }
 
-                    
+                if (!NetworkFacade.NetworkHandling.Handshook)
+                {
                     NetworkFacade.NetworkHandling.ShakeHands();
                     System.Threading.Thread.Sleep(2000);
+                }
 
                     if (NetworkFacade.NetworkHandling.Handshook)
                     {
@@ -137,10 +140,10 @@ namespace Deimos
                         }
 
                     }
-                    else
-                    {
-                        GeneralFacade.GameStateManager.Set(new ErrorScreenGS("Could not connect"));
-                    }
+                    //else
+                    //{
+                    //    GeneralFacade.GameStateManager.Set(new ErrorScreenGS("Could not connect"));
+                    //}
 
             };
             serverList.Add(testRow);

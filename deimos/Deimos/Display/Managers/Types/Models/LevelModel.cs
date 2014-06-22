@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using XNAnimation.Controllers;
 
 namespace Deimos
 {
@@ -48,6 +49,11 @@ namespace Deimos
             set;
         }
         public CollidableModel.CollidableModel CollisionModel
+        {
+            get;
+            set;
+        }
+        public AnimationController AnimationController
         {
             get;
             set;

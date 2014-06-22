@@ -10,7 +10,7 @@ namespace Deimos
     {
         public override GameStates GameState
         {
-            get { return GameStates.Pause; }
+            get { return GameStates.PauseMenu; }
         }
 
         public override void PreSet()

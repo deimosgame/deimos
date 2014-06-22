@@ -67,7 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XNAnimation\XNAnimation.csproj">
-      <Project>{2A857645-A225-4177-99BD-C8F6D22B72FA}</Project>
+      <Project>{2a857645-a225-4177-99bd-c8f6d22b72fa}</Project>
       <Name>XNAnimation</Name>
     </ProjectReference>
   </ItemGroup>

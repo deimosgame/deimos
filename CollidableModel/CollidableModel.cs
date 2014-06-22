@@ -31,7 +31,7 @@ namespace CollidableModel
         }
 
         private SkinnedModel sModel;
-        public SkinnedModel skinnedModel
+        public SkinnedModel SkinnedModel
         {
             get { return sModel; }
         }
@@ -46,6 +46,7 @@ namespace CollidableModel
         {
             mModel = xnaModel;
             mCollisionData = tree;
+            sModel = skinnedModel;
         }
 
     }

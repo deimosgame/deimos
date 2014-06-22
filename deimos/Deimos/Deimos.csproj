@@ -149,9 +149,9 @@
     <Compile Include="Display\Particles\Systems\SmokeParticleSystem.cs" />
     <Compile Include="Facades\HelperFacade.cs" />
     <Compile Include="Facades\NetworkFacade.cs" />
+    <Compile Include="Gameplay\GameStates\ConfigMenuGS.cs" />
     <Compile Include="Gameplay\GameStates\DeadScreenGS.cs" />
     <Compile Include="Gameplay\GameStates\ErrorScreenGS.cs" />
-    <Compile Include="Gameplay\GameStates\GraphicOptionsGS.cs" />
     <Compile Include="Gameplay\GameStates\IntroGS.cs" />
     <Compile Include="Gameplay\GameStates\IntroStartingGS.cs" />
     <Compile Include="Gameplay\GameStates\LoadingLevelGS.cs" />
@@ -254,6 +254,10 @@
     <ProjectReference Include="..\..\CollidableModel\CollidableModel_Windows.csproj">
       <Project>{16841fc6-10a9-460e-bde9-37f205a80676}</Project>
       <Name>CollidableModel_Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\XNAnimation\XNAnimation.csproj">
+      <Project>{2a857645-a225-4177-99bd-c8f6d22b72fa}</Project>
+      <Name>XNAnimation</Name>
     </ProjectReference>
     <ProjectReference Include="..\DeimosContent\DeimosContent.contentproj">
       <Name>DeimosContent</Name>

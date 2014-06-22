@@ -5,6 +5,8 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Tranquillity;
 using Microsoft.Xna.Framework.Graphics;
+using XNAnimation.Controllers;
+using XNAnimation;
 
 namespace Deimos
 {
@@ -24,7 +26,7 @@ namespace Deimos
 
         public SceneCompound(SceneManager sceneManager)
         {
-            PlayerSize = new Vector2(6, 3);
+            PlayerSize = new Vector2(5.5f, 3);
 
             SpawnLocations = new SpawnLocation[] {
                 new SpawnLocation(new Vector3(18, 10, 90), Vector3.Zero)
@@ -71,7 +73,7 @@ namespace Deimos
                             p.Value.Rotation,
                             5,
                             LevelModel.CollisionType.None
-                            );
+                        );
                     }
                 }
             }
@@ -81,14 +83,14 @@ namespace Deimos
                 new Vector3(17, -6, 110),
                 PickupObject.State.Active,
                 30
-                );
+            );
 
             token_health = Objects.AddEffect("Health Pack",
                 new Vector3(1, -6, 96),
                 PickupObject.State.Active,
                 50,
                 15
-                );
+            );
 
             token_speed = Objects.AddEffect("Speed Boost",
                 new Vector3(32, -6, 87),
@@ -96,7 +98,7 @@ namespace Deimos
                 15,
                 10,
                 5
-                );
+            );
 
             token_gravity = Objects.AddEffect("Gravity Boost",
                 new Vector3(32, -5, 106),
@@ -104,13 +106,36 @@ namespace Deimos
                 1,
                 10,
                 5
-                );
+            );
 
             token_secret = Secrets.AddWall("Bricks", "Models/SecretWalls/Brick/SecretWallBrick",
                 new Vector3(12, 29, 12), SecretObject.State.Undiscovered,
                 3,
                 new Vector2(10,30),
-                1);
+                1
+            );
+
+
+            // Animations
+            ModelManager.LoadModel(
+                 "dude",
+                 "Models/Characters/dude/dude", // Model
+                 new Vector3(15, 1, -30), // Location
+                 Vector3.Zero,
+                 0.2f,
+                 LevelModel.CollisionType.None
+            );
+            SkinnedModel skinnedModel = ModelManager.GetLevelModel("dude").CollisionModel.SkinnedModel;
+            AnimationController animationController = ModelManager.GetLevelModel("dude").AnimationController;
+            animationController.Speed = 0.5f;
+
+            animationController.TranslationInterpolation = InterpolationMode.Linear;
+            animationController.OrientationInterpolation = InterpolationMode.Linear;
+            animationController.ScaleInterpolation = InterpolationMode.Linear;
+
+            animationController.StartClip(skinnedModel.AnimationClips["Take 001"]);
+
+
 
             SoundManager.AddSoundEffect("scary", "Sounds/ScaryMusic");
         }

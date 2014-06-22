@@ -99,9 +99,32 @@ namespace Deimos
                 }
             );
             DisplayFacade.ScreenElementManager.AddImage(
-                "StartScreenMenuQuit",
+                "StartScreenMenuConfig",
                 (int)((510 - imageWidth) * coeffX),
                 390,
+                coeffX,
+                coeffY,
+                1,
+                DisplayFacade.MenuImages["StartMenuConfig"],
+                delegate(ScreenElement el, DeimosGame game)
+                {
+                    GeneralFacade.GameStateManager.Set(new ConfigMenuGS());
+                },
+                delegate(ScreenElement el, DeimosGame game)
+                {
+                    ScreenImage t = DisplayFacade.ScreenElementManager.GetImage("StartScreenMenuConfig");
+                    t.Image = DisplayFacade.MenuImages["StartMenuConfigHover"];
+                },
+                delegate(ScreenElement el, DeimosGame game)
+                {
+                    ScreenImage t = DisplayFacade.ScreenElementManager.GetImage("StartScreenMenuConfig");
+                    t.Image = DisplayFacade.MenuImages["StartMenuConfig"];
+                }
+            );
+            DisplayFacade.ScreenElementManager.AddImage(
+                "StartScreenMenuQuit",
+                (int)((490 - imageWidth) * coeffX),
+                530,
                 coeffX,
                 coeffY,
                 1,
@@ -128,6 +151,7 @@ namespace Deimos
             DisplayFacade.BlurredScene = false;
             DisplayFacade.ScreenElementManager.RemoveImage("StartScreenMenuBackground");
             DisplayFacade.ScreenElementManager.RemoveImage("StartScreenMenuPlay");
+            DisplayFacade.ScreenElementManager.RemoveImage("StartScreenMenuConfig");
             DisplayFacade.ScreenElementManager.RemoveImage("StartScreenMenuServers");
             DisplayFacade.ScreenElementManager.RemoveImage("StartScreenMenuQuit");
         }

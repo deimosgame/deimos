@@ -1734,6 +1734,69 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Images\Menu\StartMenu\config.png">
+      <Name>config</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\Menu\StartMenu\configHover.png">
+      <Name>configHover</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Images\Buttons\Config\forward.png">
+      <Name>forward</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\Buttons\Config\forwardHover.png">
+      <Name>forwardHover</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Characters\dude\dude.fbx">
+      <Name>dude</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CollidableModelProcessor</Processor>
+      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
+      <ProcessorParameters_AnimatedModel>True</ProcessorParameters_AnimatedModel>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Characters\dude\head.tga">
+      <Name>head</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\dude\jacket.tga">
+      <Name>jacket</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\dude\pants.tga">
+      <Name>pants</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Characters\dude\upBodyC.tga">
+      <Name>upBodyC</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Characters\dwarf\Dwarf.fbx">
+      <Name>Dwarf</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CollidableModelProcessor</Processor>
+      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
+    </Compile>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -6,6 +6,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using XNAnimation.Controllers;
 
 
 namespace Deimos
@@ -52,6 +53,12 @@ namespace Deimos
             thisLevelModel.Rotation = rotation;
             thisLevelModel.CollisionDetection = collisionType;
             thisLevelModel.CollisionModel = thisModelCollision;
+            var test = modelName;
+            if (thisLevelModel.CollisionModel.SkinnedModel != null)
+            {
+                thisLevelModel.AnimationController =
+                    new AnimationController(thisLevelModel.CollisionModel.SkinnedModel.SkeletonBones);
+            }
             LoadedLevelModels.Add(modelName, thisLevelModel);
             GeneralFacade.SceneManager.CollisionManager.AddLevelModel(
                 thisLevelModel,
@@ -182,6 +189,25 @@ namespace Deimos
             return box;
         }
 
+
+        public void Update(GameTime gameTime)
+        {
+            foreach (var model in LoadedLevelModels)
+            {
+                if (model.Value.AnimationController != null)
+                {
+                    model.Value.AnimationController.Update(gameTime.ElapsedGameTime, Matrix.Identity);
+                }
+            }
+            foreach (var model in LoadedPrivateModels)
+            {
+                if (model.Value.AnimationController != null)
+                {
+                    model.Value.AnimationController.Update(gameTime.ElapsedGameTime, Matrix.Identity);
+                }
+            }
+        }
+
         /// <summary>
         /// Draw all the models, applying the effect to them.
         /// </summary>
@@ -214,7 +240,15 @@ namespace Deimos
                     LevelModel levelModel = thisLevelModel.Value;
 
                     Matrix[] transforms = new Matrix[levelModel.CollisionModel.model.Bones.Count];
-                    levelModel.CollisionModel.model.CopyAbsoluteBoneTransformsTo(transforms);
+                    if (levelModel.AnimationController != null)
+                    {
+                        transforms = levelModel.AnimationController.SkinnedBoneTransforms;
+                    }
+                    else
+                    {
+                        levelModel.CollisionModel.model.CopyAbsoluteBoneTransformsTo(transforms);
+                    }
+                    
 
                     foreach (ModelMesh mesh in levelModel.CollisionModel.model.Meshes)
                     {

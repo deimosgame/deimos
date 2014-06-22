@@ -51,18 +51,16 @@ namespace CollidableModelProcessor
             // prepare processor parameter. If you want to use your own model processor, prepare your custom parameter here
             OpaqueDataDictionary processorParameters = new OpaqueDataDictionary();
             OpaqueDataDictionary processorParameters2 = new OpaqueDataDictionary();
+            SkinnedModelContent skinnedModel = null;
+            if (AnimatedModel)
+            {
+                skinnedModel = context.Convert<NodeContent, SkinnedModelContent>(input, "SkinnedModelProcessor", processorParameters2);
+                context.Logger.LogImportantMessage("XNANIMATION: A MODEL HAS BEEN GENERATED!");
+            }
             // Convert the model. You can use your own model processor by specifying the processor name in the second parameter
             context.Logger.LogImportantMessage("CollidableModelProcessor: Converting model to XNA model format, using processor '{0}'", mModelProcessor);
             ModelContent convertedModel = context.Convert<NodeContent, ModelContent>(input, mModelProcessor, processorParameters);
-            SkinnedModelContent skinnedModel = null;
-            try
-            {
-                skinnedModel = context.Convert<NodeContent, SkinnedModelContent>(input, "SkinnedModelProcessor", processorParameters2);
-            }
-            catch (Exception)
-            {
-                // This is when XNAnimation can't be used
-            }
+            
             
             context.Logger.LogImportantMessage("CollidableModelProcessor: Done");
 
@@ -183,6 +181,16 @@ namespace CollidableModelProcessor
         {
             get { return mNumProcessingThreads; }
             set { mNumProcessingThreads = value; }
+        }
+
+        private bool animatedModel = false;
+        [DisplayName("AnimatedModel")]
+        [DefaultValue(false)]
+        [Description("If it is an animated model, will use the XNAnimation content pipeline.")]
+        public bool AnimatedModel
+        {
+            get { return animatedModel; }
+            set { animatedModel = value; }
         }
     }
 }

@@ -28,7 +28,9 @@ namespace Deimos
             {
                 return ModelList[name];
             }
-            var thisContent = Content.Load<CollidableModel.CollidableModel>(name);
+            CollidableModel.CollidableModel thisContent = null;
+            thisContent = Content.Load<CollidableModel.CollidableModel>(name);
+            
             ModelList.Add(name, thisContent);
             return thisContent;
         }

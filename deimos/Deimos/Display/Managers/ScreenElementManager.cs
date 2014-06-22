@@ -73,10 +73,11 @@ namespace Deimos
            float scaleY, int zIndex, Texture2D image,
             Action<ScreenElement, DeimosGame> onClick,
             Action<ScreenElement, DeimosGame> onHover,
-            Action<ScreenElement, DeimosGame> onOut)
+            Action<ScreenElement, DeimosGame> onOut,
+            Action<ScreenElement, DeimosGame, Keys> onKeyPress)
         {
             ScreenImage element =
-                new ScreenImage(posX, posY, scaleX, scaleY, zIndex, image, onClick, onHover, onOut);
+                new ScreenImage(posX, posY, scaleX, scaleY, zIndex, image, onClick, onHover, onOut, onKeyPress);
             ElementsImage.Add(
                 name,
                 element
@@ -87,10 +88,18 @@ namespace Deimos
 
             return element;
         }
+        public ScreenImage AddImage(string name, int posX, int posY, float scaleX,
+           float scaleY, int zIndex, Texture2D image,
+            Action<ScreenElement, DeimosGame> onClick,
+            Action<ScreenElement, DeimosGame> onHover,
+            Action<ScreenElement, DeimosGame> onOut)
+        {
+            return AddImage(name, posX, posY, scaleX, scaleY, zIndex, image, onClick, onHover, onOut, null);
+        }
         public ScreenImage AddImage(string name, int posX, int posY, float scale,
             int zIndex, Texture2D image)
         {
-            return AddImage(name, posX, posY, scale, scale, zIndex, image, null, null, null);
+            return AddImage(name, posX, posY, scale, scale, zIndex, image, null, null, null, null);
         }
         public ScreenImage GetImage(string name)
         {

@@ -134,6 +134,8 @@ namespace Deimos
             DisplayFacade.MenuImages.Add("StartMenuPlayHover", Content.Load<Texture2D>("Images/Menu/StartMenu/playHover"));
             DisplayFacade.MenuImages.Add("StartMenuServers", Content.Load<Texture2D>("Images/Menu/StartMenu/servers"));
             DisplayFacade.MenuImages.Add("StartMenuServersHover", Content.Load<Texture2D>("Images/Menu/StartMenu/serversHover"));
+            DisplayFacade.MenuImages.Add("StartMenuConfig", Content.Load<Texture2D>("Images/Menu/StartMenu/config"));
+            DisplayFacade.MenuImages.Add("StartMenuConfigHover", Content.Load<Texture2D>("Images/Menu/StartMenu/configHover"));
             DisplayFacade.MenuImages.Add("StartMenuQuit", Content.Load<Texture2D>("Images/Menu/StartMenu/quit"));
             DisplayFacade.MenuImages.Add("StartMenuQuitHover", Content.Load<Texture2D>("Images/Menu/StartMenu/quitHover"));
 
@@ -141,6 +143,9 @@ namespace Deimos
             DisplayFacade.MenuImages.Add("PauseMenuResumeHover", Content.Load<Texture2D>("Images/Menu/PauseMenu/resumeHover"));
             DisplayFacade.MenuImages.Add("PauseMenuMain", Content.Load<Texture2D>("Images/Menu/PauseMenu/main"));
             DisplayFacade.MenuImages.Add("PauseMenuMainHover", Content.Load<Texture2D>("Images/Menu/PauseMenu/mainHover"));
+            
+            DisplayFacade.ButtonsImages.Add("ConfigForward", Content.Load<Texture2D>("Images/Buttons/Config/forward"));
+            DisplayFacade.ButtonsImages.Add("ConfigForwardHover", Content.Load<Texture2D>("Images/Buttons/Config/forwardHover"));
 
             DisplayFacade.ButtonsImages.Add("DeadScreenGood", Content.Load<Texture2D>("Images/Buttons/DeadScreen/good"));
             DisplayFacade.ButtonsImages.Add("DeadScreenGoodHover", Content.Load<Texture2D>("Images/Buttons/DeadScreen/goodHover"));
@@ -217,14 +222,14 @@ namespace Deimos
                     break;
 
                 case GameStates.StartMenu:
-                case GameStates.Pause:
+                case GameStates.PauseMenu:
+                case GameStates.ConfigMenu:
                 case GameStates.ServerListMenu:
-                case GameStates.GraphicOptions:
                 case GameStates.ErrorScreen:
                 case GameStates.DeadScreen:
                     DisplayFacade.ModelAnimationManager.Animate((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000);
                     DisplayFacade.ScreenElementManager.HandleMouse((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000);
-                    GeneralFacade.SceneManager.Update((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000);
+                    GeneralFacade.SceneManager.Update(gameTime);
                     break;
 
                 case GameStates.Playing:
@@ -235,7 +240,7 @@ namespace Deimos
                         GameplayFacade.ThisPlayerDisplay.UpdateDisplay();
                     }
                     DisplayFacade.ModelAnimationManager.Animate((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000);
-                    GeneralFacade.SceneManager.Update((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000);
+                    GeneralFacade.SceneManager.Update(gameTime);
                     GameplayFacade.BulletManager.Update(gameTime);
 
                     TestBindings(gameTime);

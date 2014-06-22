@@ -178,13 +178,14 @@ namespace Deimos
             SoundManager.AddSoundEffect("explosion", "Sounds/fx/hit_wall");
         }
 
-        public void Update(float dt)
+        public void Update(GameTime gameTime)
         {
             if (GeneralFacade.GameStateManager.CurrentGameState == GameStates.LoadingLevel)
             {
                 return;
             }
-            CurrentScene.Update(dt);
+            ModelManager.Update(gameTime);
+            CurrentScene.Update((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000);
             SoundManager.Update();
         }
 

@@ -63,6 +63,18 @@ namespace Deimos
                 }
             }
         }
+        private Action<ScreenElement, DeimosGame, Keys> onKeyPress;
+        public Action<ScreenElement, DeimosGame, Keys> OnKeyPress
+        {
+            get { return onKeyPress; }
+            set
+            {
+                if (value != null)
+                {
+                    onKeyPress = value;
+                }
+            }
+        }
 
         protected bool NoEvent = true;
 

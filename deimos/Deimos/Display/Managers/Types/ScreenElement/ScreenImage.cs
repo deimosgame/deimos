@@ -18,7 +18,8 @@ namespace Deimos
             Texture2D image,
             Action<ScreenElement, DeimosGame> onClick = null,
             Action<ScreenElement, DeimosGame> onHover = null,
-            Action<ScreenElement, DeimosGame> onOut = null)
+            Action<ScreenElement, DeimosGame> onOut = null,
+            Action<ScreenElement, DeimosGame, Keys> onKeyPress = null)
         {
             Pos = new Vector2(posX, posY);
             ScaleX = scaleX;
@@ -28,7 +29,8 @@ namespace Deimos
             OnClick = onClick;
             OnHover = onHover;
             OnOut = onOut;
-            if (OnHover != null || OnClick != null || OnOut != null)
+            OnKeyPress = onKeyPress;
+            if (OnHover != null || OnClick != null || OnOut != null || OnKeyPress != null)
             {
                 NoEvent = false;
             }
@@ -97,6 +99,13 @@ namespace Deimos
 
                 LastState = ScreenElement.ElState.Out;
             }
+
+            Keys[] keys = Keyboard.GetState().GetPressedKeys();
+            if (LastState == ScreenElement.ElState.Hover && keys.Count() > 0)
+            {
+                OnKeyPress(this, GeneralFacade.Game, keys[0]);
+            }
+            
             return false;
         }
     }

@@ -18,6 +18,8 @@ Content\Models\Characters\glados\1.xnb
 Content\Models\Characters\corvo\corv.xnb
 Content\Models\SecretWalls\Brick\SecretWallBrick.xnb
 Content\Models\Map\Minigames\Knife\KnifeFight.xnb
+Content\Models\Characters\dude\dude.xnb
+Content\Models\Characters\dwarf\Dwarf.xnb
 Content\Models\Map\Grid.xnb
 Content\Textures\DeferredRendering\null_normal.xnb
 Content\Textures\DeferredRendering\null_specular.xnb
@@ -261,6 +263,14 @@ Content\Models\Map\Minigames\Knife\KnifeFight_material_1.xnb
 Content\Models\Map\Minigames\Knife\KnifeFight_material_2.xnb
 Content\Models\Map\Minigames\Knife\KnifeFight_material_3.xnb
 Content\Models\Map\Minigames\Knife\KnifeFight_material_4.xnb
+Content\Images\Menu\StartMenu\config.xnb
+Content\Images\Menu\StartMenu\configHover.xnb
+Content\Images\Buttons\Config\forward.xnb
+Content\Images\Buttons\Config\forwardHover.xnb
+Content\Models\Characters\dude\head.xnb
+Content\Models\Characters\dude\jacket.xnb
+Content\Models\Characters\dude\pants.xnb
+Content\Models\Characters\dude\upBodyC.xnb
 Content\Shaders\DeferredRendering\ClearGBuffer.xnb
 Content\Shaders\DeferredRendering\CombineFinal.xnb
 Content\Shaders\Lights\DirectionalLight.xnb
@@ -481,6 +491,10 @@ Content\Models\Map\Minigames\Knife\KnifeFight_material_1_0.xnb
 Content\Models\Map\Minigames\Knife\KnifeFight_material_3_0.xnb
 Content\Models\Map\Minigames\Knife\KnifeFight_material_4_0.xnb
 Content\Models\Map\Minigames\Knife\KnifeFight_material_0_0.xnb
+Content\Models\Characters\dude\head_0.xnb
+Content\Models\Characters\dude\jacket_0.xnb
+Content\Models\Characters\dude\pants_0.xnb
+Content\Models\Characters\dude\upBodyC_0.xnb
 Content\Videos\Intro.wmv
 Content\Fonts\debug.spritefont
 Content\Models\Map\coucou.fbx

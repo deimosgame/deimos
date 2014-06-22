@@ -56,9 +56,32 @@ namespace Deimos
                 }
             );
             DisplayFacade.ScreenElementManager.AddImage(
-                "PauseMenuMain",
+                "PauseMenuConfig",
                 (int)((510 - imageWidth) * coeffX),
                 390,
+                coeffX,
+                coeffY,
+                1,
+                DisplayFacade.MenuImages["StartMenuConfig"],
+                delegate(ScreenElement el, DeimosGame game)
+                {
+                    GeneralFacade.GameStateManager.Set(new ConfigMenuGS(new PauseGS()));
+                },
+                delegate(ScreenElement el, DeimosGame game)
+                {
+                    ScreenImage t = DisplayFacade.ScreenElementManager.GetImage("PauseMenuConfig");
+                    t.Image = DisplayFacade.MenuImages["StartMenuConfigHover"];
+                },
+                delegate(ScreenElement el, DeimosGame game)
+                {
+                    ScreenImage t = DisplayFacade.ScreenElementManager.GetImage("PauseMenuConfig");
+                    t.Image = DisplayFacade.MenuImages["StartMenuConfig"];
+                }
+            );
+            DisplayFacade.ScreenElementManager.AddImage(
+                "PauseMenuMain",
+                (int)((500 - imageWidth) * coeffX),
+                460,
                 coeffX,
                 coeffY,
                 1,
@@ -92,6 +115,7 @@ namespace Deimos
         {
             DisplayFacade.ScreenElementManager.RemoveImage("PauseMenuBackground");
             DisplayFacade.ScreenElementManager.RemoveImage("PauseMenuResume");
+            DisplayFacade.ScreenElementManager.RemoveImage("PauseMenuConfig");
             DisplayFacade.ScreenElementManager.RemoveImage("PauseMenuMain");
         }
     }

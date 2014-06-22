@@ -30,7 +30,8 @@ namespace Deimos
             int width, int height, Color color,
             Action<ScreenElement, DeimosGame> onClick = null,
             Action<ScreenElement, DeimosGame> onHover = null,
-            Action<ScreenElement, DeimosGame> onOut = null)
+            Action<ScreenElement, DeimosGame> onOut = null,
+            Action<ScreenElement, DeimosGame, Keys> onKeyPress = null)
         {
             Pos = new Vector2(posX, posY);
             ZIndex = zIndex;
@@ -40,6 +41,7 @@ namespace Deimos
             OnClick = onClick;
             OnHover = onHover;
             OnOut = onOut;
+            OnKeyPress = onKeyPress;
         }
 
         public override void Draw(SpriteBatch spriteBatch)

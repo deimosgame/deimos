@@ -270,6 +270,15 @@ Content\Models\Characters\dude\head.xnb
 Content\Models\Characters\dude\jacket.xnb
 Content\Models\Characters\dude\pants.xnb
 Content\Models\Characters\dude\upBodyC.xnb
+Content\Images\MISC\cursor.xnb
+Content\Images\Buttons\Config\backward.xnb
+Content\Images\Buttons\Config\backwardHover.xnb
+Content\Images\Buttons\Config\fullscreen.xnb
+Content\Images\Buttons\Config\fullscreenHover.xnb
+Content\Images\Buttons\Config\left.xnb
+Content\Images\Buttons\Config\leftHover.xnb
+Content\Images\Buttons\Config\right.xnb
+Content\Images\Buttons\Config\rightHover.xnb
 Content\Shaders\DeferredRendering\ClearGBuffer.xnb
 Content\Shaders\DeferredRendering\CombineFinal.xnb
 Content\Shaders\Lights\DirectionalLight.xnb
@@ -494,7 +503,6 @@ Content\Models\Characters\dude\head_0.xnb
 Content\Models\Characters\dude\jacket_0.xnb
 Content\Models\Characters\dude\pants_0.xnb
 Content\Models\Characters\dude\upBodyC_0.xnb
-Content\Images\MISC\cursor.xnb
 Content\Videos\Intro.wmv
 Content\Fonts\debug.spritefont
 Content\Models\Map\coucou.fbx

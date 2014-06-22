@@ -42,10 +42,11 @@ namespace Deimos
             int zIndex, int width, int height, Color color,
             Action<ScreenElement, DeimosGame> onClick, 
             Action<ScreenElement, DeimosGame> onHover, 
-            Action<ScreenElement, DeimosGame> onOut)
+            Action<ScreenElement, DeimosGame> onOut,
+            Action<ScreenElement, DeimosGame, Keys> onKeypress)
         {
             ScreenRectangle element =
-                new ScreenRectangle(posX, posY, zIndex, width, height, color, onClick, onHover, onOut);
+                new ScreenRectangle(posX, posY, zIndex, width, height, color, onClick, onHover, onOut, onKeypress);
             ElementsRectangle.Add(
                 name,
                 element
@@ -56,7 +57,7 @@ namespace Deimos
         public ScreenRectangle AddRectangle(string name, int posX, int posY,
             int zIndex, int width, int height, Color color)
         {
-            return AddRectangle(name, posX, posY, zIndex, width, height, color, null, null, null);
+            return AddRectangle(name, posX, posY, zIndex, width, height, color, null, null, null, null);
         }
         public ScreenRectangle GetRectangle(string name)
         {
@@ -72,7 +73,7 @@ namespace Deimos
             Action<ScreenElement, DeimosGame> onClick,
             Action<ScreenElement, DeimosGame> onHover,
             Action<ScreenElement, DeimosGame> onOut,
-            Action<ScreenElement, DeimosGame> onKeyPress)
+            Action<ScreenElement, DeimosGame, Keys> onKeyPress)
         {
             ScreenImage element =
                 new ScreenImage(posX, posY, scaleX, scaleY, zIndex, image);
@@ -87,7 +88,7 @@ namespace Deimos
             {
                 AddRectangle(name + "RectangleEvent", posX, posY, zIndex, 
                     (int)(image.Width * scaleX), (int)(image.Height * scaleY), 
-                    Color.Transparent, onClick, onHover, onOut);
+                    Color.Transparent, onClick, onHover, onOut, onKeyPress);
             }
             
 

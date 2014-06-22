@@ -108,7 +108,7 @@ namespace Deimos
                 DisplayFacade.MenuImages["StartMenuConfig"],
                 delegate(ScreenElement el, DeimosGame game)
                 {
-                    GeneralFacade.GameStateManager.Set(new ConfigMenuGS());
+                    GeneralFacade.GameStateManager.Set(new ConfigMenuGS(new StartMenuGS()));
                 },
                 delegate(ScreenElement el, DeimosGame game)
                 {

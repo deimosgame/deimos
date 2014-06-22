@@ -18,7 +18,7 @@ namespace Deimos
     /// </summary>
     public partial class DeimosGame : Microsoft.Xna.Framework.Game
     {
-        GraphicsDeviceManager Graphics;
+        public GraphicsDeviceManager Graphics;
 
         public DeferredRenderer Renderer
         {
@@ -141,9 +141,17 @@ namespace Deimos
             DisplayFacade.MenuImages.Add("PauseMenuResumeHover", Content.Load<Texture2D>("Images/Menu/PauseMenu/resumeHover"));
             DisplayFacade.MenuImages.Add("PauseMenuMain", Content.Load<Texture2D>("Images/Menu/PauseMenu/main"));
             DisplayFacade.MenuImages.Add("PauseMenuMainHover", Content.Load<Texture2D>("Images/Menu/PauseMenu/mainHover"));
-            
+
             DisplayFacade.ButtonsImages.Add("ConfigForward", Content.Load<Texture2D>("Images/Buttons/Config/forward"));
             DisplayFacade.ButtonsImages.Add("ConfigForwardHover", Content.Load<Texture2D>("Images/Buttons/Config/forwardHover"));
+            DisplayFacade.ButtonsImages.Add("ConfigBackward", Content.Load<Texture2D>("Images/Buttons/Config/backward"));
+            DisplayFacade.ButtonsImages.Add("ConfigBackwardHover", Content.Load<Texture2D>("Images/Buttons/Config/backwardHover"));
+            DisplayFacade.ButtonsImages.Add("ConfigLeft", Content.Load<Texture2D>("Images/Buttons/Config/left"));
+            DisplayFacade.ButtonsImages.Add("ConfigLeftHover", Content.Load<Texture2D>("Images/Buttons/Config/leftHover"));
+            DisplayFacade.ButtonsImages.Add("ConfigRight", Content.Load<Texture2D>("Images/Buttons/Config/right"));
+            DisplayFacade.ButtonsImages.Add("ConfigRightHover", Content.Load<Texture2D>("Images/Buttons/Config/rightHover"));
+            DisplayFacade.ButtonsImages.Add("ConfigFullscreen", Content.Load<Texture2D>("Images/Buttons/Config/fullscreen"));
+            DisplayFacade.ButtonsImages.Add("ConfigFullscreenHover", Content.Load<Texture2D>("Images/Buttons/Config/fullscreenHover"));
 
             DisplayFacade.ButtonsImages.Add("DeadScreenGood", Content.Load<Texture2D>("Images/Buttons/DeadScreen/good"));
             DisplayFacade.ButtonsImages.Add("DeadScreenGoodHover", Content.Load<Texture2D>("Images/Buttons/DeadScreen/goodHover"));

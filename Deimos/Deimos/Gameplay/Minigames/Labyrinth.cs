@@ -1,26 +1,26 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Xna.Framework;
 
 namespace Deimos
 {
-    class Knife : Minigame
+    class Labyrinth : Minigame
     {
-        public Knife()
+        public Labyrinth()
         {
-            Type = MinigameType.Knife;
-            Name = "knife";
+            Type = MinigameType.Labyrinth;
+            Name = "labyrinth";
             Map = "Models/Map/Minigames/Knife/KnifeFight";
-            TimeLimit = 180000;
+            TimeLimit = 120000;
             LinearJump = true;
             Falldamage = false;
             Gravity = 9.8f;
             SpeedRate = 1;
 
-            PlayerOneClass = Player.Spec.Cutthroat;
-            PlayerTwoClass = Player.Spec.Cutthroat;
+            PlayerOneClass = Player.Spec.Victim;
+            PlayerTwoClass = Player.Spec.Victim;
 
             Spawns = new Dictionary<byte, SpawnLocation>();
 
@@ -37,13 +37,13 @@ namespace Deimos
         {
             GameplayFacade.ThisPlayer.NextInstance = Name;
             GameplayFacade.ThisPlayer.MainClass = GameplayFacade.ThisPlayer.Class;
-            GameplayFacade.ThisPlayer.Class = Player.Spec.Cutthroat;
+            GameplayFacade.ThisPlayer.Class = Player.Spec.Victim;
 
-            GeneralFacade.GameStateManager.Set(new LoadingLevelGS<SceneKnifeMG>(delegate() { } ));
+            GeneralFacade.GameStateManager.Set(new LoadingLevelGS<SceneKnifeMG>(delegate() { }));
             GeneralFacade.GameStateManager.Set(new MGSpawningGS(GameplayFacade.ThisPlayer.NextInstance));
             GeneralFacade.GameStateManager.Set(new PlayingGS());
         }
-        
+
         public void Terminate()
         {
             GameplayFacade.ThisPlayer.PlayerKill();

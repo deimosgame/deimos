@@ -36,7 +36,8 @@ namespace Deimos
             Overwatch,
             Agent,
             Soldier,
-            Cutthroat
+            Cutthroat,
+            Victim
         }
 
         public enum Teams

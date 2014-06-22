@@ -96,7 +96,7 @@ namespace Deimos
                 GameplayFacade.ThisPlayer.Position,
                 pos
                 );
-            if (NetworkFacade.IsMultiplayer)
+            if (!NetworkFacade.Local)
             {
                 NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("explosion"),
                     pos);

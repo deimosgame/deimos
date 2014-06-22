@@ -165,7 +165,8 @@
     <Compile Include="Gameplay\LocalPlayer\Footsteps.cs" />
     <Compile Include="Gameplay\LocalPlayer\Interaction.cs" />
     <Compile Include="Gameplay\Minigames\Knife.cs" />
-    <Compile Include="Gameplay\Minigames\Minigame.cs" />
+    <Compile Include="Gameplay\Minigames\Labyrinth.cs" />
+    <Compile Include="Gameplay\Minigames\Type\Minigame.cs" />
     <Compile Include="Gameplay\Minigames\MinigameManager.cs" />
     <Compile Include="Gameplay\Objects\Managers\ObjectManager.cs" />
     <Compile Include="Gameplay\Objects\Managers\SecretsManager.cs" />
@@ -179,6 +180,7 @@
     <Compile Include="Gameplay\Scenes\Menu\SceneStartMenu.cs" />
     <Compile Include="Gameplay\Scenes\SceneCompound.cs" />
     <Compile Include="Gameplay\Scenes\SceneKnifeMG.cs" />
+    <Compile Include="Gameplay\Scenes\SceneLabyrinthMG.cs" />
     <Compile Include="Gameplay\Scenes\Types\SpawnLocation.cs" />
     <Compile Include="Gameplay\Weapons\Bullet\BulletManager.cs" />
     <Compile Include="Display\Managers\ResourceManager.cs" />

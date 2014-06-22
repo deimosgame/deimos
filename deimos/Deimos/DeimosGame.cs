@@ -343,11 +343,11 @@ namespace Deimos
             {
                 GameplayFacade.ThisPlayer.IsMG = true;
                 GameplayFacade.ThisPlayer.MGNumber = 0x00;
-                GameplayFacade.Minigames.knife.Load();
+                GameplayFacade.Minigames.KnifeMG.Load();
             }
             if (Keyboard.GetState().IsKeyDown(Keys.I))
             {
-                GameplayFacade.Minigames.knife.Terminate();
+                GameplayFacade.Minigames.KnifeMG.Terminate();
             }
         }
     }

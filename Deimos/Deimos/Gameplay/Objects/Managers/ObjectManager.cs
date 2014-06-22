@@ -198,7 +198,7 @@ namespace Deimos
                         GameplayFacade.Weapons.GetName(w.Represents));
 
                     GeneralFacade.SceneManager.SoundManager.Play("w_pu");
-                    if (NetworkFacade.IsMultiplayer)
+                    if (!NetworkFacade.Local)
                     {
                         NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("w_pu"),
                             GameplayFacade.ThisPlayer.Position);
@@ -230,7 +230,7 @@ namespace Deimos
                     GameplayFacade.Weapons.GetName(w.Represents));
 
                 GeneralFacade.SceneManager.SoundManager.Play("w_pu");
-                if (NetworkFacade.IsMultiplayer)
+                if (!NetworkFacade.Local)
                 {
                     NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("w_pu"),
                         GameplayFacade.ThisPlayer.Position);
@@ -275,7 +275,7 @@ namespace Deimos
                             }
 
                             GeneralFacade.SceneManager.SoundManager.Play("heal");
-                            if (NetworkFacade.IsMultiplayer)
+                            if (!NetworkFacade.Local)
                             {
                                 NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("heal"),
                                     GameplayFacade.ThisPlayer.Position);
@@ -306,7 +306,7 @@ namespace Deimos
                             ActiveEffects.Add(e);
 
                             GeneralFacade.SceneManager.SoundManager.Play("speed");
-                            if (NetworkFacade.IsMultiplayer)
+                            if (!NetworkFacade.Local)
                             {
                                 NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("speed"),
                                     GameplayFacade.ThisPlayer.Position);
@@ -337,7 +337,7 @@ namespace Deimos
                         GameplayFacade.ThisPlayer.Gravityboosted = true;
 
                         GeneralFacade.SceneManager.SoundManager.Play("gravity");
-                        if (NetworkFacade.IsMultiplayer)
+                        if (!NetworkFacade.Local)
                         {
                             NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("gravity"),
                                 GameplayFacade.ThisPlayer.Position);
@@ -463,7 +463,7 @@ namespace Deimos
                                 GameplayFacade.ThisPlayer.Speedboosted = false;
 
                                 GeneralFacade.SceneManager.SoundManager.Play("effectoff");
-                                if (NetworkFacade.IsMultiplayer)
+                                if (!NetworkFacade.Local)
                                 {
                                     NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("effectoff"),
                                         GameplayFacade.ThisPlayer.Position);
@@ -495,7 +495,7 @@ namespace Deimos
                                 GameplayFacade.ThisPlayer.Gravityboosted = false;
 
                                 GeneralFacade.SceneManager.SoundManager.Play("effectoff");
-                                if (NetworkFacade.IsMultiplayer)
+                                if (!NetworkFacade.Local)
                                 {
                                     NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("effectoff"),
                                         GameplayFacade.ThisPlayer.Position);

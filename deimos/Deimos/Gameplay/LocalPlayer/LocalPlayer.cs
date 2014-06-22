@@ -130,7 +130,7 @@ namespace Deimos
 
             SetStats();
 
-            if (NetworkFacade.IsMultiplayer)
+            if (!NetworkFacade.Local)
             {
                 Alive = 0x01;
                 NetworkFacade.MainHandling.PlayerInfoUpdate.Update();
@@ -153,7 +153,7 @@ namespace Deimos
 
                 SetStats();
 
-                if (NetworkFacade.IsMultiplayer)
+                if (!NetworkFacade.Local)
                 {
                     Alive = 0x01;
                     NetworkFacade.MainHandling.PlayerInfoUpdate.Update();
@@ -182,7 +182,7 @@ namespace Deimos
 
                 Score--;
 
-                if (NetworkFacade.IsMultiplayer)
+                if (!NetworkFacade.Local)
                 {
                     Alive = 0x00;
                     NetworkFacade.MainHandling.PlayerInfoUpdate.Update();
@@ -249,6 +249,19 @@ namespace Deimos
                         MaxSprintTime = GameplayFacade.Constants.MaxSprintCT;
 
                         GameplayFacade.ThisPlayerPhysics.JumpVelocity = GameplayFacade.Constants.JumpCT;
+                    }
+                    break;
+
+                case Spec.Victim:
+                    {
+                        m_health = GameplayFacade.Constants.HealthVictim;
+                        Health = (int)m_health;
+
+                        Speed = GameplayFacade.Constants.SpeedVictim;
+                        SprintCooldown = GameplayFacade.Constants.SprintCooldownVictim;
+                        MaxSprintTime = GameplayFacade.Constants.MaxSprintVictim;
+
+                        GameplayFacade.ThisPlayerPhysics.JumpVelocity = GameplayFacade.Constants.JumpVictim;
                     }
                     break;
 

@@ -8,13 +8,15 @@ namespace Deimos
 {
     class MinigameManager
     {
-        public Knife knife;
+        public Knife KnifeMG;
+        public Labyrinth LabyrinthMG;
 
         public float Remaining;
 
         public MinigameManager()
         {
-            knife = new Knife();
+            KnifeMG = new Knife();
+            LabyrinthMG = new Labyrinth();
         }
 
         public float GetRemaining()
@@ -37,10 +39,19 @@ namespace Deimos
                 case "knife":
                     if (player == 0x00)
                     {
-                        return knife.PlayerOneClass;
+                        return KnifeMG.PlayerOneClass;
                     }
 
-                    return knife.PlayerTwoClass;
+                    return KnifeMG.PlayerTwoClass;
+
+                case "labyrinth":
+                    if (player == 0x00)
+                    {
+                        return LabyrinthMG.PlayerOneClass;
+                    }
+
+                    return LabyrinthMG.PlayerTwoClass;
+
                 default:
                     return Player.Spec.Soldier;
             }
@@ -54,8 +65,12 @@ namespace Deimos
             switch (name)
             {
                 case "knife":
-                    loc = knife.Spawns[player].Location;
-                    ang = knife.Spawns[player].Rotation;
+                    loc = KnifeMG.Spawns[player].Location;
+                    ang = KnifeMG.Spawns[player].Rotation;
+                    break;
+                case "labyrinth":
+                    loc = LabyrinthMG.Spawns[player].Location;
+                    ang = LabyrinthMG.Spawns[player].Rotation;
                     break;
                 default :
                     break;

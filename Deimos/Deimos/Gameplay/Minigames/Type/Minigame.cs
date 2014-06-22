@@ -10,7 +10,8 @@ namespace Deimos
     {
         public enum MinigameType
         {
-            Knife
+            Knife,
+            Labyrinth
         }
 
         // General properties

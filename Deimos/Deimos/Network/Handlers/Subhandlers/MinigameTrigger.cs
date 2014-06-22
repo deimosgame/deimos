@@ -44,7 +44,7 @@ namespace Deimos
                 switch (buf[4])
                 {
                     case 0x00:
-                        GameplayFacade.Minigames.knife.Load();
+                        GameplayFacade.Minigames.KnifeMG.Load();
                         break;
                     default:
                         return;
@@ -57,7 +57,7 @@ namespace Deimos
                 switch (buf[4])
                 {
                     case 0x00:
-                        GameplayFacade.Minigames.knife.Terminate();
+                        GameplayFacade.Minigames.KnifeMG.Terminate();
                         break;
                     default :
                         return;

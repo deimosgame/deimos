@@ -305,7 +305,7 @@ namespace Deimos
                 {
                     GameplayFacade.ThisPlayer.Hurt(GetFallDamage(fall_distance));
                     GeneralFacade.SceneManager.SoundManager.Play("fall");
-                    if (NetworkFacade.IsMultiplayer)
+                    if (!NetworkFacade.Local)
                     {
                         NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("fall"),
                             GameplayFacade.ThisPlayer.Position);
@@ -318,7 +318,7 @@ namespace Deimos
                 if (land)
                 {
                     GeneralFacade.SceneManager.SoundManager.Play("l2");
-                    if (NetworkFacade.IsMultiplayer)
+                    if (!NetworkFacade.Local)
                     {
                         NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("l2"),
                             GameplayFacade.ThisPlayer.Position);
@@ -388,7 +388,7 @@ namespace Deimos
             GravityState = PhysicalState.Jumping;
 
             GeneralFacade.SceneManager.SoundManager.Play("l1");
-            if (NetworkFacade.IsMultiplayer)
+            if (!NetworkFacade.Local)
             {
                 NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("l1"),
                     GameplayFacade.ThisPlayer.Position);

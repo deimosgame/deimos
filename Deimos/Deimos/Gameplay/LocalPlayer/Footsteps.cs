@@ -49,7 +49,7 @@ namespace Deimos
                         case 0:
                             GeneralFacade.SceneManager.SoundManager.Play(
                                 "s1");
-                            if (NetworkFacade.IsMultiplayer)
+                            if (!NetworkFacade.Local)
                             {
                                 NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("s1"),
                                     GameplayFacade.ThisPlayer.Position);
@@ -58,7 +58,7 @@ namespace Deimos
                         case 1:
                             GeneralFacade.SceneManager.SoundManager.Play(
                                 "s2");
-                            if (NetworkFacade.IsMultiplayer)
+                            if (!NetworkFacade.Local)
                             {
                                 NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("s2"),
                                     GameplayFacade.ThisPlayer.Position);
@@ -67,7 +67,7 @@ namespace Deimos
                         case 2:
                             GeneralFacade.SceneManager.SoundManager.Play(
                                 "s3");
-                            if (NetworkFacade.IsMultiplayer)
+                            if (!NetworkFacade.Local)
                             {
                                 NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("s3"),
                                     GameplayFacade.ThisPlayer.Position);
@@ -76,7 +76,7 @@ namespace Deimos
                         case 3:
                             GeneralFacade.SceneManager.SoundManager.Play(
                                 "s4");
-                            if (NetworkFacade.IsMultiplayer)
+                            if (!NetworkFacade.Local)
                             {
                                 NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("s4"),
                                     GameplayFacade.ThisPlayer.Position);
@@ -85,7 +85,7 @@ namespace Deimos
                         default:
                             GeneralFacade.SceneManager.SoundManager.Play(
                                 "s1");
-                            if (NetworkFacade.IsMultiplayer)
+                            if (!NetworkFacade.Local)
                             {
                                 NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("s1"),
                                     GameplayFacade.ThisPlayer.Position);

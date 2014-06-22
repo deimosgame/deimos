@@ -1,14 +1,13 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Tranquillity;
 
 namespace Deimos
 {
-    class SceneKnifeMG : SceneTemplate
+    class SceneLabyrinthMG : SceneTemplate
     {
         SceneManager SceneManager;
         ModelManager ModelManager;
@@ -20,7 +19,7 @@ namespace Deimos
         SmokeParticleEmitter ParticleEmitter;
 
         // Constructor
-        public SceneKnifeMG(SceneManager sceneManager)
+        public SceneLabyrinthMG(SceneManager sceneManager)
         {
             PlayerSize = new Vector2(1, 10);
 
@@ -33,11 +32,11 @@ namespace Deimos
             Objects = new ObjectManager();
             Secrets = new SecretsManager();
 
-            TimeLimit = GameplayFacade.Minigames.KnifeMG.TimeLimit;
+            TimeLimit = GameplayFacade.Minigames.LabyrinthMG.TimeLimit;
         }
 
         // Destructor
-        ~SceneKnifeMG()
+        ~SceneLabyrinthMG()
         {
             //
         }
@@ -46,8 +45,8 @@ namespace Deimos
         public override void Load()
         {
             ModelManager.LoadModel(
-                 GameplayFacade.Minigames.KnifeMG.Name,
-                 GameplayFacade.Minigames.KnifeMG.Map, // Model
+                 GameplayFacade.Minigames.LabyrinthMG.Name,
+                 GameplayFacade.Minigames.LabyrinthMG.Map, // Model
                  Vector3.Zero, // Location
                  Vector3.Zero,
                  0.75f
@@ -76,12 +75,12 @@ namespace Deimos
             {
                 Elapsed += dt;
                 //GameplayFacade.Minigames.Remaining =
-                //    GameplayFacade.Minigames.knife.TimeLimit -
+                //    GameplayFacade.Minigames.LabyrinthMG.TimeLimit -
                 //    Elapsed;
             }
             else
             {
-                GameplayFacade.Minigames.KnifeMG.Terminate();
+                GameplayFacade.Minigames.LabyrinthMG.Terminate();
             }
         }
     }

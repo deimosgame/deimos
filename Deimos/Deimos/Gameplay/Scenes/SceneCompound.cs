@@ -59,7 +59,7 @@ namespace Deimos
                  0.2f
             );
 
-            if (NetworkFacade.IsMultiplayer)
+            if (!NetworkFacade.Local)
             {
                 //foreach (KeyValuePair<byte, Player> p in NetworkFacade.Players)
                 //{

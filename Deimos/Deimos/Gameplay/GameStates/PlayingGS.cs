@@ -17,7 +17,7 @@ namespace Deimos
 
         public override void PreSet()
         {
-            GeneralFacade.Game.IsMouseVisible = false;
+            DisplayFacade.ScreenElementManager.IsMouseVisible = false;
 
             Mouse.SetPosition(GeneralFacade.Game.GraphicsDevice.Viewport.Width / 2,
                     GeneralFacade.Game.GraphicsDevice.Viewport.Height / 2);

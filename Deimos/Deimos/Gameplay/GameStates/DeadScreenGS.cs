@@ -16,7 +16,7 @@ namespace Deimos
 
         public override void PreSet()
         {
-            GeneralFacade.Game.IsMouseVisible = true;
+            DisplayFacade.ScreenElementManager.IsMouseVisible = true;
             int width = GeneralFacade.Game.GraphicsDevice.Viewport.Width;
             int height = GeneralFacade.Game.GraphicsDevice.Viewport.Height;
 

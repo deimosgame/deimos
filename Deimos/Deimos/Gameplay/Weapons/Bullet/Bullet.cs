@@ -101,7 +101,7 @@ namespace Deimos
                 NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("explosion"),
                     pos);
             }
-            PlayFireParticle(pos);
+            //PlayFireParticle(pos);
 
             //BoundingSphere explosion = new BoundingSphere();
             //explosion.Center = pos;

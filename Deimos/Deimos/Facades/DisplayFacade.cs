@@ -20,6 +20,7 @@ namespace Deimos
         public static Texture2D BackgroundMenu;
         public static Dictionary<string, Texture2D> MenuImages = new Dictionary<string,Texture2D>();
         public static Dictionary<string, Texture2D> ButtonsImages = new Dictionary<string, Texture2D>();
+        public static Dictionary<string, Texture2D> MISCImages = new Dictionary<string, Texture2D>();
 
         // Fonts
         public static SpriteFont DebugFont;

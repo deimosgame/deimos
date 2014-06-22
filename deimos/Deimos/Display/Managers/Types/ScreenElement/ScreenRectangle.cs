@@ -99,6 +99,13 @@ namespace Deimos
                     LastState = ScreenElement.ElState.Out;
                 }
             }
+
+            Keys[] keys = Keyboard.GetState().GetPressedKeys();
+            if (LastState == ScreenElement.ElState.Hover && OnKeyPress != null && keys.Count() > 0)
+            {
+                OnKeyPress(this, GeneralFacade.Game, keys[0]);
+            }
+
             return false;
         }
     }

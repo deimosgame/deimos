@@ -18,7 +18,7 @@ namespace Deimos
         {
             GeneralFacade.SceneManager.SetScene<SceneStartMenu>();
 
-            GeneralFacade.Game.IsMouseVisible = true;
+            DisplayFacade.ScreenElementManager.IsMouseVisible = true;
             float coeffX = (float)GeneralFacade.Game.GraphicsDevice.Viewport.Width / (float)DisplayFacade.BackgroundMenu.Width;
             float coeffY = (float)GeneralFacade.Game.GraphicsDevice.Viewport.Height / (float)DisplayFacade.BackgroundMenu.Height;
             int imageWidth = DisplayFacade.MenuImages["StartMenuPlay"].Width;
@@ -84,11 +84,11 @@ namespace Deimos
             DisplayFacade.ScreenElementManager.AddImage(
                 "ConfigMenuForward",
                 (int)((540 + 20) * coeffX),
-                130,
-                0.5f,
-                0.5f,
+                180,
+                0.3f,
+                0.3f,
                 1,
-                DisplayFacade.ButtonsImages["DeadScreenGood"],
+                DisplayFacade.ButtonsImages["ConfigForward"],
                 delegate(ScreenElement el, DeimosGame game)
                 {
                     GameplayFacade.ThisPlayer.Class = Player.Spec.Soldier;
@@ -97,13 +97,13 @@ namespace Deimos
                 },
                 delegate(ScreenElement el, DeimosGame game)
                 {
-                    ScreenImage t = DisplayFacade.ScreenElementManager.GetImage("DeadScreenGood");
-                    t.Image = DisplayFacade.ButtonsImages["DeadScreenGoodHover"];
+                    ScreenImage t = DisplayFacade.ScreenElementManager.GetImage("ConfigMenuForward");
+                    t.Image = DisplayFacade.ButtonsImages["ConfigForwardHover"];
                 },
                 delegate(ScreenElement el, DeimosGame game)
                 {
-                    ScreenImage t = DisplayFacade.ScreenElementManager.GetImage("DeadScreenGood");
-                    t.Image = DisplayFacade.ButtonsImages["DeadScreenGood"];
+                    ScreenImage t = DisplayFacade.ScreenElementManager.GetImage("ConfigMenuForward");
+                    t.Image = DisplayFacade.ButtonsImages["ConfigForward"];
                 }
             );
         }
@@ -114,6 +114,7 @@ namespace Deimos
             DisplayFacade.ScreenElementManager.RemoveText("ConfigMenuSubTitle");
             DisplayFacade.ScreenElementManager.RemoveImage("ConfigMenuBackground");
             DisplayFacade.ScreenElementManager.RemoveImage("ConfigMenuMain");
+            DisplayFacade.ScreenElementManager.RemoveImage("ConfigMenuForward");
         }
     }
 }

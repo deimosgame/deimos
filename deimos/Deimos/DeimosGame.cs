@@ -80,8 +80,6 @@ namespace Deimos
 
         protected override void Initialize()
         {
-            IsMouseVisible = false;
-
             // Game settings
             Graphics.PreferredBackBufferWidth = 1680;
             Graphics.PreferredBackBufferHeight = 1050;
@@ -153,6 +151,8 @@ namespace Deimos
             DisplayFacade.ButtonsImages.Add("DeadScreenBadHover", Content.Load<Texture2D>("Images/Buttons/DeadScreen/badHover"));
             DisplayFacade.ButtonsImages.Add("DeadScreenUgly", Content.Load<Texture2D>("Images/Buttons/DeadScreen/ugly"));
             DisplayFacade.ButtonsImages.Add("DeadScreenUglyHover", Content.Load<Texture2D>("Images/Buttons/DeadScreen/uglyHover"));
+
+            DisplayFacade.MISCImages.Add("cursor", Content.Load<Texture2D>("Images/MISC/cursor"));
 
             DisplayFacade.DebugFont = Content.Load<SpriteFont>("Fonts/debug");
             DisplayFacade.TableFont = Content.Load<SpriteFont>("Fonts/table");

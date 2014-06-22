@@ -12,19 +12,19 @@ namespace Deimos
     {
         private Dictionary<string, ScreenRectangle> ElementsRectangle =
             new Dictionary<string, ScreenRectangle>();
-        private List<string> ElementsRectangleList = new List<string>();
         private Dictionary<string, ScreenImage> ElementsImage =
             new Dictionary<string, ScreenImage>();
-        private List<string> ElementsImageList = new List<string>();
         private Dictionary<string, ScreenText> ElementsText =
             new Dictionary<string, ScreenText>();
-        private List<string> ElementsTextList = new List<string>();
         private Dictionary<string, ScreenLine> ElementsLine =
             new Dictionary<string, ScreenLine>();
         private Dictionary<string, ScreenTable> ElementsTable =
             new Dictionary<string, ScreenTable>();
 
         public Texture2D DummyTexture;
+
+        private Vector2 MousePosition;
+        public bool IsMouseVisible = false;
 
         protected int CooldownMilliseconds = 500;
         protected int CooldownTimer = 0;
@@ -50,7 +50,6 @@ namespace Deimos
                 name,
                 element
             );
-            ElementsRectangleList.Add(name);
 
             return element;
         }
@@ -66,7 +65,6 @@ namespace Deimos
         public void RemoveRectangle(string name)
         {
             ElementsRectangle.Remove(name);
-            ElementsRectangleList.Remove(name);
         }
 
         public ScreenImage AddImage(string name, int posX, int posY, float scaleX,
@@ -74,17 +72,24 @@ namespace Deimos
             Action<ScreenElement, DeimosGame> onClick,
             Action<ScreenElement, DeimosGame> onHover,
             Action<ScreenElement, DeimosGame> onOut,
-            Action<ScreenElement, DeimosGame, Keys> onKeyPress)
+            Action<ScreenElement, DeimosGame> onKeyPress)
         {
             ScreenImage element =
-                new ScreenImage(posX, posY, scaleX, scaleY, zIndex, image, onClick, onHover, onOut, onKeyPress);
+                new ScreenImage(posX, posY, scaleX, scaleY, zIndex, image);
             ElementsImage.Add(
                 name,
                 element
             );
-            ElementsImageList.Add(name);
 
             ElementsImage = ElementsImage.OrderBy(kvp => kvp.Value.ZIndex).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+
+            if(onClick != null || onHover != null || onOut != null || onKeyPress != null)
+            {
+                AddRectangle(name + "RectangleEvent", posX, posY, zIndex, 
+                    (int)(image.Width * scaleX), (int)(image.Height * scaleY), 
+                    Color.Transparent, onClick, onHover, onOut);
+            }
+            
 
             return element;
         }
@@ -108,7 +113,7 @@ namespace Deimos
         public void RemoveImage(string name)
         {
             ElementsImage.Remove(name);
-            ElementsImageList.Remove(name);
+            ElementsRectangle.Remove(name + "RectangleEvent");
         }
 
         public ScreenText AddText(string name, int posX, int posY,
@@ -175,17 +180,21 @@ namespace Deimos
 
         public void HandleMouse(float dt)
         {
+            MouseState mouseState = Mouse.GetState();
+
+            MousePosition = new Vector2(mouseState.X, mouseState.Y);
+
             if (CooldownTimer > 0)
             {
                 CooldownTimer -= (int)(dt * 1000);
                 return;
             }
 
-            MouseState mouseState = Mouse.GetState();
             Rectangle mouseRectangle = new Rectangle(mouseState.X, mouseState.Y, 1, 1);
-            for (int i = 0; i < ElementsRectangleList.Count; i++)
+            for (int i = 0; i < ElementsImage.Count; i++)
             {
-                ScreenRectangle thisRectangle = ElementsRectangle[ElementsRectangleList[i]];
+                KeyValuePair<string, ScreenImage> keyValuePair = ElementsImage.ElementAt(i);
+                ScreenImage thisRectangle = keyValuePair.Value;
                 if (CooldownTimer > 0)
                 {
                     continue;
@@ -195,9 +204,10 @@ namespace Deimos
                     CooldownTimer = CooldownMilliseconds;
                 }
             }
-            for (int i = 0; i < ElementsImageList.Count; i++)
+            for (int i = 0; i < ElementsRectangle.Count; i++)
             {
-                ScreenImage thisRectangle = ElementsImage[ElementsImageList[i]];
+                KeyValuePair<string, ScreenRectangle> keyValuePair = ElementsRectangle.ElementAt(i);
+                ScreenRectangle thisRectangle = keyValuePair.Value;
                 if (CooldownTimer > 0)
                 {
                     continue;
@@ -243,6 +253,21 @@ namespace Deimos
             {
                 KeyValuePair<string, ScreenTable> keyValuePair = ElementsTable.ElementAt(i);
                 keyValuePair.Value.Draw(spriteBatch);
+            }
+
+            if (IsMouseVisible)
+            {
+                spriteBatch.Draw(
+                    DisplayFacade.MISCImages["cursor"],
+                    MousePosition,
+                    null,
+                    Color.White,
+                    0,
+                    Vector2.Zero,
+                    0.5f,
+                    SpriteEffects.None,
+                    0f
+                );
             }
 
             spriteBatch.End();

@@ -16,7 +16,7 @@ namespace Deimos
         public override void PreSet()
         {
             GeneralFacade.Config.DebugScreen = false;
-            GeneralFacade.Game.IsMouseVisible = true;
+            DisplayFacade.ScreenElementManager.IsMouseVisible = true;
             float coeffX = (float)GeneralFacade.Game.GraphicsDevice.Viewport.Width / (float)DisplayFacade.BackgroundMenu.Width;
             float coeffY = (float)GeneralFacade.Game.GraphicsDevice.Viewport.Height / (float)DisplayFacade.BackgroundMenu.Height;
             int imageWidth = DisplayFacade.MenuImages["StartMenuPlay"].Width;

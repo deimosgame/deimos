@@ -65,7 +65,7 @@ namespace Deimos
                 DisplayFacade.MenuImages["PauseMenuMain"],
                 delegate(ScreenElement el, DeimosGame game)
                 {
-                    if (!NetworkFacade.IsMultiplayer)
+                    if (NetworkFacade.Local)
                     {
                         GeneralFacade.GameStateManager.Set(new StartMenuGS());
                     }

@@ -28,49 +28,47 @@ namespace Deimos
         public void InterpretPlayer(Data data)
         {
             if (data != null
-                && NetworkFacade.Players.ContainsKey(data.PropertyOf))
+                && NetworkFacade.Players.List.ContainsKey(data.PropertyOf))
             {
                 switch (data.Data_Type)
                 {
                     case Data.WorldDataType.X:
-                        NetworkFacade.Players[data.PropertyOf].Position.X =
+                        NetworkFacade.Players.List[data.PropertyOf].Position.X =
                             data.Float32_Data;
                         break;
                     case Data.WorldDataType.Y:
-                        NetworkFacade.Players[data.PropertyOf].Position.Y =
+                        NetworkFacade.Players.List[data.PropertyOf].Position.Y =
                             data.Float32_Data - 6f;
                         break;
                     case Data.WorldDataType.Z:
-                        NetworkFacade.Players[data.PropertyOf].Position.Z =
+                        NetworkFacade.Players.List[data.PropertyOf].Position.Z =
                             data.Float32_Data;
                         break;
                     case Data.WorldDataType.YRotation:
-                        NetworkFacade.Players[data.PropertyOf].Rotation.Y =
+                        NetworkFacade.Players.List[data.PropertyOf].Rotation.Y =
                             data.Float32_Data;
                         break;
                     case Data.WorldDataType.Active:
-                        NetworkFacade.Players[data.PropertyOf].Alive = data.Byte_Data;
-                        DisplayFacade.DebugScreen.Debug("Updated player life state: "+ 
-                            data.Byte_Data.ToString());
+                        NetworkFacade.Players.List[data.PropertyOf].Alive = data.Byte_Data;
                         break;
                     case Data.WorldDataType.Score:
-                        NetworkFacade.Players[data.PropertyOf].Score =
+                        NetworkFacade.Players.List[data.PropertyOf].Score =
                             data.Byte_Data;
                         break;
                     case Data.WorldDataType.CurrentWeapon:
-                        NetworkFacade.Players[data.PropertyOf].WeaponModel =
+                        NetworkFacade.Players.List[data.PropertyOf].WeaponModel =
                             data.Byte_Data;
                         break;
                     case Data.WorldDataType.Name:
-                        NetworkFacade.Players[data.PropertyOf].Name =
+                        NetworkFacade.Players.List[data.PropertyOf].Name =
                             data.Str_Data;
                         break;
                     case Data.WorldDataType.Instance:
-                        NetworkFacade.Players[data.PropertyOf].CurrentInstance =
+                        NetworkFacade.Players.List[data.PropertyOf].CurrentInstance =
                             data.Str_Data;
                         break;
                     case Data.WorldDataType.ModelID:
-                        NetworkFacade.Players[data.PropertyOf].Model =
+                        NetworkFacade.Players.List[data.PropertyOf].Model =
                             data.Byte_Data;
                         break;
                 }
@@ -79,7 +77,10 @@ namespace Deimos
 
         public void InterpretEntity(Data data)
         {
+            if (data != null)
+            {
 
+            }
         }
 
         public void Process()

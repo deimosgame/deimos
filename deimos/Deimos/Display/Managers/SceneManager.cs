@@ -193,5 +193,10 @@ namespace Deimos
         {
             return CurrentAmbiantLight;
         }
+
+        public ObjectManager ObjManager()
+        {
+            return CurrentScene.Objects;
+        }
     }
 }

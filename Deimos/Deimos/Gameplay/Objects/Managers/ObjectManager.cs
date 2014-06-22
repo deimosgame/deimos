@@ -377,22 +377,25 @@ namespace Deimos
                 }
                 else
                 {
-                    if (thisWeapon.Value.respawn_timer >= thisWeapon.Value.T_Respawn)
+                    if (NetworkFacade.Local)
                     {
-                        // activating the respawned object
-                        thisWeapon.Value.Status = PickupObject.State.Active;
-                        
-                        // showing once again the now active object
-                        GeneralFacade.SceneManager.ModelManager.GetLevelModel(
-                            thisWeapon.Key).show = true;
+                        if (thisWeapon.Value.respawn_timer >= thisWeapon.Value.T_Respawn)
+                        {
+                            // activating the respawned object
+                            thisWeapon.Value.Status = PickupObject.State.Active;
 
-                        // resetting its respawn timer
-                        thisWeapon.Value.respawn_timer = 0;
-                    }
-                    else
-                    {
-                        // incrementing the respawn timer
-                        thisWeapon.Value.respawn_timer += dt;
+                            // showing once again the now active object
+                            GeneralFacade.SceneManager.ModelManager.GetLevelModel(
+                                thisWeapon.Key).show = true;
+
+                            // resetting its respawn timer
+                            thisWeapon.Value.respawn_timer = 0;
+                        }
+                        else
+                        {
+                            // incrementing the respawn timer
+                            thisWeapon.Value.respawn_timer += dt;
+                        }
                     }
                 }
             }
@@ -406,22 +409,25 @@ namespace Deimos
                 }
                 else
                 {
-                    if (thisEffect.Value.respawn_timer >= thisEffect.Value.T_Respawn)
+                    if (NetworkFacade.Local)
                     {
-                        // activating the respawned object
-                        thisEffect.Value.Status = PickupObject.State.Active;
+                        if (thisEffect.Value.respawn_timer >= thisEffect.Value.T_Respawn)
+                        {
+                            // activating the respawned object
+                            thisEffect.Value.Status = PickupObject.State.Active;
 
-                        // showing once again the now active object
-                        GeneralFacade.SceneManager.ModelManager.GetLevelModel(
-                            thisEffect.Key).show = true;
+                            // showing once again the now active object
+                            GeneralFacade.SceneManager.ModelManager.GetLevelModel(
+                                thisEffect.Key).show = true;
 
-                        // resetting its respawn timer
-                        thisEffect.Value.respawn_timer = 0;
-                    }
-                    else
-                    {
-                        // incrementing the respawn timer
-                        thisEffect.Value.respawn_timer += dt;
+                            // resetting its respawn timer
+                            thisEffect.Value.respawn_timer = 0;
+                        }
+                        else
+                        {
+                            // incrementing the respawn timer
+                            thisEffect.Value.respawn_timer += dt;
+                        }
                     }
                 }
             }

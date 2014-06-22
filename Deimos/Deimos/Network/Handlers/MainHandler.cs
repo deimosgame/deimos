@@ -17,6 +17,8 @@ namespace Deimos
         public PlayerList Players = new PlayerList();
         public UpdateInfo PlayerInfoUpdate = new UpdateInfo();
         public Sound Sounds = new Sound();
+        public MinigameTrigger Minigames = new MinigameTrigger();
+        public EntityList Entities = new EntityList();
 
         // METHODS
         public void Distribute(byte[] buf)
@@ -45,6 +47,12 @@ namespace Deimos
                         break;
                     case 0x08:
                         Sounds.Interpret(buf);
+                        break;
+                    case 0x09:
+                        Minigames.Interpret(buf);
+                        break;
+                    case 0x0A:
+                        Entities.Interpret(buf);
                         break;
                     default:
                         return;

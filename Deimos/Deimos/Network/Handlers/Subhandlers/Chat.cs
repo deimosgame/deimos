@@ -19,7 +19,7 @@ namespace Deimos
             M.AddData(message);
             M.Encode();
 
-            NetworkFacade.Sending.Enqueue(M);
+            NetworkFacade.TCP_Sending.Enqueue(M);
         }
 
         // This method is to interpret a received chat datagran

@@ -8,19 +8,30 @@ namespace Deimos
 {
     class NetworkManager
     {
-        public bool d = true;
+        public bool TCPGuard = true;
+        public bool UDPGuard = true;
 
         public void HandleSend()
         {
             while (true)
             {
-                if (NetworkFacade.Sending.Count != 0)
+                if (NetworkFacade.TCP_Sending.Count != 0)
                 {
-                    Packet p = (Packet)NetworkFacade.Sending.Dequeue();
+                    Packet a = (Packet)NetworkFacade.TCP_Sending.Dequeue();
+
+                    if (a != null)
+                    {
+                        NetworkFacade.NetworkHandling.TCP_Send(a);
+                    }
+                }
+
+                if (NetworkFacade.UDP_Sending.Count != 0)
+                {
+                    Packet p = (Packet)NetworkFacade.UDP_Sending.Dequeue();
 
                     if (p != null)
                     {
-                        NetworkFacade.NetworkHandling.Send(p);
+                        NetworkFacade.NetworkHandling.UDP_Send(p);
                     }
                 }
             }
@@ -30,7 +41,8 @@ namespace Deimos
         {
             while (true)
             {
-                NetworkFacade.NetworkHandling.Receive();
+                NetworkFacade.NetworkHandling.TCP_Receive();
+                NetworkFacade.NetworkHandling.UDP_Receive();
             }
         }
 
@@ -38,12 +50,22 @@ namespace Deimos
         {
             while (true)
             {
-
-                if (NetworkFacade.Receiving.Count != 0)
+                if (NetworkFacade.TCP_Receiving.Count != 0)
                 {
-                    d = false;
-                    byte[] b = (byte[])NetworkFacade.Receiving.Dequeue();
-                    d = true;
+                    TCPGuard = false;
+                    byte[] a = (byte[])NetworkFacade.TCP_Receiving.Dequeue();
+                    TCPGuard = true;
+                    if (a != null)
+                    {
+                        NetworkFacade.MainHandling.Distribute(a);
+                    }
+                }
+
+                if (NetworkFacade.UDP_Receiving.Count != 0)
+                {
+                    UDPGuard = false;
+                    byte[] b = (byte[])NetworkFacade.UDP_Receiving.Dequeue();
+                    UDPGuard = true;
                     if (b != null)
                     {
                         NetworkFacade.MainHandling.Distribute(b);

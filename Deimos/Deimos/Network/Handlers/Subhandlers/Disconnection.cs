@@ -20,7 +20,18 @@ namespace Deimos
             Disco.Packet_ID = 0x02;
             Disco.Encode();
 
-            NetworkFacade.Sending.Enqueue(Disco);
+            NetworkFacade.UDP_Sending.Enqueue(Disco);
+
+            // Player disconnection
+            NetworkFacade.Local = true;
+            NetworkFacade.NetworkHandling.Writer.Flush();
+            NetworkFacade.NetworkHandling.Reader.Flush();
+            NetworkFacade.NetworkHandling.Writer.Close();
+            NetworkFacade.NetworkHandling.Reader.Close();
+            NetworkFacade.NetworkHandling.TCP_Socket.Close();
+            NetworkFacade.NetworkHandling.UDP_Socket.Close();
+            NetworkFacade.NetworkHandling.ServerConnected = false;
+            GeneralFacade.GameStateManager.Set(new StartMenuGS());
         }
 
         // This method interprets disconnect datagrams
@@ -32,6 +43,12 @@ namespace Deimos
             Reason = ExtractString(Disco.Encoded_buffer, 4);
 
             // Player disconnection
+            NetworkFacade.NetworkHandling.Writer.Flush();
+            NetworkFacade.NetworkHandling.Reader.Flush();
+            NetworkFacade.NetworkHandling.Writer.Close();
+            NetworkFacade.NetworkHandling.Reader.Close();
+            NetworkFacade.NetworkHandling.TCP_Socket.Close();
+            NetworkFacade.NetworkHandling.UDP_Socket.Close();
             NetworkFacade.NetworkHandling.ServerConnected = false;
             GeneralFacade.GameStateManager.Set(new StartMenuGS());
             GeneralFacade.GameStateManager.Set(new ErrorScreenGS("Disconnected: " + Reason));

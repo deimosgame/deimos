@@ -27,6 +27,8 @@ namespace Deimos
 
         public Keys ShowDebug = Keys.Tab;
 
+        public Keys StartWriteChat = Keys.Y;
+
         public float MouseSensivity = 0.15f;
         public bool MouseInverted = false;
 

@@ -166,6 +166,7 @@ namespace Deimos
             DisplayFacade.TableFont = Content.Load<SpriteFont>("Fonts/table");
             DisplayFacade.TitleFont = Content.Load<SpriteFont>("Fonts/title");
             DisplayFacade.UIFont = Content.Load<SpriteFont>("Fonts/ui");
+            DisplayFacade.ChatFont = Content.Load<SpriteFont>("Fonts/chat");
 
             DisplayFacade.ExplosionParticleSystem = new ExplosionParticleSystem(100, Content.Load<Texture2D>("Textures/Particles/explosion"));
             DisplayFacade.ExplosionParticleSystem.AddAffector(new VelocityAffector(Vector3.Down));
@@ -183,6 +184,8 @@ namespace Deimos
             DisplayFacade.ScreenElementManager = new ScreenElementManager();
 
             DisplayFacade.DebugScreen = new DebugScreen();
+
+            GameplayFacade.ChatInterface = new ChatInterface();
 
             GeneralFacade.SceneManager = new SceneManager(GeneralFacade.TempContent);
 
@@ -250,6 +253,7 @@ namespace Deimos
                     DisplayFacade.ModelAnimationManager.Animate((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000);
                     GeneralFacade.SceneManager.Update(gameTime);
                     GameplayFacade.BulletManager.Update(gameTime);
+                    GameplayFacade.ChatInterface.HandleInput(gameTime);
 
                     TestBindings(gameTime);
                     break;
@@ -295,6 +299,11 @@ namespace Deimos
                 }
             }
 
+            if (GeneralFacade.GameStateManager.CurrentGameState == GameStates.Playing)
+            {
+                GameplayFacade.ChatInterface.Draw(DisplayFacade.SpriteBatch);
+            }
+
             DisplayFacade.DebugScreen.Draw(gameTime);
             DisplayFacade.ScreenElementManager.DrawElements(DisplayFacade.SpriteBatch);
         }
@@ -337,6 +346,13 @@ namespace Deimos
                 {
                     GameplayFacade.ThisPlayer.PlayerKill();
                 }
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.O))
+            {
+                GameplayFacade.ThisPlayer.ammoPickup = 10;
+                GameplayFacade.ThisPlayer.Inventory.PickupAmmo(GameplayFacade.ThisPlayer.CurrentWeapon.Name);
+
+                GameplayFacade.ThisPlayer.Inventory.UpdateAmmo();
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.U))

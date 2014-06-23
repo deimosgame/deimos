@@ -242,6 +242,7 @@
     <Compile Include="Sounds\SongObject.cs" />
     <Compile Include="Sounds\SoundEffectObject.cs" />
     <Compile Include="Sounds\SoundManager.cs" />
+    <Compile Include="Tools\ChatInterface.cs" />
     <Compile Include="Tools\DebugScreen.cs" />
     <Compile Include="Display\Managers\SubManagers\ModelManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

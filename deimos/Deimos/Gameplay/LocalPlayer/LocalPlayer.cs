@@ -275,17 +275,14 @@ namespace Deimos
         private void Stuff(float dt)
         {
             // Testing purposes: picking up ammo
-            if (ks.IsKeyDown(Keys.O))
-            {
-                GameplayFacade.ThisPlayer.ammoPickup = 10;
-                GameplayFacade.ThisPlayer.Inventory.PickupAmmo(GameplayFacade.ThisPlayer.CurrentWeapon.Name);
-
-                GameplayFacade.ThisPlayer.Inventory.UpdateAmmo();
-            }
-
             if (ks.IsKeyDown(GeneralFacade.Config.ShowDebug))
             {
                 GeneralFacade.Config.DebugScreen = !GeneralFacade.Config.DebugScreen;
+            }
+
+            if (ks.IsKeyDown(GeneralFacade.Config.StartWriteChat))
+            {
+                GameplayFacade.ChatInterface.InputChat = true;
             }
 
         }
@@ -296,14 +293,17 @@ namespace Deimos
         {
             dt = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
 
-            PlayerMovement.HandleMovement(dt);
-            PlayerActions.HandleActions(dt);
-            PlayerCombat.HandleCombat(dt);
-            PlayerSteps.HandleFootsteps(dt);
-            Stuff(dt);
             GameplayFacade.ThisPlayerDisplay.DisplayCurrentWeapon(GameplayFacade.ThisPlayer.CurrentWeapon);
 
             previousScrollValue = CurrentMouseState.ScrollWheelValue;
+
+            PlayerSteps.HandleFootsteps(dt);
+
+
+            PlayerMovement.HandleMovement(dt);
+            PlayerActions.HandleActions(dt);
+            PlayerCombat.HandleCombat(dt);
+            Stuff(dt);
         }
 
         public bool FireSprint()

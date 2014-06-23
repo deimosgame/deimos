@@ -503,6 +503,7 @@ Content\Models\Characters\dude\head_0.xnb
 Content\Models\Characters\dude\jacket_0.xnb
 Content\Models\Characters\dude\pants_0.xnb
 Content\Models\Characters\dude\upBodyC_0.xnb
+Content\Fonts\chat.xnb
 Content\Videos\Intro.wmv
 Content\Fonts\debug.spritefont
 Content\Models\Map\coucou.fbx
@@ -518,3 +519,4 @@ Content\Textures\DeferredRendering\null_specular.tga
 Content\Models\DeferredRendering\cone.fbx
 Content\Shaders\Lights\SpotLight.fx
 Content\Models\Map\arena.fbx
+Content\Fonts\chat.spritefont

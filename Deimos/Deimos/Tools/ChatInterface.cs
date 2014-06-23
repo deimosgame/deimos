@@ -179,7 +179,12 @@ namespace Deimos
                         // Do the needed stuff to send the chat message here with
                         // the variable CurrentInput
 
-                        if (NetworkFacade.Local)
+                        if (CurrentInput == "/debug")
+                        {
+                            GeneralFacade.Config.DebugScreen = !GeneralFacade.Config.DebugScreen;
+                            continue;
+                        }
+                        else if (NetworkFacade.Local)
                         {
                             AddChatInput(CurrentInput);
                             CheckCommands(CurrentInput);

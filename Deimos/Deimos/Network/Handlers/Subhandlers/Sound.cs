@@ -38,21 +38,29 @@ namespace Deimos
 
         public void Interpret(byte[] buf)
         {
-            string sound = GeneralFacade.SceneManager.SoundManager.GetSoundName(buf[4]);
+            if (GeneralFacade.SceneManager.SoundManager != null)
+                return;
 
-            if (buf[5] == 0x00)
-            {
-                GeneralFacade.SceneManager.SoundManager.Play(sound);
-            }
-            else if (buf[5] == 0x01)
-            {
-                Vector3 position = Vector3.Zero;
-                position.X = ExtractFloat32(buf, 6);
-                position.Y = ExtractFloat32(buf, 10);
-                position.Z = ExtractFloat32(buf, 14);
+                string sound = GeneralFacade.SceneManager.SoundManager.GetSoundName(buf[4]);
+                DisplayFacade.DebugScreen.Debug(sound);
 
-                GeneralFacade.SceneManager.SoundManager.Play3D(sound, GameplayFacade.ThisPlayer.Position, position);
-            }
+                if (buf[5] == 0x00)
+                {
+                    DisplayFacade.DebugScreen.Debug("Local");
+                    GeneralFacade.SceneManager.SoundManager.Play(sound);
+                }
+                else if (buf[5] == 0x01)
+                {
+                    Vector3 position = Vector3.Zero;
+                    position.X = ExtractFloat32(buf, 6);
+                    position.Y = ExtractFloat32(buf, 10);
+                    position.Z = ExtractFloat32(buf, 14);
+
+                    GeneralFacade.SceneManager.SoundManager.SetEmiter(sound, position);
+                    GeneralFacade.SceneManager.SoundManager.SetListener(sound, GameplayFacade.ThisPlayer.Position);
+                    GeneralFacade.SceneManager.SoundManager.Play3D(sound, GameplayFacade.ThisPlayer.Position, position);
+                    DisplayFacade.DebugScreen.Debug(position.X.ToString() + position.Y.ToString() + position.Z.ToString());
+                }
         }
     }
 }

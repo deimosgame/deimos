@@ -20,7 +20,9 @@ namespace Deimos
             Disco.Packet_ID = 0x02;
             Disco.Encode();
 
-            NetworkFacade.UDP_Sending.Enqueue(Disco);
+            NetworkFacade.TCP_Sending.Enqueue(Disco);
+
+            System.Threading.Thread.Sleep(1000);
 
             // Player disconnection
             NetworkFacade.Local = true;

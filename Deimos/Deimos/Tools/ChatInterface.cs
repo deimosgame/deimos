@@ -178,19 +178,14 @@ namespace Deimos
                     {
                         // Do the needed stuff to send the chat message here with
                         // the variable CurrentInput
-
-                        if (CurrentInput == "/debug")
-                        {
-                            GeneralFacade.Config.DebugScreen = !GeneralFacade.Config.DebugScreen;
-                            continue;
-                        }
-                        else if (NetworkFacade.Local)
+                        if (NetworkFacade.Local)
                         {
                             AddChatInput(CurrentInput);
                             CheckCommands(CurrentInput);
                         }
                         else
                         {
+                            CheckTestingCmd(CurrentInput);
                             NetworkFacade.MainHandling.Chats.Send(CurrentInput);
                         }
                     }
@@ -203,6 +198,25 @@ namespace Deimos
             }
 
             OldInputs = keysPressed;
+        }
+
+        public void CheckTestingCmd(string s)
+        {
+            if (s == "/debug")
+            {
+                GeneralFacade.Config.DebugScreen = !GeneralFacade.Config.DebugScreen;
+            }
+            else if (s == "/noclip")
+            {
+                if (GeneralFacade.Game.CurrentPlayingState == DeimosGame.PlayingStates.NoClip)
+                {
+                    GeneralFacade.Game.CurrentPlayingState = DeimosGame.PlayingStates.Normal;
+                }
+                else if (GeneralFacade.Game.CurrentPlayingState == DeimosGame.PlayingStates.Normal)
+                {
+                    GeneralFacade.Game.CurrentPlayingState = DeimosGame.PlayingStates.NoClip;
+                }
+            }
         }
 
         public void CheckCommands(string s)

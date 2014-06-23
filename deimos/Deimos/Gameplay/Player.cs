@@ -9,7 +9,7 @@ namespace Deimos
     public class Player
     {
         public string Name;
-
+        public byte Playerbyte;
         public byte Model = 0x00;
 
         public byte WeaponModel;
@@ -164,6 +164,8 @@ namespace Deimos
                     return "Assault Rifle";
                 case 0x04:
                     return "Bazooka";
+                case 0x05:
+                    return "Essence of Phobia";
                 default:
                     return null;
             }

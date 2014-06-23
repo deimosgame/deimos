@@ -64,6 +64,26 @@ namespace Deimos
             );
         }
 
+        public void SpawnMelee(char rep)
+        {
+            Vector3 bulletPosition = GameplayFacade.ThisPlayer.Position - DisplayFacade.Camera.ViewVector * 1;
+            Bullet FiredBullet = new Bullet(bulletPosition, -DisplayFacade.Camera.ViewVector, rep);
+            FiredBullet.lifeSpan = 0.2f;
+            string id = "Bullet" + GeneralFacade.Uniqid();
+            BulletTab.Add(id, FiredBullet);
+
+            GeneralFacade.SceneManager.ModelManager.LoadPrivateModel(
+                id,
+                "Models/Weapons/PP19/PP19Model", // Model
+                 bulletPosition, // Location
+                 GameplayFacade.ThisPlayer.Rotation,
+                 0.025f,
+                 LevelModel.CollisionType.None
+            );
+
+            GeneralFacade.SceneManager.ModelManager.GetPrivateModel(id).show = false;
+        }
+
         /// <summary>
         /// Destroys the corresponding bullet
         /// </summary>

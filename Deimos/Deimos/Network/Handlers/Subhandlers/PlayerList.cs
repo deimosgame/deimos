@@ -35,6 +35,10 @@ namespace Deimos
 
                     NetworkFacade.Players.List.Add(uid, playa);
                 }
+                else
+                {
+                    GameplayFacade.ThisPlayer.Playerbyte = uid;
+                }
             }
 
             N_Players = (uint)n;

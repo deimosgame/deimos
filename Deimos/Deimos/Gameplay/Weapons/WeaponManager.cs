@@ -281,7 +281,14 @@ namespace Deimos
 
                 case Type.Melee:
                     currentWeapon.FireTimer = 0;
+
+                    currentWeapon.State = WeaponState.Firing;
+
+                    GameplayFacade.BulletManager.SpawnMelee(currentWeapon.representative);
                     PlayMeleeSound();
+
+                    currentWeapon.State = WeaponState.AtEase;
+
                     return;
 
                 case Type.Grenade:

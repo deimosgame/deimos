@@ -74,7 +74,14 @@ namespace Deimos
                     }
                     else if (WeaponRep == 'P')
                     {
+                        if (element.GetNature() != ElementNature.Player)
+                            return;
 
+                        if (!NetworkFacade.Local && element.Owner != 0xFF)
+                        {
+                            NetworkFacade.MainHandling.Minigames.SendBegin(
+                                element.Owner);
+                        }
                     }
                     else
                     {

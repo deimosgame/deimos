@@ -303,10 +303,15 @@ namespace Deimos
 
                 if (fall_distance > GetMaxSafefall() && !GameplayFacade.ThisPlayer.Gravityboosted)
                 {
-                    GameplayFacade.ThisPlayer.Hurt(GetFallDamage(fall_distance));
-                    GeneralFacade.SceneManager.SoundManager.Play("fall");
-                    if (!NetworkFacade.Local)
+                    if (NetworkFacade.Local)
                     {
+                        GameplayFacade.ThisPlayer.Hurt(GetFallDamage(fall_distance));
+                        GeneralFacade.SceneManager.SoundManager.Play("fall");
+
+                    }
+                    else
+                    {
+                        NetworkFacade.MainHandling.Damages.Send(GameplayFacade.ThisPlayer.Playerbyte, GetFallDamage(fall_distance));
                         NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("fall"),
                             GameplayFacade.ThisPlayer.Position);
                     }

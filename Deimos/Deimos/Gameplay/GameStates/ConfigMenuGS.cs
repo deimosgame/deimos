@@ -114,7 +114,7 @@ namespace Deimos
                 {
                     GeneralFacade.Config.Forward = k;
                     DisplayFacade.ScreenElementManager.GetText("ConfigMenuForwardText").Text =
-                        "Binded to: " + k.ToString();
+                        "Bound to: " + k.ToString();
                 }
             );
             DisplayFacade.ScreenElementManager.AddText(
@@ -163,7 +163,7 @@ namespace Deimos
                 230,
                 1,
                 DisplayFacade.TableFont,
-                "Binded to: " + GeneralFacade.Config.Backward.ToString(),
+                "Bound to: " + GeneralFacade.Config.Backward.ToString(),
                 Color.White
             );
             #endregion
@@ -203,7 +203,7 @@ namespace Deimos
                 280,
                 1,
                 DisplayFacade.TableFont,
-                "Binded to: " + GeneralFacade.Config.Left.ToString(),
+                "Bound to: " + GeneralFacade.Config.Left.ToString(),
                 Color.White
             );
             #endregion
@@ -243,7 +243,7 @@ namespace Deimos
                 330,
                 1,
                 DisplayFacade.TableFont,
-                "Binded to: " + GeneralFacade.Config.Right.ToString(),
+                "Bound to: " + GeneralFacade.Config.Right.ToString(),
                 Color.White
             );
             #endregion

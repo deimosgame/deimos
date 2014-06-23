@@ -278,7 +278,6 @@ namespace Deimos
             {
                 GameplayFacade.ChatInterface.InputChat = true;
             }
-
         }
 
         

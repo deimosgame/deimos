@@ -131,6 +131,22 @@ namespace Deimos
                 DisplayFacade.MenuImages["StartMenuQuit"],
                 delegate(ScreenElement el, DeimosGame game)
                 {
+                    if (NetworkFacade.NetworkHandling.Connective)
+                    {
+                        try
+                        {
+                            NetworkFacade.NetworkHandling.TCP_Socket.Close();
+                            NetworkFacade.NetworkHandling.Writer.Flush();
+                            NetworkFacade.NetworkHandling.Writer.Close();
+                            NetworkFacade.NetworkHandling.Reader.Flush();
+                            NetworkFacade.NetworkHandling.Reader.Close();
+                            NetworkFacade.NetworkHandling.UDP_Socket.Close();
+                        }
+                        catch
+                        {
+
+                        }
+                    }
                     Environment.Exit(0);
                 },
                 delegate(ScreenElement el, DeimosGame game)

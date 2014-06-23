@@ -21,6 +21,7 @@ namespace Deimos
         public IPAddress local_address;
 
         public int server_port;
+        public int local_port;
 
         public IPEndPoint server_endpoint;
         public IPEndPoint ip_endpoint;
@@ -29,6 +30,7 @@ namespace Deimos
         public byte[] TCP_RBuf;
         public byte[] UDP_RBuf;
 
+        public bool Connective = false;
         public bool Handshook = false;
         public bool ServerConnected = false;
 
@@ -49,6 +51,7 @@ namespace Deimos
             server_address = IPAddress.Parse(server);
             local_address = IPAddress.Parse(local);
             server_port = serverPort;
+            local_port = localPort;
 
             server_endpoint = new IPEndPoint(server_address, serverPort);
             ip_endpoint = new IPEndPoint(local_address, localPort);
@@ -74,8 +77,10 @@ namespace Deimos
             }
             catch
             {
-                GeneralFacade.GameStateManager.Set(new ErrorScreenGS("Socket bind error"));
+                GeneralFacade.GameStateManager.Set(new ErrorScreenGS("UDP socket bind error"));
             }
+
+            Connective = true;
         }
 
         // METHODS FOR HANDHSAKING AND SERVER CONNECTION
@@ -98,8 +103,15 @@ namespace Deimos
         {
             if (Writer != null && Writer.CanWrite)
             {
-                Writer.Write(pack.Encoded_buffer, 0, pack.Encoded_buffer.Length);
-                Writer.Flush();
+                try
+                {
+                    Writer.Write(pack.Encoded_buffer, 0, pack.Encoded_buffer.Length);
+                    Writer.Flush();
+                }
+                catch
+                {
+                    // connection interrupted
+                }
             }
         }
 
@@ -111,26 +123,40 @@ namespace Deimos
             // waiting for receipt
             if (Reader != null && Reader.CanRead)
             {
-                Reader.Read(TCP_RBuf, 0, 576);
-                Reader.Flush();
-
-                // once the packet received, handing it over to the
-                // interpretation network thread
-
-                while (!NetworkFacade.Network.TCPGuard)
+                try
                 {
-                    System.Threading.Thread.Sleep(1);
-                }
+                    Reader.Read(TCP_RBuf, 0, 576);
+                    Reader.Flush();
 
-                NetworkFacade.TCP_Receiving.Enqueue(TCP_RBuf);
+                    // once the packet received, handing it over to the
+                    // interpretation network thread
+
+                    while (!NetworkFacade.Network.TCPGuard)
+                    {
+                        System.Threading.Thread.Sleep(1);
+                    }
+
+                    NetworkFacade.TCP_Receiving.Enqueue(TCP_RBuf);
+                }
+                catch
+                {
+                    // Connection interrupted
+                }
             }
         }
 
         // Sending our datagrams to the server
         public void UDP_Send(Packet pack)
         {
-            // sending packet to ip end point
-            UDP_Socket.SendTo(pack.Encoded_buffer, server_endpoint);
+            try
+            {
+                // sending packet to ip end point
+                UDP_Socket.SendTo(pack.Encoded_buffer, server_endpoint);
+            }
+            catch
+            {
+                // connection disrupted
+            }
         }
 
         // Receiving datagrams
@@ -141,19 +167,25 @@ namespace Deimos
             // clearing the byte buffer
             UDP_RBuf = new byte[576];
 
-            // waiting for receipt
-            UDP_Socket.ReceiveFrom(UDP_RBuf, ref end_point);
-
-            // once the packet received, handing it over to the
-            // interpretation network thread
-
-            while (!NetworkFacade.Network.UDPGuard)
+            try
             {
-                System.Threading.Thread.Sleep(1);
+                // waiting for receipt
+                UDP_Socket.ReceiveFrom(UDP_RBuf, ref end_point);
+
+                // once the packet received, handing it over to the
+                // interpretation network thread
+
+                while (!NetworkFacade.Network.UDPGuard)
+                {
+                    System.Threading.Thread.Sleep(1);
+                }
+
+                NetworkFacade.UDP_Receiving.Enqueue(UDP_RBuf);
             }
-
-            NetworkFacade.UDP_Receiving.Enqueue(UDP_RBuf);
-
+            catch
+            {
+                // connection disrupted
+            }
         }
     }
 }

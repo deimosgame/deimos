@@ -79,7 +79,7 @@ namespace Deimos
             };
             testRow.OnClick = delegate(ScreenElement el, DeimosGame g)
             {
-                if (!NetworkFacade.ServerIsLocal)
+                if (!NetworkFacade.ServerIsLocal && !NetworkFacade.NetworkHandling.Connective)
                 {
                     NetworkFacade.NetworkHandling.SetConnectivity(
                             "192.168.75.1", 1518, "192.168.75.51", 8000);
@@ -140,10 +140,10 @@ namespace Deimos
                         }
 
                     }
-                    //else
-                    //{
-                    //    GeneralFacade.GameStateManager.Set(new ErrorScreenGS("Could not connect"));
-                    //}
+                    else
+                    {
+                        GeneralFacade.GameStateManager.Set(new ErrorScreenGS("Could not connect"));
+                    }
 
             };
             serverList.Add(testRow);

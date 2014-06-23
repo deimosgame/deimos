@@ -17,6 +17,7 @@ namespace Deimos
 
             New.Packet_ID = 0x00;
             New.Write(0x01);
+            New.AddData(NetworkFacade.NetworkHandling.local_port);
             New.Encode();
 
             return New;

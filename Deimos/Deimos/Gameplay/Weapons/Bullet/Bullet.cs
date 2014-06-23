@@ -62,34 +62,45 @@ namespace Deimos
         public override void CollisionEvent(CollisionElement element)
         {
             if (element.GetNature() != ElementNature.Object
-                && element.GetNature() != ElementNature.Bullet
-                && Own)
+                && element.GetNature() != ElementNature.Bullet)
             {
                 Collided = true;
 
-                if (WeaponRep == 'E')
+                if (Own)
                 {
-                    Explode(Position);
-                }
-
-                else
-                {
-                    switch (element.Nature)
+                    if (WeaponRep == 'E')
                     {
-                        case ElementNature.World:
-                            break;
-                        case ElementNature.Player:
-                            break;
-                        default:
-                            break;
+                        Explode(Position);
+                    }
+                    else if (WeaponRep == 'P')
+                    {
+
+                    }
+                    else
+                    {
+                        switch (element.GetNature())
+                        {
+                            case ElementNature.World:
+                                break;
+                            case ElementNature.Player:
+                                if (element.Owner == 0xFF)
+                                    return;
+
+                                NetworkFacade.MainHandling.Damages.Send(element.Owner, Hurt());
+                                break;
+                            default:
+                                break;
+                        }
                     }
                 }
             }
         }
 
-        public void Hurt()
+        public int Hurt()
         {
+            Random dmg = new Random();
 
+            return (dmg.Next((int)(minimumDmg), (int)(maximumDmg + 1)));
         }
 
         public void Explode(Vector3 pos)

@@ -184,9 +184,17 @@ namespace Deimos
             {
                 return;
             }
-            ModelManager.Update(gameTime);
-            CurrentScene.Update((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000);
-            SoundManager.Update();
+
+            try
+            {
+                ModelManager.Update(gameTime);
+                CurrentScene.Update((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000);
+                SoundManager.Update();
+            }
+            catch
+            {
+                // Thread interfered
+            }
         }
 
         public float GetCurrentAmbiantLight()

@@ -20,6 +20,7 @@ namespace Deimos
         public MinigameTrigger Minigames = new MinigameTrigger();
         public EntityList Entities = new EntityList();
         public BulletCreate Bullets = new BulletCreate();
+        public Damage Damages = new Damage();
 
         // METHODS
         public void Distribute(byte[] buf)
@@ -57,6 +58,9 @@ namespace Deimos
                         break;
                     case 0x0B:
                         Bullets.Interpret(buf);
+                        break;
+                    case 0x0C:
+                        Damages.Interpret(buf);
                         break;
                     default:
                         return;

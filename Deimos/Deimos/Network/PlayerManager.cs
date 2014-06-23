@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace Deimos
     class PlayerManager
     {
         public Dictionary<byte, Player> List = new Dictionary<byte, Player>();
+        public Dictionary<byte, CollisionElement> CollisionsList = new Dictionary<byte, CollisionElement>();
 
         public void LoadModels()
         {
@@ -23,6 +25,13 @@ namespace Deimos
                         5,
                         LevelModel.CollisionType.None
                         );
+
+                    CollisionElement PlayerCollision = new CollisionElement(
+                        new Vector2(3, 5));
+                    PlayerCollision.Nature = CollisionElement.ElementNature.Player;
+                    PlayerCollision.Owner = p.Key;
+
+                    CollisionsList.Add(p.Key, PlayerCollision);
                 }
             }
         }
@@ -47,9 +56,10 @@ namespace Deimos
 
                     GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).Position =
                         pair.Value.Position;
-
                     GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).Rotation =
                         pair.Value.Rotation;
+
+                    CollisionsList[pair.Key].CheckCollision(pair.Value.Position);
                 }
             }
         }

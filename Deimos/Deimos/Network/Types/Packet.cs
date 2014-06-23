@@ -22,6 +22,7 @@ namespace Deimos
             Minigame,
             EntityList,
             BulletCreate,
+            Damage,
             Corrupt
         }
 

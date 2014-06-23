@@ -20,11 +20,21 @@ namespace Deimos
         const int MarginLeft = 20;
         const int MarginBottom = 100;
 
+        bool Guard = true;
+
         public ChatInterface()
         {
-            AddChatInput("Manu: Coucou!");
-            AddChatInput("Erenus: La forme?");
-            AddChatInput("Manu: Impeccable! Et en plus je sais dire plus d'un mot!");
+            AddChatInput("Welcome to Deimos");
+
+            if (NetworkFacade.Local)
+            {
+                AddChatInput("You are playing Deimos alone... Or are you?");
+                AddChatInput("Type '/help' to see commands list");
+            }
+            else
+            {
+                AddChatInput("Have fun annihilating everyone");
+            }
         }
 
         private bool GetChar(Keys input, out char key)
@@ -124,6 +134,12 @@ namespace Deimos
             }
 
             KeyboardState ks = Keyboard.GetState();
+
+            if (ks.IsKeyUp(GeneralFacade.Config.Chat))
+            {
+                Guard = true;
+            }
+
             Keys[] keysPressed = ks.GetPressedKeys();
 
             foreach (var k in keysPressed)
@@ -143,6 +159,11 @@ namespace Deimos
                     CurrentInput += thisChar;
                 }
 
+                if (k == GeneralFacade.Config.Chat && !Guard)
+                {
+                    continue;
+                }
+
                 if (k == Keys.Back && CurrentInput.Count() > 0)
                 {
                     CurrentInput = CurrentInput.Remove(CurrentInput.Count() - 1);
@@ -155,6 +176,11 @@ namespace Deimos
                         // Do the needed stuff to send the chat message here with
                         // the variable CurrentInput
                         AddChatInput(CurrentInput); // testing
+
+                        if (NetworkFacade.Local)
+                        {
+                            CheckCommands(CurrentInput);
+                        }
                     }
                     
 
@@ -166,6 +192,34 @@ namespace Deimos
             }
 
             OldInputs = keysPressed;
+        }
+
+        public void CheckCommands(string s)
+        {
+            switch (s)
+            {
+                case "/help":
+                    AddChatInput("List of available commands:");
+                    AddChatInput("/debug - toggles debug screen");
+                    return;
+                case "/debug":
+                    GeneralFacade.Config.DebugScreen = !GeneralFacade.Config.DebugScreen;
+                    if (GeneralFacade.Config.DebugScreen == true)
+                    {
+                        AddChatInput("Debug screen toggled: on");
+                    }
+                    else
+                    {
+                        AddChatInput("Debug screen toggled: off");
+                    }
+                    return;
+                default:
+                    if (s.ElementAt(0) == '/')
+                    {
+                        AddChatInput("Unknown command");
+                    }
+                    return;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)

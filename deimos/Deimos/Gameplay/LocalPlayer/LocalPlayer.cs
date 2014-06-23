@@ -274,13 +274,7 @@ namespace Deimos
 
         private void Stuff(float dt)
         {
-            // Testing purposes: picking up ammo
-            if (ks.IsKeyDown(GeneralFacade.Config.ShowDebug))
-            {
-                GeneralFacade.Config.DebugScreen = !GeneralFacade.Config.DebugScreen;
-            }
-
-            if (ks.IsKeyDown(GeneralFacade.Config.StartWriteChat))
+            if (ks.IsKeyDown(GeneralFacade.Config.Chat))
             {
                 GameplayFacade.ChatInterface.InputChat = true;
             }

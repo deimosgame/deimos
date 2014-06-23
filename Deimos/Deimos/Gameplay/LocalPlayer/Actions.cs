@@ -118,21 +118,24 @@ namespace Deimos
         {
             GameplayFacade.ThisPlayer.ks = Keyboard.GetState();
 
-            if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Walk))
+            if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Walk)
+                && (!GameplayFacade.ChatInterface.InputChat))
             {
                 GameplayFacade.ThisPlayer.CurrentSpeedState = 
                     LocalPlayer.SpeedState.Walking;
             }
 
             if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Sprint) &&
-                CanSprint())
+                CanSprint()
+                && (!GameplayFacade.ChatInterface.InputChat))
             {
                 GameplayFacade.ThisPlayer.CurrentSpeedState = 
                     LocalPlayer.SpeedState.Sprinting;
             }
 
             if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Jump) &&
-                CanJump())
+                CanJump()
+                && (!GameplayFacade.ChatInterface.InputChat))
             {
                 GameplayFacade.ThisPlayerPhysics.Jump();
                 canjump = false;

@@ -26,22 +26,26 @@ namespace Deimos
             // Let's handle movement input
             if (GeneralFacade.Game.CurrentPlayingState != DeimosGame.PlayingStates.NoClip)
             {
-                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Forward))
+                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Forward)
+                    && (!GameplayFacade.ChatInterface.InputChat))
                 {
                     GameplayFacade.ThisPlayerPhysics.Accelerate(Physics.AccelerationDirection.Z);
                     movementVector += Vector3.Backward;
                 }
-                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Backward))
+                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Backward)
+                    && (!GameplayFacade.ChatInterface.InputChat))
                 {
                     GameplayFacade.ThisPlayerPhysics.Decelerate(Physics.AccelerationDirection.Z);
                     movementVector += Vector3.Backward;
                 }
-                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Left))
+                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Left)
+                    && (!GameplayFacade.ChatInterface.InputChat))
                 {
                     GameplayFacade.ThisPlayerPhysics.Accelerate(Physics.AccelerationDirection.X);
                     movementVector += Vector3.Right;
                 }
-                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Right))
+                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Right)
+                    && (!GameplayFacade.ChatInterface.InputChat))
                 {
                     GameplayFacade.ThisPlayerPhysics.Decelerate(Physics.AccelerationDirection.X);
                     movementVector += Vector3.Right;
@@ -80,27 +84,33 @@ namespace Deimos
             }
             else
             {
-                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Forward))
+                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Forward)
+                    && (!GameplayFacade.ChatInterface.InputChat))
                 {
                     movementVector += Vector3.Backward;
                 }
-                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Backward))
+                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Backward)
+                    && (!GameplayFacade.ChatInterface.InputChat))
                 {
                     movementVector += Vector3.Forward;
                 }
-                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Left))
+                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Left)
+                    && (!GameplayFacade.ChatInterface.InputChat))
                 {
                     movementVector += Vector3.Right;
                 }
-                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Right))
+                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Right)
+                    && (!GameplayFacade.ChatInterface.InputChat))
                 {
                     movementVector += Vector3.Left;
                 }
-                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Jump))
+                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Jump)
+                    && (!GameplayFacade.ChatInterface.InputChat))
                 {
                     movementVector += Vector3.Up;
                 }
-                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Crouch))
+                if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Crouch)
+                    && (!GameplayFacade.ChatInterface.InputChat))
                 {
                     movementVector += Vector3.Down;
                 }

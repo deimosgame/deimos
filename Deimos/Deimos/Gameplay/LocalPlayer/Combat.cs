@@ -106,7 +106,8 @@ namespace Deimos
 
             // switching weapons
             if (GameplayFacade.ThisPlayer.ks.IsKeyDown(Keys.D1) &&
-                CanSwitch("Pistol"))
+                CanSwitch("Pistol")
+                && (!GameplayFacade.ChatInterface.InputChat))
             {
                 if (GameplayFacade.ThisPlayer.Inventory.Contains("Pistol"))
                 {
@@ -116,7 +117,8 @@ namespace Deimos
                 }
             }
             if (GameplayFacade.ThisPlayer.ks.IsKeyDown(Keys.D2) &&
-                CanSwitch("Assault Rifle"))
+                CanSwitch("Assault Rifle")
+                && (!GameplayFacade.ChatInterface.InputChat))
             {
                 if (GameplayFacade.ThisPlayer.Inventory.Contains("Assault Rifle"))
                 {
@@ -126,7 +128,8 @@ namespace Deimos
                 }
             }
             if (GameplayFacade.ThisPlayer.ks.IsKeyDown(Keys.D3) &&
-                CanSwitch("Bazooka"))
+                CanSwitch("Bazooka")
+                && (!GameplayFacade.ChatInterface.InputChat))
             {
                 if (GameplayFacade.ThisPlayer.Inventory.Contains("Bazooka"))
                 {
@@ -136,7 +139,8 @@ namespace Deimos
                 }
             }
             if (GameplayFacade.ThisPlayer.ks.IsKeyDown(Keys.D4) &&
-                CanSwitch("Arbiter"))
+                CanSwitch("Arbiter")
+                && (!GameplayFacade.ChatInterface.InputChat))
             {
                 if (GameplayFacade.ThisPlayer.Inventory.Contains("Arbiter"))
                 {
@@ -146,7 +150,8 @@ namespace Deimos
                 }
             }
             if (GameplayFacade.ThisPlayer.ks.IsKeyDown(Keys.D5) &&
-                CanSwitch("Carver"))
+                CanSwitch("Carver")
+                && (!GameplayFacade.ChatInterface.InputChat))
             {
                 if (GameplayFacade.ThisPlayer.Inventory.Contains("Carver"))
                 {
@@ -156,7 +161,8 @@ namespace Deimos
                 }
             }
             if (GameplayFacade.ThisPlayer.ks.IsKeyDown(Keys.T) &&
-                CanSwitch("Essence of Phobia"))
+                CanSwitch("Essence of Phobia")
+                && (!GameplayFacade.ChatInterface.InputChat))
             {
                 if (GameplayFacade.ThisPlayer.Inventory.Contains("Essence of Phobia"))
                 {
@@ -167,7 +173,8 @@ namespace Deimos
             }
 
             if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.Reload) &&
-                CanReload())
+                CanReload()
+                && (!GameplayFacade.ChatInterface.InputChat))
             {
                 GameplayFacade.ThisPlayer.CurrentWeapon.State =
                     WeaponState.Reloading;
@@ -181,7 +188,8 @@ namespace Deimos
             }
 
             if (GameplayFacade.ThisPlayer.ks.IsKeyDown(GeneralFacade.Config.QuickSwitch) &&
-                CanQuickSwitch())
+                CanQuickSwitch()
+                && (!GameplayFacade.ChatInterface.InputChat))
             {
                 GameplayFacade.ThisPlayer.CurrentWeapon.State =
                     WeaponState.Switching;

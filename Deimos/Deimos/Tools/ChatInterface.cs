@@ -117,7 +117,11 @@ namespace Deimos
 
         public void AddChatInput(string input)
         {
-            CountDown = 5;
+            if (GeneralFacade.Config.AutoShowChat)
+            {
+                CountDown = 5;
+            }
+
             ChatInputs.Add(input);
         }
 
@@ -200,11 +204,145 @@ namespace Deimos
 
         public void CheckCommands(string s)
         {
+            if (s.Length >= 8 && s.Substring(0, 6) == "/give ")
+            {
+                string value = s.Substring(6, 3);
+                switch (value)
+                {
+                    case "pis":
+                        if (!GameplayFacade.ThisPlayer.Inventory.Contains("Pistol"))
+                        {
+                            GameplayFacade.ThisPlayer.Inventory.PickupWeapon(
+                                GameplayFacade.Weapons.GetWeapon("Pistol"));
+                            AddChatInput("Pistol picked up");
+                        }
+                        else
+                        {
+                            AddChatInput("Pistol already picked up");
+                        }
+                        return;
+                    case "kni":
+                        if (!GameplayFacade.ThisPlayer.Inventory.Contains("Carver"))
+                        {
+                            GameplayFacade.ThisPlayer.Inventory.PickupWeapon(
+                                GameplayFacade.Weapons.GetWeapon("Carver"));
+                            AddChatInput("Carver picked up");
+                        }
+                        else
+                        {
+                            AddChatInput("Carver already picked up");
+                        }
+                        return;
+                    case "rif":
+                        if (!GameplayFacade.ThisPlayer.Inventory.Contains("Assault Rifle"))
+                        {
+                            GameplayFacade.ThisPlayer.Inventory.PickupWeapon(
+                                GameplayFacade.Weapons.GetWeapon("Assault Rifle"));
+                            AddChatInput("Assault Rifle picked up");
+                        }
+                        else
+                        {
+                            AddChatInput("Assault Rifle already picked up");
+                        }
+                        return;
+                    case "rpg":
+                        if (!GameplayFacade.ThisPlayer.Inventory.Contains("Bazooka"))
+                        {
+                            GameplayFacade.ThisPlayer.Inventory.PickupWeapon(
+                                GameplayFacade.Weapons.GetWeapon("Bazooka"));
+                            AddChatInput("Bazooka picked up");
+                        }
+                        else
+                        {
+                            AddChatInput("Bazooka already picked up");
+                        }
+                        return;
+                    case "axe":
+                        if (!GameplayFacade.ThisPlayer.Inventory.Contains("Arbiter"))
+                        {
+                            GameplayFacade.ThisPlayer.Inventory.PickupWeapon(
+                                GameplayFacade.Weapons.GetWeapon("Arbiter"));
+                            AddChatInput("Arbiter picked up");
+                        }
+                        else
+                        {
+                            AddChatInput("Arbiter already picked up");
+                        }
+                        return;
+                    case "mys":
+                        if (!GameplayFacade.ThisPlayer.Inventory.Contains("Essence of Phobia"))
+                        {
+                            GameplayFacade.ThisPlayer.Inventory.PickupWeapon(
+                                GameplayFacade.Weapons.GetWeapon("Essence of Phobia"));
+                            AddChatInput("Essence of Phobia picked up");
+                        }
+                        else
+                        {
+                            AddChatInput("Essence of Phobia already picked up");
+                        }
+                        return;
+                    default:
+                        AddChatInput("Invalid argument");
+                        return;
+                }
+            }
+
+            if (s.Length >= 13 && s.Substring(0, 10) == "/minigame ")
+            {
+                string value = s.Substring(10, 3);
+
+                if (GameplayFacade.ThisPlayer.IsMG)
+                {
+                    GameplayFacade.ThisPlayer.IsMG = false;
+
+                    switch (value)
+                    {
+                        case "kni":
+                            GameplayFacade.Minigames.KnifeMG.Terminate();
+                            AddChatInput("Terminated Knife minigame");
+                            return;
+                        case "lab":
+                            GameplayFacade.Minigames.LabyrinthMG.Terminate();
+                            AddChatInput("Terminated Labyrinth minigame");
+                            return;
+                        default:
+                            AddChatInput("Invalid argument");
+                            return;
+                    }
+                }
+                else
+                {
+                    GameplayFacade.ThisPlayer.IsMG = true;
+                    GameplayFacade.ThisPlayer.MGNumber = 0x00;
+
+                    switch (value)
+                    {
+                        case "kni":
+                            GameplayFacade.Minigames.KnifeMG.Load();
+                            AddChatInput("Triggered Knife minigame");
+                            return;
+                        case "lab":
+                            GameplayFacade.Minigames.LabyrinthMG.Load();
+                            AddChatInput("Triggered Labyrinth minigame");
+                            return;
+                        default:
+                            AddChatInput("Invalid argument");
+                            return;
+                    }
+                }
+            }
+
             switch (s)
             {
                 case "/help":
                     AddChatInput("List of available commands:");
                     AddChatInput("/debug - toggles debug screen");
+                    AddChatInput("/noclip - toggles clipping");
+                    AddChatInput("/kill - kills you");
+                    AddChatInput("/dmg - damages you for 20 hp");
+                    AddChatInput("/give <weapon name> - gives specified weapon");
+                    AddChatInput("/giveammo - gives ammo for current weapon");
+                    AddChatInput("/minigame <name> - triggers the specified minigame event");
                     return;
                 case "/debug":
                     GeneralFacade.Config.DebugScreen = !GeneralFacade.Config.DebugScreen;
@@ -217,10 +355,38 @@ namespace Deimos
                         AddChatInput("Debug screen toggled: off");
                     }
                     return;
+                case "/noclip":
+                    if (GeneralFacade.Game.CurrentPlayingState == DeimosGame.PlayingStates.Normal)
+                    {
+                        GeneralFacade.Game.CurrentPlayingState = DeimosGame.PlayingStates.NoClip;
+                        GameplayFacade.ThisPlayerPhysics.timer_gravity = 0;
+                        GameplayFacade.ThisPlayerPhysics.acceleration = Vector3.Zero;
+                        GameplayFacade.ThisPlayerPhysics.initial_velocity = 0;
+                        AddChatInput("Noclip toggled: on");
+                    }
+                    else if (GeneralFacade.Game.CurrentPlayingState == DeimosGame.PlayingStates.NoClip)
+                    {
+                        GeneralFacade.Game.CurrentPlayingState = DeimosGame.PlayingStates.Normal;
+                        AddChatInput("Noclip toggled: off");
+                    }
+                    return;
+                case "/kill":
+                    GameplayFacade.ThisPlayer.PlayerKill();
+                    GameplayFacade.ThisPlayer.Inventory.Flush();
+                    return;
+                case "/dmg":
+                    GameplayFacade.ThisPlayer.Hurt(20);
+                    return;
+                case "/giveammo":
+                    GameplayFacade.ThisPlayer.ammoPickup = 10;
+                    GameplayFacade.ThisPlayer.Inventory.PickupAmmo(GameplayFacade.ThisPlayer.CurrentWeapon.Name);
+
+                    GameplayFacade.ThisPlayer.Inventory.UpdateAmmo();
+                    return;
                 default:
                     if (s.ElementAt(0) == '/')
                     {
-                        AddChatInput("Unknown command");
+                        AddChatInput("Unknown command form");
                     }
                     return;
             }

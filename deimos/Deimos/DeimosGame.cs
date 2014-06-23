@@ -40,7 +40,7 @@ namespace Deimos
         public PlayingStates CurrentPlayingState
         {
             get { return currentPlayingState; }
-            private set { currentPlayingState = value; }
+            set { currentPlayingState = value; }
         }
 
         public VideoPlayer VideoPlayer;
@@ -326,69 +326,14 @@ namespace Deimos
                 EscapeGuard = true;
             }
 
-            // Testing purposes: switching clip/noclip
-            if (Keyboard.GetState().IsKeyDown(Keys.N)
-                && (!GameplayFacade.ChatInterface.InputChat))
-            {
-                CurrentPlayingState = DeimosGame.PlayingStates.NoClip;
-                GameplayFacade.ThisPlayerPhysics.timer_gravity = 0;
-                GameplayFacade.ThisPlayerPhysics.acceleration = Vector3.Zero;
-                GameplayFacade.ThisPlayerPhysics.initial_velocity = 0;
-            }
-
-            if (Keyboard.GetState().IsKeyDown(Keys.M)
-                && (!GameplayFacade.ChatInterface.InputChat))
-            {
-                CurrentPlayingState = DeimosGame.PlayingStates.Normal;
-            }
-
             // for testing: player death and respawning
-            if (Keyboard.GetState().IsKeyDown(Keys.J)
-                && (!GameplayFacade.ChatInterface.InputChat))
-            {
-                GameplayFacade.ThisPlayer.PlayerRespawn(new Vector3(18, 10, 90), Vector3.Zero, "main");
-                GameplayFacade.ThisPlayer.InitializeInventory(GameplayFacade.ThisPlayer.Class);
-                CurrentPlayingState = PlayingStates.Normal;
-            }
-
-            if (Keyboard.GetState().IsKeyDown(Keys.K)
-                && (!GameplayFacade.ChatInterface.InputChat))
-            {
-                GameplayFacade.ThisPlayer.PlayerKill();
-                GameplayFacade.ThisPlayer.Inventory.Flush();
-            }
-
-            if (Keyboard.GetState().IsKeyDown(Keys.L)
-                && (!GameplayFacade.ChatInterface.InputChat))
-            {
-                GameplayFacade.ThisPlayer.Health--;
-
-                if (GameplayFacade.ThisPlayer.Health == 0)
-                {
-                    GameplayFacade.ThisPlayer.PlayerKill();
-                }
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.O)
-                && (!GameplayFacade.ChatInterface.InputChat))
-            {
-                GameplayFacade.ThisPlayer.ammoPickup = 10;
-                GameplayFacade.ThisPlayer.Inventory.PickupAmmo(GameplayFacade.ThisPlayer.CurrentWeapon.Name);
-
-                GameplayFacade.ThisPlayer.Inventory.UpdateAmmo();
-            }
-
-            if (Keyboard.GetState().IsKeyDown(Keys.U)
-                && (!GameplayFacade.ChatInterface.InputChat))
-            {
-                GameplayFacade.ThisPlayer.IsMG = true;
-                GameplayFacade.ThisPlayer.MGNumber = 0x00;
-                GameplayFacade.Minigames.KnifeMG.Load();
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.I)
-                && (!GameplayFacade.ChatInterface.InputChat))
-            {
-                GameplayFacade.Minigames.KnifeMG.Terminate();
-            }
+            //if (Keyboard.GetState().IsKeyDown(Keys.J)
+            //    && (!GameplayFacade.ChatInterface.InputChat))
+            //{
+            //    GameplayFacade.ThisPlayer.PlayerRespawn(new Vector3(18, 10, 90), Vector3.Zero, "main");
+            //    GameplayFacade.ThisPlayer.InitializeInventory(GameplayFacade.ThisPlayer.Class);
+            //    CurrentPlayingState = PlayingStates.Normal;
+            //}
         }
     }
 }

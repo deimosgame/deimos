@@ -274,7 +274,7 @@ namespace Deimos
 
         private void Stuff(float dt)
         {
-            if (ks.IsKeyDown(GeneralFacade.Config.Chat))
+            if (ks.IsKeyDown(GeneralFacade.Config.Chat) && GameplayFacade.ChatInterface.InputChat == false)
             {
                 GameplayFacade.ChatInterface.InputChat = true;
             }

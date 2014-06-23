@@ -62,6 +62,18 @@ namespace Deimos
         {
             DisplayFacade.ScreenElementManager.RemoveRectangle("LoadingScreenBackground");
             DisplayFacade.ScreenElementManager.RemoveText("LoadingScreenTitle");
+
+
+
+            if (NetworkFacade.Local)
+            {
+                GameplayFacade.ChatInterface.AddChatInput("You are playing Deimos alone... or are you?");
+                GameplayFacade.ChatInterface.AddChatInput("Type '/help' to see commands list");
+            }
+            else
+            {
+                GameplayFacade.ChatInterface.AddChatInput("Have fun annihilating everyone");
+            }
         }
     }
 }

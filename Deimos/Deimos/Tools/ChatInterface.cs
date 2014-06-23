@@ -34,16 +34,6 @@ namespace Deimos
         public ChatInterface()
         {
             AddChatInput("Welcome to Deimos");
-
-            if (NetworkFacade.Local)
-            {
-                AddChatInput("You are playing Deimos alone... or are you?");
-                AddChatInput("Type '/help' to see commands list");
-            }
-            else
-            {
-                AddChatInput("Have fun annihilating everyone");
-            }
         }
 
         private bool GetChar(Keys input, out char key)

@@ -423,6 +423,8 @@ namespace Deimos
                     return 0x03;
                 case "Bazooka":
                     return 0x04;
+                case "Essence of Phobia":
+                    return 0x05;
                 default:
                     return 0x00;
             }

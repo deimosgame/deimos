@@ -46,7 +46,12 @@ namespace Deimos
 
         public void SpawnOtherBullet(Vector3 pos, Vector3 director, string rep, Vector3 rotation, float velo, float span)
         {
-            Vector3 bulletPosition = pos; ;
+            DisplayFacade.DebugScreen.Debug(String.Format(
+                "Location: x:{0}; y:{1}; z:{2}",
+                (int)pos.X,
+                (int)pos.Y,
+                (int)pos.Z));
+            Vector3 bulletPosition = pos;
             Bullet FiredBullet = new Bullet(bulletPosition, director, rep[0]);
             FiredBullet.Own = false;
             FiredBullet.speed = velo;

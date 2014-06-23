@@ -107,6 +107,13 @@ namespace Deimos
             Sum++;
         }
 
+        public void AddData(char c)
+        {
+            Data.WriteByte((byte)c);
+            current_index++;
+            Sum++;
+        }
+
         // This AddData overload is the most generic and easy to use:
         // it adds a byte array to the datagram properly
         // and returns a boolean for succesfull fit in the package

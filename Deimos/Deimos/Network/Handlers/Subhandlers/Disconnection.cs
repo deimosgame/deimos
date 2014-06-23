@@ -31,6 +31,7 @@ namespace Deimos
             NetworkFacade.NetworkHandling.TCP_Socket.Close();
             NetworkFacade.NetworkHandling.UDP_Socket.Close();
             NetworkFacade.NetworkHandling.ServerConnected = false;
+            NetworkFacade.NetworkHandling.Connective = false;
             GeneralFacade.GameStateManager.Set(new StartMenuGS());
         }
 
@@ -50,6 +51,7 @@ namespace Deimos
             NetworkFacade.NetworkHandling.TCP_Socket.Close();
             NetworkFacade.NetworkHandling.UDP_Socket.Close();
             NetworkFacade.NetworkHandling.ServerConnected = false;
+            NetworkFacade.NetworkHandling.Connective = false;
             GeneralFacade.GameStateManager.Set(new StartMenuGS());
             GeneralFacade.GameStateManager.Set(new ErrorScreenGS("Disconnected: " + Reason));
         }

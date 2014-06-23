@@ -37,7 +37,6 @@ namespace Deimos
 
             if (NetworkFacade.IsMultiplayer && !NetworkFacade.ThreadStart2)
             {
-                NetworkFacade.World.Start();
                 NetworkFacade.MovePacket.Start();
 
                 NetworkFacade.ThreadStart2 = true;

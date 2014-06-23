@@ -34,9 +34,9 @@ namespace Deimos
         static public PlayerManager Players = new PlayerManager();
 
         static public Thread Outgoing = new Thread(NetworkFacade.Network.HandleSend);
-        static public Thread Incoming = new Thread(NetworkFacade.Network.HandleReceive);
+        static public Thread TCPIncoming = new Thread(NetworkFacade.Network.ReceiveTCP);
+        static public Thread UDPIncoming = new Thread(NetworkFacade.Network.ReceiveUDP);
         static public Thread Interpret = new Thread(NetworkFacade.Network.Process);
-        static public Thread World = new Thread(NetworkFacade.Network.UpdateWorld);
         static public Thread MovePacket = new Thread(NetworkFacade.Network.SendMovePacket);
     }
 }

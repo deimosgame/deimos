@@ -13,8 +13,8 @@ namespace Deimos
             Packet M = new Packet(Packet.PacketType.Sound);
 
             M.Packet_ID = 0x08;
-            M.AddData(sound);
-            M.AddData(0x01);
+            M.Write(sound);
+            M.Write(0x01);
             M.AddData(position.X);
             M.AddData(position.Y);
             M.AddData(position.Z);
@@ -28,8 +28,8 @@ namespace Deimos
             Packet M = new Packet(Packet.PacketType.Sound);
 
             M.Packet_ID = 0x08;
-            M.AddData(sound);
-            M.AddData(0x00);
+            M.Write(sound);
+            M.Write(0x00);
 
             M.Encode();
 
@@ -38,10 +38,14 @@ namespace Deimos
 
         public void Interpret(byte[] buf)
         {
-            if (GeneralFacade.SceneManager.SoundManager != null)
+            if (GeneralFacade.SceneManager.SoundManager == null || GameplayFacade.ThisPlayer == null)
                 return;
 
                 string sound = GeneralFacade.SceneManager.SoundManager.GetSoundName(buf[4]);
+
+                if (sound == "")
+                    return;
+
                 DisplayFacade.DebugScreen.Debug(sound);
 
                 if (buf[5] == 0x00)
@@ -59,7 +63,11 @@ namespace Deimos
                     GeneralFacade.SceneManager.SoundManager.SetEmiter(sound, position);
                     GeneralFacade.SceneManager.SoundManager.SetListener(sound, GameplayFacade.ThisPlayer.Position);
                     GeneralFacade.SceneManager.SoundManager.Play3D(sound, GameplayFacade.ThisPlayer.Position, position);
-                    DisplayFacade.DebugScreen.Debug(position.X.ToString() + position.Y.ToString() + position.Z.ToString());
+                    DisplayFacade.DebugScreen.Debug(String.Format(
+                "Location: x:{0}; y:{1}; z:{2}",
+                (int)position.X,
+                (int)position.Y,
+                (int)position.Z));
                 }
         }
     }

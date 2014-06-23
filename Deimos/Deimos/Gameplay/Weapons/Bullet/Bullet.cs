@@ -24,6 +24,7 @@ namespace Deimos
         public float minimumDmg;
         public float maximumDmg;
         public float lifeSpan = 5;
+        public bool Own = true;
 
         // for range purposes
         public float DistanceTraveled = 0;
@@ -61,7 +62,8 @@ namespace Deimos
         public override void CollisionEvent(CollisionElement element)
         {
             if (element.GetNature() != ElementNature.Object
-                && element.GetNature() != ElementNature.Bullet)
+                && element.GetNature() != ElementNature.Bullet
+                && Own)
             {
                 Collided = true;
 

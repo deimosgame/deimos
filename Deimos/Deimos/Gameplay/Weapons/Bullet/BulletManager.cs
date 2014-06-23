@@ -37,6 +37,31 @@ namespace Deimos
                  0.025f,
                  LevelModel.CollisionType.None
             );
+
+            if (!NetworkFacade.Local)
+            {
+                NetworkFacade.MainHandling.Bullets.Send(FiredBullet);
+            }
+        }
+
+        public void SpawnOtherBullet(Vector3 pos, Vector3 director, string rep, Vector3 rotation, float velo, float span)
+        {
+            Vector3 bulletPosition = pos; ;
+            Bullet FiredBullet = new Bullet(bulletPosition, director, rep[0]);
+            FiredBullet.Own = false;
+            FiredBullet.speed = velo;
+            FiredBullet.lifeSpan = span;
+            string id = "Bullet" + GeneralFacade.Uniqid();
+            BulletTab.Add(id, FiredBullet);
+
+            GeneralFacade.SceneManager.ModelManager.LoadPrivateModel(
+                id,
+                "Models/Weapons/PP19/PP19Model", // Model
+                 bulletPosition, // Location
+                 rotation,
+                 0.025f,
+                 LevelModel.CollisionType.None
+            );
         }
 
         /// <summary>

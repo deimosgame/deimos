@@ -46,11 +46,8 @@ namespace Deimos
                 if (sound == "")
                     return;
 
-                DisplayFacade.DebugScreen.Debug(sound);
-
                 if (buf[5] == 0x00)
                 {
-                    DisplayFacade.DebugScreen.Debug("Local");
                     GeneralFacade.SceneManager.SoundManager.Play(sound);
                 }
                 else if (buf[5] == 0x01)
@@ -63,11 +60,6 @@ namespace Deimos
                     GeneralFacade.SceneManager.SoundManager.SetEmiter(sound, position);
                     GeneralFacade.SceneManager.SoundManager.SetListener(sound, GameplayFacade.ThisPlayer.Position);
                     GeneralFacade.SceneManager.SoundManager.Play3D(sound, GameplayFacade.ThisPlayer.Position, position);
-                    DisplayFacade.DebugScreen.Debug(String.Format(
-                "Location: x:{0}; y:{1}; z:{2}",
-                (int)position.X,
-                (int)position.Y,
-                (int)position.Z));
                 }
         }
     }

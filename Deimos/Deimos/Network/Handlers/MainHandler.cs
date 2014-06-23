@@ -19,6 +19,7 @@ namespace Deimos
         public Sound Sounds = new Sound();
         public MinigameTrigger Minigames = new MinigameTrigger();
         public EntityList Entities = new EntityList();
+        public BulletCreate Bullets = new BulletCreate();
 
         // METHODS
         public void Distribute(byte[] buf)
@@ -53,6 +54,9 @@ namespace Deimos
                         break;
                     case 0x0A:
                         Entities.Interpret(buf);
+                        break;
+                    case 0x0B:
+                        Bullets.Interpret(buf);
                         break;
                     default:
                         return;

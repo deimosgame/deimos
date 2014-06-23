@@ -224,6 +224,7 @@
     <Compile Include="Network\Handlers\MainHandler.cs" />
     <Compile Include="Network\Handlers\NetworkHandler.cs" />
     <Compile Include="Network\Handlers\Subhandlers\Broadcast.cs" />
+    <Compile Include="Network\Handlers\Subhandlers\BulletCreate.cs" />
     <Compile Include="Network\Handlers\Subhandlers\Chat.cs" />
     <Compile Include="Network\Handlers\Subhandlers\Connection.cs" />
     <Compile Include="Network\Handlers\Subhandlers\Disconnection.cs" />

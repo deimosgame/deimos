@@ -21,6 +21,7 @@ namespace Deimos
             Sound,
             Minigame,
             EntityList,
+            BulletCreate,
             Corrupt
         }
 

@@ -95,55 +95,77 @@ namespace Deimos
                     NetworkFacade.ThreadStart1 = true;
                 }
 
+
                 if (!NetworkFacade.NetworkHandling.Handshook)
                 {
                     NetworkFacade.NetworkHandling.ShakeHands();
-                    System.Threading.Thread.Sleep(2000);
+
+                    int timeout1 = 0;
+                    while (!NetworkFacade.NetworkHandling.Handshook
+                        && timeout1 < 5000)
+                    {
+                        timeout1++;
+                        System.Threading.Thread.Sleep(1);
+                    }
+
+                    if (!NetworkFacade.NetworkHandling.Handshook)
+                    {
+                        GeneralFacade.GameStateManager.Set(new ErrorScreenGS("Handshake could not be made"));
+                        return;
+                    }
                 }
 
-                    if (NetworkFacade.NetworkHandling.Handshook)
+                if (NetworkFacade.NetworkHandling.Handshook)
+                {
+                    NetworkFacade.NetworkHandling.Connect();
+
+                    int timeout2 = 0;
+                    while (!NetworkFacade.NetworkHandling.ServerConnected
+                        && timeout2 < 5000)
                     {
-                        NetworkFacade.NetworkHandling.Connect();
+                        timeout2++;
+                        System.Threading.Thread.Sleep(1);
+                    }
 
-                        System.Threading.Thread.Sleep(2000);
+                    if (!NetworkFacade.NetworkHandling.ServerConnected)
+                    {
+                        GeneralFacade.GameStateManager.Set(new ErrorScreenGS("Connection could not be established"));
+                        return;
+                    }
 
-                        if (NetworkFacade.NetworkHandling.ServerConnected)
+                    if (NetworkFacade.NetworkHandling.ServerConnected)
+                    {
+                        NetworkFacade.Local = false;
+                        GameplayFacade.Objects = new ObjectsList();
+                        GameplayFacade.Weapons = new WeaponsList();
+                        GameplayFacade.Minigames = new MinigameManager();
+                        GameplayFacade.Weapons.Initialise();
+                        GameplayFacade.Objects.Initialize();
+
+                        switch (NetworkFacade.MainHandling.Connections.CurrentMap)
                         {
-                            NetworkFacade.Local = false;
-                            GameplayFacade.Objects = new ObjectsList();
-                            GameplayFacade.Weapons = new WeaponsList();
-                            GameplayFacade.Minigames = new MinigameManager();
-                            GameplayFacade.Weapons.Initialise();
-                            GameplayFacade.Objects.Initialize();
-
-                            switch (NetworkFacade.MainHandling.Connections.CurrentMap)
-                            {
-                                case "d_compound":
-                                    GeneralFacade.GameStateManager.Set(
-                                        new LoadingLevelGS<SceneCompound>(delegate() { })
-                                        );
-                                    break;
-                                case "hl_bootcamp":
-                                    GeneralFacade.GameStateManager.Set(
-                                        new LoadingLevelGS<SceneDeimos>(delegate() { })
-                                        );
-                                    break;
-                                default:
-                                    GeneralFacade.GameStateManager.Set(
-                                        new LoadingLevelGS<SceneCompound>(delegate() { })
-                                        );
-                                    break;
-                            }
-
-                            GeneralFacade.GameStateManager.Set(new SpawningGS("main"));
-                            GeneralFacade.GameStateManager.Set(new PlayingGS());
+                            case "d_compound":
+                                GeneralFacade.GameStateManager.Set(
+                                    new LoadingLevelGS<SceneCompound>(delegate() { })
+                                    );
+                                break;
+                            case "hl_bootcamp":
+                                GeneralFacade.GameStateManager.Set(
+                                    new LoadingLevelGS<SceneDeimos>(delegate() { })
+                                    );
+                                break;
+                            default:
+                                GeneralFacade.GameStateManager.Set(
+                                    new LoadingLevelGS<SceneCompound>(delegate() { })
+                                    );
+                                break;
                         }
 
+                        GeneralFacade.GameStateManager.Set(new SpawningGS("main"));
+                        GeneralFacade.GameStateManager.Set(new PlayingGS());
                     }
-                    else
-                    {
-                        GeneralFacade.GameStateManager.Set(new ErrorScreenGS("Could not connect"));
-                    }
+
+                }
 
             };
             serverList.Add(testRow);

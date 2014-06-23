@@ -37,7 +37,7 @@ namespace Deimos
 
             if (NetworkFacade.Local)
             {
-                AddChatInput("You are playing Deimos alone... Or are you?");
+                AddChatInput("You are playing Deimos alone... or are you?");
                 AddChatInput("Type '/help' to see commands list");
             }
             else

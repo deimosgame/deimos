@@ -287,17 +287,14 @@ namespace Deimos
         {
             dt = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
 
-            GameplayFacade.ThisPlayerDisplay.DisplayCurrentWeapon(GameplayFacade.ThisPlayer.CurrentWeapon);
-
-            previousScrollValue = CurrentMouseState.ScrollWheelValue;
-
-            PlayerSteps.HandleFootsteps(dt);
-
-
             PlayerMovement.HandleMovement(dt);
             PlayerActions.HandleActions(dt);
             PlayerCombat.HandleCombat(dt);
+            PlayerSteps.HandleFootsteps(dt);
             Stuff(dt);
+            GameplayFacade.ThisPlayerDisplay.DisplayCurrentWeapon(GameplayFacade.ThisPlayer.CurrentWeapon);
+
+            previousScrollValue = CurrentMouseState.ScrollWheelValue;
         }
 
         public bool FireSprint()

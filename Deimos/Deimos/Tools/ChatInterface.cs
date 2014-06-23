@@ -10,7 +10,16 @@ namespace Deimos
 {
     class ChatInterface
     {
-        public bool InputChat = false;
+        private bool inputChat = false;
+        public bool InputChat
+        {
+            get { return inputChat; }
+            set
+            {
+                CurrentInput = "";
+                inputChat = value;
+            }
+        }
         private List<string> ChatInputs = new List<string>();
         private Keys[] OldInputs = { Keys.Y };
         private string CurrentInput = "";
@@ -148,9 +157,9 @@ namespace Deimos
 
             foreach (var k in keysPressed)
             {
-                if (CurrentInput.Count() >= CharsPerLine)
+                if (CurrentInput.Count() >= CharsPerLine && k != Keys.Back)
                 {
-                    continue; // In case there is a return key
+                    continue; // In case there is a back key
                 }
 
                 if (OldInputs.Contains(k))
@@ -193,7 +202,6 @@ namespace Deimos
                     
 
                     OldInputs = new Keys[] { Keys.Y };
-                    CurrentInput = "";
                     InputChat = false;
                     return;
                 }

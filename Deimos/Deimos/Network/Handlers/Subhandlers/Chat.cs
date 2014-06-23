@@ -27,7 +27,6 @@ namespace Deimos
         {
             if (m.Encoded_buffer[4] != 0x00)
             {
-                Console.WriteLine(ExtractString(m.Encoded_buffer, 4));
                 return ExtractString(m.Encoded_buffer, 4);
             }
 
@@ -39,7 +38,7 @@ namespace Deimos
         {
             foreach (Packet p in Ongoing)
             {
-                Interpret(p);
+                GameplayFacade.ChatInterface.AddChatInput(Interpret(p));
             }
 
             Ongoing.Clear();

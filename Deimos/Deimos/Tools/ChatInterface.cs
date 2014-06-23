@@ -175,11 +175,15 @@ namespace Deimos
                     {
                         // Do the needed stuff to send the chat message here with
                         // the variable CurrentInput
-                        AddChatInput(CurrentInput); // testing
 
                         if (NetworkFacade.Local)
                         {
+                            AddChatInput(CurrentInput);
                             CheckCommands(CurrentInput);
+                        }
+                        else
+                        {
+                            NetworkFacade.MainHandling.Chats.Send(CurrentInput);
                         }
                     }
                     

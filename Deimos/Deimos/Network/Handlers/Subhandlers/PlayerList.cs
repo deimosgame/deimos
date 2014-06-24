@@ -8,6 +8,7 @@ namespace Deimos
     class PlayerList : Subhandler
     {
         public uint N_Players;
+        public byte ThisPlayerByte;
 
         private Dictionary<byte, Player> OldPList =
             new Dictionary<byte, Player>();
@@ -37,7 +38,7 @@ namespace Deimos
                 }
                 else
                 {
-                    GameplayFacade.ThisPlayer.Playerbyte = uid;
+                    ThisPlayerByte = uid;
                 }
             }
 

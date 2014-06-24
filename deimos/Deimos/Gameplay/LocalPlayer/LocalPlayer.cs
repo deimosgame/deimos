@@ -58,6 +58,11 @@ namespace Deimos
 
             Name = GeneralFacade.Config.PlayerName;
             CurrentInstance = "main";
+
+            if (!NetworkFacade.Local)
+            {
+                Playerbyte = NetworkFacade.MainHandling.Players.ThisPlayerByte;
+            }
         }
 
         public void InitializeInventory(Player.Spec spec)

@@ -186,8 +186,8 @@ namespace Deimos
 
             DisplayFacade.DebugScreen = new DebugScreen();
 
-            GameplayFacade.ChatInterface = new ChatInterface();
-            GameplayFacade.KillsInterface = new KillsInteface();
+            GameplayFacade.ChatInterface = new ChatUI();
+            GameplayFacade.KillsInterface = new KillsUI();
 
             GeneralFacade.SceneManager = new SceneManager(GeneralFacade.TempContent);
 

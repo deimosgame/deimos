@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Deimos
 {
-    class KillsInteface
+    class KillsUI
     {
         private float countdown = 0;
         private float Countdown
@@ -31,7 +31,7 @@ namespace Deimos
         const int Padding = 5;
 
 
-        public KillsInteface()
+        public KillsUI()
         {
             Add("Mandor", "GeT_NigLo");
             Add("Mandor", "Artemis");
@@ -71,7 +71,7 @@ namespace Deimos
             for (int i = 0; i < RecentDeaths.Count(); i++)
             {
                 var kill = RecentDeaths[i];
-                string t = kill.Item1 + "   killed   " + kill.Item2;
+                string t = kill.Item1 + "   _killed_   " + kill.Item2;
                 spriteBatch.DrawString(
                     DisplayFacade.KillsFont,
                     t,

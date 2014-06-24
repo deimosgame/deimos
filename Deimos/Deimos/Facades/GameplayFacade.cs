@@ -16,8 +16,8 @@ namespace Deimos
         public static ObjectsList Objects;
         public static BulletManager BulletManager;
         public static Constants Constants;
-        public static ChatInterface ChatInterface;
-        public static KillsInteface KillsInterface;
+        public static ChatUI ChatInterface;
+        public static KillsUI KillsInterface;
         
     }
 }

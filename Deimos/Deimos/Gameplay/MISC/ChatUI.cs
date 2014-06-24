@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Deimos
 {
-    class ChatInterface
+    class ChatUI
     {
         private bool inputChat = false;
         public bool InputChat
@@ -31,7 +31,7 @@ namespace Deimos
 
         bool Guard = true;
 
-        public ChatInterface()
+        public ChatUI()
         {
             AddChatInput("Welcome to Deimos");
         }

@@ -24,22 +24,24 @@ namespace Deimos
 
         // Constructor
         public PickupEffect(string name, string path, float scale, Effect effect)
-            : base(new Vector2(15f, 15f))
+            : base(new Vector2(10, 10))
         {
             Name = name;
-            Model = path;
+            ModelPath = path;
             Scale = scale;
             O_Effect = effect;
 
             Nature = ElementNature.Object;
         }
 
+        public override bool FilterCollisionElement(CollisionElement element)
+        {
+            return (element.GetNature() != ElementNature.Player);
+        }
+
         public override void CollisionEvent(CollisionElement element)
         {
-            if (element.GetNature() == ElementNature.Player)
-            {
-                Manager.TreatEffect(this, Token);
-            }
+            Manager.TreatEffect(this, Token);
         }
     }
 }

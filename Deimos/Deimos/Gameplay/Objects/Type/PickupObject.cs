@@ -20,7 +20,7 @@ namespace Deimos
         }
 
         public string Name;
-        public string Model;
+        public string ModelPath;
 
         public float Scale;
 

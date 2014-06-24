@@ -61,7 +61,8 @@ namespace Deimos
         public enum CollisionType
         {
             None,
-            Accurate
+            Accurate,
+            Sphere
         }
 
         private void UpdateMatrix()

@@ -40,7 +40,8 @@ namespace Deimos
         /// <param name="collisionType">The collision type of the model</param>
         public void LoadModel(string modelName, string model, Vector3 position,
             Vector3 rotation, float scale = 1,
-            LevelModel.CollisionType collisionType = LevelModel.CollisionType.Accurate)
+            LevelModel.CollisionType collisionType = LevelModel.CollisionType.Accurate,
+            CollisionElement collisionElement = null)
         {
             // Adding the model to our List/array as well as its location
             // & texture
@@ -60,10 +61,18 @@ namespace Deimos
                     new AnimationController(thisLevelModel.CollisionModel.SkinnedModel.SkeletonBones);
             }
             LoadedLevelModels.Add(modelName, thisLevelModel);
-            GeneralFacade.SceneManager.CollisionManager.AddLevelModel(
-                thisLevelModel,
-                delegate(CollisionElement el, DeimosGame game) { }
-            );
+            if (collisionElement == null)
+            {
+                GeneralFacade.SceneManager.CollisionManager.AddLevelModel(
+                    thisLevelModel,
+                    delegate(CollisionElement el, DeimosGame game) { }
+                );
+            }
+            else
+            {
+                GeneralFacade.SceneManager.CollisionManager.AddElementDirectly(collisionElement);
+            }
+            
         }
         /// <summary>
         /// Used to load game models ONLY. DON'T use that in the scene!

@@ -15,10 +15,10 @@ namespace Deimos
         // Constructor
         public PickupWeapon(string name, string path, float scale,
             char weaponToken)
-            : base(new Vector2(10, 20))
+            : base(new Vector2(10, 10))
         {
             Name = name;
-            Model = path;
+            ModelPath = path;
             Scale = scale;
             Represents = weaponToken;
 

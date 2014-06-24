@@ -52,7 +52,7 @@ namespace Deimos
 
             GeneralFacade.SceneManager.ModelManager.LoadModel(
                 MysteryWeapon.Name,
-                MysteryWeapon.Model,
+                MysteryWeapon.ModelPath,
                 MysteryWeapon.Position,
                 MysteryWeapon.Rotation,
                 MysteryWeapon.Scale,

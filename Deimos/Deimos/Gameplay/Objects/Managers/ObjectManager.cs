@@ -71,8 +71,11 @@ namespace Deimos
 
             PickupWeapons.Add(t, w);
 
-            GeneralFacade.SceneManager.ModelManager.LoadModel(t, w.Model,
-                position, rotation, w.Scale, LevelModel.CollisionType.None);
+            GeneralFacade.SceneManager.ModelManager.LoadModel(t, w.ModelPath,
+                position, rotation, w.Scale, LevelModel.CollisionType.None,
+                w);
+
+            w.Model = GeneralFacade.SceneManager.ModelManager.GetLevelModel(t);
 
             return t;
         }
@@ -102,8 +105,11 @@ namespace Deimos
 
             PickupEffects.Add(t, e);
 
-            GeneralFacade.SceneManager.ModelManager.LoadModel(t, e.Model,
-                position, rotation, e.Scale, LevelModel.CollisionType.None);
+            GeneralFacade.SceneManager.ModelManager.LoadModel(t, e.ModelPath,
+                position, rotation, e.Scale, LevelModel.CollisionType.None,
+                e);
+
+            e.Model = GeneralFacade.SceneManager.ModelManager.GetLevelModel(t);
 
             return t;
         }

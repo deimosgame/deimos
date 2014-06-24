@@ -132,38 +132,48 @@ namespace Deimos
                             }
                             break;
                         case CollisionElement.CollisionType.Model:
-                            if (thisElement.Model.CollisionDetection ==
-                                LevelModel.CollisionType.None)
+                            switch (thisElement.Model.CollisionDetection)
                             {
-                                continue;
-                            }
-                            BoundingSphere newSphere = new BoundingSphere((sphere.Center - thisElement.Model.Position) / thisElement.Model.Scale,
-                                    sphere.Radius / thisElement.Model.Scale);
-                            if (thisElement.Model.CollisionModel.collisionData.collisions(
-                                newSphere
-                            ))
-                            {
-                                isCollision = true;
+                                case LevelModel.CollisionType.None:
+                                    continue;
+                                case LevelModel.CollisionType.Accurate:
+                                    BoundingSphere newSphere = new BoundingSphere((sphere.Center - thisElement.Model.Position) / thisElement.Model.Scale,
+                                            sphere.Radius / thisElement.Model.Scale);
+                                    if (thisElement.Model.CollisionModel.collisionData.collisions(
+                                        newSphere
+                                    ))
+                                    {
+                                        isCollision = true;
+                                    }
+                                    break;
+                                case LevelModel.CollisionType.Sphere:
+                                    List<BoundingSphere> spheres = thisElement.GenerateSphere(thisElement.Model.Position, thisElement.Dimensions);
+                                    for (int x = 0; x < spheres.Count(); x++)
+                                    {
+                                        BoundingSphere sphere2 = spheres.ElementAt(x);
+                                        if(sphere.Contains(sphere2) != ContainmentType.Disjoint)
+                                        {
+                                            isCollision = true;
+                                            break;
+                                        }
+                                    }
+                                    break;
                             }
                             break;
                     }
                     if (isCollision
                         && !this.FilterCollisionElement(thisElement) && !thisElement.FilterCollisionElement(this))
                     {
-                        break;
+                        thisElement.Event(this, GeneralFacade.Game);
+                        thisElement.CollisionEvent(this);
+                        this.Event(thisElement, GeneralFacade.Game);
+                        this.CollisionEvent(thisElement);
+                        return true;
                     }
                     else
                     {
                         isCollision = false;
                     }
-                }
-
-                if (isCollision)
-                {
-                    thisElement.Event(this, GeneralFacade.Game);
-                    thisElement.CollisionEvent(this);
-                    this.CollisionEvent(thisElement);
-                    return true;
                 }
             } 
 

@@ -22,7 +22,6 @@ namespace Deimos
                         new Vector2(8, 15));
                     PlayerCollision.Nature = CollisionElement.ElementNature.Player;
                     PlayerCollision.Owner = p.Key;
-                    PlayerCollision.Model = GeneralFacade.SceneManager.ModelManager.GetLevelModel(p.Value.Name);
 
                     GeneralFacade.SceneManager.ModelManager.LoadModel(
                         p.Value.Name,
@@ -33,6 +32,8 @@ namespace Deimos
                         LevelModel.CollisionType.Sphere,
                         PlayerCollision
                         );
+
+                    PlayerCollision.Model = GeneralFacade.SceneManager.ModelManager.GetLevelModel(p.Value.Name);
 
                     if (!CollisionsList.ContainsKey(p.Key))
                     {

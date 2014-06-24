@@ -274,7 +274,14 @@ namespace Deimos
                             effect.Parameters["Projection"]
                                 .SetValue(camera.Projection);
                         }
-                        mesh.Draw();
+                        try
+                        {
+                            mesh.Draw();
+                        }
+                        catch
+                        {
+
+                        }
                     }
                 }
             }

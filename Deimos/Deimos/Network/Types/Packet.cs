@@ -21,6 +21,8 @@ namespace Deimos
             Sound,
             Minigame,
             EntityList,
+            BulletCreate,
+            Damage,
             Corrupt
         }
 
@@ -102,6 +104,13 @@ namespace Deimos
         public void AddData(byte b)
         {
             Data.WriteByte(b);
+            current_index++;
+            Sum++;
+        }
+
+        public void AddData(char c)
+        {
+            Data.WriteByte((byte)c);
             current_index++;
             Sum++;
         }

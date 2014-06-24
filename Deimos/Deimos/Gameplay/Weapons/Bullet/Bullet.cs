@@ -24,6 +24,7 @@ namespace Deimos
         public float minimumDmg;
         public float maximumDmg;
         public float lifeSpan = 5;
+        public bool Own = true;
 
         // for range purposes
         public float DistanceTraveled = 0;
@@ -65,29 +66,48 @@ namespace Deimos
             {
                 Collided = true;
 
-                if (WeaponRep == 'E')
+                if (Own)
                 {
-                    Explode(Position);
-                }
-
-                else
-                {
-                    switch (element.Nature)
+                    if (WeaponRep == 'E')
                     {
-                        case ElementNature.World:
-                            break;
-                        case ElementNature.Player:
-                            break;
-                        default:
-                            break;
+                        Explode(Position);
+                    }
+                    else if (WeaponRep == 'P')
+                    {
+                        if (element.GetNature() != ElementNature.Player)
+                            return;
+
+                        if (!NetworkFacade.Local && element.Owner != 0xFF)
+                        {
+                            NetworkFacade.MainHandling.Minigames.SendBegin(
+                                element.Owner);
+                        }
+                    }
+                    else
+                    {
+                        switch (element.GetNature())
+                        {
+                            case ElementNature.World:
+                                break;
+                            case ElementNature.Player:
+                                if (element.Owner == 0xFF)
+                                    return;
+
+                                NetworkFacade.MainHandling.Damages.Send(element.Owner, Hurt());
+                                break;
+                            default:
+                                break;
+                        }
                     }
                 }
             }
         }
 
-        public void Hurt()
+        public int Hurt()
         {
+            Random dmg = new Random();
 
+            return (dmg.Next((int)(minimumDmg), (int)(maximumDmg + 1)));
         }
 
         public void Explode(Vector3 pos)

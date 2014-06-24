@@ -34,16 +34,6 @@ namespace Deimos
         public ChatInterface()
         {
             AddChatInput("Welcome to Deimos");
-
-            if (NetworkFacade.Local)
-            {
-                AddChatInput("You are playing Deimos alone... or are you?");
-                AddChatInput("Type '/help' to see commands list");
-            }
-            else
-            {
-                AddChatInput("Have fun annihilating everyone");
-            }
         }
 
         private bool GetChar(Keys input, out char key)
@@ -188,7 +178,6 @@ namespace Deimos
                     {
                         // Do the needed stuff to send the chat message here with
                         // the variable CurrentInput
-
                         if (NetworkFacade.Local)
                         {
                             AddChatInput(CurrentInput);
@@ -196,6 +185,7 @@ namespace Deimos
                         }
                         else
                         {
+                            CheckTestingCmd(CurrentInput);
                             NetworkFacade.MainHandling.Chats.Send(CurrentInput);
                         }
                     }
@@ -208,6 +198,25 @@ namespace Deimos
             }
 
             OldInputs = keysPressed;
+        }
+
+        public void CheckTestingCmd(string s)
+        {
+            if (s == "/debug")
+            {
+                GeneralFacade.Config.DebugScreen = !GeneralFacade.Config.DebugScreen;
+            }
+            else if (s == "/noclip")
+            {
+                if (GeneralFacade.Game.CurrentPlayingState == DeimosGame.PlayingStates.NoClip)
+                {
+                    GeneralFacade.Game.CurrentPlayingState = DeimosGame.PlayingStates.Normal;
+                }
+                else if (GeneralFacade.Game.CurrentPlayingState == DeimosGame.PlayingStates.Normal)
+                {
+                    GeneralFacade.Game.CurrentPlayingState = DeimosGame.PlayingStates.NoClip;
+                }
+            }
         }
 
         public void CheckCommands(string s)

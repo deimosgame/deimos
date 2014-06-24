@@ -281,7 +281,14 @@ namespace Deimos
 
                 case Type.Melee:
                     currentWeapon.FireTimer = 0;
+
+                    currentWeapon.State = WeaponState.Firing;
+
+                    GameplayFacade.BulletManager.SpawnMelee(currentWeapon.representative);
                     PlayMeleeSound();
+
+                    currentWeapon.State = WeaponState.AtEase;
+
                     return;
 
                 case Type.Grenade:
@@ -416,6 +423,8 @@ namespace Deimos
                     return 0x03;
                 case "Bazooka":
                     return 0x04;
+                case "Essence of Phobia":
+                    return 0x05;
                 default:
                     return 0x00;
             }

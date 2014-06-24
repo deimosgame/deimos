@@ -32,6 +32,8 @@ namespace Deimos
         }
         public ElementNature Nature = ElementNature.World;
 
+        public byte Owner = 0xFF;
+
         public LevelModel Model
         {
             get;
@@ -102,12 +104,17 @@ namespace Deimos
             List<BoundingSphere> listSpheres = GenerateSphere(position, Dimensions);
 
             // And finally with our models collisions
-            foreach (CollisionElement thisElement in
-                GeneralFacade.SceneManager.CollisionManager.GetElements())
+            for (int i = 0; i < GeneralFacade.SceneManager.CollisionManager.GetElements().Count; i++)
             {
+                CollisionElement thisElement = 
+                    GeneralFacade.SceneManager.CollisionManager.GetElements().ElementAt(i);
+
                 bool isCollision = false;
-                foreach (var sphere in listSpheres)
+
+                for (int j = 0; j < listSpheres.Count; j++)
                 {
+                    var sphere = listSpheres.ElementAt(j);
+
                     switch (thisElement.ElementType)
                     {
                         case CollisionElement.CollisionType.Box:
@@ -145,7 +152,7 @@ namespace Deimos
                         break;
                     }
                 }
-                
+
                 if (isCollision)
                 {
                     if (this.FilterCollisionElement(thisElement) || thisElement.FilterCollisionElement(this))
@@ -158,9 +165,68 @@ namespace Deimos
                     this.CollisionEvent(thisElement);
                     return true;
                 }
-            }
+            } 
+
+            //foreach (CollisionElement thisElement in
+            //    GeneralFacade.SceneManager.CollisionManager.GetElements())
+            //{
+            //    bool isCollision = false;
+            //    foreach (var sphere in listSpheres)
+            //    {
+            //        switch (thisElement.ElementType)
+            //        {
+            //            case CollisionElement.CollisionType.Box:
+            //                if (thisElement.Box.Contains(sphere) !=
+            //                    ContainmentType.Disjoint)
+            //                {
+            //                    isCollision = true;
+            //                }
+            //                break;
+            //            case CollisionElement.CollisionType.Sphere:
+            //                if (thisElement.Sphere.Contains(sphere) !=
+            //                    ContainmentType.Disjoint)
+            //                {
+            //                    isCollision = true;
+            //                }
+            //                break;
+            //            case CollisionElement.CollisionType.Model:
+            //                if (thisElement.Model.CollisionDetection ==
+            //                    LevelModel.CollisionType.None)
+            //                {
+            //                    continue;
+            //                }
+            //                BoundingSphere newSphere = new BoundingSphere(sphere.Center / thisElement.Model.Scale,
+            //                        sphere.Radius / thisElement.Model.Scale);
+            //                if (thisElement.Model.CollisionModel.collisionData.collisions(
+            //                    newSphere
+            //                ))
+            //                {
+            //                    isCollision = true;
+            //                }
+            //                break;
+            //        }
+            //        if (isCollision)
+            //        {
+            //            break;
+            //        }
+            //    }
+                
+            //    if (isCollision)
+            //    {
+            //        if (this.FilterCollisionElement(thisElement) || thisElement.FilterCollisionElement(this))
+            //        {
+            //            continue;
+            //        }
+
+            //        thisElement.Event(this, GeneralFacade.Game);
+            //        thisElement.CollisionEvent(this);
+            //        this.CollisionEvent(thisElement);
+            //        return true;
+            //    }
+            //}
 
             // If we're here, then no collision has been matched
+
             return false;
         }
 

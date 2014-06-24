@@ -12,7 +12,7 @@ namespace Deimos
     {
         // FOR DEVELOPMENT PURPOSES ONLY //
         static public bool IsMultiplayer = true;
-        static public bool ServerIsLocal = false;
+        static public bool ServerIsLocal = true;
         ////////         /////          //////
 
         static public bool Local = true;

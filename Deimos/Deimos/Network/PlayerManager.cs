@@ -18,8 +18,7 @@ namespace Deimos
             {
                 if (!GeneralFacade.SceneManager.ModelManager.LevelModelExists(p.Value.Name))
                 {
-                    PlayerCollisionElement PlayerCollision = new PlayerCollisionElement(
-                        new Vector2(3, 10));
+                    PlayerCollision PlayerCollision = new PlayerCollision(5.5f, 3);
                     PlayerCollision.Owner = p.Key;
 
                     PlayerCollision.Model = GeneralFacade.SceneManager.ModelManager.LoadModelReturn(
@@ -37,10 +36,10 @@ namespace Deimos
                         CollisionsList.Add(p.Key, PlayerCollision);
                     }
 
-                    if (!PlayerWeapons.ContainsKey(p.Key))
-                    {
-                        PlayerWeapons.Add(p.Key, 0xFF);
-                    }
+                    //if (!PlayerWeapons.ContainsKey(p.Key))
+                    //{
+                    //    PlayerWeapons.Add(p.Key, 0xFF);
+                    //}
                 }
             }
         }
@@ -75,27 +74,27 @@ namespace Deimos
                         CollisionsList[pair.Key].CheckCollision(pair.Value.Position);
                     }
 
-                    if (PlayerWeapons[pair.Key] != pair.Value.WeaponModel)
-                    {
-                        if (GeneralFacade.SceneManager.ModelManager.LevelModelExists("w" + pair.Key))
-                        {
-                            GeneralFacade.SceneManager.ModelManager.GetLevelModel("w" + pair.Key).show = false;
-                        }
-                        else
-                        {
-                            GeneralFacade.SceneManager.ModelManager.LoadModel(
-                                "w" + pair.Key,
-                                GetModelFromByte(pair.Value.WeaponModel),
-                                pair.Value.Position,
-                                pair.Value.Rotation,
-                                GetScaleFromByte(pair.Value.WeaponModel),
-                                LevelModel.CollisionType.None
-                            );
-                        }
-                    }
+                    //if (PlayerWeapons[pair.Key] != pair.Value.WeaponModel)
+                    //{
+                    //    if (GeneralFacade.SceneManager.ModelManager.LevelModelExists("w" + pair.Key))
+                    //    {
+                    //        GeneralFacade.SceneManager.ModelManager.GetLevelModel("w" + pair.Key).show = false;
+                    //    }
+                    //    else
+                    //    {
+                    //        GeneralFacade.SceneManager.ModelManager.LoadModel(
+                    //            "w" + pair.Key,
+                    //            GetModelFromByte(pair.Value.WeaponModel),
+                    //            pair.Value.Position,
+                    //            pair.Value.Rotation,
+                    //            GetScaleFromByte(pair.Value.WeaponModel),
+                    //            LevelModel.CollisionType.None
+                    //        );
+                    //    }
+                    //}
 
-                    PlayerWeapons[pair.Key] = pair.Value.WeaponModel;
-                    DisplayEnemyWeapons();
+                    //PlayerWeapons[pair.Key] = pair.Value.WeaponModel;
+                    //DisplayEnemyWeapons();
                 }
             }
         }

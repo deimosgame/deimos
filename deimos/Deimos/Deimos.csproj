@@ -241,7 +241,6 @@
     <Compile Include="Network\Handlers\Subhandlers\UpdateInfo.cs" />
     <Compile Include="Network\Handlers\Subhandlers\UpdateObject.cs" />
     <Compile Include="Network\NetworkManager.cs" />
-    <Compile Include="Network\PlayerCollisionElement.cs" />
     <Compile Include="Network\PlayerManager.cs" />
     <Compile Include="Network\Types\Data.cs" />
     <Compile Include="Network\Types\Packet.cs" />

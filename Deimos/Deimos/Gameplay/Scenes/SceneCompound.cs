@@ -50,7 +50,7 @@ namespace Deimos
 
         public override void Load()
         {
-                // Loading the map
+            // Loading the map
             ModelManager.LoadModel(
                  "ourMap",
                  "Models/Map/Compound/DeimosCompound", // Model
@@ -122,17 +122,8 @@ namespace Deimos
                  new Vector3(15, 1, -30), // Location
                  Vector3.Zero,
                  0.2f,
-                 LevelModel.CollisionType.None
+                 LevelModel.CollisionType.Accurate
             );
-            SkinnedModel skinnedModel = ModelManager.GetLevelModel("dude").CollisionModel.SkinnedModel;
-            AnimationController animationController = ModelManager.GetLevelModel("dude").AnimationController;
-            animationController.Speed = 0.5f;
-
-            animationController.TranslationInterpolation = InterpolationMode.Linear;
-            animationController.OrientationInterpolation = InterpolationMode.Linear;
-            animationController.ScaleInterpolation = InterpolationMode.Linear;
-
-            animationController.StartClip(skinnedModel.AnimationClips["Take 001"]);
 
 
 

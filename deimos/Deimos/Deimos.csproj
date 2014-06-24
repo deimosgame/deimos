@@ -168,6 +168,7 @@
     <Compile Include="Gameplay\Minigames\Labyrinth.cs" />
     <Compile Include="Gameplay\Minigames\Type\Minigame.cs" />
     <Compile Include="Gameplay\Minigames\MinigameManager.cs" />
+    <Compile Include="Gameplay\UI\ScoresUI.cs" />
     <Compile Include="Gameplay\Objects\Managers\ObjectManager.cs" />
     <Compile Include="Gameplay\Objects\Managers\SecretsManager.cs" />
     <Compile Include="Gameplay\Objects\ObjectsList.cs" />
@@ -182,6 +183,7 @@
     <Compile Include="Gameplay\Scenes\SceneKnifeMG.cs" />
     <Compile Include="Gameplay\Scenes\SceneLabyrinthMG.cs" />
     <Compile Include="Gameplay\Scenes\Types\SpawnLocation.cs" />
+    <Compile Include="Gameplay\UI\Types\PlayerScore.cs" />
     <Compile Include="Gameplay\Weapons\Bullet\BulletManager.cs" />
     <Compile Include="Display\Managers\ResourceManager.cs" />
     <Compile Include="Gameplay\Weapons\WeaponManager.cs" />
@@ -245,7 +247,7 @@
     <Compile Include="Sounds\SongObject.cs" />
     <Compile Include="Sounds\SoundEffectObject.cs" />
     <Compile Include="Sounds\SoundManager.cs" />
-    <Compile Include="Gameplay\MISC\ChatUI.cs" />
+    <Compile Include="Gameplay\UI\ChatUI.cs" />
     <Compile Include="Tools\DebugScreen.cs" />
     <Compile Include="Display\Managers\SubManagers\ModelManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -257,7 +259,7 @@
     <Content Include="Tranquillity.dll" />
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
-    <Compile Include="Gameplay\MISC\KillsUI.cs" />
+    <Compile Include="Gameplay\UI\KillsUI.cs" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

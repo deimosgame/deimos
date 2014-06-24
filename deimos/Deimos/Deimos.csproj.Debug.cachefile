@@ -2,6 +2,8 @@ Content\Fonts\debug.xnb
 Content\Fonts\table.xnb
 Content\Fonts\title.xnb
 Content\Fonts\ui.xnb
+Content\Fonts\chat.xnb
+Content\Fonts\kills.xnb
 Content\Models\Map\coucou.xnb
 Content\Models\DeferredRendering\cone.xnb
 Content\Models\Map\arena.xnb
@@ -503,8 +505,6 @@ Content\Models\Characters\dude\head_0.xnb
 Content\Models\Characters\dude\jacket_0.xnb
 Content\Models\Characters\dude\pants_0.xnb
 Content\Models\Characters\dude\upBodyC_0.xnb
-Content\Fonts\chat.xnb
-Content\Fonts\kills.xnb
 Content\Videos\Intro.wmv
 Content\Fonts\debug.spritefont
 Content\Models\Map\coucou.fbx

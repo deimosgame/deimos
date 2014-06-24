@@ -7,8 +7,7 @@ namespace Deimos
 {
     class PlayerScore
     {
-        public string Name;
-        public int Kills;
-        public int Deaths;
+        public int Kills = 0;
+        public int Deaths = 0;
     }
 }

@@ -18,6 +18,7 @@ namespace Deimos
         public static Constants Constants;
         public static ChatUI ChatInterface;
         public static KillsUI KillsInterface;
+        public static ScoresUI ScoresInterface;
         
     }
 }

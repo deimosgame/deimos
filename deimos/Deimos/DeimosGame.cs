@@ -188,6 +188,7 @@ namespace Deimos
 
             GameplayFacade.ChatInterface = new ChatUI();
             GameplayFacade.KillsInterface = new KillsUI();
+            GameplayFacade.ScoresInterface = new ScoresUI();
 
             GeneralFacade.SceneManager = new SceneManager(GeneralFacade.TempContent);
 
@@ -316,6 +317,7 @@ namespace Deimos
             {
                 GameplayFacade.ChatInterface.Draw(DisplayFacade.SpriteBatch);
                 GameplayFacade.KillsInterface.Draw(DisplayFacade.SpriteBatch);
+                GameplayFacade.ScoresInterface.Draw(DisplayFacade.SpriteBatch);
             }
 
             DisplayFacade.DebugScreen.Draw(gameTime);

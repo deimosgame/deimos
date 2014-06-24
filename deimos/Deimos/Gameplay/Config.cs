@@ -30,6 +30,8 @@ namespace Deimos
         public Keys Chat = Keys.Y;
         public bool AutoShowChat = true;
 
+        public Keys Scores = Keys.Tab;
+
         public float MouseSensivity = 0.15f;
         public bool MouseInverted = false;
 

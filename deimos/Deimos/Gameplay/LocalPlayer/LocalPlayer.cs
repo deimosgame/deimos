@@ -283,6 +283,8 @@ namespace Deimos
             {
                 GameplayFacade.ChatInterface.InputChat = true;
             }
+
+            GameplayFacade.ScoresInterface.Show = ks.IsKeyDown(GeneralFacade.Config.Scores);
         }
 
         

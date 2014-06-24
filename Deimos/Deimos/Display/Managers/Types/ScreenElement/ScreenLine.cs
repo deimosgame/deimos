@@ -28,12 +28,19 @@ namespace Deimos
             set;
         }
 
-        public ScreenLine(Vector2 start, Vector2 end, int zIndex, Color color)
+        public int LineWidth
+        {
+            get;
+            set;
+        }
+
+        public ScreenLine(Vector2 start, Vector2 end, int zIndex, Color color, int width = 1)
         {
             ZIndex = zIndex;
             Color = color;
             Start = start;
             End = end;
+            LineWidth = width;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -54,7 +61,7 @@ namespace Deimos
                     (int)Start.X,
                     (int)Start.Y,
                     (int)edge.Length(), //sb will strech the texture to fill this rectangle
-                    1), //width of line, change this to make thicker line
+                    LineWidth), //width of line, change this to make thicker line
                 null,
                 Color, //colour of line
                 angle,     //angle of line (calulated above)

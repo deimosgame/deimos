@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Deimos
 {
-    class ChatInterface
+    class ChatUI
     {
         private bool inputChat = false;
         public bool InputChat
@@ -16,7 +16,7 @@ namespace Deimos
             get { return inputChat; }
             set
             {
-                CurrentInput = "";
+                //CurrentInput = "";
                 inputChat = value;
             }
         }
@@ -31,7 +31,7 @@ namespace Deimos
 
         bool Guard = true;
 
-        public ChatInterface()
+        public ChatUI()
         {
             AddChatInput("Welcome to Deimos");
         }
@@ -189,8 +189,8 @@ namespace Deimos
                             NetworkFacade.MainHandling.Chats.Send(CurrentInput);
                         }
                     }
-                    
 
+                    CurrentInput = "";
                     OldInputs = new Keys[] { Keys.Y };
                     InputChat = false;
                     return;

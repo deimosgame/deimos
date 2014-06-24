@@ -16,7 +16,7 @@ namespace Deimos
             get { return inputChat; }
             set
             {
-                CurrentInput = "";
+                //CurrentInput = "";
                 inputChat = value;
             }
         }
@@ -199,8 +199,8 @@ namespace Deimos
                             NetworkFacade.MainHandling.Chats.Send(CurrentInput);
                         }
                     }
-                    
 
+                    CurrentInput = "";
                     OldInputs = new Keys[] { Keys.Y };
                     InputChat = false;
                     return;

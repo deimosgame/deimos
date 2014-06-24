@@ -167,6 +167,7 @@ namespace Deimos
             DisplayFacade.TitleFont = Content.Load<SpriteFont>("Fonts/title");
             DisplayFacade.UIFont = Content.Load<SpriteFont>("Fonts/ui");
             DisplayFacade.ChatFont = Content.Load<SpriteFont>("Fonts/chat");
+            DisplayFacade.KillsFont = Content.Load<SpriteFont>("Fonts/kills");
 
             DisplayFacade.ExplosionParticleSystem = new ExplosionParticleSystem(100, Content.Load<Texture2D>("Textures/Particles/explosion"));
             DisplayFacade.ExplosionParticleSystem.AddAffector(new VelocityAffector(Vector3.Down));
@@ -186,6 +187,7 @@ namespace Deimos
             DisplayFacade.DebugScreen = new DebugScreen();
 
             GameplayFacade.ChatInterface = new ChatInterface();
+            GameplayFacade.KillsInterface = new KillsInteface();
 
             GeneralFacade.SceneManager = new SceneManager(GeneralFacade.TempContent);
 
@@ -264,6 +266,7 @@ namespace Deimos
                     GeneralFacade.SceneManager.Update(gameTime);
                     GameplayFacade.BulletManager.Update(gameTime);
                     GameplayFacade.ChatInterface.HandleInput(gameTime);
+                    GameplayFacade.KillsInterface.Update(gameTime);
 
                     TestBindings(gameTime);
                     break;
@@ -312,6 +315,7 @@ namespace Deimos
             if (GeneralFacade.GameStateManager.CurrentGameState == GameStates.Playing)
             {
                 GameplayFacade.ChatInterface.Draw(DisplayFacade.SpriteBatch);
+                GameplayFacade.KillsInterface.Draw(DisplayFacade.SpriteBatch);
             }
 
             DisplayFacade.DebugScreen.Draw(gameTime);

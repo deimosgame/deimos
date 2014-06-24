@@ -7,6 +7,7 @@ namespace Deimos
 {
     static class GameplayFacade
     {
+
         public static LocalPlayer ThisPlayer;
         public static Physics ThisPlayerPhysics;
         public static Display ThisPlayerDisplay;
@@ -16,7 +17,7 @@ namespace Deimos
         public static BulletManager BulletManager;
         public static Constants Constants;
         public static ChatInterface ChatInterface;
-
+        public static KillsInteface KillsInterface;
         
     }
 }

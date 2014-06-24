@@ -32,9 +32,15 @@ namespace Deimos
                     PlayerCollision.Nature = CollisionElement.ElementNature.Player;
                     PlayerCollision.Owner = p.Key;
 
-                    CollisionsList.Add(p.Key, PlayerCollision);
+                    if (!CollisionsList.ContainsKey(p.Key))
+                    {
+                        CollisionsList.Add(p.Key, PlayerCollision);
+                    }
 
-                    PlayerWeapons.Add(p.Key, 0xFF);
+                    if (!PlayerWeapons.ContainsKey(p.Key))
+                    {
+                        PlayerWeapons.Add(p.Key, 0xFF);
+                    }
                 }
             }
         }

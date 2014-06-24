@@ -21,7 +21,7 @@ namespace Deimos
             confirm.AddData(uuid);
             confirm.Encode();
 
-            NetworkFacade.TCP_Sending.Enqueue(confirm);
+            NetworkFacade.UDP_Sending.Enqueue(confirm);
         }
 
         // This is the method that interprets the whole packet

@@ -311,6 +311,7 @@ namespace Deimos
                     }
                     else
                     {
+                        GeneralFacade.SceneManager.SoundManager.Play("fall");
                         NetworkFacade.MainHandling.Damages.Send(GameplayFacade.ThisPlayer.Playerbyte, GetFallDamage(fall_distance));
                         NetworkFacade.MainHandling.Sounds.SendWithPos(GeneralFacade.SceneManager.SoundManager.GetSoundByte("fall"),
                             GameplayFacade.ThisPlayer.Position);

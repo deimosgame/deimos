@@ -52,10 +52,12 @@ namespace Deimos
                         NetworkFacade.Players.List[data.PropertyOf].Alive = data.Byte_Data;
                         break;
                     case Data.WorldDataType.Score:
+                        DisplayFacade.DebugScreen.Debug("received score");
                         NetworkFacade.Players.List[data.PropertyOf].Score =
                             data.Byte_Data;
                         break;
                     case Data.WorldDataType.CurrentWeapon:
+                        DisplayFacade.DebugScreen.Debug("received weaponmodel");
                         NetworkFacade.Players.List[data.PropertyOf].WeaponModel =
                             data.Byte_Data;
                         break;

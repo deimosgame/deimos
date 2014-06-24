@@ -28,7 +28,7 @@ namespace Deimos
                         );
 
                     CollisionElement PlayerCollision = new CollisionElement(
-                        new Vector2(3, 5));
+                        new Vector2(30, 50));
                     PlayerCollision.Nature = CollisionElement.ElementNature.Player;
                     PlayerCollision.Owner = p.Key;
 
@@ -68,7 +68,10 @@ namespace Deimos
                     GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).Rotation =
                         pair.Value.Rotation;
 
-                    CollisionsList[pair.Key].CheckCollision(pair.Value.Position);
+                    if (CollisionsList.ContainsKey(pair.Key))
+                    {
+                        CollisionsList[pair.Key].CheckCollision(pair.Value.Position);
+                    }
 
                     if (PlayerWeapons[pair.Key] != pair.Value.WeaponModel)
                     {

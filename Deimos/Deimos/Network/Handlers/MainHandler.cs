@@ -21,6 +21,7 @@ namespace Deimos
         public EntityList Entities = new EntityList();
         public BulletCreate Bullets = new BulletCreate();
         public Damage Damages = new Damage();
+        public KillFeed Kills = new KillFeed();
 
         // METHODS
         public void Distribute(byte[] buf)
@@ -61,6 +62,9 @@ namespace Deimos
                         break;
                     case 0x0C:
                         Damages.Interpret(buf);
+                        break;
+                    case 0x0D:
+                        Kills.Interpret(buf);
                         break;
                     default:
                         return;

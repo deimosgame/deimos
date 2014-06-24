@@ -95,10 +95,13 @@ namespace Deimos
             {
                 KeyValuePair<byte, byte> pair = PlayerWeapons.ElementAt(i);
 
-                GeneralFacade.SceneManager.ModelManager.GetLevelModel(
-                    "w" + pair.Key).Position = List[pair.Key].Position;
-                GeneralFacade.SceneManager.ModelManager.GetLevelModel(
-                    "w" + pair.Key).Rotation = List[pair.Key].Rotation;
+                if (GeneralFacade.SceneManager.ModelManager.LevelModelExists("w" + pair.Key))
+                {
+                    GeneralFacade.SceneManager.ModelManager.GetLevelModel(
+                        "w" + pair.Key).Position = List[pair.Key].Position;
+                    GeneralFacade.SceneManager.ModelManager.GetLevelModel(
+                        "w" + pair.Key).Rotation = List[pair.Key].Rotation;
+                }
             }
         }
 

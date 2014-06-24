@@ -28,14 +28,7 @@ namespace Deimos
 
         public ScoresUI()
         {
-            AddTeam("Counter terrorists");
-            AddTeam("Terrorists");
-            AddTeam("Tamere");
-            AddPlayer("Counter terrorists", "Mandor");
-            AddPlayer("Counter terrorists", "Artemis");
-            AddPlayer("Terrorists", "GeT_NigLo");
-            AddPlayer("Terrorists", "Genesis");
-            AddPlayer("Terrorists", "GZeus");
+            AddTeam("FFA");
         }
 
 
@@ -66,7 +59,15 @@ namespace Deimos
             Map = name;
         }
 
+        public void AddKill(string team, string name)
+        {
+            Scores[team][name].Kills++;
+        }
 
+        public void AddDeath(string team, string name)
+        {
+            Scores[team][name].Deaths++;
+        }
 
 
         public void Draw(SpriteBatch spriteBatch)

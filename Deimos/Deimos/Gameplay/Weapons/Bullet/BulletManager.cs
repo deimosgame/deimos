@@ -68,7 +68,7 @@ namespace Deimos
         {
             Vector3 bulletPosition = GameplayFacade.ThisPlayer.Position - DisplayFacade.Camera.ViewVector * 1;
             Bullet FiredBullet = new Bullet(bulletPosition, -DisplayFacade.Camera.ViewVector, rep);
-            FiredBullet.lifeSpan = 0.2f;
+            FiredBullet.lifeSpan = 0.5f;
             string id = "Bullet" + GeneralFacade.Uniqid();
             BulletTab.Add(id, FiredBullet);
 

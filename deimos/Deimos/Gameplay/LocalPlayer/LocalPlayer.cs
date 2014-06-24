@@ -191,6 +191,7 @@ namespace Deimos
                 {
                     Alive = 0x00;
                     NetworkFacade.MainHandling.PlayerInfoUpdate.Update();
+                    GameplayFacade.ScoresInterface.AddDeath("FFA", Program.Username);
                 }
 
                 GeneralFacade.GameStateManager.Set(new DeadScreenGS());

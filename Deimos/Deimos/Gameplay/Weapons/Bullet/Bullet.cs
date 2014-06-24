@@ -61,10 +61,6 @@ namespace Deimos
         // Methods
         public override void CollisionEvent(CollisionElement element)
         {
-            if (element.GetNature() == ElementNature.Object)
-            {
-                DisplayFacade.DebugScreen.Debug("h");
-            }
             if (element.GetNature() != ElementNature.Object
                 && element.GetNature() != ElementNature.Bullet)
             {
@@ -72,11 +68,7 @@ namespace Deimos
 
                 if (Own)
                 {
-                    if (WeaponRep == 'E')
-                    {
-                        Explode(Position);
-                    }
-                    else if (WeaponRep == 'P')
+                    if (WeaponRep == 'P')
                     {
                         if (element.GetNature() != ElementNature.Player)
                             return;

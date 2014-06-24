@@ -35,10 +35,12 @@ namespace Deimos
                     playa.Name = name;
 
                     NetworkFacade.Players.List.Add(uid, playa);
+                    GameplayFacade.ScoresInterface.AddPlayer("FFA", playa.Name);
                 }
                 else
                 {
                     ThisPlayerByte = uid;
+                    GameplayFacade.ScoresInterface.AddPlayer("FFA", Program.Username);
                 }
             }
 

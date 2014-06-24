@@ -36,7 +36,7 @@ namespace Deimos
                 0.4f,
                 0, 0, 0,
                 1, 30, 50,
-                0, 15,
+                300, 15,
                 Type.Melee, ActionOnHit.Damage
                 )
             );
@@ -67,7 +67,7 @@ namespace Deimos
                 1.5f,
                 0, 0, 0,
                 1.5f, 30, 50,
-                0, 15,
+                300, 15,
                 Type.Melee, ActionOnHit.Damage
                 )
             );

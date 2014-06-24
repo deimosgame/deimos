@@ -9,6 +9,7 @@ namespace Deimos
     {
         public void Interpret(byte[] buf)
         {
+            DisplayFacade.DebugScreen.Debug(buf[4].ToString() + buf[5].ToString() + buf[6].ToString() + buf[7].ToString());
             if (NetworkFacade.Players.List.ContainsKey(buf[4])
                 && NetworkFacade.Players.List.ContainsKey(buf[5]))
             {
@@ -21,11 +22,24 @@ namespace Deimos
                 }
                 else
                 {
-                    GameplayFacade.KillsInterface.Add(
-                        NetworkFacade.Players.List[buf[5]].Name,
-                        GetNameFromByte(buf[6]),
-                        NetworkFacade.Players.List[buf[4]].Name
-                    );
+                    if (buf[7] == 0)
+                    {
+                        GameplayFacade.KillsInterface.Add(
+                            NetworkFacade.Players.List[buf[5]].Name,
+                            GetNameFromByte(buf[6]),
+                            NetworkFacade.Players.List[buf[4]].Name
+                        );
+                    }
+                    else
+                    {
+                        GameplayFacade.KillsInterface.Add(
+                                                    NetworkFacade.Players.List[buf[5]].Name,
+                                                    GetNameFromByte(buf[6]),
+                                                    NetworkFacade.Players.List[buf[4]].Name,
+                                                    true
+                                                );
+                    }
+
                 }
             }
         }

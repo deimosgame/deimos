@@ -49,9 +49,27 @@ namespace Deimos
                             data.Float32_Data;
                         break;
                     case Data.WorldDataType.Active:
+                        if (data.Byte_Data == 0x00)
+                        {
+                            GameplayFacade.ScoresInterface.AddDeath(
+                                "FFA", 
+                                NetworkFacade.Players.List[data.PropertyOf].Name);
+                        }
                         NetworkFacade.Players.List[data.PropertyOf].Alive = data.Byte_Data;
                         break;
                     case Data.WorldDataType.Score:
+                        if (data.Byte_Data < NetworkFacade.Players.List[data.PropertyOf].Score)
+                        {
+                            GameplayFacade.ScoresInterface.AddDeath(
+                                "FFA",
+                                NetworkFacade.Players.List[data.PropertyOf].Name);
+                        }
+                        else if (data.Byte_Data > NetworkFacade.Players.List[data.PropertyOf].Score)
+                        {
+                            GameplayFacade.ScoresInterface.AddKill(
+                                "FFA",
+                                NetworkFacade.Players.List[data.PropertyOf].Name);
+                        }
                         NetworkFacade.Players.List[data.PropertyOf].Score =
                             data.Byte_Data;
                         break;

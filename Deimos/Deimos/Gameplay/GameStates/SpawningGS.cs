@@ -42,6 +42,7 @@ namespace Deimos
                 NetworkFacade.ThreadStart2 = true;
 
                 NetworkFacade.MainHandling.Moves.Send(NetworkFacade.MainHandling.Moves.Create());
+                GameplayFacade.ScoresInterface.ChangeMap(NetworkFacade.MainHandling.Connections.CurrentMap);
             }
         }
 

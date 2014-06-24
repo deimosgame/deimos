@@ -59,14 +59,38 @@ namespace Deimos
             Map = name;
         }
 
+        public void RemovePlayer(string team, string name)
+        {
+            if (Scores.ContainsKey(team))
+            {
+                if (Scores[team].ContainsKey(name))
+                {
+                    Scores[team].Remove(name);
+                }
+            }
+        }
+
         public void AddKill(string team, string name)
         {
-            Scores[team][name].Kills++;
+            if (Scores.ContainsKey(team))
+            {
+                if (Scores[team].ContainsKey(name))
+                {
+
+                    Scores[team][name].Kills++;
+                }
+            }
         }
 
         public void AddDeath(string team, string name)
         {
-            Scores[team][name].Deaths++;
+            if (Scores.ContainsKey(team))
+            {
+                if (Scores[team].ContainsKey(name))
+                {
+                    Scores[team][name].Deaths++;
+                }
+            }
         }
 
 

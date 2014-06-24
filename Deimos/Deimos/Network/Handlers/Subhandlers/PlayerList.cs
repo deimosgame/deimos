@@ -66,6 +66,7 @@ namespace Deimos
             {
                 GeneralFacade.SceneManager.ModelManager.RemoveLevelModel
                     (p.Name);
+                GameplayFacade.ScoresInterface.RemovePlayer("FFA", p.Name);
             }
         }
     }

@@ -33,7 +33,7 @@ namespace Deimos
 
         public KillsUI()
         {
-            Add("hey", "hey", "hey", false);
+
         }
 
 

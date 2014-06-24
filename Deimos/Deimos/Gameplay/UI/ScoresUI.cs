@@ -44,14 +44,28 @@ namespace Deimos
 
         public void AddPlayer(string teamName, string playerName)
         {
-            PlayerScore playerScore = new PlayerScore();
+            try
+            {
+                PlayerScore playerScore = new PlayerScore();
 
-            Scores[teamName].Add(playerName, playerScore);
+                Scores[teamName].Add(playerName, playerScore);
+            }
+            catch
+            {
+
+            }
         }
 
         public PlayerScore GetPlayerScore(string teamName, string playerName)
         {
-            return Scores[teamName][playerName];
+            if (Scores.ContainsKey(teamName))
+                if (Scores[teamName].ContainsKey(playerName))
+                {
+                    return Scores[teamName][playerName];
+                }
+
+            return null;
+            
         }
 
         public void ChangeMap(string name)

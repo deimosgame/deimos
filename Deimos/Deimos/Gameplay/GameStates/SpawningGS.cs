@@ -40,6 +40,8 @@ namespace Deimos
                 NetworkFacade.MovePacket.Start();
 
                 NetworkFacade.ThreadStart2 = true;
+
+                NetworkFacade.MainHandling.Moves.Send(NetworkFacade.MainHandling.Moves.Create());
             }
         }
 

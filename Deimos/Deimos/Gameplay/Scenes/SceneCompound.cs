@@ -116,14 +116,14 @@ namespace Deimos
 
 
             // Animations
-            ModelManager.LoadModel(
-                 "dude",
-                 "Models/Characters/dude/dude", // Model
-                 new Vector3(15, 1, -30), // Location
-                 Vector3.Zero,
-                 0.2f,
-                 LevelModel.CollisionType.Accurate
-            );
+            //ModelManager.LoadModel(
+            //     "dude",
+            //     "Models/Characters/dude/dude", // Model
+            //     new Vector3(15, 1, -30), // Location
+            //     Vector3.Zero,
+            //     0.2f,
+            //     LevelModel.CollisionType.Accurate
+            //);
 
 
 

@@ -18,13 +18,11 @@ namespace Deimos
             {
                 if (!GeneralFacade.SceneManager.ModelManager.LevelModelExists(p.Value.Name))
                 {
-                    CollisionElement PlayerCollision = new CollisionElement(
-                        new Vector2(8, 15));
-                    PlayerCollision.Nature = CollisionElement.ElementNature.Player;
+                    PlayerCollisionElement PlayerCollision = new PlayerCollisionElement(
+                        new Vector2(3, 5));
                     PlayerCollision.Owner = p.Key;
-                    PlayerCollision.Model = GeneralFacade.SceneManager.ModelManager.GetLevelModel(p.Value.Name);
 
-                    GeneralFacade.SceneManager.ModelManager.LoadModel(
+                    PlayerCollision.Model = GeneralFacade.SceneManager.ModelManager.LoadModelReturn(
                         p.Value.Name,
                         p.Value.GetModelName(),
                         p.Value.Position,
@@ -59,10 +57,12 @@ namespace Deimos
                     if (pair.Value.Alive == 0x01 && (pair.Value.CurrentInstance == GameplayFacade.ThisPlayer.CurrentInstance))
                     {
                         GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).show = true;
+                        GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).CollisionDetection = LevelModel.CollisionType.Sphere;
                     }
                     else
                     {
                         GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).show = false;
+                        GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).CollisionDetection = LevelModel.CollisionType.None;
                     }
 
                     GeneralFacade.SceneManager.ModelManager.GetLevelModel(pair.Value.Name).Position =

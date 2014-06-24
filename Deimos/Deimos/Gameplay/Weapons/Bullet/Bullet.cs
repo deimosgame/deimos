@@ -61,6 +61,10 @@ namespace Deimos
         // Methods
         public override void CollisionEvent(CollisionElement element)
         {
+            if (element.GetNature() == ElementNature.Object)
+            {
+                DisplayFacade.DebugScreen.Debug("h");
+            }
             if (element.GetNature() != ElementNature.Object
                 && element.GetNature() != ElementNature.Bullet)
             {

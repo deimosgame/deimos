@@ -22,6 +22,7 @@ namespace Deimos
         public BulletCreate Bullets = new BulletCreate();
         public Damage Damages = new Damage();
         public KillFeed Kills = new KillFeed();
+        public UpdateObject TempObj = new UpdateObject();
 
         // METHODS
         public void Distribute(byte[] buf)
@@ -66,6 +67,9 @@ namespace Deimos
                     case 0x0D:
                         Kills.Interpret(buf);
                         break;
+                    case 0x0E:
+                        TempObj.Interpret(buf);
+                        return;
                     default:
                         return;
                 }

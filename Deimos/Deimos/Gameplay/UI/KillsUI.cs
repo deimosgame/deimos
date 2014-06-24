@@ -33,9 +33,7 @@ namespace Deimos
 
         public KillsUI()
         {
-            Add("Mandor", "knife", "GeT_NigLo");
-            Add("Mandor", "rifle", "Artemis");
-            Add("Vomuseid", "pistol", "Mandor", true);
+
         }
 
 

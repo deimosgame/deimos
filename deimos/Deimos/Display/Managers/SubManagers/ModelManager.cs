@@ -74,6 +74,45 @@ namespace Deimos
             }
             
         }
+
+        public LevelModel LoadModelReturn(string modelName, string model, Vector3 position,
+            Vector3 rotation, float scale = 1,
+            LevelModel.CollisionType collisionType = LevelModel.CollisionType.Accurate,
+            CollisionElement collisionElement = null)
+        {
+            // Adding the model to our List/array as well as its location
+            // & texture
+            CollidableModel.CollidableModel thisModelCollision =
+                    GeneralFacade.SceneManager.ResourceManager.LoadModel(model);
+            Model thisModel = thisModelCollision.model;
+            LevelModel thisLevelModel = new LevelModel();
+            thisLevelModel.Position = position;
+            thisLevelModel.Scale = scale;
+            thisLevelModel.Rotation = rotation;
+            thisLevelModel.CollisionDetection = collisionType;
+            thisLevelModel.CollisionModel = thisModelCollision;
+            var test = modelName;
+            if (thisLevelModel.CollisionModel.SkinnedModel != null)
+            {
+                thisLevelModel.AnimationController =
+                    new AnimationController(thisLevelModel.CollisionModel.SkinnedModel.SkeletonBones);
+            }
+            LoadedLevelModels.Add(modelName, thisLevelModel);
+            if (collisionElement == null)
+            {
+                GeneralFacade.SceneManager.CollisionManager.AddLevelModel(
+                    thisLevelModel,
+                    delegate(CollisionElement el, DeimosGame game) { }
+                );
+            }
+            else
+            {
+                GeneralFacade.SceneManager.CollisionManager.AddElementDirectly(collisionElement);
+            }
+
+            return thisLevelModel;
+        }
+
         /// <summary>
         /// Used to load game models ONLY. DON'T use that in the scene!
         /// </summary>

@@ -18,13 +18,13 @@ namespace Deimos
                 if (value <= 0)
                 {
                     // Reset
-                    RecentDeaths = new List<Tuple<string, string>>();
+                    RecentDeaths = new List<Tuple<string, string, string, bool>>();
                 }
                 countdown = value;
             }
         }
 
-        public List<Tuple<string, string>> RecentDeaths = new List<Tuple<string, string>>();
+        public List<Tuple<string, string, string, bool>> RecentDeaths = new List<Tuple<string, string, string, bool>>();
 
         const int MarginTop = 20;
         const int MarginRight = 20;
@@ -33,15 +33,15 @@ namespace Deimos
 
         public KillsUI()
         {
-            Add("Mandor", "GeT_NigLo");
-            Add("Mandor", "Artemis");
-            Add("Vomuseid", "Mandor");
+            Add("Mandor", "knife", "GeT_NigLo");
+            Add("Mandor", "rifle", "Artemis");
+            Add("Vomuseid", "pistol", "Mandor", true);
         }
 
 
-        public void Add(string killer, string victim)
+        public void Add(string killer, string weapon, string victim, bool killstreak = false)
         {
-            RecentDeaths.Add(new Tuple<string,string>(killer, victim));
+            RecentDeaths.Add(new Tuple<string,string, string, bool>(killer, weapon, victim, killstreak));
             Countdown = 5;
         }
 
@@ -71,7 +71,11 @@ namespace Deimos
             for (int i = 0; i < RecentDeaths.Count(); i++)
             {
                 var kill = RecentDeaths[i];
-                string t = kill.Item1 + "   _killed_   " + kill.Item2;
+                string t = kill.Item1 + "  > " + kill.Item2 + " >  " + kill.Item3;
+                if (kill.Item4)
+                {
+                    t = "## " + kill.Item1 + "  > " + kill.Item2 + " >  " + kill.Item3 + " ##";
+                }
                 spriteBatch.DrawString(
                     DisplayFacade.KillsFont,
                     t,

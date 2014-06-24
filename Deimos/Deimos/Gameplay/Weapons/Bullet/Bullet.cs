@@ -62,7 +62,8 @@ namespace Deimos
         public override void CollisionEvent(CollisionElement element)
         {
             if (element.GetNature() != ElementNature.Object
-                && element.GetNature() != ElementNature.Bullet)
+                && element.GetNature() != ElementNature.Bullet
+                && element.GetNature() != ElementNature.Player)
             {
                 Collided = true;
 

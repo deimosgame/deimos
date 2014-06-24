@@ -18,7 +18,8 @@ namespace Deimos
             {
                 if (!GeneralFacade.SceneManager.ModelManager.LevelModelExists(p.Value.Name))
                 {
-                    PlayerCollision PlayerCollision = new PlayerCollision(5.5f, 3);
+                    PlayerCollisionElement PlayerCollision = new PlayerCollisionElement(
+                        new Vector2(3, 6));
                     PlayerCollision.Owner = p.Key;
 
                     PlayerCollision.Model = GeneralFacade.SceneManager.ModelManager.LoadModelReturn(

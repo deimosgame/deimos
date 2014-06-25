@@ -28,9 +28,16 @@ namespace Deimos
         {
             PlayerSize = new Vector2(5.5f, 3);
 
-            SpawnLocations = new SpawnLocation[] {
-                new SpawnLocation(new Vector3(18, 10, 90), Vector3.Zero)
-            };
+            Spawns = new Dictionary<byte, SpawnLocation>();
+
+            Spawns.Add(0, new SpawnLocation(new Vector3(7, 10, -21), new Vector3(0.05f, 0.2f, 0)));
+            Spawns.Add(1, new SpawnLocation(new Vector3(22, 10, -31), new Vector3(0.05f, -1, 0)));
+            Spawns.Add(2, new SpawnLocation(new Vector3(20, 2, 15), new Vector3(0.05f, -2.3f, 0)));
+            Spawns.Add(3, new SpawnLocation(new Vector3(-41, 2, 23), new Vector3(0.05f, 1.5f, 0)));
+            Spawns.Add(4, new SpawnLocation(new Vector3(-21, 2, 60), new Vector3(0.05f, -0.6f, 0)));
+            Spawns.Add(5, new SpawnLocation(new Vector3(-5, 2, 177), new Vector3(0.05f, -3f, 0)));
+            Spawns.Add(6, new SpawnLocation(new Vector3(-51, 17, 64), new Vector3(0.05f, 1.5f, 0)));
+
 
             SceneManager = sceneManager;
             ModelManager = SceneManager.ModelManager;
@@ -53,10 +60,10 @@ namespace Deimos
             // Loading the map
             ModelManager.LoadModel(
                  "ourMap",
-                 "Models/Map/Compound/DeimosCompound", // Model
+                 "Models/Map/d_compound2/dfinal", // Model
                  new Vector3(0, 0, 0), // Location
                  Vector3.Zero,
-                 0.2f
+                 1
             );
 
             if (!NetworkFacade.Local)

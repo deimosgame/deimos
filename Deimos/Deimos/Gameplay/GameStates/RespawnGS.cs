@@ -27,13 +27,13 @@ namespace Deimos
             if (Returning)
             {
                 GameplayFacade.BulletManager = new BulletManager();
-
                 GameplayFacade.ThisPlayer.Inventory = new WeaponManager();
             }
 
             GameplayFacade.ThisPlayer.InitializeInventory(GameplayFacade.ThisPlayer.Class);
-                GameplayFacade.ThisPlayer.PlayerRespawn(new Vector3(17, 0, 88),
-                    Vector3.Zero, Instance);
+
+            SpawnLocation spawn = GeneralFacade.SceneManager.CurrentScene.GetRandomSpawn();
+            GameplayFacade.ThisPlayer.PlayerSpawn(spawn.Location, spawn.Rotation);
         }
 
         public override void PostUnset()

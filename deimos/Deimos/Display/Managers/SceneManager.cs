@@ -48,7 +48,7 @@ namespace Deimos
             private set;
         }
 
-        SceneTemplate CurrentScene;
+        public SceneTemplate CurrentScene;
 
         ContentManager Content;
 

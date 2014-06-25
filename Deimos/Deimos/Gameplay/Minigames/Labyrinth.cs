@@ -12,7 +12,7 @@ namespace Deimos
         {
             Type = MinigameType.Labyrinth;
             Name = "labyrinth";
-            Map = "Models/Map/Minigames/Knife/KnifeFight";
+            Map = "Models/Map/maze/maze";
             TimeLimit = 120000;
             LinearJump = true;
             Falldamage = false;
@@ -26,11 +26,11 @@ namespace Deimos
 
             // Player 1 spawn location
             // note: access with key '0'
-            Spawns.Add(0x00, new SpawnLocation(new Vector3(-35, 4, -25), new Vector3(-0.02f, 0.7f, 0)));
+            Spawns.Add(0x00, new SpawnLocation(new Vector3(110, 10, 56), new Vector3(0f, -2f, 0)));
 
             // Player 2 spawn location
             // note: access with key '1'
-            Spawns.Add(0x01, new SpawnLocation(new Vector3(20, 4, 40), new Vector3(0.02f, -2.3f, 0)));
+            Spawns.Add(0x01, new SpawnLocation(new Vector3(-52, 10, -84), new Vector3(0f, 0.7f, 0)));
         }
 
         public void Load()
@@ -39,7 +39,7 @@ namespace Deimos
             GameplayFacade.ThisPlayer.MainClass = GameplayFacade.ThisPlayer.Class;
             GameplayFacade.ThisPlayer.Class = Player.Spec.Victim;
 
-            GeneralFacade.GameStateManager.Set(new LoadingLevelGS<SceneKnifeMG>(delegate() { }));
+            GeneralFacade.GameStateManager.Set(new LoadingLevelGS<SceneLabyrinthMG>(delegate() { }));
             GeneralFacade.GameStateManager.Set(new MGSpawningGS(GameplayFacade.ThisPlayer.NextInstance));
             GeneralFacade.GameStateManager.Set(new PlayingGS());
         }

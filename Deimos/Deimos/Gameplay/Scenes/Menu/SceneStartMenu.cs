@@ -26,10 +26,9 @@ namespace Deimos
         public SceneStartMenu(SceneManager sceneManager)
         {
             PlayerSize = new Vector2(1, 20);
-            SpawnLocations = new SpawnLocation[] {
-                new SpawnLocation(new Vector3(0, -40f, 340f), new Vector3(0, (float)Math.PI, 0))
-            };
-
+            Spawns = new Dictionary<byte, SpawnLocation>();
+            Spawns.Add(0, new SpawnLocation(new Vector3(0, -40f, 340f), new Vector3(0, (float)Math.PI, 0)));
+            
             SceneManager = sceneManager;
             ModelManager = SceneManager.ModelManager;
             LightManager = SceneManager.LightManager;

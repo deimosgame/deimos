@@ -31,6 +31,15 @@ namespace Deimos
         public ObjectManager Objects;
         public SecretsManager Secrets;
 
-        public SpawnLocation[] SpawnLocations;
+        public Dictionary<byte, SpawnLocation> Spawns;
+
+        public SpawnLocation GetRandomSpawn()
+        {
+            Random rng = new Random();
+
+            byte b = (byte)(rng.Next(0, Spawns.Count-1));
+
+            return Spawns[b];
+        }
     }
 }

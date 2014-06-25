@@ -49,8 +49,7 @@ namespace Deimos
                  GameplayFacade.Minigames.KnifeMG.Name,
                  GameplayFacade.Minigames.KnifeMG.Map, // Model
                  Vector3.Zero, // Location
-                 Vector3.Zero,
-                 0.75f
+                 Vector3.Zero
             );
         }
 
@@ -59,11 +58,27 @@ namespace Deimos
         {
             LightManager.AddPointLight(
                "Main",
-               new Vector3(-95, 6, -45), // Location
-               50, // Radius
-               2, // Intensity
+               new Vector3(18, 49, 1), // Location
+               100, // Radius
+               4, // Intensity
                Color.White
             );
+
+            LightManager.AddPointLight(
+                "Team1",
+                new Vector3(21,8,-62),
+                30,
+                2,
+                Color.White
+                );
+
+            LightManager.AddPointLight(
+                "Team2",
+                new Vector3(21, 8, 67),
+                30,
+                2,
+                Color.White
+                );
 
         }
         // Update our things at each ticks

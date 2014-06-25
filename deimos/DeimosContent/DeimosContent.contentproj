@@ -152,6 +152,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Models\Map\arena\arenadoors\" />
     <Folder Include="Models\Misc\" />
     <Folder Include="References\" />
   </ItemGroup>
@@ -1852,6 +1853,316 @@
       <Name>kills</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Map\arena\arenagrounds\arena1_material_0.tga">
+      <Name>arena1_material_0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\arena\arenagrounds\arena1_material_1.tga">
+      <Name>arena1_material_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\arena\arenagrounds\arena1_material_10.tga">
+      <Name>arena1_material_10</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\arena\arenagrounds\arena1_material_2.tga">
+      <Name>arena1_material_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\arena\arenagrounds\arena1_material_3.tga">
+      <Name>arena1_material_3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\arena\arenagrounds\arena1_material_4.tga">
+      <Name>arena1_material_4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\arena\arenagrounds\arena1_material_5.tga">
+      <Name>arena1_material_5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\arena\arenagrounds\arena1_material_6.tga">
+      <Name>arena1_material_6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\arena\arenagrounds\arena1_material_7.tga">
+      <Name>arena1_material_7</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\arena\arenagrounds\arena1_material_8.tga">
+      <Name>arena1_material_8</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\arena\arenagrounds\arena1_material_9.tga">
+      <Name>arena1_material_9</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Map\arena\arenagrounds\arena1.fbx">
+      <Name>arena1</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CollidableModelProcessor</Processor>
+      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Map\maze\maze.fbx">
+      <Name>maze</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CollidableModelProcessor</Processor>
+      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Map\maze\maze_material_0.tga">
+      <Name>maze_material_0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\maze\maze_material_1.tga">
+      <Name>maze_material_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\maze\maze_material_2.tga">
+      <Name>maze_material_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\maze\maze_material_3.tga">
+      <Name>maze_material_3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\maze\maze_material_4.tga">
+      <Name>maze_material_4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\maze\maze_material_5.tga">
+      <Name>maze_material_5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\maze\maze_material_6.tga">
+      <Name>maze_material_6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\maze\maze_material_7.tga">
+      <Name>maze_material_7</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\maze\maze_material_8.tga">
+      <Name>maze_material_8</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Map\d_compound2\dfinal.fbx">
+      <Name>dfinal</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CollidableModelProcessor</Processor>
+      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_0.tga">
+      <Name>Dcompfinal_material_0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_1.tga">
+      <Name>Dcompfinal_material_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_10.tga">
+      <Name>Dcompfinal_material_10</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_11.tga">
+      <Name>Dcompfinal_material_11</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_12.tga">
+      <Name>Dcompfinal_material_12</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_13.tga">
+      <Name>Dcompfinal_material_13</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_14.tga">
+      <Name>Dcompfinal_material_14</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_15.tga">
+      <Name>Dcompfinal_material_15</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_16.tga">
+      <Name>Dcompfinal_material_16</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_17.tga">
+      <Name>Dcompfinal_material_17</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_18.tga">
+      <Name>Dcompfinal_material_18</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_19.tga">
+      <Name>Dcompfinal_material_19</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_2.tga">
+      <Name>Dcompfinal_material_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_20.tga">
+      <Name>Dcompfinal_material_20</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_21.tga">
+      <Name>Dcompfinal_material_21</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_22.tga">
+      <Name>Dcompfinal_material_22</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_23.tga">
+      <Name>Dcompfinal_material_23</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_24.tga">
+      <Name>Dcompfinal_material_24</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_25.tga">
+      <Name>Dcompfinal_material_25</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_26.tga">
+      <Name>Dcompfinal_material_26</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_27.tga">
+      <Name>Dcompfinal_material_27</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_28.tga">
+      <Name>Dcompfinal_material_28</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_29.tga">
+      <Name>Dcompfinal_material_29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_3.tga">
+      <Name>Dcompfinal_material_3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_30.tga">
+      <Name>Dcompfinal_material_30</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_31.tga">
+      <Name>Dcompfinal_material_31</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_32.tga">
+      <Name>Dcompfinal_material_32</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_33.tga">
+      <Name>Dcompfinal_material_33</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_34.tga">
+      <Name>Dcompfinal_material_34</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_35.tga">
+      <Name>Dcompfinal_material_35</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_4.tga">
+      <Name>Dcompfinal_material_4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_5.tga">
+      <Name>Dcompfinal_material_5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_6.tga">
+      <Name>Dcompfinal_material_6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_7.tga">
+      <Name>Dcompfinal_material_7</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_8.tga">
+      <Name>Dcompfinal_material_8</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Map\d_compound2\Dcompfinal_material_9.tga">
+      <Name>Dcompfinal_material_9</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

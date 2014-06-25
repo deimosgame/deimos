@@ -91,6 +91,18 @@ namespace Deimos
                 0, 2, 0, 0, 25, 75,
                 Type.Firearm, ActionOnHit.Event)
             );
+
+            SetWeapon(new Weapon(
+                new Vector3(0,0,0),
+                new Vector3(0,0,0), 0f, 0f,
+                "", "Hands", 0, 'F',
+                0f,
+                0, 0, 0,
+                0, 0, 0,
+                0, 0,
+                Type.Melee, ActionOnHit.Damage
+                )
+            );
         }
 
         public string GetName(char c)
@@ -109,8 +121,10 @@ namespace Deimos
                     return "Bazooka";
                 case 'P':
                     return "Essence of Phobia";
+                case 'F':
+                    return "Hands";
                 default:
-                    return "hands";
+                    return "empty";
             }
         }
 
@@ -130,6 +144,8 @@ namespace Deimos
                     return 'E';
                 case "Essence of Phobia":
                     return 'P';
+                case "Hands":
+                    return 'F';
                 default:
                     return '0';
             }

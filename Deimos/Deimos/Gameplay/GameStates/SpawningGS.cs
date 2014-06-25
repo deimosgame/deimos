@@ -30,10 +30,11 @@ namespace Deimos
             GameplayFacade.ThisPlayerPhysics = new Physics();
             GameplayFacade.ThisPlayerDisplay = new Display();
 
-
             GameplayFacade.ThisPlayer.Inventory = new WeaponManager();
             GameplayFacade.ThisPlayer.InitializeInventory(GameplayFacade.ThisPlayer.Class);
-            GameplayFacade.ThisPlayer.PlayerSpawn(new Vector3(15f, 0f, -38f), Vector3.Zero);
+
+            SpawnLocation spawn = GeneralFacade.SceneManager.CurrentScene.GetRandomSpawn();
+            GameplayFacade.ThisPlayer.PlayerSpawn(spawn.Location, spawn.Rotation);
 
             if (NetworkFacade.IsMultiplayer && !NetworkFacade.ThreadStart2)
             {

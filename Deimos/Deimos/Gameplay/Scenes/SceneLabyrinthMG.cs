@@ -18,10 +18,12 @@ namespace Deimos
         DynamicParticleSystem ParticleSystem;
         SmokeParticleEmitter ParticleEmitter;
 
+        string token_knife;
+
         // Constructor
         public SceneLabyrinthMG(SceneManager sceneManager)
         {
-            PlayerSize = new Vector2(1, 10);
+            PlayerSize = new Vector2(1, 7);
 
             SceneManager = sceneManager;
             ModelManager = SceneManager.ModelManager;
@@ -49,7 +51,7 @@ namespace Deimos
                  GameplayFacade.Minigames.LabyrinthMG.Map, // Model
                  Vector3.Zero, // Location
                  Vector3.Zero,
-                 0.75f
+                 2
             );
         }
 
@@ -58,11 +60,17 @@ namespace Deimos
         {
             LightManager.AddPointLight(
                "Main",
-               new Vector3(-95, 6, -45), // Location
-               50, // Radius
-               2, // Intensity
+               new Vector3(30, 13, -16), // Location
+               30, // Radius
+               3, // Intensity
                Color.White
             );
+
+            token_knife = Objects.AddWeapon(
+                "CarverPickup",
+                0, new Vector3(30, 10, -16),
+                PickupObject.State.Active,
+                2000);
 
         }
         // Update our things at each ticks

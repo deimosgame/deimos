@@ -53,6 +53,12 @@ namespace Deimos
         // Methods for the Player Inventory
         public void PickupWeapon(Weapon pickupWeapon)
         {
+            if (pickupWeapon.Name != "Hands" && PlayerInventory.ContainsKey("Hands"))
+            {
+                PlayerInventory.Remove("Hands");
+                n_weapons--;
+                Sort();
+            }
             // We check if player already has the weapon, if not, we give 
             // it to him
             if (!PlayerInventory.ContainsValue(pickupWeapon))

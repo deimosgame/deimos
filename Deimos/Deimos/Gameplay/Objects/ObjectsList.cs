@@ -35,7 +35,7 @@ namespace Deimos
             // Preset Weapon Objects to be picked up
             SetWeaponObj(new PickupWeapon("CarverPickup",
                 "Models/Weapons/Knife/knife",
-                0.1f, 
+                0.4f, 
                 'A')
             );
             SetWeaponObj(new PickupWeapon("PistolPickup",

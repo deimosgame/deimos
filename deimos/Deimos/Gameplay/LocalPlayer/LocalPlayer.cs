@@ -81,6 +81,13 @@ namespace Deimos
                         Inventory.PickupWeapon(GameplayFacade.Weapons.GetWeapon("Assault Rifle"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
                         Inventory.PickupAmmo("Assault Rifle");
+
+
+
+                        ammoPickup = CurrentWeapon.m_reservoirAmmo;
+                        Inventory.PickupAmmo(CurrentWeapon.Name);
+
+                        GameplayFacade.ThisPlayerDisplay.LoadCurrentWeaponModel();
                     }
                     break;
 
@@ -93,6 +100,13 @@ namespace Deimos
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
                         Inventory.PickupAmmo("Assault Rifle");
                         Inventory.PickupWeapon(GameplayFacade.Weapons.GetWeapon("Carver"));
+
+
+
+                        ammoPickup = CurrentWeapon.m_reservoirAmmo;
+                        Inventory.PickupAmmo(CurrentWeapon.Name);
+
+                        GameplayFacade.ThisPlayerDisplay.LoadCurrentWeaponModel();
                     }
                     break;
 
@@ -105,23 +119,35 @@ namespace Deimos
                         Inventory.PickupWeapon(GameplayFacade.Weapons.GetWeapon("Bazooka"));
                         ammoPickup = CurrentWeapon.m_reservoirAmmo;
                         Inventory.PickupAmmo("Bazooka");
+
+
+
+                        ammoPickup = CurrentWeapon.m_reservoirAmmo;
+                        Inventory.PickupAmmo(CurrentWeapon.Name);
+
+                        GameplayFacade.ThisPlayerDisplay.LoadCurrentWeaponModel();
                     }
                     break;
 
                 case Spec.Cutthroat:
                     {
                         Inventory.PickupWeapon(GameplayFacade.Weapons.GetWeapon("Carver"));
+
+
+                        ammoPickup = CurrentWeapon.m_reservoirAmmo;
+                        Inventory.PickupAmmo(CurrentWeapon.Name);
+
+                        GameplayFacade.ThisPlayerDisplay.LoadCurrentWeaponModel();
                     }
                     break;
-
+                case Spec.Victim:
+                    {
+                        Inventory.PickupWeapon(GameplayFacade.Weapons.GetWeapon("Hands"));
+                    }
+                    break;
                 default:
                     break;
             }
-
-            ammoPickup = CurrentWeapon.m_reservoirAmmo;
-            Inventory.PickupAmmo(CurrentWeapon.Name);
-
-            GameplayFacade.ThisPlayerDisplay.LoadCurrentWeaponModel();
         }
 
         public void PlayerSpawn(Vector3 spawnpoint, Vector3 angle)

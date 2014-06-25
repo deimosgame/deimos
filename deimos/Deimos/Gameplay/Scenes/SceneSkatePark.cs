@@ -16,9 +16,9 @@ namespace Deimos
         public SceneSkatePark(SceneManager sceneManager)
         {
             PlayerSize = new Vector2(1, 33);
-            SpawnLocations = new SpawnLocation[] {
-                new SpawnLocation(new Vector3(-60f, 20f, -8f), Vector3.Zero)
-            };
+            //SpawnLocations = new SpawnLocation[] {
+            //    new SpawnLocation(new Vector3(-60f, 20f, -8f), Vector3.Zero)
+            //};
 
             SceneManager = sceneManager;
             ModelManager = SceneManager.ModelManager;

@@ -153,7 +153,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Map\arena\arenadoors\" />
-    <Folder Include="Models\Misc\" />
     <Folder Include="References\" />
   </ItemGroup>
   <ItemGroup>
@@ -2161,6 +2160,26 @@
     </Compile>
     <Compile Include="Models\Map\d_compound2\Dcompfinal_material_9.tga">
       <Name>Dcompfinal_material_9</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Misc\deimoslogo\logonew2.fbx">
+      <Name>logonew2</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>CollidableModelProcessor</Processor>
+      <ProcessorParameters_ModelProcessor>DeferredRendererModel</ProcessorParameters_ModelProcessor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Misc\deimoslogo\logonew2_material_0.tga">
+      <Name>logonew2_material_0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\Misc\deimoslogo\logonew2_material_1.tga">
+      <Name>logonew2_material_1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

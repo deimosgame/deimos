@@ -46,10 +46,10 @@ namespace Deimos
         {
             ModelManager.LoadModel(
                  "DeimosMain",
-                 "Models/Map/Main/DeimosMain", // Model
-                 new Vector3(10, 0, 0), // Location
+                 "Models/Misc/deimoslogo/logonew2", // Model
+                 new Vector3(50, -20, 0), // Location
                  Vector3.Zero,
-                 0.25f
+             0.82f
             );
             SoundManager.AddSoundEffect("scary", "Sounds/ScaryMusic");
         }
@@ -57,7 +57,9 @@ namespace Deimos
         // Initialize our lights and such
         public override void Initialize()
         {
-            LightManager.AddPointLight("mainLight", new Vector3(20, -30, 100), 380, 1, Color.White);
+            LightManager.AddPointLight("mainLight", new Vector3(5, -30, 50), 400, 1, Color.White);
+            LightManager.AddPointLight("secondLight", new Vector3(100, -10, 50), 200, 1, Color.White);
+            LightManager.AddPointLight("thirdLight", new Vector3(-100, 80, 50), 200, 1, Color.White);
 
             SoundManager.Play("scary");
         }
@@ -68,7 +70,7 @@ namespace Deimos
             CurrentAngle += dt * 0.05f;
             if (DisplayFacade.Camera.Position.Z < 50)
             {
-                CurrentAngle += dt;
+                CurrentAngle += dt * 5f;
             }
             else
             {

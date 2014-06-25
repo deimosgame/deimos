@@ -37,7 +37,7 @@ namespace Deimos
         {
             Random rng = new Random();
 
-            byte b = (byte)(rng.Next(0, Spawns.Count-1));
+            byte b = (byte)(rng.Next(0, Spawns.Count));
 
             return Spawns[b];
         }

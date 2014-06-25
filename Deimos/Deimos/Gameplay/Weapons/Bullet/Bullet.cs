@@ -31,6 +31,8 @@ namespace Deimos
 
         public char WeaponRep;
 
+        public string id;
+
         // Constructor
         public Bullet(Vector3 pos, Vector3 dir, char rep)
             : base(new Vector2(0.13f, 0.13f))
@@ -62,8 +64,7 @@ namespace Deimos
         public override void CollisionEvent(CollisionElement element)
         {
             if (element.GetNature() != ElementNature.Object
-                && element.GetNature() != ElementNature.Bullet
-                && element.GetNature() != ElementNature.Player)
+                && element.GetNature() != ElementNature.Bullet)
             {
                 Collided = true;
 
@@ -78,6 +79,7 @@ namespace Deimos
                         {
                             NetworkFacade.MainHandling.Minigames.SendBegin(
                                 element.Owner);
+                            
                         }
                     }
                     else

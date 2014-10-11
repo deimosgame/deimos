@@ -1,7 +1,9 @@
-# Deimos projet
+# Deimos Game
 
-Deimos is going to be an amazing game... It's currently WIP so far!
+Deimos is on its way to be an amazing game... It currently stands as an advanced prototype!
 
-For swaggy people, you can access the projet [here](https://artemis.springloops.io/project/59937).
+To check us out, you can click [here](https://deimos-ga.me).
 
-Have a good day!
+Have a nice visit!
+
+Manuel Huez, Erenus Dermanci, Louis-Paul Dareau, Cyril Chemla
